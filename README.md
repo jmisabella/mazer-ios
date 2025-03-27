@@ -4,20 +4,21 @@ iOS app using the `mazer` Rust library for generating and solving mazes.
 ---
 
 ## Setup Instructions
-1. **Run `setup.sh`** (from the root of `mazer-ios/`) to accomplish the following:
-    - Set up `aarch64-apple-ios` target for Rust development for iOS.
-    - Clean up  old build artifacts by **removing existing `mazer/` directory**.
-    - Clone the `mazer` repository as a submodule. 
-    - Build the `mazer` library iOS development.
-    <em><small>After a successful setup, you should see the compiled static library:  
+1. **Setup the Rust Environment**
+        - Set up `aarch64-apple-ios` target for Rust development for iOS.
+        - Clean up  old build artifacts by **removing existing `mazer/` directory**.
+        - Clone the `mazer` repository as a submodule. 
+        - Build the `mazer` library iOS development.
+    1. Run `setup.sh` from the root of `mazer-ios/`. 
+    2. After a successful setup, you should see the compiled static library:  
       ```
       mazer/target/aarch64-apple-ios/debug/libmazer.a
-      ```</small></em>
+      ```
 
 2. **Create a New Xcode Project**
     If you haven't already, create a new Xcode project for an iOS app in the root mazer-ios/ directory.
 
-3. **Add `libmazer.a` to the Xcode project**
+3. **Add `libmazer.a` to the Xcode Project**
     1. Open Xcode and your `mazer-ios` project.
     2. In the project navigator, select your iOS app target.
     3. Click the **"Build Phases"** tab.
@@ -42,7 +43,7 @@ iOS app using the `mazer` Rust library for generating and solving mazes.
        ```
     6. Make sure the bridging header is properly associated with your Xcode project.
 
-5. **Add the Header File (`mazer.h`)**
+5. **Add the `mazer.h` Header File**
     1. Drag and drop `mazer.h` into the Xcode project.
     2. Ensure it is added to your app target.
 
