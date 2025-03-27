@@ -1,6 +1,5 @@
 # Ignore the downloaded mazer library from crates.io
-mazer/           # Ignore the mazer library directory
-**mazer/           # Ignore the mazer library directory
+mazer/
 
 # Rust specific
 /target/          # Ignore Rust's build artifacts
