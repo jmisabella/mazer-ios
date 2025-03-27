@@ -24,11 +24,28 @@ rustup default stable
 echo "Adding aarch64-apple-ios target..."
 rustup target add aarch64-apple-ios
 
+# Ensure we're in the correct directory
+cd mazer || { echo "Error: 'mazer' directory not found"; exit 1; }
+
+# Remove old build artifacts to ensure a fresh build
+echo "Cleaning up old build artifacts..."
+rm -rf target/
+
+# Update dependencies to fetch the latest crates.io version
+echo "Updating dependencies from crates.io..."
+cargo update
+
+# Ensure Cargo.toml is correctly configured for staticlib
+echo "Ensuring crate-type is set to staticlib..."
+if ! grep -q 'crate-type = \["staticlib"\]' Cargo.toml; then
+    echo 'crate-type = ["staticlib"]' >> Cargo.toml
+    echo "Updated Cargo.toml to include crate-type staticlib."
+fi
+
 # Build mazer library for the iOS target
-cd mazer
-#### from mazer/ manually update Cargo.toml to add: crate-type = ["staticlib"]
-#### then run the following command:
-#### cargo build --target aarch64-apple-ios
+echo "Building mazer library for iOS..."
+cargo build --target aarch64-apple-ios
+
 cd ..
 
 # Check if Xcode command line tools are installed
