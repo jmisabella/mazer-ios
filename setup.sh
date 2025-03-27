@@ -25,6 +25,18 @@ echo "Adding aarch64-apple-ios target..."
 rustup target add aarch64-apple-ios
 
 # Ensure we're in the correct directory
+echo "Running setup from $(pwd)"
+
+# Check if mazer/ exists; if not, clone it
+if [ ! -d "mazer" ]; then
+    echo "Cloning mazer repository..."
+    git clone https://github.com/jmisabella/mazer.git mazer
+else
+    echo "Updating mazer submodule..."
+    git -C mazer pull origin main
+fi
+
+# Navigate into mazer directory
 cd mazer || { echo "Error: 'mazer' directory not found"; exit 1; }
 
 # Remove old build artifacts to ensure a fresh build
@@ -35,17 +47,39 @@ rm -rf target/
 echo "Updating dependencies from crates.io..."
 cargo update
 
-# Ensure Cargo.toml is correctly configured for staticlib
-echo "Ensuring crate-type is set to staticlib..."
-if ! grep -q 'crate-type = \["staticlib"\]' Cargo.toml; then
-    echo 'crate-type = ["staticlib"]' >> Cargo.toml
-    echo "Updated Cargo.toml to include crate-type staticlib."
+echo "Ensuring crate-type is set to staticlib in Cargo.toml..."
+
+# Check if [lib] section already exists
+if grep -q '^\[lib\]' Cargo.toml; then
+    # If crate-type is missing inside [lib], add it
+    if ! grep -q 'crate-type = \["staticlib"\]' Cargo.toml; then
+        sed -i '' '/^\[lib\]/a\
+crate-type = ["staticlib"]
+' Cargo.toml
+        echo "Updated [lib] section in Cargo.toml to include crate-type staticlib."
+    fi
+else
+    # If [lib] section does not exist, insert it at the beginning of the file
+    sed -i '' '1i\
+[lib]\
+crate-type = ["staticlib"]
+' Cargo.toml
+    echo "Added [lib] section to Cargo.toml with crate-type staticlib."
+fi
+
+# Copy include/mazer.h to mazer-ios/ so it can be easily added to Xcode
+if [[ -f "include/mazer.h" ]]; then
+    cp "include/mazer.h" ../mazer.h
+    echo "File 'mazer.h' copied to mazer-ios directory."
+else
+    echo "Error: 'mazer.h' does not exist in 'mazer/include/'."
 fi
 
 # Build mazer library for the iOS target
 echo "Building mazer library for iOS..."
 cargo build --target aarch64-apple-ios
 
+# Navigate back to mazer-ios directory
 cd ..
 
 # Check if Xcode command line tools are installed
