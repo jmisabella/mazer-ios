@@ -9,8 +9,7 @@ echo "Installing dependencies..."
 brew install cmake libssh2 pkg-config openssl
 
 # Check if rustup is installed
-if ! command -v rustup &> /dev/null
-then
+if ! command -v rustup &>/dev/null; then
     echo "rustup not found! Installing rustup..."
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 else
@@ -24,6 +23,11 @@ rustup default stable
 # Add the target for iOS development
 echo "Adding aarch64-apple-ios target..."
 rustup target add aarch64-apple-ios
+
+# Build mazer library for the iOS target
+cd mazer
+cargo build --target aarch64-apple-ios
+cd ..
 
 # Check if Xcode command line tools are installed
 echo "Checking for Xcode command line tools..."
