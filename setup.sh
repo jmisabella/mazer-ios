@@ -26,7 +26,9 @@ rustup target add aarch64-apple-ios
 
 # Build mazer library for the iOS target
 cd mazer
-cargo build --target aarch64-apple-ios
+#### from mazer/ manually update Cargo.toml to add: crate-type = ["staticlib"]
+#### then run the following command:
+#### cargo build --target aarch64-apple-ios
 cd ..
 
 # Check if Xcode command line tools are installed
