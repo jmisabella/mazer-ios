@@ -4,11 +4,7 @@ iOS app using the `mazer` Rust library for generating and solving mazes.
 ---
 
 ## Setup Instructions
-1. **Setup the Rust Environment**
-        - Set up `aarch64-apple-ios` target for Rust development for iOS.
-        - Clean up  old build artifacts by **removing existing `mazer/` directory**.
-        - Clone the `mazer` repository as a submodule. 
-        - Build the `mazer` library iOS development.
+1. **Download and Prepare the `mazer` Rust Library for iOS Development.
     1. Run `setup.sh` from the root of `mazer-ios/`. 
     2. After a successful setup, you should see the compiled static library:  
       ```
