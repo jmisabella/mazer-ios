@@ -4,22 +4,20 @@ iOS app using the `mazer` Rust library for generating and solving mazes.
 ---
 
 ## Setup Instructions
-
-### **Initial Setup & Updating the `mazer` Library**
-1. **Run `setup.sh`** (from the root of `mazer-ios/`)  
-    - This script installs Rust (`rustup`) if not already installed.
-    - It **removes any existing `mazer/` directory**, pulls the latest version **from GitHub** as a submodule, and installs dependencies.
-    - It explicitly updates `mazer/Cargo.toml` to ensure:
-      ```toml
-      [lib]
-      crate-type = ["staticlib"]
-      ```
-    - After a successful setup, you should see the compiled static library:  
+1. **Run `setup.sh`** (from the root of `mazer-ios/`) to accomplish the following:
+    - Set up `aarch64-apple-ios` target for Rust development for iOS.
+    - Clean up  old build artifacts by **removing existing `mazer/` directory**.
+    - Clone the `mazer` repository as a submodule. 
+    - Build the `mazer` library iOS development.
+    <em><small>After a successful setup, you should see the compiled static library:  
       ```
       mazer/target/aarch64-apple-ios/debug/libmazer.a
-      ```
+      ```</small></em>
 
-2. **Add `libmazer.a` to the Xcode project**
+2. **Create a New Xcode Project**
+    If you haven't already, create a new Xcode project for an iOS app in the root mazer-ios/ directory.
+
+3. **Add `libmazer.a` to the Xcode project**
     1. Open Xcode and your `mazer-ios` project.
     2. In the project navigator, select your iOS app target.
     3. Click the **"Build Phases"** tab.
@@ -28,21 +26,23 @@ iOS app using the `mazer` Rust library for generating and solving mazes.
     6. Navigate to `mazer/target/aarch64-apple-ios/debug/` and select `libmazer.a`.
     7. Click `"Add"`.
 
-3. **Add the Header File (`mazer.h`)**
-    1. Drag and drop `mazer.h` into the Xcode project.
-    2. Ensure it is added to your app target.
 
-4. **Expose the `mazer` Library to Swift via a Bridging Header**
+4. **Set Up the Bridging Header**
     *Creating a bridging header allows Swift to call the `mazer` library’s C functions.*
-    1. In Xcode, go to **File** → **New** → **File...** → **Header File**.
+    1. In Xcode, go to **File** → **New** → **File...** → **Header File** (under Source.
     2. Name it `mazer_bridge.h` (or a similar name).
-    3. Inside the file, add:
+    3. Add the following line to `mazer_bridge.h`. This line will allow the bridger header to import the Rust-generated header.:
        ```c
        #include "mazer.h"
        ```
-    4. In Xcode, go to **Build Settings** and search for **"Objective-C Bridging Header"**.
+    4. Click on the root `mazer-ios` folder in Project Navigator. Go to the **Build Settings** tab and search for **"Objective-C Bridging Header"**.
     5. Set the path to your bridging header:  
        ```
        mazer-ios/mazer_bridge.h
        ```
+    6. Make sure the bridging header is properly associated with your Xcode project.
+
+5. **Add the Header File (`mazer.h`)**
+    1. Drag and drop `mazer.h` into the Xcode project.
+    2. Ensure it is added to your app target.
 
