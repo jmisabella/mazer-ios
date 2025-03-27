@@ -1,41 +1,40 @@
 #!/bin/bash
 
-set -e  # Exit immediately if a command fails
+# Ensure Homebrew is up-to-date
+echo "Updating Homebrew..."
+brew update
 
-echo "🔄 Initializing Git submodules..."
-git submodule update --init --recursive
+# Install necessary dependencies
+echo "Installing dependencies..."
+brew install cmake libssh2 pkg-config openssl
 
-# If the submodule is not added already, add it manually
-if [ ! -d "mazer" ]; then
-    echo "🔽 Cloning the mazer submodule..."
-    git submodule add https://github.com/jmisabella/mazer.git mazer
-    git submodule update --init --recursive
-fi
-
-echo "🔍 Checking for Cargo installation..."
-if ! command -v cargo &> /dev/null
+# Check if rustup is installed
+if ! command -v rustup &> /dev/null
 then
-    echo "❌ Cargo is not installed. Install Rust from https://www.rust-lang.org/tools/install"
-    exit 1
-fi
-
-echo "🔍 Checking for iOS Rust targets..."
-if ! cargo --list | grep -q "target"; then
-    echo "⚠️  Unable to verify installed targets, but proceeding..."
+    echo "rustup not found! Installing rustup..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 else
-    if ! cargo target list | grep -q "aarch64-apple-ios"; then
-        echo "❌ Required Rust target (aarch64-apple-ios) is missing."
-        echo "⚠️  Please manually install it using: cargo install <appropriate-target-tool>"
-        exit 1
-    fi
+    echo "rustup is already installed"
 fi
 
-echo "🔨 Building Rust library for iOS..."
-cd mazer
-cargo build --release --target aarch64-apple-ios || { echo "❌ Rust build failed"; exit 1; }
+# Set the Rust toolchain to stable if not already configured
+echo "Setting up Rust toolchain..."
+rustup default stable
 
-echo "📂 Copying built library to Xcode project..."
-cp target/aarch64-apple-ios/release/libmazer.a ../
+# Add the target for iOS development
+echo "Adding aarch64-apple-ios target..."
+rustup target add aarch64-apple-ios
 
-echo "✅ Setup complete! Now open Xcode and build the project."
+# Check if Xcode command line tools are installed
+echo "Checking for Xcode command line tools..."
+xcode-select --install
+
+# Print Rust and target information to verify setup
+echo "Rust setup completed. Current Rust version:"
+rustc --version
+echo "Target added for iOS (aarch64-apple-ios):"
+rustup target list --installed
+
+# End of script
+echo "Setup complete! You should now be ready to build the iOS app with Rust integration."
 
