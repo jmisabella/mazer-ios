@@ -1,3 +1,24 @@
+# Ignore the downloaded mazer library from crates.io
+mazer/
+mazer.h
+
+# Rust specific
+/target/          # Ignore Rust's build artifacts
+**/target/        # Ignore target folder recursively
+
+# Xcode specific
+*.xcuserstate     # Ignore Xcode's user state files
+*.xcworkspace     # Ignore workspace file if you don't want to commit it
+*.xcodeproj/project.xcworkspace/ # Ignore workspace project files
+DerivedData/      # Ignore Xcode's derived data (e.g., build outputs, caches)
+.idea/            # Ignore JetBrains IDE project files (if you're using them)
+
+# Rust artifacts that should not be committed
+Cargo.lock        # If it's not a library you want to lock to specific versions
+
+# Other non-essential files
+.DS_Store         # macOS system files
+
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore

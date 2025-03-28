@@ -1,0 +1,3 @@
+[submodule "mazer"]
+	path = mazer
+	url = https://github.com/jmisabella/mazer.git
