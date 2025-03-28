@@ -15,7 +15,7 @@ iOS app using the `mazer` Rust library for generating and solving mazes.
     - If you haven't already, create a new Xcode project for an iOS app in the root `mazer-ios/` directory.
 
 3. **Add `libmazer.a` to the Xcode Project**
-    1. In the project navigator, select your iOS app target.
+    1. In the project navigator, click on the root `mazer-ios` directory (the iOS app target).
     2. Click the **"Build Phases"** tab.
     3. Expand **"Link Binary With Libraries"** and click the `"+"` button.
     4. Click **"Add Other..."** → **"Add Files..."**.
