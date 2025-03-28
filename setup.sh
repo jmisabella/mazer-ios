@@ -1,5 +1,44 @@
 #!/bin/bash
 
+# Function to display usage instructions
+usage() {
+    echo "Usage: $0 [DEVELOP|RELEASE]"
+    echo "  DEVELOP  - Sets up the environment for iOS simulator (aarch64-apple-ios-sim)"
+    echo "  RELEASE  - Sets up the environment for real iOS devices (aarch64-apple-ios)"
+    echo "  --help   - Show this help message"
+    exit 1
+}
+
+# Ensure an argument is provided
+if [ $# -ne 1 ]; then
+    echo "Error: Missing required argument."
+    usage
+fi
+
+# Handle --help option
+if [[ "$1" == "--help" ]]; then
+    usage
+fi
+
+# Convert argument to uppercase for case-insensitive comparison
+ARG=$(echo "$1" | tr '[:lower:]' '[:upper:]')
+
+# Validate argument and set the correct Rust target
+case "$ARG" in
+    DEVELOP)
+        TARGET="aarch64-apple-ios-sim"
+        ;;
+    RELEASE)
+        TARGET="aarch64-apple-ios"
+        ;;
+    *)
+        echo "Error: Unexpected argument '$1'. Expected DEVELOP or RELEASE."
+        usage
+        ;;
+esac
+
+echo "Setting up environment for $ARG mode with target: $TARGET"
+
 # Ensure Homebrew is up-to-date
 echo "Updating Homebrew..."
 brew update
@@ -21,9 +60,8 @@ echo "Setting up Rust toolchain..."
 rustup default stable
 
 # Add the target for iOS development
-echo "Adding aarch64-apple-ios target..."
-rustup target add aarch64-apple-ios
-#rustup target add aarch64-apple-ios-sim
+echo "Adding Rust target: $TARGET..."
+rustup target add "$TARGET"
 
 # Ensure we're in the correct directory
 echo "Running setup from $(pwd)"
@@ -76,10 +114,9 @@ else
     echo "Error: 'mazer.h' does not exist in 'mazer/include/'."
 fi
 
-# Build mazer library for the iOS target
-echo "Building mazer library for iOS..."
-cargo build --target aarch64-apple-ios
-#cargo build --target aarch64-apple-ios-sim
+# Build mazer library for the selected iOS target
+echo "Building mazer library for target: $TARGET..."
+cargo build --target "$TARGET"
 
 # Navigate back to mazer-ios directory
 cd ..
@@ -91,7 +128,7 @@ xcode-select --install
 # Print Rust and target information to verify setup
 echo "Rust setup completed. Current Rust version:"
 rustc --version
-echo "Target added for iOS (aarch64-apple-ios):"
+echo "Target added for iOS ($TARGET):"
 rustup target list --installed
 
 # End of script
