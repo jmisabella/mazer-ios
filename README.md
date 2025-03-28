@@ -36,6 +36,5 @@ iOS app using the `mazer` Rust library for generating and solving mazes.
     8. Click the + button on Release and enter `mazer-ios/mazer_bridge.h` for its value. 
 
 5. **Add the `mazer.h` Header File**
-    1. Drag and drop `mazer.h` into the Xcode project's `mazer-ios/mazer-ios` folder (same directory as Assets).
-    2. Ensure it is added to your app target.
+    1. Drag and drop `mazer.h` into the Xcode project's `mazer-ios/mazer-ios` folder (contains Assets).
 
