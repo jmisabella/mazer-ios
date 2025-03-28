@@ -25,7 +25,7 @@ iOS app using the `mazer` Rust library for generating and solving mazes.
 
 
 4. **Set Up the Bridging Header** *(allows Swift to call the `mazer` library's C functions)*
-    1. In Xcode, go to **File** → **New** → **File...** → **Header File** (under Source.
+    1. In Xcode, go to **File** → **New** → **File...** → **Header File** *(under `Source`)*.
     2. Name it `mazer_bridge.h` (or a similar name).
     3. Add the following line to `mazer_bridge.h`. This line will allow the bridger header to import the Rust-generated header.:
        ```c
