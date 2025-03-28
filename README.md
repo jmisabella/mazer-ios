@@ -48,11 +48,11 @@ iOS app using the `mazer` Rust library for generating and solving mazes.
     2. Prepend the following to ContentView body's outer-most VStack:
     ```
     .onAppear {
-        result = mazer_ffi_integration_test()
-        print("mazer_ffi_integration_test returned: \(result)")
-           
+        ffi_integration_test_result = mazer_ffi_integration_test()
+        print("mazer_ffi_integration_test returned: \(ffi_integration_test_result)")
+    
         // Verify result is 42
-        if result == 42 {
+        if ffi_integration_test_result == 42 {
             print("FFI integration test passed ✅")
         } else {
             print("FFI integration test failed ❌")

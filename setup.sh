@@ -23,6 +23,7 @@ rustup default stable
 # Add the target for iOS development
 echo "Adding aarch64-apple-ios target..."
 rustup target add aarch64-apple-ios
+#rustup target add aarch64-apple-ios-sim
 
 # Ensure we're in the correct directory
 echo "Running setup from $(pwd)"
@@ -78,6 +79,7 @@ fi
 # Build mazer library for the iOS target
 echo "Building mazer library for iOS..."
 cargo build --target aarch64-apple-ios
+#cargo build --target aarch64-apple-ios-sim
 
 # Navigate back to mazer-ios directory
 cd ..
