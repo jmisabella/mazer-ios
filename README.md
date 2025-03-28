@@ -38,3 +38,24 @@ iOS app using the `mazer` Rust library for generating and solving mazes.
 5. **Add the `mazer.h` Header File**
     1. Drag and drop `mazer.h` into the Xcode project's `mazer-ios/mazer-ios` folder (contains Assets).
 
+6. **Verify FFI Connection**
+    1. Add this line to ContentView to define `ffi_integration_test_result`:
+    ```
+    @State private var ffi_integration_test_result: Int32 = 0
+    ```
+    2. Prepend the following to ContentView body's outer-most VStack:
+    ```
+    .onAppear {
+        result = mazer_ffi_integration_test()
+        print("mazer_ffi_integration_test returned: \(result)")
+           
+        // Verify result is 42
+        if result == 42 {
+            print("FFI integration test passed ✅")
+        } else {
+            print("FFI integration test failed ❌")
+        }
+    }
+    ``` 
+
+    2. Verify you see the output: `FFI integration test passed`
