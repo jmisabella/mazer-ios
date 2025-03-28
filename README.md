@@ -12,7 +12,7 @@ iOS app using the `mazer` Rust library for generating and solving mazes.
       ```
 
 2. **Create a New Xcode Project**
-    If you haven't already, create a new Xcode project for an iOS app in the root mazer-ios/ directory.
+    - If you haven't already, create a new Xcode project for an iOS app in the root mazer-ios/ directory.
 
 3. **Add `libmazer.a` to the Xcode Project**
     1. Open Xcode and your `mazer-ios` project.
