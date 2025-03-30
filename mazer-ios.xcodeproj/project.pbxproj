@@ -8,34 +8,37 @@
 
 /* Begin PBXBuildFile section */
 		0056D1092D974039003B7493 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0056D1082D974038003B7493 /* libmazer.a */; };
+		00C33F662D98C84C0077691B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C33F5C2D98C84C0077691B /* Preview Assets.xcassets */; };
+		00C33F672D98C84C0077691B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C33F5E2D98C84C0077691B /* Assets.xcassets */; };
+		00C33F682D98C84C0077691B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C33F5F2D98C84C0077691B /* ContentView.swift */; };
+		00C33F692D98C84C0077691B /* mazer_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C33F622D98C84C0077691B /* mazer_iosApp.swift */; };
+		00C33F6A2D98C84C0077691B /* MazeRequestValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C33F632D98C84C0077691B /* MazeRequestValidator.swift */; };
+		00C33F6B2D98C84C0077691B /* MazeRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C33F642D98C84C0077691B /* MazeRequestView.swift */; };
+		00C33F6C2D98C84C0077691B /* mazer_bridge.h in Sources */ = {isa = PBXBuildFile; fileRef = 00C33F612D98C84C0077691B /* mazer_bridge.h */; };
+		00C33F752D98CC730077691B /* MazeRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C33F742D98CA9E0077691B /* MazeRequestError.swift */; };
+		00C33F762D98CC790077691B /* MazeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C33F712D98C97B0077691B /* MazeRequest.swift */; };
+		00C33F772D98CC800077691B /* MazeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C33F722D98C9E10077691B /* MazeType.swift */; };
+		00C33F782D98CC860077691B /* MazeAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C33F732D98C9E60077691B /* MazeAlgorithm.swift */; };
+		00C33F792D98CC8E0077691B /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C33F702D98C93D0077691B /* Coordinates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0056D0992D94D7FE003B7493 /* mazer-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mazer-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0056D1002D963CB4003B7493 /* libmazer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmazer.a; path = "mazer/target/aarch64-apple-ios/debug/libmazer.a"; sourceTree = "<group>"; };
 		0056D1082D974038003B7493 /* libmazer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmazer.a; path = "mazer/target/aarch64-apple-ios-sim/debug/libmazer.a"; sourceTree = "<group>"; };
+		00C33F5C2D98C84C0077691B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		00C33F5E2D98C84C0077691B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		00C33F5F2D98C84C0077691B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		00C33F602D98C84C0077691B /* mazer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer.h; sourceTree = "<group>"; };
+		00C33F612D98C84C0077691B /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
+		00C33F622D98C84C0077691B /* mazer_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mazer_iosApp.swift; sourceTree = "<group>"; };
+		00C33F632D98C84C0077691B /* MazeRequestValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeRequestValidator.swift; sourceTree = "<group>"; };
+		00C33F642D98C84C0077691B /* MazeRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeRequestView.swift; sourceTree = "<group>"; };
+		00C33F702D98C93D0077691B /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		00C33F712D98C97B0077691B /* MazeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeRequest.swift; sourceTree = "<group>"; };
+		00C33F722D98C9E10077691B /* MazeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeType.swift; sourceTree = "<group>"; };
+		00C33F732D98C9E60077691B /* MazeAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeAlgorithm.swift; sourceTree = "<group>"; };
+		00C33F742D98CA9E0077691B /* MazeRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeRequestError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		0056D10E2D9741E5003B7493 /* Exceptions for "mazer-ios" folder in "Compile Sources" phase from "mazer-ios" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 0056D0952D94D7FE003B7493 /* Sources */;
-			membershipExceptions = (
-				mazer_bridge.h,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		0056D09B2D94D7FE003B7493 /* mazer-ios */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				0056D10E2D9741E5003B7493 /* Exceptions for "mazer-ios" folder in "Compile Sources" phase from "mazer-ios" target */,
-			);
-			path = "mazer-ios";
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0056D0962D94D7FE003B7493 /* Frameworks */ = {
@@ -52,9 +55,9 @@
 		0056D0902D94D7FE003B7493 = {
 			isa = PBXGroup;
 			children = (
-				0056D09B2D94D7FE003B7493 /* mazer-ios */,
 				0056D0EC2D95FECD003B7493 /* Frameworks */,
 				0056D09A2D94D7FE003B7493 /* Products */,
+				00C33F652D98C84C0077691B /* mazer-ios */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,9 +73,60 @@
 			isa = PBXGroup;
 			children = (
 				0056D1082D974038003B7493 /* libmazer.a */,
-				0056D1002D963CB4003B7493 /* libmazer.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		00C33F5D2D98C84C0077691B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				00C33F5C2D98C84C0077691B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		00C33F652D98C84C0077691B /* mazer-ios */ = {
+			isa = PBXGroup;
+			children = (
+				00C33F6E2D98C8EE0077691B /* Views */,
+				00C33F5D2D98C84C0077691B /* Preview Content */,
+				00C33F5E2D98C84C0077691B /* Assets.xcassets */,
+				00C33F5F2D98C84C0077691B /* ContentView.swift */,
+				00C33F602D98C84C0077691B /* mazer.h */,
+				00C33F612D98C84C0077691B /* mazer_bridge.h */,
+				00C33F622D98C84C0077691B /* mazer_iosApp.swift */,
+				00C33F6D2D98C8E50077691B /* Models */,
+				00C33F6F2D98C9010077691B /* Utils */,
+			);
+			path = "mazer-ios";
+			sourceTree = "<group>";
+		};
+		00C33F6D2D98C8E50077691B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				00C33F742D98CA9E0077691B /* MazeRequestError.swift */,
+				00C33F712D98C97B0077691B /* MazeRequest.swift */,
+				00C33F722D98C9E10077691B /* MazeType.swift */,
+				00C33F732D98C9E60077691B /* MazeAlgorithm.swift */,
+				00C33F702D98C93D0077691B /* Coordinates.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		00C33F6E2D98C8EE0077691B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				00C33F642D98C84C0077691B /* MazeRequestView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		00C33F6F2D98C9010077691B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				00C33F632D98C84C0077691B /* MazeRequestValidator.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,9 +143,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				0056D09B2D94D7FE003B7493 /* mazer-ios */,
 			);
 			name = "mazer-ios";
 			packageProductDependencies = (
@@ -139,6 +190,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00C33F662D98C84C0077691B /* Preview Assets.xcassets in Resources */,
+				00C33F672D98C84C0077691B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +202,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00C33F772D98CC800077691B /* MazeType.swift in Sources */,
+				00C33F682D98C84C0077691B /* ContentView.swift in Sources */,
+				00C33F6C2D98C84C0077691B /* mazer_bridge.h in Sources */,
+				00C33F692D98C84C0077691B /* mazer_iosApp.swift in Sources */,
+				00C33F762D98CC790077691B /* MazeRequest.swift in Sources */,
+				00C33F6A2D98C84C0077691B /* MazeRequestValidator.swift in Sources */,
+				00C33F6B2D98C84C0077691B /* MazeRequestView.swift in Sources */,
+				00C33F752D98CC730077691B /* MazeRequestError.swift in Sources */,
+				00C33F782D98CC860077691B /* MazeAlgorithm.swift in Sources */,
+				00C33F792D98CC8E0077691B /* Coordinates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
