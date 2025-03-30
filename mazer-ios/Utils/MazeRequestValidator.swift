@@ -1,7 +1,7 @@
 import Foundation
 
 struct MazeRequestValidator {
-    static func validate(mazeType: String, width: Int, height: Int, algorithm: String, start_x: Int, start_y: Int, goal_x: Int, goal_y: Int) -> Result<String, MazeRequestError> {
+    static func validate(mazeType: MazeType, width: Int, height: Int, algorithm: MazeAlgorithm, start_x: Int, start_y: Int, goal_x: Int, goal_y: Int) -> Result<String, MazeRequestError> {
         
         // Ensure width and height are valid
         guard width > 0, height > 0 else {
@@ -20,7 +20,16 @@ struct MazeRequestValidator {
         }
 
         // Construct the MazeRequest object
-        let mazeRequest = MazeRequest(maze_type: MazeType(rawValue: mazeType) ?? MazeType.orthogonal, width: width, height: height, algorithm: MazeAlgorithm(rawValue: algorithm) ?? MazeAlgorithm.recursiveBacktracker, start: Coordinates(x: start_x, y: start_y), goal: Coordinates(x: goal_x, y: goal_y))
+        let startCoordinates = Coordinates(x: start_x, y: start_y)
+        let goalCoordinates = Coordinates(x: goal_x, y: goal_y)
+        let mazeRequest = MazeRequest(
+            maze_type: mazeType,
+            width: width,
+            height: height,
+            algorithm: algorithm,
+            start: startCoordinates,
+            goal: goalCoordinates
+        )
 
         // Encode as JSON
         let encoder = JSONEncoder()
