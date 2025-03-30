@@ -74,50 +74,36 @@ struct MazeRequestView: View {
             }
             .pickerStyle(MenuPickerStyle())
             
+            // Start X and Y
             HStack {
                 TextField("Start X", text: Binding(
                     get: { String(startX) },
-                    set: { newValue in
-                        if let intValue = Int(newValue) {
-                            startX = min(max(intValue, 0), maxWidth) // Clamp to valid range
-                        }
-                    }
+                    set: { startX = Int(filterAndClampWidthInput($0, max: maxWidth)) ?? 0 }
+
                 ))
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad)
 
                 TextField("Start Y", text: Binding(
                     get: { String(startY) },
-                    set: { newValue in
-                        if let intValue = Int(newValue) {
-                            startY = min(max(intValue, 0), maxHeight) // Clamp to valid range
-                        }
-                    }
+                    set: { startY = Int(filterAndClampHeightInput($0, max: maxHeight, defaultHeight: 0)) ?? 0 }
                 ))
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad)
             }
 
-            
+            // Goal X and Y
             HStack {
                 TextField("Goal X", text: Binding(
                     get: { String(goalX) },
-                    set: { newValue in
-                        if let intValue = Int(newValue) {
-                            goalX = min(max(intValue, 0), maxWidth) // Clamp to valid range
-                        }
-                    }
+                    set: { goalX = Int(filterAndClampWidthInput($0, max: maxWidth)) ?? 0 }
                 ))
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad)
 
                 TextField("Goal Y", text: Binding(
                     get: { String(goalY) },
-                    set: { newValue in
-                        if let intValue = Int(newValue) {
-                            goalY = min(max(intValue, 0), maxHeight) // Clamp to valid range
-                        }
-                    }
+                    set: { goalY = Int(filterAndClampHeightInput($0, max: maxHeight, defaultHeight: maxHeight)) ?? 0 }
                 ))
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad)
@@ -137,16 +123,30 @@ struct MazeRequestView: View {
         .padding()
     }
     
-    func filterAndClampInput(_ input: String, max: Int) -> String {
-        let filtered = input.filter { $0.isNumber }
-        if let intValue = Int(filtered), intValue <= max {
-            return String(intValue)
+//    func filterAndClampInput(_ input: String, max: Int) -> String {
+//        let filtered = input.filter { $0.isNumber }
+//        if let intValue = Int(filtered), intValue <= max {
+//            return String(intValue)
+//        }
+//        return filtered.isEmpty ? "" : String(max)
+//    }
+    
+    func filterAndClampWidthInput(_ value: String, max: Int) -> String {
+        if let intValue = Int(value), intValue >= 0 && intValue <= max {
+            return String(intValue)  // Convert the valid int value back to a string
         }
-        return filtered.isEmpty ? "" : String(max)
+        return String(max / 2)
     }
     
+    func filterAndClampHeightInput(_ value: String, max: Int, defaultHeight: Int) -> String {
+        if let intValue = Int(value), intValue >= 0 && intValue <= max {
+            return String(intValue)  // Convert the valid int value back to a string
+        }
+        return String(defaultHeight)
+    }
+
     func submitMazeRequest() {
-        // TODO: Validate input and generate JSON request
+        // validate input and generate JSON request
         let result = MazeRequestValidator.validate(
             mazeType: selectedMazeType,
             width: mazeWidth,
@@ -157,11 +157,25 @@ struct MazeRequestView: View {
             goal_x: goalX,
             goal_y: goalY
         )
-
+        
         // Handling the result
         switch result {
         case .success(let jsonString):
             print("Valid JSON: \(jsonString)")
+            
+            // Prepare to call the FFI function
+            let jsonCString = jsonString.cString(using: .utf8)  // Convert Swift String to C String
+            var length: size_t = 0  // Initialize length variable
+            
+            // Call the C function through FFI
+            if let mazePointer = mazer_generate_maze(jsonCString, &length) {
+                // Successfully got maze, process it here
+                print("Maze generated with length: \(length)")
+                // Further processing of mazePointer...
+            } else {
+                print("Error: Failed to generate maze")
+            }
+            
         case .failure(let error):
             print("Validation failed: \(error.localizedDescription)")
         }
