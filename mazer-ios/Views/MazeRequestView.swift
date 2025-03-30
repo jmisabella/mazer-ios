@@ -18,17 +18,46 @@ struct MazeRequestView: View {
     @State private var selectedMazeType: MazeType = .orthogonal
     @State private var selectedAlgorithm: MazeAlgorithm = .recursiveBacktracker
     
-    @State private var startX: Int = 0
+    @State private var startX: Int = {
+        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
+        return maxWidth / 2
+    }()
+
     @State private var startY: Int = 0
-    @State private var goalX: Int = 0
-    @State private var goalY: Int = 0
+
+    @State private var goalX: Int = {
+        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
+        return maxWidth / 2
+    }()
+
+    @State private var goalY: Int = {
+        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 200) / 9))
+        return maxHeight
+    }()
+
+    
+//    @State private var startX: Int = 0
+//    @State private var startY: Int = 0
+//    @State private var goalX: Int = 0
+//    @State private var goalY: Int = 0
+    
+//    var maxWidth: Int {
+//        // Placeholder calculation, will adjust based on screen size
+//        return 50 / selectedSize.rawValue
+//    }
+//    var maxHeight: Int {
+//        return 80 / selectedSize.rawValue
+//    }
+    
+    let horizontalMargin = 40 // TODO: adjust as necessary
+    let verticalMargin = 200 // TODO: adjust as necessary
     
     var maxWidth: Int {
-        // Placeholder calculation, will adjust based on screen size
-        return 50 / selectedSize.rawValue
+        max(1, Int(availableWidth / CGFloat(selectedSize.rawValue)))
     }
+
     var maxHeight: Int {
-        return 80 / selectedSize.rawValue
+        max(1, Int(availableHeight / CGFloat(selectedSize.rawValue)))
     }
     
     var screenWidth: CGFloat { UIScreen.main.bounds.width }
@@ -36,11 +65,11 @@ struct MazeRequestView: View {
     var screenHeight: CGFloat { UIScreen.main.bounds.height }
     
     var availableWidth: CGFloat {
-        screenWidth - 40 // Adjust for margins, paddings
+        screenWidth - CGFloat(horizontalMargin) // Adjust for margins, paddings
     }
     
     var availableHeight: CGFloat {
-        screenHeight - 200 // Adjust for nav bar, controls, etc.
+        screenHeight - CGFloat(verticalMargin) // Adjust for nav bar, controls, etc.
     }
     
     var mazeWidth: Int {
@@ -122,14 +151,6 @@ struct MazeRequestView: View {
         }
         .padding()
     }
-    
-//    func filterAndClampInput(_ input: String, max: Int) -> String {
-//        let filtered = input.filter { $0.isNumber }
-//        if let intValue = Int(filtered), intValue <= max {
-//            return String(intValue)
-//        }
-//        return filtered.isEmpty ? "" : String(max)
-//    }
     
     func filterAndClampWidthInput(_ value: String, max: Int) -> String {
         if let intValue = Int(value), intValue >= 0 && intValue <= max {
