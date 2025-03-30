@@ -36,19 +36,6 @@ struct MazeRequestView: View {
     }()
 
     
-//    @State private var startX: Int = 0
-//    @State private var startY: Int = 0
-//    @State private var goalX: Int = 0
-//    @State private var goalY: Int = 0
-    
-//    var maxWidth: Int {
-//        // Placeholder calculation, will adjust based on screen size
-//        return 50 / selectedSize.rawValue
-//    }
-//    var maxHeight: Int {
-//        return 80 / selectedSize.rawValue
-//    }
-    
     let horizontalMargin = 40 // TODO: adjust as necessary
     let verticalMargin = 200 // TODO: adjust as necessary
     
@@ -88,27 +75,29 @@ struct MazeRequestView: View {
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
-            
+            .onChange(of: selectedSize) { _ in
+                updateStartAndGoalPositions()
+            }
+
             Picker("Maze Type", selection: $selectedMazeType) {
                 ForEach(MazeType.allCases) { type in
                     Text(type.rawValue.capitalized).tag(type)
                 }
-            }	
+            }
             .pickerStyle(MenuPickerStyle())
-            
+
             Picker("Algorithm", selection: $selectedAlgorithm) {
                 ForEach(MazeAlgorithm.allCases) { algo in
                     Text(algo.rawValue).tag(algo)
                 }
             }
             .pickerStyle(MenuPickerStyle())
-            
+
             // Start X and Y
             HStack {
                 TextField("Start X", text: Binding(
                     get: { String(startX) },
                     set: { startX = Int(filterAndClampWidthInput($0, max: maxWidth)) ?? 0 }
-
                 ))
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad)
@@ -137,17 +126,17 @@ struct MazeRequestView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad)
             }
-            
+
             Button("Generate Maze") {
                 submitMazeRequest()
             }
             .buttonStyle(.borderedProminent)
             .padding()
-            
+
             Divider()
-            
+
             Text("Maze Width: \(mazeWidth), Maze Height: \(mazeHeight)")
-                            .padding()
+                .padding()
         }
         .padding()
     }
@@ -164,6 +153,14 @@ struct MazeRequestView: View {
             return String(intValue)  // Convert the valid int value back to a string
         }
         return String(defaultHeight)
+    }
+    
+    // Function to update Start and Goal X/Y positions when Maze Size changes
+    private func updateStartAndGoalPositions() {
+        startX = max(1, Int(availableWidth / CGFloat(selectedSize.rawValue))) / 2
+        goalX = startX
+        startY = 0
+        goalY = max(1, Int(availableHeight / CGFloat(selectedSize.rawValue)))
     }
 
     func submitMazeRequest() {
