@@ -104,8 +104,8 @@
 		00C33F6D2D98C8E50077691B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				00C33F742D98CA9E0077691B /* MazeRequestError.swift */,
 				00C33F712D98C97B0077691B /* MazeRequest.swift */,
+				00C33F742D98CA9E0077691B /* MazeRequestError.swift */,
 				00C33F722D98C9E10077691B /* MazeType.swift */,
 				00C33F732D98C9E60077691B /* MazeAlgorithm.swift */,
 				00C33F702D98C93D0077691B /* Coordinates.swift */,

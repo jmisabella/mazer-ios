@@ -145,7 +145,7 @@ struct MazeRequestView: View {
         if let intValue = Int(value), intValue >= 0 && intValue <= max {
             return String(intValue)  // Convert the valid int value back to a string
         }
-        return String(max / 2)
+        return String(max)
     }
     
     func filterAndClampHeightInput(_ value: String, max: Int, defaultHeight: Int) -> String {

@@ -16,7 +16,7 @@ struct MazeRequestValidator {
 
         // Ensure start and goal coordinates are different
         guard (start_x, start_y) != (goal_x, goal_y) else {
-            return .failure(.invalidDimensions)
+            return .failure(.startAndGoalCoordinatesSame)
         }
 
         // Construct the MazeRequest object
