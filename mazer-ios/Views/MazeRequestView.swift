@@ -68,78 +68,101 @@ struct MazeRequestView: View {
     }
     
     var body: some View {
-        VStack(spacing: 20) {
-            Picker("Maze Size", selection: $selectedSize) {
-                ForEach(MazeSize.allCases) { size in
-                    Text(size.label).tag(size)
+        ZStack {
+            Color.clear  // Invisible background to detect taps
+                    .contentShape(Rectangle())  // Makes sure taps register
+                    .onTapGesture {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
+            
+            VStack(spacing: 20) {
+                Picker("Maze Size", selection: $selectedSize) {
+                    ForEach(MazeSize.allCases) { size in
+                        Text(size.label).tag(size)
+                    }
                 }
-            }
-            .pickerStyle(SegmentedPickerStyle())
-            .onChange(of: selectedSize) { _ in
-                updateStartAndGoalPositions()
-            }
-
-            Picker("Maze Type", selection: $selectedMazeType) {
-                ForEach(MazeType.allCases) { type in
-                    Text(type.rawValue.capitalized).tag(type)
+                .pickerStyle(SegmentedPickerStyle())
+                .onChange(of: selectedSize) { oldValue, newValue in
+                    updateStartAndGoalPositions()
                 }
-            }
-            .pickerStyle(MenuPickerStyle())
 
-            Picker("Algorithm", selection: $selectedAlgorithm) {
-                ForEach(MazeAlgorithm.allCases) { algo in
-                    Text(algo.rawValue).tag(algo)
+                Picker("Maze Type", selection: $selectedMazeType) {
+                    ForEach(MazeType.allCases) { type in
+                        Text(type.rawValue.capitalized).tag(type)
+                    }
                 }
-            }
-            .pickerStyle(MenuPickerStyle())
+                .pickerStyle(MenuPickerStyle())
 
-            // Start X and Y
-            HStack {
-                TextField("Start X", text: Binding(
-                    get: { String(startX) },
-                    set: { startX = Int(filterAndClampWidthInput($0, max: maxWidth)) ?? 0 }
-                ))
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .keyboardType(.numberPad)
+                Picker("Algorithm", selection: $selectedAlgorithm) {
+                    ForEach(MazeAlgorithm.allCases) { algo in
+                        Text(algo.rawValue).tag(algo)
+                    }
+                }
+                .pickerStyle(MenuPickerStyle())
 
-                TextField("Start Y", text: Binding(
-                    get: { String(startY) },
-                    set: { startY = Int(filterAndClampHeightInput($0, max: maxHeight, defaultHeight: 0)) ?? 0 }
-                ))
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .keyboardType(.numberPad)
-            }
+                VStack {
+                    // Start X and Y
+                    HStack {
+                        TextField("Start X", text: Binding(
+                            get: { String(startX) },
+                            set: { startX = Int(filterAndClampWidthInput($0, max: maxWidth)) ?? 0 }
+                        ))
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .keyboardType(.numberPad)
+                        .textContentType(.oneTimeCode)
 
-            // Goal X and Y
-            HStack {
-                TextField("Goal X", text: Binding(
-                    get: { String(goalX) },
-                    set: { goalX = Int(filterAndClampWidthInput($0, max: maxWidth)) ?? 0 }
-                ))
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .keyboardType(.numberPad)
+                        TextField("Start Y", text: Binding(
+                            get: { String(startY) },
+                            set: { startY = Int(filterAndClampHeightInput($0, max: maxHeight, defaultHeight: 0)) ?? 0 }
+                        ))
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .keyboardType(.numberPad)
+                    }
 
-                TextField("Goal Y", text: Binding(
-                    get: { String(goalY) },
-                    set: { goalY = Int(filterAndClampHeightInput($0, max: maxHeight, defaultHeight: maxHeight)) ?? 0 }
-                ))
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .keyboardType(.numberPad)
-            }
+                    // Goal X and Y
+                    HStack {
+                        TextField("Goal X", text: Binding(
+                            get: { String(goalX) },
+                            set: { goalX = Int(filterAndClampWidthInput($0, max: maxWidth)) ?? 0 }
+                        ))
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .keyboardType(.numberPad)
 
-            Button("Generate Maze") {
-                submitMazeRequest()
-            }
-            .buttonStyle(.borderedProminent)
-            .padding()
+                        TextField("Goal Y", text: Binding(
+                            get: { String(goalY) },
+                            set: { goalY = Int(filterAndClampHeightInput($0, max: maxHeight, defaultHeight: maxHeight)) ?? 0 }
+                        ))
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .keyboardType(.numberPad)
+                    }
+                }
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        Button("Done") {
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                        }
+                    }
+                }
+                
 
-            Divider()
-
-            Text("Maze Width: \(mazeWidth), Maze Height: \(mazeHeight)")
+                Button("Generate Maze") {
+                    submitMazeRequest()
+                }
+                .buttonStyle(.borderedProminent)
                 .padding()
+
+                Divider()
+
+                Text("Maze Width: \(mazeWidth), Maze Height: \(mazeHeight)")
+                    .padding()
+            }
+            .padding()
+            
         }
-        .padding()
+        
     }
+    
     
     func filterAndClampWidthInput(_ value: String, max: Int) -> String {
         if let intValue = Int(value), intValue >= 0 && intValue <= max {
