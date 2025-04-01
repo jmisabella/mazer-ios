@@ -20,6 +20,7 @@
 		00C33F772D98CC800077691B /* MazeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C33F722D98C9E10077691B /* MazeType.swift */; };
 		00C33F782D98CC860077691B /* MazeAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C33F732D98C9E60077691B /* MazeAlgorithm.swift */; };
 		00C33F792D98CC8E0077691B /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C33F702D98C93D0077691B /* Coordinates.swift */; };
+		00C33F7B2D9B86ED0077691B /* MazeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C33F7A2D9B86E80077691B /* MazeCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		00C33F722D98C9E10077691B /* MazeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeType.swift; sourceTree = "<group>"; };
 		00C33F732D98C9E60077691B /* MazeAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeAlgorithm.swift; sourceTree = "<group>"; };
 		00C33F742D98CA9E0077691B /* MazeRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeRequestError.swift; sourceTree = "<group>"; };
+		00C33F7A2D9B86E80077691B /* MazeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		00C33F6D2D98C8E50077691B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				00C33F7A2D9B86E80077691B /* MazeCell.swift */,
 				00C33F712D98C97B0077691B /* MazeRequest.swift */,
 				00C33F742D98CA9E0077691B /* MazeRequestError.swift */,
 				00C33F722D98C9E10077691B /* MazeType.swift */,
@@ -202,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00C33F7B2D9B86ED0077691B /* MazeCell.swift in Sources */,
 				00C33F772D98CC800077691B /* MazeType.swift in Sources */,
 				00C33F682D98C84C0077691B /* ContentView.swift in Sources */,
 				00C33F6C2D98C84C0077691B /* mazer_bridge.h in Sources */,

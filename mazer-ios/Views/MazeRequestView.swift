@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MazeRequestView: View {
     
-    enum MazeSize: Int, CaseIterable, Identifiable {
+    private enum MazeSize: Int, CaseIterable, Identifiable {
         case small = 6, medium = 9, large = 15
         var id: Int { rawValue }
         var label: String {
@@ -14,7 +14,7 @@ struct MazeRequestView: View {
         }
     }
     
-    enum Field {
+    private enum Field {
         case startX, startY, goalX, goalY
     }
     
@@ -42,34 +42,34 @@ struct MazeRequestView: View {
     @FocusState private var focusedField: Field?
 
     
-    let horizontalMargin = 40 // TODO: adjust as necessary
-    let verticalMargin = 200 // TODO: adjust as necessary
+    private let horizontalMargin = 40 // TODO: adjust as necessary
+    private let verticalMargin = 200 // TODO: adjust as necessary
     
-    var maxWidth: Int {
+    private var maxWidth: Int {
         max(1, Int(availableWidth / CGFloat(selectedSize.rawValue)))
     }
 
-    var maxHeight: Int {
+    private var maxHeight: Int {
         max(1, Int(availableHeight / CGFloat(selectedSize.rawValue)))
     }
     
-    var screenWidth: CGFloat { UIScreen.main.bounds.width }
+    private var screenWidth: CGFloat { UIScreen.main.bounds.width }
     
-    var screenHeight: CGFloat { UIScreen.main.bounds.height }
+    private var screenHeight: CGFloat { UIScreen.main.bounds.height }
     
-    var availableWidth: CGFloat {
+    private var availableWidth: CGFloat {
         screenWidth - CGFloat(horizontalMargin) // Adjust for margins, paddings
     }
     
-    var availableHeight: CGFloat {
+    private var availableHeight: CGFloat {
         screenHeight - CGFloat(verticalMargin) // Adjust for nav bar, controls, etc.
     }
     
-    var mazeWidth: Int {
+    private var mazeWidth: Int {
         max(1, Int(availableWidth / CGFloat(selectedSize.rawValue)))
     }
     
-    var mazeHeight: Int {
+    private var mazeHeight: Int {
         max(1, Int(availableHeight / CGFloat(selectedSize.rawValue)))
     }
     
@@ -226,6 +226,24 @@ struct MazeRequestView: View {
                 // Successfully got maze, process it here
                 print("Maze generated with length: \(length)")
                 // Further processing of mazePointer...
+                
+                let buffer = UnsafeBufferPointer(start: mazePointer, count: Int(length))
+                    let mazeCells: [MazeCell] = buffer.map { cell in
+                        MazeCell(
+                            x: Int(cell.x),
+                            y: Int(cell.y),
+                            mazeType: String(cString: cell.maze_type),
+                            linked: convertCStringArray(cell.linked), // ✅ Using the helper function here
+                            distance: Int(cell.distance),
+                            isStart: cell.is_start,
+                            isGoal: cell.is_goal,
+                            onSolutionPath: cell.on_solution_path,
+                            orientation: String(cString: cell.orientation)
+                        )
+                    }
+                    
+                    // Free memory after conversion
+                    mazer_free_cells(mazePointer, length)
             } else {
                 print("Error: Failed to generate maze")
             }
@@ -234,6 +252,21 @@ struct MazeRequestView: View {
             print("Validation failed: \(error.localizedDescription)")
         }
     }
+    
+    private func convertCStringArray(_ cArray: UnsafeMutablePointer<UnsafePointer<CChar>?>?) -> [String] {
+        var result: [String] = []
+        
+        guard let cArray = cArray else { return result }
+        
+        var index = 0
+        while let cStr = cArray.advanced(by: index).pointee, cStr != nil {
+            result.append(String(cString: cStr))
+            index += 1
+        }
+
+        return result
+    }
+
 }
 
 struct MazeRequestView_Previews: PreviewProvider {
