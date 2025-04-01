@@ -14,6 +14,10 @@ struct MazeRequestView: View {
         }
     }
     
+    enum Field {
+        case startX, startY, goalX, goalY
+    }
+    
     @State private var selectedSize: MazeSize = .medium
     @State private var selectedMazeType: MazeType = .orthogonal
     @State private var selectedAlgorithm: MazeAlgorithm = .recursiveBacktracker
@@ -34,6 +38,8 @@ struct MazeRequestView: View {
         let maxHeight = max(1, Int((UIScreen.main.bounds.height - 200) / 9))
         return maxHeight
     }()
+    
+    @FocusState private var focusedField: Field?
 
     
     let horizontalMargin = 40 // TODO: adjust as necessary
@@ -69,11 +75,10 @@ struct MazeRequestView: View {
     
     var body: some View {
         ZStack {
-            Color.clear  // Invisible background to detect taps
+            Color.clear  // Invisible background to detect taps, for dismissing numeric keypad
                     .contentShape(Rectangle())  // Makes sure taps register
                     .onTapGesture {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    }
+                        focusedField = nil                    }
             
             VStack(spacing: 20) {
                 Picker("Maze Size", selection: $selectedSize) {
@@ -82,6 +87,10 @@ struct MazeRequestView: View {
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
+                .onTapGesture {
+                    // to dismiss numeric keypad
+                    focusedField = nil
+                }
                 .onChange(of: selectedSize) { oldValue, newValue in
                     updateStartAndGoalPositions()
                 }
@@ -92,6 +101,10 @@ struct MazeRequestView: View {
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
+                .onTapGesture {
+                    // to dismiss numeric keypad
+                    focusedField = nil
+                }
 
                 Picker("Algorithm", selection: $selectedAlgorithm) {
                     ForEach(MazeAlgorithm.allCases) { algo in
@@ -99,6 +112,11 @@ struct MazeRequestView: View {
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
+                .onTapGesture {
+                    // to dismiss numeric keypad
+                    focusedField = nil
+                }
+
 
                 VStack {
                     // Start X and Y
@@ -109,7 +127,7 @@ struct MazeRequestView: View {
                         ))
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .keyboardType(.numberPad)
-                        .textContentType(.oneTimeCode)
+                        .focused($focusedField, equals: .startX)
 
                         TextField("Start Y", text: Binding(
                             get: { String(startY) },
@@ -117,6 +135,7 @@ struct MazeRequestView: View {
                         ))
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .keyboardType(.numberPad)
+                        .focused($focusedField, equals: .startY)
                     }
 
                     // Goal X and Y
@@ -127,6 +146,7 @@ struct MazeRequestView: View {
                         ))
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .keyboardType(.numberPad)
+                        .focused($focusedField, equals: .goalX)
 
                         TextField("Goal Y", text: Binding(
                             get: { String(goalY) },
@@ -134,19 +154,14 @@ struct MazeRequestView: View {
                         ))
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .keyboardType(.numberPad)
+                        .focused($focusedField, equals: .goalY)
                     }
                 }
-                .toolbar {
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        Button("Done") {
-                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                        }
-                    }
-                }
-                
 
                 Button("Generate Maze") {
+                    // to dismiss numeric keypad
+                    focusedField = nil
+                    
                     submitMazeRequest()
                 }
                 .buttonStyle(.borderedProminent)
@@ -160,9 +175,7 @@ struct MazeRequestView: View {
             .padding()
             
         }
-        
     }
-    
     
     func filterAndClampWidthInput(_ value: String, max: Int) -> String {
         if let intValue = Int(value), intValue >= 0 && intValue <= max {
