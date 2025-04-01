@@ -177,14 +177,14 @@ struct MazeRequestView: View {
         }
     }
     
-    func filterAndClampWidthInput(_ value: String, max: Int) -> String {
+    private func filterAndClampWidthInput(_ value: String, max: Int) -> String {
         if let intValue = Int(value), intValue >= 0 && intValue <= max {
             return String(intValue)  // Convert the valid int value back to a string
         }
         return String(max)
     }
     
-    func filterAndClampHeightInput(_ value: String, max: Int, defaultHeight: Int) -> String {
+    private func filterAndClampHeightInput(_ value: String, max: Int, defaultHeight: Int) -> String {
         if let intValue = Int(value), intValue >= 0 && intValue <= max {
             return String(intValue)  // Convert the valid int value back to a string
         }
@@ -199,7 +199,7 @@ struct MazeRequestView: View {
         goalY = max(1, Int(availableHeight / CGFloat(selectedSize.rawValue)))
     }
 
-    func submitMazeRequest() {
+    private func submitMazeRequest() {
         // validate input and generate JSON request
         let result = MazeRequestValidator.validate(
             mazeType: selectedMazeType,
