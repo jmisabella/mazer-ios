@@ -3,6 +3,7 @@ import SwiftUI
 struct MazeRequestView: View {
     
     @Binding var mazeCells: [MazeCell]
+    @State private var errorMessage: String? = nil
     @State private var selectedSize: MazeSize = .medium
     @State private var selectedMazeType: MazeType = .orthogonal
     @State private var selectedAlgorithm: MazeAlgorithm = .recursiveBacktracker
@@ -75,10 +76,11 @@ struct MazeRequestView: View {
     
     var body: some View {
         ZStack {
-            Color.clear  // Invisible background to detect taps, for dismissing numeric keypad
-                    .contentShape(Rectangle())  // Makes sure taps register
-                    .onTapGesture {
-                        focusedField = nil                    }
+            Color.clear
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    focusedField = nil
+                }
             
             VStack(spacing: 20) {
                 Picker("Maze Size", selection: $selectedSize) {
@@ -87,11 +89,7 @@ struct MazeRequestView: View {
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                .onTapGesture {
-                    // to dismiss numeric keypad
-                    focusedField = nil
-                }
-                .onChange(of: selectedSize) { oldValue, newValue in
+                .onChange(of: selectedSize) { _, _ in
                     updateStartAndGoalPositions()
                 }
 
@@ -101,10 +99,6 @@ struct MazeRequestView: View {
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
-                .onTapGesture {
-                    // to dismiss numeric keypad
-                    focusedField = nil
-                }
 
                 Picker("Algorithm", selection: $selectedAlgorithm) {
                     ForEach(MazeAlgorithm.allCases) { algo in
@@ -112,14 +106,8 @@ struct MazeRequestView: View {
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
-                .onTapGesture {
-                    // to dismiss numeric keypad
-                    focusedField = nil
-                }
-
 
                 VStack {
-                    // Start X and Y
                     HStack {
                         TextField("Start X", text: Binding(
                             get: { String(startX) },
@@ -138,7 +126,6 @@ struct MazeRequestView: View {
                         .focused($focusedField, equals: .startY)
                     }
 
-                    // Goal X and Y
                     HStack {
                         TextField("Goal X", text: Binding(
                             get: { String(goalX) },
@@ -159,13 +146,17 @@ struct MazeRequestView: View {
                 }
 
                 Button("Generate Maze") {
-                    // to dismiss numeric keypad
-                    focusedField = nil
-                    
                     submitMazeRequest()
                 }
                 .buttonStyle(.borderedProminent)
                 .padding()
+
+                if let errorMessage = errorMessage {
+                    Text(errorMessage)
+                        .foregroundColor(.red)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                }
 
                 Divider()
 
@@ -173,9 +164,9 @@ struct MazeRequestView: View {
                     .padding()
             }
             .padding()
-            
         }
     }
+
     
     private func filterAndClampWidthInput(_ value: String, max: Int) -> String {
         if let intValue = Int(value), intValue >= 0 && intValue <= max {
@@ -200,7 +191,8 @@ struct MazeRequestView: View {
     }
 
     private func submitMazeRequest() {
-        // validate input and generate JSON request
+        focusedField = nil  // Dismiss keyboard
+
         let result = MazeRequestValidator.validate(
             mazeType: selectedMazeType,
             width: mazeWidth,
@@ -211,47 +203,45 @@ struct MazeRequestView: View {
             goal_x: goalX,
             goal_y: goalY
         )
-        
-        // Handling the result
+
         switch result {
         case .success(let jsonString):
             print("Valid JSON: \(jsonString)")
-            
-            // Prepare to call the FFI function
-            let jsonCString = jsonString.cString(using: .utf8)  // Convert Swift String to C String
-            var length: size_t = 0  // Initialize length variable
-            
-            // Call the C function through FFI
+
+            let jsonCString = jsonString.cString(using: .utf8)
+            var length: size_t = 0
+
             if let mazePointer = mazer_generate_maze(jsonCString, &length) {
-                // Successfully got maze, process it here
                 print("Maze generated with length: \(length)")
-                // Further processing of mazePointer...
-                
+
                 let buffer = UnsafeBufferPointer(start: mazePointer, count: Int(length))
-                    mazeCells = buffer.map { cell in
-                        MazeCell(
-                            x: Int(cell.x),
-                            y: Int(cell.y),
-                            mazeType: String(cString: cell.maze_type),
-                            linked: convertCStringArray(cell.linked), // ✅ Using the helper function here
-                            distance: Int(cell.distance),
-                            isStart: cell.is_start,
-                            isGoal: cell.is_goal,
-                            onSolutionPath: cell.on_solution_path,
-                            orientation: String(cString: cell.orientation)
-                        )
-                    }
-                    
-                    // Free memory after conversion
-                    mazer_free_cells(mazePointer, length)
+                mazeCells = buffer.map { cell in
+                    MazeCell(
+                        x: Int(cell.x),
+                        y: Int(cell.y),
+                        mazeType: String(cString: cell.maze_type),
+                        linked: convertCStringArray(cell.linked),
+                        distance: Int(cell.distance),
+                        isStart: cell.is_start,
+                        isGoal: cell.is_goal,
+                        onSolutionPath: cell.on_solution_path,
+                        orientation: String(cString: cell.orientation)
+                    )
+                }
+
+                // Free memory after conversion
+                mazer_free_cells(mazePointer, length)
+                errorMessage = nil  // Clear any previous error
+
             } else {
-                print("Error: Failed to generate maze")
+                errorMessage = "Failed to generate maze."
             }
-            
+
         case .failure(let error):
-            print("Validation failed: \(error.localizedDescription)")
+            errorMessage = "\(error.localizedDescription)"
         }
     }
+
     
     private func convertCStringArray(_ cArray: UnsafeMutablePointer<UnsafePointer<CChar>?>?) -> [String] {
         var result: [String] = []
