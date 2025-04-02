@@ -9,10 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var ffi_integration_test_result: Int32 = 0
+    @State private var mazeCells: [MazeCell] = []
     
     var body: some View {
         VStack {
-            MazeRequestView()
+            MazeRequestView(mazeCells: $mazeCells)
         }
         .padding()
         .onAppear {

@@ -2,22 +2,7 @@ import SwiftUI
 
 struct MazeRequestView: View {
     
-    private enum MazeSize: Int, CaseIterable, Identifiable {
-        case small = 6, medium = 9, large = 15
-        var id: Int { rawValue }
-        var label: String {
-            switch self {
-            case .small: return "Small"
-            case .medium: return "Medium"
-            case .large: return "Large"
-            }
-        }
-    }
-    
-    private enum Field {
-        case startX, startY, goalX, goalY
-    }
-    
+    @Binding var mazeCells: [MazeCell]
     @State private var selectedSize: MazeSize = .medium
     @State private var selectedMazeType: MazeType = .orthogonal
     @State private var selectedAlgorithm: MazeAlgorithm = .recursiveBacktracker
@@ -41,6 +26,21 @@ struct MazeRequestView: View {
     
     @FocusState private var focusedField: Field?
 
+    private enum MazeSize: Int, CaseIterable, Identifiable {
+        case small = 6, medium = 9, large = 15
+        var id: Int { rawValue }
+        var label: String {
+            switch self {
+            case .small: return "Small"
+            case .medium: return "Medium"
+            case .large: return "Large"
+            }
+        }
+    }
+    
+    private enum Field {
+        case startX, startY, goalX, goalY
+    }
     
     private let horizontalMargin = 40 // TODO: adjust as necessary
     private let verticalMargin = 200 // TODO: adjust as necessary
@@ -228,7 +228,7 @@ struct MazeRequestView: View {
                 // Further processing of mazePointer...
                 
                 let buffer = UnsafeBufferPointer(start: mazePointer, count: Int(length))
-                    let mazeCells: [MazeCell] = buffer.map { cell in
+                    mazeCells = buffer.map { cell in
                         MazeCell(
                             x: Int(cell.x),
                             y: Int(cell.y),
@@ -271,7 +271,7 @@ struct MazeRequestView: View {
 
 struct MazeRequestView_Previews: PreviewProvider {
     static var previews: some View {
-        MazeRequestView()
+        MazeRequestView(mazeCells: .constant([])) // pass empty array for preview
     }
 }
 

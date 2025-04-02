@@ -5,17 +5,20 @@ struct MazeRequestValidator {
         
         // Ensure width and height are valid
         guard width > 0, height > 0 else {
+            print("Validation failed: Invalid dimentions, width and height must both be positive integers")
             return .failure(.invalidDimensions)
         }
 
         // Ensure start and goal coordinates are inside the grid
         guard (0..<width).contains(start_x), (0..<height).contains(start_y),
               (0..<width).contains(goal_x), (0..<height).contains(goal_y) else {
+            print("Validation failed: Imvalid dimensions")
             return .failure(.invalidDimensions)
         }
 
         // Ensure start and goal coordinates are different
         guard (start_x, start_y) != (goal_x, goal_y) else {
+            print("Validation failed: Start and goal coordinates must be different")
             return .failure(.startAndGoalCoordinatesSame)
         }
 
@@ -40,9 +43,11 @@ struct MazeRequestValidator {
             if let jsonString = String(data: jsonData, encoding: .utf8) {
                 return .success(jsonString)
             } else {
+                print("Validation failed: Invalid JSON string")
                 return .failure(.invalidMazeRequestJSON)
             }
         } catch {
+            print("Validation failed: Invalid JSON string")
             return .failure(.invalidMazeRequestJSON)
         }
     }
