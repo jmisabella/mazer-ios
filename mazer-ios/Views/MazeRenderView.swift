@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MazeRenderView: View {
     let mazeCells: [MazeCell]
-    let mazeType: String  // "Orthogonal", "Sigma", etc.
+    let mazeType: MazeType  // "Orthogonal", "Sigma", etc.
     
     @State private var showSolution: Bool = false
     @State private var showHeatMap: Bool = false
@@ -58,6 +58,6 @@ struct MazeRenderView: View {
 
 struct MazeRenderView_Previews: PreviewProvider {
     static var previews: some View {
-        MazeRenderView(mazeCells: [], mazeType: "")
+        MazeRenderView(mazeCells: [], mazeType: .orthogonal)
     }
 }

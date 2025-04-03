@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var ffi_integration_test_result: Int32 = 0
     @State private var mazeCells: [MazeCell] = []
-    @State private var mazeType: String = ""
+    @State private var mazeType: MazeType = .orthogonal
     @State private var mazeGenerated: Bool = false
     @State private var errorMessage: String?
     

@@ -4,7 +4,7 @@ struct MazeRequestView: View {
     
     @Binding var mazeCells: [MazeCell]
     @Binding var mazeGenerated: Bool
-    @Binding var mazeType: String
+    @Binding var mazeType: MazeType
     @State private var errorMessage: String? = nil
     @State private var selectedSize: MazeSize = .medium
     @State private var selectedMazeType: MazeType = .orthogonal
@@ -253,7 +253,7 @@ struct MazeRequestView: View {
                 
                 if let firstCell = cells.first {
                     // all cells share same maze_type, just get it from first cell
-                    mazeType = firstCell.mazeType
+                    mazeType = MazeType(rawValue: firstCell.mazeType) ?? .orthogonal
                 }
                 mazeGenerated = true
                 errorMessage = nil
@@ -283,7 +283,7 @@ struct MazeRequestView: View {
 
 struct MazeRequestView_Previews: PreviewProvider {
     static var previews: some View {
-        MazeRequestView(mazeCells: .constant([]), mazeGenerated: .constant(false), mazeType: .constant(""))
+        MazeRequestView(mazeCells: .constant([]), mazeGenerated: .constant(false), mazeType: .constant(.orthogonal))
     }
 }
 
