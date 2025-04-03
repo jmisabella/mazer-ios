@@ -3,6 +3,7 @@ import SwiftUI
 struct MazeRequestView: View {
     
     @Binding var mazeCells: [MazeCell]
+    @Binding var mazeGenerated: Bool    
     @State private var errorMessage: String? = nil
     @State private var selectedSize: MazeSize = .medium
     @State private var selectedMazeType: MazeType = .orthogonal
@@ -249,6 +250,7 @@ struct MazeRequestView: View {
                 // Free the Rust-allocated memory. The Rust Drop implementation takes care of inner fields.
                 mazer_free_cells(mazePointer, length)
                 
+                mazeGenerated = true
                 errorMessage = nil
             } else {
                 errorMessage = "Failed to generate maze."
@@ -276,7 +278,7 @@ struct MazeRequestView: View {
 
 struct MazeRequestView_Previews: PreviewProvider {
     static var previews: some View {
-        MazeRequestView(mazeCells: .constant([])) // pass empty array for preview
+        MazeRequestView(mazeCells: .constant([]), mazeGenerated: .constant(false)) // pass empty array for preview
     }
 }
 

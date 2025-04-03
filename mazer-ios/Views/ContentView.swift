@@ -10,11 +10,16 @@ import SwiftUI
 struct ContentView: View {
     @State private var ffi_integration_test_result: Int32 = 0
     @State private var mazeCells: [MazeCell] = []
-    @State private var errorMessage: String?  // Add error message state if not already declared
+    @State private var mazeGenerated: Bool = false
+    @State private var errorMessage: String?
     
     var body: some View {
         VStack {
-            MazeRequestView(mazeCells: $mazeCells)
+            if mazeGenerated {
+                MazeRenderView(mazeCells: mazeCells)
+            } else {
+                MazeRequestView(mazeCells: $mazeCells, mazeGenerated: $mazeGenerated)
+            }
             
             // Optionally display any error messages
             if let errorMessage = errorMessage {
