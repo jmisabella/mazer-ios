@@ -23,6 +23,8 @@
 		00C341DF2D9E2CFC0077691B /* mazer_bridge.h in Sources */ = {isa = PBXBuildFile; fileRef = 00C341DE2D9E2CA90077691B /* mazer_bridge.h */; };
 		00C341E32D9E36850077691B /* mazer.h in Sources */ = {isa = PBXBuildFile; fileRef = 00C33F7C2D9E286E0077691B /* mazer.h */; };
 		00C341E52D9F07040077691B /* MazeRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C341E42D9F07040077691B /* MazeRenderView.swift */; };
+		00C341E72D9F505D0077691B /* OrthogonalMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C341E62D9F505D0077691B /* OrthogonalMazeView.swift */; };
+		00C341E92D9F50BE0077691B /* OrthogonalCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C341E82D9F50BE0077691B /* OrthogonalCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -580,6 +582,8 @@
 		00C341D52D9E286E0077691B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		00C341DE2D9E2CA90077691B /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
 		00C341E42D9F07040077691B /* MazeRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeRenderView.swift; sourceTree = "<group>"; };
+		00C341E62D9F505D0077691B /* OrthogonalMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthogonalMazeView.swift; sourceTree = "<group>"; };
+		00C341E82D9F50BE0077691B /* OrthogonalCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthogonalCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -661,6 +665,8 @@
 				00C33F642D98C84C0077691B /* MazeRequestView.swift */,
 				00C33F5F2D98C84C0077691B /* ContentView.swift */,
 				00C341E42D9F07040077691B /* MazeRenderView.swift */,
+				00C341E62D9F505D0077691B /* OrthogonalMazeView.swift */,
+				00C341E82D9F50BE0077691B /* OrthogonalCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1803,8 +1809,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00C341E72D9F505D0077691B /* OrthogonalMazeView.swift in Sources */,
 				00C341E32D9E36850077691B /* mazer.h in Sources */,
 				00C341DF2D9E2CFC0077691B /* mazer_bridge.h in Sources */,
+				00C341E92D9F50BE0077691B /* OrthogonalCellView.swift in Sources */,
 				00C33F7B2D9B86ED0077691B /* MazeCell.swift in Sources */,
 				00C33F772D98CC800077691B /* MazeType.swift in Sources */,
 				00C33F682D98C84C0077691B /* ContentView.swift in Sources */,

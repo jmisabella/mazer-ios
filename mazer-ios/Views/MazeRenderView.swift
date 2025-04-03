@@ -40,16 +40,20 @@ struct MazeRenderView: View {
             }
             .padding(.top)
             
-            // 🧱 Maze grid rendering
-            ScrollView {
-//                LazyVGrid(columns: [...]) {
-//                    ForEach(mazeCells, id: \.self) { cell in
-//                        Text("(\(cell.x),\(cell.y))") // Placeholder
-//                            .padding(4)
-//                            .background(determineCellColor(for: cell))
-//                            .cornerRadius(4)
-//                    }
-//                }
+            // 👇 Maze content based on mazeType
+            switch mazeType {
+            case .orthogonal:
+                OrthogonalMazeView(
+                    cells: mazeCells,
+                    showSolution: showSolution,
+                    showHeatMap: showHeatMap
+                )
+            case .sigma:
+                Text("Sigma rendering not implemented yet")
+            case .delta:
+                Text("Delta rendering not implemented yet")
+            case .polar:
+                Text("Polar rendering not implemented yet")
             }
         }
         
