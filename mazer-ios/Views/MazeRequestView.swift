@@ -10,19 +10,19 @@ struct MazeRequestView: View {
     
     @State private var startX: Int = {
         let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
-        return maxWidth / 2
+        return maxWidth / 2 - 1
     }()
 
     @State private var startY: Int = 0
 
     @State private var goalX: Int = {
         let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
-        return maxWidth / 2
+        return maxWidth / 2 - 1
     }()
 
     @State private var goalY: Int = {
         let maxHeight = max(1, Int((UIScreen.main.bounds.height - 200) / 9))
-        return maxHeight
+        return maxHeight - 1
     }()
     
     @FocusState private var focusedField: Field?
@@ -172,7 +172,7 @@ struct MazeRequestView: View {
         if let intValue = Int(value), intValue >= 0 && intValue <= max {
             return String(intValue)  // Convert the valid int value back to a string
         }
-        return String(max)
+        return String(max - 1)
     }
     
     private func filterAndClampHeightInput(_ value: String, max: Int, defaultHeight: Int) -> String {
@@ -184,15 +184,16 @@ struct MazeRequestView: View {
     
     // Function to update Start and Goal X/Y positions when Maze Size changes
     private func updateStartAndGoalPositions() {
-        startX = max(1, Int(availableWidth / CGFloat(selectedSize.rawValue))) / 2
-        goalX = startX
-        startY = 0
-        goalY = max(1, Int(availableHeight / CGFloat(selectedSize.rawValue)))
+        startX = (max(1, Int(availableWidth / CGFloat(selectedSize.rawValue))) / 2) - 1
+        goalX = startX  // Same adjustment for goalX
+        startY = 0  // No change here, it's already zero-based
+        goalY = max(1, Int(availableHeight / CGFloat(selectedSize.rawValue))) - 1
     }
+
 
     private func submitMazeRequest() {
         focusedField = nil  // Dismiss keyboard
-
+        
         let result = MazeRequestValidator.validate(
             mazeType: selectedMazeType,
             width: mazeWidth,
@@ -203,57 +204,71 @@ struct MazeRequestView: View {
             goal_x: goalX,
             goal_y: goalY
         )
-
+        
         switch result {
         case .success(let jsonString):
             print("Valid JSON: \(jsonString)")
-
-            let jsonCString = jsonString.cString(using: .utf8)
+            
+            // Convert JSON string to a C string
+            guard let jsonCString = jsonString.cString(using: .utf8) else {
+                errorMessage = "Invalid JSON encoding."
+                return
+            }
             var length: size_t = 0
-
+            
+            // Generate maze from Rust FFI function.
             if let mazePointer = mazer_generate_maze(jsonCString, &length) {
                 print("Maze generated with length: \(length)")
-
-                let buffer = UnsafeBufferPointer(start: mazePointer, count: Int(length))
-                mazeCells = buffer.map { cell in
-                    MazeCell(
+                
+                var cells: [MazeCell] = []
+                
+                // Copy all cell data to Swift before freeing the Rust allocation.
+                for i in 0..<Int(length) {
+                    let cell = mazePointer[i]
+                    
+                    // Copy C strings immediately to Swift.
+                    let mazeTypeCopy = cell.maze_type != nil ? String(cString: cell.maze_type!) : ""
+                    let orientationCopy = cell.orientation != nil ? String(cString: cell.orientation!) : ""
+                    
+                    cells.append(MazeCell(
                         x: Int(cell.x),
                         y: Int(cell.y),
-                        mazeType: String(cString: cell.maze_type),
-                        linked: convertCStringArray(cell.linked),
+                        mazeType: mazeTypeCopy,
+                        linked: convertCStringArray(cell.linked, count: cell.linked_len),
                         distance: Int(cell.distance),
                         isStart: cell.is_start,
                         isGoal: cell.is_goal,
                         onSolutionPath: cell.on_solution_path,
-                        orientation: String(cString: cell.orientation)
-                    )
+                        orientation: orientationCopy
+                    ))
                 }
-
-                // Free memory after conversion
+                
+                // Assign the copied cells to the Swift state variable.
+                mazeCells = cells
+                
+                // Free the Rust-allocated memory. The Rust Drop implementation takes care of inner fields.
                 mazer_free_cells(mazePointer, length)
-                errorMessage = nil  // Clear any previous error
-
+                
+                errorMessage = nil
             } else {
                 errorMessage = "Failed to generate maze."
             }
-
+            
         case .failure(let error):
             errorMessage = "\(error.localizedDescription)"
         }
     }
-
     
-    private func convertCStringArray(_ cArray: UnsafeMutablePointer<UnsafePointer<CChar>?>?) -> [String] {
+    // Optionally, if you know the count of linked elements, you can use it instead of a while-loop.
+    private func convertCStringArray(_ cArray: UnsafeMutablePointer<UnsafePointer<CChar>?>?, count: size_t) -> [String] {
+        guard let cArray = cArray else { return [] }
         var result: [String] = []
         
-        guard let cArray = cArray else { return result }
-        
-        var index = 0
-        while let cStr = cArray.advanced(by: index).pointee, cStr != nil {
-            result.append(String(cString: cStr))
-            index += 1
+        for i in 0..<Int(count) {
+            if let cStr = cArray.advanced(by: i).pointee {
+                result.append(String(cString: cStr))
+            }
         }
-
         return result
     }
 
