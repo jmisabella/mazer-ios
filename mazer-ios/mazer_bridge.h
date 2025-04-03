@@ -12,13 +12,16 @@ extern "C" {
 typedef struct {
     size_t x;
     size_t y;
+    // const char * (or *const c_char in Rust) is a pointer to a single C string (e.g. null-terminated)
     const char *maze_type;
+    // const char ** (or *const *const c_char in Rust) is a pointer to an array of pointers to C strings (i.e., a list of strings)
     const char **linked;
-    size_t linked_len;  // New field reflecting the updated structure.
+    size_t linked_len;
     int32_t distance;
     bool is_start;
     bool is_goal;
     bool on_solution_path;
+    // const char * (or *const c_char in Rust) is a pointer to a single C string (e.g. null-terminated)
     const char *orientation;
 } FFICell;
 
