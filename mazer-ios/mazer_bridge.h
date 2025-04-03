@@ -1,10 +1,3 @@
-//
-//  mazer_bridge.h
-//  mazer-ios
-//
-//  Created by Jeffrey Isabella on 4/2/25.
-//
-
 #include <stddef.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -70,4 +63,4 @@ int mazer_ffi_integration_test();
 }
 #endif
 
-#endif /* mazer_bridge_h */
+#endif
