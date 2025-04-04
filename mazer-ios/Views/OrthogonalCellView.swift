@@ -14,6 +14,7 @@ struct OrthogonalCellView: View {
     let showHeatMap: Bool
     let selectedPalette: HeatMapPalette
     let maxDistance: Int
+    let isRevealedSolution: Bool
 
     var body: some View {
         ZStack {
@@ -60,11 +61,11 @@ struct OrthogonalCellView: View {
             return .blue
         } else if cell.isGoal {
             return .red
+        } else if isRevealedSolution {
+            return .solutionHighlight
         } else if showHeatMap && maxDistance > 0 {
             let index = min(9, (cell.distance * 10) / maxDistance)
             return selectedPalette.shades[index].asColor
-        } else if showSolution && cell.onSolutionPath {
-            return .green
         } else {
             return .white
         }

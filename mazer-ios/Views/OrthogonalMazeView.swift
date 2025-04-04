@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OrthogonalMazeView: View {
     @Binding var selectedPalette: HeatMapPalette
+    @State private var revealedSolutionPath: Set<Coordinates> = []
     let cells: [MazeCell]
     let showSolution: Bool
     let showHeatMap: Bool
@@ -28,11 +29,38 @@ struct OrthogonalMazeView: View {
                     showSolution: showSolution,
                     showHeatMap: showHeatMap,
                     selectedPalette: selectedPalette,
-                    maxDistance: maxDistance
+                    maxDistance: maxDistance,
+                    isRevealedSolution: revealedSolutionPath.contains(Coordinates(x: cell.x, y: cell.y))
                 )
                 .frame(width: cellSize, height: cellSize) // lock frame
                 .clipped() // avoid any rendering overflow
             }
+        }
+        .onChange(of: showSolution) { oldValue, newValue in
+            if newValue {
+                animateSolutionPathReveal()
+            } else {
+                revealedSolutionPath = []
+            }
+        }
+    }
+    
+    func animateSolutionPathReveal() {
+        // Get solution cells in order of distance from start
+        let pathCells = cells
+            .filter { $0.onSolutionPath }
+            .sorted(by: { $0.distance < $1.distance })
+
+        for (index, cell) in pathCells.enumerated() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.015) {
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    _ = revealedSolutionPath.insert(Coordinates(x: cell.x, y: cell.y))
+                }
+            }
+
+//            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.010) {
+//                revealedSolutionPath.insert(Coordinates(x: cell.x, y: cell.y))
+//            }
         }
     }
     
