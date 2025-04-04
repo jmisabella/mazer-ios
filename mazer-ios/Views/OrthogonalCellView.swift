@@ -44,20 +44,23 @@ struct OrthogonalCellView: View {
                     path.addLine(to: topLeft)
                 }
             }
-//            .stroke(Color.black, lineWidth: 1)
             .stroke(Color.black, lineWidth: strokeWidth(for: size))
             .frame(width: size, height: size)
             .clipped()
-            
-            ////  uncomment for debugging purposes with the heat map feature
+
+            // Optional: uncomment for debugging heat map
 //            Text("\(cell.distance)")
-//                        .font(.caption2)
-//                        .foregroundColor(.black)
+//                .font(.caption2)
+//                .foregroundColor(.black)
         }
     }
 
     private var backgroundColor: Color {
-        if showHeatMap && maxDistance > 0 {
+        if cell.isStart {
+            return .blue
+        } else if cell.isGoal {
+            return .red
+        } else if showHeatMap && maxDistance > 0 {
             let index = min(9, (cell.distance * 10) / maxDistance)
             return selectedPalette.shades[index].asColor
         } else if showSolution && cell.onSolutionPath {
@@ -66,16 +69,15 @@ struct OrthogonalCellView: View {
             return .white
         }
     }
-    
+
     private func strokeWidth(for size: CGFloat) -> CGFloat {
         switch size {
         case ..<9:
-            return 1.0 // Tight line for small cells (6pt)
+            return 1.0
         case ..<14:
-            return 1.5 // Medium
+            return 1.5
         default:
-            return 2.5 // Large
+            return 2.5
         }
     }
-
 }
