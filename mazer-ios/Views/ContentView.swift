@@ -18,23 +18,40 @@ struct ContentView: View {
     @State private var selectedMazeType: MazeType = .orthogonal
     @State private var selectedAlgorithm: MazeAlgorithm = .recursiveBacktracker
     
+//    @State private var startX: Int = {
+//        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
+//        return maxWidth / 2 - 1
+//    }()
+//    
+//    @State private var startY: Int = 0
+//    
+//    @State private var goalX: Int = {
+//        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
+//        return maxWidth / 2 - 1
+//    }()
+//    
+//    @State private var goalY: Int = {
+//        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 200) / 9))
+//        return maxHeight - 1
+//    }()
+    
     @State private var startX: Int = {
         let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
         return maxWidth / 2 - 1
     }()
-    
-    @State private var startY: Int = 0
-    
+
+    @State private var startY: Int = {
+        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 200) / 9))
+        return maxHeight - 1 // 👈 bottom row
+    }()
+
     @State private var goalX: Int = {
         let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
         return maxWidth / 2 - 1
     }()
-    
-    @State private var goalY: Int = {
-        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 200) / 9))
-        return maxHeight - 1
-    }()
-    
+
+    @State private var goalY: Int = 0 // 👈 top row
+
     
     var body: some View {
         VStack {

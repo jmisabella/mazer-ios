@@ -164,12 +164,23 @@ struct MazeRequestView: View {
     }
     
     // Function to update Start and Goal X/Y positions when Maze Size changes
+//    private func updateStartAndGoalPositions() {
+//        startX = (max(1, Int(availableWidth / CGFloat(selectedSize.rawValue))) / 2) - 1
+//        goalX = startX  // Same adjustment for goalX
+//        startY = 0  // No change here, it's already zero-based
+//        goalY = max(1, Int(availableHeight / CGFloat(selectedSize.rawValue))) - 1
+//    }
+    // Function to update Start and Goal X/Y positions when Maze Size changes
     private func updateStartAndGoalPositions() {
-        startX = (max(1, Int(availableWidth / CGFloat(selectedSize.rawValue))) / 2) - 1
-        goalX = startX  // Same adjustment for goalX
-        startY = 0  // No change here, it's already zero-based
-        goalY = max(1, Int(availableHeight / CGFloat(selectedSize.rawValue))) - 1
+        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / CGFloat(selectedSize.rawValue)))
+        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 200) / CGFloat(selectedSize.rawValue)))
+
+        startX = maxWidth / 2 - 1
+        goalX = startX
+        startY = maxHeight - 1 // 👈 bottom
+        goalY = 0              // 👈 top
     }
+
 
 
 }
