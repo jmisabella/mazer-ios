@@ -13,8 +13,10 @@ struct MazeRenderView: View {
     let mazeType: MazeType  // "Orthogonal", "Sigma", etc.
     let regenerateMaze: () -> Void
     
+    
     @State private var showSolution: Bool = false
     @State private var showHeatMap: Bool = false
+    @State private var selectedPalette: HeatMapPalette = allPalettes.randomElement()!
     
     var body: some View {
         VStack {
@@ -66,6 +68,7 @@ struct MazeRenderView: View {
             switch mazeType {
             case .orthogonal:
                 OrthogonalMazeView(
+                    selectedPalette: $selectedPalette,
                     cells: mazeCells,
                     showSolution: showSolution,
                     showHeatMap: showHeatMap
@@ -80,6 +83,16 @@ struct MazeRenderView: View {
         }
         
     }
+    
+    func shadeColor(for cell: MazeCell, maxDistance: Int) -> Color {
+        guard showHeatMap, maxDistance > 0 else {
+            return .gray  // fallback color when heat map is off
+        }
+
+        let index = min(9, (cell.distance * 10) / maxDistance)
+        return selectedPalette.shades[index].asColor
+    }
+
 }
 
 struct MazeRenderView_Previews: PreviewProvider {

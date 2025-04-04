@@ -12,6 +12,8 @@ struct OrthogonalCellView: View {
     let size: CGFloat
     let showSolution: Bool
     let showHeatMap: Bool
+    let selectedPalette: HeatMapPalette
+    let maxDistance: Int
 
     var body: some View {
         ZStack {
@@ -44,13 +46,18 @@ struct OrthogonalCellView: View {
             }
             .stroke(Color.black, lineWidth: 1)
             .frame(width: size, height: size)
+            
+            ////  uncomment for debugging purposes with the heat map feature
+//            Text("\(cell.distance)")
+//                        .font(.caption2)
+//                        .foregroundColor(.black)
         }
     }
 
     private var backgroundColor: Color {
-        if showHeatMap {
-            let normalized = min(max(Double(cell.distance) / 50.0, 0.0), 1.0)
-            return Color(red: 1.0, green: 1.0 - normalized, blue: 0.5)
+        if showHeatMap && maxDistance > 0 {
+            let index = min(9, (cell.distance * 10) / maxDistance)
+            return selectedPalette.shades[index].asColor
         } else if showSolution && cell.onSolutionPath {
             return .green
         } else {
