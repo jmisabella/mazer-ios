@@ -25,6 +25,7 @@
 		00C341E52D9F07040077691B /* MazeRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C341E42D9F07040077691B /* MazeRenderView.swift */; };
 		00C341E72D9F505D0077691B /* OrthogonalMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C341E62D9F505D0077691B /* OrthogonalMazeView.swift */; };
 		00C341E92D9F50BE0077691B /* OrthogonalCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C341E82D9F50BE0077691B /* OrthogonalCellView.swift */; };
+		00C341EB2D9F57910077691B /* MazeSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C341EA2D9F578E0077691B /* MazeSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -584,6 +585,7 @@
 		00C341E42D9F07040077691B /* MazeRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeRenderView.swift; sourceTree = "<group>"; };
 		00C341E62D9F505D0077691B /* OrthogonalMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthogonalMazeView.swift; sourceTree = "<group>"; };
 		00C341E82D9F50BE0077691B /* OrthogonalCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthogonalCellView.swift; sourceTree = "<group>"; };
+		00C341EA2D9F578E0077691B /* MazeSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -649,6 +651,7 @@
 		00C33F6D2D98C8E50077691B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				00C341EA2D9F578E0077691B /* MazeSize.swift */,
 				00C33F7A2D9B86E80077691B /* MazeCell.swift */,
 				00C33F712D98C97B0077691B /* MazeRequest.swift */,
 				00C33F742D98CA9E0077691B /* MazeRequestError.swift */,
@@ -1810,6 +1813,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00C341E72D9F505D0077691B /* OrthogonalMazeView.swift in Sources */,
+				00C341EB2D9F57910077691B /* MazeSize.swift in Sources */,
 				00C341E32D9E36850077691B /* mazer.h in Sources */,
 				00C341DF2D9E2CFC0077691B /* mazer_bridge.h in Sources */,
 				00C341E92D9F50BE0077691B /* OrthogonalCellView.swift in Sources */,
@@ -1962,8 +1966,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1996,8 +2000,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -8,16 +8,37 @@
 import SwiftUI
 
 struct MazeRenderView: View {
+    @Binding var mazeGenerated: Bool
     let mazeCells: [MazeCell]
     let mazeType: MazeType  // "Orthogonal", "Sigma", etc.
+    let regenerateMaze: () -> Void
     
     @State private var showSolution: Bool = false
     @State private var showHeatMap: Bool = false
     
     var body: some View {
         VStack {
-            // 🔲 Toggle bar
             HStack(spacing: 16) {
+                // Back button
+                Button(action: {
+                    mazeGenerated = false  // Goes back to MazeRequestView
+                }) {
+                    Image(systemName: "arrow.uturn.left")
+                        .font(.title2)
+                        .foregroundColor(.blue)
+                }
+                .accessibilityLabel("Back to maze settings")
+
+                // Regenerate button
+                Button(action: {
+                    regenerateMaze()
+                }) {
+                    Image(systemName: "arrow.clockwise")
+                        .font(.title2)
+                        .foregroundColor(.purple)
+                }
+                .accessibilityLabel("Generate new maze")
+
                 // Solution toggle
                 Button(action: {
                     showSolution.toggle()
@@ -28,7 +49,7 @@ struct MazeRenderView: View {
                 }
                 .accessibilityLabel("Toggle solution path")
 
-                // Heat map toggle (acts like a radio switch)
+                // Heat map toggle
                 Button(action: {
                     showHeatMap.toggle()
                 }) {
@@ -39,6 +60,7 @@ struct MazeRenderView: View {
                 .accessibilityLabel("Toggle heat map")
             }
             .padding(.top)
+
             
             // 👇 Maze content based on mazeType
             switch mazeType {
@@ -62,6 +84,13 @@ struct MazeRenderView: View {
 
 struct MazeRenderView_Previews: PreviewProvider {
     static var previews: some View {
-        MazeRenderView(mazeCells: [], mazeType: .orthogonal)
+        MazeRenderView(
+            mazeGenerated: .constant(false),
+            mazeCells: [],
+            mazeType: .orthogonal,
+            regenerateMaze: {
+                print("Maze Render Preview Triggered")
+            }
+        )
     }
 }

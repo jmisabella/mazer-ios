@@ -4,42 +4,21 @@ struct MazeRequestView: View {
     
     @Binding var mazeCells: [MazeCell]
     @Binding var mazeGenerated: Bool
-    @Binding var mazeType: MazeType
-    @State private var errorMessage: String? = nil
-    @State private var selectedSize: MazeSize = .medium
-    @State private var selectedMazeType: MazeType = .orthogonal
-    @State private var selectedAlgorithm: MazeAlgorithm = .recursiveBacktracker
+    @Binding var mazeType: MazeType 
+    @Binding var selectedSize: MazeSize
+    @Binding var selectedMazeType: MazeType
+    @Binding var selectedAlgorithm: MazeAlgorithm
+        
+    @Binding var startX: Int
+    @Binding var startY: Int
+    @Binding var goalX: Int
+    @Binding var goalY: Int
     
-    @State private var startX: Int = {
-        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
-        return maxWidth / 2 - 1
-    }()
-
-    @State private var startY: Int = 0
-
-    @State private var goalX: Int = {
-        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
-        return maxWidth / 2 - 1
-    }()
-
-    @State private var goalY: Int = {
-        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 200) / 9))
-        return maxHeight - 1
-    }()
+    let submitMazeRequest: () -> Void
+    
+    @State private var errorMessage: String? = nil
     
     @FocusState private var focusedField: Field?
-
-    private enum MazeSize: Int, CaseIterable, Identifiable {
-        case small = 6, medium = 9, large = 15
-        var id: Int { rawValue }
-        var label: String {
-            switch self {
-            case .small: return "Small"
-            case .medium: return "Medium"
-            case .large: return "Large"
-            }
-        }
-    }
     
     private enum Field {
         case startX, startY, goalX, goalY
@@ -148,6 +127,7 @@ struct MazeRequestView: View {
                 }
 
                 Button("Generate Maze") {
+                    focusedField = nil
                     submitMazeRequest()
                 }
                 .buttonStyle(.borderedProminent)
@@ -169,7 +149,6 @@ struct MazeRequestView: View {
         }
     }
 
-    
     private func filterAndClampWidthInput(_ value: String, max: Int) -> String {
         if let intValue = Int(value), intValue >= 0 && intValue <= max {
             return String(intValue)  // Convert the valid int value back to a string
@@ -193,97 +172,25 @@ struct MazeRequestView: View {
     }
 
 
-    private func submitMazeRequest() {
-        focusedField = nil  // Dismiss keyboard
-        
-        let result = MazeRequestValidator.validate(
-            mazeType: selectedMazeType,
-            width: mazeWidth,
-            height: mazeHeight,
-            algorithm: selectedAlgorithm,
-            start_x: startX,
-            start_y: startY,
-            goal_x: goalX,
-            goal_y: goalY
-        )
-        
-        switch result {
-        case .success(let jsonString):
-            print("Valid JSON: \(jsonString)")
-            
-            // Convert JSON string to a C string
-            guard let jsonCString = jsonString.cString(using: .utf8) else {
-                errorMessage = "Invalid JSON encoding."
-                return
-            }
-            var length: size_t = 0
-            
-            // Generate maze from Rust FFI function.
-            if let mazePointer = mazer_generate_maze(jsonCString, &length) {
-                print("Maze generated with length: \(length)")
-                
-                var cells: [MazeCell] = []
-                
-                // Copy all cell data to Swift before freeing the Rust allocation.
-                for i in 0..<Int(length) {
-                    let cell = mazePointer[i]
-                    
-                    // Copy C strings immediately to Swift.
-                    let mazeTypeCopy = cell.maze_type != nil ? String(cString: cell.maze_type!) : ""
-                    let orientationCopy = cell.orientation != nil ? String(cString: cell.orientation!) : ""
-                    
-                    cells.append(MazeCell(
-                        x: Int(cell.x),
-                        y: Int(cell.y),
-                        mazeType: mazeTypeCopy,
-                        linked: convertCStringArray(cell.linked, count: cell.linked_len),
-                        distance: Int(cell.distance),
-                        isStart: cell.is_start,
-                        isGoal: cell.is_goal,
-                        onSolutionPath: cell.on_solution_path,
-                        orientation: orientationCopy
-                    ))
-                }
-                
-                // Assign the copied cells to the Swift state variable.
-                mazeCells = cells
-                
-                // Free the Rust-allocated memory. The Rust Drop implementation takes care of inner fields.
-                mazer_free_cells(mazePointer, length)
-                
-                if let firstCell = cells.first {
-                    // all cells share same maze_type, just get it from first cell
-                    mazeType = MazeType(rawValue: firstCell.mazeType) ?? .orthogonal
-                }
-                mazeGenerated = true
-                errorMessage = nil
-            } else {
-                errorMessage = "Failed to generate maze."
-            }
-            
-        case .failure(let error):
-            errorMessage = "\(error.localizedDescription)"
-        }
-    }
-    
-    // Optionally, if you know the count of linked elements, you can use it instead of a while-loop.
-    private func convertCStringArray(_ cArray: UnsafeMutablePointer<UnsafePointer<CChar>?>?, count: size_t) -> [String] {
-        guard let cArray = cArray else { return [] }
-        var result: [String] = []
-        
-        for i in 0..<Int(count) {
-            if let cStr = cArray.advanced(by: i).pointee {
-                result.append(String(cString: cStr))
-            }
-        }
-        return result
-    }
-
 }
 
 struct MazeRequestView_Previews: PreviewProvider {
     static var previews: some View {
-        MazeRequestView(mazeCells: .constant([]), mazeGenerated: .constant(false), mazeType: .constant(.orthogonal))
+        MazeRequestView(
+            mazeCells: .constant([]),
+            mazeGenerated: .constant(false),
+            mazeType: .constant(.orthogonal),
+            selectedSize: .constant(.medium),
+            selectedMazeType: .constant(.orthogonal),
+            selectedAlgorithm: .constant(.recursiveBacktracker),
+            startX: .constant(0),
+            startY: .constant(0),
+            goalX: .constant(1),
+            goalY: .constant(1),
+            submitMazeRequest: {
+                print("Preview Maze Request Triggered")
+            }
+        )
     }
 }
 
