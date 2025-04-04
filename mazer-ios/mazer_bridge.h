@@ -25,6 +25,7 @@ typedef struct {
     const char *orientation;
 } FFICell;
 
+
 /**
  * Generates a maze based on the given JSON request string.
  *
@@ -67,3 +68,4 @@ int mazer_ffi_integration_test();
 #endif
 
 #endif
+
