@@ -6,7 +6,7 @@
 //
 
 enum MazeSize: Int, CaseIterable, Identifiable {
-    case small = 6, medium = 9, large = 15
+    case small = 8, medium = 9, large = 15
     var id: Int { rawValue }
     var label: String {
         switch self {

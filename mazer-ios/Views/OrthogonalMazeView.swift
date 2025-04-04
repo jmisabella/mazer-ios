@@ -30,6 +30,8 @@ struct OrthogonalMazeView: View {
                     selectedPalette: selectedPalette,
                     maxDistance: maxDistance
                 )
+                .frame(width: cellSize, height: cellSize) // lock frame
+                .clipped() // avoid any rendering overflow
             }
         }
     }

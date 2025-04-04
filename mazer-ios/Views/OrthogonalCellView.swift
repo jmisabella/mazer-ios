@@ -44,8 +44,10 @@ struct OrthogonalCellView: View {
                     path.addLine(to: topLeft)
                 }
             }
-            .stroke(Color.black, lineWidth: 1)
+//            .stroke(Color.black, lineWidth: 1)
+            .stroke(Color.black, lineWidth: strokeWidth(for: size))
             .frame(width: size, height: size)
+            .clipped()
             
             ////  uncomment for debugging purposes with the heat map feature
 //            Text("\(cell.distance)")
@@ -64,4 +66,16 @@ struct OrthogonalCellView: View {
             return .white
         }
     }
+    
+    private func strokeWidth(for size: CGFloat) -> CGFloat {
+        switch size {
+        case ..<9:
+            return 1.0 // Tight line for small cells (6pt)
+        case ..<14:
+            return 1.5 // Medium
+        default:
+            return 2.5 // Large
+        }
+    }
+
 }
