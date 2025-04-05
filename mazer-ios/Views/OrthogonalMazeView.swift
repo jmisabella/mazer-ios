@@ -20,7 +20,7 @@ struct OrthogonalMazeView: View {
         let width = (cells.map { $0.x }.max() ?? 0) + 1
         let height = (cells.map { $0.y }.max() ?? 0) + 1
         let columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: width)
-        let cellSize = UIScreen.main.bounds.width / CGFloat(width)
+        let cellSize = cellSize()
         let maxDistance = cells.map(\.distance).max() ?? 1
 
         LazyVGrid(columns: columns, spacing: 0) {
@@ -66,6 +66,31 @@ struct OrthogonalMazeView: View {
         }
     }
     
+//    func animateSolutionPathReveal() {
+//        // Clear any existing work items.
+//        pendingWorkItems.removeAll()
+//        
+//        // Get solution cells in order of distance from start
+//        let pathCells = cells
+//            .filter { $0.onSolutionPath }
+//            .sorted(by: { $0.distance < $1.distance })
+//        
+//        for (index, cell) in pathCells.enumerated() {
+//            let workItem = DispatchWorkItem {
+//                withAnimation(.easeInOut(duration: 0.2)) {
+//                    _ = revealedSolutionPath.insert(Coordinates(x: cell.x, y: cell.y))
+//                }
+//            }
+//            pendingWorkItems.append(workItem)
+//            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.015, execute: workItem)
+//        }
+//    }
+    
+    func cellSize() -> CGFloat {
+        let width = (cells.map { $0.x }.max() ?? 0) + 1
+        return UIScreen.main.bounds.width / CGFloat(width)
+    }
+    
     func animateSolutionPathReveal() {
         // Clear any existing work items.
         pendingWorkItems.removeAll()
@@ -75,16 +100,24 @@ struct OrthogonalMazeView: View {
             .filter { $0.onSolutionPath }
             .sorted(by: { $0.distance < $1.distance })
         
+        // Use cell size to determine an appropriate delay multiplier.
+        // For example, if cellSize is smaller than some threshold, reduce the delay.
+        let baseDelay: Double = 0.015
+//        let delayMultiplier = min(1.0, cellSize() / 30.0)  // adjust 30.0 as needed
+        let delayMultiplier = min(1.0, cellSize() / 50.0)  // adjust denominator as needed
+        let adjustedDelay = baseDelay * delayMultiplier
+        
         for (index, cell) in pathCells.enumerated() {
             let workItem = DispatchWorkItem {
-                withAnimation(.easeInOut(duration: 0.2)) {
+                withAnimation(.easeInOut(duration: 0.2 * delayMultiplier)) {
                     _ = revealedSolutionPath.insert(Coordinates(x: cell.x, y: cell.y))
                 }
             }
             pendingWorkItems.append(workItem)
-            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.015, execute: workItem)
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * adjustedDelay, execute: workItem)
         }
     }
+
     
     func shadeColor(for cell: MazeCell, maxDistance: Int) -> Color {
         guard showHeatMap, maxDistance > 0 else {
