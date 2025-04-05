@@ -14,7 +14,7 @@ struct ContentView: View {
     @State private var mazeGenerated: Bool = false
     @State private var errorMessage: String?
     
-    @State private var selectedSize: MazeSize = .medium
+    @State private var selectedSize: MazeSize = .small
     @State private var selectedMazeType: MazeType = .orthogonal
     @State private var selectedAlgorithm: MazeAlgorithm = .recursiveBacktracker
     

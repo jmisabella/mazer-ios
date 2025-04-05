@@ -191,7 +191,7 @@ struct MazeRequestView_Previews: PreviewProvider {
             mazeCells: .constant([]),
             mazeGenerated: .constant(false),
             mazeType: .constant(.orthogonal),
-            selectedSize: .constant(.medium),
+            selectedSize: .constant(.large),
             selectedMazeType: .constant(.orthogonal),
             selectedAlgorithm: .constant(.recursiveBacktracker),
             startX: .constant(0),

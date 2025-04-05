@@ -49,10 +49,6 @@ struct OrthogonalCellView: View {
             .frame(width: size, height: size)
             .clipped()
 
-            // Optional: uncomment for debugging heat map
-//            Text("\(cell.distance)")
-//                .font(.caption2)
-//                .foregroundColor(.black)
         }
     }
 
