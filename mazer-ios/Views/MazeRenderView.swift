@@ -9,13 +9,14 @@ import SwiftUI
 
 struct MazeRenderView: View {
     @Binding var mazeGenerated: Bool
+    @Binding var showSolution: Bool
+    @Binding var showHeatMap: Bool
     let mazeCells: [MazeCell]
     let mazeType: MazeType  // "Orthogonal", "Sigma", etc.
     let regenerateMaze: () -> Void
     
     
-    @State private var showSolution: Bool = false
-    @State private var showHeatMap: Bool = false
+    
     @State private var selectedPalette: HeatMapPalette = allPalettes.randomElement()!
     
     var body: some View {
@@ -99,6 +100,8 @@ struct MazeRenderView_Previews: PreviewProvider {
     static var previews: some View {
         MazeRenderView(
             mazeGenerated: .constant(false),
+            showSolution: .constant(false),
+            showHeatMap: .constant(false),
             mazeCells: [],
             mazeType: .orthogonal,
             regenerateMaze: {

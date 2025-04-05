@@ -12,11 +12,15 @@ struct ContentView: View {
     @State private var mazeCells: [MazeCell] = []
     @State private var mazeType: MazeType = .orthogonal
     @State private var mazeGenerated: Bool = false
-    @State private var errorMessage: String?
     
+    @State private var errorMessage: String?
+    // user selections from request view
     @State private var selectedSize: MazeSize = .small
     @State private var selectedMazeType: MazeType = .orthogonal
     @State private var selectedAlgorithm: MazeAlgorithm = .recursiveBacktracker
+    // user selections from render view
+    @State private var showSolution: Bool = false
+    @State private var showHeatMap: Bool = false
     
 //    @State private var startX: Int = {
 //        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
@@ -58,6 +62,8 @@ struct ContentView: View {
             if mazeGenerated {
                 MazeRenderView(
                     mazeGenerated: $mazeGenerated,
+                    showSolution: $showSolution,
+                    showHeatMap: $showHeatMap,
                     mazeCells: mazeCells,
                     mazeType: mazeType,
                     regenerateMaze: {
