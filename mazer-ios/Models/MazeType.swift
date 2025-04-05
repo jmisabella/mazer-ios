@@ -10,4 +10,17 @@ enum MazeType: String, Codable, CaseIterable, Identifiable {
     case polar = "Polar"
     
     var id: String { rawValue }
+    
+    var description: String {
+        switch self {
+        case .orthogonal:
+            return "Orthogonal is the classic square maze."
+        case .sigma:
+            return "Delta mazes use triangular cells (normal and inverted)."
+        case .delta:
+            return "Sigma mazes have hexagonal cells."
+        case .polar:
+            return "Polar mazes are circular."
+        }
+    }
 }
