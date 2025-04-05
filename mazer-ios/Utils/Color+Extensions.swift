@@ -26,5 +26,7 @@ extension Color {
         self.init(red: r, green: g, blue: b)
     }
 
-    static let solutionHighlight = Color(hex: "#CCFF00") // radioactive neon lime!
+//    static let solutionHighlight = Color(hex: "#CCFF00") // radioactive neon lime!
+    static let solutionHighlight = Color(hex: "#04D9FF") // radiant neon blue!
+
 }
