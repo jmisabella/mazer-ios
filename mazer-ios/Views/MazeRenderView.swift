@@ -11,13 +11,10 @@ struct MazeRenderView: View {
     @Binding var mazeGenerated: Bool
     @Binding var showSolution: Bool
     @Binding var showHeatMap: Bool
+    @State private var selectedPalette: HeatMapPalette = allPalettes.randomElement()!
     let mazeCells: [MazeCell]
     let mazeType: MazeType  // "Orthogonal", "Sigma", etc.
     let regenerateMaze: () -> Void
-    
-    
-    
-    @State private var selectedPalette: HeatMapPalette = allPalettes.randomElement()!
     
     var body: some View {
         VStack {
@@ -34,6 +31,7 @@ struct MazeRenderView: View {
 
                 // Regenerate button
                 Button(action: {
+                    selectedPalette = allPalettes.randomElement()!
                     regenerateMaze()
                 }) {
                     Image(systemName: "arrow.clockwise")
