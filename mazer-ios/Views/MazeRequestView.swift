@@ -88,43 +88,43 @@ struct MazeRequestView: View {
                 }
                 .pickerStyle(MenuPickerStyle())
 
-                VStack {
-                    HStack {
-                        TextField("Start X", text: Binding(
-                            get: { String(startX) },
-                            set: { startX = Int(filterAndClampWidthInput($0, max: maxWidth)) ?? 0 }
-                        ))
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .keyboardType(.numberPad)
-                        .focused($focusedField, equals: .startX)
-
-                        TextField("Start Y", text: Binding(
-                            get: { String(startY) },
-                            set: { startY = Int(filterAndClampHeightInput($0, max: maxHeight, defaultHeight: 0)) ?? 0 }
-                        ))
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .keyboardType(.numberPad)
-                        .focused($focusedField, equals: .startY)
-                    }
-
-                    HStack {
-                        TextField("Goal X", text: Binding(
-                            get: { String(goalX) },
-                            set: { goalX = Int(filterAndClampWidthInput($0, max: maxWidth)) ?? 0 }
-                        ))
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .keyboardType(.numberPad)
-                        .focused($focusedField, equals: .goalX)
-
-                        TextField("Goal Y", text: Binding(
-                            get: { String(goalY) },
-                            set: { goalY = Int(filterAndClampHeightInput($0, max: maxHeight, defaultHeight: maxHeight)) ?? 0 }
-                        ))
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .keyboardType(.numberPad)
-                        .focused($focusedField, equals: .goalY)
-                    }
-                }
+//                VStack {
+//                    HStack {
+//                        TextField("Start X", text: Binding(
+//                            get: { String(startX) },
+//                            set: { startX = Int(filterAndClampWidthInput($0, max: maxWidth)) ?? 0 }
+//                        ))
+//                        .textFieldStyle(RoundedBorderTextFieldStyle())
+//                        .keyboardType(.numberPad)
+//                        .focused($focusedField, equals: .startX)
+//
+//                        TextField("Start Y", text: Binding(
+//                            get: { String(startY) },
+//                            set: { startY = Int(filterAndClampHeightInput($0, max: maxHeight, defaultHeight: 0)) ?? 0 }
+//                        ))
+//                        .textFieldStyle(RoundedBorderTextFieldStyle())
+//                        .keyboardType(.numberPad)
+//                        .focused($focusedField, equals: .startY)
+//                    }
+//
+//                    HStack {
+//                        TextField("Goal X", text: Binding(
+//                            get: { String(goalX) },
+//                            set: { goalX = Int(filterAndClampWidthInput($0, max: maxWidth)) ?? 0 }
+//                        ))
+//                        .textFieldStyle(RoundedBorderTextFieldStyle())
+//                        .keyboardType(.numberPad)
+//                        .focused($focusedField, equals: .goalX)
+//
+//                        TextField("Goal Y", text: Binding(
+//                            get: { String(goalY) },
+//                            set: { goalY = Int(filterAndClampHeightInput($0, max: maxHeight, defaultHeight: maxHeight)) ?? 0 }
+//                        ))
+//                        .textFieldStyle(RoundedBorderTextFieldStyle())
+//                        .keyboardType(.numberPad)
+//                        .focused($focusedField, equals: .goalY)
+//                    }
+//                }
 
                 Button("Generate Maze") {
                     focusedField = nil
@@ -142,8 +142,8 @@ struct MazeRequestView: View {
 
                 Divider()
 
-                Text("Maze Width: \(mazeWidth), Maze Height: \(mazeHeight)")
-                    .padding()
+//                Text("Maze Width: \(mazeWidth), Maze Height: \(mazeHeight)")
+//                    .padding()
             }
             .padding()
         }

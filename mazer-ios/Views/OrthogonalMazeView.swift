@@ -10,6 +10,8 @@ import SwiftUI
 struct OrthogonalMazeView: View {
     @Binding var selectedPalette: HeatMapPalette
     @State private var revealedSolutionPath: Set<Coordinates> = []
+    // Keep track of pending work items so they can be canceled
+    @State private var pendingWorkItems: [DispatchWorkItem] = []
     let cells: [MazeCell]
     let showSolution: Bool
     let showHeatMap: Bool
@@ -40,27 +42,33 @@ struct OrthogonalMazeView: View {
             if newValue {
                 animateSolutionPathReveal()
             } else {
+                // Cancel pending work items before clearing the revealed path.
+                for workItem in pendingWorkItems {
+                    workItem.cancel()
+                }
+                pendingWorkItems.removeAll()
                 revealedSolutionPath = []
             }
         }
     }
     
     func animateSolutionPathReveal() {
+        // Clear any existing work items.
+        pendingWorkItems.removeAll()
+        
         // Get solution cells in order of distance from start
         let pathCells = cells
             .filter { $0.onSolutionPath }
             .sorted(by: { $0.distance < $1.distance })
-
+        
         for (index, cell) in pathCells.enumerated() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.015) {
+            let workItem = DispatchWorkItem {
                 withAnimation(.easeInOut(duration: 0.2)) {
                     _ = revealedSolutionPath.insert(Coordinates(x: cell.x, y: cell.y))
                 }
             }
-
-//            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.010) {
-//                revealedSolutionPath.insert(Coordinates(x: cell.x, y: cell.y))
-//            }
+            pendingWorkItems.append(workItem)
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.015, execute: workItem)
         }
     }
     
