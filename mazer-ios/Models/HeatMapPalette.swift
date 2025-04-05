@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HeatMapPalette {
+struct HeatMapPalette: Equatable {
     let name: String
     let shades: [String]
 }

@@ -32,7 +32,8 @@ struct MazeRenderView: View {
 
                 // Regenerate button
                 Button(action: {
-                    selectedPalette = allPalettes.randomElement()!
+//                    selectedPalette = allPalettes.randomElement()!
+                    selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
                     mazeID = UUID()   // Generate a new ID when regenerating the maze
                     regenerateMaze()
                 }) {
@@ -55,6 +56,8 @@ struct MazeRenderView: View {
                 // Heat map toggle
                 Button(action: {
                     showHeatMap.toggle()
+//                    selectedPalette = allPalettes.randomElement()!
+                    selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
                 }) {
                     Image(systemName: showHeatMap ? "flame.fill" : "flame")
                         .font(.title2)
@@ -93,6 +96,13 @@ struct MazeRenderView: View {
 
         let index = min(9, (cell.distance * 10) / maxDistance)
         return selectedPalette.shades[index].asColor
+    }
+    
+    func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
+        let availablePalettes = allPalettes.filter { $0 != current }
+        // If there’s at least one palette that isn’t the current, pick one at random.
+        // Otherwise, fallback to returning the current palette.
+        return availablePalettes.randomElement() ?? current
     }
 
 }
