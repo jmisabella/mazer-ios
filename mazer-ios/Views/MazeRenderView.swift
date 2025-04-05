@@ -12,6 +12,7 @@ struct MazeRenderView: View {
     @Binding var showSolution: Bool
     @Binding var showHeatMap: Bool
     @State private var selectedPalette: HeatMapPalette = allPalettes.randomElement()!
+    @State private var mazeID = UUID()  // New state to track the current maze, specifically used to reset solution between mazes)
     let mazeCells: [MazeCell]
     let mazeType: MazeType  // "Orthogonal", "Sigma", etc.
     let regenerateMaze: () -> Void
@@ -32,6 +33,7 @@ struct MazeRenderView: View {
                 // Regenerate button
                 Button(action: {
                     selectedPalette = allPalettes.randomElement()!
+                    mazeID = UUID()   // Generate a new ID when regenerating the maze
                     regenerateMaze()
                 }) {
                     Image(systemName: "arrow.clockwise")
@@ -72,6 +74,7 @@ struct MazeRenderView: View {
                     showSolution: showSolution,
                     showHeatMap: showHeatMap
                 )
+                .id(mazeID) // This forces OrthogonalMazeView to be recreated with each new maze
             case .sigma:
                 Text("Sigma rendering not implemented yet")
             case .delta:

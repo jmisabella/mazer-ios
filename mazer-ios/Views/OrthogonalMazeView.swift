@@ -50,6 +50,20 @@ struct OrthogonalMazeView: View {
                 revealedSolutionPath = []
             }
         }
+        // Reset internal state when new maze cells are provided.
+        .onChange(of: cells) { _ /*oldCells*/, newCells in
+            for workItem in pendingWorkItems {
+                workItem.cancel()
+            }
+            pendingWorkItems.removeAll()
+            revealedSolutionPath = []
+        }
+        // Trigger solution animation on view appearance if showSolution is true.
+        .onAppear {
+            if showSolution {
+                animateSolutionPathReveal()
+            }
+        }
     }
     
     func animateSolutionPathReveal() {
