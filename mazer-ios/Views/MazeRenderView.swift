@@ -12,6 +12,7 @@ struct MazeRenderView: View {
     @Binding var showSolution: Bool
     @Binding var showHeatMap: Bool
     @State private var selectedPalette: HeatMapPalette = allPalettes.randomElement()!
+    @State private var mazeID = UUID()  // New state to track the current maze, specifically used to reset solution between mazes)
     let mazeCells: [MazeCell]
     let mazeType: MazeType  // "Orthogonal", "Sigma", etc.
     let regenerateMaze: () -> Void
@@ -31,7 +32,9 @@ struct MazeRenderView: View {
 
                 // Regenerate button
                 Button(action: {
-                    selectedPalette = allPalettes.randomElement()!
+//                    selectedPalette = allPalettes.randomElement()!
+                    selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
+                    mazeID = UUID()   // Generate a new ID when regenerating the maze
                     regenerateMaze()
                 }) {
                     Image(systemName: "arrow.clockwise")
@@ -53,6 +56,8 @@ struct MazeRenderView: View {
                 // Heat map toggle
                 Button(action: {
                     showHeatMap.toggle()
+//                    selectedPalette = allPalettes.randomElement()!
+                    selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
                 }) {
                     Image(systemName: showHeatMap ? "flame.fill" : "flame")
                         .font(.title2)
@@ -72,6 +77,7 @@ struct MazeRenderView: View {
                     showSolution: showSolution,
                     showHeatMap: showHeatMap
                 )
+                .id(mazeID) // This forces OrthogonalMazeView to be recreated with each new maze
             case .sigma:
                 Text("Sigma rendering not implemented yet")
             case .delta:
@@ -90,6 +96,13 @@ struct MazeRenderView: View {
 
         let index = min(9, (cell.distance * 10) / maxDistance)
         return selectedPalette.shades[index].asColor
+    }
+    
+    func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
+        let availablePalettes = allPalettes.filter { $0 != current }
+        // If there’s at least one palette that isn’t the current, pick one at random.
+        // Otherwise, fallback to returning the current palette.
+        return availablePalettes.randomElement() ?? current
     }
 
 }
