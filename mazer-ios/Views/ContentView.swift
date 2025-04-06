@@ -150,6 +150,7 @@ struct ContentView: View {
                         distance: Int(cell.distance),
                         isStart: cell.is_start,
                         isGoal: cell.is_goal,
+                        isVisited: cell.is_visited,
                         onSolutionPath: cell.on_solution_path,
                         orientation: orientationCopy
                     ))
