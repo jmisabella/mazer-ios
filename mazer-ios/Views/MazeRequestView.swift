@@ -80,6 +80,12 @@ struct MazeRequestView: View {
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
+                
+                // Display the selected maze type description.
+                Text(selectedMazeType.description)
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal)
 
                 Picker("Algorithm", selection: $selectedAlgorithm) {
                     ForEach(MazeAlgorithm.allCases) { algo in
@@ -87,6 +93,12 @@ struct MazeRequestView: View {
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
+                
+                // Display the selected algorithm's description.
+                Text(selectedAlgorithm.description)
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal)
 
 //                VStack {
 //                    HStack {
