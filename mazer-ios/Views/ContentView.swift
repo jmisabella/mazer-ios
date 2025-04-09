@@ -12,51 +12,33 @@ struct ContentView: View {
     @State private var mazeCells: [MazeCell] = []
     @State private var mazeType: MazeType = .orthogonal
     @State private var mazeGenerated: Bool = false
-    
     @State private var errorMessage: String?
-    // user selections from request view
+
+    // User selections from request view
     @State private var selectedSize: MazeSize = .small
     @State private var selectedMazeType: MazeType = .orthogonal
     @State private var selectedAlgorithm: MazeAlgorithm = .recursiveBacktracker
-    // user selections from render view
+    // User selections from render view
     @State private var showSolution: Bool = false
     @State private var showHeatMap: Bool = false
-    
-//    @State private var startX: Int = {
-//        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
-//        return maxWidth / 2 - 1
-//    }()
-//    
-//    @State private var startY: Int = 0
-//    
-//    @State private var goalX: Int = {
-//        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
-//        return maxWidth / 2 - 1
-//    }()
-//    
-//    @State private var goalY: Int = {
-//        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 200) / 9))
-//        return maxHeight - 1
-//    }()
-    
+
     @State private var startX: Int = {
         let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
         return maxWidth / 2 - 1
     }()
-
     @State private var startY: Int = {
         let maxHeight = max(1, Int((UIScreen.main.bounds.height - 200) / 9))
-        return maxHeight - 1 // 👈 bottom row
+        return maxHeight - 1 // bottom row
     }()
-
     @State private var goalX: Int = {
         let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
         return maxWidth / 2 - 1
     }()
+    @State private var goalY: Int = 0 // top row
 
-    @State private var goalY: Int = 0 // 👈 top row
+    // Track the opaque maze pointer.
+    @State private var currentGrid: OpaquePointer? = nil
 
-    
     var body: some View {
         VStack {
             if mazeGenerated {
@@ -67,8 +49,7 @@ struct ContentView: View {
                     mazeCells: mazeCells,
                     mazeType: mazeType,
                     regenerateMaze: {
-                        // Just call the request function again
-                        submitMazeRequest()  // You may need to pull this up into ContentView if it isn't already
+                        submitMazeRequest()
                     }
                 )
             } else {
@@ -87,7 +68,6 @@ struct ContentView: View {
                 )
             }
             
-            // Optionally display any error messages
             if let errorMessage = errorMessage {
                 Text(errorMessage)
                     .foregroundColor(.red)
@@ -97,8 +77,6 @@ struct ContentView: View {
         .onAppear {
             ffi_integration_test_result = mazer_ffi_integration_test()
             print("mazer_ffi_integration_test returned: \(ffi_integration_test_result)")
-            
-            // Verify result is 42
             if ffi_integration_test_result == 42 {
                 print("FFI integration test passed ✅")
             } else {
@@ -108,10 +86,16 @@ struct ContentView: View {
     }
     
     private func submitMazeRequest() {
+        // Clean up any existing maze instance before creating a new one.
+        if let current = currentGrid {
+            // Directly pass the opaque pointer to mazer_destroy.
+            mazer_destroy(current)
+            currentGrid = nil
+        }
+        
         let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / CGFloat(selectedSize.rawValue)))
         let maxHeight = max(1, Int((UIScreen.main.bounds.height - 200) / CGFloat(selectedSize.rawValue)))
-
-
+        
         let result = MazeRequestValidator.validate(
             mazeType: selectedMazeType,
             width: maxWidth,
@@ -131,42 +115,55 @@ struct ContentView: View {
                 errorMessage = "Invalid JSON encoding."
                 return
             }
-            var length: size_t = 0
             
-            if let mazePointer = mazer_generate_maze(jsonCString, &length) {
-                print("Maze generated with length: \(length)")
-                
-                var cells: [MazeCell] = []
-                for i in 0..<Int(length) {
-                    let cell = mazePointer[i]
-                    let mazeTypeCopy = cell.maze_type != nil ? String(cString: cell.maze_type!) : ""
-                    let orientationCopy = cell.orientation != nil ? String(cString: cell.orientation!) : ""
-                    
-                    cells.append(MazeCell(
-                        x: Int(cell.x),
-                        y: Int(cell.y),
-                        mazeType: mazeTypeCopy,
-                        linked: convertCStringArray(cell.linked, count: cell.linked_len),
-                        distance: Int(cell.distance),
-                        isStart: cell.is_start,
-                        isGoal: cell.is_goal,
-                        onSolutionPath: cell.on_solution_path,
-                        orientation: orientationCopy
-                    ))
-                }
-
-                mazeCells = cells
-                mazer_free_cells(mazePointer, length)
-
-                if let firstCell = cells.first {
-                    mazeType = MazeType(rawValue: firstCell.mazeType) ?? .orthogonal
-                }
-
-                mazeGenerated = true
-                errorMessage = nil
-            } else {
+            // Call the FFI function to generate a maze.
+            guard let gridPtr = mazer_generate_maze(jsonCString) else {
                 errorMessage = "Failed to generate maze."
+                return
             }
+            
+            // Save the grid pointer directly.
+            currentGrid = gridPtr
+            
+            var length: size_t = 0
+            // mazer_get_cells returns an UnsafeMutablePointer<FFICell>, so no extra cast is needed.
+            guard let cellsPtr = mazer_get_cells(gridPtr, &length) else {
+                errorMessage = "Failed to retrieve cells."
+                return
+            }
+            
+            var cells: [MazeCell] = []
+            for i in 0..<Int(length) {
+                let ffiCell = cellsPtr[i]
+                let mazeTypeCopy = ffiCell.maze_type != nil ? String(cString: ffiCell.maze_type!) : ""
+                let orientationCopy = ffiCell.orientation != nil ? String(cString: ffiCell.orientation!) : ""
+                
+                cells.append(MazeCell(
+                    x: Int(ffiCell.x),
+                    y: Int(ffiCell.y),
+                    mazeType: mazeTypeCopy,
+                    linked: convertCStringArray(ffiCell.linked, count: ffiCell.linked_len),
+                    distance: Int(ffiCell.distance),
+                    isStart: ffiCell.is_start,
+                    isGoal: ffiCell.is_goal,
+                    isVisited: ffiCell.is_visited,
+                    onSolutionPath: ffiCell.on_solution_path,
+                    orientation: orientationCopy
+                ))
+            }
+            
+            
+            
+            mazeCells = cells
+            if let firstCell = cells.first {
+                mazeType = MazeType(rawValue: firstCell.mazeType) ?? .orthogonal
+            }
+            
+            // Free the cells array allocated on the Rust side.
+            mazer_free_cells(cellsPtr, length)
+            
+            mazeGenerated = true
+            errorMessage = nil
             
         case .failure(let error):
             errorMessage = "\(error.localizedDescription)"
@@ -183,13 +180,4 @@ struct ContentView: View {
         }
         return result
     }
-
 }
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
-

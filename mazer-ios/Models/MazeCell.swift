@@ -6,6 +6,7 @@ struct MazeCell : Hashable {
     let distance: Int
     let isStart: Bool
     let isGoal: Bool
+    let isVisited: Bool
     let onSolutionPath: Bool
     let orientation: String
 }
