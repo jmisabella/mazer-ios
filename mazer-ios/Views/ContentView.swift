@@ -146,7 +146,9 @@ struct ContentView: View {
                     distance: Int(ffiCell.distance),
                     isStart: ffiCell.is_start,
                     isGoal: ffiCell.is_goal,
+                    isActive: ffiCell.is_active,
                     isVisited: ffiCell.is_visited,
+                    hasBeenVisited: ffiCell.has_been_visited,
                     onSolutionPath: ffiCell.on_solution_path,
                     orientation: orientationCopy
                 ))

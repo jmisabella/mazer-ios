@@ -2,7 +2,7 @@
 //  mazer_bridge.h
 //  mazer-ios
 //
-//  Created by Jeffrey Isabella on 4/6/25.
+//  Created by Jeffrey Isabella on 4/8/25.
 //
 
 #ifndef MAZER_H
@@ -30,8 +30,9 @@ typedef struct FFICell {
     int32_t distance;
     bool is_start;
     bool is_goal;
-    bool is_visited;
     bool is_active;
+    bool is_visited;
+    bool has_been_visited;
     bool on_solution_path;
     const char* orientation;
 } FFICell;
