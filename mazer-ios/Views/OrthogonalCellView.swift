@@ -57,6 +57,8 @@ struct OrthogonalCellView: View {
             return .blue
         } else if cell.isGoal {
             return .red
+        } else if cell.isVisited {
+            return .black
         } else if isRevealedSolution {
             return .solutionHighlight
         } else if showHeatMap && maxDistance > 0 {

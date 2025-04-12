@@ -16,6 +16,8 @@ struct MazeRenderView: View {
     let mazeCells: [MazeCell]
     let mazeType: MazeType  // "Orthogonal", "Sigma", etc.
     let regenerateMaze: () -> Void
+    // handle move actions (buttons and later swipe gestures)
+    let moveAction: (String) -> Void
     
     var body: some View {
         VStack {
@@ -69,22 +71,43 @@ struct MazeRenderView: View {
 
             
             // 👇 Maze content based on mazeType
-            switch mazeType {
-            case .orthogonal:
-                OrthogonalMazeView(
-                    selectedPalette: $selectedPalette,
-                    cells: mazeCells,
-                    showSolution: showSolution,
-                    showHeatMap: showHeatMap
-                )
-                .id(mazeID) // This forces OrthogonalMazeView to be recreated with each new maze
-            case .sigma:
-                Text("Sigma rendering not implemented yet")
-            case .delta:
-                Text("Delta rendering not implemented yet")
-            case .polar:
-                Text("Polar rendering not implemented yet")
+            Group {
+                switch mazeType {
+                case .orthogonal:
+                    OrthogonalMazeView(
+                        selectedPalette: $selectedPalette,
+                        cells: mazeCells,
+                        showSolution: showSolution,
+                        showHeatMap: showHeatMap
+                    )
+                    .id(mazeID) // This forces OrthogonalMazeView to be recreated with each new maze
+                case .sigma:
+                    Text("Sigma rendering not implemented yet")
+                case .delta:
+                    Text("Delta rendering not implemented yet")
+                case .polar:
+                    Text("Polar rendering not implemented yet")
+                }
             }
+            
+            Group {
+                switch mazeType {
+                case .orthogonal:
+                    OrthogonalDirectionControlView(
+                        moveAction: moveAction
+                    )
+                    .id(mazeID) // This forces OrthogonaDirectionControlView to be recreated with each new maze
+                    .padding(.top, 3)
+                case .sigma:
+                    Text("Sigma rendering not implemented yet")
+                case .delta:
+                    Text("Delta rendering not implemented yet")
+                case .polar:
+                    Text("Polar rendering not implemented yet")
+                }
+            }
+            
+            
         }
         
     }
@@ -117,6 +140,10 @@ struct MazeRenderView_Previews: PreviewProvider {
             mazeType: .orthogonal,
             regenerateMaze: {
                 print("Maze Render Preview Triggered")
+            },
+            moveAction: { direction in
+                // For preview purposes, simply print the direction.
+                print("Move action triggered: \(direction)")
             }
         )
     }

@@ -26,6 +26,7 @@
 		00C341E92D9F50BE0077691B /* OrthogonalCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C341E82D9F50BE0077691B /* OrthogonalCellView.swift */; };
 		00C341EB2D9F57910077691B /* MazeSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C341EA2D9F578E0077691B /* MazeSize.swift */; };
 		00DD0B512DAAF65E00C20B2E /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C3412B2D9E286E0077691B /* libmazer.a */; };
+		00DD0B542DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0B532DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -588,6 +589,7 @@
 		00C341E82D9F50BE0077691B /* OrthogonalCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthogonalCellView.swift; sourceTree = "<group>"; };
 		00C341EA2D9F578E0077691B /* MazeSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeSize.swift; sourceTree = "<group>"; };
 		00DD0B522DAAF72D00C20B2E /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
+		00DD0B532DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthogonalDirectionControlView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -673,6 +675,7 @@
 				00C341E42D9F07040077691B /* MazeRenderView.swift */,
 				00C341E62D9F505D0077691B /* OrthogonalMazeView.swift */,
 				00C341E82D9F50BE0077691B /* OrthogonalCellView.swift */,
+				00DD0B532DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1831,6 +1834,7 @@
 				00C33F752D98CC730077691B /* MazeRequestError.swift in Sources */,
 				00C33F782D98CC860077691B /* MazeAlgorithm.swift in Sources */,
 				006F3F392D9F6EC200627BD4 /* HeatMapPalette.swift in Sources */,
+				00DD0B542DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift in Sources */,
 				00C33F792D98CC8E0077691B /* Coordinates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

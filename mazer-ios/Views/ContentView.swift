@@ -27,7 +27,8 @@ struct ContentView: View {
         return maxWidth / 2 - 1
     }()
     @State private var startY: Int = {
-        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 200) / 9))
+//        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 200) / 9))
+        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 165) / 9))
         return maxHeight - 1 // bottom row
     }()
     @State private var goalX: Int = {
@@ -50,6 +51,9 @@ struct ContentView: View {
                     mazeType: mazeType,
                     regenerateMaze: {
                         submitMazeRequest()
+                    },
+                    moveAction: { direction in
+                        performMove(direction: direction)
                     }
                 )
             } else {
@@ -182,4 +186,55 @@ struct ContentView: View {
         }
         return result
     }
+    
+    private func performMove(direction: String) {
+        // Ensure current grid exists.
+        guard let gridPtr = currentGrid else { return }
+        guard let directionCString = direction.cString(using: .utf8) else {
+            errorMessage = "Encoding error for direction."
+            return
+        }
+
+        // Convert the OpaquePointer to UnsafeMutableRawPointer using unsafeBitCast.
+        let rawGridPtr = unsafeBitCast(gridPtr, to: UnsafeMutableRawPointer.self)
+
+        guard let newGridRaw = mazer_make_move(rawGridPtr, directionCString) else {
+            errorMessage = "Move failed."
+            return
+        }
+        // Convert the returned raw pointer to OpaquePointer.
+        let newGrid: OpaquePointer = OpaquePointer(newGridRaw)
+        currentGrid = newGrid
+
+        var length: size_t = 0
+        guard let cellsPtr = mazer_get_cells(newGrid, &length) else {
+            errorMessage = "Failed to retrieve updated maze."
+            return
+        }
+        
+        var cells: [MazeCell] = []
+        for i in 0..<Int(length) {
+            let ffiCell = cellsPtr[i]
+            let mazeTypeCopy = ffiCell.maze_type != nil ? String(cString: ffiCell.maze_type!) : ""
+            let orientationCopy = ffiCell.orientation != nil ? String(cString: ffiCell.orientation!) : ""
+            cells.append(MazeCell(
+                x: Int(ffiCell.x),
+                y: Int(ffiCell.y),
+                mazeType: mazeTypeCopy,
+                linked: convertCStringArray(ffiCell.linked, count: ffiCell.linked_len),
+                distance: Int(ffiCell.distance),
+                isStart: ffiCell.is_start,
+                isGoal: ffiCell.is_goal,
+                isActive: ffiCell.is_active,
+                isVisited: ffiCell.is_visited,
+                hasBeenVisited: ffiCell.has_been_visited,
+                onSolutionPath: ffiCell.on_solution_path,
+                orientation: orientationCopy
+            ))
+        }
+        
+        mazeCells = cells
+        mazer_free_cells(cellsPtr, length)
+    }
+
 }
