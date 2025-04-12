@@ -2,7 +2,7 @@
 //  mazer_bridge.h
 //  mazer-ios
 //
-//  Created by Jeffrey Isabella on 4/8/25.
+//  Created by Jeffrey Isabella on 4/12/25.
 //
 
 #ifndef MAZER_H
@@ -83,6 +83,19 @@ FFICell* mazer_get_cells(Grid *maze, size_t *length);
  * @param length The number of FFICell elements in the array.
  */
 void mazer_free_cells(FFICell *ptr, size_t length);
+
+/**
+ * Updates the maze by performing a move in the specified direction.
+ *
+ * This function takes an opaque pointer to the mutable Grid and a null-terminated
+ * C string that indicates the direction for the move. It calls the internal `make_move`
+ * function on the Grid instance and returns an updated opaque pointer.
+ *
+ * @param grid_ptr A pointer to the mutable Grid.
+ * @param direction A null-terminated C string indicating the move direction.
+ * @return A pointer to the updated Grid.
+ */
+void* mazer_make_move(void* grid_ptr, const char* direction);
 
 /**
  * To verify FFI connectivity, call verify this returns 42.
