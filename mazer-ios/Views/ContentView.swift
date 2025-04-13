@@ -27,8 +27,8 @@ struct ContentView: View {
         return maxWidth / 2 - 1
     }()
     @State private var startY: Int = {
-//        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 200) / 9))
-        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 165) / 9))
+        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 236) / 9))
+//        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 160) / 9))
         return maxHeight - 1 // bottom row
     }()
     @State private var goalX: Int = {
@@ -98,7 +98,7 @@ struct ContentView: View {
         }
         
         let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / CGFloat(selectedSize.rawValue)))
-        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 200) / CGFloat(selectedSize.rawValue)))
+        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 236) / CGFloat(selectedSize.rawValue)))
         
         let result = MazeRequestValidator.validate(
             mazeType: selectedMazeType,

@@ -11,15 +11,15 @@ struct OrthogonalDirectionControlView: View {
     let moveAction: (String) -> Void
     
     var body: some View {
-        VStack(spacing: 2) { // Reduce the vertical spacing between rows.
+        VStack(spacing: 1) { // Reduce the vertical spacing between rows.
             // Up button row: centered horizontally.
             HStack {
                 Spacer()
                 Button(action: { moveAction("North") }) {
                     Image(systemName: "arrow.up")
-                        .font(.system(size: 16, weight: .medium))
+                        .font(.system(size: 14, weight: .medium))
                         .padding(.horizontal, 8)
-                        .padding(.vertical, 2)
+                        .padding(.vertical, 1)
                         .background(
                             Capsule(style: .continuous)
                                 .fill(Color.blue.opacity(0.2))
@@ -33,9 +33,9 @@ struct OrthogonalDirectionControlView: View {
             HStack(spacing: 4) { // Use a bit of horizontal spacing.
                 Button(action: { moveAction("West") }) {
                     Image(systemName: "arrow.left")
-                        .font(.system(size: 16, weight: .medium))
+                        .font(.system(size: 14, weight: .medium))
                         .padding(.horizontal, 8)
-                        .padding(.vertical, 2)
+                        .padding(.vertical, 1)
                         .background(
                             Capsule(style: .continuous)
                                 .fill(Color.blue.opacity(0.2))
@@ -45,9 +45,9 @@ struct OrthogonalDirectionControlView: View {
                 
                 Button(action: { moveAction("East") }) {
                     Image(systemName: "arrow.right")
-                        .font(.system(size: 16, weight: .medium))
+                        .font(.system(size: 14, weight: .medium))
                         .padding(.horizontal, 8)
-                        .padding(.vertical, 2)
+                        .padding(.vertical, 1)
                         .background(
                             Capsule(style: .continuous)
                                 .fill(Color.blue.opacity(0.2))
@@ -73,7 +73,7 @@ struct OrthogonalDirectionControlView: View {
                 Spacer()
             }
         }
-        .padding(2) // Reduce overall outer padding if needed.
+        .padding(1) // Reduce overall outer padding if needed.
     }
 }
 
