@@ -11,7 +11,7 @@ struct OrthogonalDirectionControlView: View {
     let moveAction: (String) -> Void
     
     var body: some View {
-        VStack(spacing: 1) { // Reduce the vertical spacing between rows.
+        VStack(spacing: 1) { // Reduced vertical spacing between rows.
             // Up button row: centered horizontally.
             HStack {
                 Spacer()
@@ -73,7 +73,29 @@ struct OrthogonalDirectionControlView: View {
                 Spacer()
             }
         }
-        .padding(1) // Reduce overall outer padding if needed.
+        .padding(1) // Reduced overall outer padding.
+        .gesture(
+            DragGesture(minimumDistance: 10)
+                .onEnded { value in
+                    let horizontalAmount = value.translation.width
+                    let verticalAmount = value.translation.height
+                    
+                    // Check whether the swipe was primarily horizontal or vertical.
+                    if abs(horizontalAmount) > abs(verticalAmount) {
+                        if horizontalAmount < 0 {
+                            moveAction("West")
+                        } else {
+                            moveAction("East")
+                        }
+                    } else {
+                        if verticalAmount < 0 {
+                            moveAction("North")
+                        } else {
+                            moveAction("South")
+                        }
+                    }
+                }
+        )
     }
 }
 

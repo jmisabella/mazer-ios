@@ -19,6 +19,27 @@ struct MazeRenderView: View {
     // handle move actions (buttons and later swipe gestures)
     let moveAction: (String) -> Void
     
+    // A computed property to build the maze content based on mazeType.
+    @ViewBuilder
+    var mazeContent: some View {
+        switch mazeType {
+        case .orthogonal:
+            OrthogonalMazeView(
+                selectedPalette: $selectedPalette,
+                cells: mazeCells,
+                showSolution: showSolution,
+                showHeatMap: showHeatMap
+            )
+            .id(mazeID)
+        case .sigma:
+            Text("Sigma rendering not implemented yet")
+        case .delta:
+            Text("Delta rendering not implemented yet")
+        case .polar:
+            Text("Polar rendering not implemented yet")
+        }
+    }
+    
     var body: some View {
         VStack {
             HStack(spacing: 16) {
@@ -31,10 +52,10 @@ struct MazeRenderView: View {
                         .foregroundColor(.blue)
                 }
                 .accessibilityLabel("Back to maze settings")
-
+                
                 // Regenerate button
                 Button(action: {
-//                    selectedPalette = allPalettes.randomElement()!
+                    //                    selectedPalette = allPalettes.randomElement()!
                     selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
                     mazeID = UUID()   // Generate a new ID when regenerating the maze
                     regenerateMaze()
@@ -44,7 +65,7 @@ struct MazeRenderView: View {
                         .foregroundColor(.purple)
                 }
                 .accessibilityLabel("Generate new maze")
-
+                
                 // Solution toggle
                 Button(action: {
                     showSolution.toggle()
@@ -54,11 +75,11 @@ struct MazeRenderView: View {
                         .foregroundColor(showSolution ? .green : .gray)
                 }
                 .accessibilityLabel("Toggle solution path")
-
+                
                 // Heat map toggle
                 Button(action: {
                     showHeatMap.toggle()
-//                    selectedPalette = allPalettes.randomElement()!
+                    //                    selectedPalette = allPalettes.randomElement()!
                     selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
                 }) {
                     Image(systemName: showHeatMap ? "flame.fill" : "flame")
@@ -68,25 +89,39 @@ struct MazeRenderView: View {
                 .accessibilityLabel("Toggle heat map")
             }
             .padding(.top)
-
             
-            // 👇 Maze content based on mazeType
-            Group {
-                switch mazeType {
-                case .orthogonal:
-                    OrthogonalMazeView(
-                        selectedPalette: $selectedPalette,
-                        cells: mazeCells,
-                        showSolution: showSolution,
-                        showHeatMap: showHeatMap
-                    )
-                    .id(mazeID) // This forces OrthogonalMazeView to be recreated with each new maze
-                case .sigma:
-                    Text("Sigma rendering not implemented yet")
-                case .delta:
-                    Text("Delta rendering not implemented yet")
-                case .polar:
-                    Text("Polar rendering not implemented yet")
+            // The maze container:
+            if mazeType == .orthogonal {
+                // For orthogonal mazes, wrap the maze content in a ZStack with the drag gesture.
+                ZStack {
+                    mazeContent
+                }
+                .gesture(
+                    DragGesture(minimumDistance: 10)
+                        .onEnded { value in
+                            let horizontalAmount = value.translation.width
+                            let verticalAmount = value.translation.height
+                            
+                            // Determine if the gesture was more horizontal or vertical.
+                            if abs(horizontalAmount) > abs(verticalAmount) {
+                                if horizontalAmount < 0 {
+                                    moveAction("West")
+                                } else {
+                                    moveAction("East")
+                                }
+                            } else {
+                                if verticalAmount < 0 {
+                                    moveAction("North")
+                                } else {
+                                    moveAction("South")
+                                }
+                            }
+                        }
+                )
+            } else {
+                // For other maze types, no gesture is attached.
+                ZStack {
+                    mazeContent
                 }
             }
             
@@ -107,16 +142,17 @@ struct MazeRenderView: View {
                 }
             }
             
-            
         }
         
     }
+    
+    
     
     func shadeColor(for cell: MazeCell, maxDistance: Int) -> Color {
         guard showHeatMap, maxDistance > 0 else {
             return .gray  // fallback color when heat map is off
         }
-
+        
         let index = min(9, (cell.distance * 10) / maxDistance)
         return selectedPalette.shades[index].asColor
     }
@@ -127,7 +163,7 @@ struct MazeRenderView: View {
         // Otherwise, fallback to returning the current palette.
         return availablePalettes.randomElement() ?? current
     }
-
+    
 }
 
 struct MazeRenderView_Previews: PreviewProvider {
