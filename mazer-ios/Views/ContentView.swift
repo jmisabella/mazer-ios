@@ -23,27 +23,26 @@ struct ContentView: View {
     @State private var showHeatMap: Bool = false
 
     @State private var startX: Int = {
-        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
+        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 10) / 11))
         return maxWidth / 2 - 1
     }()
     @State private var startY: Int = {
-        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 236) / 9))
-//        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 160) / 9))
+//        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 236) / 11))
+        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 280) / 11))
         return maxHeight - 1 // bottom row
     }()
     @State private var goalX: Int = {
-        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
+        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 10) / 11))
         return maxWidth / 2 - 1
     }()
     @State private var goalY: Int = 0 // top row
 
     // Track the opaque maze pointer.
     @State private var currentGrid: OpaquePointer? = nil
-
+    
     var body: some View {
         VStack {
             if mazeGenerated {
-               
                 MazeRenderView(
                     mazeGenerated: $mazeGenerated,
                     showSolution: $showSolution,
@@ -98,8 +97,10 @@ struct ContentView: View {
             currentGrid = nil
         }
         
-        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / CGFloat(selectedSize.rawValue)))
-        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 236) / CGFloat(selectedSize.rawValue)))
+        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 10) / CGFloat(selectedSize.rawValue)))
+//        let maxWidth = max(1, Int((UIScreen.main.bounds.width) / CGFloat(selectedSize.rawValue)))
+//        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 236) / CGFloat(selectedSize.rawValue)))
+        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 280) / CGFloat(selectedSize.rawValue)))
         
         let result = MazeRequestValidator.validate(
             mazeType: selectedMazeType,

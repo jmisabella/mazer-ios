@@ -21,7 +21,7 @@ struct MazeRenderView: View {
     
     func computeCellSize() -> CGFloat {
         let columns = (mazeCells.map { $0.x }.max() ?? 0) + 1
-        return UIScreen.main.bounds.width / CGFloat(columns)
+        return UIScreen.main.bounds.width / CGFloat(columns) * 1.35
     }
     
     // A computed property to build the maze content based on mazeType.
@@ -168,7 +168,8 @@ struct MazeRenderView: View {
                     Text("Sigma rendering not implemented yet")
                 case .delta:
 //                    DeltaDirectionControlView(
-//                        moveAction: moveAction
+//                        moveAction: moveAction,
+////                        isNormal: false
 //                    )
 //                    .id(mazeID) // This forces OrthogonaDirectionControlView to be recreated with each new maze
 //                    .padding(.top, 3)

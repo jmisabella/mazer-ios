@@ -24,8 +24,8 @@ struct MazeRequestView: View {
         case startX, startY, goalX, goalY
     }
     
-    private let horizontalMargin = 40 // TODO: adjust as necessary
-    private let verticalMargin = 236 // TODO: adjust as necessary
+    private let horizontalMargin = 10 // TODO: this number must match hard-coded offsets in ContentView! Must couple these 2 variables to address this
+    private let verticalMargin = 280 // TODO: this number must match hard-coded offsets in ContentView! Must couple these 2 variables to address this
     
     private var maxWidth: Int {
         max(1, Int(availableWidth / CGFloat(selectedSize.rawValue)))
@@ -184,8 +184,8 @@ struct MazeRequestView: View {
 //    }
     // Function to update Start and Goal X/Y positions when Maze Size changes
     private func updateStartAndGoalPositions() {
-        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / CGFloat(selectedSize.rawValue)))
-        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 236) / CGFloat(selectedSize.rawValue)))
+        let maxWidth = max(1, Int((UIScreen.main.bounds.width - CGFloat(horizontalMargin)) / CGFloat(selectedSize.rawValue)))
+        let maxHeight = max(1, Int((UIScreen.main.bounds.height - CGFloat(verticalMargin)) / CGFloat(selectedSize.rawValue)))
 
         startX = maxWidth / 2 - 1
         goalX = startX
