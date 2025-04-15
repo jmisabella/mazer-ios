@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct MazeRenderView: View {
     @Binding var mazeGenerated: Bool
     @Binding var showSolution: Bool
@@ -23,6 +24,25 @@ struct MazeRenderView: View {
         let columns = (mazeCells.map { $0.x }.max() ?? 0) + 1
         return UIScreen.main.bounds.width / CGFloat(columns) * 1.35
     }
+    
+    @ViewBuilder
+    private var directionControlView: some View {
+        switch mazeType {
+        case .orthogonal:
+            OrthogonalDirectionControlView(moveAction: moveAction)
+                .id(mazeID) // Force view recreation when mazeID changes
+                .padding(.top, 3)
+        case .sigma:
+            Text("Sigma rendering not implemented yet")
+        case .delta:
+            DeltaDirectionControlView(moveAction: moveAction)
+                .id(mazeID)
+                .padding(.top, 3)
+        case .polar:
+            Text("Polar rendering not implemented yet")
+        }
+    }
+
     
     // A computed property to build the maze content based on mazeType.
     @ViewBuilder
@@ -115,40 +135,102 @@ struct MazeRenderView: View {
             
             
             // The maze container:
-            if mazeType == .orthogonal {
-                // For orthogonal mazes, wrap the maze content in a ZStack with an attached drag gesture.
+            if mazeType == .orthogonal || mazeType == .delta {
                 ZStack {
                     mazeContent
                 }
                 .gesture(
                     DragGesture(minimumDistance: 10)
                         .onEnded { value in
-                            let horizontalAmount = value.translation.width
-                            let verticalAmount = value.translation.height
-                            
-                            // Calculate the cellSize from the maze grid.
-                            let cellDimension = cellSize()
-                            
-                            // Depending on the dominant gesture axis, determine the number of moves.
-                            if abs(horizontalAmount) > abs(verticalAmount) {
-                                let movesCount = max(1, Int(round(abs(horizontalAmount) / cellDimension)))
-                                let direction = horizontalAmount < 0 ? "West" : "East"
-                                for i in 0..<movesCount {
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
-                                        moveAction(direction)
+                            if mazeType == .orthogonal {
+                                // Existing orthogonal gesture logic:
+                                let horizontalAmount = value.translation.width
+                                let verticalAmount = value.translation.height
+                                let cellDimension = cellSize() // your function that computes cell size
+                                if abs(horizontalAmount) > abs(verticalAmount) {
+                                    let movesCount = max(1, Int(round(abs(horizontalAmount) / cellDimension)))
+                                    let direction = horizontalAmount < 0 ? "West" : "East"
+                                    for i in 0..<movesCount {
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+                                            moveAction(direction)
+                                        }
+                                    }
+                                } else {
+                                    let movesCount = max(1, Int(round(abs(verticalAmount) / cellDimension)))
+                                    let direction = verticalAmount < 0 ? "North" : "South"
+                                    for i in 0..<movesCount {
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+                                            moveAction(direction)
+                                        }
                                     }
                                 }
-                            } else {
-                                let movesCount = max(1, Int(round(abs(verticalAmount) / cellDimension)))
-                                let direction = verticalAmount < 0 ? "North" : "South"
+                            } else if mazeType == .delta {
+                                // Delta-specific gesture logic using angle sectors:
+                                let tx = value.translation.width
+                                let ty = value.translation.height
+                                // If there's no movement, do nothing.
+                                if tx == 0 && ty == 0 { return }
+                                
+                                // Compute the angle of the drag (in radians).
+                                let angle = atan2(ty, tx)
+                                // Shift the angle by π/6 (30°) so that boundaries align with our sectors.
+                                let shiftedAngle = angle + (.pi/6)
+                                // Normalize to [0, 2π).
+                                var normalizedAngle = shiftedAngle
+                                if normalizedAngle < 0 {
+                                    normalizedAngle += 2 * .pi
+                                }
+                                // Divide the circle into 6 equal sectors (each π/3 radians wide).
+                                let sectorIndex = Int(floor(normalizedAngle / (.pi/3)))
+                                let directions = ["UpperRight", "Up", "UpperLeft", "LowerLeft", "Down", "LowerRight"]
+                                let chosenDirection = directions[sectorIndex]
+                                
+                                // Determine how many moves to issue based on the magnitude of the translation.
+                                let translationMagnitude = sqrt(tx * tx + ty * ty)
+                                let cellDimension = cellSize()  // same cellSize function from above
+                                let movesCount = max(1, Int(round(translationMagnitude / cellDimension)))
                                 for i in 0..<movesCount {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
-                                        moveAction(direction)
+                                        moveAction(chosenDirection)
                                     }
                                 }
                             }
                         }
                 )
+//            if mazeType == .orthogonal {
+//                // For orthogonal mazes, wrap the maze content in a ZStack with an attached drag gesture.
+//                ZStack {
+//                    mazeContent
+//                }
+//                .gesture(
+//                    DragGesture(minimumDistance: 10)
+//                        .onEnded { value in
+//                            let horizontalAmount = value.translation.width
+//                            let verticalAmount = value.translation.height
+//                            
+//                            // Calculate the cellSize from the maze grid.
+//                            let cellDimension = cellSize()
+//                            
+//                            // Depending on the dominant gesture axis, determine the number of moves.
+//                            if abs(horizontalAmount) > abs(verticalAmount) {
+//                                let movesCount = max(1, Int(round(abs(horizontalAmount) / cellDimension)))
+//                                let direction = horizontalAmount < 0 ? "West" : "East"
+//                                for i in 0..<movesCount {
+//                                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+//                                        moveAction(direction)
+//                                    }
+//                                }
+//                            } else {
+//                                let movesCount = max(1, Int(round(abs(verticalAmount) / cellDimension)))
+//                                let direction = verticalAmount < 0 ? "North" : "South"
+//                                for i in 0..<movesCount {
+//                                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+//                                        moveAction(direction)
+//                                    }
+//                                }
+//                            }
+//                        }
+//                )
             } else {
                 // For other maze types, no gesture is attached.
                 ZStack {
@@ -156,28 +238,7 @@ struct MazeRenderView: View {
                 }
             }
             
-            Group {
-                switch mazeType {
-                case .orthogonal:
-                    OrthogonalDirectionControlView(
-                        moveAction: moveAction
-                    )
-                    .id(mazeID) // This forces OrthogonaDirectionControlView to be recreated with each new maze
-                    .padding(.top, 3)
-                case .sigma:
-                    Text("Sigma rendering not implemented yet")
-                case .delta:
-//                    DeltaDirectionControlView(
-//                        moveAction: moveAction,
-////                        isNormal: false
-//                    )
-//                    .id(mazeID) // This forces OrthogonaDirectionControlView to be recreated with each new maze
-//                    .padding(.top, 3)
-                    Text("Delta rendering not implemented yet")
-                case .polar:
-                    Text("Polar rendering not implemented yet")
-                }
-            }
+            directionControlView
             
         }
         
