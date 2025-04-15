@@ -36,8 +36,7 @@ struct DeltaMazeView: View {
 //        VStack(spacing: -triangleHeight / 2) {
         VStack(spacing: 0) {
             ForEach(0..<rows, id: \.self) { rowIndex in
-//                HStack(spacing: 0) {
-                HStack(spacing: -cellSize * 0.35) {
+                HStack(spacing: -cellSize / 2) {
                     ForEach(0..<columns, id: \.self) { colIndex in
                         // Look up the MazeCell that has matching x and y
                         if let cell = cells.first(where: { $0.x == colIndex && $0.y == rowIndex }) {
@@ -57,9 +56,6 @@ struct DeltaMazeView: View {
                         }
                     }
                 }
-                // Offset every other row horizontally by a fraction of the cellSize.
-//                .offset(x: rowIndex.isMultiple(of: 2) ? 0 : cellSize / 2)
-//                .offset(x: rowIndex.isMultiple(of: 2) ? 0 : cellSize / 8)
             }
         }
     }
