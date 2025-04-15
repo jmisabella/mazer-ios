@@ -19,6 +19,11 @@ struct MazeRenderView: View {
     // handle move actions (buttons and later swipe gestures)
     let moveAction: (String) -> Void
     
+    func computeCellSize() -> CGFloat {
+        let columns = (mazeCells.map { $0.x }.max() ?? 0) + 1
+        return UIScreen.main.bounds.width / CGFloat(columns)
+    }
+    
     // A computed property to build the maze content based on mazeType.
     @ViewBuilder
     var mazeContent: some View {
@@ -34,10 +39,28 @@ struct MazeRenderView: View {
         case .sigma:
             Text("Sigma rendering not implemented yet")
         case .delta:
-            Text("Delta rendering not implemented yet")
+            let cellSize = computeCellSize()  // Compute as shown above.
+                let maxDistance = mazeCells.map { $0.distance }.max() ?? 1
+                DeltaMazeView(
+                    cells: mazeCells,
+                    cellSize: cellSize,
+                    showSolution: showSolution,
+                    showHeatMap: showHeatMap,
+                    selectedPalette: selectedPalette, // pass wrapped value
+                    maxDistance: maxDistance
+                )
+                .id(mazeID)
+//            Text("Delta rendering not implemented yet")
         case .polar:
             Text("Polar rendering not implemented yet")
         }
+    }
+    
+    // Compute cellSize based on the maze's grid.
+    // Assumes mazeCells contains at least one cell.
+    private func cellSize() -> CGFloat {
+        let maxColumn = (mazeCells.map { $0.x }.max() ?? 0) + 1
+        return UIScreen.main.bounds.width / CGFloat(maxColumn)
     }
     
     var body: some View {
@@ -90,9 +113,10 @@ struct MazeRenderView: View {
             }
             .padding(.top)
             
+            
             // The maze container:
             if mazeType == .orthogonal {
-                // For orthogonal mazes, wrap the maze content in a ZStack with the drag gesture.
+                // For orthogonal mazes, wrap the maze content in a ZStack with an attached drag gesture.
                 ZStack {
                     mazeContent
                 }
@@ -102,18 +126,25 @@ struct MazeRenderView: View {
                             let horizontalAmount = value.translation.width
                             let verticalAmount = value.translation.height
                             
-                            // Determine if the gesture was more horizontal or vertical.
+                            // Calculate the cellSize from the maze grid.
+                            let cellDimension = cellSize()
+                            
+                            // Depending on the dominant gesture axis, determine the number of moves.
                             if abs(horizontalAmount) > abs(verticalAmount) {
-                                if horizontalAmount < 0 {
-                                    moveAction("West")
-                                } else {
-                                    moveAction("East")
+                                let movesCount = max(1, Int(round(abs(horizontalAmount) / cellDimension)))
+                                let direction = horizontalAmount < 0 ? "West" : "East"
+                                for i in 0..<movesCount {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+                                        moveAction(direction)
+                                    }
                                 }
                             } else {
-                                if verticalAmount < 0 {
-                                    moveAction("North")
-                                } else {
-                                    moveAction("South")
+                                let movesCount = max(1, Int(round(abs(verticalAmount) / cellDimension)))
+                                let direction = verticalAmount < 0 ? "North" : "South"
+                                for i in 0..<movesCount {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+                                        moveAction(direction)
+                                    }
                                 }
                             }
                         }
@@ -136,6 +167,11 @@ struct MazeRenderView: View {
                 case .sigma:
                     Text("Sigma rendering not implemented yet")
                 case .delta:
+//                    DeltaDirectionControlView(
+//                        moveAction: moveAction
+//                    )
+//                    .id(mazeID) // This forces OrthogonaDirectionControlView to be recreated with each new maze
+//                    .padding(.top, 3)
                     Text("Delta rendering not implemented yet")
                 case .polar:
                     Text("Polar rendering not implemented yet")

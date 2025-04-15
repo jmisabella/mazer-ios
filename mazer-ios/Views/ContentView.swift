@@ -43,6 +43,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             if mazeGenerated {
+               
                 MazeRenderView(
                     mazeGenerated: $mazeGenerated,
                     showSolution: $showSolution,

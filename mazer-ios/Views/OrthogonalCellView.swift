@@ -19,7 +19,14 @@ struct OrthogonalCellView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(backgroundColor)
+                .fill(cellBackgroundColor(
+                                    for: cell,
+                                    showSolution: showSolution,
+                                    showHeatMap: showHeatMap,
+                                    maxDistance: maxDistance,
+                                    selectedPalette: selectedPalette,
+                                    isRevealedSolution: isRevealedSolution
+                                ))
                 .frame(width: size, height: size)
 
             Path { path in
@@ -45,38 +52,11 @@ struct OrthogonalCellView: View {
                     path.addLine(to: topLeft)
                 }
             }
-            .stroke(Color.black, lineWidth: strokeWidth(for: size))
+            .stroke(Color.black, lineWidth: cellStrokeWidth(for: size))
             .frame(width: size, height: size)
             .clipped()
 
         }
     }
 
-    private var backgroundColor: Color {
-        if cell.isStart {
-            return .blue
-        } else if cell.isGoal {
-            return .red
-        } else if cell.isVisited {
-            return .green
-        } else if isRevealedSolution {
-            return .solutionHighlight
-        } else if showHeatMap && maxDistance > 0 {
-            let index = min(9, (cell.distance * 10) / maxDistance)
-            return selectedPalette.shades[index].asColor
-        } else {
-            return .white
-        }
-    }
-
-    private func strokeWidth(for size: CGFloat) -> CGFloat {
-        switch size {
-        case ..<9:
-            return 1.0
-        case ..<14:
-            return 1.5
-        default:
-            return 2.5
-        }
-    }
 }

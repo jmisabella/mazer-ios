@@ -27,6 +27,10 @@
 		00C341EB2D9F57910077691B /* MazeSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C341EA2D9F578E0077691B /* MazeSize.swift */; };
 		00DD0B542DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0B532DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift */; };
 		00DD0DBF2DAC3C8C00C20B2E /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DD0D132DAC3C7E00C20B2E /* libmazer.a */; };
+		00DD0DC22DAC931C00C20B2E /* MazeCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0DC12DAC92F800C20B2E /* MazeCellStyle.swift */; };
+		00DD0DC42DAC9C8A00C20B2E /* DeltaCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0DC32DAC9C8A00C20B2E /* DeltaCellView.swift */; };
+		00DD0DC62DAC9CFE00C20B2E /* DeltaMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0DC52DAC9CFE00C20B2E /* DeltaMazeView.swift */; };
+		00DD0DC82DAC9DBE00C20B2E /* DeltaDirectionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0DC72DAC9DBE00C20B2E /* DeltaDirectionControlView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1142,6 +1146,10 @@
 		00DD0DBC2DAC3C7E00C20B2E /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		00DD0DBD2DAC3C7E00C20B2E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		00DD0DC02DAC3CA000C20B2E /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
+		00DD0DC12DAC92F800C20B2E /* MazeCellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeCellStyle.swift; sourceTree = "<group>"; };
+		00DD0DC32DAC9C8A00C20B2E /* DeltaCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltaCellView.swift; sourceTree = "<group>"; };
+		00DD0DC52DAC9CFE00C20B2E /* DeltaMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltaMazeView.swift; sourceTree = "<group>"; };
+		00DD0DC72DAC9DBE00C20B2E /* DeltaDirectionControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltaDirectionControlView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1226,9 +1234,12 @@
 				00C33F642D98C84C0077691B /* MazeRequestView.swift */,
 				00C33F5F2D98C84C0077691B /* ContentView.swift */,
 				00C341E42D9F07040077691B /* MazeRenderView.swift */,
-				00C341E62D9F505D0077691B /* OrthogonalMazeView.swift */,
 				00C341E82D9F50BE0077691B /* OrthogonalCellView.swift */,
+				00C341E62D9F505D0077691B /* OrthogonalMazeView.swift */,
 				00DD0B532DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift */,
+				00DD0DC32DAC9C8A00C20B2E /* DeltaCellView.swift */,
+				00DD0DC52DAC9CFE00C20B2E /* DeltaMazeView.swift */,
+				00DD0DC72DAC9DBE00C20B2E /* DeltaDirectionControlView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1236,6 +1247,7 @@
 		00C33F6F2D98C9010077691B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				00DD0DC12DAC92F800C20B2E /* MazeCellStyle.swift */,
 				006F3F3F2DA08D7D00627BD4 /* Color+Hex.swift */,
 				00C33F632D98C84C0077691B /* MazeRequestValidator.swift */,
 			);
@@ -3453,6 +3465,7 @@
 			files = (
 				00C341E72D9F505D0077691B /* OrthogonalMazeView.swift in Sources */,
 				00C341EB2D9F57910077691B /* MazeSize.swift in Sources */,
+				00DD0DC22DAC931C00C20B2E /* MazeCellStyle.swift in Sources */,
 				00C341E92D9F50BE0077691B /* OrthogonalCellView.swift in Sources */,
 				00C33F7B2D9B86ED0077691B /* MazeCell.swift in Sources */,
 				00C33F772D98CC800077691B /* MazeType.swift in Sources */,
@@ -3460,11 +3473,14 @@
 				00C33F692D98C84C0077691B /* mazer_iosApp.swift in Sources */,
 				00C33F762D98CC790077691B /* MazeRequest.swift in Sources */,
 				00C341E52D9F07040077691B /* MazeRenderView.swift in Sources */,
+				00DD0DC42DAC9C8A00C20B2E /* DeltaCellView.swift in Sources */,
 				006F3F402DA08D8600627BD4 /* Color+Hex.swift in Sources */,
+				00DD0DC62DAC9CFE00C20B2E /* DeltaMazeView.swift in Sources */,
 				00C33F6A2D98C84C0077691B /* MazeRequestValidator.swift in Sources */,
 				00C33F6B2D98C84C0077691B /* MazeRequestView.swift in Sources */,
 				00C33F752D98CC730077691B /* MazeRequestError.swift in Sources */,
 				00C33F782D98CC860077691B /* MazeAlgorithm.swift in Sources */,
+				00DD0DC82DAC9DBE00C20B2E /* DeltaDirectionControlView.swift in Sources */,
 				006F3F392D9F6EC200627BD4 /* HeatMapPalette.swift in Sources */,
 				00DD0B542DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift in Sources */,
 				00C33F792D98CC8E0077691B /* Coordinates.swift in Sources */,
