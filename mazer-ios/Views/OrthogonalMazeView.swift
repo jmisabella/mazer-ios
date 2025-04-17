@@ -7,6 +7,34 @@
 
 import SwiftUI
 
+//struct OrthogonalMazeView: View {
+//  @Binding var selectedPalette: HeatMapPalette
+//  let cells: [MazeCell]
+//  let showSolution: Bool
+//  let showHeatMap: Bool
+//
+//  var body: some View {
+//    MazeGridView(
+//      selectedPalette: $selectedPalette,
+//      cells: cells,
+//      showSolution: showSolution,
+//      showHeatMap: showHeatMap
+//    ) { cell, size, isRevealed, shade in
+//      OrthogonalCellView(
+//        cell: cell,
+//        size: size,
+//        showSolution: showSolution,
+//        showHeatMap: showHeatMap,
+//        selectedPalette: selectedPalette,
+//        maxDistance: cells.map(\.distance).max() ?? 1,
+//        isRevealedSolution: isRevealed
+//      )
+//    }
+//  }
+//}
+
+
+
 struct OrthogonalMazeView: View {
     @Binding var selectedPalette: HeatMapPalette
     @State private var revealedSolutionPath: Set<Coordinates> = []
@@ -65,26 +93,6 @@ struct OrthogonalMazeView: View {
             }
         }
     }
-    
-//    func animateSolutionPathReveal() {
-//        // Clear any existing work items.
-//        pendingWorkItems.removeAll()
-//        
-//        // Get solution cells in order of distance from start
-//        let pathCells = cells
-//            .filter { $0.onSolutionPath }
-//            .sorted(by: { $0.distance < $1.distance })
-//        
-//        for (index, cell) in pathCells.enumerated() {
-//            let workItem = DispatchWorkItem {
-//                withAnimation(.easeInOut(duration: 0.2)) {
-//                    _ = revealedSolutionPath.insert(Coordinates(x: cell.x, y: cell.y))
-//                }
-//            }
-//            pendingWorkItems.append(workItem)
-//            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.015, execute: workItem)
-//        }
-//    }
     
     func cellSize() -> CGFloat {
         let width = (cells.map { $0.x }.max() ?? 0) + 1

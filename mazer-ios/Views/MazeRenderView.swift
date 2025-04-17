@@ -61,14 +61,22 @@ struct MazeRenderView: View {
         case .delta:
             let cellSize = computeCellSize()  // Compute as shown above.
                 let maxDistance = mazeCells.map { $0.distance }.max() ?? 1
-                DeltaMazeView(
-                    cells: mazeCells,
-                    cellSize: cellSize,
-                    showSolution: showSolution,
-                    showHeatMap: showHeatMap,
-                    selectedPalette: selectedPalette, // pass wrapped value
-                    maxDistance: maxDistance
-                )
+//                DeltaMazeView(
+//                    cells: mazeCells,
+//                    cellSize: cellSize,
+//                    showSolution: showSolution,
+//                    showHeatMap: showHeatMap,
+//                    selectedPalette: $selectedPalette, // pass wrapped value
+//                    maxDistance: maxDistance
+//                )
+            DeltaMazeView(
+                cells: mazeCells,
+                cellSize: cellSize,
+                showSolution: showSolution,
+                showHeatMap: showHeatMap,
+                selectedPalette: selectedPalette, // pass wrapped value
+                maxDistance: maxDistance
+            )
                 .id(mazeID)
 //            Text("Delta rendering not implemented yet")
         case .polar:
@@ -140,71 +148,69 @@ struct MazeRenderView: View {
                     mazeContent
                 }
                 .gesture(
-                                DragGesture(minimumDistance: 10)
-                                    .onEnded { value in
-                                        if mazeType == .orthogonal {
-                                            let hx = value.translation.width
-                                            let hy = value.translation.height
-                                            let dim = cellSize()
-                                            if abs(hx) > abs(hy) {
-                                                let count = max(1, Int(round(abs(hx) / dim)))
-                                                let dir = hx < 0 ? "West" : "East"
-                                                for i in 0..<count {
-                                                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
-                                                        moveAction(dir)
-                                                    }
-                                                }
-                                            } else {
-                                                let count = max(1, Int(round(abs(hy) / dim)))
-                                                let dir = hy < 0 ? "North" : "South"
-                                                for i in 0..<count {
-                                                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
-                                                        moveAction(dir)
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        else if mazeType == .delta {
-//                                            let tx = value.translation.width
-//                                            let ty = value.translation.height
-                                            // purposefully inverted height
-                                            let tx = value.translation.width
-                                            let ty = -value.translation.height
-                                            
-                                            guard tx != 0 || ty != 0 else { return }
-
-                                            // angle in [–π, π], shift by 22.5°
-                                            let angle = atan2(ty, tx)
-                                            var shifted = angle + (.pi / 8)
-                                            if shifted < 0 { shifted += 2 * .pi }
-
-                                            // 8 equal 45° slices
-                                            let sector = Int(floor(shifted / (.pi / 4))) % 8
-                                            let directions = [
-                                                "Right",      // 0
-                                                "UpperRight", // 1
-                                                "Up",         // 2
-                                                "UpperLeft",  // 3
-                                                "Left",       // 4
-                                                "LowerLeft",  // 5
-                                                "Down",       // 6
-                                                "LowerRight"  // 7
-                                            ]
-                                            let chosen = directions[sector]
-
-                                            // multiple moves by drag length
-                                            let mag = sqrt(tx*tx + ty*ty)
-                                            let dim = cellSize()
-                                            let count = max(1, Int(round(mag / dim)))
-                                            for i in 0..<count {
-                                                DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
-                                                    moveAction(chosen)
-                                                }
-                                            }
+                    DragGesture(minimumDistance: 10)
+                        .onEnded { value in
+                            if mazeType == .orthogonal {
+                                let hx = value.translation.width
+                                let hy = value.translation.height
+                                let dim = cellSize()
+                                if abs(hx) > abs(hy) {
+                                    let count = max(1, Int(round(abs(hx) / dim)))
+                                    let dir = hx < 0 ? "West" : "East"
+                                    for i in 0..<count {
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+                                            moveAction(dir)
                                         }
                                     }
-                            )
-
+                                } else {
+                                    let count = max(1, Int(round(abs(hy) / dim)))
+                                    let dir = hy < 0 ? "North" : "South"
+                                    for i in 0..<count {
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+                                            moveAction(dir)
+                                        }
+                                    }
+                                }
+                            }
+                            else if mazeType == .delta {
+                                // purposefully negated (inverted) height so it would properly work in atan2's trig math
+                                let tx = value.translation.width
+                                let ty = -value.translation.height
+                                
+                                guard tx != 0 || ty != 0 else { return }
+                                
+                                // angle in [–π, π], shift by 22.5°
+                                let angle = atan2(ty, tx)
+                                var shifted = angle + (.pi / 8)
+                                if shifted < 0 { shifted += 2 * .pi }
+                                
+                                // 8 equal 45° slices
+                                let sector = Int(floor(shifted / (.pi / 4))) % 8
+                                let directions = [
+                                    "Right",      // 0
+                                    "UpperRight", // 1
+                                    "Up",         // 2
+                                    "UpperLeft",  // 3
+                                    "Left",       // 4
+                                    "LowerLeft",  // 5
+                                    "Down",       // 6
+                                    "LowerRight"  // 7
+                                ]
+                                let chosen = directions[sector]
+                                
+                                // multiple moves by drag length
+                                let mag = sqrt(tx*tx + ty*ty)
+                                let dim = cellSize()
+                                let count = max(1, Int(round(mag / dim)))
+                                for i in 0..<count {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+                                        moveAction(chosen)
+                                    }
+                                }
+                            }
+                        }
+                )
+                
             } else {
                 // For other maze types, no gesture is attached.
                 ZStack {
