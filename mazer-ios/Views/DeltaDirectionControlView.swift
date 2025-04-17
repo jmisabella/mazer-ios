@@ -15,44 +15,35 @@ struct DeltaDirectionControlView: View {
         VStack(spacing: 4) {
             // Top row: UpperLeft, Up, UpperRight
             HStack(spacing: 4) {
-                directionButton(for: "UpperLeft", systemImage: "arrow.up.left", label: "Move Upper Left")
-                directionButton(for: "Up", systemImage: "arrow.up", label: "Move Up")
+                directionButton(for: "UpperLeft",  systemImage: "arrow.up.left",  label: "Move Upper Left")
+                directionButton(for: "Up",         systemImage: "arrow.up",       label: "Move Up")
                 directionButton(for: "UpperRight", systemImage: "arrow.up.right", label: "Move Upper Right")
+            }
+            // Middle row: Left, Right
+            HStack(spacing: 4) {
+                directionButton(for: "Left",  systemImage: "arrow.left",  label: "Move Left")
+                directionButton(for: "Right", systemImage: "arrow.right", label: "Move Right")
             }
             // Bottom row: LowerLeft, Down, LowerRight
             HStack(spacing: 4) {
-                directionButton(for: "LowerLeft", systemImage: "arrow.down.left", label: "Move Lower Left")
-                directionButton(for: "Down", systemImage: "arrow.down", label: "Move Down")
+                directionButton(for: "LowerLeft",  systemImage: "arrow.down.left",  label: "Move Lower Left")
+                directionButton(for: "Down",       systemImage: "arrow.down",        label: "Move Down")
                 directionButton(for: "LowerRight", systemImage: "arrow.down.right", label: "Move Lower Right")
             }
         }
         .padding(1)
-        // Optionally, you can retain a gesture if you want swipes to trigger a move.
-        // Note that when all six directions are visible, the buttons provide a clear target,
-        // so you may even decide to remove the gesture.
+        // Keep your existing gesture if you still want swipes:
         .gesture(
             DragGesture(minimumDistance: 10)
                 .onEnded { value in
                     let horizontalAmount = value.translation.width
-                    let verticalAmount = value.translation.height
-                    // This simple logic picks vertical moves if vertical is dominant,
-                    // otherwise uses horizontal to decide between left or right.
+                    let verticalAmount   = value.translation.height
                     if abs(verticalAmount) > abs(horizontalAmount) {
-                        // Vertical gesture
-                        if verticalAmount < 0 {
-                            moveAction("Up")
-                        } else {
-                            moveAction("Down")
-                        }
+                        // Vertical swipe
+                        moveAction(verticalAmount < 0 ? "Up" : "Down")
                     } else {
-                        // Horizontal gesture
-                        if horizontalAmount < 0 {
-                            // You may choose one of the leftward options.
-                            moveAction("UpperLeft")
-                        } else {
-                            // Or one of the rightward options.
-                            moveAction("UpperRight")
-                        }
+                        // Horizontal swipe: pick a diagonal as a fallback
+                        moveAction(horizontalAmount < 0 ? "UpperLeft" : "UpperRight")
                     }
                 }
         )
@@ -78,178 +69,3 @@ struct DeltaDirectionControlView: View {
         .accessibilityLabel(label)
     }
 }
-
-struct DeltaDirectionControlView_Previews: PreviewProvider {
-    static var previews: some View {
-        DeltaDirectionControlView { direction in
-            print("Move: \(direction)")
-        }
-        .previewLayout(.sizeThatFits)
-        .padding()
-    }
-}
-
-
-//
-//struct DeltaDirectionControlView: View {
-//    /// Closure for handling move actions
-//    let moveAction: (String) -> Void
-//    /// Indicates whether the current active cell has a Normal orientation (true)
-//    /// or an Inverted orientation (false)
-//    let isNormal: Bool
-//
-//    var body: some View {
-//        VStack(spacing: 1) {
-//            if isNormal {
-//                // For Normal cells: two directional buttons in the top row, one in the bottom.
-//                HStack(spacing: 4) {
-//                    Button(action: { moveAction("UpperLeft") }) {
-//                        Image(systemName: "arrow.up.left")
-//                            .font(.system(size: 14, weight: .medium))
-//                            .padding(.horizontal, 8)
-//                            .padding(.vertical, 1)
-//                            .background(
-//                                Capsule(style: .continuous)
-//                                    .fill(Color.blue.opacity(0.2))
-//                            )
-//                    }
-//                    .accessibilityLabel("Move Upper Left")
-//                    
-//                    Button(action: { moveAction("UpperRight") }) {
-//                        Image(systemName: "arrow.up.right")
-//                            .font(.system(size: 14, weight: .medium))
-//                            .padding(.horizontal, 8)
-//                            .padding(.vertical, 1)
-//                            .background(
-//                                Capsule(style: .continuous)
-//                                    .fill(Color.blue.opacity(0.2))
-//                            )
-//                    }
-//                    .accessibilityLabel("Move Upper Right")
-//                }
-//                
-//                HStack {
-//                    Spacer()
-//                    Button(action: { moveAction("Down") }) {
-//                        Image(systemName: "arrow.down")
-//                            .font(.system(size: 16, weight: .medium))
-//                            .padding(.horizontal, 8)
-//                            .padding(.vertical, 2)
-//                            .background(
-//                                Capsule(style: .continuous)
-//                                    .fill(Color.blue.opacity(0.2))
-//                            )
-//                    }
-//                    .accessibilityLabel("Move Down")
-//                    Spacer()
-//                }
-//            } else {
-//                // For Inverted cells: one button in the top row, two in the bottom.
-//                HStack {
-//                    Spacer()
-//                    Button(action: { moveAction("Up") }) {
-//                        Image(systemName: "arrow.up")
-//                            .font(.system(size: 16, weight: .medium))
-//                            .padding(.horizontal, 8)
-//                            .padding(.vertical, 2)
-//                            .background(
-//                                Capsule(style: .continuous)
-//                                    .fill(Color.blue.opacity(0.2))
-//                            )
-//                    }
-//                    .accessibilityLabel("Move Up")
-//                    Spacer()
-//                }
-//                
-//                HStack(spacing: 4) {
-//                    Button(action: { moveAction("LowerLeft") }) {
-//                        Image(systemName: "arrow.down.left")
-//                            .font(.system(size: 14, weight: .medium))
-//                            .padding(.horizontal, 8)
-//                            .padding(.vertical, 1)
-//                            .background(
-//                                Capsule(style: .continuous)
-//                                    .fill(Color.blue.opacity(0.2))
-//                            )
-//                    }
-//                    .accessibilityLabel("Move Lower Left")
-//                    
-//                    Button(action: { moveAction("LowerRight") }) {
-//                        Image(systemName: "arrow.down.right")
-//                            .font(.system(size: 14, weight: .medium))
-//                            .padding(.horizontal, 8)
-//                            .padding(.vertical, 1)
-//                            .background(
-//                                Capsule(style: .continuous)
-//                                    .fill(Color.blue.opacity(0.2))
-//                            )
-//                    }
-//                    .accessibilityLabel("Move Lower Right")
-//                }
-//            }
-//        }
-//        .padding(1)
-//        // Add a drag gesture so that the user can swipe in the Delta control area
-//        .gesture(
-//            DragGesture(minimumDistance: 10)
-//                .onEnded { value in
-//                    if isNormal {
-//                        // For Normal cells:
-//                        // If the vertical movement is downward then interpret as "Down".
-//                        // Otherwise, if upward: if horizontal is negative, choose "UpperLeft", else "UpperRight".
-//                        let horizontalAmount = value.translation.width
-//                        let verticalAmount = value.translation.height
-//                        if verticalAmount > 0 {
-//                            moveAction("Down")
-//                        } else {
-//                            if horizontalAmount < 0 {
-//                                moveAction("UpperLeft")
-//                            } else {
-//                                moveAction("UpperRight")
-//                            }
-//                        }
-//                    } else {
-//                        // For Inverted cells:
-//                        // If the vertical movement is upward then interpret as "Up".
-//                        // Otherwise, if downward: if horizontal is negative, choose "LowerLeft", else "LowerRight".
-//                        let horizontalAmount = value.translation.width
-//                        let verticalAmount = value.translation.height
-//                        if verticalAmount < 0 {
-//                            moveAction("Up")
-//                        } else {
-//                            if horizontalAmount < 0 {
-//                                moveAction("LowerLeft")
-//                            } else {
-//                                moveAction("LowerRight")
-//                            }
-//                        }
-//                    }
-//                }
-//        )
-//    }
-//}
-//
-//struct DeltaDirectionControlView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        VStack {
-//            Text("Normal Orientation")
-//            DeltaDirectionControlView(
-//                moveAction: { direction in
-//                    print("Delta Normal move: \(direction)")
-//                },
-//                isNormal: true
-//            )
-//            
-//            Divider()
-//            
-//            Text("Inverted Orientation")
-//            DeltaDirectionControlView(
-//                moveAction: { direction in
-//                    print("Delta Inverted move: \(direction)")
-//                },
-//                isNormal: false
-//            )
-//        }
-//        .padding()
-//    }
-//}

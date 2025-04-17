@@ -140,97 +140,71 @@ struct MazeRenderView: View {
                     mazeContent
                 }
                 .gesture(
-                    DragGesture(minimumDistance: 10)
-                        .onEnded { value in
-                            if mazeType == .orthogonal {
-                                // Existing orthogonal gesture logic:
-                                let horizontalAmount = value.translation.width
-                                let verticalAmount = value.translation.height
-                                let cellDimension = cellSize() // your function that computes cell size
-                                if abs(horizontalAmount) > abs(verticalAmount) {
-                                    let movesCount = max(1, Int(round(abs(horizontalAmount) / cellDimension)))
-                                    let direction = horizontalAmount < 0 ? "West" : "East"
-                                    for i in 0..<movesCount {
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
-                                            moveAction(direction)
+                                DragGesture(minimumDistance: 10)
+                                    .onEnded { value in
+                                        if mazeType == .orthogonal {
+                                            let hx = value.translation.width
+                                            let hy = value.translation.height
+                                            let dim = cellSize()
+                                            if abs(hx) > abs(hy) {
+                                                let count = max(1, Int(round(abs(hx) / dim)))
+                                                let dir = hx < 0 ? "West" : "East"
+                                                for i in 0..<count {
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+                                                        moveAction(dir)
+                                                    }
+                                                }
+                                            } else {
+                                                let count = max(1, Int(round(abs(hy) / dim)))
+                                                let dir = hy < 0 ? "North" : "South"
+                                                for i in 0..<count {
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+                                                        moveAction(dir)
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        else if mazeType == .delta {
+//                                            let tx = value.translation.width
+//                                            let ty = value.translation.height
+                                            // purposefully inverted height
+                                            let tx = value.translation.width
+                                            let ty = -value.translation.height
+                                            
+                                            guard tx != 0 || ty != 0 else { return }
+
+                                            // angle in [–π, π], shift by 22.5°
+                                            let angle = atan2(ty, tx)
+                                            var shifted = angle + (.pi / 8)
+                                            if shifted < 0 { shifted += 2 * .pi }
+
+                                            // 8 equal 45° slices
+                                            let sector = Int(floor(shifted / (.pi / 4))) % 8
+                                            let directions = [
+                                                "Right",      // 0
+                                                "UpperRight", // 1
+                                                "Up",         // 2
+                                                "UpperLeft",  // 3
+                                                "Left",       // 4
+                                                "LowerLeft",  // 5
+                                                "Down",       // 6
+                                                "LowerRight"  // 7
+                                            ]
+                                            let chosen = directions[sector]
+
+                                            // multiple moves by drag length
+                                            let mag = sqrt(tx*tx + ty*ty)
+                                            let dim = cellSize()
+                                            let count = max(1, Int(round(mag / dim)))
+                                            for i in 0..<count {
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+                                                    moveAction(chosen)
+                                                }
+                                            }
                                         }
                                     }
-                                } else {
-                                    let movesCount = max(1, Int(round(abs(verticalAmount) / cellDimension)))
-                                    let direction = verticalAmount < 0 ? "North" : "South"
-                                    for i in 0..<movesCount {
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
-                                            moveAction(direction)
-                                        }
-                                    }
-                                }
-                            } else if mazeType == .delta {
-                                // Delta-specific gesture logic using angle sectors:
-                                let tx = value.translation.width
-                                let ty = value.translation.height
-                                // If there's no movement, do nothing.
-                                if tx == 0 && ty == 0 { return }
-                                
-                                // Compute the angle of the drag (in radians).
-                                let angle = atan2(ty, tx)
-                                // Shift the angle by π/6 (30°) so that boundaries align with our sectors.
-                                let shiftedAngle = angle + (.pi/6)
-                                // Normalize to [0, 2π).
-                                var normalizedAngle = shiftedAngle
-                                if normalizedAngle < 0 {
-                                    normalizedAngle += 2 * .pi
-                                }
-                                // Divide the circle into 6 equal sectors (each π/3 radians wide).
-                                let sectorIndex = Int(floor(normalizedAngle / (.pi/3)))
-                                let directions = ["UpperRight", "Up", "UpperLeft", "LowerLeft", "Down", "LowerRight"]
-                                let chosenDirection = directions[sectorIndex]
-                                
-                                // Determine how many moves to issue based on the magnitude of the translation.
-                                let translationMagnitude = sqrt(tx * tx + ty * ty)
-                                let cellDimension = cellSize()  // same cellSize function from above
-                                let movesCount = max(1, Int(round(translationMagnitude / cellDimension)))
-                                for i in 0..<movesCount {
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
-                                        moveAction(chosenDirection)
-                                    }
-                                }
-                            }
-                        }
-                )
-//            if mazeType == .orthogonal {
-//                // For orthogonal mazes, wrap the maze content in a ZStack with an attached drag gesture.
-//                ZStack {
-//                    mazeContent
-//                }
-//                .gesture(
-//                    DragGesture(minimumDistance: 10)
-//                        .onEnded { value in
-//                            let horizontalAmount = value.translation.width
-//                            let verticalAmount = value.translation.height
-//                            
-//                            // Calculate the cellSize from the maze grid.
-//                            let cellDimension = cellSize()
-//                            
-//                            // Depending on the dominant gesture axis, determine the number of moves.
-//                            if abs(horizontalAmount) > abs(verticalAmount) {
-//                                let movesCount = max(1, Int(round(abs(horizontalAmount) / cellDimension)))
-//                                let direction = horizontalAmount < 0 ? "West" : "East"
-//                                for i in 0..<movesCount {
-//                                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
-//                                        moveAction(direction)
-//                                    }
-//                                }
-//                            } else {
-//                                let movesCount = max(1, Int(round(abs(verticalAmount) / cellDimension)))
-//                                let direction = verticalAmount < 0 ? "North" : "South"
-//                                for i in 0..<movesCount {
-//                                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
-//                                        moveAction(direction)
-//                                    }
-//                                }
-//                            }
-//                        }
-//                )
+                            )
+
             } else {
                 // For other maze types, no gesture is attached.
                 ZStack {
