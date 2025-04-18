@@ -82,7 +82,7 @@ struct DeltaMazeView: View {
                                 selectedPalette: selectedPalette,
                                 maxDistance: maxDistance,
                                 // your logic with Coordinates; for now, we pass false
-                                isRevealedSolution: false
+                                isRevealedSolution: revealedSolutionPath.contains(Coordinates(x: cell.x, y: cell.y))
                             )
                         } else {
                             // If no cell is found at this location, you can show an empty view.
