@@ -133,7 +133,7 @@ struct DeltaMazeView: View {
         
         // Use cell size to determine an appropriate delay multiplier.
         // For example, if cellSize is smaller than some threshold, reduce the delay.
-        let baseDelay: Double = 0.015
+        let baseDelay: Double = 0.6
 //        let delayMultiplier = min(1.0, cellSize() / 30.0)  // adjust 30.0 as needed
 //        let delayMultiplier = min(1.0, cellSize() / 50.0)  // adjust denominator as needed
         let delayMultiplier = min(1.0, cellSize / 50.0)  // adjust denominator as needed
