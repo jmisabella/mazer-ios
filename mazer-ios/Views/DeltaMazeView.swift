@@ -120,35 +120,37 @@ struct DeltaMazeView: View {
         }
     }
     
-    
-    
     func animateSolutionPathReveal() {
-        // Clear any existing work items.
+        pendingWorkItems.forEach { $0.cancel() }
         pendingWorkItems.removeAll()
-        
-        // Get solution cells in order of distance from start
-        let pathCells = cells
-            .filter { $0.onSolutionPath }
-            .sorted(by: { $0.distance < $1.distance })
-        
-        // Use cell size to determine an appropriate delay multiplier.
-        // For example, if cellSize is smaller than some threshold, reduce the delay.
-        let baseDelay: Double = 0.6
-//        let delayMultiplier = min(1.0, cellSize() / 30.0)  // adjust 30.0 as needed
-//        let delayMultiplier = min(1.0, cellSize() / 50.0)  // adjust denominator as needed
-        let delayMultiplier = min(1.0, cellSize / 50.0)  // adjust denominator as needed
-        let adjustedDelay = baseDelay * delayMultiplier
-        
-        for (index, cell) in pathCells.enumerated() {
-            let workItem = DispatchWorkItem {
-                withAnimation(.easeInOut(duration: 0.2 * delayMultiplier)) {
-                    _ = revealedSolutionPath.insert(Coordinates(x: cell.x, y: cell.y))
+        revealedSolutionPath.removeAll()
+
+        let pathCells = cells.filter(\.onSolutionPath)
+                            .sorted { $0.distance < $1.distance }
+        let totalDuration: Double = 1.35
+        let count = pathCells.count
+        let stepDelay = totalDuration / Double(max(count, 1))
+
+        for (i, cell) in pathCells.enumerated() {
+            let coord = Coordinates(x: cell.x, y: cell.y)
+            let item = DispatchWorkItem(
+                qos: .unspecified,
+                flags: [],
+                block: {
+                    withAnimation(.linear(duration: stepDelay)) {
+                        _ = revealedSolutionPath.insert(coord)
+                    }
                 }
-            }
-            pendingWorkItems.append(workItem)
-            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * adjustedDelay, execute: workItem)
+            )
+            pendingWorkItems.append(item)
+            DispatchQueue.main.asyncAfter(
+                deadline: .now() + Double(i) * stepDelay,
+                execute: item
+            )
         }
+
     }
+
 
     
     func shadeColor(for cell: MazeCell, maxDistance: Int) -> Color {

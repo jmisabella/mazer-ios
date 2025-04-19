@@ -20,6 +20,15 @@ struct MazeRenderView: View {
     // handle move actions (buttons and later swipe gestures)
     let moveAction: (String) -> Void
     
+    /// Always clear the solution overlay before making a move.
+    private var performMove: (String) -> Void {
+        { dir in
+            showSolution = false
+            moveAction(dir)
+        }
+    }
+
+    
     func computeCellSize() -> CGFloat {
         let columns = (mazeCells.map { $0.x }.max() ?? 0) + 1
         return UIScreen.main.bounds.width / CGFloat(columns) * 1.35
@@ -29,13 +38,13 @@ struct MazeRenderView: View {
     private var directionControlView: some View {
         switch mazeType {
         case .orthogonal:
-            OrthogonalDirectionControlView(moveAction: moveAction)
+            OrthogonalDirectionControlView(moveAction: performMove)
                 .id(mazeID) // Force view recreation when mazeID changes
                 .padding(.top, 3)
         case .sigma:
             Text("Sigma rendering not implemented yet")
         case .delta:
-            DeltaDirectionControlView(moveAction: moveAction)
+            DeltaDirectionControlView(moveAction: performMove)
                 .id(mazeID)
                 .padding(.top, 3)
         case .polar:
@@ -159,7 +168,7 @@ struct MazeRenderView: View {
                                     let dir = hx < 0 ? "West" : "East"
                                     for i in 0..<count {
                                         DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
-                                            moveAction(dir)
+                                            performMove(dir)
                                         }
                                     }
                                 } else {
@@ -167,7 +176,7 @@ struct MazeRenderView: View {
                                     let dir = hy < 0 ? "North" : "South"
                                     for i in 0..<count {
                                         DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
-                                            moveAction(dir)
+                                            performMove(dir)
                                         }
                                     }
                                 }
@@ -204,7 +213,7 @@ struct MazeRenderView: View {
                                 let count = max(1, Int(round(mag / dim)))
                                 for i in 0..<count {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
-                                        moveAction(chosen)
+                                        performMove(chosen)
                                     }
                                 }
                             }
@@ -217,7 +226,9 @@ struct MazeRenderView: View {
                     mazeContent
                 }
             }
+
             
+
             directionControlView
             
         }
