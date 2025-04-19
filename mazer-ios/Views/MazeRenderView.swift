@@ -170,7 +170,7 @@ struct MazeRenderView: View {
                                 let dim = cellSize()
                                 if abs(hx) > abs(hy) {
                                     let count = max(1, Int(round(abs(hx) / dim)))
-                                    let dir = hx < 0 ? "West" : "East"
+                                    let dir = hx < 0 ? "Left" : "Right"
                                     for i in 0..<count {
                                         DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
                                             performMove(dir)
@@ -178,7 +178,7 @@ struct MazeRenderView: View {
                                     }
                                 } else {
                                     let count = max(1, Int(round(abs(hy) / dim)))
-                                    let dir = hy < 0 ? "North" : "South"
+                                    let dir = hy < 0 ? "Up" : "Down"
                                     for i in 0..<count {
                                         DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
                                             performMove(dir)

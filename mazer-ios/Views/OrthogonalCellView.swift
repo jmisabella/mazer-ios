@@ -35,19 +35,19 @@ struct OrthogonalCellView: View {
                 let bottomLeft = CGPoint(x: 0, y: size)
                 let bottomRight = CGPoint(x: size, y: size)
 
-                if !cell.linked.contains("North") {
+                if !cell.linked.contains("Up") {
                     path.move(to: topLeft)
                     path.addLine(to: topRight)
                 }
-                if !cell.linked.contains("East") {
+                if !cell.linked.contains("Right") {
                     path.move(to: topRight)
                     path.addLine(to: bottomRight)
                 }
-                if !cell.linked.contains("South") {
+                if !cell.linked.contains("Down") {
                     path.move(to: bottomRight)
                     path.addLine(to: bottomLeft)
                 }
-                if !cell.linked.contains("West") {
+                if !cell.linked.contains("Left") {
                     path.move(to: bottomLeft)
                     path.addLine(to: topLeft)
                 }

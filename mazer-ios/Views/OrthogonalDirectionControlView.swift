@@ -15,7 +15,7 @@ struct OrthogonalDirectionControlView: View {
             // Up button row: centered horizontally.
             HStack {
                 Spacer()
-                Button(action: { moveAction("North") }) {
+                Button(action: { moveAction("Up") }) {
                     Image(systemName: "arrow.up")
                         .font(.system(size: 14, weight: .medium))
                         .padding(.horizontal, 8)
@@ -31,7 +31,7 @@ struct OrthogonalDirectionControlView: View {
             
             // Middle row with left and right buttons.
             HStack(spacing: 4) { // Use a bit of horizontal spacing.
-                Button(action: { moveAction("West") }) {
+                Button(action: { moveAction("Left") }) {
                     Image(systemName: "arrow.left")
                         .font(.system(size: 14, weight: .medium))
                         .padding(.horizontal, 8)
@@ -43,7 +43,7 @@ struct OrthogonalDirectionControlView: View {
                 }
                 .accessibilityLabel("Move Left")
                 
-                Button(action: { moveAction("East") }) {
+                Button(action: { moveAction("Right") }) {
                     Image(systemName: "arrow.right")
                         .font(.system(size: 14, weight: .medium))
                         .padding(.horizontal, 8)
@@ -59,7 +59,7 @@ struct OrthogonalDirectionControlView: View {
             // Down button row: centered horizontally.
             HStack {
                 Spacer()
-                Button(action: { moveAction("South") }) {
+                Button(action: { moveAction("Down") }) {
                     Image(systemName: "arrow.down")
                         .font(.system(size: 16, weight: .medium))
                         .padding(.horizontal, 8)
@@ -83,15 +83,15 @@ struct OrthogonalDirectionControlView: View {
                     // Check whether the swipe was primarily horizontal or vertical.
                     if abs(horizontalAmount) > abs(verticalAmount) {
                         if horizontalAmount < 0 {
-                            moveAction("West")
+                            moveAction("Left")
                         } else {
-                            moveAction("East")
+                            moveAction("Right")
                         }
                     } else {
                         if verticalAmount < 0 {
-                            moveAction("North")
+                            moveAction("Up")
                         } else {
-                            moveAction("South")
+                            moveAction("Down")
                         }
                     }
                 }
