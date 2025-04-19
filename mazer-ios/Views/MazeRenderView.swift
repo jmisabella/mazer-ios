@@ -28,11 +28,24 @@ struct MazeRenderView: View {
         }
     }
 
-    
     func computeCellSize() -> CGFloat {
         let columns = (mazeCells.map { $0.x }.max() ?? 0) + 1
         return UIScreen.main.bounds.width / CGFloat(columns) * 1.35
     }
+    
+    var columns: Int {
+        (mazeCells.map { $0.x }.max() ?? 0) + 1
+    }
+    var rows: Int {
+        (mazeCells.map { $0.y }.max() ?? 0) + 1
+    }
+    
+    func computeDeltaCellSize() -> CGFloat {
+      let padding: CGFloat = 44 // or however much you want on each side
+      let available = UIScreen.main.bounds.width - padding*2
+      return available * 2 / (CGFloat(columns) + 1)
+    }
+
     
     @ViewBuilder
     private var directionControlView: some View {
@@ -68,16 +81,9 @@ struct MazeRenderView: View {
         case .sigma:
             Text("Sigma rendering not implemented yet")
         case .delta:
-            let cellSize = computeCellSize()  // Compute as shown above.
-                let maxDistance = mazeCells.map { $0.distance }.max() ?? 1
-//                DeltaMazeView(
-//                    cells: mazeCells,
-//                    cellSize: cellSize,
-//                    showSolution: showSolution,
-//                    showHeatMap: showHeatMap,
-//                    selectedPalette: $selectedPalette, // pass wrapped value
-//                    maxDistance: maxDistance
-//                )
+            let cellSize = computeCellSize()
+//            let cellSize = computeDeltaCellSize()
+            let maxDistance = mazeCells.map { $0.distance }.max() ?? 1
             DeltaMazeView(
                 cells: mazeCells,
                 cellSize: cellSize,
@@ -87,7 +93,6 @@ struct MazeRenderView: View {
                 maxDistance: maxDistance
             )
                 .id(mazeID)
-//            Text("Delta rendering not implemented yet")
         case .polar:
             Text("Polar rendering not implemented yet")
         }
