@@ -8,21 +8,11 @@ struct MazeRequestView: View {
     @Binding var selectedSize: MazeSize
     @Binding var selectedMazeType: MazeType
     @Binding var selectedAlgorithm: MazeAlgorithm
-        
-    @Binding var startX: Int
-    @Binding var startY: Int
-    @Binding var goalX: Int
-    @Binding var goalY: Int
     
     let submitMazeRequest: () -> Void
     
     @State private var errorMessage: String? = nil
     
-    @FocusState private var focusedField: Field?
-    
-    private enum Field {
-        case startX, startY, goalX, goalY
-    }
     
     private let horizontalMargin = 10 // TODO: this number must match hard-coded offsets in ContentView! Must couple these 2 variables to address this
     private let verticalMargin = 280 // TODO: this number must match hard-coded offsets in ContentView! Must couple these 2 variables to address this
@@ -59,9 +49,6 @@ struct MazeRequestView: View {
         ZStack {
             Color.clear
                 .contentShape(Rectangle())
-                .onTapGesture {
-                    focusedField = nil
-                }
             
             VStack(spacing: 20) {
                 Picker("Maze Size", selection: $selectedSize) {
@@ -70,9 +57,6 @@ struct MazeRequestView: View {
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                .onChange(of: selectedSize) { _, _ in
-                    updateStartAndGoalPositions()
-                }
                 
                 Picker("Algorithm", selection: $selectedAlgorithm) {
                     ForEach(MazeAlgorithm.allCases) { algo in
@@ -100,46 +84,7 @@ struct MazeRequestView: View {
                     .foregroundColor(.secondary)
                     .padding(.horizontal)
 
-//                VStack {
-//                    HStack {
-//                        TextField("Start X", text: Binding(
-//                            get: { String(startX) },
-//                            set: { startX = Int(filterAndClampWidthInput($0, max: maxWidth)) ?? 0 }
-//                        ))
-//                        .textFieldStyle(RoundedBorderTextFieldStyle())
-//                        .keyboardType(.numberPad)
-//                        .focused($focusedField, equals: .startX)
-//
-//                        TextField("Start Y", text: Binding(
-//                            get: { String(startY) },
-//                            set: { startY = Int(filterAndClampHeightInput($0, max: maxHeight, defaultHeight: 0)) ?? 0 }
-//                        ))
-//                        .textFieldStyle(RoundedBorderTextFieldStyle())
-//                        .keyboardType(.numberPad)
-//                        .focused($focusedField, equals: .startY)
-//                    }
-//
-//                    HStack {
-//                        TextField("Goal X", text: Binding(
-//                            get: { String(goalX) },
-//                            set: { goalX = Int(filterAndClampWidthInput($0, max: maxWidth)) ?? 0 }
-//                        ))
-//                        .textFieldStyle(RoundedBorderTextFieldStyle())
-//                        .keyboardType(.numberPad)
-//                        .focused($focusedField, equals: .goalX)
-//
-//                        TextField("Goal Y", text: Binding(
-//                            get: { String(goalY) },
-//                            set: { goalY = Int(filterAndClampHeightInput($0, max: maxHeight, defaultHeight: maxHeight)) ?? 0 }
-//                        ))
-//                        .textFieldStyle(RoundedBorderTextFieldStyle())
-//                        .keyboardType(.numberPad)
-//                        .focused($focusedField, equals: .goalY)
-//                    }
-//                }
-
                 Button("Generate Maze") {
-                    focusedField = nil
                     submitMazeRequest()
                 }
                 .buttonStyle(.borderedProminent)
@@ -154,8 +99,6 @@ struct MazeRequestView: View {
 
                 Divider()
 
-//                Text("Maze Width: \(mazeWidth), Maze Height: \(mazeHeight)")
-//                    .padding()
             }
             .padding()
         }
@@ -175,23 +118,6 @@ struct MazeRequestView: View {
         return String(defaultHeight)
     }
     
-    // Function to update Start and Goal X/Y positions when Maze Size changes
-//    private func updateStartAndGoalPositions() {
-//        startX = (max(1, Int(availableWidth / CGFloat(selectedSize.rawValue))) / 2) - 1
-//        goalX = startX  // Same adjustment for goalX
-//        startY = 0  // No change here, it's already zero-based
-//        goalY = max(1, Int(availableHeight / CGFloat(selectedSize.rawValue))) - 1
-//    }
-    // Function to update Start and Goal X/Y positions when Maze Size changes
-    private func updateStartAndGoalPositions() {
-        let maxWidth = max(1, Int((UIScreen.main.bounds.width - CGFloat(horizontalMargin)) / CGFloat(selectedSize.rawValue)))
-        let maxHeight = max(1, Int((UIScreen.main.bounds.height - CGFloat(verticalMargin)) / CGFloat(selectedSize.rawValue)))
-
-        startX = maxWidth / 2 - 1
-        goalX = startX
-        startY = maxHeight - 1 // 👈 bottom
-        goalY = 0              // 👈 top
-    }
 
 
 
@@ -206,10 +132,6 @@ struct MazeRequestView_Previews: PreviewProvider {
             selectedSize: .constant(.large),
             selectedMazeType: .constant(.orthogonal),
             selectedAlgorithm: .constant(.recursiveBacktracker),
-            startX: .constant(0),
-            startY: .constant(0),
-            goalX: .constant(1),
-            goalY: .constant(1),
             submitMazeRequest: {
                 print("Preview Maze Request Triggered")
             }

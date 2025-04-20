@@ -22,21 +22,6 @@ struct ContentView: View {
     @State private var showSolution: Bool = false
     @State private var showHeatMap: Bool = false
 
-    @State private var startX: Int = {
-        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 10) / 11))
-        return maxWidth / 2 - 1
-    }()
-    @State private var startY: Int = {
-//        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 236) / 11))
-        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 280) / 11))
-        return maxHeight - 1 // bottom row
-    }()
-    @State private var goalX: Int = {
-        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 10) / 11))
-        return maxWidth / 2 - 1
-    }()
-    @State private var goalY: Int = 0 // top row
-
     // Track the opaque maze pointer.
     @State private var currentGrid: OpaquePointer? = nil
     
@@ -64,10 +49,6 @@ struct ContentView: View {
                     selectedSize: $selectedSize,
                     selectedMazeType: $selectedMazeType,
                     selectedAlgorithm: $selectedAlgorithm,
-                    startX: $startX,
-                    startY: $startY,
-                    goalX: $goalX,
-                    goalY: $goalY,
                     submitMazeRequest: submitMazeRequest
                 )
             }
@@ -97,20 +78,23 @@ struct ContentView: View {
             currentGrid = nil
         }
         
-        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 10) / CGFloat(selectedSize.rawValue)))
-//        let maxWidth = max(1, Int((UIScreen.main.bounds.width) / CGFloat(selectedSize.rawValue)))
-//        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 236) / CGFloat(selectedSize.rawValue)))
-        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 280) / CGFloat(selectedSize.rawValue)))
+        var maxWidth = max(1, Int((UIScreen.main.bounds.width - 10) / CGFloat(selectedSize.rawValue)))
+        var maxHeight = max(1, Int((UIScreen.main.bounds.height - 280) / CGFloat(selectedSize.rawValue)))
         
+        if selectedMazeType == .delta {
+            // TODO: how to properly adjust width/height for the various maze types?
+            maxWidth = max(1, Int((UIScreen.main.bounds.width - 10) / CGFloat(selectedSize.rawValue)))
+            maxHeight = max(1, Int((UIScreen.main.bounds.height - 280) / CGFloat(selectedSize.rawValue)))
+        } else if selectedMazeType == .orthogonal {
+            maxWidth = max(1, Int((UIScreen.main.bounds.width - 10) / CGFloat(selectedSize.rawValue)))
+            maxHeight = max(1, Int((UIScreen.main.bounds.height - 280) / CGFloat(selectedSize.rawValue)))
+        }
+//        
         let result = MazeRequestValidator.validate(
             mazeType: selectedMazeType,
             width: maxWidth,
             height: maxHeight,
-            algorithm: selectedAlgorithm,
-            start_x: startX,
-            start_y: startY,
-            goal_x: goalX,
-            goal_y: goalY
+            algorithm: selectedAlgorithm
         )
         
         switch result {
