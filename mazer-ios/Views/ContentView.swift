@@ -15,7 +15,7 @@ struct ContentView: View {
     @State private var errorMessage: String?
 
     // User selections from request view
-    @State private var selectedSize: MazeSize = .small
+    @State private var selectedSize: MazeSize = .medium
     @State private var selectedMazeType: MazeType = .orthogonal
     @State private var selectedAlgorithm: MazeAlgorithm = .recursiveBacktracker
     // User selections from render view
@@ -78,23 +78,32 @@ struct ContentView: View {
             currentGrid = nil
         }
         
-        var maxWidth = max(1, Int((UIScreen.main.bounds.width - 10) / CGFloat(selectedSize.rawValue)))
-        var maxHeight = max(1, Int((UIScreen.main.bounds.height - 280) / CGFloat(selectedSize.rawValue)))
+        var adjustment = 1.0
+        var verticalPadding = 0.0
         
         if selectedMazeType == .delta {
-            var multiplier = 1.0
+            adjustment = 0.75
             if selectedSize == .medium {
-                multiplier = 1.35
+                adjustment = 0.95
             } else if selectedSize == .large {
-                multiplier = 2.0
+                adjustment = 1.05
             }
-            let updatedSize = multiplier * CGFloat(selectedSize.rawValue)
-            maxWidth = max(1, Int((UIScreen.main.bounds.width - 10) / updatedSize)) + 29
-            maxHeight = max(1, Int((UIScreen.main.bounds.height - 280) / updatedSize)) + 35
+            verticalPadding = CGFloat(280)
+            
         } else if selectedMazeType == .orthogonal {
-            maxWidth = max(1, Int((UIScreen.main.bounds.width - 10) / CGFloat(selectedSize.rawValue)))
-            maxHeight = max(1, Int((UIScreen.main.bounds.height - 280) / CGFloat(selectedSize.rawValue)))
+            adjustment = 0.92
+            if selectedSize == .medium {
+                adjustment = 1.0
+            } else if selectedSize == .large {
+                adjustment = 1.12
+            }
+            verticalPadding = CGFloat(180)
         }
+        
+        let adjustedCellSize = adjustment * CGFloat(selectedSize.rawValue)
+        let maxWidth = max(1, Int((UIScreen.main.bounds.width) / adjustedCellSize))
+        let maxHeight = max(1, Int((UIScreen.main.bounds.height - verticalPadding) / adjustedCellSize))
+        
 //        
         let result = MazeRequestValidator.validate(
             mazeType: selectedMazeType,
