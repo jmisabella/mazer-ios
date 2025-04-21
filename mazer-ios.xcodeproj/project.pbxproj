@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		001E48E32DB1A4680036F7E9 /* MazeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001E48E22DB1A4680036F7E9 /* MazeGridView.swift */; };
 		003AB3112DB532170061021D /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DD0D132DAC3C7E00C20B2E /* libmazer.a */; };
+		003DE2A72DB5F6D300EFB530 /* DPadButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */; };
+		003DE2A92DB5F71D00EFB530 /* DirectionPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */; };
+		003DE2AB2DB5FC8400EFB530 /* MazeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2AA2DB5FC8000EFB530 /* MazeDirection.swift */; };
 		006F3F392D9F6EC200627BD4 /* HeatMapPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F3F382D9F6EB300627BD4 /* HeatMapPalette.swift */; };
 		006F3F402DA08D8600627BD4 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F3F3F2DA08D7D00627BD4 /* Color+Hex.swift */; };
 		00C33F662D98C84C0077691B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C33F5C2D98C84C0077691B /* Preview Assets.xcassets */; };
@@ -37,6 +40,9 @@
 /* Begin PBXFileReference section */
 		001E48E22DB1A4680036F7E9 /* MazeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGridView.swift; sourceTree = "<group>"; };
 		003AB3122DB532280061021D /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
+		003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPadButtonStyle.swift; sourceTree = "<group>"; };
+		003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionPadView.swift; sourceTree = "<group>"; };
+		003DE2AA2DB5FC8000EFB530 /* MazeDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeDirection.swift; sourceTree = "<group>"; };
 		0056D0992D94D7FE003B7493 /* mazer-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mazer-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0056D1082D974038003B7493 /* libmazer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmazer.a; path = "mazer/target/aarch64-apple-ios-sim/debug/libmazer.a"; sourceTree = "<group>"; };
 		006F3F382D9F6EB300627BD4 /* HeatMapPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatMapPalette.swift; sourceTree = "<group>"; };
@@ -1166,6 +1172,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		003DE2A52DB5F6B200EFB530 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		0056D0902D94D7FE003B7493 = {
 			isa = PBXGroup;
 			children = (
@@ -1204,6 +1218,7 @@
 		00C33F652D98C84C0077691B /* mazer-ios */ = {
 			isa = PBXGroup;
 			children = (
+				003DE2A52DB5F6B200EFB530 /* Styles */,
 				00C33F6E2D98C8EE0077691B /* Views */,
 				00C33F5D2D98C84C0077691B /* Preview Content */,
 				00C33F5E2D98C84C0077691B /* Assets.xcassets */,
@@ -1218,6 +1233,7 @@
 		00C33F6D2D98C8E50077691B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				003DE2AA2DB5FC8000EFB530 /* MazeDirection.swift */,
 				006F3F382D9F6EB300627BD4 /* HeatMapPalette.swift */,
 				00C341EA2D9F578E0077691B /* MazeSize.swift */,
 				00C33F7A2D9B86E80077691B /* MazeCell.swift */,
@@ -1243,6 +1259,7 @@
 				00DD0DC52DAC9CFE00C20B2E /* DeltaMazeView.swift */,
 				00DD0DC72DAC9DBE00C20B2E /* DeltaDirectionControlView.swift */,
 				001E48E22DB1A4680036F7E9 /* MazeGridView.swift */,
+				003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3468,7 +3485,9 @@
 			files = (
 				00C341E72D9F505D0077691B /* OrthogonalMazeView.swift in Sources */,
 				001E48E32DB1A4680036F7E9 /* MazeGridView.swift in Sources */,
+				003DE2A92DB5F71D00EFB530 /* DirectionPadView.swift in Sources */,
 				00C341EB2D9F57910077691B /* MazeSize.swift in Sources */,
+				003DE2AB2DB5FC8400EFB530 /* MazeDirection.swift in Sources */,
 				00DD0DC22DAC931C00C20B2E /* MazeCellStyle.swift in Sources */,
 				00C341E92D9F50BE0077691B /* OrthogonalCellView.swift in Sources */,
 				00C33F7B2D9B86ED0077691B /* MazeCell.swift in Sources */,
@@ -3482,6 +3501,7 @@
 				00DD0DC62DAC9CFE00C20B2E /* DeltaMazeView.swift in Sources */,
 				00C33F6A2D98C84C0077691B /* MazeRequestValidator.swift in Sources */,
 				00C33F6B2D98C84C0077691B /* MazeRequestView.swift in Sources */,
+				003DE2A72DB5F6D300EFB530 /* DPadButtonStyle.swift in Sources */,
 				00C33F752D98CC730077691B /* MazeRequestError.swift in Sources */,
 				00C33F782D98CC860077691B /* MazeAlgorithm.swift in Sources */,
 				00DD0DC82DAC9DBE00C20B2E /* DeltaDirectionControlView.swift in Sources */,

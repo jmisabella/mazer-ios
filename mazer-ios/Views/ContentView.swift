@@ -97,7 +97,7 @@ struct ContentView: View {
             } else if selectedSize == .large {
                 adjustment = 1.12
             }
-            verticalPadding = CGFloat(180)
+            verticalPadding = CGFloat(280)
         }
         
         let adjustedCellSize = adjustment * CGFloat(selectedSize.rawValue)

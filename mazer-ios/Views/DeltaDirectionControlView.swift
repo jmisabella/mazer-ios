@@ -12,24 +12,15 @@ struct DeltaDirectionControlView: View {
     let moveAction: (String) -> Void
     
     var body: some View {
-        VStack(spacing: 4) {
-            // First row: Left, UpperLeft, Up, UpperRight, Right
-            HStack(spacing: 4) {
-                directionButton(for: "Left",       systemImage: "arrow.left",      label: "Move Left")
-                directionButton(for: "UpperLeft",  systemImage: "arrow.up.left",   label: "Move Upper Left")
-                directionButton(for: "Up",         systemImage: "arrow.up",        label: "Move Up")
-                directionButton(for: "UpperRight", systemImage: "arrow.up.right",  label: "Move Upper Right")
-                directionButton(for: "Right",      systemImage: "arrow.right",     label: "Move Right")
-            }
-            // Second row: LowerLeft, Down, LowerRight
-            HStack(spacing: 4) {
-                directionButton(for: "LowerLeft",  systemImage: "arrow.down.left",  label: "Move Lower Left")
-                directionButton(for: "Down",       systemImage: "arrow.down",       label: "Move Down")
-                directionButton(for: "LowerRight", systemImage: "arrow.down.right", label: "Move Lower Right")
-            }
-        }
-        .padding(1)
-    }
+        DirectionPadView(
+          layout: [
+            [MazeDirection.left, MazeDirection.upperLeft, MazeDirection.up, MazeDirection.upperRight, MazeDirection.right],
+            [MazeDirection.lowerLeft, MazeDirection.down, MazeDirection.lowerRight]
+          ],
+          iconName: { $0.systemImage },
+          action: { moveAction($0.rawValue.capitalized) }
+        )
+      }
     
     // MARK: - Helper
     
