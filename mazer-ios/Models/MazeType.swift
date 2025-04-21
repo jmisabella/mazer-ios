@@ -5,8 +5,8 @@ import Foundation
 // Identifiable to make them uniquely identifiable, as required by ForEach
 enum MazeType: String, Codable, CaseIterable, Identifiable {
     case orthogonal = "Orthogonal"
-    case sigma = "Sigma"
     case delta = "Delta"
+    case sigma = "Sigma"
     case polar = "Polar"
     
     var id: String { rawValue }
@@ -15,9 +15,9 @@ enum MazeType: String, Codable, CaseIterable, Identifiable {
         switch self {
         case .orthogonal:
             return "Orthogonal is the classic square maze."
-        case .sigma:
-            return "Delta mazes use triangular cells (normal and inverted)."
         case .delta:
+            return "Delta mazes use triangular cells (normal and inverted)."
+        case .sigma:
             return "Sigma mazes have hexagonal cells."
         case .polar:
             return "Polar mazes are circular."

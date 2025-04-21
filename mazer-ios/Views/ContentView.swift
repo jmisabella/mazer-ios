@@ -15,30 +15,16 @@ struct ContentView: View {
     @State private var errorMessage: String?
 
     // User selections from request view
-    @State private var selectedSize: MazeSize = .small
+    @State private var selectedSize: MazeSize = .medium
     @State private var selectedMazeType: MazeType = .orthogonal
     @State private var selectedAlgorithm: MazeAlgorithm = .recursiveBacktracker
     // User selections from render view
     @State private var showSolution: Bool = false
     @State private var showHeatMap: Bool = false
 
-    @State private var startX: Int = {
-        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
-        return maxWidth / 2 - 1
-    }()
-    @State private var startY: Int = {
-        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 200) / 9))
-        return maxHeight - 1 // bottom row
-    }()
-    @State private var goalX: Int = {
-        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / 9))
-        return maxWidth / 2 - 1
-    }()
-    @State private var goalY: Int = 0 // top row
-
     // Track the opaque maze pointer.
     @State private var currentGrid: OpaquePointer? = nil
-
+    
     var body: some View {
         VStack {
             if mazeGenerated {
@@ -50,6 +36,9 @@ struct ContentView: View {
                     mazeType: mazeType,
                     regenerateMaze: {
                         submitMazeRequest()
+                    },
+                    moveAction: { direction in
+                        performMove(direction: direction)
                     }
                 )
             } else {
@@ -60,10 +49,6 @@ struct ContentView: View {
                     selectedSize: $selectedSize,
                     selectedMazeType: $selectedMazeType,
                     selectedAlgorithm: $selectedAlgorithm,
-                    startX: $startX,
-                    startY: $startY,
-                    goalX: $goalX,
-                    goalY: $goalY,
                     submitMazeRequest: submitMazeRequest
                 )
             }
@@ -93,18 +78,38 @@ struct ContentView: View {
             currentGrid = nil
         }
         
-        let maxWidth = max(1, Int((UIScreen.main.bounds.width - 40) / CGFloat(selectedSize.rawValue)))
-        let maxHeight = max(1, Int((UIScreen.main.bounds.height - 200) / CGFloat(selectedSize.rawValue)))
+        var adjustment = 1.0
+        var verticalPadding = 0.0
         
+        if selectedMazeType == .delta {
+            adjustment = 0.75
+            if selectedSize == .medium {
+                adjustment = 0.95
+            } else if selectedSize == .large {
+                adjustment = 1.05
+            }
+            verticalPadding = CGFloat(280)
+            
+        } else if selectedMazeType == .orthogonal {
+            adjustment = 0.92
+            if selectedSize == .medium {
+                adjustment = 1.0
+            } else if selectedSize == .large {
+                adjustment = 1.12
+            }
+            verticalPadding = CGFloat(280)
+        }
+        
+        let adjustedCellSize = adjustment * CGFloat(selectedSize.rawValue)
+        let maxWidth = max(1, Int((UIScreen.main.bounds.width) / adjustedCellSize))
+        let maxHeight = max(1, Int((UIScreen.main.bounds.height - verticalPadding) / adjustedCellSize))
+        
+//        
         let result = MazeRequestValidator.validate(
             mazeType: selectedMazeType,
             width: maxWidth,
             height: maxHeight,
-            algorithm: selectedAlgorithm,
-            start_x: startX,
-            start_y: startY,
-            goal_x: goalX,
-            goal_y: goalY
+            algorithm: selectedAlgorithm
         )
         
         switch result {
@@ -146,7 +151,9 @@ struct ContentView: View {
                     distance: Int(ffiCell.distance),
                     isStart: ffiCell.is_start,
                     isGoal: ffiCell.is_goal,
+                    isActive: ffiCell.is_active,
                     isVisited: ffiCell.is_visited,
+                    hasBeenVisited: ffiCell.has_been_visited,
                     onSolutionPath: ffiCell.on_solution_path,
                     orientation: orientationCopy
                 ))
@@ -180,4 +187,55 @@ struct ContentView: View {
         }
         return result
     }
+    
+    private func performMove(direction: String) {
+        // Ensure current grid exists.
+        guard let gridPtr = currentGrid else { return }
+        guard let directionCString = direction.cString(using: .utf8) else {
+            errorMessage = "Encoding error for direction."
+            return
+        }
+
+        // Convert the OpaquePointer to UnsafeMutableRawPointer using unsafeBitCast.
+        let rawGridPtr = unsafeBitCast(gridPtr, to: UnsafeMutableRawPointer.self)
+
+        guard let newGridRaw = mazer_make_move(rawGridPtr, directionCString) else {
+            errorMessage = "Move failed."
+            return
+        }
+        // Convert the returned raw pointer to OpaquePointer.
+        let newGrid: OpaquePointer = OpaquePointer(newGridRaw)
+        currentGrid = newGrid
+
+        var length: size_t = 0
+        guard let cellsPtr = mazer_get_cells(newGrid, &length) else {
+            errorMessage = "Failed to retrieve updated maze."
+            return
+        }
+        
+        var cells: [MazeCell] = []
+        for i in 0..<Int(length) {
+            let ffiCell = cellsPtr[i]
+            let mazeTypeCopy = ffiCell.maze_type != nil ? String(cString: ffiCell.maze_type!) : ""
+            let orientationCopy = ffiCell.orientation != nil ? String(cString: ffiCell.orientation!) : ""
+            cells.append(MazeCell(
+                x: Int(ffiCell.x),
+                y: Int(ffiCell.y),
+                mazeType: mazeTypeCopy,
+                linked: convertCStringArray(ffiCell.linked, count: ffiCell.linked_len),
+                distance: Int(ffiCell.distance),
+                isStart: ffiCell.is_start,
+                isGoal: ffiCell.is_goal,
+                isActive: ffiCell.is_active,
+                isVisited: ffiCell.is_visited,
+                hasBeenVisited: ffiCell.has_been_visited,
+                onSolutionPath: ffiCell.on_solution_path,
+                orientation: orientationCopy
+            ))
+        }
+        
+        mazeCells = cells
+        mazer_free_cells(cellsPtr, length)
+    }
+
 }

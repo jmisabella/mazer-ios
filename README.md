@@ -48,8 +48,6 @@ iOS app using the `mazer` Rust library for generating and solving mazes.
     6. Click on **Objective-C Bridging Header** to expand it.
     7. Click the + button on Debug and enter `${PROJECT_DIR}/mazer-ios/mazer_bridge.h` for its value.
     8. Click the + button on Release and enter `${PROJECT_DIR}/mazer-ios/mazer_bridge.h` for its value.
-    9. Go to the **Build Phases** tab and expand **Compiled Sources**.
-    10. Click the `+` button and select `mazer_bridge.h`
 
 5. **Verify FFI Connection**
     1. Add this line to ContentView to define `ffi_integration_test_result`:

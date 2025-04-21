@@ -19,7 +19,14 @@ struct OrthogonalCellView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(backgroundColor)
+                .fill(cellBackgroundColor(
+                                    for: cell,
+                                    showSolution: showSolution,
+                                    showHeatMap: showHeatMap,
+                                    maxDistance: maxDistance,
+                                    selectedPalette: selectedPalette,
+                                    isRevealedSolution: isRevealedSolution
+                                ))
                 .frame(width: size, height: size)
 
             Path { path in
@@ -28,53 +35,28 @@ struct OrthogonalCellView: View {
                 let bottomLeft = CGPoint(x: 0, y: size)
                 let bottomRight = CGPoint(x: size, y: size)
 
-                if !cell.linked.contains("North") {
+                if !cell.linked.contains("Up") {
                     path.move(to: topLeft)
                     path.addLine(to: topRight)
                 }
-                if !cell.linked.contains("East") {
+                if !cell.linked.contains("Right") {
                     path.move(to: topRight)
                     path.addLine(to: bottomRight)
                 }
-                if !cell.linked.contains("South") {
+                if !cell.linked.contains("Down") {
                     path.move(to: bottomRight)
                     path.addLine(to: bottomLeft)
                 }
-                if !cell.linked.contains("West") {
+                if !cell.linked.contains("Left") {
                     path.move(to: bottomLeft)
                     path.addLine(to: topLeft)
                 }
             }
-            .stroke(Color.black, lineWidth: strokeWidth(for: size))
+            .stroke(Color.black, lineWidth: cellStrokeWidth(for: size))
             .frame(width: size, height: size)
             .clipped()
 
         }
     }
 
-    private var backgroundColor: Color {
-        if cell.isStart {
-            return .blue
-        } else if cell.isGoal {
-            return .red
-        } else if isRevealedSolution {
-            return .solutionHighlight
-        } else if showHeatMap && maxDistance > 0 {
-            let index = min(9, (cell.distance * 10) / maxDistance)
-            return selectedPalette.shades[index].asColor
-        } else {
-            return .white
-        }
-    }
-
-    private func strokeWidth(for size: CGFloat) -> CGFloat {
-        switch size {
-        case ..<9:
-            return 1.0
-        case ..<14:
-            return 1.5
-        default:
-            return 2.5
-        }
-    }
 }

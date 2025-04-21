@@ -5,6 +5,4 @@ struct MazeRequest: Codable {
     let width: Int
     let height: Int
     let algorithm: MazeAlgorithm
-    let start: Coordinates
-    let goal: Coordinates
 }
