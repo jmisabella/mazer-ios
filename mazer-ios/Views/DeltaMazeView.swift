@@ -127,7 +127,7 @@ struct DeltaMazeView: View {
 
         let pathCells = cells.filter(\.onSolutionPath)
                             .sorted { $0.distance < $1.distance }
-        let totalDuration: Double = 1.35
+        let totalDuration: Double = 0.65
         let count = pathCells.count
         let stepDelay = totalDuration / Double(max(count, 1))
 

@@ -82,9 +82,15 @@ struct ContentView: View {
         var maxHeight = max(1, Int((UIScreen.main.bounds.height - 280) / CGFloat(selectedSize.rawValue)))
         
         if selectedMazeType == .delta {
-            // TODO: how to properly adjust width/height for the various maze types?
-            maxWidth = max(1, Int((UIScreen.main.bounds.width - 10) / CGFloat(selectedSize.rawValue)))
-            maxHeight = max(1, Int((UIScreen.main.bounds.height - 280) / CGFloat(selectedSize.rawValue)))
+            var multiplier = 1.0
+            if selectedSize == .medium {
+                multiplier = 1.35
+            } else if selectedSize == .large {
+                multiplier = 2.0
+            }
+            let updatedSize = multiplier * CGFloat(selectedSize.rawValue)
+            maxWidth = max(1, Int((UIScreen.main.bounds.width - 10) / updatedSize)) + 29
+            maxHeight = max(1, Int((UIScreen.main.bounds.height - 280) / updatedSize)) + 35
         } else if selectedMazeType == .orthogonal {
             maxWidth = max(1, Int((UIScreen.main.bounds.width - 10) / CGFloat(selectedSize.rawValue)))
             maxHeight = max(1, Int((UIScreen.main.bounds.height - 280) / CGFloat(selectedSize.rawValue)))
