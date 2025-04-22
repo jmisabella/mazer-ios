@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import AudioToolbox
+import UIKit  // for UIFeedbackGenerator
+
 
 struct ContentView: View {
     @State private var ffi_integration_test_result: Int32 = 0
@@ -24,6 +27,8 @@ struct ContentView: View {
 
     // Track the opaque maze pointer.
     @State private var currentGrid: OpaquePointer? = nil
+    
+    private let haptic = UIImpactFeedbackGenerator(style: .light)
     
     var body: some View {
         VStack {
@@ -195,14 +200,22 @@ struct ContentView: View {
             errorMessage = "Encoding error for direction."
             return
         }
+        
+        // Prepare the haptic engine _before_ we even do the move
+        haptic.prepare()
 
         // Convert the OpaquePointer to UnsafeMutableRawPointer using unsafeBitCast.
         let rawGridPtr = unsafeBitCast(gridPtr, to: UnsafeMutableRawPointer.self)
 
         guard let newGridRaw = mazer_make_move(rawGridPtr, directionCString) else {
-            errorMessage = "Move failed."
+            // don't display any msg, simply return, if attempted move didn't succeed
             return
         }
+        
+        // play `click` sound on audio
+        AudioServicesPlaySystemSound(1104) // play a `click` sound on audio
+        haptic.impactOccurred() // cause user to feel a `bump`
+        
         // Convert the returned raw pointer to OpaquePointer.
         let newGrid: OpaquePointer = OpaquePointer(newGridRaw)
         currentGrid = newGrid

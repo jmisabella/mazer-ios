@@ -2,7 +2,7 @@
 //  mazer_bridge.h
 //  mazer-ios
 //
-//  Created by Jeffrey Isabella on 4/20/25.
+//  Created by Jeffrey Isabella on 4/21/25.
 //
 
 #ifndef MAZER_H
@@ -93,7 +93,7 @@ void mazer_free_cells(FFICell *ptr, size_t length);
  *
  * @param grid_ptr A pointer to the mutable Grid.
  * @param direction A null-terminated C string indicating the move direction.
- * @return A pointer to the updated Grid.
+ * @return A pointer to the updated `Grid` instance if successful, or a null pointer if an error occurs.
  */
 void* mazer_make_move(void* grid_ptr, const char* direction);
 

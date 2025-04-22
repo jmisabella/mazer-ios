@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		001E48E32DB1A4680036F7E9 /* MazeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001E48E22DB1A4680036F7E9 /* MazeGridView.swift */; };
-		003AB3112DB532170061021D /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DD0D132DAC3C7E00C20B2E /* libmazer.a */; };
 		003DE2A72DB5F6D300EFB530 /* DPadButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */; };
 		003DE2A92DB5F71D00EFB530 /* DirectionPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */; };
 		003DE2AB2DB5FC8400EFB530 /* MazeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2AA2DB5FC8000EFB530 /* MazeDirection.swift */; };
+		003DE2AC2DB7223800EFB530 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DD0D132DAC3C7E00C20B2E /* libmazer.a */; };
 		006F3F392D9F6EC200627BD4 /* HeatMapPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F3F382D9F6EB300627BD4 /* HeatMapPalette.swift */; };
 		006F3F402DA08D8600627BD4 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F3F3F2DA08D7D00627BD4 /* Color+Hex.swift */; };
 		00C33F662D98C84C0077691B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C33F5C2D98C84C0077691B /* Preview Assets.xcassets */; };
@@ -39,10 +39,10 @@
 
 /* Begin PBXFileReference section */
 		001E48E22DB1A4680036F7E9 /* MazeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGridView.swift; sourceTree = "<group>"; };
-		003AB3122DB532280061021D /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
 		003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPadButtonStyle.swift; sourceTree = "<group>"; };
 		003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionPadView.swift; sourceTree = "<group>"; };
 		003DE2AA2DB5FC8000EFB530 /* MazeDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeDirection.swift; sourceTree = "<group>"; };
+		003DE2AD2DB7224D00EFB530 /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
 		0056D0992D94D7FE003B7493 /* mazer-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mazer-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0056D1082D974038003B7493 /* libmazer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmazer.a; path = "mazer/target/aarch64-apple-ios-sim/debug/libmazer.a"; sourceTree = "<group>"; };
 		006F3F382D9F6EB300627BD4 /* HeatMapPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatMapPalette.swift; sourceTree = "<group>"; };
@@ -1165,7 +1165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				003AB3112DB532170061021D /* libmazer.a in Frameworks */,
+				003DE2AC2DB7223800EFB530 /* libmazer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1225,7 +1225,7 @@
 				00C33F622D98C84C0077691B /* mazer_iosApp.swift */,
 				00C33F6D2D98C8E50077691B /* Models */,
 				00C33F6F2D98C9010077691B /* Utils */,
-				003AB3122DB532280061021D /* mazer_bridge.h */,
+				003DE2AD2DB7224D00EFB530 /* mazer_bridge.h */,
 			);
 			path = "mazer-ios";
 			sourceTree = "<group>";
