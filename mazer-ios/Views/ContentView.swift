@@ -24,6 +24,7 @@ struct ContentView: View {
     // User selections from render view
     @State private var showSolution: Bool = false
     @State private var showHeatMap: Bool = false
+    @State private var showCelebration = false
 
     // Track the opaque maze pointer.
     @State private var currentGrid: OpaquePointer? = nil
@@ -31,39 +32,41 @@ struct ContentView: View {
     private let haptic = UIImpactFeedbackGenerator(style: .light)
     
     var body: some View {
-        VStack {
-            if mazeGenerated {
-                MazeRenderView(
-                    mazeGenerated: $mazeGenerated,
-                    showSolution: $showSolution,
-                    showHeatMap: $showHeatMap,
-                    mazeCells: mazeCells,
-                    mazeType: mazeType,
-                    regenerateMaze: {
-                        submitMazeRequest()
-                    },
-                    moveAction: { direction in
-                        performMove(direction: direction)
-                    }
-                )
-            } else {
-                MazeRequestView(
-                    mazeCells: $mazeCells,
-                    mazeGenerated: $mazeGenerated,
-                    mazeType: $mazeType,
-                    selectedSize: $selectedSize,
-                    selectedMazeType: $selectedMazeType,
-                    selectedAlgorithm: $selectedAlgorithm,
-                    submitMazeRequest: submitMazeRequest
-                )
+        ZStack {
+            VStack {
+                if mazeGenerated {
+                    MazeRenderView(
+                        mazeGenerated: $mazeGenerated,
+                        showSolution: $showSolution,
+                        showHeatMap: $showHeatMap,
+                        mazeCells: mazeCells,
+                        mazeType: mazeType,
+                        regenerateMaze: {
+                            submitMazeRequest()
+                        },
+                        moveAction: { direction in
+                            performMove(direction: direction)
+                        }
+                    )
+                } else {
+                    MazeRequestView(
+                        mazeCells: $mazeCells,
+                        mazeGenerated: $mazeGenerated,
+                        mazeType: $mazeType,
+                        selectedSize: $selectedSize,
+                        selectedMazeType: $selectedMazeType,
+                        selectedAlgorithm: $selectedAlgorithm,
+                        submitMazeRequest: submitMazeRequest
+                    )
+                }
+                
+                if let errorMessage = errorMessage {
+                    Text(errorMessage)
+                        .foregroundColor(.red)
+                }
             }
-            
-            if let errorMessage = errorMessage {
-                Text(errorMessage)
-                    .foregroundColor(.red)
-            }
+            .padding()
         }
-        .padding()
         .onAppear {
             ffi_integration_test_result = mazer_ffi_integration_test()
             print("mazer_ffi_integration_test returned: \(ffi_integration_test_result)")
@@ -73,6 +76,12 @@ struct ContentView: View {
                 print("FFI integration test failed ❌")
             }
         }
+        
+        if showCelebration {
+              ConfettiView()
+                .ignoresSafeArea()
+                .transition(.opacity)
+            }
     }
     
     private func submitMazeRequest() {
@@ -164,8 +173,6 @@ struct ContentView: View {
                 ))
             }
             
-            
-            
             mazeCells = cells
             if let firstCell = cells.first {
                 mazeType = MazeType(rawValue: firstCell.mazeType) ?? .orthogonal
@@ -191,6 +198,23 @@ struct ContentView: View {
             }
         }
         return result
+    }
+    
+    private func celebrateVictory() {
+        showCelebration = true
+
+        // 1) Play a success haptic
+        let notificationFeedback = UINotificationFeedbackGenerator()
+        notificationFeedback.prepare()
+        notificationFeedback.notificationOccurred(.success)
+
+        // 2) Play a system “success” sound (you can swap in your own asset if you like)
+        AudioServicesPlaySystemSound(1025)
+
+        // 3) Tear down the animation after a few seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            withAnimation { showCelebration = false }
+        }
     }
     
     private func performMove(direction: String) {
@@ -249,6 +273,12 @@ struct ContentView: View {
         
         mazeCells = cells
         mazer_free_cells(cellsPtr, length)
+        
+        // If we just activated the goal, and haven't celebrated yet:
+        if !showCelebration,
+           mazeCells.contains(where: { $0.isGoal && $0.isActive }) {
+            celebrateVictory()
+        }
     }
 
 }
