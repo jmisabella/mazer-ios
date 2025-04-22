@@ -209,7 +209,7 @@ struct ContentView: View {
         notificationFeedback.notificationOccurred(.success)
 
         // 2) Play a system “success” sound (you can swap in your own asset if you like)
-        AudioServicesPlaySystemSound(1025)
+        AudioServicesPlaySystemSound(1001) // swoosh
 
         // 3) Tear down the animation after a few seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
