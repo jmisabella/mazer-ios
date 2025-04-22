@@ -142,7 +142,8 @@ struct OrthogonalMazeView: View {
         } else if cell.isGoal {
             return .red
         } else if cell.onSolutionPath {
-            return .green
+//            return .green
+            return .pink
         } else {
             return .gray
         }

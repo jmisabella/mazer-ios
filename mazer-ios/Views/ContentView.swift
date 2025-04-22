@@ -9,6 +9,7 @@ import SwiftUI
 import AudioToolbox
 import UIKit  // for UIFeedbackGenerator
 
+// GridQuest: Omni Mazes & Solver
 
 struct ContentView: View {
     @State private var ffi_integration_test_result: Int32 = 0
@@ -96,20 +97,20 @@ struct ContentView: View {
         var verticalPadding = 0.0
         
         if selectedMazeType == .delta {
-            adjustment = 0.75
+            adjustment = 0.85
             if selectedSize == .medium {
-                adjustment = 0.95
+                adjustment = 0.97
             } else if selectedSize == .large {
-                adjustment = 1.05
+                adjustment = 1.15
             }
             verticalPadding = CGFloat(280)
             
         } else if selectedMazeType == .orthogonal {
             adjustment = 0.92
             if selectedSize == .medium {
-                adjustment = 1.0
+                adjustment = 1.1
             } else if selectedSize == .large {
-                adjustment = 1.12
+                adjustment = 1.2
             }
             verticalPadding = CGFloat(280)
         }
