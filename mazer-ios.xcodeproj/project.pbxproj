@@ -11,10 +11,12 @@
 		003DE2A72DB5F6D300EFB530 /* DPadButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */; };
 		003DE2A92DB5F71D00EFB530 /* DirectionPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */; };
 		003DE2AB2DB5FC8400EFB530 /* MazeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2AA2DB5FC8000EFB530 /* MazeDirection.swift */; };
-		003DE2AC2DB7223800EFB530 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DD0D132DAC3C7E00C20B2E /* libmazer.a */; };
 		003DE2AF2DB72D7900EFB530 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2AE2DB72D7900EFB530 /* ConfettiView.swift */; };
 		006F3F392D9F6EC200627BD4 /* HeatMapPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F3F382D9F6EB300627BD4 /* HeatMapPalette.swift */; };
 		006F3F402DA08D8600627BD4 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F3F3F2DA08D7D00627BD4 /* Color+Hex.swift */; };
+		00AE05F32DB7446C0068C880 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DD0D132DAC3C7E00C20B2E /* libmazer.a */; };
+		00AE05F52DB877770068C880 /* SigmaCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AE05F42DB877770068C880 /* SigmaCellView.swift */; };
+		00AE05F72DB8778C0068C880 /* SigmaMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AE05F62DB8778C0068C880 /* SigmaMazeView.swift */; };
 		00C33F662D98C84C0077691B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C33F5C2D98C84C0077691B /* Preview Assets.xcassets */; };
 		00C33F672D98C84C0077691B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C33F5E2D98C84C0077691B /* Assets.xcassets */; };
 		00C33F682D98C84C0077691B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C33F5F2D98C84C0077691B /* ContentView.swift */; };
@@ -49,6 +51,8 @@
 		0056D1082D974038003B7493 /* libmazer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmazer.a; path = "mazer/target/aarch64-apple-ios-sim/debug/libmazer.a"; sourceTree = "<group>"; };
 		006F3F382D9F6EB300627BD4 /* HeatMapPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatMapPalette.swift; sourceTree = "<group>"; };
 		006F3F3F2DA08D7D00627BD4 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		00AE05F42DB877770068C880 /* SigmaCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigmaCellView.swift; sourceTree = "<group>"; };
+		00AE05F62DB8778C0068C880 /* SigmaMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigmaMazeView.swift; sourceTree = "<group>"; };
 		00C33F5C2D98C84C0077691B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		00C33F5E2D98C84C0077691B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00C33F5F2D98C84C0077691B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -1167,7 +1171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				003DE2AC2DB7223800EFB530 /* libmazer.a in Frameworks */,
+				00AE05F32DB7446C0068C880 /* libmazer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1263,6 +1267,8 @@
 				001E48E22DB1A4680036F7E9 /* MazeGridView.swift */,
 				003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */,
 				003DE2AE2DB72D7900EFB530 /* ConfettiView.swift */,
+				00AE05F42DB877770068C880 /* SigmaCellView.swift */,
+				00AE05F62DB8778C0068C880 /* SigmaMazeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3496,6 +3502,7 @@
 				00C33F7B2D9B86ED0077691B /* MazeCell.swift in Sources */,
 				00C33F772D98CC800077691B /* MazeType.swift in Sources */,
 				00C33F682D98C84C0077691B /* ContentView.swift in Sources */,
+				00AE05F52DB877770068C880 /* SigmaCellView.swift in Sources */,
 				00C33F692D98C84C0077691B /* mazer_iosApp.swift in Sources */,
 				00C33F762D98CC790077691B /* MazeRequest.swift in Sources */,
 				00C341E52D9F07040077691B /* MazeRenderView.swift in Sources */,
@@ -3510,6 +3517,7 @@
 				00DD0DC82DAC9DBE00C20B2E /* DeltaDirectionControlView.swift in Sources */,
 				006F3F392D9F6EC200627BD4 /* HeatMapPalette.swift in Sources */,
 				00DD0B542DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift in Sources */,
+				00AE05F72DB8778C0068C880 /* SigmaMazeView.swift in Sources */,
 				003DE2AF2DB72D7900EFB530 /* ConfettiView.swift in Sources */,
 				00C33F792D98CC8E0077691B /* Coordinates.swift in Sources */,
 			);
@@ -3642,9 +3650,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"mazer-ios/Preview Content\"";
+				DEVELOPMENT_TEAM = 6T2JFKS3GA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -3662,8 +3672,9 @@
 					"$(PROJECT_DIR)/mazer/target/aarch64-apple-ios-sim/debug",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.github.jmisabella.mazer-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jmisabella.gridquest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "${PROJECT_DIR}/mazer-ios/mazer_bridge.h";
 				SWIFT_VERSION = 5.0;
@@ -3676,9 +3687,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"mazer-ios/Preview Content\"";
+				DEVELOPMENT_TEAM = 6T2JFKS3GA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -3696,8 +3709,9 @@
 					"$(PROJECT_DIR)/mazer/target/aarch64-apple-ios-sim/debug",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.github.jmisabella.mazer-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jmisabella.gridquest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "${PROJECT_DIR}/mazer-ios/mazer_bridge.h";
 				SWIFT_VERSION = 5.0;

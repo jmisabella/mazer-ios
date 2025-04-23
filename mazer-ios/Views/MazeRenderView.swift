@@ -79,7 +79,15 @@ struct MazeRenderView: View {
             )
             .id(mazeID)
         case .sigma:
-            Text("Sigma rendering not implemented yet")
+            let cellSize = computeCellSize()
+            SigmaMazeView(
+                selectedPalette: $selectedPalette,
+                cells: mazeCells,
+                cellSize: cellSize,
+                showSolution: showSolution,
+                showHeatMap: showHeatMap
+            )
+            .id(mazeID)
         case .delta:
             let cellSize = computeCellSize()
 //            let cellSize = computeDeltaCellSize()
