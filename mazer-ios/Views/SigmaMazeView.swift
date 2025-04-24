@@ -19,6 +19,19 @@ struct SigmaMazeView: View {
 
     private var maxDistance: Int { cells.map(\.distance).max() ?? 1 }
 
+    private func position(for cell: MazeCell) -> CGPoint {
+      let s = cellSize
+      let q = CGFloat(cell.x)
+      let r = CGFloat(cell.y)
+
+      let x = s * 1.5 * q + s
+      let hexH = sqrt(3) * s
+      let yOffset = (q.truncatingRemainder(dividingBy: 2) == 0) ? 0 : hexH/2
+      let y = hexH * r + hexH/2 + yOffset
+
+      return CGPoint(x: x, y: y)
+    }
+
     var body: some View {
         GeometryReader { _ in
             ZStack(alignment: .topLeading) {
@@ -34,10 +47,11 @@ struct SigmaMazeView: View {
                             Coordinates(x: cell.x, y: cell.y)
                         )
                     )
-                    .offset(
-                        x: xOffset(for: cell),
-                        y: yOffset(for: cell)
-                    )
+                    .position(position(for: cell))
+//                    .offset(
+//                        x: xOffset(for: cell),
+//                        y: yOffset(for: cell)
+//                    )
                 }
             }
             .onChange(of: showSolution) { _, new in
