@@ -125,8 +125,13 @@ struct ContentView: View {
         }
         
         let adjustedCellSize = adjustment * CGFloat(selectedSize.rawValue)
-        let maxWidth = max(1, Int((UIScreen.main.bounds.width) / adjustedCellSize))
-        let maxHeight = max(1, Int((UIScreen.main.bounds.height - verticalPadding) / adjustedCellSize))
+        var maxWidth = max(1, Int((UIScreen.main.bounds.width) / adjustedCellSize))
+        var maxHeight = max(1, Int((UIScreen.main.bounds.height - verticalPadding) / adjustedCellSize))
+        
+        if selectedMazeType == .sigma {
+            maxWidth = maxWidth / 3
+            maxHeight = maxHeight / 3
+        }
         
 //        
         let result = MazeRequestValidator.validate(

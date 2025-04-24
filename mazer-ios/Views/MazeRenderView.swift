@@ -28,10 +28,29 @@ struct MazeRenderView: View {
         }
     }
 
+//    func computeCellSize() -> CGFloat {
+//        let columns = (mazeCells.map { $0.x }.max() ?? 0) + 1
+//        return UIScreen.main.bounds.width / CGFloat(columns) * 1.35
+//    }
+    
     func computeCellSize() -> CGFloat {
-        let columns = (mazeCells.map { $0.x }.max() ?? 0) + 1
-        return UIScreen.main.bounds.width / CGFloat(columns) * 1.35
-    }
+        let cols = (mazeCells.map { $0.x }.max() ?? 0) + 1
+
+        switch mazeType {
+        case .orthogonal:
+          return UIScreen.main.bounds.width / CGFloat(cols)
+        case .delta:
+            return UIScreen.main.bounds.width / CGFloat(cols) * 1.35
+        case .sigma:
+          // flat-topped hex: total horizontal “units” =
+          //   1 full cell + 1.5 for each additional column
+          let units = 1.5 * CGFloat(cols - 1) + 1
+          return UIScreen.main.bounds.width / units
+        // TODO: .polar
+        default:
+          return UIScreen.main.bounds.width / CGFloat(cols)
+        }
+      }
     
     var columns: Int {
         (mazeCells.map { $0.x }.max() ?? 0) + 1
@@ -64,13 +83,14 @@ struct MazeRenderView: View {
             Text("Polar rendering not implemented yet")
         }
     }
-
     
     // A computed property to build the maze content based on mazeType.
     @ViewBuilder
     var mazeContent: some View {
+        let cellSize = computeCellSize()
         switch mazeType {
         case .orthogonal:
+            // TODO: pass cellSize into OrthogonalMazeView?
             OrthogonalMazeView(
                 selectedPalette: $selectedPalette,
                 cells: mazeCells,
@@ -79,7 +99,6 @@ struct MazeRenderView: View {
             )
             .id(mazeID)
         case .sigma:
-            let cellSize = computeCellSize()
             SigmaMazeView(
                 selectedPalette: $selectedPalette,
                 cells: mazeCells,
@@ -89,8 +108,6 @@ struct MazeRenderView: View {
             )
             .id(mazeID)
         case .delta:
-            let cellSize = computeCellSize()
-//            let cellSize = computeDeltaCellSize()
             let maxDistance = mazeCells.map { $0.distance }.max() ?? 1
             DeltaMazeView(
                 cells: mazeCells,

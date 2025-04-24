@@ -16,6 +16,23 @@ struct SigmaMazeView: View {
 
     @State private var revealedSolutionPath: Set<Coordinates> = []
     @State private var pendingWorkItems: [DispatchWorkItem] = []
+    
+    // computed properties
+    private var cols: Int {
+        (cells.map(\.x).max() ?? 0) + 1
+    }
+    private var rows: Int {
+        (cells.map(\.y).max() ?? 0) + 1
+    }
+    private var hexHeight: CGFloat {
+        sqrt(3) * cellSize
+    }
+    private var totalWidth: CGFloat {
+        cellSize * (1.5 * CGFloat(cols) + 0.5)
+    }
+    private var totalHeight: CGFloat {
+        hexHeight * (CGFloat(rows) + 0.5)
+    }
 
     private var maxDistance: Int { cells.map(\.distance).max() ?? 1 }
 
@@ -31,40 +48,44 @@ struct SigmaMazeView: View {
 
       return CGPoint(x: x, y: y)
     }
+    
 
     var body: some View {
-        GeometryReader { _ in
-            ZStack(alignment: .topLeading) {
-                ForEach(cells, id: \.self) { cell in
-                    SigmaCellView(
-                        cell: cell,
-                        cellSize: cellSize,
-                        showSolution: showSolution,
-                        showHeatMap: showHeatMap,
-                        selectedPalette: selectedPalette,
-                        maxDistance: maxDistance,
-                        isRevealedSolution: revealedSolutionPath.contains(
-                            Coordinates(x: cell.x, y: cell.y)
-                        )
+        
+        
+        
+        ZStack(alignment: .topLeading) {
+            ForEach(cells, id: \.self) { cell in
+                SigmaCellView(
+                    cell: cell,
+                    cellSize: cellSize,
+                    showSolution: showSolution,
+                    showHeatMap: showHeatMap,
+                    selectedPalette: selectedPalette,
+                    maxDistance: maxDistance,
+                    isRevealedSolution: revealedSolutionPath.contains(
+                        Coordinates(x: cell.x, y: cell.y)
                     )
-                    .position(position(for: cell))
-//                    .offset(
-//                        x: xOffset(for: cell),
-//                        y: yOffset(for: cell)
-//                    )
-                }
-            }
-            .onChange(of: showSolution) { _, new in
-                if new { animateSolutionPathReveal() }
-                else { cancelAndReset() }
-            }
-            .onChange(of: cells) { _ in
-                cancelAndReset()
-            }
-            .onAppear {
-                if showSolution { animateSolutionPathReveal() }
+                )
+                .position(position(for: cell))
+                //                    .offset(
+                //                        x: xOffset(for: cell),
+                //                        y: yOffset(for: cell)
+                //                    )
             }
         }
+        .frame(width: totalWidth, height: totalHeight, alignment: .topLeading)
+        .onChange(of: showSolution) { _, new in
+            if new { animateSolutionPathReveal() }
+            else { cancelAndReset() }
+        }
+        .onChange(of: cells) { _ in
+            cancelAndReset()
+        }
+        .onAppear {
+            if showSolution { animateSolutionPathReveal() }
+        }
+        
     }
 
     // axial→pixel for a flat-topped hex grid
