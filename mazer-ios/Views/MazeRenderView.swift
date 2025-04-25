@@ -198,6 +198,7 @@ struct MazeRenderView: View {
             .padding(.top)
             
             
+            
             // The maze container:
             if mazeType == .orthogonal || mazeType == .delta {
                 ZStack {
@@ -247,6 +248,7 @@ struct MazeRenderView: View {
                         }
                     }
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .gesture(
                     DragGesture(minimumDistance: 10)
                         .onEnded { value in
@@ -360,9 +362,8 @@ struct MazeRenderView: View {
                         }
                     }
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-
-            
         }
     }
     
