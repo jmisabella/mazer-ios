@@ -12,14 +12,14 @@ struct DeltaDirectionControlView: View {
 
     var body: some View {
         HStack(spacing: 16) {
-            // ╭ UL │ LL ╮
-            VStack(spacing: 12) {
-                directionButton(systemImage: "arrow.up.left",    action: "UpperLeft")
-                directionButton(systemImage: "arrow.down.left",  action: "LowerLeft")
-            }
-
             // ←
             directionButton(systemImage: "arrow.left", action: "Left")
+            
+            // ╭ UL │ LL ╮
+            VStack(spacing: 12) {
+                directionButton(systemImage: "arrow.up.left",   action: "UpperLeft")
+                directionButton(systemImage: "arrow.down.left", action: "LowerLeft")
+            }
 
             // ↑ ↓
             VStack(spacing: 12) {
@@ -27,14 +27,14 @@ struct DeltaDirectionControlView: View {
                 directionButton(systemImage: "arrow.down", action: "Down")
             }
 
-            // →
-            directionButton(systemImage: "arrow.right", action: "Right")
-
             // ╭ UR │ LR ╮
             VStack(spacing: 12) {
                 directionButton(systemImage: "arrow.up.right",   action: "UpperRight")
                 directionButton(systemImage: "arrow.down.right", action: "LowerRight")
             }
+            
+            // →
+            directionButton(systemImage: "arrow.right", action: "Right")
         }
         .padding(.vertical, 16)
         .padding(.horizontal, 12)

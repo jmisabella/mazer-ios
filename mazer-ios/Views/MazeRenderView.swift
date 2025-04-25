@@ -193,7 +193,6 @@ struct MazeRenderView: View {
                 } label: {
                     Image(systemName: showControls ? "xmark.circle.fill" : "ellipsis.circle")
                         .font(.title2)
-                        .padding()
                 }
                 .accessibilityLabel("Toggle navigation controls")
             }
