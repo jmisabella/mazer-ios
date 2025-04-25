@@ -25,7 +25,8 @@ struct ContentView: View {
     // User selections from render view
     @State private var showSolution: Bool = false
     @State private var showHeatMap: Bool = false
-    @State private var showCelebration = false
+    @State private var showControls: Bool = false
+    @State private var showCelebration: Bool = false
 
     // Track the opaque maze pointer.
     @State private var currentGrid: OpaquePointer? = nil
@@ -40,6 +41,7 @@ struct ContentView: View {
                         mazeGenerated: $mazeGenerated,
                         showSolution: $showSolution,
                         showHeatMap: $showHeatMap,
+                        showControls: $showControls,
                         mazeCells: mazeCells,
                         mazeType: mazeType,
                         regenerateMaze: {

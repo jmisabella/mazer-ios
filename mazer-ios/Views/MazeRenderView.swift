@@ -12,8 +12,10 @@ struct MazeRenderView: View {
     @Binding var mazeGenerated: Bool
     @Binding var showSolution: Bool
     @Binding var showHeatMap: Bool
+    @Binding var showControls: Bool
     @State private var selectedPalette: HeatMapPalette = allPalettes.randomElement()!
     @State private var mazeID = UUID()  // New state to track the current maze, specifically used to reset solution between mazes)
+    
     let mazeCells: [MazeCell]
     let mazeType: MazeType  // "Orthogonal", "Sigma", etc.
     let regenerateMaze: () -> Void
@@ -177,6 +179,16 @@ struct MazeRenderView: View {
                         .foregroundColor(showHeatMap ? .orange : .gray)
                 }
                 .accessibilityLabel("Toggle heat map")
+                
+                // Navigation controls toggle
+                Button {
+                    withAnimation { showControls.toggle() }
+                } label: {
+                    Image(systemName: showControls ? "xmark.circle.fill" : "ellipsis.circle")
+                        .font(.title2)
+                        .padding()
+                }
+                .accessibilityLabel("Toggle navigation controls")
             }
             .padding(.top)
             
@@ -185,6 +197,14 @@ struct MazeRenderView: View {
             if mazeType == .orthogonal || mazeType == .delta {
                 ZStack {
                     mazeContent
+                    if showControls {
+                        VStack {
+                            Spacer()
+                            directionControlView
+                                .padding(.bottom, 30)
+                                .transition(.move(edge: .bottom).combined(with: .opacity))
+                        }
+                    }
                 }
                 .gesture(
                     DragGesture(minimumDistance: 10)
@@ -254,12 +274,17 @@ struct MazeRenderView: View {
                 // For other maze types, no gesture is attached.
                 ZStack {
                     mazeContent
+                    if showControls {
+                        VStack {
+                            Spacer()
+                            directionControlView
+                                .padding(.bottom, 30)
+                                .transition(.move(edge: .bottom).combined(with: .opacity))
+                        }
+                    }
                 }
             }
 
-            
-
-            directionControlView
             
         }
         
@@ -285,21 +310,3 @@ struct MazeRenderView: View {
     
 }
 
-struct MazeRenderView_Previews: PreviewProvider {
-    static var previews: some View {
-        MazeRenderView(
-            mazeGenerated: .constant(false),
-            showSolution: .constant(false),
-            showHeatMap: .constant(false),
-            mazeCells: [],
-            mazeType: .orthogonal,
-            regenerateMaze: {
-                print("Maze Render Preview Triggered")
-            },
-            moveAction: { direction in
-                // For preview purposes, simply print the direction.
-                print("Move action triggered: \(direction)")
-            }
-        )
-    }
-}
