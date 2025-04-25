@@ -36,7 +36,7 @@ struct DeltaDirectionControlView: View {
                 .padding(.vertical, 1)
                 .background(
                     Capsule(style: .continuous)
-                        .fill(Color.blue.opacity(0.2))
+                        .fill(Color.blue)
                 )
         }
         .accessibilityLabel(label)

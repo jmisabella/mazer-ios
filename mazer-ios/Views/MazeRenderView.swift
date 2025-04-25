@@ -207,6 +207,14 @@ struct MazeRenderView: View {
                             Spacer()
                             directionControlView
                                 .padding(.bottom, 30)
+                                .background(
+                                    // either a solid color:
+                                    Color(.systemBackground).opacity(0.8)
+                                    // —or an iOS material:
+                                    // .regularMaterial
+                                )
+                                .cornerRadius(16) // round the bubble
+                                .shadow(radius: 4)
                             // apply the user’s drag offset
                                 .offset(padOffset)
                             // let the pad itself handle drags to move its position
@@ -306,6 +314,14 @@ struct MazeRenderView: View {
                             Spacer()
                             directionControlView
                                 .padding(.bottom, 30)
+                                .background(
+                                    // either a solid color:
+                                    Color(.systemBackground).opacity(0.8)
+                                    // —or an iOS material:
+                                    // .regularMaterial
+                                )
+                                .cornerRadius(16) // round the bubble
+                                .shadow(radius: 4)
                             // apply the user’s drag offset
                                 .offset(padOffset)
                             // let the pad itself handle drags to move its position
