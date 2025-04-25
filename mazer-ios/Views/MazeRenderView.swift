@@ -81,7 +81,9 @@ struct MazeRenderView: View {
                 .id(mazeID) // Force view recreation when mazeID changes
                 .padding(.top, 3)
         case .sigma:
-            Text("Sigma rendering not implemented yet")
+            SigmaDirectionControlView(moveAction: performMove)
+                .id(mazeID)
+                .padding(.top, 3)
         case .delta:
             DeltaDirectionControlView(moveAction: performMove)
                 .id(mazeID)

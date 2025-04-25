@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		001C89BF2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */; };
 		001E48E32DB1A4680036F7E9 /* MazeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001E48E22DB1A4680036F7E9 /* MazeGridView.swift */; };
 		003DE2A72DB5F6D300EFB530 /* DPadButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */; };
 		003DE2A92DB5F71D00EFB530 /* DirectionPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigmaDirectionControlViewi.swift; sourceTree = "<group>"; };
 		001E48E22DB1A4680036F7E9 /* MazeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGridView.swift; sourceTree = "<group>"; };
 		003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPadButtonStyle.swift; sourceTree = "<group>"; };
 		003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionPadView.swift; sourceTree = "<group>"; };
@@ -1269,6 +1271,7 @@
 				003DE2AE2DB72D7900EFB530 /* ConfettiView.swift */,
 				00AE05F42DB877770068C880 /* SigmaCellView.swift */,
 				00AE05F62DB8778C0068C880 /* SigmaMazeView.swift */,
+				001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3500,6 +3503,7 @@
 				00DD0DC22DAC931C00C20B2E /* MazeCellStyle.swift in Sources */,
 				00C341E92D9F50BE0077691B /* OrthogonalCellView.swift in Sources */,
 				00C33F7B2D9B86ED0077691B /* MazeCell.swift in Sources */,
+				001C89BF2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift in Sources */,
 				00C33F772D98CC800077691B /* MazeType.swift in Sources */,
 				00C33F682D98C84C0077691B /* ContentView.swift in Sources */,
 				00AE05F52DB877770068C880 /* SigmaCellView.swift in Sources */,
