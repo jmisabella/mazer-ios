@@ -9,19 +9,49 @@ import SwiftUI
 
 struct OrthogonalDirectionControlView: View {
     let moveAction: (String) -> Void
-    
-        var body: some View {
-            DirectionPadView(
-              layout: [
-                [MazeDirection.left, MazeDirection.up, MazeDirection.right],
-                [MazeDirection.down]
-              ],
-              iconName: { $0.systemImage },
-              action: { moveAction($0.rawValue.capitalized) }
-            )
-        .padding(1) // Reduced overall outer padding.
+
+    var body: some View {
+        VStack(spacing: 8) {
+            // ┌───┬───┬───┐
+            // │ ← │ ↑ │ → │
+            // └───┴───┴───┘
+            HStack(spacing: 16) {
+                directionButton(systemImage: "arrow.left",  action: "Left")
+                directionButton(systemImage: "arrow.up",    action: "Up")
+                directionButton(systemImage: "arrow.right", action: "Right")
+            }
+            .frame(maxWidth: .infinity)
+
+            // ┌───┐
+            // │ ↓ │
+            // └───┘
+            HStack {
+                Spacer()
+                directionButton(systemImage: "arrow.down", action: "Down")
+                Spacer()
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .padding(12)
+        .background(Color(.systemBackground).opacity(0.8))
+        .cornerRadius(12)
+        .shadow(radius: 4)
+    }
+
+    private func directionButton(systemImage: String, action dir: String) -> some View {
+        Button {
+            moveAction(dir)
+        } label: {
+            Image(systemName: systemImage)
+                .font(.title2)
+                .frame(width: 44, height: 44)
+                .background(Circle().fill(Color.gray))
+                .foregroundColor(.white)
+        }
+        .accessibilityLabel("Move \(dir)")
     }
 }
+
 
 struct OrthogonalDirectionControlView_Previews: PreviewProvider {
     static var previews: some View {

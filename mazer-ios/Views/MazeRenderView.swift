@@ -206,7 +206,7 @@ struct MazeRenderView: View {
                         VStack {
                             Spacer()
                             directionControlView
-                                .padding(.bottom, 30)
+                                .fixedSize() // ↖️ stop it from growing to fill horizontally
                                 .background(
                                     // either a solid color:
                                     Color(.systemBackground).opacity(0.8)
@@ -238,6 +238,12 @@ struct MazeRenderView: View {
                                         }
                                 )
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
+                            // reset on toggle‐on:
+                                .onChange(of: showControls) { newValue in
+                                    guard newValue else { return }
+                                    padOffset = .zero
+                                    dragStartOffset = .zero
+                                }
                         }
                     }
                 }
@@ -313,7 +319,7 @@ struct MazeRenderView: View {
                         VStack {
                             Spacer()
                             directionControlView
-                                .padding(.bottom, 30)
+                                .fixedSize() // ↖️ stop it from growing to fill horizontally
                                 .background(
                                     // either a solid color:
                                     Color(.systemBackground).opacity(0.8)
@@ -345,6 +351,12 @@ struct MazeRenderView: View {
                                         }
                                 )
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
+                            // reset on toggle‐on:
+                                .onChange(of: showControls) { newValue in
+                                    guard newValue else { return }
+                                    padOffset = .zero
+                                    dragStartOffset = .zero
+                                }
                         }
                     }
                 }
