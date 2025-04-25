@@ -26,7 +26,10 @@ struct ContentView: View {
     @State private var showSolution: Bool = false
     @State private var showHeatMap: Bool = false
     @State private var showControls: Bool = false
+    // track the arrow‐pad’s drag offset
+    @State private var padOffset = CGSize(width: 0, height: 0)
     @State private var showCelebration: Bool = false
+    
 
     // Track the opaque maze pointer.
     @State private var currentGrid: OpaquePointer? = nil
@@ -42,6 +45,7 @@ struct ContentView: View {
                         showSolution: $showSolution,
                         showHeatMap: $showHeatMap,
                         showControls: $showControls,
+                        padOffset: $padOffset,
                         mazeCells: mazeCells,
                         mazeType: mazeType,
                         regenerateMaze: {

@@ -13,8 +13,13 @@ struct MazeRenderView: View {
     @Binding var showSolution: Bool
     @Binding var showHeatMap: Bool
     @Binding var showControls: Bool
+    // track the arrow‐pad’s drag offset
+    @Binding var padOffset: CGSize
+    // remember where we were when this drag began
+    @State private var dragStartOffset: CGSize = .zero
     @State private var selectedPalette: HeatMapPalette = allPalettes.randomElement()!
-    @State private var mazeID = UUID()  // New state to track the current maze, specifically used to reset solution between mazes)
+    @State private var mazeID = UUID()  // tracks the current maze, specifically used to reset solution between mazes)
+    
     
     let mazeCells: [MazeCell]
     let mazeType: MazeType  // "Orthogonal", "Sigma", etc.
@@ -202,6 +207,28 @@ struct MazeRenderView: View {
                             Spacer()
                             directionControlView
                                 .padding(.bottom, 30)
+                            // apply the user’s drag offset
+                                .offset(padOffset)
+                            // let the pad itself handle drags to move its position
+                                .gesture(
+                                    DragGesture()
+                                        .onChanged { value in
+                                            // add translation onto where we started
+                                            padOffset = CGSize(
+                                                width: dragStartOffset.width + value.translation.width,
+                                                height: dragStartOffset.height + value.translation.height
+                                            )
+                                        }
+                                        .onEnded { value in
+                                            // clamp it, then store it as the new “start” for next time
+                                            let newOffset = CGSize(
+                                                width: dragStartOffset.width + value.translation.width,
+                                                height: dragStartOffset.height + value.translation.height
+                                            )
+                                            padOffset = clamped(offset: newOffset)
+                                            dragStartOffset = padOffset
+                                        }
+                                )
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
                         }
                     }
@@ -279,6 +306,28 @@ struct MazeRenderView: View {
                             Spacer()
                             directionControlView
                                 .padding(.bottom, 30)
+                            // apply the user’s drag offset
+                                .offset(padOffset)
+                            // let the pad itself handle drags to move its position
+                                .gesture(
+                                    DragGesture()
+                                        .onChanged { value in
+                                            // add translation onto where we started
+                                            padOffset = CGSize(
+                                                width: dragStartOffset.width + value.translation.width,
+                                                height: dragStartOffset.height + value.translation.height
+                                            )
+                                        }
+                                        .onEnded { value in
+                                            // clamp it, then store it as the new “start” for next time
+                                            let newOffset = CGSize(
+                                                width: dragStartOffset.width + value.translation.width,
+                                                height: dragStartOffset.height + value.translation.height
+                                            )
+                                            padOffset = clamped(offset: newOffset)
+                                            dragStartOffset = padOffset
+                                        }
+                                )
                                 .transition(.move(edge: .bottom).combined(with: .opacity))
                         }
                     }
@@ -287,12 +336,19 @@ struct MazeRenderView: View {
 
             
         }
-        
     }
     
+    private func clamped(offset: CGSize) -> CGSize {
+        // e.g. ensure padOffset.x stays within ±screenWidth/2
+        let maxX = UIScreen.main.bounds.width/2 - 50
+        let maxY = UIScreen.main.bounds.height/2 - 50
+        return CGSize(
+            width: min(max(offset.width, -maxX), maxX),
+            height: min(max(offset.height, -maxY), maxY)
+        )
+    }
     
-    
-    func shadeColor(for cell: MazeCell, maxDistance: Int) -> Color {
+    private func shadeColor(for cell: MazeCell, maxDistance: Int) -> Color {
         guard showHeatMap, maxDistance > 0 else {
             return .gray  // fallback color when heat map is off
         }
@@ -301,7 +357,7 @@ struct MazeRenderView: View {
         return selectedPalette.shades[index].asColor
     }
     
-    func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
+    private func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
         let availablePalettes = allPalettes.filter { $0 != current }
         // If there’s at least one palette that isn’t the current, pick one at random.
         // Otherwise, fallback to returning the current palette.
