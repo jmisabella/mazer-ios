@@ -20,9 +20,10 @@ func cellBackgroundColor(
     } else if cell.isGoal {
         return .red
     } else if cell.isVisited {
-        return .green
+//        return .green
+        return .pink.opacity(0.5)
     } else if isRevealedSolution {
-        return .solutionHighlight
+        return .solutionHighlight.opacity(0.6)
     } else if showHeatMap && maxDistance > 0 {
         let index = min(9, (cell.distance * 10) / maxDistance)
         return selectedPalette.shades[index].asColor
@@ -34,10 +35,16 @@ func cellBackgroundColor(
 func cellStrokeWidth(for size: CGFloat) -> CGFloat {
     switch size {
     case ..<12:
-        return 1.5
-    case ..<13:
-        return 2.0
-    default:
         return 2.5
+    case ..<13:
+        return 3.0
+    default:
+        return 2.0
+//    case ..<12:
+//        return 1.5
+//    case ..<13:
+//        return 2.0
+//    default:
+//        return 2.5
     }
 }

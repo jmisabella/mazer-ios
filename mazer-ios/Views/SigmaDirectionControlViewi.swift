@@ -1,13 +1,13 @@
 //
-//  DeltaDirectionControlView.swift
+//  SigmaDirectionControlViewi.swift
 //  mazer-ios
 //
-//  Created by Jeffrey Isabella on 4/13/25.
+//  Created by Jeffrey Isabella on 4/25/25.
 //
 
 import SwiftUI
 
-struct DeltaDirectionControlView: View {
+struct SigmaDirectionControlView: View {
     let moveAction: (String) -> Void
 
     var body: some View {
@@ -57,3 +57,12 @@ struct DeltaDirectionControlView: View {
     }
 }
 
+struct SigmaDirectionControlView_Previews: PreviewProvider {
+    static var previews: some View {
+        SigmaDirectionControlView { dir in
+            print("Moved \(dir)")
+        }
+        .padding()
+        .previewLayout(.sizeThatFits)
+    }
+}

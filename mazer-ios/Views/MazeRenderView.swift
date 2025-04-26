@@ -12,8 +12,15 @@ struct MazeRenderView: View {
     @Binding var mazeGenerated: Bool
     @Binding var showSolution: Bool
     @Binding var showHeatMap: Bool
+    @Binding var showControls: Bool
+    // track the arrow‐pad’s drag offset
+    @Binding var padOffset: CGSize
+    // remember where we were when this drag began
+    @State private var dragStartOffset: CGSize = .zero
     @State private var selectedPalette: HeatMapPalette = allPalettes.randomElement()!
-    @State private var mazeID = UUID()  // New state to track the current maze, specifically used to reset solution between mazes)
+    @State private var mazeID = UUID()  // tracks the current maze, specifically used to reset solution between mazes)
+    
+    
     let mazeCells: [MazeCell]
     let mazeType: MazeType  // "Orthogonal", "Sigma", etc.
     let regenerateMaze: () -> Void
@@ -28,10 +35,29 @@ struct MazeRenderView: View {
         }
     }
 
+//    func computeCellSize() -> CGFloat {
+//        let columns = (mazeCells.map { $0.x }.max() ?? 0) + 1
+//        return UIScreen.main.bounds.width / CGFloat(columns) * 1.35
+//    }
+    
     func computeCellSize() -> CGFloat {
-        let columns = (mazeCells.map { $0.x }.max() ?? 0) + 1
-        return UIScreen.main.bounds.width / CGFloat(columns) * 1.35
-    }
+        let cols = (mazeCells.map { $0.x }.max() ?? 0) + 1
+
+        switch mazeType {
+        case .orthogonal:
+          return UIScreen.main.bounds.width / CGFloat(cols)
+        case .delta:
+            return UIScreen.main.bounds.width / CGFloat(cols) * 1.35
+        case .sigma:
+          // flat-topped hex: total horizontal “units” =
+          //   1 full cell + 1.5 for each additional column
+          let units = 1.5 * CGFloat(cols - 1) + 1
+          return UIScreen.main.bounds.width / units
+        // TODO: .polar
+        default:
+          return UIScreen.main.bounds.width / CGFloat(cols)
+        }
+      }
     
     var columns: Int {
         (mazeCells.map { $0.x }.max() ?? 0) + 1
@@ -55,7 +81,9 @@ struct MazeRenderView: View {
                 .id(mazeID) // Force view recreation when mazeID changes
                 .padding(.top, 3)
         case .sigma:
-            Text("Sigma rendering not implemented yet")
+            SigmaDirectionControlView(moveAction: performMove)
+                .id(mazeID)
+                .padding(.top, 3)
         case .delta:
             DeltaDirectionControlView(moveAction: performMove)
                 .id(mazeID)
@@ -64,13 +92,14 @@ struct MazeRenderView: View {
             Text("Polar rendering not implemented yet")
         }
     }
-
     
     // A computed property to build the maze content based on mazeType.
     @ViewBuilder
     var mazeContent: some View {
+        let cellSize = computeCellSize()
         switch mazeType {
         case .orthogonal:
+            // TODO: pass cellSize into OrthogonalMazeView?
             OrthogonalMazeView(
                 selectedPalette: $selectedPalette,
                 cells: mazeCells,
@@ -79,10 +108,15 @@ struct MazeRenderView: View {
             )
             .id(mazeID)
         case .sigma:
-            Text("Sigma rendering not implemented yet")
+            SigmaMazeView(
+                selectedPalette: $selectedPalette,
+                cells: mazeCells,
+                cellSize: cellSize,
+                showSolution: showSolution,
+                showHeatMap: showHeatMap
+            )
+            .id(mazeID)
         case .delta:
-            let cellSize = computeCellSize()
-//            let cellSize = computeDeltaCellSize()
             let maxDistance = mazeCells.map { $0.distance }.max() ?? 1
             DeltaMazeView(
                 cells: mazeCells,
@@ -152,15 +186,70 @@ struct MazeRenderView: View {
                         .foregroundColor(showHeatMap ? .orange : .gray)
                 }
                 .accessibilityLabel("Toggle heat map")
+                
+                // Navigation controls toggle
+                Button {
+                    withAnimation { showControls.toggle() }
+                } label: {
+                    Image(systemName: showControls ? "xmark.circle.fill" : "ellipsis.circle")
+                        .font(.title2)
+                }
+                .accessibilityLabel("Toggle navigation controls")
             }
             .padding(.top)
+            
             
             
             // The maze container:
             if mazeType == .orthogonal || mazeType == .delta {
                 ZStack {
                     mazeContent
+                    if showControls {
+                        VStack {
+                            Spacer()
+                            directionControlView
+                                .fixedSize() // ↖️ stop it from growing to fill horizontally
+                                .background(
+                                    // either a solid color:
+                                    Color(.systemBackground).opacity(0.8)
+                                    // —or an iOS material:
+                                    // .regularMaterial
+                                )
+                                .cornerRadius(16) // round the bubble
+                                .shadow(radius: 4)
+                            // apply the user’s drag offset
+                                .offset(padOffset)
+                            // let the pad itself handle drags to move its position
+                                .gesture(
+                                    DragGesture()
+                                        .onChanged { value in
+                                            // add translation onto where we started
+                                            padOffset = CGSize(
+                                                width: dragStartOffset.width + value.translation.width,
+                                                height: dragStartOffset.height + value.translation.height
+                                            )
+                                        }
+                                        .onEnded { value in
+                                            // clamp it, then store it as the new “start” for next time
+                                            let newOffset = CGSize(
+                                                width: dragStartOffset.width + value.translation.width,
+                                                height: dragStartOffset.height + value.translation.height
+                                            )
+                                            padOffset = clamped(offset: newOffset)
+                                            dragStartOffset = padOffset
+                                        }
+                                )
+                                .transition(.move(edge: .bottom).combined(with: .opacity))
+                            // reset on toggle‐on:
+                                .onChange(of: showControls) { newValue in
+                                    guard newValue else { return }
+                                    padOffset = .zero
+                                    dragStartOffset = .zero
+                                }
+                        }
+                    }
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .gesture(
                     DragGesture(minimumDistance: 10)
                         .onEnded { value in
@@ -229,20 +318,67 @@ struct MazeRenderView: View {
                 // For other maze types, no gesture is attached.
                 ZStack {
                     mazeContent
+                    if showControls {
+                        VStack {
+                            Spacer()
+                            directionControlView
+                                .fixedSize() // ↖️ stop it from growing to fill horizontally
+                                .background(
+                                    // either a solid color:
+                                    Color(.systemBackground).opacity(0.8)
+                                    // —or an iOS material:
+                                    // .regularMaterial
+                                )
+                                .cornerRadius(16) // round the bubble
+                                .shadow(radius: 4)
+                            // apply the user’s drag offset
+                                .offset(padOffset)
+                            // let the pad itself handle drags to move its position
+                                .gesture(
+                                    DragGesture()
+                                        .onChanged { value in
+                                            // add translation onto where we started
+                                            padOffset = CGSize(
+                                                width: dragStartOffset.width + value.translation.width,
+                                                height: dragStartOffset.height + value.translation.height
+                                            )
+                                        }
+                                        .onEnded { value in
+                                            // clamp it, then store it as the new “start” for next time
+                                            let newOffset = CGSize(
+                                                width: dragStartOffset.width + value.translation.width,
+                                                height: dragStartOffset.height + value.translation.height
+                                            )
+                                            padOffset = clamped(offset: newOffset)
+                                            dragStartOffset = padOffset
+                                        }
+                                )
+                                .transition(.move(edge: .bottom).combined(with: .opacity))
+                            // reset on toggle‐on:
+                                .onChange(of: showControls) { newValue in
+                                    guard newValue else { return }
+                                    padOffset = .zero
+                                    dragStartOffset = .zero
+                                }
+                        }
+                    }
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-
-            
-
-            directionControlView
-            
         }
-        
     }
     
+    private func clamped(offset: CGSize) -> CGSize {
+        // e.g. ensure padOffset.x stays within ±screenWidth/2
+        let maxX = UIScreen.main.bounds.width/2 - 50
+        let maxY = UIScreen.main.bounds.height/2 - 50
+        return CGSize(
+            width: min(max(offset.width, -maxX), maxX),
+            height: min(max(offset.height, -maxY), maxY)
+        )
+    }
     
-    
-    func shadeColor(for cell: MazeCell, maxDistance: Int) -> Color {
+    private func shadeColor(for cell: MazeCell, maxDistance: Int) -> Color {
         guard showHeatMap, maxDistance > 0 else {
             return .gray  // fallback color when heat map is off
         }
@@ -251,7 +387,7 @@ struct MazeRenderView: View {
         return selectedPalette.shades[index].asColor
     }
     
-    func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
+    private func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
         let availablePalettes = allPalettes.filter { $0 != current }
         // If there’s at least one palette that isn’t the current, pick one at random.
         // Otherwise, fallback to returning the current palette.
@@ -260,21 +396,3 @@ struct MazeRenderView: View {
     
 }
 
-struct MazeRenderView_Previews: PreviewProvider {
-    static var previews: some View {
-        MazeRenderView(
-            mazeGenerated: .constant(false),
-            showSolution: .constant(false),
-            showHeatMap: .constant(false),
-            mazeCells: [],
-            mazeType: .orthogonal,
-            regenerateMaze: {
-                print("Maze Render Preview Triggered")
-            },
-            moveAction: { direction in
-                // For preview purposes, simply print the direction.
-                print("Move action triggered: \(direction)")
-            }
-        )
-    }
-}
