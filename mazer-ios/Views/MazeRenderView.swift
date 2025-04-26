@@ -201,7 +201,7 @@ struct MazeRenderView: View {
             
             
             // The maze container:
-            if mazeType == .orthogonal || mazeType == .delta {
+            if mazeType == .orthogonal || mazeType == .delta || mazeType == .sigma {
                 ZStack {
                     mazeContent
                     if showControls {
@@ -275,7 +275,7 @@ struct MazeRenderView: View {
                                     }
                                 }
                             }
-                            else if mazeType == .delta {
+                            else if mazeType == .delta || mazeType == .sigma {
                                 // purposefully negated (inverted) height so it would properly work in atan2's trig math
                                 let tx = value.translation.width
                                 let ty = -value.translation.height
