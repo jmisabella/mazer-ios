@@ -20,7 +20,6 @@ func cellBackgroundColor(
     } else if cell.isGoal {
         return .red
     } else if cell.isVisited {
-//        return .green
         return .pink.opacity(0.5)
     } else if isRevealedSolution {
         return .solutionHighlight.opacity(0.6)

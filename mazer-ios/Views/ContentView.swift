@@ -110,7 +110,7 @@ struct ContentView: View {
             } else if selectedSize == .large {
                 adjustment = 1.15
             }
-            verticalPadding = CGFloat(280)
+            verticalPadding = CGFloat(230)
             
         } else if selectedMazeType == .orthogonal {
             adjustment = 0.92
@@ -119,7 +119,7 @@ struct ContentView: View {
             } else if selectedSize == .large {
                 adjustment = 1.2
             }
-            verticalPadding = CGFloat(280)
+            verticalPadding = CGFloat(140)
         } else if selectedMazeType == .sigma {
             adjustment = 0.72
             if selectedSize == .medium {
