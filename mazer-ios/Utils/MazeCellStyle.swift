@@ -32,18 +32,18 @@ func cellBackgroundColor(
 }
 
 func cellStrokeWidth(for size: CGFloat) -> CGFloat {
-    switch size {
-    case ..<12:
-        return 2.5
-    case ..<13:
-        return 3.0
-    default:
-        return 2.0
+        switch size {
+        case ..<12:
+            return 2.5
+        default:
+            return 3.5
+        }
+//    switch size {
 //    case ..<12:
-//        return 1.5
-//    case ..<13:
-//        return 2.0
-//    default:
 //        return 2.5
-    }
+//    case ..<13:
+//        return 3.0
+//    default:
+//        return 2.0
+//    }
 }

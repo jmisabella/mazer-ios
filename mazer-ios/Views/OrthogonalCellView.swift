@@ -18,6 +18,7 @@ struct OrthogonalCellView: View {
 
     var body: some View {
         ZStack {
+            Color.white            // fixed white underlay
             Rectangle()
                 .fill(cellBackgroundColor(
                                     for: cell,
