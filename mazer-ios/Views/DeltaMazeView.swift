@@ -59,39 +59,44 @@ struct DeltaMazeView: View {
         (cells.map { $0.y }.max() ?? 0) + 1
     }
     
-    /// Compute the height for an equilateral triangle.
-    var triangleHeight: CGFloat {
-        //        cellSize * 2 * CGFloat(sqrt(3)) / 2.0
+    /// Snap a value to the nearest device‐pixel.
+      private func snap(_ x: CGFloat) -> CGFloat {
+        let scale = UIScreen.main.scale
+        return (x * scale).rounded() / scale
+      }
+
+      /// Height of one triangle.
+      private var triangleHeight: CGFloat {
         cellSize * sqrt(3) / 2
-    }
-    
-    var body: some View {
-        // Use a spacing of -triangleHeight/2 to ensure proper overlap.
-        //        VStack(spacing: -triangleHeight / 2) {
-        VStack(spacing: 0) {
-            ForEach(0..<rows, id: \.self) { rowIndex in
-                HStack(spacing: -cellSize / 2) {
-                    ForEach(0..<columns, id: \.self) { colIndex in
-                        // Look up the MazeCell that has matching x and y
-                        if let cell = cells.first(where: { $0.x == colIndex && $0.y == rowIndex }) {
-                            DeltaCellView(
-                                cell: cell,
-                                cellSize: cellSize,
-                                showSolution: showSolution,
-                                showHeatMap: showHeatMap,
-                                selectedPalette: selectedPalette,
-                                maxDistance: maxDistance,
-                                // your logic with Coordinates; for now, we pass false
-                                isRevealedSolution: revealedSolutionPath.contains(Coordinates(x: cell.x, y: cell.y))
-                            )
-                        } else {
-                            // If no cell is found at this location, you can show an empty view.
-                            EmptyView()
-                        }
-                    }
+      }
+
+      var body: some View {
+        VStack(spacing: snap(0)) {
+          ForEach(0..<rows, id: \.self) { rowIndex in
+            HStack(spacing: snap(-cellSize / 2)) {
+              ForEach(0..<columns, id: \.self) { colIndex in
+                if let cell = cells.first(where: { $0.x == colIndex && $0.y == rowIndex }) {
+                  DeltaCellView(
+                    cell: cell,
+                    cellSize: cellSize,
+                    showSolution: showSolution,
+                    showHeatMap: showHeatMap,
+                    selectedPalette: selectedPalette,
+                    maxDistance: maxDistance,
+                    isRevealedSolution: revealedSolutionPath.contains(
+                      Coordinates(x: cell.x, y: cell.y)
+                    )
+                  )
+                } else {
+                  EmptyView()
                 }
+              }
             }
+          }
         }
+        // Flatten the entire grid to avoid any sub-pixel seams between rows
+        .compositingGroup()
+        .drawingGroup(opaque: true)
         .onChange(of: showSolution) { oldValue, newValue in
             if newValue {
                 animateSolutionPathReveal()
