@@ -20,7 +20,8 @@ func cellBackgroundColor(
     } else if cell.isGoal {
         return .red
     } else if cell.isVisited {
-        return .pink.opacity(0.5)
+//        return .pink.opacity(0.5)
+        return softPink
     } else if isRevealedSolution {
         return .solutionHighlight.opacity(0.6)
     } else if showHeatMap && maxDistance > 0 {

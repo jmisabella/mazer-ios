@@ -36,7 +36,6 @@ struct SigmaCellView: View {
 
     var body: some View {
         ZStack {
-            Color.white            // fixed white underlay
             // 1) fill
             Path { p in
                 p.addLines(points)

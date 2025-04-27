@@ -23,7 +23,6 @@ struct DeltaCellView: View {
 
     var body: some View {
         ZStack {
-            Color.white            // fixed white underlay
             // Draw the triangle background.
             Path { path in
                 if cell.orientation.lowercased() == "normal" {
