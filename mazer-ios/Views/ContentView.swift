@@ -134,9 +134,12 @@ struct ContentView: View {
               switch selectedMazeType {
               case .delta:
                 switch selectedSize {
-                case .small:  return 0.85
-                case .medium: return 0.97
-                case .large:  return 1.15
+//                case .small:  return 0.85
+//                case .medium: return 0.97
+//                case .large:  return 1.15
+                case .small:  return 0.97
+                case .medium: return 1.15
+                case .large:  return 1.25
                 }
               case .orthogonal:
                 switch selectedSize {
@@ -146,9 +149,12 @@ struct ContentView: View {
                 }
               case .sigma:
                 switch selectedSize {
-                case .small:  return 0.72
-                case .medium: return 0.8
-                case .large:  return 1.0
+//                case .small:  return 0.72
+//                case .medium: return 0.8
+//                case .large:  return 1.0
+                case .small:  return 0.65
+                case .medium: return 0.72
+                case .large:  return 0.8
                 }
               case .polar:
                 return 1.0
