@@ -58,19 +58,6 @@ struct MazeRequestView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 
-                Picker("Algorithm", selection: $selectedAlgorithm) {
-                    ForEach(MazeAlgorithm.allCases) { algo in
-                        Text(algo.rawValue).tag(algo)
-                    }
-                }
-                .pickerStyle(MenuPickerStyle())
-                
-                // Display the selected algorithm's description.
-                Text(selectedAlgorithm.description)
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
-                    .padding(.horizontal)
-
                 Picker("Maze Type", selection: $selectedMazeType) {
                     ForEach(MazeType.allCases) { type in
                         Text(type.rawValue.capitalized).tag(type)
@@ -80,6 +67,19 @@ struct MazeRequestView: View {
                 
                 // Display the selected maze type description.
                 Text(selectedMazeType.description)
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal)
+                
+                Picker("Algorithm", selection: $selectedAlgorithm) {
+                    ForEach(MazeAlgorithm.allCases) { algo in
+                        Text(algo.rawValue).tag(algo)
+                    }
+                }
+                .pickerStyle(MenuPickerStyle())
+                
+                // Display the selected algorithm's description.
+                Text(selectedAlgorithm.description)
                     .font(.footnote)
                     .foregroundColor(.secondary)
                     .padding(.horizontal)

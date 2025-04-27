@@ -53,6 +53,11 @@ struct SigmaCellView: View {
             // 2) walls
             Path { p in
                 let dirs = cell.linked
+                // force the start cell to only be open “Up”
+//                let dirs = cell.isStart
+//                ? ["Up"]
+//                : cell.linked
+                
                 let pts = points
 
                 if !dirs.contains("Up") {

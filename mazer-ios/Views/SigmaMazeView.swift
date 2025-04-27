@@ -74,6 +74,7 @@ struct SigmaMazeView: View {
                 //                    )
             }
         }
+        .padding(.bottom, hexHeight)   // lift the whole maze up by one hex-height
         .frame(width: totalWidth, height: totalHeight, alignment: .topLeading)
         .onChange(of: showSolution) { _, new in
             if new { animateSolutionPathReveal() }
