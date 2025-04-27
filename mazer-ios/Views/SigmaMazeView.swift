@@ -51,9 +51,6 @@ struct SigmaMazeView: View {
     
 
     var body: some View {
-        
-        
-        
         ZStack(alignment: .topLeading) {
             ForEach(cells, id: \.self) { cell in
                 SigmaCellView(
@@ -74,7 +71,9 @@ struct SigmaMazeView: View {
                 //                    )
             }
         }
-        .padding(.bottom, hexHeight)   // lift the whole maze up by one hex-height
+        // Flatten the entire grid to avoid any sub-pixel seams between rows
+        .compositingGroup()
+        .drawingGroup(opaque: true)
         .frame(width: totalWidth, height: totalHeight, alignment: .topLeading)
         .onChange(of: showSolution) { _, new in
             if new { animateSolutionPathReveal() }
