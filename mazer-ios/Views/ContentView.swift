@@ -55,6 +55,7 @@ struct ContentView: View {
                             performMove(direction: direction)
                         }
                     )
+                    .padding(.vertical, 100)
                 } else {
                     MazeRequestView(
                         mazeCells: $mazeCells,
@@ -91,6 +92,33 @@ struct ContentView: View {
             }
     }
     
+    private func computeVerticalPadding() -> CGFloat {
+        let screenH = UIScreen.main.bounds.height
+
+        // 1) Your old “base” padding per maze type
+        let basePadding: CGFloat = {
+            switch selectedMazeType {
+            case .delta:      return 230
+            case .orthogonal: return 140
+            case .sigma:      return 280
+            case .polar:      return 0
+            }
+        }()
+
+        // 2) A ratio by size to scale that down on small screens
+        let sizeRatio: CGFloat = {
+            switch selectedSize {
+            case .small:  return 0.30   // 30% of screen height
+            case .medium: return 0.25   // 25%
+            case .large:  return 0.20   // 20%
+            }
+        }()
+
+        // 3) Take the *minimum* of your old constant or the scaled value
+        return min(basePadding, screenH * sizeRatio)
+    }
+
+    
     private func submitMazeRequest() {
         // Clean up any existing maze instance before creating a new one.
         if let current = currentGrid {
@@ -99,53 +127,128 @@ struct ContentView: View {
             currentGrid = nil
         }
         
-        var adjustment = 1.0
-        var verticalPadding = 0.0
+//        let adjustment: CGFloat = {
+//            switch selectedMazeType {
+//            case .delta:
+//                switch selectedSize {
+//                case .small:  return 0.85
+//                case .medium: return 0.97
+//                case .large:  return 1.15
+//                }
+//            case .orthogonal:
+//                switch selectedSize {
+//                case .small:  return 0.92
+//                case .medium: return 1.1
+//                case .large:  return 1.2
+//                }
+//            case .sigma:
+//                switch selectedSize {
+//                case .small:  return 0.72
+//                case .medium: return 0.8
+//                case .large:  return 1.0
+//                }
+//            case .polar:
+//                return 1.0
+//            }
+//        }()
         
-        
-        if selectedMazeType == .delta {
-            adjustment = 0.85
-            if selectedSize == .medium {
-                adjustment = 0.97
-            } else if selectedSize == .large {
-                adjustment = 1.15
-            }
-            verticalPadding = CGFloat(280)
-            
-        } else if selectedMazeType == .orthogonal {
-            adjustment = 0.92
-            if selectedSize == .medium {
-                adjustment = 1.1
-            } else if selectedSize == .large {
-                adjustment = 1.2
-            }
-            verticalPadding = CGFloat(280)
-        } else if selectedMazeType == .sigma {
-            adjustment = 0.72
-            if selectedSize == .medium {
-                adjustment = 0.8
-            } else if selectedSize == .large {
-                adjustment = 1.0
-            }
-            verticalPadding = CGFloat(280)
-        }
-        
-        let adjustedCellSize = adjustment * CGFloat(selectedSize.rawValue)
-        var maxWidth = max(1, Int((UIScreen.main.bounds.width) / adjustedCellSize))
-        var maxHeight = max(1, Int((UIScreen.main.bounds.height - verticalPadding) / adjustedCellSize))
-        
-        if selectedMazeType == .sigma {
-            maxWidth = maxWidth / 3
-            maxHeight = maxHeight / 3
-        }
-        
+//        let rawSize = CGFloat(selectedSize.rawValue)
+//        let adjustedCellSize = adjustment * rawSize
 //        
+//        let desiredTopPadding: CGFloat    = 100
+//        let desiredBottomPadding: CGFloat = 100
+//        let totalVerticalPadding = desiredTopPadding + desiredBottomPadding
+//        
+//        // Reserve fixed control-area height for buttons, etc.
+//        //        let controlArea: CGFloat = 100
+//        let controlArea: CGFloat = 80
+//        
+//        // Compute available height for the grid *after* subtracting controls + your padding
+//        let screenH       = UIScreen.main.bounds.height
+//        let availableH    = screenH - controlArea - totalVerticalPadding
+//        
+//        // Now see how many rows of `adjustedCellSize` will fit
+//        let maxHeightRows = max(1, Int(availableH / adjustedCellSize))
+//        
+//        // Sigma still divides rows by 3
+//        let finalHeight = (selectedMazeType == .sigma) ? maxHeightRows / 3 : maxHeightRows
+//        
+//        // And width logic remains unchanged:
+//        let maxWidth     = max(1, Int(UIScreen.main.bounds.width / adjustedCellSize))
+//        let finalWidth   = (selectedMazeType == .sigma) ? maxWidth / 3 : maxWidth
+//        
+//        let result = MazeRequestValidator.validate(
+//            mazeType: selectedMazeType,
+//            width:  finalWidth,
+//            height: finalHeight,
+//            algorithm: selectedAlgorithm
+//        )
+        
+        let adjustment: CGFloat = {
+              switch selectedMazeType {
+              case .delta:
+                switch selectedSize {
+                case .small:  return 0.85
+                case .medium: return 0.97
+                case .large:  return 1.15
+                }
+              case .orthogonal:
+                switch selectedSize {
+                case .small:  return 0.92
+                case .medium: return 1.1
+                case .large:  return 1.2
+                }
+              case .sigma:
+                switch selectedSize {
+                case .small:  return 0.72
+                case .medium: return 0.8
+                case .large:  return 1.0
+                }
+              case .polar:
+                return 1.0
+              }
+            }()
+
+            let rawSize = CGFloat(selectedSize.rawValue)
+            let adjustedCellSize = adjustment * rawSize
+
+            // 2) determine if we’re on a “small” device (e.g. SE)
+            let screenH = UIScreen.main.bounds.height
+            let isSmallDevice = screenH <= 667   // 568-667pt screens
+
+            // 3) only for delta & sigma do we reserve top+bottom padding
+            let perSidePad: CGFloat = {
+              guard selectedMazeType != .orthogonal else { return 20 }
+              return isSmallDevice ? 50 : 100
+            }()
+
+            let totalVerticalPadding = perSidePad * 2
+
+            // 4) reserve control area at bottom (buttons etc.)
+            let controlArea: CGFloat = 80
+
+            // 5) compute available height *for rows* after pad+controls
+            let availableH = screenH - controlArea - totalVerticalPadding
+            let maxHeightRows = max(1, Int(availableH / adjustedCellSize))
+
+            // 6) sigma still subdivides by 3
+            let finalHeight = (selectedMazeType == .sigma)
+                            ? maxHeightRows / 3
+                            : maxHeightRows
+
+            // 7) width as before
+            let maxWidth = max(1, Int(UIScreen.main.bounds.width / adjustedCellSize))
+            let finalWidth = (selectedMazeType == .sigma)
+                           ? maxWidth / 3
+                           : maxWidth
+        
         let result = MazeRequestValidator.validate(
-            mazeType: selectedMazeType,
-            width: maxWidth,
-            height: maxHeight,
-            algorithm: selectedAlgorithm
-        )
+              mazeType: selectedMazeType,
+              width:  finalWidth,
+              height: finalHeight,
+              algorithm: selectedAlgorithm
+            )
+        
         
         switch result {
         case .success(let jsonString):
