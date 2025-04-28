@@ -24,7 +24,7 @@ struct ContentView: View {
     @State private var selectedAlgorithm: MazeAlgorithm = .recursiveBacktracker
     // User selections from render view
     @State private var showSolution: Bool = false
-    @State private var showHeatMap: Bool = false
+    @State private var showHeatMap: Bool = true
     @State private var showControls: Bool = false
     // track the arrow‐pad’s drag offset
     @State private var padOffset = CGSize(width: 0, height: 0)
@@ -289,7 +289,11 @@ struct ContentView: View {
 
         // 3) Tear down the animation after a few seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            withAnimation { showCelebration = false }
+            withAnimation {
+                showCelebration = false
+            }
+            showSolution = false // reset
+            submitMazeRequest() // generate a new maze with same settings upon maze completion
         }
     }
     
