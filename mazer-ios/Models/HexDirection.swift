@@ -5,23 +5,64 @@
 //  Created by Jeffrey Isabella on 4/27/25.
 //
 
-enum HexDirection: String, CaseIterable {
-  case Up, UpperRight, LowerRight, Down, LowerLeft, UpperLeft
-    
-    static let allCases: [HexDirection] = [
-        .Up, .UpperRight, .LowerRight, .Down, .LowerLeft, .UpperLeft
-    ]
+import SwiftUI
 
+enum HexDirection: String, CaseIterable, Hashable {
+    case up           = "Up"
+    case upperRight   = "UpperRight"
+    case lowerRight   = "LowerRight"
+    case down         = "Down"
+    case lowerLeft    = "LowerLeft"
+    case upperLeft    = "UpperLeft"
+}
 
-  func neighbor(of cell: MazeCell) -> Coordinates {
-    // treat (x,y) as axial (q,r)
-    switch self {
-    case .Up:         return .init(x: cell.x,     y: cell.y - 1)
-    case .Down:       return .init(x: cell.x,     y: cell.y + 1)
-    case .UpperRight: return .init(x: cell.x + 1, y: cell.y - 1)
-    case .LowerRight: return .init(x: cell.x + 1, y: cell.y    )
-    case .LowerLeft:  return .init(x: cell.x - 1, y: cell.y + 1)
-    case .UpperLeft:  return .init(x: cell.x - 1, y: cell.y    )
+extension HexDirection {
+    /// Reuse for your control buttons if you like:
+    var systemImage: String {
+        switch self {
+        case .up:          return "arrow.up"
+        case .down:        return "arrow.down"
+        case .upperLeft:   return "arrow.up.left"
+        case .upperRight:  return "arrow.up.right"
+        case .lowerLeft:   return "arrow.down.left"
+        case .lowerRight:  return "arrow.down.right"
+        }
     }
-  }
+
+    /// Which two points[] indices form this edge in your Path:
+    var vertexIndices: (start: Int, end: Int) {
+        switch self {
+        case .up:          return (0, 1)
+        case .upperRight:  return (1, 2)
+        case .lowerRight:  return (2, 3)
+        case .down:        return (3, 4)
+        case .lowerLeft:   return (4, 5)
+        case .upperLeft:   return (5, 0)
+        }
+    }
+
+    /// Opposite direction (for optional bidirectional sanity checks)
+    var opposite: HexDirection {
+        switch self {
+        case .up:          return .down
+        case .upperRight:  return .lowerLeft
+        case .lowerRight:  return .upperLeft
+        case .down:        return .up
+        case .lowerLeft:   return .upperRight
+        case .upperLeft:   return .lowerRight
+        }
+    }
+
+    /// (Optional) axial offsets if you ever switch to an axial coordinate system.
+    /// You can ignore this if you stick with your current offset-grid math.
+    var delta: (dq: Int, dr: Int) {
+        switch self {
+        case .up:          return (0, -1)
+        case .upperRight:  return (1, -1)
+        case .lowerRight:  return (1,  0)
+        case .down:        return (0,  1)
+        case .lowerLeft:   return (-1, 1)
+        case .upperLeft:   return (-1, 0)
+        }
+    }
 }

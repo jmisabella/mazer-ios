@@ -54,6 +54,7 @@ struct SigmaMazeView: View {
         ZStack(alignment: .topLeading) {
             ForEach(cells, id: \.self) { cell in
                 SigmaCellView(
+                    allCells: cells, // TODO: REMOVE DEBUG LINE
                     cell: cell,
                     cellSize: cellSize,
                     showSolution: showSolution,

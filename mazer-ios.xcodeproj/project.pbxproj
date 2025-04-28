@@ -16,6 +16,7 @@
 		003DE2AF2DB72D7900EFB530 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2AE2DB72D7900EFB530 /* ConfettiView.swift */; };
 		006F3F392D9F6EC200627BD4 /* HeatMapPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F3F382D9F6EB300627BD4 /* HeatMapPalette.swift */; };
 		006F3F402DA08D8600627BD4 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F3F3F2DA08D7D00627BD4 /* Color+Hex.swift */; };
+		0095189A2DBF0F33003B1C21 /* HexDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009518992DBF0F33003B1C21 /* HexDirection.swift */; };
 		00AE05F52DB877770068C880 /* SigmaCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AE05F42DB877770068C880 /* SigmaCellView.swift */; };
 		00AE05F72DB8778C0068C880 /* SigmaMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AE05F62DB8778C0068C880 /* SigmaMazeView.swift */; };
 		00C33F662D98C84C0077691B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C33F5C2D98C84C0077691B /* Preview Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		0056D1082D974038003B7493 /* libmazer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmazer.a; path = "mazer/target/aarch64-apple-ios-sim/debug/libmazer.a"; sourceTree = "<group>"; };
 		006F3F382D9F6EB300627BD4 /* HeatMapPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatMapPalette.swift; sourceTree = "<group>"; };
 		006F3F3F2DA08D7D00627BD4 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		009518992DBF0F33003B1C21 /* HexDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexDirection.swift; sourceTree = "<group>"; };
 		00AE05F42DB877770068C880 /* SigmaCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigmaCellView.swift; sourceTree = "<group>"; };
 		00AE05F62DB8778C0068C880 /* SigmaMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigmaMazeView.swift; sourceTree = "<group>"; };
 		00C33F5C2D98C84C0077691B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -109,7 +111,7 @@
 		00C33FAC2D9E286E0077691B /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00C33FAD2D9E286E0077691B /* lib-memchr */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-memchr"; sourceTree = "<group>"; };
 		00C33FAE2D9E286E0077691B /* lib-memchr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-memchr.json"; sourceTree = "<group>"; };
-		00C33FB02D9E286E0077691B /* dep-lib-ppv_lite86 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-ppv_lite86"; sourceTree = "<group>"; };
+		00C33FB02D9E286E0077691B /* dep-lib-ppv_lite86 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-ppv_lite86"; sourceTree = "<group>"; };
 		00C33FB12D9E286E0077691B /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00C33FB22D9E286E0077691B /* lib-ppv_lite86 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-ppv_lite86"; sourceTree = "<group>"; };
 		00C33FB32D9E286E0077691B /* lib-ppv_lite86.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-ppv_lite86.json"; sourceTree = "<group>"; };
@@ -141,7 +143,7 @@
 		00C33FD52D9E286E0077691B /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00C33FD62D9E286E0077691B /* lib-serde */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-serde"; sourceTree = "<group>"; };
 		00C33FD72D9E286E0077691B /* lib-serde.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-serde.json"; sourceTree = "<group>"; };
-		00C33FD92D9E286E0077691B /* dep-lib-zerocopy */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-zerocopy"; sourceTree = "<group>"; };
+		00C33FD92D9E286E0077691B /* dep-lib-zerocopy */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-zerocopy"; sourceTree = "<group>"; };
 		00C33FDA2D9E286E0077691B /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00C33FDB2D9E286E0077691B /* lib-zerocopy */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-zerocopy"; sourceTree = "<group>"; };
 		00C33FDC2D9E286E0077691B /* lib-zerocopy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-zerocopy.json"; sourceTree = "<group>"; };
@@ -505,7 +507,7 @@
 		00C3415E2D9E286E0077691B /* lib-unicode_ident.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-unicode_ident.json"; sourceTree = "<group>"; };
 		00C341602D9E286E0077691B /* build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "build-script-build-script-build"; sourceTree = "<group>"; };
 		00C341612D9E286E0077691B /* build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "build-script-build-script-build.json"; sourceTree = "<group>"; };
-		00C341622D9E286E0077691B /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
+		00C341622D9E286E0077691B /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
 		00C341632D9E286E0077691B /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00C341662D9E286E0077691B /* build_script_build-dcacff20168a3aa5 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "build_script_build-dcacff20168a3aa5"; sourceTree = "<group>"; };
 		00C341672D9E286E0077691B /* build_script_build-dcacff20168a3aa5.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "build_script_build-dcacff20168a3aa5.d"; sourceTree = "<group>"; };
@@ -656,7 +658,7 @@
 		00DD0B8A2DAC3C7E00C20B2E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00DD0B8B2DAC3C7E00C20B2E /* lib-memchr */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-memchr"; sourceTree = "<group>"; };
 		00DD0B8C2DAC3C7E00C20B2E /* lib-memchr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-memchr.json"; sourceTree = "<group>"; };
-		00DD0B8E2DAC3C7E00C20B2E /* dep-lib-ppv_lite86 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-ppv_lite86"; sourceTree = "<group>"; };
+		00DD0B8E2DAC3C7E00C20B2E /* dep-lib-ppv_lite86 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-ppv_lite86"; sourceTree = "<group>"; };
 		00DD0B8F2DAC3C7E00C20B2E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00DD0B902DAC3C7E00C20B2E /* lib-ppv_lite86 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-ppv_lite86"; sourceTree = "<group>"; };
 		00DD0B912DAC3C7E00C20B2E /* lib-ppv_lite86.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-ppv_lite86.json"; sourceTree = "<group>"; };
@@ -688,7 +690,7 @@
 		00DD0BB32DAC3C7E00C20B2E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00DD0BB42DAC3C7E00C20B2E /* lib-serde */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-serde"; sourceTree = "<group>"; };
 		00DD0BB52DAC3C7E00C20B2E /* lib-serde.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-serde.json"; sourceTree = "<group>"; };
-		00DD0BB72DAC3C7E00C20B2E /* dep-lib-zerocopy */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-zerocopy"; sourceTree = "<group>"; };
+		00DD0BB72DAC3C7E00C20B2E /* dep-lib-zerocopy */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-zerocopy"; sourceTree = "<group>"; };
 		00DD0BB82DAC3C7E00C20B2E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00DD0BB92DAC3C7E00C20B2E /* lib-zerocopy */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-zerocopy"; sourceTree = "<group>"; };
 		00DD0BBA2DAC3C7E00C20B2E /* lib-zerocopy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-zerocopy.json"; sourceTree = "<group>"; };
@@ -1062,7 +1064,7 @@
 		00DD0D462DAC3C7E00C20B2E /* lib-unicode_ident.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-unicode_ident.json"; sourceTree = "<group>"; };
 		00DD0D482DAC3C7E00C20B2E /* build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "build-script-build-script-build"; sourceTree = "<group>"; };
 		00DD0D492DAC3C7E00C20B2E /* build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "build-script-build-script-build.json"; sourceTree = "<group>"; };
-		00DD0D4A2DAC3C7E00C20B2E /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
+		00DD0D4A2DAC3C7E00C20B2E /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
 		00DD0D4B2DAC3C7E00C20B2E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00DD0D4E2DAC3C7E00C20B2E /* build_script_build-dcacff20168a3aa5 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "build_script_build-dcacff20168a3aa5"; sourceTree = "<group>"; };
 		00DD0D4F2DAC3C7E00C20B2E /* build_script_build-dcacff20168a3aa5.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "build_script_build-dcacff20168a3aa5.d"; sourceTree = "<group>"; };
@@ -1250,6 +1252,7 @@
 				00C33F722D98C9E10077691B /* MazeType.swift */,
 				00C33F732D98C9E60077691B /* MazeAlgorithm.swift */,
 				00C33F702D98C93D0077691B /* Coordinates.swift */,
+				009518992DBF0F33003B1C21 /* HexDirection.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -3520,6 +3523,7 @@
 				00C33F782D98CC860077691B /* MazeAlgorithm.swift in Sources */,
 				00DD0DC82DAC9DBE00C20B2E /* DeltaDirectionControlView.swift in Sources */,
 				006F3F392D9F6EC200627BD4 /* HeatMapPalette.swift in Sources */,
+				0095189A2DBF0F33003B1C21 /* HexDirection.swift in Sources */,
 				00DD0B542DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift in Sources */,
 				00AE05F72DB8778C0068C880 /* SigmaMazeView.swift in Sources */,
 				003DE2AF2DB72D7900EFB530 /* ConfettiView.swift in Sources */,
