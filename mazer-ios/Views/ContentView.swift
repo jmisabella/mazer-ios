@@ -29,7 +29,9 @@ struct ContentView: View {
     // track the arrow‐pad’s drag offset
     @State private var padOffset = CGSize(width: 0, height: 0)
     @State private var showCelebration: Bool = false
-    
+    // heat map palette
+    @State private var selectedPalette: HeatMapPalette = allPalettes.randomElement()!
+    @State private var mazeID = UUID()
 
     // Track the opaque maze pointer.
     @State private var currentGrid: OpaquePointer? = nil
@@ -48,6 +50,8 @@ struct ContentView: View {
                         showHeatMap: $showHeatMap,
                         showControls: $showControls,
                         padOffset: $padOffset,
+                        selectedPalette: $selectedPalette,
+                        mazeID: $mazeID,
                         mazeCells: mazeCells,
                         mazeType: mazeType,
                         regenerateMaze: {
@@ -55,6 +59,10 @@ struct ContentView: View {
                         },
                         moveAction: { direction in
                             performMove(direction: direction)
+                        },
+                        toggleHeatMap: {
+                            showHeatMap.toggle()
+                            selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
                         }
                     )
                     .padding(.vertical, 100) // TODO: might need to remove this
@@ -92,6 +100,13 @@ struct ContentView: View {
                 .ignoresSafeArea()
                 .transition(.opacity)
             }
+    }
+    
+    private func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
+        let availablePalettes = allPalettes.filter { $0 != current }
+        // If there’s at least one palette that isn’t the current, pick one at random.
+        // Otherwise, fallback to returning the current palette.
+        return availablePalettes.randomElement() ?? current
     }
     
     private func computeVerticalPadding() -> CGFloat {
@@ -144,8 +159,8 @@ struct ContentView: View {
               case .orthogonal:
                 switch selectedSize {
                 case .small:  return 0.92
-                case .medium: return 1.1
-                case .large:  return 1.2
+                case .medium: return 1.2
+                case .large:  return 1.4
                 }
               case .sigma:
                 switch selectedSize {
@@ -293,6 +308,13 @@ struct ContentView: View {
                 showCelebration = false
             }
             showSolution = false // reset
+            // **new palette + new view-ID ↷ forces MazeRenderView to
+            // pick up the new palette and drop any “solution overlay”**
+            selectedPalette = randomPaletteExcluding(
+              current: selectedPalette,
+              from: allPalettes
+            )
+            mazeID = UUID()
             submitMazeRequest() // generate a new maze with same settings upon maze completion
         }
     }

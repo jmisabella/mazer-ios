@@ -15,17 +15,20 @@ struct MazeRenderView: View {
     @Binding var showControls: Bool
     // track the arrow‐pad’s drag offset
     @Binding var padOffset: CGSize
+    @Binding var selectedPalette: HeatMapPalette
+    @Binding var mazeID: UUID
     // remember where we were when this drag began
     @State private var dragStartOffset: CGSize = .zero
-    @State private var selectedPalette: HeatMapPalette = allPalettes.randomElement()!
-    @State private var mazeID = UUID()  // tracks the current maze, specifically used to reset solution between mazes)
-    
+//    @State private var selectedPalette: HeatMapPalette = allPalettes.randomElement()!
+//    @State private var mazeID = UUID()   tracks the current maze, specifically used to reset solution between mazes)
     
     let mazeCells: [MazeCell]
     let mazeType: MazeType  // "Orthogonal", "Sigma", etc.
+    
     let regenerateMaze: () -> Void
     // handle move actions (buttons and later swipe gestures)
     let moveAction: (String) -> Void
+    let toggleHeatMap: () -> Void
     
     /// Always clear the solution overlay before making a move.
     private var performMove: (String) -> Void {
@@ -154,8 +157,7 @@ struct MazeRenderView: View {
                 
                 // Regenerate button
                 Button(action: {
-                    //                    selectedPalette = allPalettes.randomElement()!
-                    selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
+//                    selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
                     mazeID = UUID()   // Generate a new ID when regenerating the maze
                     regenerateMaze()
                 }) {
@@ -178,8 +180,9 @@ struct MazeRenderView: View {
                 // Heat map toggle
                 Button(action: {
                     showHeatMap.toggle()
-                    //                    selectedPalette = allPalettes.randomElement()!
-                    selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
+                    selectedPalette = selectedPalette
+//                    //                    selectedPalette = allPalettes.randomElement()!
+//                    selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
                 }) {
                     Image(systemName: showHeatMap ? "flame.fill" : "flame")
                         .font(.title2)
@@ -387,12 +390,12 @@ struct MazeRenderView: View {
         return selectedPalette.shades[index].asColor
     }
     
-    private func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
-        let availablePalettes = allPalettes.filter { $0 != current }
-        // If there’s at least one palette that isn’t the current, pick one at random.
-        // Otherwise, fallback to returning the current palette.
-        return availablePalettes.randomElement() ?? current
-    }
+//    private func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
+//        let availablePalettes = allPalettes.filter { $0 != current }
+//        // If there’s at least one palette that isn’t the current, pick one at random.
+//        // Otherwise, fallback to returning the current palette.
+//        return availablePalettes.randomElement() ?? current
+//    }
     
 }
 
