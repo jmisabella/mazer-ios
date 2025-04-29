@@ -106,28 +106,33 @@ struct SigmaMazeView: View {
 
     // match your other views’ “draw-solution” animation pattern
     private func animateSolutionPathReveal() {
+        // 1. Cancel any in-flight reveals
+        pendingWorkItems.forEach { $0.cancel() }
+        pendingWorkItems.removeAll()
+        revealedSolutionPath.removeAll()
+        
+        // 2. Grab your ordered solution cells
         let pathCells = cells
-            .filter { $0.onSolutionPath }
-            .sorted(by: { $0.distance < $1.distance })
-
-        var delay = 0.0
-        for c in pathCells {
+            .filter(\.onSolutionPath)
+            .sorted { $0.distance < $1.distance }
+        
+        // 3. How fast between pops
+        let rapidDelay: Double = 0.05
+        
+        // 4. Schedule each pop + click
+        for (i, c) in pathCells.enumerated() {
             let coord = Coordinates(x: c.x, y: c.y)
-
-            // force the 3-arg init by spelling out qos & flags
-            let work = DispatchWorkItem(
-                qos: .default,
-                flags: [],
-                block: {
-                    withAnimation(.linear(duration: 0.1)) {
-                        _ = revealedSolutionPath.insert(coord)
-                    }
+            let work = DispatchWorkItem {
+                // NO animation → instant “pop”
+                withAnimation(.none) {
+                    _ = revealedSolutionPath.insert(coord)
                 }
-            )
-
+            }
             pendingWorkItems.append(work)
-            DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: work)
-            delay += 0.05
+            DispatchQueue.main.asyncAfter(
+                deadline: .now() + Double(i) * rapidDelay,
+                execute: work
+            )
         }
     }
 

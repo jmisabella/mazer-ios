@@ -124,39 +124,39 @@ struct DeltaMazeView: View {
             }
         }
     }
-    
+
     func animateSolutionPathReveal() {
+        // 1. Cancel any pending reveals
         pendingWorkItems.forEach { $0.cancel() }
         pendingWorkItems.removeAll()
+        
+        // 2. Clear out the old path
         revealedSolutionPath.removeAll()
-
-        let pathCells = cells.filter(\.onSolutionPath)
-                            .sorted { $0.distance < $1.distance }
-        let totalDuration: Double = 0.65
-        let count = pathCells.count
-        let stepDelay = totalDuration / Double(max(count, 1))
-
+        
+        // 3. Grab your ordered solution cells
+        let pathCells = cells
+            .filter(\.onSolutionPath)
+            .sorted { $0.distance < $1.distance }
+        
+        // 4. How fast? tweak this to taste (seconds between pops)
+        let rapidDelay: Double = 0.015
+        
+        // 5. Schedule each “snap” + click
         for (i, cell) in pathCells.enumerated() {
             let coord = Coordinates(x: cell.x, y: cell.y)
-            let item = DispatchWorkItem(
-                qos: .unspecified,
-                flags: [],
-                block: {
-                    withAnimation(.linear(duration: stepDelay)) {
-                        _ = revealedSolutionPath.insert(coord)
-                    }
+            let item = DispatchWorkItem {
+                // instant appearance
+                withAnimation(.none) {
+                    _ = revealedSolutionPath.insert(coord)
                 }
-            )
+            }
             pendingWorkItems.append(item)
             DispatchQueue.main.asyncAfter(
-                deadline: .now() + Double(i) * stepDelay,
+                deadline: .now() + Double(i) * rapidDelay,
                 execute: item
             )
         }
-
     }
-
-
     
     func shadeColor(for cell: MazeCell, maxDistance: Int) -> Color {
         guard showHeatMap, maxDistance > 0 else {
