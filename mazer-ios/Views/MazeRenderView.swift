@@ -170,10 +170,7 @@ struct MazeRenderView: View {
                 .accessibilityLabel("Toggle solution path")
                 
                 // Heat map toggle
-                Button(action: {
-                    showHeatMap.toggle()
-                    selectedPalette = selectedPalette
-                }) {
+                Button(action: toggleHeatMap) {
                     Image(systemName: showHeatMap ? "flame.fill" : "flame")
                         .font(.title2)
                         .foregroundColor(showHeatMap ? .orange : .gray)

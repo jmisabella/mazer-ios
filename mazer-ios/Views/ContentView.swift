@@ -62,7 +62,10 @@ struct ContentView: View {
                         },
                         toggleHeatMap: {
                             showHeatMap.toggle()
-                            selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
+                            if showHeatMap {
+                                // only pick a new one when turning it back on
+                                selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
+                            }
                         }
                     )
                     .padding(.vertical, 100) // TODO: might need to remove this
@@ -274,6 +277,11 @@ struct ContentView: View {
             
             mazeGenerated = true
             errorMessage = nil
+            
+            if showHeatMap {
+                // only pick a new one when turning it back on
+                selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
+            }
             
         case .failure(let error):
             errorMessage = "\(error.localizedDescription)"

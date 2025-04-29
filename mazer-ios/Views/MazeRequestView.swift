@@ -45,6 +45,15 @@ struct MazeRequestView: View {
         max(1, Int(availableHeight / CGFloat(selectedSize.rawValue)))
     }
     
+    private var availableAlgorithms: [MazeAlgorithm] {
+        if selectedMazeType == .orthogonal {
+            return MazeAlgorithm.allCases
+        } else {
+            return MazeAlgorithm.allCases
+                .filter { ![.binaryTree, .sidewinder].contains($0) }
+        }
+    }
+    
     var body: some View {
         ZStack {
             Color.clear
@@ -64,6 +73,14 @@ struct MazeRequestView: View {
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
+                .onChange(of: selectedMazeType) { _ in
+                    // if the old algorithm isn't in the new list, pick the first valid one
+                    if !availableAlgorithms.contains(selectedAlgorithm),
+                       let firstValid = availableAlgorithms.first
+                    {
+                        selectedAlgorithm = firstValid
+                    }
+                }
                 
                 // Display the selected maze type description.
                 Text(selectedMazeType.description)
@@ -72,8 +89,9 @@ struct MazeRequestView: View {
                     .padding(.horizontal)
                 
                 Picker("Algorithm", selection: $selectedAlgorithm) {
-                    ForEach(MazeAlgorithm.allCases) { algo in
-                        Text(algo.rawValue).tag(algo)
+                    ForEach(availableAlgorithms) { algo in
+                        Text(algo.rawValue)
+                            .tag(algo)
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
