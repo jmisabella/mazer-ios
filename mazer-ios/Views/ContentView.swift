@@ -149,12 +149,12 @@ struct ContentView: View {
               switch selectedMazeType {
               case .delta:
                 switch selectedSize {
-//                case .small:  return 0.85
-//                case .medium: return 0.97
-//                case .large:  return 1.15
-                case .small:  return 0.97
-                case .medium: return 1.15
-                case .large:  return 1.25
+//                case .small:  return 1.07
+//                case .medium: return 1.15
+//                case .large:  return 1.25
+                case .small: return 1.15
+                case .medium: return 1.25
+                case .large: return 1.35
                 }
               case .orthogonal:
                 switch selectedSize {
@@ -333,8 +333,33 @@ struct ContentView: View {
         // Convert the OpaquePointer to UnsafeMutableRawPointer using unsafeBitCast.
         let rawGridPtr = unsafeBitCast(gridPtr, to: UnsafeMutableRawPointer.self)
 
-        guard let newGridRaw = mazer_make_move(rawGridPtr, directionCString) else {
-            // don't display any msg, simply return, if attempted move didn't succeed
+//        guard let newGridRaw = mazer_make_move(rawGridPtr, directionCString) else {
+//            // don't display any msg, simply return, if attempted move didn't succeed
+//            return
+//        }
+        
+        // fallback list
+        let tryDirections: [String] = {
+            switch direction {
+            case "UpperRight": return ["UpperRight", "Right", "LowerRight"]
+            case "UpperLeft":  return ["UpperLeft",  "Left", "LowerLeft"]
+            case "LowerRight": return ["LowerRight", "Right", "UpperRight"]
+            case "LowerLeft":  return ["LowerLeft",  "Left", "UpperLeft"]
+            default:           return [direction]  // Up, Down, Left, Right stay singleton
+            }
+        }()
+        
+        // Attempt each in turn
+        var newGridRawPtr: UnsafeMutableRawPointer? = nil
+        for dir in tryDirections {
+            guard let dirCString = dir.cString(using: .utf8) else { continue }
+            if let result = mazer_make_move(rawGridPtr, dirCString) {
+                newGridRawPtr = result
+                break
+            }
+        }
+        
+        guard let newGridRaw = newGridRawPtr else {
             return
         }
         

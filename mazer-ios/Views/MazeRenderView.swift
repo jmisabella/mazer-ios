@@ -19,8 +19,6 @@ struct MazeRenderView: View {
     @Binding var mazeID: UUID
     // remember where we were when this drag began
     @State private var dragStartOffset: CGSize = .zero
-//    @State private var selectedPalette: HeatMapPalette = allPalettes.randomElement()!
-//    @State private var mazeID = UUID()   tracks the current maze, specifically used to reset solution between mazes)
     
     let mazeCells: [MazeCell]
     let mazeType: MazeType  // "Orthogonal", "Sigma", etc.
@@ -37,11 +35,6 @@ struct MazeRenderView: View {
             moveAction(dir)
         }
     }
-
-//    func computeCellSize() -> CGFloat {
-//        let columns = (mazeCells.map { $0.x }.max() ?? 0) + 1
-//        return UIScreen.main.bounds.width / CGFloat(columns) * 1.35
-//    }
     
     func computeCellSize() -> CGFloat {
         let cols = (mazeCells.map { $0.x }.max() ?? 0) + 1
@@ -157,7 +150,6 @@ struct MazeRenderView: View {
                 
                 // Regenerate button
                 Button(action: {
-//                    selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
                     mazeID = UUID()   // Generate a new ID when regenerating the maze
                     regenerateMaze()
                 }) {
@@ -181,8 +173,6 @@ struct MazeRenderView: View {
                 Button(action: {
                     showHeatMap.toggle()
                     selectedPalette = selectedPalette
-//                    //                    selectedPalette = allPalettes.randomElement()!
-//                    selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
                 }) {
                     Image(systemName: showHeatMap ? "flame.fill" : "flame")
                         .font(.title2)
@@ -390,12 +380,6 @@ struct MazeRenderView: View {
         return selectedPalette.shades[index].asColor
     }
     
-//    private func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
-//        let availablePalettes = allPalettes.filter { $0 != current }
-//        // If there’s at least one palette that isn’t the current, pick one at random.
-//        // Otherwise, fallback to returning the current palette.
-//        return availablePalettes.randomElement() ?? current
-//    }
     
 }
 
