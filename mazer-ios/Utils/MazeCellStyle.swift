@@ -37,12 +37,19 @@ let solutionPathColor = Color(
   blue: 255/255
 )
 
-// soft pink
 let traversedPathColor = Color(
   red:   255/255,
-  green: 182/255,
-  blue:  193/255
+  green: 120/255,
+  blue:  180/255
 )
+
+
+//// soft pink
+//let traversedPathColor = Color(
+//  red:   255/255,
+//  green: 182/255,
+//  blue:  193/255
+//)
 
 func cellStrokeWidth(for size: CGFloat) -> CGFloat {
         switch size {
