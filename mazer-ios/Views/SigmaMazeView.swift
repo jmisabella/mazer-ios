@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import AudioToolbox
+import UIKit  // for UIFeedbackGenerator
 
 struct SigmaMazeView: View {
     @Binding var selectedPalette: HeatMapPalette
@@ -49,7 +51,8 @@ struct SigmaMazeView: View {
       return CGPoint(x: x, y: y)
     }
     
-
+    private let haptic = UIImpactFeedbackGenerator(style: .light)
+    
     var body: some View {
         ZStack(alignment: .topLeading) {
             ForEach(cells, id: \.self) { cell in
@@ -119,10 +122,15 @@ struct SigmaMazeView: View {
         // 3. How fast between pops
         let rapidDelay: Double = 0.05
         
+        // Prepare the haptic engine _before_ we even do the move
+        haptic.prepare()
+        
         // 4. Schedule each pop + click
         for (i, c) in pathCells.enumerated() {
             let coord = Coordinates(x: c.x, y: c.y)
             let work = DispatchWorkItem {
+                AudioServicesPlaySystemSound(1104) // play a `click` sound on audio
+                haptic.impactOccurred() // cause user to feel a `bump`
                 // NO animation → instant “pop”
                 withAnimation(.none) {
                     _ = revealedSolutionPath.insert(coord)
@@ -135,7 +143,6 @@ struct SigmaMazeView: View {
             )
         }
     }
-
     
     private func shadeColor(for cell: MazeCell, maxDistance: Int) -> Color {
         guard showHeatMap, maxDistance > 0 else {

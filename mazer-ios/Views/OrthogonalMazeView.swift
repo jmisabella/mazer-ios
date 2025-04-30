@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import AudioToolbox
+import UIKit  // for UIFeedbackGenerator
 
 //struct OrthogonalMazeView: View {
 //  @Binding var selectedPalette: HeatMapPalette
@@ -43,6 +45,8 @@ struct OrthogonalMazeView: View {
     let cells: [MazeCell]
     let showSolution: Bool
     let showHeatMap: Bool
+    
+    private let haptic = UIImpactFeedbackGenerator(style: .light)
 
     var body: some View {
         let width = (cells.map { $0.x }.max() ?? 0) + 1
@@ -114,9 +118,14 @@ struct OrthogonalMazeView: View {
         let delayMultiplier = min(1.0, cellSize() / 50.0)
         let interval = baseDelay * delayMultiplier
         
+        // Prepare the haptic engine _before_ we even do the move
+        haptic.prepare()
+        
         // 4. Schedule each reveal WITHOUT animation and with a click
         for (index, cell) in pathCells.enumerated() {
             let work = DispatchWorkItem {
+                AudioServicesPlaySystemSound(1104) // play a `click` sound on audio
+                haptic.impactOccurred() // cause user to feel a `bump`
                 // Disable implicit animation
                 withAnimation(.none) {
                     _ = revealedSolutionPath.insert(

@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import AudioToolbox
+import UIKit  // for UIFeedbackGenerator
 
 //struct DeltaMazeView: View {
 //  
@@ -69,6 +71,8 @@ struct DeltaMazeView: View {
       private var triangleHeight: CGFloat {
         cellSize * sqrt(3) / 2
       }
+    
+      private let haptic = UIImpactFeedbackGenerator(style: .light) 
 
       var body: some View {
         VStack(spacing: snap(0)) {
@@ -141,10 +145,15 @@ struct DeltaMazeView: View {
         // 4. How fast? tweak this to taste (seconds between pops)
         let rapidDelay: Double = 0.015
         
+        // Prepare the haptic engine _before_ we even do the move
+        haptic.prepare()
+        
         // 5. Schedule each “snap” + click
         for (i, cell) in pathCells.enumerated() {
             let coord = Coordinates(x: cell.x, y: cell.y)
             let item = DispatchWorkItem {
+                AudioServicesPlaySystemSound(1104) // play a `click` sound on audio
+                haptic.impactOccurred() // cause user to feel a `bump`
                 // instant appearance
                 withAnimation(.none) {
                     _ = revealedSolutionPath.insert(coord)

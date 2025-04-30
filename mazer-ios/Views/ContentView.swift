@@ -386,7 +386,6 @@ struct ContentView: View {
             return
         }
         
-        // play `click` sound on audio
         AudioServicesPlaySystemSound(1104) // play a `click` sound on audio
         haptic.impactOccurred() // cause user to feel a `bump`
         
