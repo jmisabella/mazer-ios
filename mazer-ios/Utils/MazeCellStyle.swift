@@ -43,6 +43,71 @@ let traversedPathColor = Color(
   blue:  180/255
 )
 
+func cellStrokeWidth(for size: CGFloat, mazeType: MazeType) -> CGFloat {
+    switch mazeType {
+    case .orthogonal:
+        switch size {
+        case ..<8:
+            let w: CGFloat = 1.5
+            return w
+        case 8..<14:
+            let w: CGFloat = 3.0
+            return w
+        case 14..<18:
+            let w: CGFloat = 3.5
+            return w
+        case 18..<24:
+            let w: CGFloat = 4.5
+            return w
+        default:
+            let w: CGFloat = 6.0
+            return w
+        }
+
+    case .delta:
+        switch size {
+        case ..<8:
+            let w: CGFloat = 1.5
+            return w
+        case 8..<14:
+            let w: CGFloat = 2.5
+            return w
+        case 14..<18:
+            let w: CGFloat = 2.5
+            return w
+        case 18..<24:
+            let w: CGFloat = 3.0
+            return w
+        default:
+            let w: CGFloat = 3.5
+            return w
+        }
+
+    case .sigma:
+        switch size {
+        case ..<8:
+            let w: CGFloat = 1.5
+            return w
+        case 8..<14:
+            let w: CGFloat = 3.0
+            return w
+        case 14..<18:
+            let w: CGFloat = 3.5
+            return w
+        case 18..<24:
+            let w: CGFloat = 3.5
+            return w
+        default:
+            let w: CGFloat = 4.5
+            return w
+        }
+
+    // other MazeType cases...
+    default:
+        // fallback to orthogonal behavior
+        return cellStrokeWidth(for: size, mazeType: .orthogonal)
+    }
+}
 
 //// soft pink
 //let traversedPathColor = Color(
@@ -50,20 +115,3 @@ let traversedPathColor = Color(
 //  green: 182/255,
 //  blue:  193/255
 //)
-
-func cellStrokeWidth(for size: CGFloat) -> CGFloat {
-        switch size {
-        case ..<12:
-            return 2.5
-        default:
-            return 3.5
-        }
-//    switch size {
-//    case ..<12:
-//        return 2.5
-//    case ..<13:
-//        return 3.0
-//    default:
-//        return 2.0
-//    }
-}

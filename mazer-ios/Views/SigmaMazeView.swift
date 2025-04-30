@@ -114,9 +114,11 @@ struct SigmaMazeView: View {
         pendingWorkItems.removeAll()
         revealedSolutionPath.removeAll()
         
-        // 2. Grab your ordered solution cells
+        // 2. Grab your ordered solution from unvisited cells
         let pathCells = cells
-            .filter(\.onSolutionPath)
+            .filter { cell in
+                cell.onSolutionPath && !cell.isVisited
+            }
             .sorted { $0.distance < $1.distance }
         
         // 3. How fast between pops

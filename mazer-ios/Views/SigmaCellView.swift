@@ -111,7 +111,7 @@ struct SigmaCellView: View {
             }
             .stroke(
                 Color.black,
-                lineWidth: snap(cellStrokeWidth(for: cellSize))
+                lineWidth: snap(cellStrokeWidth(for: cellSize, mazeType: .sigma))
             )
         }
         .frame(width: width, height: height)

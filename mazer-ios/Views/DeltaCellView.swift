@@ -76,7 +76,7 @@ struct DeltaCellView: View {
                     if !cell.linked.contains("LowerRight") { p.move(to: pts[1]); p.addLine(to: pts[2]) }
                 }
             }
-            .stroke(Color.black, lineWidth: snap(cellStrokeWidth(for: cellSize)))
+            .stroke(Color.black, lineWidth: snap(cellStrokeWidth(for: cellSize, mazeType: .delta)))
         }
         .frame(width: snap(cellSize), height: snap(triangleHeight))
         .drawingGroup(opaque: true)

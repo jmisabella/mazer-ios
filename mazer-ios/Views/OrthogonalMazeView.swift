@@ -108,9 +108,11 @@ struct OrthogonalMazeView: View {
         pendingWorkItems.forEach { $0.cancel() }
         pendingWorkItems.removeAll()
         
-        // 2. Build your ordered solution path
+        // 2. Build your ordered solution path from unvisited cells
         let pathCells = cells
-            .filter(\.onSolutionPath)
+            .filter { cell in
+                cell.onSolutionPath && !cell.isVisited
+            }
             .sorted(by: { $0.distance < $1.distance })
         
         // 3. Compute a fixed interval between reveals

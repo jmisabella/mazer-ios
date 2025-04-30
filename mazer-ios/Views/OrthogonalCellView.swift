@@ -52,7 +52,7 @@ struct OrthogonalCellView: View {
                     path.addLine(to: topLeft)
                 }
             }
-            .stroke(Color.black, lineWidth: cellStrokeWidth(for: size))
+            .stroke(Color.black, lineWidth: cellStrokeWidth(for: size, mazeType: .orthogonal))
             .frame(width: size, height: size)
             .clipped()
 

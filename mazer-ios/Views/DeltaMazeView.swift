@@ -137,9 +137,11 @@ struct DeltaMazeView: View {
         // 2. Clear out the old path
         revealedSolutionPath.removeAll()
         
-        // 3. Grab your ordered solution cells
+        // 3. Grab your ordered solution cells from unvisited cells
         let pathCells = cells
-            .filter(\.onSolutionPath)
+            .filter { cell in
+                cell.onSolutionPath && !cell.isVisited
+            }
             .sorted { $0.distance < $1.distance }
         
         // 4. How fast? tweak this to taste (seconds between pops)
