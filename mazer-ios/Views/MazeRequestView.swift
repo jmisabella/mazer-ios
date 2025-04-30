@@ -60,6 +60,16 @@ struct MazeRequestView: View {
                 .contentShape(Rectangle())
             
             VStack(spacing: 20) {
+                VStack(spacing: 4) {
+                    Text("Maze Quest")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    Text("Omni Mazes & Solutions")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                .padding(.bottom, 8)
+                
                 Picker("Maze Size", selection: $selectedSize) {
                     ForEach(MazeSize.allCases) { size in
                         Text(size.label).tag(size)
