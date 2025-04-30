@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-let softPink = Color(
-  red:   255/255,
-  green: 182/255,
-  blue:  193/255
-)
 
 extension Color {
     init(hex: String) {

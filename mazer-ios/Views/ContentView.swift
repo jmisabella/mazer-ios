@@ -340,23 +340,38 @@ struct ContentView: View {
 
         // Convert the OpaquePointer to UnsafeMutableRawPointer using unsafeBitCast.
         let rawGridPtr = unsafeBitCast(gridPtr, to: UnsafeMutableRawPointer.self)
-
-//        guard let newGridRaw = mazer_make_move(rawGridPtr, directionCString) else {
-//            // don't display any msg, simply return, if attempted move didn't succeed
-//            return
-//        }
         
         // fallback list
         let tryDirections: [String] = {
-            switch direction {
-            case "UpperRight": return ["UpperRight", "Right", "LowerRight"]
-            case "UpperLeft":  return ["UpperLeft",  "Left", "LowerLeft"]
-            case "LowerRight": return ["LowerRight", "Right", "UpperRight"]
-            case "LowerLeft":  return ["LowerLeft",  "Left", "UpperLeft"]
-            default:           return [direction]  // Up, Down, Left, Right stay singleton
+            switch mazeType {
+            case .orthogonal:
+                return [direction]
+                
+            case .polar:
+                return [direction]
+                
+            case .delta:
+                // diagonal → straight
+                switch direction {
+                case "UpperRight": return ["UpperRight", "Right"]
+                case "LowerRight": return ["LowerRight", "Right"]
+                case "UpperLeft":  return ["UpperLeft",  "Left"]
+                case "LowerLeft":  return ["LowerLeft",  "Left"]
+                default:           return [direction]
+                }
+                
+            case .sigma:
+                // diagonal ↔ diagonal opposite
+                switch direction {
+                case "UpperRight": return ["UpperRight", "LowerRight"]
+                case "LowerRight": return ["LowerRight", "UpperRight"]
+                case "UpperLeft":  return ["UpperLeft",  "LowerLeft"]
+                case "LowerLeft":  return ["LowerLeft",  "UpperLeft"]
+                default:           return [direction]
+                }
             }
         }()
-        
+
         // Attempt each in turn
         var newGridRawPtr: UnsafeMutableRawPointer? = nil
         for dir in tryDirections {
