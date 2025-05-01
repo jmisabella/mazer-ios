@@ -379,7 +379,13 @@ struct ContentView: View {
         let tryDirections: [String] = {
             switch mazeType {
             case .orthogonal:
-                return [direction]
+                switch direction {
+                case "UpperRight": return ["UpperRight", "Up", "Right"]
+                case "LowerRight": return ["LowerRight", "Down", "Right"]
+                case "UpperLeft":  return ["UpperLeft",  "Up", "Left"]
+                case "LowerLeft":  return ["LowerLeft",  "Down", "Left"]
+                default:           return [direction]
+                }
                 
             case .polar:
                 return [direction]

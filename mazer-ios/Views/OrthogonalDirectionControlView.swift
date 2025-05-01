@@ -12,15 +12,23 @@ struct OrthogonalDirectionControlView: View {
 
     var body: some View {
         VStack(spacing: 8) {
-            // ┌───┬───┬───┐
-            // │ ← │ ↑ │ → │
-            // └───┴───┴───┘
-            HStack(spacing: 16) {
+            // ┌───┐
+            // │ ↑ │
+            // └───┘
+            HStack {
+                Spacer()
+                directionButton(systemImage: "arrow.up", action: "Up")
+                Spacer()
+            }
+
+            // ┌───┬───┐
+            // │ ← │ → │
+            // └───┴───┘
+            HStack(spacing: 32) {           // wider gap between Left & Right
                 directionButton(systemImage: "arrow.left",  action: "Left")
-                directionButton(systemImage: "arrow.up",    action: "Up")
                 directionButton(systemImage: "arrow.right", action: "Right")
             }
-            .frame(maxWidth: .infinity)
+            .padding(.vertical, 8)          // a bit of breathing room around the LR row
 
             // ┌───┐
             // │ ↓ │
