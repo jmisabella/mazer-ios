@@ -18,62 +18,47 @@ struct OrthogonalCellView: View {
     let defaultBackgroundColor: Color
 
     var body: some View {
-        // 1️⃣ compute your stroke width once
-        let w = cellStrokeWidth(for: size, mazeType: .orthogonal)
-        // 2️⃣ half so you can inset your path
-        let half = w / 2
-
         ZStack {
-          // background
             Rectangle()
                 .fill(cellBackgroundColor(
-                    for: cell,
-                    showSolution: showSolution,
-                    showHeatMap: showHeatMap,
-                    maxDistance: maxDistance,
-                    selectedPalette: selectedPalette,
-                    isRevealedSolution: isRevealedSolution,
-                    defaultBackground: defaultBackgroundColor
-                ))
+                                    for: cell,
+                                    showSolution: showSolution,
+                                    showHeatMap: showHeatMap,
+                                    maxDistance: maxDistance,
+                                    selectedPalette: selectedPalette,
+                                    isRevealedSolution: isRevealedSolution,
+                                    defaultBackground: defaultBackgroundColor
+                                ))
                 .frame(width: size, height: size)
 
-          // walls
-          Path { path in
-            // inset all four corners by half
-            let tl = CGPoint(x: half,       y: half)
-            let tr = CGPoint(x: size - half, y: half)
-            let br = CGPoint(x: size - half, y: size - half)
-            let bl = CGPoint(x: half,       y: size - half)
+            Path { path in
+                let topLeft = CGPoint(x: 0, y: 0)
+                let topRight = CGPoint(x: size, y: 0)
+                let bottomLeft = CGPoint(x: 0, y: size)
+                let bottomRight = CGPoint(x: size, y: size)
 
-            // draw in clockwise order, but only stroke the ones you need
-            if !cell.linked.contains("Up") {
-              path.move(to: tl)
-              path.addLine(to: tr)
+                if !cell.linked.contains("Up") {
+                    path.move(to: topLeft)
+                    path.addLine(to: topRight)
+                }
+                if !cell.linked.contains("Right") {
+                    path.move(to: topRight)
+                    path.addLine(to: bottomRight)
+                }
+                if !cell.linked.contains("Down") {
+                    path.move(to: bottomRight)
+                    path.addLine(to: bottomLeft)
+                }
+                if !cell.linked.contains("Left") {
+                    path.move(to: bottomLeft)
+                    path.addLine(to: topLeft)
+                }
             }
-            if !cell.linked.contains("Right") {
-              path.move(to: tr)
-              path.addLine(to: br)
-            }
-            if !cell.linked.contains("Down") {
-              path.move(to: br)
-              path.addLine(to: bl)
-            }
-            if !cell.linked.contains("Left") {
-              path.move(to: bl)
-              path.addLine(to: tl)
-            }
-          }
-          .stroke(
-            Color.black,
-            style: StrokeStyle(
-              lineWidth: w,
-              lineCap: .square, // square or .round
-              lineJoin: .round   // bevel or .round
-            )
-          )
-          .frame(width: size, height: size)
-          // no .clipped() here
+            .stroke(Color.black, lineWidth: cellStrokeWidth(for: size, mazeType: .orthogonal))
+            .frame(width: size, height: size)
+            .clipped()
+
         }
-      }
+    }
 
 }

@@ -188,7 +188,7 @@ struct ContentView: View {
                 switch selectedSize {
                 case .small:  return 0.92
                 case .medium: return 1.33
-                case .large:  return 1.6
+                case .large:  return 1.5
                 }
               case .sigma:
                 switch selectedSize {
@@ -379,13 +379,7 @@ struct ContentView: View {
         let tryDirections: [String] = {
             switch mazeType {
             case .orthogonal:
-                switch direction {
-                case "UpperRight": return ["UpperRight", "Up", "Right"]
-                case "LowerRight": return ["LowerRight", "Down", "Right"]
-                case "UpperLeft":  return ["UpperLeft",  "Up", "Left"]
-                case "LowerLeft":  return ["LowerLeft",  "Down", "Left"]
-                default:           return [direction]
-                }
+                return [direction]
                 
             case .polar:
                 return [direction]
