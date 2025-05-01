@@ -17,6 +17,8 @@ struct SigmaCellView: View {
     let selectedPalette: HeatMapPalette
     let maxDistance: Int
     let isRevealedSolution: Bool
+    let defaultBackgroundColor: Color
+
 
     // MARK: – Private storage
     private let cellMap: [Coordinates: MazeCell]
@@ -30,7 +32,8 @@ struct SigmaCellView: View {
         showHeatMap: Bool,
         selectedPalette: HeatMapPalette,
         maxDistance: Int,
-        isRevealedSolution: Bool
+        isRevealedSolution: Bool,
+        defaultBackgroundColor: Color
     ) {
         self.cell = cell
         self.allCells = allCells
@@ -40,6 +43,7 @@ struct SigmaCellView: View {
         self.selectedPalette = selectedPalette
         self.maxDistance = maxDistance
         self.isRevealedSolution = isRevealedSolution
+        self.defaultBackgroundColor = defaultBackgroundColor
 
         // build fast lookup by coordinate
         var m = [Coordinates: MazeCell]()
@@ -81,7 +85,8 @@ struct SigmaCellView: View {
                 showHeatMap: showHeatMap,
                 maxDistance: maxDistance,
                 selectedPalette: selectedPalette,
-                isRevealedSolution: isRevealedSolution
+                isRevealedSolution: isRevealedSolution,
+                defaultBackground: defaultBackgroundColor
             ))
 
             // 2) walls with mismatch‐skip
@@ -117,6 +122,7 @@ struct SigmaCellView: View {
         .frame(width: width, height: height)
         .compositingGroup()
         .drawingGroup(opaque: true, colorMode: .linear)
+        .clipped(antialiased: false)
     }
 }
 

@@ -14,6 +14,7 @@ struct DeltaCellView: View {
     let selectedPalette: HeatMapPalette
     let maxDistance: Int
     let isRevealedSolution: Bool
+    let defaultBackgroundColor: Color
 
     /// Snap a value to the nearest device‐pixel.
     private func snap(_ x: CGFloat) -> CGFloat {
@@ -60,7 +61,8 @@ struct DeltaCellView: View {
                 showHeatMap: showHeatMap,
                 maxDistance: maxDistance,
                 selectedPalette: selectedPalette,
-                isRevealedSolution: isRevealedSolution
+                isRevealedSolution: isRevealedSolution,
+                defaultBackground: defaultBackgroundColor
             ))
 
             // 2) Stroke the walls
@@ -80,5 +82,6 @@ struct DeltaCellView: View {
         }
         .frame(width: snap(cellSize), height: snap(triangleHeight))
         .drawingGroup(opaque: true)
+        .clipped(antialiased: false)
     }
 }

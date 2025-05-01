@@ -36,12 +36,30 @@ struct ContentView: View {
     // Track the opaque maze pointer.
     @State private var currentGrid: OpaquePointer? = nil
     
+    // default background for “non-heatmap” cells
+    @State private var defaultBackgroundColor: Color = defaultBackgroundColors.randomElement()!
+    
     private let haptic = UIImpactFeedbackGenerator(style: .light)
+    
+    private func randomDefaultExcluding(
+            current: Color,
+            from all: [Color]
+        ) -> Color {
+            let others = all.filter { $0 != current }
+            return others.randomElement() ?? current
+        }
     
     var body: some View {
         ZStack {
-            Color(.systemBackground)       // ← full-screen background
-                .ignoresSafeArea()
+            // 1) conditional full-screen background
+            Group {
+                if mazeGenerated {
+                    Color.black
+                } else {
+                    Color(.systemBackground)
+                }
+            }
+            .ignoresSafeArea()
             VStack {
                 if mazeGenerated {
                     MazeRenderView(
@@ -52,6 +70,7 @@ struct ContentView: View {
                         padOffset: $padOffset,
                         selectedPalette: $selectedPalette,
                         mazeID: $mazeID,
+                        defaultBackground: defaultBackgroundColor,
                         mazeCells: mazeCells,
                         mazeType: mazeType,
                         regenerateMaze: {
@@ -65,9 +84,15 @@ struct ContentView: View {
                             if showHeatMap {
                                 // only pick a new one when turning it back on
                                 selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
+                                // … and a new default background
+                                defaultBackgroundColor = randomDefaultExcluding(
+                                    current: defaultBackgroundColor,
+                                    from: defaultBackgroundColors
+                                )
                             }
                         }
                     )
+                    .environment(\.colorScheme, .dark)
                     .padding(.vertical, 100) // TODO: might need to remove this
                 } else {
                     MazeRequestView(
@@ -162,8 +187,8 @@ struct ContentView: View {
               case .orthogonal:
                 switch selectedSize {
                 case .small:  return 0.92
-                case .medium: return 1.2
-                case .large:  return 1.4
+                case .medium: return 1.33
+                case .large:  return 1.6
                 }
               case .sigma:
                 switch selectedSize {
@@ -281,6 +306,11 @@ struct ContentView: View {
             if showHeatMap {
                 // only pick a new one when turning it back on
                 selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
+                // … and a new default background
+                defaultBackgroundColor = randomDefaultExcluding(
+                    current: defaultBackgroundColor,
+                    from: defaultBackgroundColors
+                )
             }
             
         case .failure(let error):
@@ -321,6 +351,10 @@ struct ContentView: View {
             selectedPalette = randomPaletteExcluding(
               current: selectedPalette,
               from: allPalettes
+            )
+            defaultBackgroundColor = randomDefaultExcluding(
+                current: defaultBackgroundColor,
+                from: defaultBackgroundColors
             )
             mazeID = UUID()
             submitMazeRequest() // generate a new maze with same settings upon maze completion

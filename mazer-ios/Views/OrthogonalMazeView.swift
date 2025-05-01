@@ -45,6 +45,7 @@ struct OrthogonalMazeView: View {
     let cells: [MazeCell]
     let showSolution: Bool
     let showHeatMap: Bool
+    let defaultBackgroundColor: Color
     
     private let haptic = UIImpactFeedbackGenerator(style: .light)
 
@@ -64,7 +65,8 @@ struct OrthogonalMazeView: View {
                     showHeatMap: showHeatMap,
                     selectedPalette: selectedPalette,
                     maxDistance: maxDistance,
-                    isRevealedSolution: revealedSolutionPath.contains(Coordinates(x: cell.x, y: cell.y))
+                    isRevealedSolution: revealedSolutionPath.contains(Coordinates(x: cell.x, y: cell.y)),
+                    defaultBackgroundColor: defaultBackgroundColor
                 )
                 .frame(width: cellSize, height: cellSize) // lock frame
                 .clipped() // avoid any rendering overflow

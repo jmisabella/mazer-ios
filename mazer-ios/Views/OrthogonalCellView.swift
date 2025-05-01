@@ -15,6 +15,7 @@ struct OrthogonalCellView: View {
     let selectedPalette: HeatMapPalette
     let maxDistance: Int
     let isRevealedSolution: Bool
+    let defaultBackgroundColor: Color
 
     var body: some View {
         ZStack {
@@ -25,7 +26,8 @@ struct OrthogonalCellView: View {
                                     showHeatMap: showHeatMap,
                                     maxDistance: maxDistance,
                                     selectedPalette: selectedPalette,
-                                    isRevealedSolution: isRevealedSolution
+                                    isRevealedSolution: isRevealedSolution,
+                                    defaultBackground: defaultBackgroundColor
                                 ))
                 .frame(width: size, height: size)
 

@@ -15,6 +15,7 @@ struct SigmaMazeView: View {
     let cellSize: CGFloat
     let showSolution: Bool
     let showHeatMap: Bool
+    let defaultBackgroundColor: Color
 
     @State private var revealedSolutionPath: Set<Coordinates> = []
     @State private var pendingWorkItems: [DispatchWorkItem] = []
@@ -66,7 +67,8 @@ struct SigmaMazeView: View {
                     maxDistance: maxDistance,
                     isRevealedSolution: revealedSolutionPath.contains(
                         Coordinates(x: cell.x, y: cell.y)
-                    )
+                    ),
+                    defaultBackgroundColor: defaultBackgroundColor
                 )
                 .position(position(for: cell))
                 //                    .offset(
@@ -78,6 +80,7 @@ struct SigmaMazeView: View {
         // Flatten the entire grid to avoid any sub-pixel seams between rows
         .compositingGroup()
         .drawingGroup(opaque: true)
+        .clipped(antialiased: false)
         .frame(width: totalWidth, height: totalHeight, alignment: .topLeading)
         .onChange(of: showSolution) { _, new in
             if new { animateSolutionPathReveal() }

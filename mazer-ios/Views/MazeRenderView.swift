@@ -19,9 +19,11 @@ struct MazeRenderView: View {
     @Binding var mazeID: UUID
     // remember where we were when this drag began
     @State private var dragStartOffset: CGSize = .zero
+    @State var defaultBackground: Color
     
     let mazeCells: [MazeCell]
     let mazeType: MazeType  // "Orthogonal", "Sigma", etc.
+    
     
     let regenerateMaze: () -> Void
     // handle move actions (buttons and later swipe gestures)
@@ -108,7 +110,8 @@ struct MazeRenderView: View {
                 selectedPalette: $selectedPalette,
                 cells: mazeCells,
                 showSolution: showSolution,
-                showHeatMap: showHeatMap
+                showHeatMap: showHeatMap,
+                defaultBackgroundColor: defaultBackground
             )
             .id(mazeID)
         case .sigma:
@@ -117,7 +120,8 @@ struct MazeRenderView: View {
                 cells: mazeCells,
                 cellSize: cellSize,
                 showSolution: showSolution,
-                showHeatMap: showHeatMap
+                showHeatMap: showHeatMap,
+                defaultBackgroundColor: defaultBackground
             )
             .id(mazeID)
         case .delta:
@@ -128,7 +132,8 @@ struct MazeRenderView: View {
                 showSolution: showSolution,
                 showHeatMap: showHeatMap,
                 selectedPalette: selectedPalette, // pass wrapped value
-                maxDistance: maxDistance
+                maxDistance: maxDistance,
+                defaultBackgroundColor: defaultBackground
             )
                 .id(mazeID)
         case .polar:
@@ -166,6 +171,7 @@ struct MazeRenderView: View {
                 
                 // Regenerate button
                 Button(action: {
+                    defaultBackground = defaultBackgroundColors.randomElement()!
                     mazeID = UUID()   // Generate a new ID when regenerating the maze
                     regenerateMaze()
                 }) {
@@ -259,29 +265,7 @@ struct MazeRenderView: View {
                 .gesture(
                     DragGesture(minimumDistance: 10)
                         .onEnded { value in
-                            if mazeType == .orthogonal {
-                                let hx = value.translation.width
-                                let hy = value.translation.height
-                                let dim = cellSize()
-                                if abs(hx) > abs(hy) {
-                                    let count = max(1, Int(round(abs(hx) / dim)))
-                                    let dir = hx < 0 ? "Left" : "Right"
-                                    for i in 0..<count {
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
-                                            performMove(dir)
-                                        }
-                                    }
-                                } else {
-                                    let count = max(1, Int(round(abs(hy) / dim)))
-                                    let dir = hy < 0 ? "Up" : "Down"
-                                    for i in 0..<count {
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
-                                            performMove(dir)
-                                        }
-                                    }
-                                }
-                            }
-                            else if mazeType == .delta || mazeType == .sigma {
+                            if mazeType == .orthogonal || mazeType == .delta || mazeType == .sigma {
                                 // purposefully negated (inverted) height so it would properly work in atan2's trig math
                                 let tx = value.translation.width
                                 let ty = -value.translation.height
