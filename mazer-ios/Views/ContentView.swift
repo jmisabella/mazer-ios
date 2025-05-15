@@ -362,6 +362,11 @@ struct ContentView: View {
     }
     
     private func performMove(direction: String) {
+        if showCelebration {
+            // don't move if maze has already been solved
+            return;
+        }
+        
         // Ensure current grid exists.
         guard let gridPtr = currentGrid else { return }
         guard let directionCString = direction.cString(using: .utf8) else {

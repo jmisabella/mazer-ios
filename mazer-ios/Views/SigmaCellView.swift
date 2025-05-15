@@ -102,9 +102,9 @@ struct SigmaCellView: View {
                         .linked.contains(dir.opposite.rawValue) ?? false
 
                     // if this is a phantom‐mismatch, skip drawing:
-                    if linked != neighborLink {
-                        continue
-                    }
+//                    if linked != neighborLink {
+//                        continue
+//                    }
 
                     // otherwise draw the wall if not linked:
                     if !linked {
