@@ -9,7 +9,7 @@ import SwiftUI
 import AudioToolbox
 import UIKit  // for UIFeedbackGenerator
 
-// GridQuest: Omni Mazes & Solver
+// Grid Quest: Omni Mazes & Solver
 
 struct ContentView: View {
     @State private var ffi_integration_test_result: Int32 = 0
@@ -59,6 +59,7 @@ struct ContentView: View {
                     Color(.systemBackground)
                 }
             }
+
             .ignoresSafeArea()
             VStack {
                 if mazeGenerated {
@@ -70,7 +71,7 @@ struct ContentView: View {
                         padOffset: $padOffset,
                         selectedPalette: $selectedPalette,
                         mazeID: $mazeID,
-                        defaultBackground: defaultBackgroundColor,
+                        defaultBackground: $defaultBackgroundColor,
                         mazeCells: mazeCells,
                         mazeType: mazeType,
                         regenerateMaze: {
@@ -303,15 +304,18 @@ struct ContentView: View {
             mazeGenerated = true
             errorMessage = nil
             
-            if showHeatMap {
-                // only pick a new one when turning it back on
-                selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
-                // … and a new default background
-                defaultBackgroundColor = randomDefaultExcluding(
-                    current: defaultBackgroundColor,
-                    from: defaultBackgroundColors
-                )
-            }
+            selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
+            defaultBackgroundColor = randomDefaultExcluding(current: defaultBackgroundColor, from: defaultBackgroundColors)
+            
+//            if showHeatMap {
+//                // only pick a new one when turning it back on
+//                selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
+//                // … and a new default background
+//                defaultBackgroundColor = randomDefaultExcluding(
+//                    current: defaultBackgroundColor,
+//                    from: defaultBackgroundColors
+//                )
+//            }
             
         case .failure(let error):
             errorMessage = "\(error.localizedDescription)"
@@ -346,16 +350,17 @@ struct ContentView: View {
                 showCelebration = false
             }
             showSolution = false // reset
-            // **new palette + new view-ID ↷ forces MazeRenderView to
-            // pick up the new palette and drop any “solution overlay”**
-            selectedPalette = randomPaletteExcluding(
-              current: selectedPalette,
-              from: allPalettes
-            )
-            defaultBackgroundColor = randomDefaultExcluding(
-                current: defaultBackgroundColor,
-                from: defaultBackgroundColors
-            )
+            
+//            // **new palette + new view-ID ↷ forces MazeRenderView to
+//            // pick up the new palette and drop any “solution overlay”**
+//            selectedPalette = randomPaletteExcluding(
+//              current: selectedPalette,
+//              from: allPalettes
+//            )
+//            defaultBackgroundColor = randomDefaultExcluding(
+//                current: defaultBackgroundColor,
+//                from: defaultBackgroundColors
+//            )
             mazeID = UUID()
             submitMazeRequest() // generate a new maze with same settings upon maze completion
         }

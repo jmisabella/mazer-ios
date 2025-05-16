@@ -17,9 +17,9 @@ struct MazeRenderView: View {
     @Binding var padOffset: CGSize
     @Binding var selectedPalette: HeatMapPalette
     @Binding var mazeID: UUID
+    @Binding var defaultBackground: Color
     // remember where we were when this drag began
     @State private var dragStartOffset: CGSize = .zero
-    @State var defaultBackground: Color
     
     let mazeCells: [MazeCell]
     let mazeType: MazeType  // "Orthogonal", "Sigma", etc.
