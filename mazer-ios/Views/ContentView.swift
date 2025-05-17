@@ -127,8 +127,6 @@ struct ContentView: View {
             }
             
         }
-        
-        
         .onAppear {
             ffi_integration_test_result = mazer_ffi_integration_test()
             print("mazer_ffi_integration_test returned: \(ffi_integration_test_result)")
@@ -138,18 +136,6 @@ struct ContentView: View {
                 print("FFI integration test failed ❌")
             }
         }
-        
-//        if showCelebration {
-//              ConfettiView()
-//                .ignoresSafeArea()
-//                .transition(.opacity)
-//        }
-//        if showCelebration {
-//          FireworksView()
-//            .ignoresSafeArea()
-//            .frame(maxWidth: .infinity, maxHeight: .infinity)
-//            .zIndex(1)
-//        }
     }
     
     private func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
@@ -199,24 +185,18 @@ struct ContentView: View {
               switch selectedMazeType {
               case .delta:
                 switch selectedSize {
-//                case .small:  return 1.07
-//                case .medium: return 1.15
-//                case .large:  return 1.25
-                case .small: return 1.15
-                case .medium: return 1.25
-                case .large: return 1.35
+                case .small: return 1.35
+                case .medium: return 1.52
+                case .large: return 1.65
                 }
               case .orthogonal:
                 switch selectedSize {
                 case .small:  return 0.92
-                case .medium: return 1.33
-                case .large:  return 1.5
+                case .medium: return 1.6
+                case .large:  return 2.0
                 }
               case .sigma:
                 switch selectedSize {
-//                case .small:  return 0.72
-//                case .medium: return 0.8
-//                case .large:  return 1.0
                 case .small:  return 0.65
                 case .medium: return 0.72
                 case .large:  return 0.8
