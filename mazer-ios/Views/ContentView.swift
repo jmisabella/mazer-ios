@@ -94,7 +94,9 @@ struct ContentView: View {
                         }
                     )
                     .environment(\.colorScheme, .dark)
-                    .padding(.vertical, 100) // TODO: might need to remove this
+                    .padding(.vertical, 100)
+                    .grayscale(showCelebration ? 1 : 0)
+                    .animation(.easeInOut(duration: 0.65), value: showCelebration)
                 } else {
                     MazeRequestView(
                         mazeCells: $mazeCells,
