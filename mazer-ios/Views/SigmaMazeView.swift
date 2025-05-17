@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import AudioToolbox
+import UIKit  // for UIFeedbackGenerator
 
 struct SigmaMazeView: View {
     @Binding var selectedPalette: HeatMapPalette
@@ -13,6 +15,7 @@ struct SigmaMazeView: View {
     let cellSize: CGFloat
     let showSolution: Bool
     let showHeatMap: Bool
+    let defaultBackgroundColor: Color
 
     @State private var revealedSolutionPath: Set<Coordinates> = []
     @State private var pendingWorkItems: [DispatchWorkItem] = []
@@ -49,14 +52,13 @@ struct SigmaMazeView: View {
       return CGPoint(x: x, y: y)
     }
     
-
+    private let haptic = UIImpactFeedbackGenerator(style: .light)
+    
     var body: some View {
-        
-        
-        
         ZStack(alignment: .topLeading) {
             ForEach(cells, id: \.self) { cell in
                 SigmaCellView(
+                    allCells: cells, // TODO: REMOVE DEBUG LINE
                     cell: cell,
                     cellSize: cellSize,
                     showSolution: showSolution,
@@ -65,7 +67,8 @@ struct SigmaMazeView: View {
                     maxDistance: maxDistance,
                     isRevealedSolution: revealedSolutionPath.contains(
                         Coordinates(x: cell.x, y: cell.y)
-                    )
+                    ),
+                    defaultBackgroundColor: defaultBackgroundColor
                 )
                 .position(position(for: cell))
                 //                    .offset(
@@ -74,6 +77,10 @@ struct SigmaMazeView: View {
                 //                    )
             }
         }
+        // Flatten the entire grid to avoid any sub-pixel seams between rows
+        .compositingGroup()
+        .drawingGroup(opaque: true)
+        .clipped(antialiased: false)
         .frame(width: totalWidth, height: totalHeight, alignment: .topLeading)
         .onChange(of: showSolution) { _, new in
             if new { animateSolutionPathReveal() }
@@ -105,31 +112,42 @@ struct SigmaMazeView: View {
 
     // match your other views’ “draw-solution” animation pattern
     private func animateSolutionPathReveal() {
+        // 1. Cancel any in-flight reveals
+        pendingWorkItems.forEach { $0.cancel() }
+        pendingWorkItems.removeAll()
+        revealedSolutionPath.removeAll()
+        
+        // 2. Grab your ordered solution from unvisited cells
         let pathCells = cells
-            .filter { $0.onSolutionPath }
-            .sorted(by: { $0.distance < $1.distance })
-
-        var delay = 0.0
-        for c in pathCells {
+            .filter { cell in
+                cell.onSolutionPath && !cell.isVisited
+            }
+            .sorted { $0.distance < $1.distance }
+        
+        // 3. How fast between pops
+        let rapidDelay: Double = 0.05
+        
+        // Prepare the haptic engine _before_ we even do the move
+        haptic.prepare()
+        
+        // 4. Schedule each pop + click
+        for (i, c) in pathCells.enumerated() {
             let coord = Coordinates(x: c.x, y: c.y)
-
-            // force the 3-arg init by spelling out qos & flags
-            let work = DispatchWorkItem(
-                qos: .default,
-                flags: [],
-                block: {
-                    withAnimation(.linear(duration: 0.1)) {
-                        _ = revealedSolutionPath.insert(coord)
-                    }
+            let work = DispatchWorkItem {
+                AudioServicesPlaySystemSound(1104) // play a `click` sound on audio
+                haptic.impactOccurred() // cause user to feel a `bump`
+                // NO animation → instant “pop”
+                withAnimation(.none) {
+                    _ = revealedSolutionPath.insert(coord)
                 }
-            )
-
+            }
             pendingWorkItems.append(work)
-            DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: work)
-            delay += 0.05
+            DispatchQueue.main.asyncAfter(
+                deadline: .now() + Double(i) * rapidDelay,
+                execute: work
+            )
         }
     }
-
     
     private func shadeColor(for cell: MazeCell, maxDistance: Int) -> Color {
         guard showHeatMap, maxDistance > 0 else {

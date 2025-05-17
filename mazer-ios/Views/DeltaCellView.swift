@@ -6,44 +6,54 @@
 //
 
 import SwiftUI
-
 struct DeltaCellView: View {
     let cell: MazeCell
-    let cellSize: CGFloat  // This represents the side length (base) of the triangle.
+    let cellSize: CGFloat
     let showSolution: Bool
     let showHeatMap: Bool
     let selectedPalette: HeatMapPalette
     let maxDistance: Int
     let isRevealedSolution: Bool
+    let defaultBackgroundColor: Color
 
-    /// Compute the triangle height based on an equilateral triangle.
-    var triangleHeight: CGFloat {
-        cellSize * CGFloat(sqrt(3)) / 2.0
+    /// Snap a value to the nearest device‐pixel.
+    private func snap(_ x: CGFloat) -> CGFloat {
+        let scale = UIScreen.main.scale
+        return (x * scale).rounded() / scale
+    }
+
+    /// Height of an equilateral triangle of side `cellSize`.
+    private var triangleHeight: CGFloat {
+        cellSize * sqrt(3) / 2
+    }
+
+    /// The three vertices, **all snapped**.
+    private var points: [CGPoint] {
+        let h = triangleHeight
+        if cell.orientation.lowercased() == "normal" {
+            return [
+                CGPoint(x: snap(cellSize/2), y: snap(0)),
+                CGPoint(x: snap(0),          y: snap(h)),
+                CGPoint(x: snap(cellSize),   y: snap(h)),
+            ]
+        } else {
+            return [
+                CGPoint(x: snap(0),          y: snap(0)),
+                CGPoint(x: snap(cellSize),   y: snap(0)),
+                CGPoint(x: snap(cellSize/2), y: snap(h)),
+            ]
+        }
     }
 
     var body: some View {
         ZStack {
-            // Draw the triangle background.
-            Path { path in
-                if cell.orientation.lowercased() == "normal" {
-                    // Normal (pointing up)
-                    let v1 = CGPoint(x: cellSize / 2, y: 0)
-                    let v2 = CGPoint(x: 0, y: triangleHeight)
-                    let v3 = CGPoint(x: cellSize, y: triangleHeight)
-                    path.move(to: v1)
-                    path.addLine(to: v2)
-                    path.addLine(to: v3)
-                    path.closeSubpath()
-                } else {
-                    // Inverted (pointing down)
-                    let v1 = CGPoint(x: 0, y: 0)
-                    let v2 = CGPoint(x: cellSize, y: 0)
-                    let v3 = CGPoint(x: cellSize / 2, y: triangleHeight)
-                    path.move(to: v1)
-                    path.addLine(to: v2)
-                    path.addLine(to: v3)
-                    path.closeSubpath()
-                }
+            // 1) Fill the triangle
+            Path { p in
+                let pts = points
+                p.move(to: pts[0])
+                p.addLine(to: pts[1])
+                p.addLine(to: pts[2])
+                p.closeSubpath()
             }
             .fill(cellBackgroundColor(
                 for: cell,
@@ -51,51 +61,27 @@ struct DeltaCellView: View {
                 showHeatMap: showHeatMap,
                 maxDistance: maxDistance,
                 selectedPalette: selectedPalette,
-                isRevealedSolution: isRevealedSolution
+                isRevealedSolution: isRevealedSolution,
+                defaultBackground: defaultBackgroundColor
             ))
-            
-            // Draw the walls.
-            Path { path in
+
+            // 2) Stroke the walls
+            Path { p in
+                let pts = points
                 if cell.orientation.lowercased() == "normal" {
-                    let v1 = CGPoint(x: cellSize / 2, y: 0)
-                    let v2 = CGPoint(x: 0, y: triangleHeight)
-                    let v3 = CGPoint(x: cellSize, y: triangleHeight)
-                    
-                    if !cell.linked.contains("UpperLeft") {
-                        path.move(to: v1)
-                        path.addLine(to: v2)
-                    }
-                    if !cell.linked.contains("UpperRight") {
-                        path.move(to: v1)
-                        path.addLine(to: v3)
-                    }
-                    if !cell.linked.contains("Down") {
-                        path.move(to: v2)
-                        path.addLine(to: v3)
-                    }
+                    if !cell.linked.contains("UpperLeft")  { p.move(to: pts[0]); p.addLine(to: pts[1]) }
+                    if !cell.linked.contains("UpperRight") { p.move(to: pts[0]); p.addLine(to: pts[2]) }
+                    if !cell.linked.contains("Down")       { p.move(to: pts[1]); p.addLine(to: pts[2]) }
                 } else {
-                    let v1 = CGPoint(x: 0, y: 0)
-                    let v2 = CGPoint(x: cellSize, y: 0)
-                    let v3 = CGPoint(x: cellSize / 2, y: triangleHeight)
-                    
-                    if !cell.linked.contains("Up") {
-                        path.move(to: v1)
-                        path.addLine(to: v2)
-                    }
-                    if !cell.linked.contains("LowerLeft") {
-                        path.move(to: v1)
-                        path.addLine(to: v3)
-                    }
-                    if !cell.linked.contains("LowerRight") {
-                        path.move(to: v2)
-                        path.addLine(to: v3)
-                    }
+                    if !cell.linked.contains("Up")         { p.move(to: pts[0]); p.addLine(to: pts[1]) }
+                    if !cell.linked.contains("LowerLeft")  { p.move(to: pts[0]); p.addLine(to: pts[2]) }
+                    if !cell.linked.contains("LowerRight") { p.move(to: pts[1]); p.addLine(to: pts[2]) }
                 }
             }
-            .stroke(Color.black, lineWidth: cellStrokeWidth(for: cellSize))
+            .stroke(Color.black, lineWidth: snap(cellStrokeWidth(for: cellSize, mazeType: .delta)))
         }
-        // Use a frame that exactly fits an equilateral triangle.
-        .frame(width: cellSize, height: triangleHeight)
-        .clipped()
+        .frame(width: snap(cellSize), height: snap(triangleHeight))
+        .drawingGroup(opaque: true)
+        .clipped(antialiased: false)
     }
 }

@@ -45,12 +45,31 @@ struct MazeRequestView: View {
         max(1, Int(availableHeight / CGFloat(selectedSize.rawValue)))
     }
     
+    private var availableAlgorithms: [MazeAlgorithm] {
+        if selectedMazeType == .orthogonal {
+            return MazeAlgorithm.allCases
+        } else {
+            return MazeAlgorithm.allCases
+                .filter { ![.binaryTree, .sidewinder].contains($0) }
+        }
+    }
+    
     var body: some View {
         ZStack {
             Color.clear
                 .contentShape(Rectangle())
             
             VStack(spacing: 20) {
+                VStack(spacing: 4) {
+                    Text("Maze Quest")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    Text("Omni Mazes & Solutions")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                .padding(.bottom, 8)
+                
                 Picker("Maze Size", selection: $selectedSize) {
                     ForEach(MazeSize.allCases) { size in
                         Text(size.label).tag(size)
@@ -58,28 +77,37 @@ struct MazeRequestView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 
-                Picker("Algorithm", selection: $selectedAlgorithm) {
-                    ForEach(MazeAlgorithm.allCases) { algo in
-                        Text(algo.rawValue).tag(algo)
-                    }
-                }
-                .pickerStyle(MenuPickerStyle())
-                
-                // Display the selected algorithm's description.
-                Text(selectedAlgorithm.description)
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
-                    .padding(.horizontal)
-
                 Picker("Maze Type", selection: $selectedMazeType) {
                     ForEach(MazeType.allCases) { type in
                         Text(type.rawValue.capitalized).tag(type)
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
+                .onChange(of: selectedMazeType) { _ in
+                    // if the old algorithm isn't in the new list, pick the first valid one
+                    if !availableAlgorithms.contains(selectedAlgorithm),
+                       let firstValid = availableAlgorithms.first
+                    {
+                        selectedAlgorithm = firstValid
+                    }
+                }
                 
                 // Display the selected maze type description.
                 Text(selectedMazeType.description)
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal)
+                
+                Picker("Algorithm", selection: $selectedAlgorithm) {
+                    ForEach(availableAlgorithms) { algo in
+                        Text(algo.rawValue)
+                            .tag(algo)
+                    }
+                }
+                .pickerStyle(MenuPickerStyle())
+                
+                // Display the selected algorithm's description.
+                Text(selectedAlgorithm.description)
                     .font(.footnote)
                     .foregroundColor(.secondary)
                     .padding(.horizontal)

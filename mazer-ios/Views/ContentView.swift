@@ -9,7 +9,7 @@ import SwiftUI
 import AudioToolbox
 import UIKit  // for UIFeedbackGenerator
 
-// GridQuest: Omni Mazes & Solver
+// Grid Quest: Omni Mazes & Solver
 
 struct ContentView: View {
     @State private var ffi_integration_test_result: Int32 = 0
@@ -24,20 +24,43 @@ struct ContentView: View {
     @State private var selectedAlgorithm: MazeAlgorithm = .recursiveBacktracker
     // User selections from render view
     @State private var showSolution: Bool = false
-    @State private var showHeatMap: Bool = false
+    @State private var showHeatMap: Bool = true
     @State private var showControls: Bool = false
     // track the arrow‐pad’s drag offset
     @State private var padOffset = CGSize(width: 0, height: 0)
     @State private var showCelebration: Bool = false
-    
+    // heat map palette
+    @State private var selectedPalette: HeatMapPalette = allPalettes.randomElement()!
+    @State private var mazeID = UUID()
 
     // Track the opaque maze pointer.
     @State private var currentGrid: OpaquePointer? = nil
     
+    // default background for “non-heatmap” cells
+    @State private var defaultBackgroundColor: Color = defaultBackgroundColors.randomElement()!
+    
     private let haptic = UIImpactFeedbackGenerator(style: .light)
+    
+    private func randomDefaultExcluding(
+            current: Color,
+            from all: [Color]
+        ) -> Color {
+            let others = all.filter { $0 != current }
+            return others.randomElement() ?? current
+        }
     
     var body: some View {
         ZStack {
+            // 1) conditional full-screen background
+            Group {
+                if mazeGenerated {
+                    Color.black
+                } else {
+                    Color(.systemBackground)
+                }
+            }
+            
+            .ignoresSafeArea()
             VStack {
                 if mazeGenerated {
                     MazeRenderView(
@@ -46,6 +69,9 @@ struct ContentView: View {
                         showHeatMap: $showHeatMap,
                         showControls: $showControls,
                         padOffset: $padOffset,
+                        selectedPalette: $selectedPalette,
+                        mazeID: $mazeID,
+                        defaultBackground: $defaultBackgroundColor,
                         mazeCells: mazeCells,
                         mazeType: mazeType,
                         regenerateMaze: {
@@ -53,9 +79,24 @@ struct ContentView: View {
                         },
                         moveAction: { direction in
                             performMove(direction: direction)
+                        },
+                        toggleHeatMap: {
+                            showHeatMap.toggle()
+                            if showHeatMap {
+                                // only pick a new one when turning it back on
+                                selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
+                                // … and a new default background
+                                defaultBackgroundColor = randomDefaultExcluding(
+                                    current: defaultBackgroundColor,
+                                    from: defaultBackgroundColors
+                                )
+                            }
                         }
                     )
+                    .environment(\.colorScheme, .dark)
                     .padding(.vertical, 100)
+                    .grayscale(showCelebration ? 1 : 0)
+                    .animation(.easeInOut(duration: 0.65), value: showCelebration)
                 } else {
                     MazeRequestView(
                         mazeCells: $mazeCells,
@@ -74,6 +115,17 @@ struct ContentView: View {
                 }
             }
             .padding()
+            
+            if showCelebration {
+              SparkleView(count: 120, totalDuration: 3.0)
+                .zIndex(1)
+                .onAppear {
+                  DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) {
+                    withAnimation { showCelebration = false }
+                  }
+                }
+            }
+            
         }
         .onAppear {
             ffi_integration_test_result = mazer_ffi_integration_test()
@@ -84,12 +136,13 @@ struct ContentView: View {
                 print("FFI integration test failed ❌")
             }
         }
-        
-        if showCelebration {
-              ConfettiView()
-                .ignoresSafeArea()
-                .transition(.opacity)
-            }
+    }
+    
+    private func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
+        let availablePalettes = allPalettes.filter { $0 != current }
+        // If there’s at least one palette that isn’t the current, pick one at random.
+        // Otherwise, fallback to returning the current palette.
+        return availablePalettes.randomElement() ?? current
     }
     
     private func computeVerticalPadding() -> CGFloat {
@@ -127,82 +180,26 @@ struct ContentView: View {
             currentGrid = nil
         }
         
-//        let adjustment: CGFloat = {
-//            switch selectedMazeType {
-//            case .delta:
-//                switch selectedSize {
-//                case .small:  return 0.85
-//                case .medium: return 0.97
-//                case .large:  return 1.15
-//                }
-//            case .orthogonal:
-//                switch selectedSize {
-//                case .small:  return 0.92
-//                case .medium: return 1.1
-//                case .large:  return 1.2
-//                }
-//            case .sigma:
-//                switch selectedSize {
-//                case .small:  return 0.72
-//                case .medium: return 0.8
-//                case .large:  return 1.0
-//                }
-//            case .polar:
-//                return 1.0
-//            }
-//        }()
-        
-//        let rawSize = CGFloat(selectedSize.rawValue)
-//        let adjustedCellSize = adjustment * rawSize
-//        
-//        let desiredTopPadding: CGFloat    = 100
-//        let desiredBottomPadding: CGFloat = 100
-//        let totalVerticalPadding = desiredTopPadding + desiredBottomPadding
-//        
-//        // Reserve fixed control-area height for buttons, etc.
-//        //        let controlArea: CGFloat = 100
-//        let controlArea: CGFloat = 80
-//        
-//        // Compute available height for the grid *after* subtracting controls + your padding
-//        let screenH       = UIScreen.main.bounds.height
-//        let availableH    = screenH - controlArea - totalVerticalPadding
-//        
-//        // Now see how many rows of `adjustedCellSize` will fit
-//        let maxHeightRows = max(1, Int(availableH / adjustedCellSize))
-//        
-//        // Sigma still divides rows by 3
-//        let finalHeight = (selectedMazeType == .sigma) ? maxHeightRows / 3 : maxHeightRows
-//        
-//        // And width logic remains unchanged:
-//        let maxWidth     = max(1, Int(UIScreen.main.bounds.width / adjustedCellSize))
-//        let finalWidth   = (selectedMazeType == .sigma) ? maxWidth / 3 : maxWidth
-//        
-//        let result = MazeRequestValidator.validate(
-//            mazeType: selectedMazeType,
-//            width:  finalWidth,
-//            height: finalHeight,
-//            algorithm: selectedAlgorithm
-//        )
         
         let adjustment: CGFloat = {
               switch selectedMazeType {
               case .delta:
                 switch selectedSize {
-                case .small:  return 0.85
-                case .medium: return 0.97
-                case .large:  return 1.15
+                case .small: return 1.35
+                case .medium: return 1.52
+                case .large: return 1.65
                 }
               case .orthogonal:
                 switch selectedSize {
                 case .small:  return 0.92
-                case .medium: return 1.1
-                case .large:  return 1.2
+                case .medium: return 1.6
+                case .large:  return 2.0
                 }
               case .sigma:
                 switch selectedSize {
-                case .small:  return 0.72
-                case .medium: return 0.8
-                case .large:  return 1.0
+                case .small:  return 0.65
+                case .medium: return 0.72
+                case .large:  return 0.8
                 }
               case .polar:
                 return 1.0
@@ -308,6 +305,19 @@ struct ContentView: View {
             mazeGenerated = true
             errorMessage = nil
             
+            selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
+            defaultBackgroundColor = randomDefaultExcluding(current: defaultBackgroundColor, from: defaultBackgroundColors)
+            
+//            if showHeatMap {
+//                // only pick a new one when turning it back on
+//                selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
+//                // … and a new default background
+//                defaultBackgroundColor = randomDefaultExcluding(
+//                    current: defaultBackgroundColor,
+//                    from: defaultBackgroundColors
+//                )
+//            }
+            
         case .failure(let error):
             errorMessage = "\(error.localizedDescription)"
         }
@@ -337,11 +347,32 @@ struct ContentView: View {
 
         // 3) Tear down the animation after a few seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            withAnimation { showCelebration = false }
+            withAnimation {
+                showCelebration = false
+            }
+            showSolution = false // reset
+            
+//            // **new palette + new view-ID ↷ forces MazeRenderView to
+//            // pick up the new palette and drop any “solution overlay”**
+//            selectedPalette = randomPaletteExcluding(
+//              current: selectedPalette,
+//              from: allPalettes
+//            )
+//            defaultBackgroundColor = randomDefaultExcluding(
+//                current: defaultBackgroundColor,
+//                from: defaultBackgroundColors
+//            )
+            mazeID = UUID()
+            submitMazeRequest() // generate a new maze with same settings upon maze completion
         }
     }
     
     private func performMove(direction: String) {
+        if showCelebration {
+            // don't move if maze has already been solved
+            return;
+        }
+        
         // Ensure current grid exists.
         guard let gridPtr = currentGrid else { return }
         guard let directionCString = direction.cString(using: .utf8) else {
@@ -354,13 +385,52 @@ struct ContentView: View {
 
         // Convert the OpaquePointer to UnsafeMutableRawPointer using unsafeBitCast.
         let rawGridPtr = unsafeBitCast(gridPtr, to: UnsafeMutableRawPointer.self)
+        
+        // fallback list
+        let tryDirections: [String] = {
+            switch mazeType {
+            case .orthogonal:
+                return [direction]
+                
+            case .polar:
+                return [direction]
+                
+            case .delta:
+                // diagonal → straight
+                switch direction {
+                case "UpperRight": return ["UpperRight", "Right"]
+                case "LowerRight": return ["LowerRight", "Right"]
+                case "UpperLeft":  return ["UpperLeft",  "Left"]
+                case "LowerLeft":  return ["LowerLeft",  "Left"]
+                default:           return [direction]
+                }
+                
+            case .sigma:
+                // diagonal ↔ diagonal opposite
+                switch direction {
+                case "UpperRight": return ["UpperRight", "LowerRight"]
+                case "LowerRight": return ["LowerRight", "UpperRight"]
+                case "UpperLeft":  return ["UpperLeft",  "LowerLeft"]
+                case "LowerLeft":  return ["LowerLeft",  "UpperLeft"]
+                default:           return [direction]
+                }
+            }
+        }()
 
-        guard let newGridRaw = mazer_make_move(rawGridPtr, directionCString) else {
-            // don't display any msg, simply return, if attempted move didn't succeed
+        // Attempt each in turn
+        var newGridRawPtr: UnsafeMutableRawPointer? = nil
+        for dir in tryDirections {
+            guard let dirCString = dir.cString(using: .utf8) else { continue }
+            if let result = mazer_make_move(rawGridPtr, dirCString) {
+                newGridRawPtr = result
+                break
+            }
+        }
+        
+        guard let newGridRaw = newGridRawPtr else {
             return
         }
         
-        // play `click` sound on audio
         AudioServicesPlaySystemSound(1104) // play a `click` sound on audio
         haptic.impactOccurred() // cause user to feel a `bump`
         

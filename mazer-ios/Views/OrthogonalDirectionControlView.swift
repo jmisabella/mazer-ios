@@ -11,26 +11,18 @@ struct OrthogonalDirectionControlView: View {
     let moveAction: (String) -> Void
 
     var body: some View {
-        VStack(spacing: 8) {
-            // ┌───┬───┬───┐
-            // │ ← │ ↑ │ → │
-            // └───┴───┴───┘
-            HStack(spacing: 16) {
-                directionButton(systemImage: "arrow.left",  action: "Left")
-                directionButton(systemImage: "arrow.up",    action: "Up")
-                directionButton(systemImage: "arrow.right", action: "Right")
-            }
-            .frame(maxWidth: .infinity)
-
-            // ┌───┐
-            // │ ↓ │
-            // └───┘
-            HStack {
-                Spacer()
+        HStack(spacing: 32) {
+            // ←
+            directionButton(systemImage: "arrow.left", action: "Left")
+            
+            // ↑ and ↓ stacked
+            VStack(spacing: 8) {
+                directionButton(systemImage: "arrow.up",   action: "Up")
                 directionButton(systemImage: "arrow.down", action: "Down")
-                Spacer()
             }
-            .frame(maxWidth: .infinity)
+            
+            // →
+            directionButton(systemImage: "arrow.right", action: "Right")
         }
         .padding(12)
         .background(Color(.systemBackground).opacity(0.8))

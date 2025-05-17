@@ -6,223 +6,305 @@
 //
 
 import SwiftUI
-
-//struct DeltaMazeView: View {
-//  
-//  let cells: [MazeCell]
-//  let cellSize: CGFloat  // This represents the side length (base)
-//  let showSolution: Bool
-//  let showHeatMap: Bool
-//  @Binding var selectedPalette: HeatMapPalette
-//  let maxDistance: Int
-//
-//  var body: some View {
-//    MazeGridView(
-//      selectedPalette: $selectedPalette,
-//      cells: cells,
-//      showSolution: showSolution,
-//      showHeatMap: showHeatMap
-//    ) { cell, size, isRevealed, shade in
-//        
-//        DeltaCellView(
-//            cell: cell,
-//            cellSize: cellSize,
-//            showSolution: showSolution,
-//            showHeatMap: showHeatMap,
-//            selectedPalette: selectedPalette,
-//            maxDistance: maxDistance,
-//            // your logic with Coordinates; for now, we pass false
-//            isRevealedSolution: false
-//        )
-//    }
-//  }
-//}
-
-
+import UIKit
+import AudioToolbox
 
 struct DeltaMazeView: View {
     let cells: [MazeCell]
-    let cellSize: CGFloat  // This represents the side length (base)
+    let cellSize: CGFloat  // side length (base)
     let showSolution: Bool
     let showHeatMap: Bool
     let selectedPalette: HeatMapPalette
     let maxDistance: Int
+    let defaultBackgroundColor: Color
+    
     @State private var pendingWorkItems: [DispatchWorkItem] = []
     @State private var revealedSolutionPath: Set<Coordinates> = []
-    
-    // You can either pass these in or compute from cells.
-    // For instance, if x and y are zero-indexed in MazeCell:
-    var columns: Int {
-        (cells.map { $0.x }.max() ?? 0) + 1
+
+    // Compute grid dimensions
+    var columns: Int { (cells.map { $0.x }.max() ?? 0) + 1 }
+    var rows: Int { (cells.map { $0.y }.max() ?? 0) + 1 }
+
+    /// Snap a value to the nearest device‐pixel.
+    private func snap(_ x: CGFloat) -> CGFloat {
+        let scale = UIScreen.main.scale
+        return (x * scale).rounded() / scale
     }
-    var rows: Int {
-        (cells.map { $0.y }.max() ?? 0) + 1
+
+    /// Height of one triangle cell.
+    private var triangleHeight: CGFloat { cellSize * sqrt(3) / 2 }
+
+    private let haptic = UIImpactFeedbackGenerator(style: .light)
+
+    /// Palette of possible default background colors for non-heatmap cells.
+    private static let defaultCellBackgroundColors: [Color] = [
+        defaultCellBackgroundGray,
+        defaultCellBackgroundMint,
+        defaultCellBackgroundPeach,
+        defaultCellBackgroundLavender,
+        defaultCellBackgroundBlue
+    ]
+    /// Current default background color; changes on maze refresh.
+    @State private var currentDefaultBackgroundColor: Color = defaultCellBackgroundColors.randomElement()!
+
+    // Fast lookup for cell at (x,y)
+    private var cellMap: [Coordinates: MazeCell] {
+        Dictionary(uniqueKeysWithValues: cells.map { (Coordinates(x: $0.x, y: $0.y), $0) })
     }
-    
-    /// Compute the height for an equilateral triangle.
-    var triangleHeight: CGFloat {
-        //        cellSize * 2 * CGFloat(sqrt(3)) / 2.0
-        cellSize * sqrt(3) / 2
-    }
-    
+
+    private var rowIndices: [Int] { Array(0..<rows) }
+    private var colIndices: [Int] { Array(0..<columns) }
+
     var body: some View {
-        // Use a spacing of -triangleHeight/2 to ensure proper overlap.
-        //        VStack(spacing: -triangleHeight / 2) {
-        VStack(spacing: 0) {
-            ForEach(0..<rows, id: \.self) { rowIndex in
-                HStack(spacing: -cellSize / 2) {
-                    ForEach(0..<columns, id: \.self) { colIndex in
-                        // Look up the MazeCell that has matching x and y
-                        if let cell = cells.first(where: { $0.x == colIndex && $0.y == rowIndex }) {
-                            DeltaCellView(
-                                cell: cell,
-                                cellSize: cellSize,
-                                showSolution: showSolution,
-                                showHeatMap: showHeatMap,
-                                selectedPalette: selectedPalette,
-                                maxDistance: maxDistance,
-                                // your logic with Coordinates; for now, we pass false
-                                isRevealedSolution: revealedSolutionPath.contains(Coordinates(x: cell.x, y: cell.y))
-                            )
-                        } else {
-                            // If no cell is found at this location, you can show an empty view.
-                            EmptyView()
-                        }
-                    }
-                }
+        VStack(spacing: snap(0)) {
+            ForEach(rowIndices, id: \.self) { row in
+                rowView(for: row)
             }
         }
-        .onChange(of: showSolution) { oldValue, newValue in
+        // Avoid sub-pixel seams
+        .compositingGroup()
+        .drawingGroup(opaque: true)
+        .clipped(antialiased: false)
+        .onChange(of: showSolution) { _, newValue in
             if newValue {
                 animateSolutionPathReveal()
             } else {
-                // Cancel pending work items before clearing the revealed path.
-                for workItem in pendingWorkItems {
-                    workItem.cancel()
-                }
+                pendingWorkItems.forEach { $0.cancel() }
                 pendingWorkItems.removeAll()
                 revealedSolutionPath = []
             }
         }
-        // Reset internal state when new maze cells are provided.
-        .onChange(of: cells) { _ /*oldCells*/, newCells in
-            for workItem in pendingWorkItems {
-                workItem.cancel()
-            }
+        .onChange(of: cells) { _ in
+            // Reset animation & reveal state
+            pendingWorkItems.forEach { $0.cancel() }
             pendingWorkItems.removeAll()
             revealedSolutionPath = []
+            // Randomize default cell background on new maze (refresh)
+            currentDefaultBackgroundColor = Self.defaultCellBackgroundColors.randomElement()!
         }
-        // Trigger solution animation on view appearance if showSolution is true.
         .onAppear {
-            if showSolution {
-                animateSolutionPathReveal()
+            if showSolution { animateSolutionPathReveal() }
+        }
+    }
+
+    @ViewBuilder
+    private func rowView(for row: Int) -> some View {
+        HStack(spacing: snap(-cellSize / 2)) {
+            ForEach(colIndices, id: \.self) { col in
+                cellView(atColumn: col, row: row)
             }
         }
     }
-    
+
+    @ViewBuilder
+    private func cellView(atColumn col: Int, row: Int) -> some View {
+        if let cell = cellMap[Coordinates(x: col, y: row)] {
+            DeltaCellView(
+                cell: cell,
+                cellSize: cellSize,
+                showSolution: showSolution,
+                showHeatMap: showHeatMap,
+                selectedPalette: selectedPalette,
+                maxDistance: maxDistance,
+                isRevealedSolution: revealedSolutionPath.contains(Coordinates(x: col, y: row)),
+                defaultBackgroundColor: defaultBackgroundColor
+            )
+        } else {
+            EmptyView()
+        }
+    }
+
     func animateSolutionPathReveal() {
         pendingWorkItems.forEach { $0.cancel() }
         pendingWorkItems.removeAll()
         revealedSolutionPath.removeAll()
 
-        let pathCells = cells.filter(\.onSolutionPath)
-                            .sorted { $0.distance < $1.distance }
-        let totalDuration: Double = 0.65
-        let count = pathCells.count
-        let stepDelay = totalDuration / Double(max(count, 1))
+        let pathCells = cells
+            .filter { $0.onSolutionPath && !$0.isVisited }
+            .sorted { $0.distance < $1.distance }
 
+        let rapidDelay: Double = 0.015
+        haptic.prepare()
         for (i, cell) in pathCells.enumerated() {
             let coord = Coordinates(x: cell.x, y: cell.y)
-            let item = DispatchWorkItem(
-                qos: .unspecified,
-                flags: [],
-                block: {
-                    withAnimation(.linear(duration: stepDelay)) {
-                        _ = revealedSolutionPath.insert(coord)
-                    }
+            let item = DispatchWorkItem {
+                AudioServicesPlaySystemSound(1104)
+                haptic.impactOccurred()
+                withAnimation(.none) {
+                    _ = revealedSolutionPath.insert(coord)
                 }
-            )
+            }
             pendingWorkItems.append(item)
-            DispatchQueue.main.asyncAfter(
-                deadline: .now() + Double(i) * stepDelay,
-                execute: item
-            )
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * rapidDelay, execute: item)
         }
-
     }
 
-
-    
     func shadeColor(for cell: MazeCell, maxDistance: Int) -> Color {
-        guard showHeatMap, maxDistance > 0 else {
-            return .gray  // fallback color when heat map is off
-        }
-
+        guard showHeatMap, maxDistance > 0 else { return .gray }
         let index = min(9, (cell.distance * 10) / maxDistance)
         return selectedPalette.shades[index].asColor
     }
-    
+
     func defaultCellColor(for cell: MazeCell) -> Color {
-        if cell.isStart {
-            return .blue
-        } else if cell.isGoal {
-            return .red
-        } else if cell.onSolutionPath {
-//            return .green
-            return .pink
-        } else {
-            return .gray
-        }
+        // Used when heat map is off
+        if cell.isStart { return .blue }
+        if cell.isGoal  { return .red  }
+        if cell.onSolutionPath { return .pink }
+        return currentDefaultBackgroundColor
     }
-    
-    
 }
 
 
-
+//import SwiftUI
+//import UIKit
+//import AudioToolbox
 //
 //struct DeltaMazeView: View {
 //    let cells: [MazeCell]
 //    let cellSize: CGFloat  // This represents the side length (base)
-//    // Additional properties as needed
 //    let showSolution: Bool
 //    let showHeatMap: Bool
 //    let selectedPalette: HeatMapPalette
 //    let maxDistance: Int
-//
-//    /// Compute the height for an equilateral triangle.
-//    var triangleHeight: CGFloat {
-//        cellSize * CGFloat(sqrt(3)) / 2.0
+//    let defaultBackgroundColor: Color
+//    @State private var pendingWorkItems: [DispatchWorkItem] = []
+//    @State private var revealedSolutionPath: Set<Coordinates> = []
+//    
+//    // Compute number of columns and rows from cells
+//    var columns: Int {
+//        (cells.map { $0.x }.max() ?? 0) + 1
 //    }
-//
+//    var rows: Int {
+//        (cells.map { $0.y }.max() ?? 0) + 1
+//    }
+//    
+//    /// Snap a value to the nearest device‐pixel.
+//    private func snap(_ x: CGFloat) -> CGFloat {
+//        let scale = UIScreen.main.scale
+//        return (x * scale).rounded() / scale
+//    }
+//    
+//    /// Height of one triangle.
+//    private var triangleHeight: CGFloat {
+//        cellSize * sqrt(3) / 2
+//    }
+//    
+//    private let haptic = UIImpactFeedbackGenerator(style: .light)
+//    
+//    // Precompute a lookup map for fast cell access
+//    private var cellMap: [Coordinates: MazeCell] {
+//        Dictionary(uniqueKeysWithValues:
+//            cells.map { (Coordinates(x: $0.x, y: $0.y), $0) }
+//        )
+//    }
+//    
+//    private var rowIndices: [Int] { Array(0..<rows) }
+//    private var colIndices: [Int] { Array(0..<columns) }
+//    
 //    var body: some View {
-//        let width = (cells.map { $0.x }.max() ?? 0) + 1
-//        let height = (cells.map { $0.y }.max() ?? 0) + 1
-//        
-//        // Group cells by their y coordinate.
-//        let rows = Dictionary(grouping: cells, by: \.y)
-//        let sortedRowIndices = rows.keys.sorted()
-//        
-//        VStack(spacing: -triangleHeight * 0.3) { // Negative spacing to force overlap—adjust as needed.
-//            ForEach(sortedRowIndices, id: \.self) { rowIndex in
-//                HStack(spacing: 0) {
-//                    let rowCells = rows[rowIndex]?.sorted(by: { $0.x < $1.x }) ?? []
-//                    ForEach(rowCells, id: \.self) { cell in
-//                        DeltaCellView(
-//                            cell: cell,
-//                            cellSize: cellSize,
-//                            showSolution: showSolution,
-//                            showHeatMap: showHeatMap,
-//                            selectedPalette: selectedPalette,
-//                            maxDistance: maxDistance,
-//                            isRevealedSolution: /* your logic using Coordinates here */
-//                                false
-//                        )
-//                    }
-//                }
-//                // Offset every other row horizontally by half of cellSize.
-//                .offset(x: rowIndex.isMultiple(of: 2) ? 0 : cellSize / 2)
+//        VStack(spacing: snap(0)) {
+//            ForEach(rowIndices, id: \.self) { row in
+//                rowView(for: row)
+//            }
+//        }
+//        // Flatten the grid to avoid sub-pixel seams
+//        .compositingGroup()
+//        .drawingGroup(opaque: true)
+//        .clipped(antialiased: false)
+//        .onChange(of: showSolution) { _, newValue in
+//            if newValue {
+//                animateSolutionPathReveal()
+//            } else {
+//                pendingWorkItems.forEach { $0.cancel() }
+//                pendingWorkItems.removeAll()
+//                revealedSolutionPath = []
+//            }
+//        }
+//        .onChange(of: cells) { _ in
+//            pendingWorkItems.forEach { $0.cancel() }
+//            pendingWorkItems.removeAll()
+//            revealedSolutionPath = []
+//        }
+//        .onAppear {
+//            if showSolution {
+//                animateSolutionPathReveal()
 //            }
 //        }
 //    }
+//    
+//    @ViewBuilder
+//    private func rowView(for row: Int) -> some View {
+//        HStack(spacing: snap(-cellSize / 2)) {
+//            ForEach(colIndices, id: \.self) { col in
+//                cellView(atColumn: col, row: row)
+//            }
+//        }
+//    }
+//    
+//    @ViewBuilder
+//    private func cellView(atColumn col: Int, row: Int) -> some View {
+//        if let cell = cellMap[Coordinates(x: col, y: row)] {
+//            DeltaCellView(
+//                cell: cell,
+//                cellSize: cellSize,
+//                showSolution: showSolution,
+//                showHeatMap: showHeatMap,
+//                selectedPalette: selectedPalette,
+//                maxDistance: maxDistance,
+//                isRevealedSolution: revealedSolutionPath.contains(Coordinates(x: col, y: row)),
+//                defaultBackgroundColor: defaultBackgroundColor
+//            )
+//        } else {
+//            EmptyView()
+//        }
+//    }
+//    
+//    func animateSolutionPathReveal() {
+//        // Cancel any pending reveals
+//        pendingWorkItems.forEach { $0.cancel() }
+//        pendingWorkItems.removeAll()
+//        revealedSolutionPath.removeAll()
+//        
+//        // Filter and sort the remaining solution path cells
+//        let pathCells = cells
+//            .filter { $0.onSolutionPath && !$0.isVisited }
+//            .sorted { $0.distance < $1.distance }
+//        
+//        let rapidDelay: Double = 0.015
+//        haptic.prepare()
+//        
+//        for (i, cell) in pathCells.enumerated() {
+//            let coord = Coordinates(x: cell.x, y: cell.y)
+//            let item = DispatchWorkItem {
+//                AudioServicesPlaySystemSound(1104)
+//                haptic.impactOccurred()
+//                withAnimation(.none) {
+//                    _ = revealedSolutionPath.insert(coord)
+//                }
+//            }
+//            pendingWorkItems.append(item)
+//            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * rapidDelay, execute: item)
+//        }
+//    }
+//    
+//    func shadeColor(for cell: MazeCell, maxDistance: Int) -> Color {
+//        guard showHeatMap, maxDistance > 0 else {
+//            return .gray
+//        }
+//        let index = min(9, (cell.distance * 10) / maxDistance)
+//        return selectedPalette.shades[index].asColor
+//    }
+//    
+//    func defaultCellColor(for cell: MazeCell) -> Color {
+//        if cell.isStart {
+//            return .blue
+//        } else if cell.isGoal {
+//            return .red
+//        } else if cell.onSolutionPath {
+//            return .pink
+//        } else {
+//            return .gray
+//        }
+//    }
 //}
+//

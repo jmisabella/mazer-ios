@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import AudioToolbox
+import UIKit  // for UIFeedbackGenerator
 
 //struct OrthogonalMazeView: View {
 //  @Binding var selectedPalette: HeatMapPalette
@@ -43,6 +45,9 @@ struct OrthogonalMazeView: View {
     let cells: [MazeCell]
     let showSolution: Bool
     let showHeatMap: Bool
+    let defaultBackgroundColor: Color
+    
+    private let haptic = UIImpactFeedbackGenerator(style: .light)
 
     var body: some View {
         let width = (cells.map { $0.x }.max() ?? 0) + 1
@@ -60,7 +65,8 @@ struct OrthogonalMazeView: View {
                     showHeatMap: showHeatMap,
                     selectedPalette: selectedPalette,
                     maxDistance: maxDistance,
-                    isRevealedSolution: revealedSolutionPath.contains(Coordinates(x: cell.x, y: cell.y))
+                    isRevealedSolution: revealedSolutionPath.contains(Coordinates(x: cell.x, y: cell.y)),
+                    defaultBackgroundColor: defaultBackgroundColor
                 )
                 .frame(width: cellSize, height: cellSize) // lock frame
                 .clipped() // avoid any rendering overflow
@@ -100,33 +106,45 @@ struct OrthogonalMazeView: View {
     }
     
     func animateSolutionPathReveal() {
-        // Clear any existing work items.
+        // 1. Cancel any pending reveals
+        pendingWorkItems.forEach { $0.cancel() }
         pendingWorkItems.removeAll()
         
-        // Get solution cells in order of distance from start
+        // 2. Build your ordered solution path from unvisited cells
         let pathCells = cells
-            .filter { $0.onSolutionPath }
+            .filter { cell in
+                cell.onSolutionPath && !cell.isVisited
+            }
             .sorted(by: { $0.distance < $1.distance })
         
-        // Use cell size to determine an appropriate delay multiplier.
-        // For example, if cellSize is smaller than some threshold, reduce the delay.
+        // 3. Compute a fixed interval between reveals
         let baseDelay: Double = 0.015
-//        let delayMultiplier = min(1.0, cellSize() / 30.0)  // adjust 30.0 as needed
-        let delayMultiplier = min(1.0, cellSize() / 50.0)  // adjust denominator as needed
-        let adjustedDelay = baseDelay * delayMultiplier
+        let delayMultiplier = min(1.0, cellSize() / 50.0)
+        let interval = baseDelay * delayMultiplier
         
+        // Prepare the haptic engine _before_ we even do the move
+        haptic.prepare()
+        
+        // 4. Schedule each reveal WITHOUT animation and with a click
         for (index, cell) in pathCells.enumerated() {
-            let workItem = DispatchWorkItem {
-                withAnimation(.easeInOut(duration: 0.2 * delayMultiplier)) {
-                    _ = revealedSolutionPath.insert(Coordinates(x: cell.x, y: cell.y))
+            let work = DispatchWorkItem {
+                AudioServicesPlaySystemSound(1104) // play a `click` sound on audio
+                haptic.impactOccurred() // cause user to feel a `bump`
+                // Disable implicit animation
+                withAnimation(.none) {
+                    _ = revealedSolutionPath.insert(
+                        Coordinates(x: cell.x, y: cell.y)
+                    )
                 }
             }
-            pendingWorkItems.append(workItem)
-            DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * adjustedDelay, execute: workItem)
+            pendingWorkItems.append(work)
+            DispatchQueue.main.asyncAfter(
+                deadline: .now() + Double(index) * interval,
+                execute: work
+            )
         }
     }
-
-    
+     
     func shadeColor(for cell: MazeCell, maxDistance: Int) -> Color {
         guard showHeatMap, maxDistance > 0 else {
             return .gray  // fallback color when heat map is off
