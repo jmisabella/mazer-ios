@@ -47,13 +47,41 @@ struct DeltaMazeView: View {
     /// Current default background color; changes on maze refresh.
     @State private var currentDefaultBackgroundColor: Color = defaultCellBackgroundColors.randomElement()!
 
-    // Fast lookup for cell at (x,y)
-    private var cellMap: [Coordinates: MazeCell] {
-        Dictionary(uniqueKeysWithValues: cells.map { (Coordinates(x: $0.x, y: $0.y), $0) })
-    }
+    // fase lookup for cell at (x, y)
+    /// Once-only map from (x,y) → cell
+    private let cellMap: [Coordinates: MazeCell]
+    
+//    // Fast lookup for cell at (x,y)
+//    private var cellMap: [Coordinates: MazeCell] {
+//        Dictionary(uniqueKeysWithValues: cells.map { (Coordinates(x: $0.x, y: $0.y), $0) })
+//    }
 
     private var rowIndices: [Int] { Array(0..<rows) }
     private var colIndices: [Int] { Array(0..<columns) }
+    
+    init(cells: [MazeCell],
+         cellSize: CGFloat,
+         showSolution: Bool,
+         showHeatMap: Bool,
+         selectedPalette: HeatMapPalette,
+         maxDistance: Int,
+         defaultBackgroundColor: Color)
+    {
+        self.cells = cells
+        self.cellSize = cellSize
+        self.showSolution = showSolution
+        self.showHeatMap = showHeatMap
+        self.selectedPalette = selectedPalette
+        self.maxDistance = maxDistance
+        self.defaultBackgroundColor = defaultBackgroundColor
+        
+        // Build the lookup exactly once here
+        self.cellMap = Dictionary(
+            uniqueKeysWithValues: cells.map { cell in
+                (Coordinates(x: cell.x, y: cell.y), cell)
+            }
+        )
+    }
 
     var body: some View {
         VStack(spacing: snap(0)) {
