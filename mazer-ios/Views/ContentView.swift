@@ -117,7 +117,7 @@ struct ContentView: View {
             .padding()
             
             if showCelebration {
-              SparkleView(count: 120, totalDuration: 3.0)
+              SparkleView(count: 60, totalDuration: 3.0)
                 .zIndex(1)
                 .onAppear {
                   DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) {
