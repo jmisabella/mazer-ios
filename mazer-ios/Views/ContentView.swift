@@ -183,22 +183,40 @@ struct ContentView: View {
         
         let adjustment: CGFloat = {
               switch selectedMazeType {
+//              case .delta:
+//                switch selectedSize {
+//                case .small: return 1.35
+//                case .medium: return 1.52
+//                case .large: return 1.65
+//                }
+//              case .orthogonal:
+//                switch selectedSize {
+//                case .small:  return 0.92
+//                case .medium: return 1.6
+//                case .large:  return 2.0
+//                }
+//              case .sigma:
+//                switch selectedSize {
+//                case .small:  return 0.65
+//                case .medium: return 0.72
+//                case .large:  return 0.8
+//                }
               case .delta:
                 switch selectedSize {
-                case .small: return 1.35
-                case .medium: return 1.52
+                case .small: return 1.52
+                case .medium: return 1.58
                 case .large: return 1.65
                 }
               case .orthogonal:
                 switch selectedSize {
-                case .small:  return 0.92
+                case .small:  return 1.2
                 case .medium: return 1.6
                 case .large:  return 2.0
                 }
               case .sigma:
                 switch selectedSize {
-                case .small:  return 0.65
-                case .medium: return 0.72
+                case .small:  return 0.7
+                case .medium: return 0.75
                 case .large:  return 0.8
                 }
               case .polar:

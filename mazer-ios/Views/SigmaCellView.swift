@@ -88,7 +88,6 @@ struct SigmaCellView: View {
                 isRevealedSolution: isRevealedSolution,
                 defaultBackground: defaultBackgroundColor
             ))
-
             // 2) walls with mismatch‐skip
             Path { p in
                 for dir in HexDirection.allCases {
@@ -110,7 +109,7 @@ struct SigmaCellView: View {
                          neighbor?.isStart == true || neighbor?.isGoal == true) {
                         continue
                     }
-
+                    
                     // otherwise draw the wall if not linked:
                     if !linked {
                         let (i, j) = dir.vertexIndices
