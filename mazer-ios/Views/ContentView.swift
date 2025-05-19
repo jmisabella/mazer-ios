@@ -203,7 +203,7 @@ struct ContentView: View {
 //                }
               case .delta:
                 switch selectedSize {
-                case .small: return 1.52
+                case .small: return 1.5
                 case .medium: return 1.58
                 case .large: return 1.65
                 }
