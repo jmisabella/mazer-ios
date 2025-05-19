@@ -69,22 +69,29 @@ struct SigmaCellView: View {
             // 2) walls
             Path { p in
                 for dir in HexDirection.allCases {
+                    // -- figure out this cell and its neighbor --
                     let linked = cell.linked.contains(dir.rawValue)
                     let neighborCoord = Coordinates(
                         x: cell.x + dir.delta.dq,
                         y: cell.y + dir.delta.dr
                     )
-                    let neighborLink = cellMap[neighborCoord]?
-                        .linked.contains(dir.opposite.rawValue) ?? false
+                    guard let neighbor = cellMap[neighborCoord] else {
+                        continue // off‐grid
+                    }
 
-                    // skip one‐way mismatches at start/goal
-                    if linked != neighborLink &&
-                       (cell.isStart || cell.isGoal ||
-                        cellMap[neighborCoord]?.isStart == true ||
-                        cellMap[neighborCoord]?.isGoal == true) {
+                    // -- NEW: if we're showing the solution, and BOTH cells
+                    //     are marked onSolutionPath, and their distances differ
+                    //     by exactly 1, skip the wall entirely --
+                    if showSolution
+                       && cell.onSolutionPath
+                       && neighbor.onSolutionPath
+                       && abs(cell.distance - neighbor.distance) == 1
+                    {
                         continue
                     }
 
+                    // -- otherwise draw a wall whenever this cell
+                    //    does *not* have a link in that direction --
                     if !linked {
                         let (i, j) = dir.vertexIndices
                         p.move(to: scaledPoints[i])
