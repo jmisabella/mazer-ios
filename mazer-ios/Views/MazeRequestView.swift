@@ -78,8 +78,10 @@ struct MazeRequestView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 
                 Picker("Maze Type", selection: $selectedMazeType) {
-                    ForEach(MazeType.allCases) { type in
-                        Text(type.rawValue.capitalized).tag(type)
+                    // ignore .polar for now, sinze it's not yet implemented
+                    ForEach(MazeType.allCases.filter { $0 != .polar }) { type in
+                        Text(type.rawValue.capitalized)
+                            .tag(type)
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
@@ -147,23 +149,6 @@ struct MazeRequestView: View {
     }
     
 
-
-
 }
 
-struct MazeRequestView_Previews: PreviewProvider {
-    static var previews: some View {
-        MazeRequestView(
-            mazeCells: .constant([]),
-            mazeGenerated: .constant(false),
-            mazeType: .constant(.orthogonal),
-            selectedSize: .constant(.large),
-            selectedMazeType: .constant(.orthogonal),
-            selectedAlgorithm: .constant(.recursiveBacktracker),
-            submitMazeRequest: {
-                print("Preview Maze Request Triggered")
-            }
-        )
-    }
-}
 
