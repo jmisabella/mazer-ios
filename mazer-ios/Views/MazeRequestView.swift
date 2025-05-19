@@ -54,6 +54,12 @@ struct MazeRequestView: View {
         }
     }
     
+    private func randomizeAlgorithm() {
+        if let algo = availableAlgorithms.randomElement() {
+            selectedAlgorithm = algo
+        }
+    }
+    
     var body: some View {
         ZStack {
             Color.clear
@@ -86,6 +92,7 @@ struct MazeRequestView: View {
                 }
                 .pickerStyle(MenuPickerStyle())
                 .onChange(of: selectedMazeType) { _ in
+                    randomizeAlgorithm()
                     // if the old algorithm isn't in the new list, pick the first valid one
                     if !availableAlgorithms.contains(selectedAlgorithm),
                        let firstValid = availableAlgorithms.first
@@ -150,5 +157,6 @@ struct MazeRequestView: View {
     
 
 }
+
 
 
