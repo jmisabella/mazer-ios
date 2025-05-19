@@ -67,31 +67,62 @@ struct SigmaCellView: View {
             .fill(fillColor)
 
             // 2) walls
+//            Path { p in
+//                for dir in HexDirection.allCases {
+//                    // -- figure out this cell and its neighbor --
+//                    let linked = cell.linked.contains(dir.rawValue)
+//                    let neighborCoord = Coordinates(
+//                        x: cell.x + dir.delta.dq,
+//                        y: cell.y + dir.delta.dr
+//                    )
+//                    guard let neighbor = cellMap[neighborCoord] else {
+//                        continue // off‐grid
+//                    }
+//
+//                    // -- NEW: if we're showing the solution, and BOTH cells
+//                    //     are marked onSolutionPath, and their distances differ
+//                    //     by exactly 1, skip the wall entirely --
+//                    if showSolution
+//                       && cell.onSolutionPath
+//                       && neighbor.onSolutionPath
+//                       && abs(cell.distance - neighbor.distance) == 1
+//                    {
+//                        continue
+//                    }
+//
+//                    // -- otherwise draw a wall whenever this cell
+//                    //    does *not* have a link in that direction --
+//                    if !linked {
+//                        let (i, j) = dir.vertexIndices
+//                        p.move(to: scaledPoints[i])
+//                        p.addLine(to: scaledPoints[j])
+//                    }
+//                }
+//            }
             Path { p in
+                let q = cell.x
+                let r = cell.y
+                let isOddCol = (q & 1) == 1
+
                 for dir in HexDirection.allCases {
-                    // -- figure out this cell and its neighbor --
+                    // 1) compute this cell’s link and true neighbor coords in odd-q
                     let linked = cell.linked.contains(dir.rawValue)
-                    let neighborCoord = Coordinates(
-                        x: cell.x + dir.delta.dq,
-                        y: cell.y + dir.delta.dr
-                    )
+                    let (dq, dr) = dir.offsetDelta(isOddColumn: isOddCol)
+                    let neighborCoord = Coordinates(x: q + dq, y: r + dr)
                     guard let neighbor = cellMap[neighborCoord] else {
-                        continue // off‐grid
+                        continue
                     }
 
-                    // -- NEW: if we're showing the solution, and BOTH cells
-                    //     are marked onSolutionPath, and their distances differ
-                    //     by exactly 1, skip the wall entirely --
-                    if showSolution
-                       && cell.onSolutionPath
+                    // 2) YOUR rule ONLY: if *both* cells are onSolutionPath
+                    //    AND their distance differs by exactly 1, skip that wall
+                    if cell.onSolutionPath
                        && neighbor.onSolutionPath
                        && abs(cell.distance - neighbor.distance) == 1
                     {
                         continue
                     }
 
-                    // -- otherwise draw a wall whenever this cell
-                    //    does *not* have a link in that direction --
+                    // 3) otherwise draw the wall whenever this cell isn’t linked out
                     if !linked {
                         let (i, j) = dir.vertexIndices
                         p.move(to: scaledPoints[i])
