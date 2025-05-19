@@ -209,8 +209,8 @@ struct ContentView: View {
                 }
               case .orthogonal:
                 switch selectedSize {
-                case .small:  return 1.2
-                case .medium: return 1.6
+                case .small:  return 1.45
+                case .medium: return 1.75
                 case .large:  return 2.0
                 }
               case .sigma:
