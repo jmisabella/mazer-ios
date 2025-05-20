@@ -48,13 +48,20 @@ struct OrthogonalMazeView: View {
         )
 
         // calculate cellSize once
+//        let screenW = UIScreen.main.bounds.width
+//        self.cellSize = screenW / CGFloat(cols)
+        
         let screenW = UIScreen.main.bounds.width
-        self.cellSize = screenW / CGFloat(cols)
+        let rawSize = screenW / CGFloat(cols)
+        let scale   = UIScreen.main.scale
+        // round to whole‐pixel cell heights
+        self.cellSize = (rawSize * scale).rounded() / scale
+
 
         // cache distances & stroke
         self.maxDistance = cells.map(\.distance).max() ?? 1
         let rawStroke = cellStrokeWidth(for: cellSize, mazeType: .orthogonal)
-        let scale = UIScreen.main.scale
+//        let scale = UIScreen.main.scale
         self.strokeWidth = (rawStroke * scale).rounded() / scale
     }
 
@@ -65,17 +72,17 @@ struct OrthogonalMazeView: View {
                 let coord = Coordinates(x: cell.x, y: cell.y)
                 OrthogonalCellView(
                     cell: cell,
-                    size: cellSize,
+                    cellSize: cellSize,
+//                    size: cellSize,
                     showSolution: showSolution,
                     showHeatMap: showHeatMap,
                     selectedPalette: selectedPalette,
                     maxDistance: maxDistance,
                     isRevealedSolution: revealedSolutionPath.contains(coord),
-                    defaultBackgroundColor: defaultBackgroundColor,
-                    strokeWidth: strokeWidth
+                    defaultBackgroundColor: defaultBackgroundColor//,
+//                    strokeWidth: strokeWidth
                 )
                 .frame(width: cellSize, height: cellSize)
-                .clipped()
             }
         }
         .drawingGroup()  // batch offscreen rendering
