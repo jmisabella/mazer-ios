@@ -12,7 +12,7 @@ struct MazeRequestView: View {
     let submitMazeRequest: () -> Void
     
     @State private var errorMessage: String? = nil
-    
+    @State private var didRandomizeOnAppear = false   // track one-time randomization
     
     private let horizontalMargin = 10 // TODO: this number must match hard-coded offsets in ContentView! Must couple these 2 variables to address this
     private let verticalMargin = 280 // TODO: this number must match hard-coded offsets in ContentView! Must couple these 2 variables to address this
@@ -46,19 +46,27 @@ struct MazeRequestView: View {
     }
     
     private var availableAlgorithms: [MazeAlgorithm] {
-        if selectedMazeType == .orthogonal {
-            return MazeAlgorithm.allCases
-        } else {
-            return MazeAlgorithm.allCases
-                .filter { ![.binaryTree, .sidewinder].contains($0) }
+            if selectedMazeType == .orthogonal {
+                return MazeAlgorithm.allCases
+            } else {
+                return MazeAlgorithm.allCases
+                    .filter { ![.binaryTree, .sidewinder].contains($0) }
+            }
         }
-    }
-    
-    private func randomizeAlgorithm() {
-        if let algo = availableAlgorithms.randomElement() {
-            selectedAlgorithm = algo
+        
+        private func randomizeType() {
+            // pick any MazeType except .polar
+            let types = MazeType.allCases.filter { $0 != .polar }
+            if let randomType = types.randomElement() {
+                selectedMazeType = randomType
+            }
         }
-    }
+        
+        private func randomizeAlgorithm() {
+            if let algo = availableAlgorithms.randomElement() {
+                selectedAlgorithm = algo
+            }
+        }
     
     var body: some View {
         ZStack {
@@ -138,6 +146,14 @@ struct MazeRequestView: View {
 
             }
             .padding()
+        }
+        .onChange(of: selectedMazeType) { _ in
+            // if user manually switches type, refresh algorithm
+            randomizeAlgorithm()
+            if !availableAlgorithms.contains(selectedAlgorithm),
+               let firstValid = availableAlgorithms.first {
+                selectedAlgorithm = firstValid
+            }
         }
     }
 

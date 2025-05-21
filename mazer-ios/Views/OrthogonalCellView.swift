@@ -40,7 +40,7 @@ struct OrthogonalCellView: View {
         case 18..<24:
             raw = 2.25
         default:
-            raw = 2.75
+            raw = 2.45
         }
         return (raw * UIScreen.main.scale).rounded() / UIScreen.main.scale
     }
