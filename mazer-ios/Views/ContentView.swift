@@ -39,6 +39,8 @@ struct ContentView: View {
     // default background for “non-heatmap” cells
     @State private var defaultBackgroundColor: Color = defaultBackgroundColors.randomElement()!
     
+    @State private var didInitialRandomization = false
+    
     private let haptic = UIImpactFeedbackGenerator(style: .light)
     
     private func randomDefaultExcluding(
@@ -128,6 +130,24 @@ struct ContentView: View {
             
         }
         .onAppear {
+            if !didInitialRandomization {
+                // 1) pick a random type (excluding .polar)
+                let types = MazeType.allCases.filter { $0 != .polar }
+                selectedMazeType = types.randomElement()!
+                
+                // 2) pick a valid algorithm for that type
+                let algos: [MazeAlgorithm]
+                if selectedMazeType == .orthogonal {
+                    algos = MazeAlgorithm.allCases
+                } else {
+                    algos = MazeAlgorithm.allCases
+                        .filter { ![.binaryTree, .sidewinder].contains($0) }
+                }
+                selectedAlgorithm = algos.randomElement()!
+                
+                didInitialRandomization = true
+            }
+            
             ffi_integration_test_result = mazer_ffi_integration_test()
             print("mazer_ffi_integration_test returned: \(ffi_integration_test_result)")
             if ffi_integration_test_result == 42 {
@@ -136,6 +156,7 @@ struct ContentView: View {
                 print("FFI integration test failed ❌")
             }
         }
+        
     }
     
     private func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
@@ -203,21 +224,21 @@ struct ContentView: View {
 //                }
               case .delta:
                 switch selectedSize {
-                case .small: return 1.5
-                case .medium: return 1.58
-                case .large: return 1.65
+                case .small: return 1.55
+                case .medium: return 1.6
+                case .large: return 1.7
                 }
               case .orthogonal:
                 switch selectedSize {
-                case .small:  return 1.45
-                case .medium: return 1.75
-                case .large:  return 2.0
+                case .small:  return 1.4
+                case .medium: return 1.65
+                case .large:  return 1.9
                 }
               case .sigma:
                 switch selectedSize {
-                case .small:  return 0.7
-                case .medium: return 0.75
-                case .large:  return 0.8
+                case .small:  return 0.75
+                case .medium: return 0.78
+                case .large:  return 0.82
                 }
               case .polar:
                 return 1.0

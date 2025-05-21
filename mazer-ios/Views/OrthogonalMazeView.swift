@@ -18,9 +18,8 @@ struct OrthogonalMazeView: View {
 
     @State private var revealedSolutionPath: Set<Coordinates> = []
     @State private var pendingWorkItems: [DispatchWorkItem] = []
-    @State private var sortedSolutionCoordinates: [Coordinates] = []
 
-    // Precomputed once in init
+    // computed once
     private let columns: [GridItem]
     private let cellSize: CGFloat
     private let maxDistance: Int
@@ -41,30 +40,29 @@ struct OrthogonalMazeView: View {
         self.showHeatMap = showHeatMap
         self.defaultBackgroundColor = defaultBackgroundColor
 
-        // 1) build columns
+        // build grid columns
         let cols = (cells.map(\.x).max() ?? 0) + 1
         self.columns = Array(
             repeating: GridItem(.flexible(), spacing: 0),
             count: cols
         )
 
-        // 2) cell size once
+        // calculate cellSize once
+//        let screenW = UIScreen.main.bounds.width
+//        self.cellSize = screenW / CGFloat(cols)
+        
         let screenW = UIScreen.main.bounds.width
-        self.cellSize = screenW / CGFloat(cols)
+        let rawSize = screenW / CGFloat(cols)
+        let scale   = UIScreen.main.scale
+        // round to whole‐pixel cell heights
+        self.cellSize = (rawSize * scale).rounded() / scale
 
-        // 3) maxDistance once
+
+        // cache distances & stroke
         self.maxDistance = cells.map(\.distance).max() ?? 1
-
-        // 4) stroke width once
-        let raw = cellStrokeWidth(for: cellSize, mazeType: .orthogonal)
-        let scale = UIScreen.main.scale
-        self.strokeWidth = (raw * scale).rounded() / scale
-
-        // 5) precompute solution path coords
-        self.sortedSolutionCoordinates = cells
-            .filter { $0.onSolutionPath && !$0.isVisited }
-            .sorted { $0.distance < $1.distance }
-            .map { Coordinates(x: $0.x, y: $0.y) }
+        let rawStroke = cellStrokeWidth(for: cellSize, mazeType: .orthogonal)
+//        let scale = UIScreen.main.scale
+        self.strokeWidth = (rawStroke * scale).rounded() / scale
     }
 
     var body: some View {
@@ -74,30 +72,34 @@ struct OrthogonalMazeView: View {
                 let coord = Coordinates(x: cell.x, y: cell.y)
                 OrthogonalCellView(
                     cell: cell,
-                    size: cellSize,
+                    cellSize: cellSize,
+//                    size: cellSize,
                     showSolution: showSolution,
                     showHeatMap: showHeatMap,
                     selectedPalette: selectedPalette,
                     maxDistance: maxDistance,
                     isRevealedSolution: revealedSolutionPath.contains(coord),
-                    defaultBackgroundColor: defaultBackgroundColor,
-                    strokeWidth: strokeWidth
+                    defaultBackgroundColor: defaultBackgroundColor//,
+//                    strokeWidth: strokeWidth
                 )
+                .frame(width: cellSize, height: cellSize)
             }
         }
-        .drawingGroup()  // batch once
-        .onChange(of: showSolution) { _, new in
-            new ? animateSolutionPathReveal() : cancelAndReset()
+        .drawingGroup()  // batch offscreen rendering
+        .onChange(of: showSolution) { _, newVal in
+            if newVal {
+                animateSolutionPathReveal()
+            } else {
+                cancelAndReset()
+            }
         }
-        .onChange(of: cells) { _, newCells in
+        .onChange(of: cells) { _, _ in
             cancelAndReset()
-            sortedSolutionCoordinates = newCells
-                .filter { $0.onSolutionPath && !$0.isVisited }
-                .sorted { $0.distance < $1.distance }
-                .map { Coordinates(x: $0.x, y: $0.y) }
         }
         .onAppear {
-            if showSolution { animateSolutionPathReveal() }
+            if showSolution {
+                animateSolutionPathReveal()
+            }
         }
     }
 
@@ -111,11 +113,17 @@ struct OrthogonalMazeView: View {
         cancelAndReset()
         haptic.prepare()
 
-        let baseDelay: Double = 0.015
-        let mult = min(1.0, cellSize / 50.0)
-        let interval = baseDelay * mult
+        // compute the sorted path coordinates right here
+        let pathCoords = cells
+            .filter { $0.onSolutionPath && !$0.isVisited }
+            .sorted { $0.distance < $1.distance }
+            .map { Coordinates(x: $0.x, y: $0.y) }
 
-        for (i, coord) in sortedSolutionCoordinates.enumerated() {
+        let baseDelay: Double = 0.015
+        let speedFactor = min(1.0, cellSize / 50.0)
+        let interval = baseDelay * speedFactor
+
+        for (i, coord) in pathCoords.enumerated() {
             let work = DispatchWorkItem {
                 AudioServicesPlaySystemSound(1104)
                 haptic.impactOccurred()

@@ -12,7 +12,7 @@ struct MazeRequestView: View {
     let submitMazeRequest: () -> Void
     
     @State private var errorMessage: String? = nil
-    
+    @State private var didRandomizeOnAppear = false   // track one-time randomization
     
     private let horizontalMargin = 10 // TODO: this number must match hard-coded offsets in ContentView! Must couple these 2 variables to address this
     private let verticalMargin = 280 // TODO: this number must match hard-coded offsets in ContentView! Must couple these 2 variables to address this
@@ -46,13 +46,27 @@ struct MazeRequestView: View {
     }
     
     private var availableAlgorithms: [MazeAlgorithm] {
-        if selectedMazeType == .orthogonal {
-            return MazeAlgorithm.allCases
-        } else {
-            return MazeAlgorithm.allCases
-                .filter { ![.binaryTree, .sidewinder].contains($0) }
+            if selectedMazeType == .orthogonal {
+                return MazeAlgorithm.allCases
+            } else {
+                return MazeAlgorithm.allCases
+                    .filter { ![.binaryTree, .sidewinder].contains($0) }
+            }
         }
-    }
+        
+        private func randomizeType() {
+            // pick any MazeType except .polar
+            let types = MazeType.allCases.filter { $0 != .polar }
+            if let randomType = types.randomElement() {
+                selectedMazeType = randomType
+            }
+        }
+        
+        private func randomizeAlgorithm() {
+            if let algo = availableAlgorithms.randomElement() {
+                selectedAlgorithm = algo
+            }
+        }
     
     var body: some View {
         ZStack {
@@ -78,12 +92,15 @@ struct MazeRequestView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 
                 Picker("Maze Type", selection: $selectedMazeType) {
-                    ForEach(MazeType.allCases) { type in
-                        Text(type.rawValue.capitalized).tag(type)
+                    // ignore .polar for now, sinze it's not yet implemented
+                    ForEach(MazeType.allCases.filter { $0 != .polar }) { type in
+                        Text(type.rawValue.capitalized)
+                            .tag(type)
                     }
                 }
                 .pickerStyle(MenuPickerStyle())
                 .onChange(of: selectedMazeType) { _ in
+                    randomizeAlgorithm()
                     // if the old algorithm isn't in the new list, pick the first valid one
                     if !availableAlgorithms.contains(selectedAlgorithm),
                        let firstValid = availableAlgorithms.first
@@ -130,6 +147,14 @@ struct MazeRequestView: View {
             }
             .padding()
         }
+        .onChange(of: selectedMazeType) { _ in
+            // if user manually switches type, refresh algorithm
+            randomizeAlgorithm()
+            if !availableAlgorithms.contains(selectedAlgorithm),
+               let firstValid = availableAlgorithms.first {
+                selectedAlgorithm = firstValid
+            }
+        }
     }
 
     private func filterAndClampWidthInput(_ value: String, max: Int) -> String {
@@ -147,23 +172,7 @@ struct MazeRequestView: View {
     }
     
 
-
-
 }
 
-struct MazeRequestView_Previews: PreviewProvider {
-    static var previews: some View {
-        MazeRequestView(
-            mazeCells: .constant([]),
-            mazeGenerated: .constant(false),
-            mazeType: .constant(.orthogonal),
-            selectedSize: .constant(.large),
-            selectedMazeType: .constant(.orthogonal),
-            selectedAlgorithm: .constant(.recursiveBacktracker),
-            submitMazeRequest: {
-                print("Preview Maze Request Triggered")
-            }
-        )
-    }
-}
+
 

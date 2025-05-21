@@ -65,4 +65,22 @@ extension HexDirection {
         case .upperLeft:   return (-1, 0)
         }
     }
+    
+    /// Offsets for an “odd-q vertical” layout:
+    ///   even columns: northEast=(+1,-1), southEast=(+1,0), etc.
+    ///   odd  columns: northEast=(+1, 0), southEast=(+1,+1), etc.
+    func offsetDelta(isOddColumn: Bool) -> (dq: Int, dr: Int) {
+        switch (self, isOddColumn) {
+        case (.up,        _):     return ( 0, -1)
+        case (.upperRight,   false):  return ( 1, -1)
+        case (.upperRight,    true):  return ( 1,  0)
+        case (.lowerRight,   false):  return ( 1,  0)
+        case (.lowerRight,    true):  return ( 1,  1)
+        case (.down,        _):     return ( 0,  1)
+        case (.lowerLeft,   false):  return (-1,  0)
+        case (.lowerLeft,    true):  return (-1,  1)
+        case (.upperLeft,   false):  return (-1, -1)
+        case (.upperLeft,    true):  return (-1,  0)
+        }
+    }
 }
