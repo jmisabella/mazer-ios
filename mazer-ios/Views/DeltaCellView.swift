@@ -6,6 +6,14 @@
 //
 
 import SwiftUI
+
+extension String {
+    func capitalizedFirstLetter() -> String {
+        guard !isEmpty else { return self }
+        return prefix(1).uppercased() + dropFirst().lowercased()
+    }
+}
+
 struct DeltaCellView: View {
     let cell: MazeCell
     let cellSize: CGFloat
@@ -15,6 +23,7 @@ struct DeltaCellView: View {
     let maxDistance: Int
     let isRevealedSolution: Bool
     let defaultBackgroundColor: Color
+//    let grid: OpaquePointer? // TODO: not sure if we'll need this... finish integrating FFI render functionality into this file
 
     /// Snap a value to the nearest device‐pixel.
     private func snap(_ x: CGFloat) -> CGFloat {
@@ -44,6 +53,7 @@ struct DeltaCellView: View {
             ]
         }
     }
+    
 
     var body: some View {
         ZStack {
@@ -66,17 +76,41 @@ struct DeltaCellView: View {
             ))
 
             // 2) Stroke the walls
+//            Path { p in
+//                let pts = points
+//                if cell.orientation.lowercased() == "normal" {
+//                    if !cell.linked.contains("UpperLeft")  { p.move(to: pts[0]); p.addLine(to: pts[1]) }
+//                    if !cell.linked.contains("UpperRight") { p.move(to: pts[0]); p.addLine(to: pts[2]) }
+//                    if !cell.linked.contains("Down")       { p.move(to: pts[1]); p.addLine(to: pts[2]) }
+//                } else {
+//                    if !cell.linked.contains("Up")         { p.move(to: pts[0]); p.addLine(to: pts[1]) }
+//                    if !cell.linked.contains("LowerLeft")  { p.move(to: pts[0]); p.addLine(to: pts[2]) }
+//                    if !cell.linked.contains("LowerRight") { p.move(to: pts[1]); p.addLine(to: pts[2]) }
+//                }
+//             }
+
+//                mazer_free_edge_pairs(edgePairs) // Free memory
+//            }
+            // Stroke walls using Rust FFI
             Path { p in
-                let pts = points
-                if cell.orientation.lowercased() == "normal" {
-                    if !cell.linked.contains("UpperLeft")  { p.move(to: pts[0]); p.addLine(to: pts[1]) }
-                    if !cell.linked.contains("UpperRight") { p.move(to: pts[0]); p.addLine(to: pts[2]) }
-                    if !cell.linked.contains("Down")       { p.move(to: pts[1]); p.addLine(to: pts[2]) }
-                } else {
-                    if !cell.linked.contains("Up")         { p.move(to: pts[0]); p.addLine(to: pts[1]) }
-                    if !cell.linked.contains("LowerLeft")  { p.move(to: pts[0]); p.addLine(to: pts[2]) }
-                    if !cell.linked.contains("LowerRight") { p.move(to: pts[1]); p.addLine(to: pts[2]) }
+                // Convert cell.linked to UInt32 codes
+                let linkedCodes: [UInt32] = cell.linked.compactMap { linkedDir in
+//                    MazeDirection(rawValue: linkedDir.capitalizedFirstLetter())?.code
+                    MazeDirection(rawValue: linkedDir)?.code
+
                 }
+                let orientationCode: UInt32 = cell.orientation.lowercased() == "normal" ? 0 : 1
+                var linkedArray = linkedCodes
+                let edgePairs = linkedArray.withUnsafeMutableBufferPointer { buffer in
+                    mazer_delta_wall_segments(buffer.baseAddress, buffer.count, orientationCode)
+                }
+                guard edgePairs.ptr != nil else { return }
+                let edges = UnsafeBufferPointer(start: edgePairs.ptr, count: edgePairs.len)
+                for edge in edges {
+                    p.move(to: points[Int(edge.first)])
+                    p.addLine(to: points[Int(edge.second)])
+                }
+                mazer_free_edge_pairs(edgePairs) // Free memory
             }
             .stroke(Color.black, lineWidth: snap(cellStrokeWidth(for: cellSize, mazeType: .delta)))
         }

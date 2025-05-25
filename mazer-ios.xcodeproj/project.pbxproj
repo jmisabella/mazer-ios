@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0010B56A2DDD3CAE008CF518 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DD0D132DAC3C7E00C20B2E /* libmazer.a */; };
+		0010B5742DE2AA74008CF518 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DD0D132DAC3C7E00C20B2E /* libmazer.a */; };
 		001C89BF2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */; };
 		001E48E32DB1A4680036F7E9 /* MazeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001E48E22DB1A4680036F7E9 /* MazeGridView.swift */; };
 		003753BD2DD8336C000DB75C /* SparkleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003753BC2DD8336C000DB75C /* SparkleView.swift */; };
@@ -44,7 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0010B56B2DDD3CBF008CF518 /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
+		0010B5752DE2AA85008CF518 /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
 		001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigmaDirectionControlViewi.swift; sourceTree = "<group>"; };
 		001E48E22DB1A4680036F7E9 /* MazeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGridView.swift; sourceTree = "<group>"; };
 		003753BC2DD8336C000DB75C /* SparkleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleView.swift; sourceTree = "<group>"; };
@@ -1178,7 +1178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0010B56A2DDD3CAE008CF518 /* libmazer.a in Frameworks */,
+				0010B5742DE2AA74008CF518 /* libmazer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1239,7 +1239,7 @@
 				00C33F622D98C84C0077691B /* mazer_iosApp.swift */,
 				00C33F6D2D98C8E50077691B /* Models */,
 				00C33F6F2D98C9010077691B /* Utils */,
-				0010B56B2DDD3CBF008CF518 /* mazer_bridge.h */,
+				0010B5752DE2AA85008CF518 /* mazer_bridge.h */,
 			);
 			path = "mazer-ios";
 			sourceTree = "<group>";
@@ -3671,6 +3671,7 @@
 				DEVELOPMENT_TEAM = 6T2JFKS3GA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Maze Quest";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -3708,6 +3709,7 @@
 				DEVELOPMENT_TEAM = 6T2JFKS3GA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Maze Quest";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

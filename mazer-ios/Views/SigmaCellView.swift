@@ -67,37 +67,6 @@ struct SigmaCellView: View {
             .fill(fillColor)
 
             // walls
-//            Path { p in
-//                let q = cell.x
-//                let r = cell.y
-//                let isOddCol = (q & 1) == 1
-//
-//                for dir in HexDirection.allCases {
-//                    // 1) compute this cell’s link and true neighbor coords in odd-q
-//                    let linked = cell.linked.contains(dir.rawValue)
-//                    let (dq, dr) = dir.offsetDelta(isOddColumn: isOddCol)
-//                    let neighborCoord = Coordinates(x: q + dq, y: r + dr)
-//                    guard let neighbor = cellMap[neighborCoord] else {
-//                        continue
-//                    }
-//
-//                    // 2) YOUR rule ONLY: if *both* cells are onSolutionPath
-//                    //    AND their distance differs by exactly 1, skip that wall
-//                    if cell.onSolutionPath
-//                       && neighbor.onSolutionPath
-//                       && abs(cell.distance - neighbor.distance) == 1
-//                    {
-//                        continue
-//                    }
-//
-//                    // 3) otherwise draw the wall whenever this cell isn’t linked out
-//                    if !linked {
-//                        let (i, j) = dir.vertexIndices
-//                        p.move(to: scaledPoints[i])
-//                        p.addLine(to: scaledPoints[j])
-//                    }
-//                }
-//            }
             Path { p in
                 let q = cell.x
                 let r = cell.y
