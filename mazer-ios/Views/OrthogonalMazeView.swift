@@ -51,9 +51,6 @@ struct OrthogonalMazeView: View {
         )
 
         // calculate cellSize once
-//        let screenW = UIScreen.main.bounds.width
-//        self.cellSize = screenW / CGFloat(cols)
-        
         let screenW = UIScreen.main.bounds.width
         let rawSize = screenW / CGFloat(cols)
         let scale   = UIScreen.main.scale
@@ -64,7 +61,6 @@ struct OrthogonalMazeView: View {
         // cache distances & stroke
         self.maxDistance = cells.map(\.distance).max() ?? 1
         let rawStroke = cellStrokeWidth(for: cellSize, mazeType: .orthogonal)
-//        let scale = UIScreen.main.scale
         self.strokeWidth = (rawStroke * scale).rounded() / scale
     }
 
@@ -76,14 +72,12 @@ struct OrthogonalMazeView: View {
                 OrthogonalCellView(
                     cell: cell,
                     cellSize: cellSize,
-//                    size: cellSize,
                     showSolution: showSolution,
                     showHeatMap: showHeatMap,
                     selectedPalette: selectedPalette,
                     maxDistance: maxDistance,
                     isRevealedSolution: revealedSolutionPath.contains(coord),
-                    defaultBackgroundColor: defaultBackgroundColor//,
-//                    strokeWidth: strokeWidth
+                    defaultBackgroundColor: defaultBackgroundColor
                 )
                 .frame(width: cellSize, height: cellSize)
             }
@@ -116,12 +110,6 @@ struct OrthogonalMazeView: View {
         cancelAndReset()
         haptic.prepare()
 
-        // compute the sorted path coordinates right here
-//        let pathCoords = cells
-//            .filter { $0.onSolutionPath && !$0.isVisited }
-//            .sorted { $0.distance < $1.distance }
-//            .map { Coordinates(x: $0.x, y: $0.y) }
-        
         // Call mazer_solution_path_order to get the solution path
         var length: Int = 0
         guard let ffiCoords = mazer_solution_path_order(grid, &length), length > 0 else {

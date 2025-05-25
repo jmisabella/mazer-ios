@@ -146,32 +146,5 @@ struct SigmaMazeView: View {
         }
     }
 
-//    private func animateSolutionPathReveal() {
-//        cancelAndReset()
-//        let pathCells = cells
-//            .filter { $0.onSolutionPath && !$0.isVisited }
-//            .sorted { $0.distance < $1.distance }
-//        
-//
-//        let rapidDelay: Double = 0.05
-//        let haptic = UIImpactFeedbackGenerator(style: .light)
-//        haptic.prepare()
-//
-//        for (i, c) in pathCells.enumerated() {
-//            let coord = Coordinates(x: c.x, y: c.y)
-//            let work = DispatchWorkItem {
-//                AudioServicesPlaySystemSound(1104)
-//                haptic.impactOccurred()
-//                withAnimation(.none) {
-//                    _ = revealedSolutionPath.insert(coord)
-//                }
-//            }
-//            pendingWorkItems.append(work)
-//            DispatchQueue.main.asyncAfter(
-//                deadline: .now() + Double(i) * rapidDelay,
-//                execute: work
-//            )
-//        }
-//    }
     
 }

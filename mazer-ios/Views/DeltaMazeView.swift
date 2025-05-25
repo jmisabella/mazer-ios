@@ -184,30 +184,6 @@ struct DeltaMazeView: View {
         }
     }
 
-//    func animateSolutionPathReveal() {
-//        pendingWorkItems.forEach { $0.cancel() }
-//        pendingWorkItems.removeAll()
-//        revealedSolutionPath.removeAll()
-//
-//        let pathCells = cells
-//            .filter { $0.onSolutionPath && !$0.isVisited }
-//            .sorted { $0.distance < $1.distance }
-//
-//        let rapidDelay: Double = 0.015
-//        haptic.prepare()
-//        for (i, cell) in pathCells.enumerated() {
-//            let coord = Coordinates(x: cell.x, y: cell.y)
-//            let item = DispatchWorkItem {
-//                AudioServicesPlaySystemSound(1104)
-//                haptic.impactOccurred()
-//                withAnimation(.none) {
-//                    _ = revealedSolutionPath.insert(coord)
-//                }
-//            }
-//            pendingWorkItems.append(item)
-//            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * rapidDelay, execute: item)
-//        }
-//    }
 
     func shadeColor(for cell: MazeCell, maxDistance: Int) -> Color {
         guard showHeatMap, maxDistance > 0 else { return .gray }
