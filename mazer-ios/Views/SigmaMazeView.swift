@@ -16,6 +16,7 @@ struct SigmaMazeView: View {
     let showSolution: Bool
     let showHeatMap: Bool
     let defaultBackgroundColor: Color
+    let grid: OpaquePointer?
 
     @State private var revealedSolutionPath: Set<Coordinates> = []
     @State private var pendingWorkItems: [DispatchWorkItem] = []
@@ -35,7 +36,8 @@ struct SigmaMazeView: View {
         cellSize: CGFloat,
         showSolution: Bool,
         showHeatMap: Bool,
-        defaultBackgroundColor: Color
+        defaultBackgroundColor: Color,
+        grid: OpaquePointer?
     ) {
         self._selectedPalette = selectedPalette
         self.cells = cells
@@ -43,6 +45,7 @@ struct SigmaMazeView: View {
         self.showSolution = showSolution
         self.showHeatMap = showHeatMap
         self.defaultBackgroundColor = defaultBackgroundColor
+        self.grid = grid
 
         // aggregate properties
         self.cols = (cells.map(\.x).max() ?? 0) + 1
@@ -84,7 +87,8 @@ struct SigmaMazeView: View {
                     isRevealedSolution: revealedSolutionPath.contains(
                         Coordinates(x: cell.x, y: cell.y)
                     ),
-                    defaultBackgroundColor: defaultBackgroundColor
+                    defaultBackgroundColor: defaultBackgroundColor,
+                    grid: grid
                 )
                 .position(position(for: cell))
             }
@@ -103,19 +107,30 @@ struct SigmaMazeView: View {
         pendingWorkItems.removeAll()
         revealedSolutionPath.removeAll()
     }
-
+    
     private func animateSolutionPathReveal() {
         cancelAndReset()
-        let pathCells = cells
-            .filter { $0.onSolutionPath && !$0.isVisited }
-            .sorted { $0.distance < $1.distance }
+
+        // Call mazer_solution_path_order to get the solution path
+        var length: Int = 0
+        guard let ffiCoords = mazer_solution_path_order(grid, &length), length > 0 else {
+            // Handle case where no solution exists
+            return
+        }
+
+        // Convert FFICoordinates to Swift Coordinates
+        let pathCoords: [Coordinates] = (0..<length).map { i in
+            Coordinates(x: Int(ffiCoords[i].x), y: Int(ffiCoords[i].y))
+        }
+
+        // Free the C array
+        mazer_free_coordinates(ffiCoords, length)
 
         let rapidDelay: Double = 0.05
         let haptic = UIImpactFeedbackGenerator(style: .light)
         haptic.prepare()
 
-        for (i, c) in pathCells.enumerated() {
-            let coord = Coordinates(x: c.x, y: c.y)
+        for (i, coord) in pathCoords.enumerated() {
             let work = DispatchWorkItem {
                 AudioServicesPlaySystemSound(1104)
                 haptic.impactOccurred()
@@ -130,4 +145,33 @@ struct SigmaMazeView: View {
             )
         }
     }
+
+//    private func animateSolutionPathReveal() {
+//        cancelAndReset()
+//        let pathCells = cells
+//            .filter { $0.onSolutionPath && !$0.isVisited }
+//            .sorted { $0.distance < $1.distance }
+//        
+//
+//        let rapidDelay: Double = 0.05
+//        let haptic = UIImpactFeedbackGenerator(style: .light)
+//        haptic.prepare()
+//
+//        for (i, c) in pathCells.enumerated() {
+//            let coord = Coordinates(x: c.x, y: c.y)
+//            let work = DispatchWorkItem {
+//                AudioServicesPlaySystemSound(1104)
+//                haptic.impactOccurred()
+//                withAnimation(.none) {
+//                    _ = revealedSolutionPath.insert(coord)
+//                }
+//            }
+//            pendingWorkItems.append(work)
+//            DispatchQueue.main.asyncAfter(
+//                deadline: .now() + Double(i) * rapidDelay,
+//                execute: work
+//            )
+//        }
+//    }
+    
 }

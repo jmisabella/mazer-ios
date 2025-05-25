@@ -15,6 +15,7 @@ struct OrthogonalMazeView: View {
     let showSolution: Bool
     let showHeatMap: Bool
     let defaultBackgroundColor: Color
+    let grid: OpaquePointer?
 
     @State private var revealedSolutionPath: Set<Coordinates> = []
     @State private var pendingWorkItems: [DispatchWorkItem] = []
@@ -32,13 +33,15 @@ struct OrthogonalMazeView: View {
         cells: [MazeCell],
         showSolution: Bool,
         showHeatMap: Bool,
-        defaultBackgroundColor: Color
+        defaultBackgroundColor: Color,
+        grid: OpaquePointer?
     ) {
         self._selectedPalette = selectedPalette
         self.cells = cells
         self.showSolution = showSolution
         self.showHeatMap = showHeatMap
         self.defaultBackgroundColor = defaultBackgroundColor
+        self.grid = grid
 
         // build grid columns
         let cols = (cells.map(\.x).max() ?? 0) + 1
@@ -114,11 +117,26 @@ struct OrthogonalMazeView: View {
         haptic.prepare()
 
         // compute the sorted path coordinates right here
-        let pathCoords = cells
-            .filter { $0.onSolutionPath && !$0.isVisited }
-            .sorted { $0.distance < $1.distance }
-            .map { Coordinates(x: $0.x, y: $0.y) }
-
+//        let pathCoords = cells
+//            .filter { $0.onSolutionPath && !$0.isVisited }
+//            .sorted { $0.distance < $1.distance }
+//            .map { Coordinates(x: $0.x, y: $0.y) }
+        
+        // Call mazer_solution_path_order to get the solution path
+        var length: Int = 0
+        guard let ffiCoords = mazer_solution_path_order(grid, &length), length > 0 else {
+            // Handle case where no solution exists
+            return
+        }
+        
+        // Convert FFICoordinates to Swift Coordinates
+        let pathCoords: [Coordinates] = (0..<length).map { i in
+            Coordinates(x: Int(ffiCoords[i].x), y: Int(ffiCoords[i].y))
+        }
+        
+        // Free the C array
+        mazer_free_coordinates(ffiCoords, length)
+        
         let baseDelay: Double = 0.015
         let speedFactor = min(1.0, cellSize / 50.0)
         let interval = baseDelay * speedFactor
