@@ -33,9 +33,21 @@ struct SigmaCellView: View {
         ]
     }()
 
-    // Pre‐scaled points
+    // Pre-scaled points
     private var scaledPoints: [CGPoint] {
         SigmaCellView.unitPoints.map { .init(x: $0.x * cellSize, y: $0.y * cellSize) }
+    }
+
+    // Adjusted points with overlap
+    private var adjustedPoints: [CGPoint] {
+        let overlap: CGFloat = 1.0 / UIScreen.main.scale
+        let C = CGPoint(x: cellSize, y: (sqrt(3)/2) * cellSize)
+        return scaledPoints.map { P in
+            let dx = P.x - C.x
+            let dy = P.y - C.y
+            let factor = overlap / cellSize
+            return CGPoint(x: P.x + factor * dx, y: P.y + factor * dy)
+        }
     }
 
     // Single stroke width calculation
@@ -60,21 +72,39 @@ struct SigmaCellView: View {
 
     var body: some View {
         ZStack {
-            // 1) fill
+            // 1) Fill
             Path { p in
-                p.addLines(scaledPoints)
+                p.addLines(adjustedPoints)
                 p.closeSubpath()
             }
             .fill(fillColor)
 
+            // 2) Walls
             Path { p in
-                guard let grid = grid else { return }
-                let coords = FFICoordinates(x: cell.x, y: cell.y)
-                let edgePairs = mazer_sigma_wall_segments(grid, coords)
-                let edges = UnsafeBufferPointer(start: edgePairs.ptr, count: edgePairs.len)
-                for edge in edges {
-                    p.move(to: scaledPoints[Int(edge.first)])
-                    p.addLine(to: scaledPoints[Int(edge.second)])
+                let q = cell.x
+                let r = cell.y
+                let isOddCol = (q & 1) == 1
+
+                for dir in HexDirection.allCases {
+                    }
+                        p.addLine(to: adjustedPoints[j])
+                        p.move(to: adjustedPoints[i])
+                        let (i, j) = dir.vertexIndices
+                    if !(linked || neighborLink) {
+
+                    let neighborLink = neighbor.linked.contains(dir.opposite.rawValue)
+
+                    }
+                        continue
+                    {
+                       && abs(cell.distance - neighbor.distance) == 1
+                       && neighbor.onSolutionPath
+                    if cell.onSolutionPath
+
+                    guard let neighbor = cellMap[neighborCoord] else { continue }
+                    let neighborCoord = Coordinates(x: q + dq, y: r + dr)
+                    let (dq, dr) = dir.offsetDelta(isOddColumn: isOddCol)
+                    let linked = cell.linked.contains(dir.rawValue)
                 }
                 mazer_free_edge_pairs(edgePairs)
             }
