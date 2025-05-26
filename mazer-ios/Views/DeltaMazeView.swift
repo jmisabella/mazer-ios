@@ -17,6 +17,7 @@ struct DeltaMazeView: View {
     let selectedPalette: HeatMapPalette
     let maxDistance: Int
     let defaultBackgroundColor: Color
+    let grid: OpaquePointer?
     
     @State private var pendingWorkItems: [DispatchWorkItem] = []
     @State private var revealedSolutionPath: Set<Coordinates> = []
@@ -65,7 +66,8 @@ struct DeltaMazeView: View {
          showHeatMap: Bool,
          selectedPalette: HeatMapPalette,
          maxDistance: Int,
-         defaultBackgroundColor: Color)
+         defaultBackgroundColor: Color,
+         grid: OpaquePointer?)
     {
         self.cells = cells
         self.cellSize = cellSize
@@ -74,6 +76,7 @@ struct DeltaMazeView: View {
         self.selectedPalette = selectedPalette
         self.maxDistance = maxDistance
         self.defaultBackgroundColor = defaultBackgroundColor
+        self.grid = grid
         
         // Build the lookup exactly once here
         self.cellMap = Dictionary(
@@ -145,20 +148,30 @@ struct DeltaMazeView: View {
             EmptyView()
         }
     }
-
+    
     func animateSolutionPathReveal() {
         pendingWorkItems.forEach { $0.cancel() }
         pendingWorkItems.removeAll()
         revealedSolutionPath.removeAll()
 
-        let pathCells = cells
-            .filter { $0.onSolutionPath && !$0.isVisited }
-            .sorted { $0.distance < $1.distance }
+        // Call mazer_solution_path_order to get the solution path
+        var length: Int = 0
+        guard let ffiCoords = mazer_solution_path_order(grid, &length), length > 0 else {
+            // Handle case where no solution exists
+            return
+        }
+
+        // Convert FFICoordinates to Swift Coordinates
+        let pathCoords: [Coordinates] = (0..<length).map { i in
+            Coordinates(x: Int(ffiCoords[i].x), y: Int(ffiCoords[i].y))
+        }
+
+        // Free the C array
+        mazer_free_coordinates(ffiCoords, length)
 
         let rapidDelay: Double = 0.015
         haptic.prepare()
-        for (i, cell) in pathCells.enumerated() {
-            let coord = Coordinates(x: cell.x, y: cell.y)
+        for (i, coord) in pathCoords.enumerated() {
             let item = DispatchWorkItem {
                 AudioServicesPlaySystemSound(1104)
                 haptic.impactOccurred()
@@ -170,6 +183,7 @@ struct DeltaMazeView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * rapidDelay, execute: item)
         }
     }
+
 
     func shadeColor(for cell: MazeCell, maxDistance: Int) -> Color {
         guard showHeatMap, maxDistance > 0 else { return .gray }
