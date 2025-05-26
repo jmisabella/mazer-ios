@@ -2,6 +2,10 @@
 #mazer/
 #mazer.h
 
+mazer/
+mazer/*
+
+
 # Rust specific
 /target/          # Ignore Rust's build artifacts
 **/target/        # Ignore target folder recursively
