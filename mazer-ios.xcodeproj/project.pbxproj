@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0018E4EA2DE5230A00E4A24E /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0018E4462DE522FF00E4A24E /* libmazer.a */; };
 		001C89BF2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */; };
 		001E48E32DB1A4680036F7E9 /* MazeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001E48E22DB1A4680036F7E9 /* MazeGridView.swift */; };
 		003753BD2DD8336C000DB75C /* SparkleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003753BC2DD8336C000DB75C /* SparkleView.swift */; };
@@ -44,6 +45,561 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0018E2842DE522FF00E4A24E /* dep-lib-cfg_if */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-cfg_if"; sourceTree = "<group>"; };
+		0018E2852DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E2862DE522FF00E4A24E /* lib-cfg_if */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-cfg_if"; sourceTree = "<group>"; };
+		0018E2872DE522FF00E4A24E /* lib-cfg_if.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-cfg_if.json"; sourceTree = "<group>"; };
+		0018E2892DE522FF00E4A24E /* dep-lib-getrandom */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-getrandom"; sourceTree = "<group>"; };
+		0018E28A2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E28B2DE522FF00E4A24E /* lib-getrandom */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-getrandom"; sourceTree = "<group>"; };
+		0018E28C2DE522FF00E4A24E /* lib-getrandom.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-getrandom.json"; sourceTree = "<group>"; };
+		0018E28E2DE522FF00E4A24E /* dep-lib-itoa */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-itoa"; sourceTree = "<group>"; };
+		0018E28F2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E2902DE522FF00E4A24E /* lib-itoa */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-itoa"; sourceTree = "<group>"; };
+		0018E2912DE522FF00E4A24E /* lib-itoa.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-itoa.json"; sourceTree = "<group>"; };
+		0018E2932DE522FF00E4A24E /* dep-lib-libc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-libc"; sourceTree = "<group>"; };
+		0018E2942DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E2952DE522FF00E4A24E /* lib-libc */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-libc"; sourceTree = "<group>"; };
+		0018E2962DE522FF00E4A24E /* lib-libc.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-libc.json"; sourceTree = "<group>"; };
+		0018E2982DE522FF00E4A24E /* run-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "run-build-script-build-script-build"; sourceTree = "<group>"; };
+		0018E2992DE522FF00E4A24E /* run-build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "run-build-script-build-script-build.json"; sourceTree = "<group>"; };
+		0018E29B2DE522FF00E4A24E /* dep-lib-mazer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-mazer"; sourceTree = "<group>"; };
+		0018E29C2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E29D2DE522FF00E4A24E /* lib-mazer */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-mazer"; sourceTree = "<group>"; };
+		0018E29E2DE522FF00E4A24E /* lib-mazer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-mazer.json"; sourceTree = "<group>"; };
+		0018E2A02DE522FF00E4A24E /* dep-lib-memchr */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-memchr"; sourceTree = "<group>"; };
+		0018E2A12DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E2A22DE522FF00E4A24E /* lib-memchr */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-memchr"; sourceTree = "<group>"; };
+		0018E2A32DE522FF00E4A24E /* lib-memchr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-memchr.json"; sourceTree = "<group>"; };
+		0018E2A52DE522FF00E4A24E /* dep-lib-ppv_lite86 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-ppv_lite86"; sourceTree = "<group>"; };
+		0018E2A62DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E2A72DE522FF00E4A24E /* lib-ppv_lite86 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-ppv_lite86"; sourceTree = "<group>"; };
+		0018E2A82DE522FF00E4A24E /* lib-ppv_lite86.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-ppv_lite86.json"; sourceTree = "<group>"; };
+		0018E2AA2DE522FF00E4A24E /* dep-lib-rand_chacha */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-rand_chacha"; sourceTree = "<group>"; };
+		0018E2AB2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E2AC2DE522FF00E4A24E /* lib-rand_chacha */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-rand_chacha"; sourceTree = "<group>"; };
+		0018E2AD2DE522FF00E4A24E /* lib-rand_chacha.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-rand_chacha.json"; sourceTree = "<group>"; };
+		0018E2AF2DE522FF00E4A24E /* dep-lib-rand_core */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-rand_core"; sourceTree = "<group>"; };
+		0018E2B02DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E2B12DE522FF00E4A24E /* lib-rand_core */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-rand_core"; sourceTree = "<group>"; };
+		0018E2B22DE522FF00E4A24E /* lib-rand_core.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-rand_core.json"; sourceTree = "<group>"; };
+		0018E2B42DE522FF00E4A24E /* dep-lib-rand */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-rand"; sourceTree = "<group>"; };
+		0018E2B52DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E2B62DE522FF00E4A24E /* lib-rand */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-rand"; sourceTree = "<group>"; };
+		0018E2B72DE522FF00E4A24E /* lib-rand.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-rand.json"; sourceTree = "<group>"; };
+		0018E2B92DE522FF00E4A24E /* dep-lib-ryu */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-ryu"; sourceTree = "<group>"; };
+		0018E2BA2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E2BB2DE522FF00E4A24E /* lib-ryu */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-ryu"; sourceTree = "<group>"; };
+		0018E2BC2DE522FF00E4A24E /* lib-ryu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-ryu.json"; sourceTree = "<group>"; };
+		0018E2BE2DE522FF00E4A24E /* run-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "run-build-script-build-script-build"; sourceTree = "<group>"; };
+		0018E2BF2DE522FF00E4A24E /* run-build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "run-build-script-build-script-build.json"; sourceTree = "<group>"; };
+		0018E2C12DE522FF00E4A24E /* dep-lib-serde_json */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-serde_json"; sourceTree = "<group>"; };
+		0018E2C22DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E2C32DE522FF00E4A24E /* lib-serde_json */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-serde_json"; sourceTree = "<group>"; };
+		0018E2C42DE522FF00E4A24E /* lib-serde_json.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-serde_json.json"; sourceTree = "<group>"; };
+		0018E2C62DE522FF00E4A24E /* run-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "run-build-script-build-script-build"; sourceTree = "<group>"; };
+		0018E2C72DE522FF00E4A24E /* run-build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "run-build-script-build-script-build.json"; sourceTree = "<group>"; };
+		0018E2C92DE522FF00E4A24E /* dep-lib-serde */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-serde"; sourceTree = "<group>"; };
+		0018E2CA2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E2CB2DE522FF00E4A24E /* lib-serde */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-serde"; sourceTree = "<group>"; };
+		0018E2CC2DE522FF00E4A24E /* lib-serde.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-serde.json"; sourceTree = "<group>"; };
+		0018E2CE2DE522FF00E4A24E /* dep-lib-zerocopy */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-zerocopy"; sourceTree = "<group>"; };
+		0018E2CF2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E2D02DE522FF00E4A24E /* lib-zerocopy */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-zerocopy"; sourceTree = "<group>"; };
+		0018E2D12DE522FF00E4A24E /* lib-zerocopy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-zerocopy.json"; sourceTree = "<group>"; };
+		0018E2D32DE522FF00E4A24E /* run-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "run-build-script-build-script-build"; sourceTree = "<group>"; };
+		0018E2D42DE522FF00E4A24E /* run-build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "run-build-script-build-script-build.json"; sourceTree = "<group>"; };
+		0018E2D82DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E2D92DE522FF00E4A24E /* output */ = {isa = PBXFileReference; lastKnownFileType = text; path = output; sourceTree = "<group>"; };
+		0018E2DA2DE522FF00E4A24E /* root-output */ = {isa = PBXFileReference; lastKnownFileType = text; path = "root-output"; sourceTree = "<group>"; };
+		0018E2DB2DE522FF00E4A24E /* stderr */ = {isa = PBXFileReference; lastKnownFileType = text; path = stderr; sourceTree = "<group>"; };
+		0018E2DE2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E2DF2DE522FF00E4A24E /* output */ = {isa = PBXFileReference; lastKnownFileType = text; path = output; sourceTree = "<group>"; };
+		0018E2E02DE522FF00E4A24E /* root-output */ = {isa = PBXFileReference; lastKnownFileType = text; path = "root-output"; sourceTree = "<group>"; };
+		0018E2E12DE522FF00E4A24E /* stderr */ = {isa = PBXFileReference; lastKnownFileType = text; path = stderr; sourceTree = "<group>"; };
+		0018E2E42DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E2E52DE522FF00E4A24E /* output */ = {isa = PBXFileReference; lastKnownFileType = text; path = output; sourceTree = "<group>"; };
+		0018E2E62DE522FF00E4A24E /* root-output */ = {isa = PBXFileReference; lastKnownFileType = text; path = "root-output"; sourceTree = "<group>"; };
+		0018E2E72DE522FF00E4A24E /* stderr */ = {isa = PBXFileReference; lastKnownFileType = text; path = stderr; sourceTree = "<group>"; };
+		0018E2EA2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E2EB2DE522FF00E4A24E /* output */ = {isa = PBXFileReference; lastKnownFileType = text; path = output; sourceTree = "<group>"; };
+		0018E2EC2DE522FF00E4A24E /* root-output */ = {isa = PBXFileReference; lastKnownFileType = text; path = "root-output"; sourceTree = "<group>"; };
+		0018E2ED2DE522FF00E4A24E /* stderr */ = {isa = PBXFileReference; lastKnownFileType = text; path = stderr; sourceTree = "<group>"; };
+		0018E2F02DE522FF00E4A24E /* cfg_if-66817bb2c19adbe1.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "cfg_if-66817bb2c19adbe1.d"; sourceTree = "<group>"; };
+		0018E2F12DE522FF00E4A24E /* cfg_if-66817bb2c19adbe1.cfg_if.baf5f75ca65f041c-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "cfg_if-66817bb2c19adbe1.cfg_if.baf5f75ca65f041c-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E2F22DE522FF00E4A24E /* getrandom-b623d5753d7e10bb.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "getrandom-b623d5753d7e10bb.d"; sourceTree = "<group>"; };
+		0018E2F32DE522FF00E4A24E /* getrandom-b623d5753d7e10bb.getrandom.97f31b6d5eefe533-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "getrandom-b623d5753d7e10bb.getrandom.97f31b6d5eefe533-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E2F42DE522FF00E4A24E /* itoa-f66071dec659f76f.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "itoa-f66071dec659f76f.d"; sourceTree = "<group>"; };
+		0018E2F52DE522FF00E4A24E /* itoa-f66071dec659f76f.itoa.bfff7c31bfacbbc0-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "itoa-f66071dec659f76f.itoa.bfff7c31bfacbbc0-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E2F62DE522FF00E4A24E /* libc-7c02580734f3c437.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "libc-7c02580734f3c437.d"; sourceTree = "<group>"; };
+		0018E2F72DE522FF00E4A24E /* libc-7c02580734f3c437.libc.e23e3eb6dbc8c3f7-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "libc-7c02580734f3c437.libc.e23e3eb6dbc8c3f7-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E2F82DE522FF00E4A24E /* libcfg_if-66817bb2c19adbe1.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libcfg_if-66817bb2c19adbe1.rlib"; sourceTree = "<group>"; };
+		0018E2F92DE522FF00E4A24E /* libcfg_if-66817bb2c19adbe1.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libcfg_if-66817bb2c19adbe1.rmeta"; sourceTree = "<group>"; };
+		0018E2FA2DE522FF00E4A24E /* libgetrandom-b623d5753d7e10bb.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libgetrandom-b623d5753d7e10bb.rlib"; sourceTree = "<group>"; };
+		0018E2FB2DE522FF00E4A24E /* libgetrandom-b623d5753d7e10bb.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libgetrandom-b623d5753d7e10bb.rmeta"; sourceTree = "<group>"; };
+		0018E2FC2DE522FF00E4A24E /* libitoa-f66071dec659f76f.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libitoa-f66071dec659f76f.rlib"; sourceTree = "<group>"; };
+		0018E2FD2DE522FF00E4A24E /* libitoa-f66071dec659f76f.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libitoa-f66071dec659f76f.rmeta"; sourceTree = "<group>"; };
+		0018E2FE2DE522FF00E4A24E /* liblibc-7c02580734f3c437.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "liblibc-7c02580734f3c437.rlib"; sourceTree = "<group>"; };
+		0018E2FF2DE522FF00E4A24E /* liblibc-7c02580734f3c437.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "liblibc-7c02580734f3c437.rmeta"; sourceTree = "<group>"; };
+		0018E3002DE522FF00E4A24E /* libmazer-9eaaefbedb48654d.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libmazer-9eaaefbedb48654d.a"; sourceTree = "<group>"; };
+		0018E3012DE522FF00E4A24E /* libmemchr-c4f6caf3007991a2.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libmemchr-c4f6caf3007991a2.rlib"; sourceTree = "<group>"; };
+		0018E3022DE522FF00E4A24E /* libmemchr-c4f6caf3007991a2.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libmemchr-c4f6caf3007991a2.rmeta"; sourceTree = "<group>"; };
+		0018E3032DE522FF00E4A24E /* libppv_lite86-1683715d155c965b.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libppv_lite86-1683715d155c965b.rlib"; sourceTree = "<group>"; };
+		0018E3042DE522FF00E4A24E /* libppv_lite86-1683715d155c965b.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libppv_lite86-1683715d155c965b.rmeta"; sourceTree = "<group>"; };
+		0018E3052DE522FF00E4A24E /* librand_chacha-4f5b59a848726478.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "librand_chacha-4f5b59a848726478.rlib"; sourceTree = "<group>"; };
+		0018E3062DE522FF00E4A24E /* librand_chacha-4f5b59a848726478.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "librand_chacha-4f5b59a848726478.rmeta"; sourceTree = "<group>"; };
+		0018E3072DE522FF00E4A24E /* librand_core-d100e004e1d83e91.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "librand_core-d100e004e1d83e91.rlib"; sourceTree = "<group>"; };
+		0018E3082DE522FF00E4A24E /* librand_core-d100e004e1d83e91.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "librand_core-d100e004e1d83e91.rmeta"; sourceTree = "<group>"; };
+		0018E3092DE522FF00E4A24E /* librand-ab2870feeb8b502c.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "librand-ab2870feeb8b502c.rlib"; sourceTree = "<group>"; };
+		0018E30A2DE522FF00E4A24E /* librand-ab2870feeb8b502c.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "librand-ab2870feeb8b502c.rmeta"; sourceTree = "<group>"; };
+		0018E30B2DE522FF00E4A24E /* libryu-89368832ed1b1332.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libryu-89368832ed1b1332.rlib"; sourceTree = "<group>"; };
+		0018E30C2DE522FF00E4A24E /* libryu-89368832ed1b1332.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libryu-89368832ed1b1332.rmeta"; sourceTree = "<group>"; };
+		0018E30D2DE522FF00E4A24E /* libserde_json-e8b06591e82721e3.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libserde_json-e8b06591e82721e3.rlib"; sourceTree = "<group>"; };
+		0018E30E2DE522FF00E4A24E /* libserde_json-e8b06591e82721e3.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libserde_json-e8b06591e82721e3.rmeta"; sourceTree = "<group>"; };
+		0018E30F2DE522FF00E4A24E /* libserde-b24c64a30501af59.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libserde-b24c64a30501af59.rlib"; sourceTree = "<group>"; };
+		0018E3102DE522FF00E4A24E /* libserde-b24c64a30501af59.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libserde-b24c64a30501af59.rmeta"; sourceTree = "<group>"; };
+		0018E3112DE522FF00E4A24E /* libzerocopy-68d3c26d18abd06f.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libzerocopy-68d3c26d18abd06f.rlib"; sourceTree = "<group>"; };
+		0018E3122DE522FF00E4A24E /* libzerocopy-68d3c26d18abd06f.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libzerocopy-68d3c26d18abd06f.rmeta"; sourceTree = "<group>"; };
+		0018E3132DE522FF00E4A24E /* mazer-9eaaefbedb48654d.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "mazer-9eaaefbedb48654d.d"; sourceTree = "<group>"; };
+		0018E3142DE522FF00E4A24E /* mazer-9eaaefbedb48654d.0dpyf9y2cxcwgi3cpd58kq8l2.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.0dpyf9y2cxcwgi3cpd58kq8l2.rcgu.o"; sourceTree = "<group>"; };
+		0018E3152DE522FF00E4A24E /* mazer-9eaaefbedb48654d.0h5mv18ev0r4tih4p65fdsjsv.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.0h5mv18ev0r4tih4p65fdsjsv.rcgu.o"; sourceTree = "<group>"; };
+		0018E3162DE522FF00E4A24E /* mazer-9eaaefbedb48654d.0muacqqsurev3v31plytsbts7.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.0muacqqsurev3v31plytsbts7.rcgu.o"; sourceTree = "<group>"; };
+		0018E3172DE522FF00E4A24E /* mazer-9eaaefbedb48654d.0n9d3oqgjft3z3vzqdwlln1vx.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.0n9d3oqgjft3z3vzqdwlln1vx.rcgu.o"; sourceTree = "<group>"; };
+		0018E3182DE522FF00E4A24E /* mazer-9eaaefbedb48654d.0n425tovtujaeuakbk5w47gfw.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.0n425tovtujaeuakbk5w47gfw.rcgu.o"; sourceTree = "<group>"; };
+		0018E3192DE522FF00E4A24E /* mazer-9eaaefbedb48654d.0qtyrqmnx1w17aa1prxx6ze1j.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.0qtyrqmnx1w17aa1prxx6ze1j.rcgu.o"; sourceTree = "<group>"; };
+		0018E31A2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.0t1mhwygjl3o74v2ofe85h1ke.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.0t1mhwygjl3o74v2ofe85h1ke.rcgu.o"; sourceTree = "<group>"; };
+		0018E31B2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.1al1frqhwt0dfncvy3p9ihozr.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.1al1frqhwt0dfncvy3p9ihozr.rcgu.o"; sourceTree = "<group>"; };
+		0018E31C2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.1bq7j1qn4040394qsx8592bp9.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.1bq7j1qn4040394qsx8592bp9.rcgu.o"; sourceTree = "<group>"; };
+		0018E31D2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.1i0dle2pjfm55savm9re65igb.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.1i0dle2pjfm55savm9re65igb.rcgu.o"; sourceTree = "<group>"; };
+		0018E31E2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.1mja6oju6xqge7jffg8iwcetq.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.1mja6oju6xqge7jffg8iwcetq.rcgu.o"; sourceTree = "<group>"; };
+		0018E31F2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.1n0e86tkxpy7tc44t8sfh43h6.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.1n0e86tkxpy7tc44t8sfh43h6.rcgu.o"; sourceTree = "<group>"; };
+		0018E3202DE522FF00E4A24E /* mazer-9eaaefbedb48654d.2bxrl3mzvctxwx2s7mk56lpmn.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.2bxrl3mzvctxwx2s7mk56lpmn.rcgu.o"; sourceTree = "<group>"; };
+		0018E3212DE522FF00E4A24E /* mazer-9eaaefbedb48654d.2f56lvktep34sx1r7rdw4b8kk.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.2f56lvktep34sx1r7rdw4b8kk.rcgu.o"; sourceTree = "<group>"; };
+		0018E3222DE522FF00E4A24E /* mazer-9eaaefbedb48654d.2f59cyp7fqkjagk5l79ctp7ng.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.2f59cyp7fqkjagk5l79ctp7ng.rcgu.o"; sourceTree = "<group>"; };
+		0018E3232DE522FF00E4A24E /* mazer-9eaaefbedb48654d.2qcku91m8uxth0khndh5ch1de.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.2qcku91m8uxth0khndh5ch1de.rcgu.o"; sourceTree = "<group>"; };
+		0018E3242DE522FF00E4A24E /* mazer-9eaaefbedb48654d.2wv5z33ucparttrs5tiullbtf.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.2wv5z33ucparttrs5tiullbtf.rcgu.o"; sourceTree = "<group>"; };
+		0018E3252DE522FF00E4A24E /* mazer-9eaaefbedb48654d.3kbgn8sh0s47hldsuuyj5k7lm.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.3kbgn8sh0s47hldsuuyj5k7lm.rcgu.o"; sourceTree = "<group>"; };
+		0018E3262DE522FF00E4A24E /* mazer-9eaaefbedb48654d.3l7cwx392fzwbnjlqo6xhzghd.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.3l7cwx392fzwbnjlqo6xhzghd.rcgu.o"; sourceTree = "<group>"; };
+		0018E3272DE522FF00E4A24E /* mazer-9eaaefbedb48654d.3lqcvyx68ghnedzxiec511mbq.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.3lqcvyx68ghnedzxiec511mbq.rcgu.o"; sourceTree = "<group>"; };
+		0018E3282DE522FF00E4A24E /* mazer-9eaaefbedb48654d.3q4ajw9wm0bs4toecenx9zdl6.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.3q4ajw9wm0bs4toecenx9zdl6.rcgu.o"; sourceTree = "<group>"; };
+		0018E3292DE522FF00E4A24E /* mazer-9eaaefbedb48654d.3r14uzuthc23qx9gatpbgo3y5.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.3r14uzuthc23qx9gatpbgo3y5.rcgu.o"; sourceTree = "<group>"; };
+		0018E32A2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.3shmq1eo28lg3tzu2w3jik2f9.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.3shmq1eo28lg3tzu2w3jik2f9.rcgu.o"; sourceTree = "<group>"; };
+		0018E32B2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.3t2uf3tr05qeb1mrwzwldf569.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.3t2uf3tr05qeb1mrwzwldf569.rcgu.o"; sourceTree = "<group>"; };
+		0018E32C2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.3tn88qhv1jszc90p0r2sd6vve.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.3tn88qhv1jszc90p0r2sd6vve.rcgu.o"; sourceTree = "<group>"; };
+		0018E32D2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.4c0vonk6i7kubqru1akofn95u.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.4c0vonk6i7kubqru1akofn95u.rcgu.o"; sourceTree = "<group>"; };
+		0018E32E2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.4cxmg8277ja3bzmowod74x63t.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.4cxmg8277ja3bzmowod74x63t.rcgu.o"; sourceTree = "<group>"; };
+		0018E32F2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.4kprns73fha2pw56xrir5agl2.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.4kprns73fha2pw56xrir5agl2.rcgu.o"; sourceTree = "<group>"; };
+		0018E3302DE522FF00E4A24E /* mazer-9eaaefbedb48654d.4l40q7z4bqo8l4lco5tqxasri.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.4l40q7z4bqo8l4lco5tqxasri.rcgu.o"; sourceTree = "<group>"; };
+		0018E3312DE522FF00E4A24E /* mazer-9eaaefbedb48654d.4n20ymbmhg2ak77k8l3g861kp.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.4n20ymbmhg2ak77k8l3g861kp.rcgu.o"; sourceTree = "<group>"; };
+		0018E3322DE522FF00E4A24E /* mazer-9eaaefbedb48654d.4ne9pfsj1f0g3075gjg12p0kq.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.4ne9pfsj1f0g3075gjg12p0kq.rcgu.o"; sourceTree = "<group>"; };
+		0018E3332DE522FF00E4A24E /* mazer-9eaaefbedb48654d.5dqiabxww860vs29k0w1gl8q4.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.5dqiabxww860vs29k0w1gl8q4.rcgu.o"; sourceTree = "<group>"; };
+		0018E3342DE522FF00E4A24E /* mazer-9eaaefbedb48654d.5dvom7qkm1v8goiyn57sm4q3y.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.5dvom7qkm1v8goiyn57sm4q3y.rcgu.o"; sourceTree = "<group>"; };
+		0018E3352DE522FF00E4A24E /* mazer-9eaaefbedb48654d.5t8jmuqaehq3oo8k15emh3ha7.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.5t8jmuqaehq3oo8k15emh3ha7.rcgu.o"; sourceTree = "<group>"; };
+		0018E3362DE522FF00E4A24E /* mazer-9eaaefbedb48654d.5tkqvsltpcqsnazpjwixgwqp2.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.5tkqvsltpcqsnazpjwixgwqp2.rcgu.o"; sourceTree = "<group>"; };
+		0018E3372DE522FF00E4A24E /* mazer-9eaaefbedb48654d.5vf09xdpdegmtjyzbkjbadv3e.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.5vf09xdpdegmtjyzbkjbadv3e.rcgu.o"; sourceTree = "<group>"; };
+		0018E3382DE522FF00E4A24E /* mazer-9eaaefbedb48654d.05z62g4u1uumoezd334enrgt1.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.05z62g4u1uumoezd334enrgt1.rcgu.o"; sourceTree = "<group>"; };
+		0018E3392DE522FF00E4A24E /* mazer-9eaaefbedb48654d.6ajbc1qpi3a0yiicu2jwn1rec.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.6ajbc1qpi3a0yiicu2jwn1rec.rcgu.o"; sourceTree = "<group>"; };
+		0018E33A2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.6e6ocdibqda4xhyo2uljduzmi.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.6e6ocdibqda4xhyo2uljduzmi.rcgu.o"; sourceTree = "<group>"; };
+		0018E33B2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.6iz9iqtfa23z8c3yrab7gj98e.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.6iz9iqtfa23z8c3yrab7gj98e.rcgu.o"; sourceTree = "<group>"; };
+		0018E33C2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.6madn9enk8yaav3ysitt1ok1y.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.6madn9enk8yaav3ysitt1ok1y.rcgu.o"; sourceTree = "<group>"; };
+		0018E33D2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.6qdt1q6cadh5ifjiwpu9hp8yd.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.6qdt1q6cadh5ifjiwpu9hp8yd.rcgu.o"; sourceTree = "<group>"; };
+		0018E33E2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.7bds8qpgxmyl3pxwyz6xi36is.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.7bds8qpgxmyl3pxwyz6xi36is.rcgu.o"; sourceTree = "<group>"; };
+		0018E33F2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.7donzpzley0kuwpn1geebj8ez.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.7donzpzley0kuwpn1geebj8ez.rcgu.o"; sourceTree = "<group>"; };
+		0018E3402DE522FF00E4A24E /* mazer-9eaaefbedb48654d.7fjhnnm2ngznjt1ixaigj2u7s.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.7fjhnnm2ngznjt1ixaigj2u7s.rcgu.o"; sourceTree = "<group>"; };
+		0018E3412DE522FF00E4A24E /* mazer-9eaaefbedb48654d.7hdcu2lgwkg0a0nnlxqcb5q6h.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.7hdcu2lgwkg0a0nnlxqcb5q6h.rcgu.o"; sourceTree = "<group>"; };
+		0018E3422DE522FF00E4A24E /* mazer-9eaaefbedb48654d.7oewwgwzvtvwoxkuc54906piu.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.7oewwgwzvtvwoxkuc54906piu.rcgu.o"; sourceTree = "<group>"; };
+		0018E3432DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8ejenorjbidmp4g3r56rc5q3z.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.8ejenorjbidmp4g3r56rc5q3z.rcgu.o"; sourceTree = "<group>"; };
+		0018E3442DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8fcjf7dr1zgeszx8q72ci2e0w.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.8fcjf7dr1zgeszx8q72ci2e0w.rcgu.o"; sourceTree = "<group>"; };
+		0018E3452DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8gdq6q6bwdkr0gaudp34es166.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.8gdq6q6bwdkr0gaudp34es166.rcgu.o"; sourceTree = "<group>"; };
+		0018E3462DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8kae48lprf3fcy4yjlji0yfvd.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.8kae48lprf3fcy4yjlji0yfvd.rcgu.o"; sourceTree = "<group>"; };
+		0018E3472DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8knx1mn6g6cjw6fyuhgpj8qt9.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.8knx1mn6g6cjw6fyuhgpj8qt9.rcgu.o"; sourceTree = "<group>"; };
+		0018E3482DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8nd088bb1gyyukrsfaadd0b2k.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.8nd088bb1gyyukrsfaadd0b2k.rcgu.o"; sourceTree = "<group>"; };
+		0018E3492DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8s2z8vk3zaudwwdjssprsnjce.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.8s2z8vk3zaudwwdjssprsnjce.rcgu.o"; sourceTree = "<group>"; };
+		0018E34A2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8tvt0bbk15nqbclhs80rhui5j.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.8tvt0bbk15nqbclhs80rhui5j.rcgu.o"; sourceTree = "<group>"; };
+		0018E34B2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8ubxbkkx3f15iydcaffpreyec.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.8ubxbkkx3f15iydcaffpreyec.rcgu.o"; sourceTree = "<group>"; };
+		0018E34C2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8uxtipni099mq7j229b0lu1ea.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.8uxtipni099mq7j229b0lu1ea.rcgu.o"; sourceTree = "<group>"; };
+		0018E34D2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.9h66kpctdu9csqnr13nzfgba0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.9h66kpctdu9csqnr13nzfgba0.rcgu.o"; sourceTree = "<group>"; };
+		0018E34E2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.9np32qvqmeh2zxvhdql8nnqf5.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.9np32qvqmeh2zxvhdql8nnqf5.rcgu.o"; sourceTree = "<group>"; };
+		0018E34F2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.9pk8bey4gvcfddokcpg48xhep.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.9pk8bey4gvcfddokcpg48xhep.rcgu.o"; sourceTree = "<group>"; };
+		0018E3502DE522FF00E4A24E /* mazer-9eaaefbedb48654d.9t42nw48pttj3dkr0cyurmngl.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.9t42nw48pttj3dkr0cyurmngl.rcgu.o"; sourceTree = "<group>"; };
+		0018E3512DE522FF00E4A24E /* mazer-9eaaefbedb48654d.9x2s480l2r3mwygd130419pgs.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.9x2s480l2r3mwygd130419pgs.rcgu.o"; sourceTree = "<group>"; };
+		0018E3522DE522FF00E4A24E /* mazer-9eaaefbedb48654d.12b9q9z190yjrqhg10iynjguj.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.12b9q9z190yjrqhg10iynjguj.rcgu.o"; sourceTree = "<group>"; };
+		0018E3532DE522FF00E4A24E /* mazer-9eaaefbedb48654d.14a3k19987ppsod1gp87pmpcd.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.14a3k19987ppsod1gp87pmpcd.rcgu.o"; sourceTree = "<group>"; };
+		0018E3542DE522FF00E4A24E /* mazer-9eaaefbedb48654d.17ftg0vqwd9auzd18of6mv679.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.17ftg0vqwd9auzd18of6mv679.rcgu.o"; sourceTree = "<group>"; };
+		0018E3552DE522FF00E4A24E /* mazer-9eaaefbedb48654d.21qxxd0cb8kjm5amjen9kh6y0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.21qxxd0cb8kjm5amjen9kh6y0.rcgu.o"; sourceTree = "<group>"; };
+		0018E3562DE522FF00E4A24E /* mazer-9eaaefbedb48654d.40m47b9yty24o130wbuev3pim.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.40m47b9yty24o130wbuev3pim.rcgu.o"; sourceTree = "<group>"; };
+		0018E3572DE522FF00E4A24E /* mazer-9eaaefbedb48654d.43yjvyb2mro0i94503l0y48m4.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.43yjvyb2mro0i94503l0y48m4.rcgu.o"; sourceTree = "<group>"; };
+		0018E3582DE522FF00E4A24E /* mazer-9eaaefbedb48654d.44dofjnjl650vc2xbmvbijki0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.44dofjnjl650vc2xbmvbijki0.rcgu.o"; sourceTree = "<group>"; };
+		0018E3592DE522FF00E4A24E /* mazer-9eaaefbedb48654d.47nmxjamd37yll64215xq0zdr.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.47nmxjamd37yll64215xq0zdr.rcgu.o"; sourceTree = "<group>"; };
+		0018E35A2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.48w1h3piyrvytmx7q6y6ulpkr.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.48w1h3piyrvytmx7q6y6ulpkr.rcgu.o"; sourceTree = "<group>"; };
+		0018E35B2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.51e6vlked9l3mwzypriw2e1ms.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.51e6vlked9l3mwzypriw2e1ms.rcgu.o"; sourceTree = "<group>"; };
+		0018E35C2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.52xvebmi7kl28vnlqylixty7k.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.52xvebmi7kl28vnlqylixty7k.rcgu.o"; sourceTree = "<group>"; };
+		0018E35D2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.62dbujdeupygl6o2it8pskdh7.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.62dbujdeupygl6o2it8pskdh7.rcgu.o"; sourceTree = "<group>"; };
+		0018E35E2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.62lgbr0wukqheje2cptnqj8dg.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.62lgbr0wukqheje2cptnqj8dg.rcgu.o"; sourceTree = "<group>"; };
+		0018E35F2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.63exaxsbv2f7d1akqkrs593n3.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.63exaxsbv2f7d1akqkrs593n3.rcgu.o"; sourceTree = "<group>"; };
+		0018E3602DE522FF00E4A24E /* mazer-9eaaefbedb48654d.67razfdtct5k6gszlezx2bpbl.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.67razfdtct5k6gszlezx2bpbl.rcgu.o"; sourceTree = "<group>"; };
+		0018E3612DE522FF00E4A24E /* mazer-9eaaefbedb48654d.73x2zrt6sanic9oy8tseowoi2.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.73x2zrt6sanic9oy8tseowoi2.rcgu.o"; sourceTree = "<group>"; };
+		0018E3622DE522FF00E4A24E /* mazer-9eaaefbedb48654d.79rhnhztsk8g6bh9o9t6zftay.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.79rhnhztsk8g6bh9o9t6zftay.rcgu.o"; sourceTree = "<group>"; };
+		0018E3632DE522FF00E4A24E /* mazer-9eaaefbedb48654d.98kkv5fjx1hi7qpz1k0vcnng0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.98kkv5fjx1hi7qpz1k0vcnng0.rcgu.o"; sourceTree = "<group>"; };
+		0018E3642DE522FF00E4A24E /* mazer-9eaaefbedb48654d.180yidwkukmu3ra82qwsq2nnf.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.180yidwkukmu3ra82qwsq2nnf.rcgu.o"; sourceTree = "<group>"; };
+		0018E3652DE522FF00E4A24E /* mazer-9eaaefbedb48654d.402zghgat12x6dh8auh8vcw0i.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.402zghgat12x6dh8auh8vcw0i.rcgu.o"; sourceTree = "<group>"; };
+		0018E3662DE522FF00E4A24E /* mazer-9eaaefbedb48654d.415w77mogfoa2rzvfg5p3jl5n.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.415w77mogfoa2rzvfg5p3jl5n.rcgu.o"; sourceTree = "<group>"; };
+		0018E3672DE522FF00E4A24E /* mazer-9eaaefbedb48654d.554mvbtbuqd74tszj0sjks5x7.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.554mvbtbuqd74tszj0sjks5x7.rcgu.o"; sourceTree = "<group>"; };
+		0018E3682DE522FF00E4A24E /* mazer-9eaaefbedb48654d.637ssfthhem9r3y0ehwkoqvzv.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.637ssfthhem9r3y0ehwkoqvzv.rcgu.o"; sourceTree = "<group>"; };
+		0018E3692DE522FF00E4A24E /* mazer-9eaaefbedb48654d.679a3qivu5pwajsjlvn2w7rpu.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.679a3qivu5pwajsjlvn2w7rpu.rcgu.o"; sourceTree = "<group>"; };
+		0018E36A2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.772mqslyae04d5mumguausxt4.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.772mqslyae04d5mumguausxt4.rcgu.o"; sourceTree = "<group>"; };
+		0018E36B2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.816sfubq571bj4f4nuf3y9oix.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.816sfubq571bj4f4nuf3y9oix.rcgu.o"; sourceTree = "<group>"; };
+		0018E36C2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.993eess2crkegp76m29wc3d01.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.993eess2crkegp76m29wc3d01.rcgu.o"; sourceTree = "<group>"; };
+		0018E36D2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.3901ewgqnsgxt8zoms3o7nivg.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.3901ewgqnsgxt8zoms3o7nivg.rcgu.o"; sourceTree = "<group>"; };
+		0018E36E2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.a5eqymodfstiwhdvtijr7vcc5.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.a5eqymodfstiwhdvtijr7vcc5.rcgu.o"; sourceTree = "<group>"; };
+		0018E36F2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.a6o0f1a3qubzz3zk3qxwcxr4b.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.a6o0f1a3qubzz3zk3qxwcxr4b.rcgu.o"; sourceTree = "<group>"; };
+		0018E3702DE522FF00E4A24E /* mazer-9eaaefbedb48654d.a93gxjnf75nvrgrs549464hem.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.a93gxjnf75nvrgrs549464hem.rcgu.o"; sourceTree = "<group>"; };
+		0018E3712DE522FF00E4A24E /* mazer-9eaaefbedb48654d.a45699plq9qeuaxm3bc7dwakb.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.a45699plq9qeuaxm3bc7dwakb.rcgu.o"; sourceTree = "<group>"; };
+		0018E3722DE522FF00E4A24E /* mazer-9eaaefbedb48654d.ahdqpfmspz8wtm7c2jxd1gr3o.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.ahdqpfmspz8wtm7c2jxd1gr3o.rcgu.o"; sourceTree = "<group>"; };
+		0018E3732DE522FF00E4A24E /* mazer-9eaaefbedb48654d.air3q0vgfgbackbyfy2brot7v.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.air3q0vgfgbackbyfy2brot7v.rcgu.o"; sourceTree = "<group>"; };
+		0018E3742DE522FF00E4A24E /* mazer-9eaaefbedb48654d.aj86ak8rxa5vpxozecmgafw4v.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.aj86ak8rxa5vpxozecmgafw4v.rcgu.o"; sourceTree = "<group>"; };
+		0018E3752DE522FF00E4A24E /* mazer-9eaaefbedb48654d.at2afvndzqc1x4zgw1k7a6pu6.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.at2afvndzqc1x4zgw1k7a6pu6.rcgu.o"; sourceTree = "<group>"; };
+		0018E3762DE522FF00E4A24E /* mazer-9eaaefbedb48654d.au18oe86iur46e3hwpmogph5q.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.au18oe86iur46e3hwpmogph5q.rcgu.o"; sourceTree = "<group>"; };
+		0018E3772DE522FF00E4A24E /* mazer-9eaaefbedb48654d.avc36bc9vysym51eakyzq1la4.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.avc36bc9vysym51eakyzq1la4.rcgu.o"; sourceTree = "<group>"; };
+		0018E3782DE522FF00E4A24E /* mazer-9eaaefbedb48654d.ayjutgq1ah4784mxzittkjq6j.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.ayjutgq1ah4784mxzittkjq6j.rcgu.o"; sourceTree = "<group>"; };
+		0018E3792DE522FF00E4A24E /* mazer-9eaaefbedb48654d.b4or4bm2rzv00vbabwi7wjvm2.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.b4or4bm2rzv00vbabwi7wjvm2.rcgu.o"; sourceTree = "<group>"; };
+		0018E37A2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.b8dwyi16hfpjq42k3rrkg0tpj.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.b8dwyi16hfpjq42k3rrkg0tpj.rcgu.o"; sourceTree = "<group>"; };
+		0018E37B2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.bg2jdvpgn7caj7yib30liqm1m.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.bg2jdvpgn7caj7yib30liqm1m.rcgu.o"; sourceTree = "<group>"; };
+		0018E37C2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.bk80modyiwgkob0jzymmceizu.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.bk80modyiwgkob0jzymmceizu.rcgu.o"; sourceTree = "<group>"; };
+		0018E37D2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.bxfwg7e0mpdcyy416h7ffvrmh.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.bxfwg7e0mpdcyy416h7ffvrmh.rcgu.o"; sourceTree = "<group>"; };
+		0018E37E2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.c1az5ayp3kf0bd1p31og3dnrp.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.c1az5ayp3kf0bd1p31og3dnrp.rcgu.o"; sourceTree = "<group>"; };
+		0018E37F2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.c2bkwka7h8u58yaf0m47fj840.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.c2bkwka7h8u58yaf0m47fj840.rcgu.o"; sourceTree = "<group>"; };
+		0018E3802DE522FF00E4A24E /* mazer-9eaaefbedb48654d.cf056fn8j1r9ipazgl4udwxqr.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.cf056fn8j1r9ipazgl4udwxqr.rcgu.o"; sourceTree = "<group>"; };
+		0018E3812DE522FF00E4A24E /* mazer-9eaaefbedb48654d.cfffkafbg2jlohida5arl6vyk.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.cfffkafbg2jlohida5arl6vyk.rcgu.o"; sourceTree = "<group>"; };
+		0018E3822DE522FF00E4A24E /* mazer-9eaaefbedb48654d.cg9a4ez69n4s0abpydga7f0o8.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.cg9a4ez69n4s0abpydga7f0o8.rcgu.o"; sourceTree = "<group>"; };
+		0018E3832DE522FF00E4A24E /* mazer-9eaaefbedb48654d.cj84vgb4jkana4gqt7mv4rc25.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.cj84vgb4jkana4gqt7mv4rc25.rcgu.o"; sourceTree = "<group>"; };
+		0018E3842DE522FF00E4A24E /* mazer-9eaaefbedb48654d.ckfchnc439p61ki1p0dr0qabj.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.ckfchnc439p61ki1p0dr0qabj.rcgu.o"; sourceTree = "<group>"; };
+		0018E3852DE522FF00E4A24E /* mazer-9eaaefbedb48654d.co611ksyi6w9mqhniino5f1ax.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.co611ksyi6w9mqhniino5f1ax.rcgu.o"; sourceTree = "<group>"; };
+		0018E3862DE522FF00E4A24E /* mazer-9eaaefbedb48654d.cr38f2bxjhjfvuqlakrc1su3u.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.cr38f2bxjhjfvuqlakrc1su3u.rcgu.o"; sourceTree = "<group>"; };
+		0018E3872DE522FF00E4A24E /* mazer-9eaaefbedb48654d.ctg47wgd2v63h5kvcp0vs0hap.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.ctg47wgd2v63h5kvcp0vs0hap.rcgu.o"; sourceTree = "<group>"; };
+		0018E3882DE522FF00E4A24E /* mazer-9eaaefbedb48654d.cw0eq6vt68g5jjbo854qbewi5.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.cw0eq6vt68g5jjbo854qbewi5.rcgu.o"; sourceTree = "<group>"; };
+		0018E3892DE522FF00E4A24E /* mazer-9eaaefbedb48654d.cwwvelyys1cu6kz2u0lj8b5h3.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.cwwvelyys1cu6kz2u0lj8b5h3.rcgu.o"; sourceTree = "<group>"; };
+		0018E38A2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.d0f8o87wztspstcwrx4dexheu.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.d0f8o87wztspstcwrx4dexheu.rcgu.o"; sourceTree = "<group>"; };
+		0018E38B2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.d4laa1pcgv52j6imvoqug8rh9.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.d4laa1pcgv52j6imvoqug8rh9.rcgu.o"; sourceTree = "<group>"; };
+		0018E38C2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.d39hbdu3c0ruj8rxoti019rjs.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.d39hbdu3c0ruj8rxoti019rjs.rcgu.o"; sourceTree = "<group>"; };
+		0018E38D2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.ddp4k91qsiiw0ae94d9ubg582.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.ddp4k91qsiiw0ae94d9ubg582.rcgu.o"; sourceTree = "<group>"; };
+		0018E38E2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.di8lly86r3um1dr73qjweo1v0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.di8lly86r3um1dr73qjweo1v0.rcgu.o"; sourceTree = "<group>"; };
+		0018E38F2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.doefv4w3f73y5sgl25mn8jggc.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.doefv4w3f73y5sgl25mn8jggc.rcgu.o"; sourceTree = "<group>"; };
+		0018E3902DE522FF00E4A24E /* mazer-9eaaefbedb48654d.ds8rnnfjo95k7en0e9dpfnwmk.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.ds8rnnfjo95k7en0e9dpfnwmk.rcgu.o"; sourceTree = "<group>"; };
+		0018E3912DE522FF00E4A24E /* mazer-9eaaefbedb48654d.dx2kwzjeg7xjw15u25n52f6ff.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.dx2kwzjeg7xjw15u25n52f6ff.rcgu.o"; sourceTree = "<group>"; };
+		0018E3922DE522FF00E4A24E /* mazer-9eaaefbedb48654d.e0ob5ielwr791ns734ukotyz8.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.e0ob5ielwr791ns734ukotyz8.rcgu.o"; sourceTree = "<group>"; };
+		0018E3932DE522FF00E4A24E /* mazer-9eaaefbedb48654d.e2rf1vsusvjepa7rnuhf2qbz8.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.e2rf1vsusvjepa7rnuhf2qbz8.rcgu.o"; sourceTree = "<group>"; };
+		0018E3942DE522FF00E4A24E /* mazer-9eaaefbedb48654d.e8xmlx62v8gdpsx6ecaxgs2jr.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.e8xmlx62v8gdpsx6ecaxgs2jr.rcgu.o"; sourceTree = "<group>"; };
+		0018E3952DE522FF00E4A24E /* mazer-9eaaefbedb48654d.e070aibhb3jv82d2f3c41b8h5.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.e070aibhb3jv82d2f3c41b8h5.rcgu.o"; sourceTree = "<group>"; };
+		0018E3962DE522FF00E4A24E /* mazer-9eaaefbedb48654d.e0155z1shkq6yypvzayb94voj.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.e0155z1shkq6yypvzayb94voj.rcgu.o"; sourceTree = "<group>"; };
+		0018E3972DE522FF00E4A24E /* mazer-9eaaefbedb48654d.e756ezmqd4mkdcw0ykmdkvjiq.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.e756ezmqd4mkdcw0ykmdkvjiq.rcgu.o"; sourceTree = "<group>"; };
+		0018E3982DE522FF00E4A24E /* mazer-9eaaefbedb48654d.eb8tb3cykml7142mltoebow31.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.eb8tb3cykml7142mltoebow31.rcgu.o"; sourceTree = "<group>"; };
+		0018E3992DE522FF00E4A24E /* mazer-9eaaefbedb48654d.emhy5nvb8mxdb5d9m19429d2q.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.emhy5nvb8mxdb5d9m19429d2q.rcgu.o"; sourceTree = "<group>"; };
+		0018E39A2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.f03eb6rx4nqd33px2itimt9gq.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-9eaaefbedb48654d.f03eb6rx4nqd33px2itimt9gq.rcgu.o"; sourceTree = "<group>"; };
+		0018E39B2DE522FF00E4A24E /* memchr-c4f6caf3007991a2.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "memchr-c4f6caf3007991a2.d"; sourceTree = "<group>"; };
+		0018E39C2DE522FF00E4A24E /* memchr-c4f6caf3007991a2.memchr.de4d8f220c3d3fc7-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "memchr-c4f6caf3007991a2.memchr.de4d8f220c3d3fc7-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E39D2DE522FF00E4A24E /* ppv_lite86-1683715d155c965b.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "ppv_lite86-1683715d155c965b.d"; sourceTree = "<group>"; };
+		0018E39E2DE522FF00E4A24E /* ppv_lite86-1683715d155c965b.ppv_lite86.29486a0f030a2474-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "ppv_lite86-1683715d155c965b.ppv_lite86.29486a0f030a2474-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E39F2DE522FF00E4A24E /* rand_chacha-4f5b59a848726478.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "rand_chacha-4f5b59a848726478.d"; sourceTree = "<group>"; };
+		0018E3A02DE522FF00E4A24E /* rand_chacha-4f5b59a848726478.rand_chacha.a60c85e507a90496-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "rand_chacha-4f5b59a848726478.rand_chacha.a60c85e507a90496-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E3A12DE522FF00E4A24E /* rand_core-d100e004e1d83e91.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "rand_core-d100e004e1d83e91.d"; sourceTree = "<group>"; };
+		0018E3A22DE522FF00E4A24E /* rand_core-d100e004e1d83e91.rand_core.b844480d38cb3a4a-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "rand_core-d100e004e1d83e91.rand_core.b844480d38cb3a4a-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E3A32DE522FF00E4A24E /* rand-ab2870feeb8b502c.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "rand-ab2870feeb8b502c.d"; sourceTree = "<group>"; };
+		0018E3A42DE522FF00E4A24E /* rand-ab2870feeb8b502c.rand.f6eeb259ed482a16-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "rand-ab2870feeb8b502c.rand.f6eeb259ed482a16-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E3A52DE522FF00E4A24E /* rand-ab2870feeb8b502c.rand.f6eeb259ed482a16-cgu.1.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "rand-ab2870feeb8b502c.rand.f6eeb259ed482a16-cgu.1.rcgu.o"; sourceTree = "<group>"; };
+		0018E3A62DE522FF00E4A24E /* ryu-89368832ed1b1332.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "ryu-89368832ed1b1332.d"; sourceTree = "<group>"; };
+		0018E3A72DE522FF00E4A24E /* ryu-89368832ed1b1332.ryu.66d373afb388c779-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "ryu-89368832ed1b1332.ryu.66d373afb388c779-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E3A82DE522FF00E4A24E /* serde_json-e8b06591e82721e3.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "serde_json-e8b06591e82721e3.d"; sourceTree = "<group>"; };
+		0018E3A92DE522FF00E4A24E /* serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E3AA2DE522FF00E4A24E /* serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.1.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.1.rcgu.o"; sourceTree = "<group>"; };
+		0018E3AB2DE522FF00E4A24E /* serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.2.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.2.rcgu.o"; sourceTree = "<group>"; };
+		0018E3AC2DE522FF00E4A24E /* serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.3.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.3.rcgu.o"; sourceTree = "<group>"; };
+		0018E3AD2DE522FF00E4A24E /* serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.4.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.4.rcgu.o"; sourceTree = "<group>"; };
+		0018E3AE2DE522FF00E4A24E /* serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.5.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.5.rcgu.o"; sourceTree = "<group>"; };
+		0018E3AF2DE522FF00E4A24E /* serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.6.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.6.rcgu.o"; sourceTree = "<group>"; };
+		0018E3B02DE522FF00E4A24E /* serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.7.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.7.rcgu.o"; sourceTree = "<group>"; };
+		0018E3B12DE522FF00E4A24E /* serde-b24c64a30501af59.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "serde-b24c64a30501af59.d"; sourceTree = "<group>"; };
+		0018E3B22DE522FF00E4A24E /* serde-b24c64a30501af59.serde.bf477216bb80ee88-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde-b24c64a30501af59.serde.bf477216bb80ee88-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E3B32DE522FF00E4A24E /* zerocopy-68d3c26d18abd06f.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "zerocopy-68d3c26d18abd06f.d"; sourceTree = "<group>"; };
+		0018E3B42DE522FF00E4A24E /* zerocopy-68d3c26d18abd06f.zerocopy.87484d06348f5db2-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "zerocopy-68d3c26d18abd06f.zerocopy.87484d06348f5db2-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E3B72DE522FF00E4A24E /* 0dpyf9y2cxcwgi3cpd58kq8l2.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 0dpyf9y2cxcwgi3cpd58kq8l2.o; sourceTree = "<group>"; };
+		0018E3B82DE522FF00E4A24E /* 0h5mv18ev0r4tih4p65fdsjsv.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 0h5mv18ev0r4tih4p65fdsjsv.o; sourceTree = "<group>"; };
+		0018E3B92DE522FF00E4A24E /* 0muacqqsurev3v31plytsbts7.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 0muacqqsurev3v31plytsbts7.o; sourceTree = "<group>"; };
+		0018E3BA2DE522FF00E4A24E /* 0n9d3oqgjft3z3vzqdwlln1vx.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 0n9d3oqgjft3z3vzqdwlln1vx.o; sourceTree = "<group>"; };
+		0018E3BB2DE522FF00E4A24E /* 0n425tovtujaeuakbk5w47gfw.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 0n425tovtujaeuakbk5w47gfw.o; sourceTree = "<group>"; };
+		0018E3BC2DE522FF00E4A24E /* 0qtyrqmnx1w17aa1prxx6ze1j.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 0qtyrqmnx1w17aa1prxx6ze1j.o; sourceTree = "<group>"; };
+		0018E3BD2DE522FF00E4A24E /* 0t1mhwygjl3o74v2ofe85h1ke.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 0t1mhwygjl3o74v2ofe85h1ke.o; sourceTree = "<group>"; };
+		0018E3BE2DE522FF00E4A24E /* 1al1frqhwt0dfncvy3p9ihozr.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 1al1frqhwt0dfncvy3p9ihozr.o; sourceTree = "<group>"; };
+		0018E3BF2DE522FF00E4A24E /* 1bq7j1qn4040394qsx8592bp9.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 1bq7j1qn4040394qsx8592bp9.o; sourceTree = "<group>"; };
+		0018E3C02DE522FF00E4A24E /* 1i0dle2pjfm55savm9re65igb.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 1i0dle2pjfm55savm9re65igb.o; sourceTree = "<group>"; };
+		0018E3C12DE522FF00E4A24E /* 1mja6oju6xqge7jffg8iwcetq.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 1mja6oju6xqge7jffg8iwcetq.o; sourceTree = "<group>"; };
+		0018E3C22DE522FF00E4A24E /* 1n0e86tkxpy7tc44t8sfh43h6.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 1n0e86tkxpy7tc44t8sfh43h6.o; sourceTree = "<group>"; };
+		0018E3C32DE522FF00E4A24E /* 2bxrl3mzvctxwx2s7mk56lpmn.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 2bxrl3mzvctxwx2s7mk56lpmn.o; sourceTree = "<group>"; };
+		0018E3C42DE522FF00E4A24E /* 2f56lvktep34sx1r7rdw4b8kk.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 2f56lvktep34sx1r7rdw4b8kk.o; sourceTree = "<group>"; };
+		0018E3C52DE522FF00E4A24E /* 2f59cyp7fqkjagk5l79ctp7ng.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 2f59cyp7fqkjagk5l79ctp7ng.o; sourceTree = "<group>"; };
+		0018E3C62DE522FF00E4A24E /* 2qcku91m8uxth0khndh5ch1de.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 2qcku91m8uxth0khndh5ch1de.o; sourceTree = "<group>"; };
+		0018E3C72DE522FF00E4A24E /* 2wv5z33ucparttrs5tiullbtf.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 2wv5z33ucparttrs5tiullbtf.o; sourceTree = "<group>"; };
+		0018E3C82DE522FF00E4A24E /* 3kbgn8sh0s47hldsuuyj5k7lm.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 3kbgn8sh0s47hldsuuyj5k7lm.o; sourceTree = "<group>"; };
+		0018E3C92DE522FF00E4A24E /* 3l7cwx392fzwbnjlqo6xhzghd.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 3l7cwx392fzwbnjlqo6xhzghd.o; sourceTree = "<group>"; };
+		0018E3CA2DE522FF00E4A24E /* 3lqcvyx68ghnedzxiec511mbq.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 3lqcvyx68ghnedzxiec511mbq.o; sourceTree = "<group>"; };
+		0018E3CB2DE522FF00E4A24E /* 3q4ajw9wm0bs4toecenx9zdl6.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 3q4ajw9wm0bs4toecenx9zdl6.o; sourceTree = "<group>"; };
+		0018E3CC2DE522FF00E4A24E /* 3r14uzuthc23qx9gatpbgo3y5.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 3r14uzuthc23qx9gatpbgo3y5.o; sourceTree = "<group>"; };
+		0018E3CD2DE522FF00E4A24E /* 3shmq1eo28lg3tzu2w3jik2f9.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 3shmq1eo28lg3tzu2w3jik2f9.o; sourceTree = "<group>"; };
+		0018E3CE2DE522FF00E4A24E /* 3t2uf3tr05qeb1mrwzwldf569.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 3t2uf3tr05qeb1mrwzwldf569.o; sourceTree = "<group>"; };
+		0018E3CF2DE522FF00E4A24E /* 3tn88qhv1jszc90p0r2sd6vve.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 3tn88qhv1jszc90p0r2sd6vve.o; sourceTree = "<group>"; };
+		0018E3D02DE522FF00E4A24E /* 4c0vonk6i7kubqru1akofn95u.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 4c0vonk6i7kubqru1akofn95u.o; sourceTree = "<group>"; };
+		0018E3D12DE522FF00E4A24E /* 4cxmg8277ja3bzmowod74x63t.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 4cxmg8277ja3bzmowod74x63t.o; sourceTree = "<group>"; };
+		0018E3D22DE522FF00E4A24E /* 4kprns73fha2pw56xrir5agl2.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 4kprns73fha2pw56xrir5agl2.o; sourceTree = "<group>"; };
+		0018E3D32DE522FF00E4A24E /* 4l40q7z4bqo8l4lco5tqxasri.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 4l40q7z4bqo8l4lco5tqxasri.o; sourceTree = "<group>"; };
+		0018E3D42DE522FF00E4A24E /* 4n20ymbmhg2ak77k8l3g861kp.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 4n20ymbmhg2ak77k8l3g861kp.o; sourceTree = "<group>"; };
+		0018E3D52DE522FF00E4A24E /* 4ne9pfsj1f0g3075gjg12p0kq.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 4ne9pfsj1f0g3075gjg12p0kq.o; sourceTree = "<group>"; };
+		0018E3D62DE522FF00E4A24E /* 5dqiabxww860vs29k0w1gl8q4.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5dqiabxww860vs29k0w1gl8q4.o; sourceTree = "<group>"; };
+		0018E3D72DE522FF00E4A24E /* 5dvom7qkm1v8goiyn57sm4q3y.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5dvom7qkm1v8goiyn57sm4q3y.o; sourceTree = "<group>"; };
+		0018E3D82DE522FF00E4A24E /* 5t8jmuqaehq3oo8k15emh3ha7.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5t8jmuqaehq3oo8k15emh3ha7.o; sourceTree = "<group>"; };
+		0018E3D92DE522FF00E4A24E /* 5tkqvsltpcqsnazpjwixgwqp2.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5tkqvsltpcqsnazpjwixgwqp2.o; sourceTree = "<group>"; };
+		0018E3DA2DE522FF00E4A24E /* 5vf09xdpdegmtjyzbkjbadv3e.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5vf09xdpdegmtjyzbkjbadv3e.o; sourceTree = "<group>"; };
+		0018E3DB2DE522FF00E4A24E /* 05z62g4u1uumoezd334enrgt1.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 05z62g4u1uumoezd334enrgt1.o; sourceTree = "<group>"; };
+		0018E3DC2DE522FF00E4A24E /* 6ajbc1qpi3a0yiicu2jwn1rec.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 6ajbc1qpi3a0yiicu2jwn1rec.o; sourceTree = "<group>"; };
+		0018E3DD2DE522FF00E4A24E /* 6e6ocdibqda4xhyo2uljduzmi.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 6e6ocdibqda4xhyo2uljduzmi.o; sourceTree = "<group>"; };
+		0018E3DE2DE522FF00E4A24E /* 6iz9iqtfa23z8c3yrab7gj98e.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 6iz9iqtfa23z8c3yrab7gj98e.o; sourceTree = "<group>"; };
+		0018E3DF2DE522FF00E4A24E /* 6madn9enk8yaav3ysitt1ok1y.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 6madn9enk8yaav3ysitt1ok1y.o; sourceTree = "<group>"; };
+		0018E3E02DE522FF00E4A24E /* 6qdt1q6cadh5ifjiwpu9hp8yd.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 6qdt1q6cadh5ifjiwpu9hp8yd.o; sourceTree = "<group>"; };
+		0018E3E12DE522FF00E4A24E /* 7bds8qpgxmyl3pxwyz6xi36is.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 7bds8qpgxmyl3pxwyz6xi36is.o; sourceTree = "<group>"; };
+		0018E3E22DE522FF00E4A24E /* 7donzpzley0kuwpn1geebj8ez.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 7donzpzley0kuwpn1geebj8ez.o; sourceTree = "<group>"; };
+		0018E3E32DE522FF00E4A24E /* 7fjhnnm2ngznjt1ixaigj2u7s.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 7fjhnnm2ngznjt1ixaigj2u7s.o; sourceTree = "<group>"; };
+		0018E3E42DE522FF00E4A24E /* 7hdcu2lgwkg0a0nnlxqcb5q6h.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 7hdcu2lgwkg0a0nnlxqcb5q6h.o; sourceTree = "<group>"; };
+		0018E3E52DE522FF00E4A24E /* 7oewwgwzvtvwoxkuc54906piu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 7oewwgwzvtvwoxkuc54906piu.o; sourceTree = "<group>"; };
+		0018E3E62DE522FF00E4A24E /* 8ejenorjbidmp4g3r56rc5q3z.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 8ejenorjbidmp4g3r56rc5q3z.o; sourceTree = "<group>"; };
+		0018E3E72DE522FF00E4A24E /* 8fcjf7dr1zgeszx8q72ci2e0w.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 8fcjf7dr1zgeszx8q72ci2e0w.o; sourceTree = "<group>"; };
+		0018E3E82DE522FF00E4A24E /* 8gdq6q6bwdkr0gaudp34es166.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 8gdq6q6bwdkr0gaudp34es166.o; sourceTree = "<group>"; };
+		0018E3E92DE522FF00E4A24E /* 8kae48lprf3fcy4yjlji0yfvd.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 8kae48lprf3fcy4yjlji0yfvd.o; sourceTree = "<group>"; };
+		0018E3EA2DE522FF00E4A24E /* 8knx1mn6g6cjw6fyuhgpj8qt9.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 8knx1mn6g6cjw6fyuhgpj8qt9.o; sourceTree = "<group>"; };
+		0018E3EB2DE522FF00E4A24E /* 8nd088bb1gyyukrsfaadd0b2k.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 8nd088bb1gyyukrsfaadd0b2k.o; sourceTree = "<group>"; };
+		0018E3EC2DE522FF00E4A24E /* 8s2z8vk3zaudwwdjssprsnjce.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 8s2z8vk3zaudwwdjssprsnjce.o; sourceTree = "<group>"; };
+		0018E3ED2DE522FF00E4A24E /* 8tvt0bbk15nqbclhs80rhui5j.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 8tvt0bbk15nqbclhs80rhui5j.o; sourceTree = "<group>"; };
+		0018E3EE2DE522FF00E4A24E /* 8ubxbkkx3f15iydcaffpreyec.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 8ubxbkkx3f15iydcaffpreyec.o; sourceTree = "<group>"; };
+		0018E3EF2DE522FF00E4A24E /* 8uxtipni099mq7j229b0lu1ea.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 8uxtipni099mq7j229b0lu1ea.o; sourceTree = "<group>"; };
+		0018E3F02DE522FF00E4A24E /* 9h66kpctdu9csqnr13nzfgba0.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 9h66kpctdu9csqnr13nzfgba0.o; sourceTree = "<group>"; };
+		0018E3F12DE522FF00E4A24E /* 9np32qvqmeh2zxvhdql8nnqf5.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 9np32qvqmeh2zxvhdql8nnqf5.o; sourceTree = "<group>"; };
+		0018E3F22DE522FF00E4A24E /* 9pk8bey4gvcfddokcpg48xhep.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 9pk8bey4gvcfddokcpg48xhep.o; sourceTree = "<group>"; };
+		0018E3F32DE522FF00E4A24E /* 9t42nw48pttj3dkr0cyurmngl.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 9t42nw48pttj3dkr0cyurmngl.o; sourceTree = "<group>"; };
+		0018E3F42DE522FF00E4A24E /* 9x2s480l2r3mwygd130419pgs.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 9x2s480l2r3mwygd130419pgs.o; sourceTree = "<group>"; };
+		0018E3F52DE522FF00E4A24E /* 12b9q9z190yjrqhg10iynjguj.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 12b9q9z190yjrqhg10iynjguj.o; sourceTree = "<group>"; };
+		0018E3F62DE522FF00E4A24E /* 14a3k19987ppsod1gp87pmpcd.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 14a3k19987ppsod1gp87pmpcd.o; sourceTree = "<group>"; };
+		0018E3F72DE522FF00E4A24E /* 17ftg0vqwd9auzd18of6mv679.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 17ftg0vqwd9auzd18of6mv679.o; sourceTree = "<group>"; };
+		0018E3F82DE522FF00E4A24E /* 21qxxd0cb8kjm5amjen9kh6y0.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 21qxxd0cb8kjm5amjen9kh6y0.o; sourceTree = "<group>"; };
+		0018E3F92DE522FF00E4A24E /* 40m47b9yty24o130wbuev3pim.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 40m47b9yty24o130wbuev3pim.o; sourceTree = "<group>"; };
+		0018E3FA2DE522FF00E4A24E /* 43yjvyb2mro0i94503l0y48m4.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 43yjvyb2mro0i94503l0y48m4.o; sourceTree = "<group>"; };
+		0018E3FB2DE522FF00E4A24E /* 44dofjnjl650vc2xbmvbijki0.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 44dofjnjl650vc2xbmvbijki0.o; sourceTree = "<group>"; };
+		0018E3FC2DE522FF00E4A24E /* 47nmxjamd37yll64215xq0zdr.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 47nmxjamd37yll64215xq0zdr.o; sourceTree = "<group>"; };
+		0018E3FD2DE522FF00E4A24E /* 48w1h3piyrvytmx7q6y6ulpkr.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 48w1h3piyrvytmx7q6y6ulpkr.o; sourceTree = "<group>"; };
+		0018E3FE2DE522FF00E4A24E /* 51e6vlked9l3mwzypriw2e1ms.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 51e6vlked9l3mwzypriw2e1ms.o; sourceTree = "<group>"; };
+		0018E3FF2DE522FF00E4A24E /* 52xvebmi7kl28vnlqylixty7k.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 52xvebmi7kl28vnlqylixty7k.o; sourceTree = "<group>"; };
+		0018E4002DE522FF00E4A24E /* 62dbujdeupygl6o2it8pskdh7.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 62dbujdeupygl6o2it8pskdh7.o; sourceTree = "<group>"; };
+		0018E4012DE522FF00E4A24E /* 62lgbr0wukqheje2cptnqj8dg.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 62lgbr0wukqheje2cptnqj8dg.o; sourceTree = "<group>"; };
+		0018E4022DE522FF00E4A24E /* 63exaxsbv2f7d1akqkrs593n3.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 63exaxsbv2f7d1akqkrs593n3.o; sourceTree = "<group>"; };
+		0018E4032DE522FF00E4A24E /* 67razfdtct5k6gszlezx2bpbl.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 67razfdtct5k6gszlezx2bpbl.o; sourceTree = "<group>"; };
+		0018E4042DE522FF00E4A24E /* 73x2zrt6sanic9oy8tseowoi2.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 73x2zrt6sanic9oy8tseowoi2.o; sourceTree = "<group>"; };
+		0018E4052DE522FF00E4A24E /* 79rhnhztsk8g6bh9o9t6zftay.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 79rhnhztsk8g6bh9o9t6zftay.o; sourceTree = "<group>"; };
+		0018E4062DE522FF00E4A24E /* 98kkv5fjx1hi7qpz1k0vcnng0.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 98kkv5fjx1hi7qpz1k0vcnng0.o; sourceTree = "<group>"; };
+		0018E4072DE522FF00E4A24E /* 180yidwkukmu3ra82qwsq2nnf.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 180yidwkukmu3ra82qwsq2nnf.o; sourceTree = "<group>"; };
+		0018E4082DE522FF00E4A24E /* 402zghgat12x6dh8auh8vcw0i.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 402zghgat12x6dh8auh8vcw0i.o; sourceTree = "<group>"; };
+		0018E4092DE522FF00E4A24E /* 415w77mogfoa2rzvfg5p3jl5n.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 415w77mogfoa2rzvfg5p3jl5n.o; sourceTree = "<group>"; };
+		0018E40A2DE522FF00E4A24E /* 554mvbtbuqd74tszj0sjks5x7.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 554mvbtbuqd74tszj0sjks5x7.o; sourceTree = "<group>"; };
+		0018E40B2DE522FF00E4A24E /* 637ssfthhem9r3y0ehwkoqvzv.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 637ssfthhem9r3y0ehwkoqvzv.o; sourceTree = "<group>"; };
+		0018E40C2DE522FF00E4A24E /* 679a3qivu5pwajsjlvn2w7rpu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 679a3qivu5pwajsjlvn2w7rpu.o; sourceTree = "<group>"; };
+		0018E40D2DE522FF00E4A24E /* 772mqslyae04d5mumguausxt4.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 772mqslyae04d5mumguausxt4.o; sourceTree = "<group>"; };
+		0018E40E2DE522FF00E4A24E /* 816sfubq571bj4f4nuf3y9oix.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 816sfubq571bj4f4nuf3y9oix.o; sourceTree = "<group>"; };
+		0018E40F2DE522FF00E4A24E /* 993eess2crkegp76m29wc3d01.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 993eess2crkegp76m29wc3d01.o; sourceTree = "<group>"; };
+		0018E4102DE522FF00E4A24E /* 3901ewgqnsgxt8zoms3o7nivg.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 3901ewgqnsgxt8zoms3o7nivg.o; sourceTree = "<group>"; };
+		0018E4112DE522FF00E4A24E /* a5eqymodfstiwhdvtijr7vcc5.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = a5eqymodfstiwhdvtijr7vcc5.o; sourceTree = "<group>"; };
+		0018E4122DE522FF00E4A24E /* a6o0f1a3qubzz3zk3qxwcxr4b.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = a6o0f1a3qubzz3zk3qxwcxr4b.o; sourceTree = "<group>"; };
+		0018E4132DE522FF00E4A24E /* a93gxjnf75nvrgrs549464hem.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = a93gxjnf75nvrgrs549464hem.o; sourceTree = "<group>"; };
+		0018E4142DE522FF00E4A24E /* a45699plq9qeuaxm3bc7dwakb.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = a45699plq9qeuaxm3bc7dwakb.o; sourceTree = "<group>"; };
+		0018E4152DE522FF00E4A24E /* ahdqpfmspz8wtm7c2jxd1gr3o.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = ahdqpfmspz8wtm7c2jxd1gr3o.o; sourceTree = "<group>"; };
+		0018E4162DE522FF00E4A24E /* air3q0vgfgbackbyfy2brot7v.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = air3q0vgfgbackbyfy2brot7v.o; sourceTree = "<group>"; };
+		0018E4172DE522FF00E4A24E /* aj86ak8rxa5vpxozecmgafw4v.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = aj86ak8rxa5vpxozecmgafw4v.o; sourceTree = "<group>"; };
+		0018E4182DE522FF00E4A24E /* at2afvndzqc1x4zgw1k7a6pu6.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = at2afvndzqc1x4zgw1k7a6pu6.o; sourceTree = "<group>"; };
+		0018E4192DE522FF00E4A24E /* au18oe86iur46e3hwpmogph5q.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = au18oe86iur46e3hwpmogph5q.o; sourceTree = "<group>"; };
+		0018E41A2DE522FF00E4A24E /* avc36bc9vysym51eakyzq1la4.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = avc36bc9vysym51eakyzq1la4.o; sourceTree = "<group>"; };
+		0018E41B2DE522FF00E4A24E /* ayjutgq1ah4784mxzittkjq6j.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = ayjutgq1ah4784mxzittkjq6j.o; sourceTree = "<group>"; };
+		0018E41C2DE522FF00E4A24E /* b4or4bm2rzv00vbabwi7wjvm2.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = b4or4bm2rzv00vbabwi7wjvm2.o; sourceTree = "<group>"; };
+		0018E41D2DE522FF00E4A24E /* b8dwyi16hfpjq42k3rrkg0tpj.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = b8dwyi16hfpjq42k3rrkg0tpj.o; sourceTree = "<group>"; };
+		0018E41E2DE522FF00E4A24E /* bg2jdvpgn7caj7yib30liqm1m.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = bg2jdvpgn7caj7yib30liqm1m.o; sourceTree = "<group>"; };
+		0018E41F2DE522FF00E4A24E /* bk80modyiwgkob0jzymmceizu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = bk80modyiwgkob0jzymmceizu.o; sourceTree = "<group>"; };
+		0018E4202DE522FF00E4A24E /* bxfwg7e0mpdcyy416h7ffvrmh.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = bxfwg7e0mpdcyy416h7ffvrmh.o; sourceTree = "<group>"; };
+		0018E4212DE522FF00E4A24E /* c1az5ayp3kf0bd1p31og3dnrp.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = c1az5ayp3kf0bd1p31og3dnrp.o; sourceTree = "<group>"; };
+		0018E4222DE522FF00E4A24E /* c2bkwka7h8u58yaf0m47fj840.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = c2bkwka7h8u58yaf0m47fj840.o; sourceTree = "<group>"; };
+		0018E4232DE522FF00E4A24E /* cf056fn8j1r9ipazgl4udwxqr.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = cf056fn8j1r9ipazgl4udwxqr.o; sourceTree = "<group>"; };
+		0018E4242DE522FF00E4A24E /* cfffkafbg2jlohida5arl6vyk.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = cfffkafbg2jlohida5arl6vyk.o; sourceTree = "<group>"; };
+		0018E4252DE522FF00E4A24E /* cg9a4ez69n4s0abpydga7f0o8.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = cg9a4ez69n4s0abpydga7f0o8.o; sourceTree = "<group>"; };
+		0018E4262DE522FF00E4A24E /* cj84vgb4jkana4gqt7mv4rc25.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = cj84vgb4jkana4gqt7mv4rc25.o; sourceTree = "<group>"; };
+		0018E4272DE522FF00E4A24E /* ckfchnc439p61ki1p0dr0qabj.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = ckfchnc439p61ki1p0dr0qabj.o; sourceTree = "<group>"; };
+		0018E4282DE522FF00E4A24E /* co611ksyi6w9mqhniino5f1ax.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = co611ksyi6w9mqhniino5f1ax.o; sourceTree = "<group>"; };
+		0018E4292DE522FF00E4A24E /* cr38f2bxjhjfvuqlakrc1su3u.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = cr38f2bxjhjfvuqlakrc1su3u.o; sourceTree = "<group>"; };
+		0018E42A2DE522FF00E4A24E /* ctg47wgd2v63h5kvcp0vs0hap.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = ctg47wgd2v63h5kvcp0vs0hap.o; sourceTree = "<group>"; };
+		0018E42B2DE522FF00E4A24E /* cw0eq6vt68g5jjbo854qbewi5.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = cw0eq6vt68g5jjbo854qbewi5.o; sourceTree = "<group>"; };
+		0018E42C2DE522FF00E4A24E /* cwwvelyys1cu6kz2u0lj8b5h3.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = cwwvelyys1cu6kz2u0lj8b5h3.o; sourceTree = "<group>"; };
+		0018E42D2DE522FF00E4A24E /* d0f8o87wztspstcwrx4dexheu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = d0f8o87wztspstcwrx4dexheu.o; sourceTree = "<group>"; };
+		0018E42E2DE522FF00E4A24E /* d4laa1pcgv52j6imvoqug8rh9.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = d4laa1pcgv52j6imvoqug8rh9.o; sourceTree = "<group>"; };
+		0018E42F2DE522FF00E4A24E /* d39hbdu3c0ruj8rxoti019rjs.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = d39hbdu3c0ruj8rxoti019rjs.o; sourceTree = "<group>"; };
+		0018E4302DE522FF00E4A24E /* ddp4k91qsiiw0ae94d9ubg582.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = ddp4k91qsiiw0ae94d9ubg582.o; sourceTree = "<group>"; };
+		0018E4312DE522FF00E4A24E /* dep-graph.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "dep-graph.bin"; sourceTree = "<group>"; };
+		0018E4322DE522FF00E4A24E /* di8lly86r3um1dr73qjweo1v0.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = di8lly86r3um1dr73qjweo1v0.o; sourceTree = "<group>"; };
+		0018E4332DE522FF00E4A24E /* doefv4w3f73y5sgl25mn8jggc.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = doefv4w3f73y5sgl25mn8jggc.o; sourceTree = "<group>"; };
+		0018E4342DE522FF00E4A24E /* ds8rnnfjo95k7en0e9dpfnwmk.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = ds8rnnfjo95k7en0e9dpfnwmk.o; sourceTree = "<group>"; };
+		0018E4352DE522FF00E4A24E /* dx2kwzjeg7xjw15u25n52f6ff.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = dx2kwzjeg7xjw15u25n52f6ff.o; sourceTree = "<group>"; };
+		0018E4362DE522FF00E4A24E /* e0ob5ielwr791ns734ukotyz8.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = e0ob5ielwr791ns734ukotyz8.o; sourceTree = "<group>"; };
+		0018E4372DE522FF00E4A24E /* e2rf1vsusvjepa7rnuhf2qbz8.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = e2rf1vsusvjepa7rnuhf2qbz8.o; sourceTree = "<group>"; };
+		0018E4382DE522FF00E4A24E /* e8xmlx62v8gdpsx6ecaxgs2jr.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = e8xmlx62v8gdpsx6ecaxgs2jr.o; sourceTree = "<group>"; };
+		0018E4392DE522FF00E4A24E /* e070aibhb3jv82d2f3c41b8h5.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = e070aibhb3jv82d2f3c41b8h5.o; sourceTree = "<group>"; };
+		0018E43A2DE522FF00E4A24E /* e0155z1shkq6yypvzayb94voj.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = e0155z1shkq6yypvzayb94voj.o; sourceTree = "<group>"; };
+		0018E43B2DE522FF00E4A24E /* e756ezmqd4mkdcw0ykmdkvjiq.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = e756ezmqd4mkdcw0ykmdkvjiq.o; sourceTree = "<group>"; };
+		0018E43C2DE522FF00E4A24E /* eb8tb3cykml7142mltoebow31.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = eb8tb3cykml7142mltoebow31.o; sourceTree = "<group>"; };
+		0018E43D2DE522FF00E4A24E /* emhy5nvb8mxdb5d9m19429d2q.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = emhy5nvb8mxdb5d9m19429d2q.o; sourceTree = "<group>"; };
+		0018E43E2DE522FF00E4A24E /* f03eb6rx4nqd33px2itimt9gq.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = f03eb6rx4nqd33px2itimt9gq.o; sourceTree = "<group>"; };
+		0018E43F2DE522FF00E4A24E /* query-cache.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "query-cache.bin"; sourceTree = "<group>"; };
+		0018E4402DE522FF00E4A24E /* work-products.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "work-products.bin"; sourceTree = "<group>"; };
+		0018E4422DE522FF00E4A24E /* s-h7pxah0995-0f2haxh.lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = "s-h7pxah0995-0f2haxh.lock"; sourceTree = "<group>"; };
+		0018E4452DE522FF00E4A24E /* .cargo-lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".cargo-lock"; sourceTree = "<group>"; };
+		0018E4462DE522FF00E4A24E /* libmazer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmazer.a; sourceTree = "<group>"; };
+		0018E4472DE522FF00E4A24E /* libmazer.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = libmazer.d; sourceTree = "<group>"; };
+		0018E4492DE522FF00E4A24E /* CACHEDIR.TAG */ = {isa = PBXFileReference; lastKnownFileType = text; path = CACHEDIR.TAG; sourceTree = "<group>"; };
+		0018E44B2DE522FF00E4A24E /* build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "build-script-build-script-build"; sourceTree = "<group>"; };
+		0018E44C2DE522FF00E4A24E /* build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "build-script-build-script-build.json"; sourceTree = "<group>"; };
+		0018E44D2DE522FF00E4A24E /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
+		0018E44E2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E4502DE522FF00E4A24E /* dep-lib-proc_macro2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-proc_macro2"; sourceTree = "<group>"; };
+		0018E4512DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E4522DE522FF00E4A24E /* lib-proc_macro2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-proc_macro2"; sourceTree = "<group>"; };
+		0018E4532DE522FF00E4A24E /* lib-proc_macro2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-proc_macro2.json"; sourceTree = "<group>"; };
+		0018E4552DE522FF00E4A24E /* build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "build-script-build-script-build"; sourceTree = "<group>"; };
+		0018E4562DE522FF00E4A24E /* build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "build-script-build-script-build.json"; sourceTree = "<group>"; };
+		0018E4572DE522FF00E4A24E /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
+		0018E4582DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E45A2DE522FF00E4A24E /* run-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "run-build-script-build-script-build"; sourceTree = "<group>"; };
+		0018E45B2DE522FF00E4A24E /* run-build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "run-build-script-build-script-build.json"; sourceTree = "<group>"; };
+		0018E45D2DE522FF00E4A24E /* dep-lib-quote */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-quote"; sourceTree = "<group>"; };
+		0018E45E2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E45F2DE522FF00E4A24E /* lib-quote */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-quote"; sourceTree = "<group>"; };
+		0018E4602DE522FF00E4A24E /* lib-quote.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-quote.json"; sourceTree = "<group>"; };
+		0018E4622DE522FF00E4A24E /* dep-lib-serde_derive */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-serde_derive"; sourceTree = "<group>"; };
+		0018E4632DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E4642DE522FF00E4A24E /* lib-serde_derive */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-serde_derive"; sourceTree = "<group>"; };
+		0018E4652DE522FF00E4A24E /* lib-serde_derive.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-serde_derive.json"; sourceTree = "<group>"; };
+		0018E4672DE522FF00E4A24E /* build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "build-script-build-script-build"; sourceTree = "<group>"; };
+		0018E4682DE522FF00E4A24E /* build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "build-script-build-script-build.json"; sourceTree = "<group>"; };
+		0018E4692DE522FF00E4A24E /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
+		0018E46A2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E46C2DE522FF00E4A24E /* build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "build-script-build-script-build"; sourceTree = "<group>"; };
+		0018E46D2DE522FF00E4A24E /* build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "build-script-build-script-build.json"; sourceTree = "<group>"; };
+		0018E46E2DE522FF00E4A24E /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
+		0018E46F2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E4712DE522FF00E4A24E /* dep-lib-syn */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-syn"; sourceTree = "<group>"; };
+		0018E4722DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E4732DE522FF00E4A24E /* lib-syn */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-syn"; sourceTree = "<group>"; };
+		0018E4742DE522FF00E4A24E /* lib-syn.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-syn.json"; sourceTree = "<group>"; };
+		0018E4762DE522FF00E4A24E /* dep-lib-unicode_ident */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-unicode_ident"; sourceTree = "<group>"; };
+		0018E4772DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E4782DE522FF00E4A24E /* lib-unicode_ident */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-unicode_ident"; sourceTree = "<group>"; };
+		0018E4792DE522FF00E4A24E /* lib-unicode_ident.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-unicode_ident.json"; sourceTree = "<group>"; };
+		0018E47B2DE522FF00E4A24E /* build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "build-script-build-script-build"; sourceTree = "<group>"; };
+		0018E47C2DE522FF00E4A24E /* build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "build-script-build-script-build.json"; sourceTree = "<group>"; };
+		0018E47D2DE522FF00E4A24E /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
+		0018E47E2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E4812DE522FF00E4A24E /* build_script_build-799a713d532e9eb0 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "build_script_build-799a713d532e9eb0"; sourceTree = "<group>"; };
+		0018E4822DE522FF00E4A24E /* build_script_build-799a713d532e9eb0.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "build_script_build-799a713d532e9eb0.d"; sourceTree = "<group>"; };
+		0018E4832DE522FF00E4A24E /* build_script_build-799a713d532e9eb0.build_script_build.7f3916e4c24a6ce6-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "build_script_build-799a713d532e9eb0.build_script_build.7f3916e4c24a6ce6-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E4842DE522FF00E4A24E /* build_script_build-799a713d532e9eb0.build_script_build.7f3916e4c24a6ce6-cgu.1.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "build_script_build-799a713d532e9eb0.build_script_build.7f3916e4c24a6ce6-cgu.1.rcgu.o"; sourceTree = "<group>"; };
+		0018E4852DE522FF00E4A24E /* build_script_build-799a713d532e9eb0.build_script_build.7f3916e4c24a6ce6-cgu.2.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "build_script_build-799a713d532e9eb0.build_script_build.7f3916e4c24a6ce6-cgu.2.rcgu.o"; sourceTree = "<group>"; };
+		0018E4862DE522FF00E4A24E /* build_script_build-799a713d532e9eb0.build_script_build.7f3916e4c24a6ce6-cgu.3.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "build_script_build-799a713d532e9eb0.build_script_build.7f3916e4c24a6ce6-cgu.3.rcgu.o"; sourceTree = "<group>"; };
+		0018E4872DE522FF00E4A24E /* build-script-build */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "build-script-build"; sourceTree = "<group>"; };
+		0018E4892DE522FF00E4A24E /* build_script_build-d2a15a6d42561ffa */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "build_script_build-d2a15a6d42561ffa"; sourceTree = "<group>"; };
+		0018E48A2DE522FF00E4A24E /* build_script_build-d2a15a6d42561ffa.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "build_script_build-d2a15a6d42561ffa.d"; sourceTree = "<group>"; };
+		0018E48B2DE522FF00E4A24E /* build_script_build-d2a15a6d42561ffa.build_script_build.c1b6d57a0843417c-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "build_script_build-d2a15a6d42561ffa.build_script_build.c1b6d57a0843417c-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E48C2DE522FF00E4A24E /* build_script_build-d2a15a6d42561ffa.build_script_build.c1b6d57a0843417c-cgu.1.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "build_script_build-d2a15a6d42561ffa.build_script_build.c1b6d57a0843417c-cgu.1.rcgu.o"; sourceTree = "<group>"; };
+		0018E48D2DE522FF00E4A24E /* build-script-build */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "build-script-build"; sourceTree = "<group>"; };
+		0018E4902DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		0018E4912DE522FF00E4A24E /* output */ = {isa = PBXFileReference; lastKnownFileType = text; path = output; sourceTree = "<group>"; };
+		0018E4922DE522FF00E4A24E /* root-output */ = {isa = PBXFileReference; lastKnownFileType = text; path = "root-output"; sourceTree = "<group>"; };
+		0018E4932DE522FF00E4A24E /* stderr */ = {isa = PBXFileReference; lastKnownFileType = text; path = stderr; sourceTree = "<group>"; };
+		0018E4952DE522FF00E4A24E /* build_script_build-ceb2124790e9db19 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "build_script_build-ceb2124790e9db19"; sourceTree = "<group>"; };
+		0018E4962DE522FF00E4A24E /* build_script_build-ceb2124790e9db19.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "build_script_build-ceb2124790e9db19.d"; sourceTree = "<group>"; };
+		0018E4972DE522FF00E4A24E /* build_script_build-ceb2124790e9db19.build_script_build.25e1355037732e14-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "build_script_build-ceb2124790e9db19.build_script_build.25e1355037732e14-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E4982DE522FF00E4A24E /* build-script-build */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "build-script-build"; sourceTree = "<group>"; };
+		0018E49A2DE522FF00E4A24E /* build_script_build-35321d0c302fb02e */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "build_script_build-35321d0c302fb02e"; sourceTree = "<group>"; };
+		0018E49B2DE522FF00E4A24E /* build_script_build-35321d0c302fb02e.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "build_script_build-35321d0c302fb02e.d"; sourceTree = "<group>"; };
+		0018E49C2DE522FF00E4A24E /* build_script_build-35321d0c302fb02e.build_script_build.50704ac90cb656d3-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "build_script_build-35321d0c302fb02e.build_script_build.50704ac90cb656d3-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E49D2DE522FF00E4A24E /* build-script-build */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "build-script-build"; sourceTree = "<group>"; };
+		0018E49F2DE522FF00E4A24E /* build_script_build-f4582b994b8276af */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "build_script_build-f4582b994b8276af"; sourceTree = "<group>"; };
+		0018E4A02DE522FF00E4A24E /* build_script_build-f4582b994b8276af.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "build_script_build-f4582b994b8276af.d"; sourceTree = "<group>"; };
+		0018E4A12DE522FF00E4A24E /* build_script_build-f4582b994b8276af.build_script_build.76209159ba40f5e6-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "build_script_build-f4582b994b8276af.build_script_build.76209159ba40f5e6-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E4A22DE522FF00E4A24E /* build_script_build-f4582b994b8276af.build_script_build.76209159ba40f5e6-cgu.1.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "build_script_build-f4582b994b8276af.build_script_build.76209159ba40f5e6-cgu.1.rcgu.o"; sourceTree = "<group>"; };
+		0018E4A32DE522FF00E4A24E /* build_script_build-f4582b994b8276af.build_script_build.76209159ba40f5e6-cgu.2.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "build_script_build-f4582b994b8276af.build_script_build.76209159ba40f5e6-cgu.2.rcgu.o"; sourceTree = "<group>"; };
+		0018E4A42DE522FF00E4A24E /* build_script_build-f4582b994b8276af.build_script_build.76209159ba40f5e6-cgu.3.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "build_script_build-f4582b994b8276af.build_script_build.76209159ba40f5e6-cgu.3.rcgu.o"; sourceTree = "<group>"; };
+		0018E4A52DE522FF00E4A24E /* build_script_build-f4582b994b8276af.build_script_build.76209159ba40f5e6-cgu.4.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "build_script_build-f4582b994b8276af.build_script_build.76209159ba40f5e6-cgu.4.rcgu.o"; sourceTree = "<group>"; };
+		0018E4A62DE522FF00E4A24E /* build-script-build */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "build-script-build"; sourceTree = "<group>"; };
+		0018E4A92DE522FF00E4A24E /* libproc_macro2-97689600c86a41b6.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libproc_macro2-97689600c86a41b6.rlib"; sourceTree = "<group>"; };
+		0018E4AA2DE522FF00E4A24E /* libproc_macro2-97689600c86a41b6.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libproc_macro2-97689600c86a41b6.rmeta"; sourceTree = "<group>"; };
+		0018E4AB2DE522FF00E4A24E /* libquote-1d09a019a18a00fa.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libquote-1d09a019a18a00fa.rlib"; sourceTree = "<group>"; };
+		0018E4AC2DE522FF00E4A24E /* libquote-1d09a019a18a00fa.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libquote-1d09a019a18a00fa.rmeta"; sourceTree = "<group>"; };
+		0018E4AD2DE522FF00E4A24E /* libserde_derive-00ce817322e7ad83.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libserde_derive-00ce817322e7ad83.dylib"; sourceTree = "<group>"; };
+		0018E4AE2DE522FF00E4A24E /* libsyn-03d6696254a1a5a2.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libsyn-03d6696254a1a5a2.rlib"; sourceTree = "<group>"; };
+		0018E4AF2DE522FF00E4A24E /* libsyn-03d6696254a1a5a2.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libsyn-03d6696254a1a5a2.rmeta"; sourceTree = "<group>"; };
+		0018E4B02DE522FF00E4A24E /* libunicode_ident-5431e7c935748c9f.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libunicode_ident-5431e7c935748c9f.rlib"; sourceTree = "<group>"; };
+		0018E4B12DE522FF00E4A24E /* libunicode_ident-5431e7c935748c9f.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libunicode_ident-5431e7c935748c9f.rmeta"; sourceTree = "<group>"; };
+		0018E4B22DE522FF00E4A24E /* proc_macro2-97689600c86a41b6.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "proc_macro2-97689600c86a41b6.d"; sourceTree = "<group>"; };
+		0018E4B32DE522FF00E4A24E /* proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E4B42DE522FF00E4A24E /* proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.1.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.1.rcgu.o"; sourceTree = "<group>"; };
+		0018E4B52DE522FF00E4A24E /* proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.2.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.2.rcgu.o"; sourceTree = "<group>"; };
+		0018E4B62DE522FF00E4A24E /* proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.3.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.3.rcgu.o"; sourceTree = "<group>"; };
+		0018E4B72DE522FF00E4A24E /* proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.4.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.4.rcgu.o"; sourceTree = "<group>"; };
+		0018E4B82DE522FF00E4A24E /* proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.5.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.5.rcgu.o"; sourceTree = "<group>"; };
+		0018E4B92DE522FF00E4A24E /* proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.6.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.6.rcgu.o"; sourceTree = "<group>"; };
+		0018E4BA2DE522FF00E4A24E /* proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.7.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.7.rcgu.o"; sourceTree = "<group>"; };
+		0018E4BB2DE522FF00E4A24E /* quote-1d09a019a18a00fa.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "quote-1d09a019a18a00fa.d"; sourceTree = "<group>"; };
+		0018E4BC2DE522FF00E4A24E /* quote-1d09a019a18a00fa.quote.16e27cd56922ab06-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "quote-1d09a019a18a00fa.quote.16e27cd56922ab06-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E4BD2DE522FF00E4A24E /* quote-1d09a019a18a00fa.quote.16e27cd56922ab06-cgu.1.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "quote-1d09a019a18a00fa.quote.16e27cd56922ab06-cgu.1.rcgu.o"; sourceTree = "<group>"; };
+		0018E4BE2DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "serde_derive-00ce817322e7ad83.d"; sourceTree = "<group>"; };
+		0018E4BF2DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.00.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.00.rcgu.o"; sourceTree = "<group>"; };
+		0018E4C02DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.01.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.01.rcgu.o"; sourceTree = "<group>"; };
+		0018E4C12DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.02.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.02.rcgu.o"; sourceTree = "<group>"; };
+		0018E4C22DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.03.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.03.rcgu.o"; sourceTree = "<group>"; };
+		0018E4C32DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.04.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.04.rcgu.o"; sourceTree = "<group>"; };
+		0018E4C42DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.05.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.05.rcgu.o"; sourceTree = "<group>"; };
+		0018E4C52DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.06.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.06.rcgu.o"; sourceTree = "<group>"; };
+		0018E4C62DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.07.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.07.rcgu.o"; sourceTree = "<group>"; };
+		0018E4C72DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.08.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.08.rcgu.o"; sourceTree = "<group>"; };
+		0018E4C82DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.09.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.09.rcgu.o"; sourceTree = "<group>"; };
+		0018E4C92DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.10.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.10.rcgu.o"; sourceTree = "<group>"; };
+		0018E4CA2DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.11.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.11.rcgu.o"; sourceTree = "<group>"; };
+		0018E4CB2DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.12.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.12.rcgu.o"; sourceTree = "<group>"; };
+		0018E4CC2DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.13.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.13.rcgu.o"; sourceTree = "<group>"; };
+		0018E4CD2DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.14.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.14.rcgu.o"; sourceTree = "<group>"; };
+		0018E4CE2DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.15.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.15.rcgu.o"; sourceTree = "<group>"; };
+		0018E4CF2DE522FF00E4A24E /* syn-03d6696254a1a5a2.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "syn-03d6696254a1a5a2.d"; sourceTree = "<group>"; };
+		0018E4D02DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.00.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.00.rcgu.o"; sourceTree = "<group>"; };
+		0018E4D12DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.01.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.01.rcgu.o"; sourceTree = "<group>"; };
+		0018E4D22DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.02.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.02.rcgu.o"; sourceTree = "<group>"; };
+		0018E4D32DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.03.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.03.rcgu.o"; sourceTree = "<group>"; };
+		0018E4D42DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.04.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.04.rcgu.o"; sourceTree = "<group>"; };
+		0018E4D52DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.05.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.05.rcgu.o"; sourceTree = "<group>"; };
+		0018E4D62DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.06.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.06.rcgu.o"; sourceTree = "<group>"; };
+		0018E4D72DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.07.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.07.rcgu.o"; sourceTree = "<group>"; };
+		0018E4D82DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.08.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.08.rcgu.o"; sourceTree = "<group>"; };
+		0018E4D92DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.09.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.09.rcgu.o"; sourceTree = "<group>"; };
+		0018E4DA2DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.10.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.10.rcgu.o"; sourceTree = "<group>"; };
+		0018E4DB2DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.11.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.11.rcgu.o"; sourceTree = "<group>"; };
+		0018E4DC2DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.12.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.12.rcgu.o"; sourceTree = "<group>"; };
+		0018E4DD2DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.13.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.13.rcgu.o"; sourceTree = "<group>"; };
+		0018E4DE2DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.14.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.14.rcgu.o"; sourceTree = "<group>"; };
+		0018E4DF2DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.15.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.15.rcgu.o"; sourceTree = "<group>"; };
+		0018E4E02DE522FF00E4A24E /* unicode_ident-5431e7c935748c9f.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "unicode_ident-5431e7c935748c9f.d"; sourceTree = "<group>"; };
+		0018E4E12DE522FF00E4A24E /* unicode_ident-5431e7c935748c9f.unicode_ident.2034d250d5dedae1-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "unicode_ident-5431e7c935748c9f.unicode_ident.2034d250d5dedae1-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		0018E4E52DE522FF00E4A24E /* .cargo-lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".cargo-lock"; sourceTree = "<group>"; };
+		0018E4E72DE522FF00E4A24E /* .rustc_info.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = .rustc_info.json; sourceTree = "<group>"; };
+		0018E4E82DE522FF00E4A24E /* CACHEDIR.TAG */ = {isa = PBXFileReference; lastKnownFileType = text; path = CACHEDIR.TAG; sourceTree = "<group>"; };
+		0018E4EB2DE5231C00E4A24E /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
 		001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigmaDirectionControlViewi.swift; sourceTree = "<group>"; };
 		001E48E22DB1A4680036F7E9 /* MazeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGridView.swift; sourceTree = "<group>"; };
 		003753BC2DD8336C000DB75C /* SparkleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleView.swift; sourceTree = "<group>"; };
@@ -493,17 +1049,17 @@
 		00C3414A2D9E286E0077691B /* lib-serde_derive.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-serde_derive.json"; sourceTree = "<group>"; };
 		00C3414C2D9E286E0077691B /* build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "build-script-build-script-build"; sourceTree = "<group>"; };
 		00C3414D2D9E286E0077691B /* build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "build-script-build-script-build.json"; sourceTree = "<group>"; };
-		00C3414E2D9E286E0077691B /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
+		00C3414E2D9E286E0077691B /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
 		00C3414F2D9E286E0077691B /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00C341512D9E286E0077691B /* build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "build-script-build-script-build"; sourceTree = "<group>"; };
 		00C341522D9E286E0077691B /* build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "build-script-build-script-build.json"; sourceTree = "<group>"; };
-		00C341532D9E286E0077691B /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
+		00C341532D9E286E0077691B /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
 		00C341542D9E286E0077691B /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00C341562D9E286E0077691B /* dep-lib-syn */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-syn"; sourceTree = "<group>"; };
 		00C341572D9E286E0077691B /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00C341582D9E286E0077691B /* lib-syn */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-syn"; sourceTree = "<group>"; };
 		00C341592D9E286E0077691B /* lib-syn.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-syn.json"; sourceTree = "<group>"; };
-		00C3415B2D9E286E0077691B /* dep-lib-unicode_ident */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-unicode_ident"; sourceTree = "<group>"; };
+		00C3415B2D9E286E0077691B /* dep-lib-unicode_ident */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-unicode_ident"; sourceTree = "<group>"; };
 		00C3415C2D9E286E0077691B /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00C3415D2D9E286E0077691B /* lib-unicode_ident */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-unicode_ident"; sourceTree = "<group>"; };
 		00C3415E2D9E286E0077691B /* lib-unicode_ident.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-unicode_ident.json"; sourceTree = "<group>"; };
@@ -1050,17 +1606,17 @@
 		00DD0D322DAC3C7E00C20B2E /* lib-serde_derive.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-serde_derive.json"; sourceTree = "<group>"; };
 		00DD0D342DAC3C7E00C20B2E /* build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "build-script-build-script-build"; sourceTree = "<group>"; };
 		00DD0D352DAC3C7E00C20B2E /* build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "build-script-build-script-build.json"; sourceTree = "<group>"; };
-		00DD0D362DAC3C7E00C20B2E /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
+		00DD0D362DAC3C7E00C20B2E /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
 		00DD0D372DAC3C7E00C20B2E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00DD0D392DAC3C7E00C20B2E /* build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "build-script-build-script-build"; sourceTree = "<group>"; };
 		00DD0D3A2DAC3C7E00C20B2E /* build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "build-script-build-script-build.json"; sourceTree = "<group>"; };
-		00DD0D3B2DAC3C7E00C20B2E /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
+		00DD0D3B2DAC3C7E00C20B2E /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
 		00DD0D3C2DAC3C7E00C20B2E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00DD0D3E2DAC3C7E00C20B2E /* dep-lib-syn */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-syn"; sourceTree = "<group>"; };
 		00DD0D3F2DAC3C7E00C20B2E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00DD0D402DAC3C7E00C20B2E /* lib-syn */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-syn"; sourceTree = "<group>"; };
 		00DD0D412DAC3C7E00C20B2E /* lib-syn.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-syn.json"; sourceTree = "<group>"; };
-		00DD0D432DAC3C7E00C20B2E /* dep-lib-unicode_ident */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-unicode_ident"; sourceTree = "<group>"; };
+		00DD0D432DAC3C7E00C20B2E /* dep-lib-unicode_ident */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-unicode_ident"; sourceTree = "<group>"; };
 		00DD0D442DAC3C7E00C20B2E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00DD0D452DAC3C7E00C20B2E /* lib-unicode_ident */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-unicode_ident"; sourceTree = "<group>"; };
 		00DD0D462DAC3C7E00C20B2E /* lib-unicode_ident.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-unicode_ident.json"; sourceTree = "<group>"; };
@@ -1178,13 +1734,1047 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00F2F9512DE5090B00E477CF /* libmazer.a in Frameworks */,
+				0018E4EA2DE5230A00E4A24E /* libmazer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0018E2882DE522FF00E4A24E /* cfg-if-66817bb2c19adbe1 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2842DE522FF00E4A24E /* dep-lib-cfg_if */,
+				0018E2852DE522FF00E4A24E /* invoked.timestamp */,
+				0018E2862DE522FF00E4A24E /* lib-cfg_if */,
+				0018E2872DE522FF00E4A24E /* lib-cfg_if.json */,
+			);
+			path = "cfg-if-66817bb2c19adbe1";
+			sourceTree = "<group>";
+		};
+		0018E28D2DE522FF00E4A24E /* getrandom-b623d5753d7e10bb */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2892DE522FF00E4A24E /* dep-lib-getrandom */,
+				0018E28A2DE522FF00E4A24E /* invoked.timestamp */,
+				0018E28B2DE522FF00E4A24E /* lib-getrandom */,
+				0018E28C2DE522FF00E4A24E /* lib-getrandom.json */,
+			);
+			path = "getrandom-b623d5753d7e10bb";
+			sourceTree = "<group>";
+		};
+		0018E2922DE522FF00E4A24E /* itoa-f66071dec659f76f */ = {
+			isa = PBXGroup;
+			children = (
+				0018E28E2DE522FF00E4A24E /* dep-lib-itoa */,
+				0018E28F2DE522FF00E4A24E /* invoked.timestamp */,
+				0018E2902DE522FF00E4A24E /* lib-itoa */,
+				0018E2912DE522FF00E4A24E /* lib-itoa.json */,
+			);
+			path = "itoa-f66071dec659f76f";
+			sourceTree = "<group>";
+		};
+		0018E2972DE522FF00E4A24E /* libc-7c02580734f3c437 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2932DE522FF00E4A24E /* dep-lib-libc */,
+				0018E2942DE522FF00E4A24E /* invoked.timestamp */,
+				0018E2952DE522FF00E4A24E /* lib-libc */,
+				0018E2962DE522FF00E4A24E /* lib-libc.json */,
+			);
+			path = "libc-7c02580734f3c437";
+			sourceTree = "<group>";
+		};
+		0018E29A2DE522FF00E4A24E /* libc-67f1a57ed1f06ec3 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2982DE522FF00E4A24E /* run-build-script-build-script-build */,
+				0018E2992DE522FF00E4A24E /* run-build-script-build-script-build.json */,
+			);
+			path = "libc-67f1a57ed1f06ec3";
+			sourceTree = "<group>";
+		};
+		0018E29F2DE522FF00E4A24E /* mazer-9eaaefbedb48654d */ = {
+			isa = PBXGroup;
+			children = (
+				0018E29B2DE522FF00E4A24E /* dep-lib-mazer */,
+				0018E29C2DE522FF00E4A24E /* invoked.timestamp */,
+				0018E29D2DE522FF00E4A24E /* lib-mazer */,
+				0018E29E2DE522FF00E4A24E /* lib-mazer.json */,
+			);
+			path = "mazer-9eaaefbedb48654d";
+			sourceTree = "<group>";
+		};
+		0018E2A42DE522FF00E4A24E /* memchr-c4f6caf3007991a2 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2A02DE522FF00E4A24E /* dep-lib-memchr */,
+				0018E2A12DE522FF00E4A24E /* invoked.timestamp */,
+				0018E2A22DE522FF00E4A24E /* lib-memchr */,
+				0018E2A32DE522FF00E4A24E /* lib-memchr.json */,
+			);
+			path = "memchr-c4f6caf3007991a2";
+			sourceTree = "<group>";
+		};
+		0018E2A92DE522FF00E4A24E /* ppv-lite86-1683715d155c965b */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2A52DE522FF00E4A24E /* dep-lib-ppv_lite86 */,
+				0018E2A62DE522FF00E4A24E /* invoked.timestamp */,
+				0018E2A72DE522FF00E4A24E /* lib-ppv_lite86 */,
+				0018E2A82DE522FF00E4A24E /* lib-ppv_lite86.json */,
+			);
+			path = "ppv-lite86-1683715d155c965b";
+			sourceTree = "<group>";
+		};
+		0018E2AE2DE522FF00E4A24E /* rand_chacha-4f5b59a848726478 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2AA2DE522FF00E4A24E /* dep-lib-rand_chacha */,
+				0018E2AB2DE522FF00E4A24E /* invoked.timestamp */,
+				0018E2AC2DE522FF00E4A24E /* lib-rand_chacha */,
+				0018E2AD2DE522FF00E4A24E /* lib-rand_chacha.json */,
+			);
+			path = "rand_chacha-4f5b59a848726478";
+			sourceTree = "<group>";
+		};
+		0018E2B32DE522FF00E4A24E /* rand_core-d100e004e1d83e91 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2AF2DE522FF00E4A24E /* dep-lib-rand_core */,
+				0018E2B02DE522FF00E4A24E /* invoked.timestamp */,
+				0018E2B12DE522FF00E4A24E /* lib-rand_core */,
+				0018E2B22DE522FF00E4A24E /* lib-rand_core.json */,
+			);
+			path = "rand_core-d100e004e1d83e91";
+			sourceTree = "<group>";
+		};
+		0018E2B82DE522FF00E4A24E /* rand-ab2870feeb8b502c */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2B42DE522FF00E4A24E /* dep-lib-rand */,
+				0018E2B52DE522FF00E4A24E /* invoked.timestamp */,
+				0018E2B62DE522FF00E4A24E /* lib-rand */,
+				0018E2B72DE522FF00E4A24E /* lib-rand.json */,
+			);
+			path = "rand-ab2870feeb8b502c";
+			sourceTree = "<group>";
+		};
+		0018E2BD2DE522FF00E4A24E /* ryu-89368832ed1b1332 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2B92DE522FF00E4A24E /* dep-lib-ryu */,
+				0018E2BA2DE522FF00E4A24E /* invoked.timestamp */,
+				0018E2BB2DE522FF00E4A24E /* lib-ryu */,
+				0018E2BC2DE522FF00E4A24E /* lib-ryu.json */,
+			);
+			path = "ryu-89368832ed1b1332";
+			sourceTree = "<group>";
+		};
+		0018E2C02DE522FF00E4A24E /* serde_json-ac4155038c6d5564 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2BE2DE522FF00E4A24E /* run-build-script-build-script-build */,
+				0018E2BF2DE522FF00E4A24E /* run-build-script-build-script-build.json */,
+			);
+			path = "serde_json-ac4155038c6d5564";
+			sourceTree = "<group>";
+		};
+		0018E2C52DE522FF00E4A24E /* serde_json-e8b06591e82721e3 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2C12DE522FF00E4A24E /* dep-lib-serde_json */,
+				0018E2C22DE522FF00E4A24E /* invoked.timestamp */,
+				0018E2C32DE522FF00E4A24E /* lib-serde_json */,
+				0018E2C42DE522FF00E4A24E /* lib-serde_json.json */,
+			);
+			path = "serde_json-e8b06591e82721e3";
+			sourceTree = "<group>";
+		};
+		0018E2C82DE522FF00E4A24E /* serde-4c2333b19e9cb2af */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2C62DE522FF00E4A24E /* run-build-script-build-script-build */,
+				0018E2C72DE522FF00E4A24E /* run-build-script-build-script-build.json */,
+			);
+			path = "serde-4c2333b19e9cb2af";
+			sourceTree = "<group>";
+		};
+		0018E2CD2DE522FF00E4A24E /* serde-b24c64a30501af59 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2C92DE522FF00E4A24E /* dep-lib-serde */,
+				0018E2CA2DE522FF00E4A24E /* invoked.timestamp */,
+				0018E2CB2DE522FF00E4A24E /* lib-serde */,
+				0018E2CC2DE522FF00E4A24E /* lib-serde.json */,
+			);
+			path = "serde-b24c64a30501af59";
+			sourceTree = "<group>";
+		};
+		0018E2D22DE522FF00E4A24E /* zerocopy-68d3c26d18abd06f */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2CE2DE522FF00E4A24E /* dep-lib-zerocopy */,
+				0018E2CF2DE522FF00E4A24E /* invoked.timestamp */,
+				0018E2D02DE522FF00E4A24E /* lib-zerocopy */,
+				0018E2D12DE522FF00E4A24E /* lib-zerocopy.json */,
+			);
+			path = "zerocopy-68d3c26d18abd06f";
+			sourceTree = "<group>";
+		};
+		0018E2D52DE522FF00E4A24E /* zerocopy-165d7deb4a773df9 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2D32DE522FF00E4A24E /* run-build-script-build-script-build */,
+				0018E2D42DE522FF00E4A24E /* run-build-script-build-script-build.json */,
+			);
+			path = "zerocopy-165d7deb4a773df9";
+			sourceTree = "<group>";
+		};
+		0018E2D62DE522FF00E4A24E /* .fingerprint */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2882DE522FF00E4A24E /* cfg-if-66817bb2c19adbe1 */,
+				0018E28D2DE522FF00E4A24E /* getrandom-b623d5753d7e10bb */,
+				0018E2922DE522FF00E4A24E /* itoa-f66071dec659f76f */,
+				0018E2972DE522FF00E4A24E /* libc-7c02580734f3c437 */,
+				0018E29A2DE522FF00E4A24E /* libc-67f1a57ed1f06ec3 */,
+				0018E29F2DE522FF00E4A24E /* mazer-9eaaefbedb48654d */,
+				0018E2A42DE522FF00E4A24E /* memchr-c4f6caf3007991a2 */,
+				0018E2A92DE522FF00E4A24E /* ppv-lite86-1683715d155c965b */,
+				0018E2AE2DE522FF00E4A24E /* rand_chacha-4f5b59a848726478 */,
+				0018E2B32DE522FF00E4A24E /* rand_core-d100e004e1d83e91 */,
+				0018E2B82DE522FF00E4A24E /* rand-ab2870feeb8b502c */,
+				0018E2BD2DE522FF00E4A24E /* ryu-89368832ed1b1332 */,
+				0018E2C02DE522FF00E4A24E /* serde_json-ac4155038c6d5564 */,
+				0018E2C52DE522FF00E4A24E /* serde_json-e8b06591e82721e3 */,
+				0018E2C82DE522FF00E4A24E /* serde-4c2333b19e9cb2af */,
+				0018E2CD2DE522FF00E4A24E /* serde-b24c64a30501af59 */,
+				0018E2D22DE522FF00E4A24E /* zerocopy-68d3c26d18abd06f */,
+				0018E2D52DE522FF00E4A24E /* zerocopy-165d7deb4a773df9 */,
+			);
+			path = .fingerprint;
+			sourceTree = "<group>";
+		};
+		0018E2D72DE522FF00E4A24E /* out */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = out;
+			sourceTree = "<group>";
+		};
+		0018E2DC2DE522FF00E4A24E /* libc-67f1a57ed1f06ec3 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2D72DE522FF00E4A24E /* out */,
+				0018E2D82DE522FF00E4A24E /* invoked.timestamp */,
+				0018E2D92DE522FF00E4A24E /* output */,
+				0018E2DA2DE522FF00E4A24E /* root-output */,
+				0018E2DB2DE522FF00E4A24E /* stderr */,
+			);
+			path = "libc-67f1a57ed1f06ec3";
+			sourceTree = "<group>";
+		};
+		0018E2DD2DE522FF00E4A24E /* out */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = out;
+			sourceTree = "<group>";
+		};
+		0018E2E22DE522FF00E4A24E /* serde_json-ac4155038c6d5564 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2DD2DE522FF00E4A24E /* out */,
+				0018E2DE2DE522FF00E4A24E /* invoked.timestamp */,
+				0018E2DF2DE522FF00E4A24E /* output */,
+				0018E2E02DE522FF00E4A24E /* root-output */,
+				0018E2E12DE522FF00E4A24E /* stderr */,
+			);
+			path = "serde_json-ac4155038c6d5564";
+			sourceTree = "<group>";
+		};
+		0018E2E32DE522FF00E4A24E /* out */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = out;
+			sourceTree = "<group>";
+		};
+		0018E2E82DE522FF00E4A24E /* serde-4c2333b19e9cb2af */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2E32DE522FF00E4A24E /* out */,
+				0018E2E42DE522FF00E4A24E /* invoked.timestamp */,
+				0018E2E52DE522FF00E4A24E /* output */,
+				0018E2E62DE522FF00E4A24E /* root-output */,
+				0018E2E72DE522FF00E4A24E /* stderr */,
+			);
+			path = "serde-4c2333b19e9cb2af";
+			sourceTree = "<group>";
+		};
+		0018E2E92DE522FF00E4A24E /* out */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = out;
+			sourceTree = "<group>";
+		};
+		0018E2EE2DE522FF00E4A24E /* zerocopy-165d7deb4a773df9 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2E92DE522FF00E4A24E /* out */,
+				0018E2EA2DE522FF00E4A24E /* invoked.timestamp */,
+				0018E2EB2DE522FF00E4A24E /* output */,
+				0018E2EC2DE522FF00E4A24E /* root-output */,
+				0018E2ED2DE522FF00E4A24E /* stderr */,
+			);
+			path = "zerocopy-165d7deb4a773df9";
+			sourceTree = "<group>";
+		};
+		0018E2EF2DE522FF00E4A24E /* build */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2DC2DE522FF00E4A24E /* libc-67f1a57ed1f06ec3 */,
+				0018E2E22DE522FF00E4A24E /* serde_json-ac4155038c6d5564 */,
+				0018E2E82DE522FF00E4A24E /* serde-4c2333b19e9cb2af */,
+				0018E2EE2DE522FF00E4A24E /* zerocopy-165d7deb4a773df9 */,
+			);
+			path = build;
+			sourceTree = "<group>";
+		};
+		0018E3B52DE522FF00E4A24E /* deps */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2F02DE522FF00E4A24E /* cfg_if-66817bb2c19adbe1.d */,
+				0018E2F12DE522FF00E4A24E /* cfg_if-66817bb2c19adbe1.cfg_if.baf5f75ca65f041c-cgu.0.rcgu.o */,
+				0018E2F22DE522FF00E4A24E /* getrandom-b623d5753d7e10bb.d */,
+				0018E2F32DE522FF00E4A24E /* getrandom-b623d5753d7e10bb.getrandom.97f31b6d5eefe533-cgu.0.rcgu.o */,
+				0018E2F42DE522FF00E4A24E /* itoa-f66071dec659f76f.d */,
+				0018E2F52DE522FF00E4A24E /* itoa-f66071dec659f76f.itoa.bfff7c31bfacbbc0-cgu.0.rcgu.o */,
+				0018E2F62DE522FF00E4A24E /* libc-7c02580734f3c437.d */,
+				0018E2F72DE522FF00E4A24E /* libc-7c02580734f3c437.libc.e23e3eb6dbc8c3f7-cgu.0.rcgu.o */,
+				0018E2F82DE522FF00E4A24E /* libcfg_if-66817bb2c19adbe1.rlib */,
+				0018E2F92DE522FF00E4A24E /* libcfg_if-66817bb2c19adbe1.rmeta */,
+				0018E2FA2DE522FF00E4A24E /* libgetrandom-b623d5753d7e10bb.rlib */,
+				0018E2FB2DE522FF00E4A24E /* libgetrandom-b623d5753d7e10bb.rmeta */,
+				0018E2FC2DE522FF00E4A24E /* libitoa-f66071dec659f76f.rlib */,
+				0018E2FD2DE522FF00E4A24E /* libitoa-f66071dec659f76f.rmeta */,
+				0018E2FE2DE522FF00E4A24E /* liblibc-7c02580734f3c437.rlib */,
+				0018E2FF2DE522FF00E4A24E /* liblibc-7c02580734f3c437.rmeta */,
+				0018E3002DE522FF00E4A24E /* libmazer-9eaaefbedb48654d.a */,
+				0018E3012DE522FF00E4A24E /* libmemchr-c4f6caf3007991a2.rlib */,
+				0018E3022DE522FF00E4A24E /* libmemchr-c4f6caf3007991a2.rmeta */,
+				0018E3032DE522FF00E4A24E /* libppv_lite86-1683715d155c965b.rlib */,
+				0018E3042DE522FF00E4A24E /* libppv_lite86-1683715d155c965b.rmeta */,
+				0018E3052DE522FF00E4A24E /* librand_chacha-4f5b59a848726478.rlib */,
+				0018E3062DE522FF00E4A24E /* librand_chacha-4f5b59a848726478.rmeta */,
+				0018E3072DE522FF00E4A24E /* librand_core-d100e004e1d83e91.rlib */,
+				0018E3082DE522FF00E4A24E /* librand_core-d100e004e1d83e91.rmeta */,
+				0018E3092DE522FF00E4A24E /* librand-ab2870feeb8b502c.rlib */,
+				0018E30A2DE522FF00E4A24E /* librand-ab2870feeb8b502c.rmeta */,
+				0018E30B2DE522FF00E4A24E /* libryu-89368832ed1b1332.rlib */,
+				0018E30C2DE522FF00E4A24E /* libryu-89368832ed1b1332.rmeta */,
+				0018E30D2DE522FF00E4A24E /* libserde_json-e8b06591e82721e3.rlib */,
+				0018E30E2DE522FF00E4A24E /* libserde_json-e8b06591e82721e3.rmeta */,
+				0018E30F2DE522FF00E4A24E /* libserde-b24c64a30501af59.rlib */,
+				0018E3102DE522FF00E4A24E /* libserde-b24c64a30501af59.rmeta */,
+				0018E3112DE522FF00E4A24E /* libzerocopy-68d3c26d18abd06f.rlib */,
+				0018E3122DE522FF00E4A24E /* libzerocopy-68d3c26d18abd06f.rmeta */,
+				0018E3132DE522FF00E4A24E /* mazer-9eaaefbedb48654d.d */,
+				0018E3142DE522FF00E4A24E /* mazer-9eaaefbedb48654d.0dpyf9y2cxcwgi3cpd58kq8l2.rcgu.o */,
+				0018E3152DE522FF00E4A24E /* mazer-9eaaefbedb48654d.0h5mv18ev0r4tih4p65fdsjsv.rcgu.o */,
+				0018E3162DE522FF00E4A24E /* mazer-9eaaefbedb48654d.0muacqqsurev3v31plytsbts7.rcgu.o */,
+				0018E3172DE522FF00E4A24E /* mazer-9eaaefbedb48654d.0n9d3oqgjft3z3vzqdwlln1vx.rcgu.o */,
+				0018E3182DE522FF00E4A24E /* mazer-9eaaefbedb48654d.0n425tovtujaeuakbk5w47gfw.rcgu.o */,
+				0018E3192DE522FF00E4A24E /* mazer-9eaaefbedb48654d.0qtyrqmnx1w17aa1prxx6ze1j.rcgu.o */,
+				0018E31A2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.0t1mhwygjl3o74v2ofe85h1ke.rcgu.o */,
+				0018E31B2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.1al1frqhwt0dfncvy3p9ihozr.rcgu.o */,
+				0018E31C2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.1bq7j1qn4040394qsx8592bp9.rcgu.o */,
+				0018E31D2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.1i0dle2pjfm55savm9re65igb.rcgu.o */,
+				0018E31E2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.1mja6oju6xqge7jffg8iwcetq.rcgu.o */,
+				0018E31F2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.1n0e86tkxpy7tc44t8sfh43h6.rcgu.o */,
+				0018E3202DE522FF00E4A24E /* mazer-9eaaefbedb48654d.2bxrl3mzvctxwx2s7mk56lpmn.rcgu.o */,
+				0018E3212DE522FF00E4A24E /* mazer-9eaaefbedb48654d.2f56lvktep34sx1r7rdw4b8kk.rcgu.o */,
+				0018E3222DE522FF00E4A24E /* mazer-9eaaefbedb48654d.2f59cyp7fqkjagk5l79ctp7ng.rcgu.o */,
+				0018E3232DE522FF00E4A24E /* mazer-9eaaefbedb48654d.2qcku91m8uxth0khndh5ch1de.rcgu.o */,
+				0018E3242DE522FF00E4A24E /* mazer-9eaaefbedb48654d.2wv5z33ucparttrs5tiullbtf.rcgu.o */,
+				0018E3252DE522FF00E4A24E /* mazer-9eaaefbedb48654d.3kbgn8sh0s47hldsuuyj5k7lm.rcgu.o */,
+				0018E3262DE522FF00E4A24E /* mazer-9eaaefbedb48654d.3l7cwx392fzwbnjlqo6xhzghd.rcgu.o */,
+				0018E3272DE522FF00E4A24E /* mazer-9eaaefbedb48654d.3lqcvyx68ghnedzxiec511mbq.rcgu.o */,
+				0018E3282DE522FF00E4A24E /* mazer-9eaaefbedb48654d.3q4ajw9wm0bs4toecenx9zdl6.rcgu.o */,
+				0018E3292DE522FF00E4A24E /* mazer-9eaaefbedb48654d.3r14uzuthc23qx9gatpbgo3y5.rcgu.o */,
+				0018E32A2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.3shmq1eo28lg3tzu2w3jik2f9.rcgu.o */,
+				0018E32B2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.3t2uf3tr05qeb1mrwzwldf569.rcgu.o */,
+				0018E32C2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.3tn88qhv1jszc90p0r2sd6vve.rcgu.o */,
+				0018E32D2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.4c0vonk6i7kubqru1akofn95u.rcgu.o */,
+				0018E32E2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.4cxmg8277ja3bzmowod74x63t.rcgu.o */,
+				0018E32F2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.4kprns73fha2pw56xrir5agl2.rcgu.o */,
+				0018E3302DE522FF00E4A24E /* mazer-9eaaefbedb48654d.4l40q7z4bqo8l4lco5tqxasri.rcgu.o */,
+				0018E3312DE522FF00E4A24E /* mazer-9eaaefbedb48654d.4n20ymbmhg2ak77k8l3g861kp.rcgu.o */,
+				0018E3322DE522FF00E4A24E /* mazer-9eaaefbedb48654d.4ne9pfsj1f0g3075gjg12p0kq.rcgu.o */,
+				0018E3332DE522FF00E4A24E /* mazer-9eaaefbedb48654d.5dqiabxww860vs29k0w1gl8q4.rcgu.o */,
+				0018E3342DE522FF00E4A24E /* mazer-9eaaefbedb48654d.5dvom7qkm1v8goiyn57sm4q3y.rcgu.o */,
+				0018E3352DE522FF00E4A24E /* mazer-9eaaefbedb48654d.5t8jmuqaehq3oo8k15emh3ha7.rcgu.o */,
+				0018E3362DE522FF00E4A24E /* mazer-9eaaefbedb48654d.5tkqvsltpcqsnazpjwixgwqp2.rcgu.o */,
+				0018E3372DE522FF00E4A24E /* mazer-9eaaefbedb48654d.5vf09xdpdegmtjyzbkjbadv3e.rcgu.o */,
+				0018E3382DE522FF00E4A24E /* mazer-9eaaefbedb48654d.05z62g4u1uumoezd334enrgt1.rcgu.o */,
+				0018E3392DE522FF00E4A24E /* mazer-9eaaefbedb48654d.6ajbc1qpi3a0yiicu2jwn1rec.rcgu.o */,
+				0018E33A2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.6e6ocdibqda4xhyo2uljduzmi.rcgu.o */,
+				0018E33B2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.6iz9iqtfa23z8c3yrab7gj98e.rcgu.o */,
+				0018E33C2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.6madn9enk8yaav3ysitt1ok1y.rcgu.o */,
+				0018E33D2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.6qdt1q6cadh5ifjiwpu9hp8yd.rcgu.o */,
+				0018E33E2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.7bds8qpgxmyl3pxwyz6xi36is.rcgu.o */,
+				0018E33F2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.7donzpzley0kuwpn1geebj8ez.rcgu.o */,
+				0018E3402DE522FF00E4A24E /* mazer-9eaaefbedb48654d.7fjhnnm2ngznjt1ixaigj2u7s.rcgu.o */,
+				0018E3412DE522FF00E4A24E /* mazer-9eaaefbedb48654d.7hdcu2lgwkg0a0nnlxqcb5q6h.rcgu.o */,
+				0018E3422DE522FF00E4A24E /* mazer-9eaaefbedb48654d.7oewwgwzvtvwoxkuc54906piu.rcgu.o */,
+				0018E3432DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8ejenorjbidmp4g3r56rc5q3z.rcgu.o */,
+				0018E3442DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8fcjf7dr1zgeszx8q72ci2e0w.rcgu.o */,
+				0018E3452DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8gdq6q6bwdkr0gaudp34es166.rcgu.o */,
+				0018E3462DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8kae48lprf3fcy4yjlji0yfvd.rcgu.o */,
+				0018E3472DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8knx1mn6g6cjw6fyuhgpj8qt9.rcgu.o */,
+				0018E3482DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8nd088bb1gyyukrsfaadd0b2k.rcgu.o */,
+				0018E3492DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8s2z8vk3zaudwwdjssprsnjce.rcgu.o */,
+				0018E34A2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8tvt0bbk15nqbclhs80rhui5j.rcgu.o */,
+				0018E34B2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8ubxbkkx3f15iydcaffpreyec.rcgu.o */,
+				0018E34C2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.8uxtipni099mq7j229b0lu1ea.rcgu.o */,
+				0018E34D2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.9h66kpctdu9csqnr13nzfgba0.rcgu.o */,
+				0018E34E2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.9np32qvqmeh2zxvhdql8nnqf5.rcgu.o */,
+				0018E34F2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.9pk8bey4gvcfddokcpg48xhep.rcgu.o */,
+				0018E3502DE522FF00E4A24E /* mazer-9eaaefbedb48654d.9t42nw48pttj3dkr0cyurmngl.rcgu.o */,
+				0018E3512DE522FF00E4A24E /* mazer-9eaaefbedb48654d.9x2s480l2r3mwygd130419pgs.rcgu.o */,
+				0018E3522DE522FF00E4A24E /* mazer-9eaaefbedb48654d.12b9q9z190yjrqhg10iynjguj.rcgu.o */,
+				0018E3532DE522FF00E4A24E /* mazer-9eaaefbedb48654d.14a3k19987ppsod1gp87pmpcd.rcgu.o */,
+				0018E3542DE522FF00E4A24E /* mazer-9eaaefbedb48654d.17ftg0vqwd9auzd18of6mv679.rcgu.o */,
+				0018E3552DE522FF00E4A24E /* mazer-9eaaefbedb48654d.21qxxd0cb8kjm5amjen9kh6y0.rcgu.o */,
+				0018E3562DE522FF00E4A24E /* mazer-9eaaefbedb48654d.40m47b9yty24o130wbuev3pim.rcgu.o */,
+				0018E3572DE522FF00E4A24E /* mazer-9eaaefbedb48654d.43yjvyb2mro0i94503l0y48m4.rcgu.o */,
+				0018E3582DE522FF00E4A24E /* mazer-9eaaefbedb48654d.44dofjnjl650vc2xbmvbijki0.rcgu.o */,
+				0018E3592DE522FF00E4A24E /* mazer-9eaaefbedb48654d.47nmxjamd37yll64215xq0zdr.rcgu.o */,
+				0018E35A2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.48w1h3piyrvytmx7q6y6ulpkr.rcgu.o */,
+				0018E35B2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.51e6vlked9l3mwzypriw2e1ms.rcgu.o */,
+				0018E35C2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.52xvebmi7kl28vnlqylixty7k.rcgu.o */,
+				0018E35D2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.62dbujdeupygl6o2it8pskdh7.rcgu.o */,
+				0018E35E2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.62lgbr0wukqheje2cptnqj8dg.rcgu.o */,
+				0018E35F2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.63exaxsbv2f7d1akqkrs593n3.rcgu.o */,
+				0018E3602DE522FF00E4A24E /* mazer-9eaaefbedb48654d.67razfdtct5k6gszlezx2bpbl.rcgu.o */,
+				0018E3612DE522FF00E4A24E /* mazer-9eaaefbedb48654d.73x2zrt6sanic9oy8tseowoi2.rcgu.o */,
+				0018E3622DE522FF00E4A24E /* mazer-9eaaefbedb48654d.79rhnhztsk8g6bh9o9t6zftay.rcgu.o */,
+				0018E3632DE522FF00E4A24E /* mazer-9eaaefbedb48654d.98kkv5fjx1hi7qpz1k0vcnng0.rcgu.o */,
+				0018E3642DE522FF00E4A24E /* mazer-9eaaefbedb48654d.180yidwkukmu3ra82qwsq2nnf.rcgu.o */,
+				0018E3652DE522FF00E4A24E /* mazer-9eaaefbedb48654d.402zghgat12x6dh8auh8vcw0i.rcgu.o */,
+				0018E3662DE522FF00E4A24E /* mazer-9eaaefbedb48654d.415w77mogfoa2rzvfg5p3jl5n.rcgu.o */,
+				0018E3672DE522FF00E4A24E /* mazer-9eaaefbedb48654d.554mvbtbuqd74tszj0sjks5x7.rcgu.o */,
+				0018E3682DE522FF00E4A24E /* mazer-9eaaefbedb48654d.637ssfthhem9r3y0ehwkoqvzv.rcgu.o */,
+				0018E3692DE522FF00E4A24E /* mazer-9eaaefbedb48654d.679a3qivu5pwajsjlvn2w7rpu.rcgu.o */,
+				0018E36A2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.772mqslyae04d5mumguausxt4.rcgu.o */,
+				0018E36B2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.816sfubq571bj4f4nuf3y9oix.rcgu.o */,
+				0018E36C2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.993eess2crkegp76m29wc3d01.rcgu.o */,
+				0018E36D2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.3901ewgqnsgxt8zoms3o7nivg.rcgu.o */,
+				0018E36E2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.a5eqymodfstiwhdvtijr7vcc5.rcgu.o */,
+				0018E36F2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.a6o0f1a3qubzz3zk3qxwcxr4b.rcgu.o */,
+				0018E3702DE522FF00E4A24E /* mazer-9eaaefbedb48654d.a93gxjnf75nvrgrs549464hem.rcgu.o */,
+				0018E3712DE522FF00E4A24E /* mazer-9eaaefbedb48654d.a45699plq9qeuaxm3bc7dwakb.rcgu.o */,
+				0018E3722DE522FF00E4A24E /* mazer-9eaaefbedb48654d.ahdqpfmspz8wtm7c2jxd1gr3o.rcgu.o */,
+				0018E3732DE522FF00E4A24E /* mazer-9eaaefbedb48654d.air3q0vgfgbackbyfy2brot7v.rcgu.o */,
+				0018E3742DE522FF00E4A24E /* mazer-9eaaefbedb48654d.aj86ak8rxa5vpxozecmgafw4v.rcgu.o */,
+				0018E3752DE522FF00E4A24E /* mazer-9eaaefbedb48654d.at2afvndzqc1x4zgw1k7a6pu6.rcgu.o */,
+				0018E3762DE522FF00E4A24E /* mazer-9eaaefbedb48654d.au18oe86iur46e3hwpmogph5q.rcgu.o */,
+				0018E3772DE522FF00E4A24E /* mazer-9eaaefbedb48654d.avc36bc9vysym51eakyzq1la4.rcgu.o */,
+				0018E3782DE522FF00E4A24E /* mazer-9eaaefbedb48654d.ayjutgq1ah4784mxzittkjq6j.rcgu.o */,
+				0018E3792DE522FF00E4A24E /* mazer-9eaaefbedb48654d.b4or4bm2rzv00vbabwi7wjvm2.rcgu.o */,
+				0018E37A2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.b8dwyi16hfpjq42k3rrkg0tpj.rcgu.o */,
+				0018E37B2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.bg2jdvpgn7caj7yib30liqm1m.rcgu.o */,
+				0018E37C2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.bk80modyiwgkob0jzymmceizu.rcgu.o */,
+				0018E37D2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.bxfwg7e0mpdcyy416h7ffvrmh.rcgu.o */,
+				0018E37E2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.c1az5ayp3kf0bd1p31og3dnrp.rcgu.o */,
+				0018E37F2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.c2bkwka7h8u58yaf0m47fj840.rcgu.o */,
+				0018E3802DE522FF00E4A24E /* mazer-9eaaefbedb48654d.cf056fn8j1r9ipazgl4udwxqr.rcgu.o */,
+				0018E3812DE522FF00E4A24E /* mazer-9eaaefbedb48654d.cfffkafbg2jlohida5arl6vyk.rcgu.o */,
+				0018E3822DE522FF00E4A24E /* mazer-9eaaefbedb48654d.cg9a4ez69n4s0abpydga7f0o8.rcgu.o */,
+				0018E3832DE522FF00E4A24E /* mazer-9eaaefbedb48654d.cj84vgb4jkana4gqt7mv4rc25.rcgu.o */,
+				0018E3842DE522FF00E4A24E /* mazer-9eaaefbedb48654d.ckfchnc439p61ki1p0dr0qabj.rcgu.o */,
+				0018E3852DE522FF00E4A24E /* mazer-9eaaefbedb48654d.co611ksyi6w9mqhniino5f1ax.rcgu.o */,
+				0018E3862DE522FF00E4A24E /* mazer-9eaaefbedb48654d.cr38f2bxjhjfvuqlakrc1su3u.rcgu.o */,
+				0018E3872DE522FF00E4A24E /* mazer-9eaaefbedb48654d.ctg47wgd2v63h5kvcp0vs0hap.rcgu.o */,
+				0018E3882DE522FF00E4A24E /* mazer-9eaaefbedb48654d.cw0eq6vt68g5jjbo854qbewi5.rcgu.o */,
+				0018E3892DE522FF00E4A24E /* mazer-9eaaefbedb48654d.cwwvelyys1cu6kz2u0lj8b5h3.rcgu.o */,
+				0018E38A2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.d0f8o87wztspstcwrx4dexheu.rcgu.o */,
+				0018E38B2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.d4laa1pcgv52j6imvoqug8rh9.rcgu.o */,
+				0018E38C2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.d39hbdu3c0ruj8rxoti019rjs.rcgu.o */,
+				0018E38D2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.ddp4k91qsiiw0ae94d9ubg582.rcgu.o */,
+				0018E38E2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.di8lly86r3um1dr73qjweo1v0.rcgu.o */,
+				0018E38F2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.doefv4w3f73y5sgl25mn8jggc.rcgu.o */,
+				0018E3902DE522FF00E4A24E /* mazer-9eaaefbedb48654d.ds8rnnfjo95k7en0e9dpfnwmk.rcgu.o */,
+				0018E3912DE522FF00E4A24E /* mazer-9eaaefbedb48654d.dx2kwzjeg7xjw15u25n52f6ff.rcgu.o */,
+				0018E3922DE522FF00E4A24E /* mazer-9eaaefbedb48654d.e0ob5ielwr791ns734ukotyz8.rcgu.o */,
+				0018E3932DE522FF00E4A24E /* mazer-9eaaefbedb48654d.e2rf1vsusvjepa7rnuhf2qbz8.rcgu.o */,
+				0018E3942DE522FF00E4A24E /* mazer-9eaaefbedb48654d.e8xmlx62v8gdpsx6ecaxgs2jr.rcgu.o */,
+				0018E3952DE522FF00E4A24E /* mazer-9eaaefbedb48654d.e070aibhb3jv82d2f3c41b8h5.rcgu.o */,
+				0018E3962DE522FF00E4A24E /* mazer-9eaaefbedb48654d.e0155z1shkq6yypvzayb94voj.rcgu.o */,
+				0018E3972DE522FF00E4A24E /* mazer-9eaaefbedb48654d.e756ezmqd4mkdcw0ykmdkvjiq.rcgu.o */,
+				0018E3982DE522FF00E4A24E /* mazer-9eaaefbedb48654d.eb8tb3cykml7142mltoebow31.rcgu.o */,
+				0018E3992DE522FF00E4A24E /* mazer-9eaaefbedb48654d.emhy5nvb8mxdb5d9m19429d2q.rcgu.o */,
+				0018E39A2DE522FF00E4A24E /* mazer-9eaaefbedb48654d.f03eb6rx4nqd33px2itimt9gq.rcgu.o */,
+				0018E39B2DE522FF00E4A24E /* memchr-c4f6caf3007991a2.d */,
+				0018E39C2DE522FF00E4A24E /* memchr-c4f6caf3007991a2.memchr.de4d8f220c3d3fc7-cgu.0.rcgu.o */,
+				0018E39D2DE522FF00E4A24E /* ppv_lite86-1683715d155c965b.d */,
+				0018E39E2DE522FF00E4A24E /* ppv_lite86-1683715d155c965b.ppv_lite86.29486a0f030a2474-cgu.0.rcgu.o */,
+				0018E39F2DE522FF00E4A24E /* rand_chacha-4f5b59a848726478.d */,
+				0018E3A02DE522FF00E4A24E /* rand_chacha-4f5b59a848726478.rand_chacha.a60c85e507a90496-cgu.0.rcgu.o */,
+				0018E3A12DE522FF00E4A24E /* rand_core-d100e004e1d83e91.d */,
+				0018E3A22DE522FF00E4A24E /* rand_core-d100e004e1d83e91.rand_core.b844480d38cb3a4a-cgu.0.rcgu.o */,
+				0018E3A32DE522FF00E4A24E /* rand-ab2870feeb8b502c.d */,
+				0018E3A42DE522FF00E4A24E /* rand-ab2870feeb8b502c.rand.f6eeb259ed482a16-cgu.0.rcgu.o */,
+				0018E3A52DE522FF00E4A24E /* rand-ab2870feeb8b502c.rand.f6eeb259ed482a16-cgu.1.rcgu.o */,
+				0018E3A62DE522FF00E4A24E /* ryu-89368832ed1b1332.d */,
+				0018E3A72DE522FF00E4A24E /* ryu-89368832ed1b1332.ryu.66d373afb388c779-cgu.0.rcgu.o */,
+				0018E3A82DE522FF00E4A24E /* serde_json-e8b06591e82721e3.d */,
+				0018E3A92DE522FF00E4A24E /* serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.0.rcgu.o */,
+				0018E3AA2DE522FF00E4A24E /* serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.1.rcgu.o */,
+				0018E3AB2DE522FF00E4A24E /* serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.2.rcgu.o */,
+				0018E3AC2DE522FF00E4A24E /* serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.3.rcgu.o */,
+				0018E3AD2DE522FF00E4A24E /* serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.4.rcgu.o */,
+				0018E3AE2DE522FF00E4A24E /* serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.5.rcgu.o */,
+				0018E3AF2DE522FF00E4A24E /* serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.6.rcgu.o */,
+				0018E3B02DE522FF00E4A24E /* serde_json-e8b06591e82721e3.serde_json.ac4d3dbf9b627696-cgu.7.rcgu.o */,
+				0018E3B12DE522FF00E4A24E /* serde-b24c64a30501af59.d */,
+				0018E3B22DE522FF00E4A24E /* serde-b24c64a30501af59.serde.bf477216bb80ee88-cgu.0.rcgu.o */,
+				0018E3B32DE522FF00E4A24E /* zerocopy-68d3c26d18abd06f.d */,
+				0018E3B42DE522FF00E4A24E /* zerocopy-68d3c26d18abd06f.zerocopy.87484d06348f5db2-cgu.0.rcgu.o */,
+			);
+			path = deps;
+			sourceTree = "<group>";
+		};
+		0018E3B62DE522FF00E4A24E /* examples */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		0018E4412DE522FF00E4A24E /* s-h7pxah0995-0f2haxh-d0n4qfd5rrrsperww0qs2dpim */ = {
+			isa = PBXGroup;
+			children = (
+				0018E3B72DE522FF00E4A24E /* 0dpyf9y2cxcwgi3cpd58kq8l2.o */,
+				0018E3B82DE522FF00E4A24E /* 0h5mv18ev0r4tih4p65fdsjsv.o */,
+				0018E3B92DE522FF00E4A24E /* 0muacqqsurev3v31plytsbts7.o */,
+				0018E3BA2DE522FF00E4A24E /* 0n9d3oqgjft3z3vzqdwlln1vx.o */,
+				0018E3BB2DE522FF00E4A24E /* 0n425tovtujaeuakbk5w47gfw.o */,
+				0018E3BC2DE522FF00E4A24E /* 0qtyrqmnx1w17aa1prxx6ze1j.o */,
+				0018E3BD2DE522FF00E4A24E /* 0t1mhwygjl3o74v2ofe85h1ke.o */,
+				0018E3BE2DE522FF00E4A24E /* 1al1frqhwt0dfncvy3p9ihozr.o */,
+				0018E3BF2DE522FF00E4A24E /* 1bq7j1qn4040394qsx8592bp9.o */,
+				0018E3C02DE522FF00E4A24E /* 1i0dle2pjfm55savm9re65igb.o */,
+				0018E3C12DE522FF00E4A24E /* 1mja6oju6xqge7jffg8iwcetq.o */,
+				0018E3C22DE522FF00E4A24E /* 1n0e86tkxpy7tc44t8sfh43h6.o */,
+				0018E3C32DE522FF00E4A24E /* 2bxrl3mzvctxwx2s7mk56lpmn.o */,
+				0018E3C42DE522FF00E4A24E /* 2f56lvktep34sx1r7rdw4b8kk.o */,
+				0018E3C52DE522FF00E4A24E /* 2f59cyp7fqkjagk5l79ctp7ng.o */,
+				0018E3C62DE522FF00E4A24E /* 2qcku91m8uxth0khndh5ch1de.o */,
+				0018E3C72DE522FF00E4A24E /* 2wv5z33ucparttrs5tiullbtf.o */,
+				0018E3C82DE522FF00E4A24E /* 3kbgn8sh0s47hldsuuyj5k7lm.o */,
+				0018E3C92DE522FF00E4A24E /* 3l7cwx392fzwbnjlqo6xhzghd.o */,
+				0018E3CA2DE522FF00E4A24E /* 3lqcvyx68ghnedzxiec511mbq.o */,
+				0018E3CB2DE522FF00E4A24E /* 3q4ajw9wm0bs4toecenx9zdl6.o */,
+				0018E3CC2DE522FF00E4A24E /* 3r14uzuthc23qx9gatpbgo3y5.o */,
+				0018E3CD2DE522FF00E4A24E /* 3shmq1eo28lg3tzu2w3jik2f9.o */,
+				0018E3CE2DE522FF00E4A24E /* 3t2uf3tr05qeb1mrwzwldf569.o */,
+				0018E3CF2DE522FF00E4A24E /* 3tn88qhv1jszc90p0r2sd6vve.o */,
+				0018E3D02DE522FF00E4A24E /* 4c0vonk6i7kubqru1akofn95u.o */,
+				0018E3D12DE522FF00E4A24E /* 4cxmg8277ja3bzmowod74x63t.o */,
+				0018E3D22DE522FF00E4A24E /* 4kprns73fha2pw56xrir5agl2.o */,
+				0018E3D32DE522FF00E4A24E /* 4l40q7z4bqo8l4lco5tqxasri.o */,
+				0018E3D42DE522FF00E4A24E /* 4n20ymbmhg2ak77k8l3g861kp.o */,
+				0018E3D52DE522FF00E4A24E /* 4ne9pfsj1f0g3075gjg12p0kq.o */,
+				0018E3D62DE522FF00E4A24E /* 5dqiabxww860vs29k0w1gl8q4.o */,
+				0018E3D72DE522FF00E4A24E /* 5dvom7qkm1v8goiyn57sm4q3y.o */,
+				0018E3D82DE522FF00E4A24E /* 5t8jmuqaehq3oo8k15emh3ha7.o */,
+				0018E3D92DE522FF00E4A24E /* 5tkqvsltpcqsnazpjwixgwqp2.o */,
+				0018E3DA2DE522FF00E4A24E /* 5vf09xdpdegmtjyzbkjbadv3e.o */,
+				0018E3DB2DE522FF00E4A24E /* 05z62g4u1uumoezd334enrgt1.o */,
+				0018E3DC2DE522FF00E4A24E /* 6ajbc1qpi3a0yiicu2jwn1rec.o */,
+				0018E3DD2DE522FF00E4A24E /* 6e6ocdibqda4xhyo2uljduzmi.o */,
+				0018E3DE2DE522FF00E4A24E /* 6iz9iqtfa23z8c3yrab7gj98e.o */,
+				0018E3DF2DE522FF00E4A24E /* 6madn9enk8yaav3ysitt1ok1y.o */,
+				0018E3E02DE522FF00E4A24E /* 6qdt1q6cadh5ifjiwpu9hp8yd.o */,
+				0018E3E12DE522FF00E4A24E /* 7bds8qpgxmyl3pxwyz6xi36is.o */,
+				0018E3E22DE522FF00E4A24E /* 7donzpzley0kuwpn1geebj8ez.o */,
+				0018E3E32DE522FF00E4A24E /* 7fjhnnm2ngznjt1ixaigj2u7s.o */,
+				0018E3E42DE522FF00E4A24E /* 7hdcu2lgwkg0a0nnlxqcb5q6h.o */,
+				0018E3E52DE522FF00E4A24E /* 7oewwgwzvtvwoxkuc54906piu.o */,
+				0018E3E62DE522FF00E4A24E /* 8ejenorjbidmp4g3r56rc5q3z.o */,
+				0018E3E72DE522FF00E4A24E /* 8fcjf7dr1zgeszx8q72ci2e0w.o */,
+				0018E3E82DE522FF00E4A24E /* 8gdq6q6bwdkr0gaudp34es166.o */,
+				0018E3E92DE522FF00E4A24E /* 8kae48lprf3fcy4yjlji0yfvd.o */,
+				0018E3EA2DE522FF00E4A24E /* 8knx1mn6g6cjw6fyuhgpj8qt9.o */,
+				0018E3EB2DE522FF00E4A24E /* 8nd088bb1gyyukrsfaadd0b2k.o */,
+				0018E3EC2DE522FF00E4A24E /* 8s2z8vk3zaudwwdjssprsnjce.o */,
+				0018E3ED2DE522FF00E4A24E /* 8tvt0bbk15nqbclhs80rhui5j.o */,
+				0018E3EE2DE522FF00E4A24E /* 8ubxbkkx3f15iydcaffpreyec.o */,
+				0018E3EF2DE522FF00E4A24E /* 8uxtipni099mq7j229b0lu1ea.o */,
+				0018E3F02DE522FF00E4A24E /* 9h66kpctdu9csqnr13nzfgba0.o */,
+				0018E3F12DE522FF00E4A24E /* 9np32qvqmeh2zxvhdql8nnqf5.o */,
+				0018E3F22DE522FF00E4A24E /* 9pk8bey4gvcfddokcpg48xhep.o */,
+				0018E3F32DE522FF00E4A24E /* 9t42nw48pttj3dkr0cyurmngl.o */,
+				0018E3F42DE522FF00E4A24E /* 9x2s480l2r3mwygd130419pgs.o */,
+				0018E3F52DE522FF00E4A24E /* 12b9q9z190yjrqhg10iynjguj.o */,
+				0018E3F62DE522FF00E4A24E /* 14a3k19987ppsod1gp87pmpcd.o */,
+				0018E3F72DE522FF00E4A24E /* 17ftg0vqwd9auzd18of6mv679.o */,
+				0018E3F82DE522FF00E4A24E /* 21qxxd0cb8kjm5amjen9kh6y0.o */,
+				0018E3F92DE522FF00E4A24E /* 40m47b9yty24o130wbuev3pim.o */,
+				0018E3FA2DE522FF00E4A24E /* 43yjvyb2mro0i94503l0y48m4.o */,
+				0018E3FB2DE522FF00E4A24E /* 44dofjnjl650vc2xbmvbijki0.o */,
+				0018E3FC2DE522FF00E4A24E /* 47nmxjamd37yll64215xq0zdr.o */,
+				0018E3FD2DE522FF00E4A24E /* 48w1h3piyrvytmx7q6y6ulpkr.o */,
+				0018E3FE2DE522FF00E4A24E /* 51e6vlked9l3mwzypriw2e1ms.o */,
+				0018E3FF2DE522FF00E4A24E /* 52xvebmi7kl28vnlqylixty7k.o */,
+				0018E4002DE522FF00E4A24E /* 62dbujdeupygl6o2it8pskdh7.o */,
+				0018E4012DE522FF00E4A24E /* 62lgbr0wukqheje2cptnqj8dg.o */,
+				0018E4022DE522FF00E4A24E /* 63exaxsbv2f7d1akqkrs593n3.o */,
+				0018E4032DE522FF00E4A24E /* 67razfdtct5k6gszlezx2bpbl.o */,
+				0018E4042DE522FF00E4A24E /* 73x2zrt6sanic9oy8tseowoi2.o */,
+				0018E4052DE522FF00E4A24E /* 79rhnhztsk8g6bh9o9t6zftay.o */,
+				0018E4062DE522FF00E4A24E /* 98kkv5fjx1hi7qpz1k0vcnng0.o */,
+				0018E4072DE522FF00E4A24E /* 180yidwkukmu3ra82qwsq2nnf.o */,
+				0018E4082DE522FF00E4A24E /* 402zghgat12x6dh8auh8vcw0i.o */,
+				0018E4092DE522FF00E4A24E /* 415w77mogfoa2rzvfg5p3jl5n.o */,
+				0018E40A2DE522FF00E4A24E /* 554mvbtbuqd74tszj0sjks5x7.o */,
+				0018E40B2DE522FF00E4A24E /* 637ssfthhem9r3y0ehwkoqvzv.o */,
+				0018E40C2DE522FF00E4A24E /* 679a3qivu5pwajsjlvn2w7rpu.o */,
+				0018E40D2DE522FF00E4A24E /* 772mqslyae04d5mumguausxt4.o */,
+				0018E40E2DE522FF00E4A24E /* 816sfubq571bj4f4nuf3y9oix.o */,
+				0018E40F2DE522FF00E4A24E /* 993eess2crkegp76m29wc3d01.o */,
+				0018E4102DE522FF00E4A24E /* 3901ewgqnsgxt8zoms3o7nivg.o */,
+				0018E4112DE522FF00E4A24E /* a5eqymodfstiwhdvtijr7vcc5.o */,
+				0018E4122DE522FF00E4A24E /* a6o0f1a3qubzz3zk3qxwcxr4b.o */,
+				0018E4132DE522FF00E4A24E /* a93gxjnf75nvrgrs549464hem.o */,
+				0018E4142DE522FF00E4A24E /* a45699plq9qeuaxm3bc7dwakb.o */,
+				0018E4152DE522FF00E4A24E /* ahdqpfmspz8wtm7c2jxd1gr3o.o */,
+				0018E4162DE522FF00E4A24E /* air3q0vgfgbackbyfy2brot7v.o */,
+				0018E4172DE522FF00E4A24E /* aj86ak8rxa5vpxozecmgafw4v.o */,
+				0018E4182DE522FF00E4A24E /* at2afvndzqc1x4zgw1k7a6pu6.o */,
+				0018E4192DE522FF00E4A24E /* au18oe86iur46e3hwpmogph5q.o */,
+				0018E41A2DE522FF00E4A24E /* avc36bc9vysym51eakyzq1la4.o */,
+				0018E41B2DE522FF00E4A24E /* ayjutgq1ah4784mxzittkjq6j.o */,
+				0018E41C2DE522FF00E4A24E /* b4or4bm2rzv00vbabwi7wjvm2.o */,
+				0018E41D2DE522FF00E4A24E /* b8dwyi16hfpjq42k3rrkg0tpj.o */,
+				0018E41E2DE522FF00E4A24E /* bg2jdvpgn7caj7yib30liqm1m.o */,
+				0018E41F2DE522FF00E4A24E /* bk80modyiwgkob0jzymmceizu.o */,
+				0018E4202DE522FF00E4A24E /* bxfwg7e0mpdcyy416h7ffvrmh.o */,
+				0018E4212DE522FF00E4A24E /* c1az5ayp3kf0bd1p31og3dnrp.o */,
+				0018E4222DE522FF00E4A24E /* c2bkwka7h8u58yaf0m47fj840.o */,
+				0018E4232DE522FF00E4A24E /* cf056fn8j1r9ipazgl4udwxqr.o */,
+				0018E4242DE522FF00E4A24E /* cfffkafbg2jlohida5arl6vyk.o */,
+				0018E4252DE522FF00E4A24E /* cg9a4ez69n4s0abpydga7f0o8.o */,
+				0018E4262DE522FF00E4A24E /* cj84vgb4jkana4gqt7mv4rc25.o */,
+				0018E4272DE522FF00E4A24E /* ckfchnc439p61ki1p0dr0qabj.o */,
+				0018E4282DE522FF00E4A24E /* co611ksyi6w9mqhniino5f1ax.o */,
+				0018E4292DE522FF00E4A24E /* cr38f2bxjhjfvuqlakrc1su3u.o */,
+				0018E42A2DE522FF00E4A24E /* ctg47wgd2v63h5kvcp0vs0hap.o */,
+				0018E42B2DE522FF00E4A24E /* cw0eq6vt68g5jjbo854qbewi5.o */,
+				0018E42C2DE522FF00E4A24E /* cwwvelyys1cu6kz2u0lj8b5h3.o */,
+				0018E42D2DE522FF00E4A24E /* d0f8o87wztspstcwrx4dexheu.o */,
+				0018E42E2DE522FF00E4A24E /* d4laa1pcgv52j6imvoqug8rh9.o */,
+				0018E42F2DE522FF00E4A24E /* d39hbdu3c0ruj8rxoti019rjs.o */,
+				0018E4302DE522FF00E4A24E /* ddp4k91qsiiw0ae94d9ubg582.o */,
+				0018E4312DE522FF00E4A24E /* dep-graph.bin */,
+				0018E4322DE522FF00E4A24E /* di8lly86r3um1dr73qjweo1v0.o */,
+				0018E4332DE522FF00E4A24E /* doefv4w3f73y5sgl25mn8jggc.o */,
+				0018E4342DE522FF00E4A24E /* ds8rnnfjo95k7en0e9dpfnwmk.o */,
+				0018E4352DE522FF00E4A24E /* dx2kwzjeg7xjw15u25n52f6ff.o */,
+				0018E4362DE522FF00E4A24E /* e0ob5ielwr791ns734ukotyz8.o */,
+				0018E4372DE522FF00E4A24E /* e2rf1vsusvjepa7rnuhf2qbz8.o */,
+				0018E4382DE522FF00E4A24E /* e8xmlx62v8gdpsx6ecaxgs2jr.o */,
+				0018E4392DE522FF00E4A24E /* e070aibhb3jv82d2f3c41b8h5.o */,
+				0018E43A2DE522FF00E4A24E /* e0155z1shkq6yypvzayb94voj.o */,
+				0018E43B2DE522FF00E4A24E /* e756ezmqd4mkdcw0ykmdkvjiq.o */,
+				0018E43C2DE522FF00E4A24E /* eb8tb3cykml7142mltoebow31.o */,
+				0018E43D2DE522FF00E4A24E /* emhy5nvb8mxdb5d9m19429d2q.o */,
+				0018E43E2DE522FF00E4A24E /* f03eb6rx4nqd33px2itimt9gq.o */,
+				0018E43F2DE522FF00E4A24E /* query-cache.bin */,
+				0018E4402DE522FF00E4A24E /* work-products.bin */,
+			);
+			path = "s-h7pxah0995-0f2haxh-d0n4qfd5rrrsperww0qs2dpim";
+			sourceTree = "<group>";
+		};
+		0018E4432DE522FF00E4A24E /* mazer-3dorm95ugnfus */ = {
+			isa = PBXGroup;
+			children = (
+				0018E4412DE522FF00E4A24E /* s-h7pxah0995-0f2haxh-d0n4qfd5rrrsperww0qs2dpim */,
+				0018E4422DE522FF00E4A24E /* s-h7pxah0995-0f2haxh.lock */,
+			);
+			path = "mazer-3dorm95ugnfus";
+			sourceTree = "<group>";
+		};
+		0018E4442DE522FF00E4A24E /* incremental */ = {
+			isa = PBXGroup;
+			children = (
+				0018E4432DE522FF00E4A24E /* mazer-3dorm95ugnfus */,
+			);
+			path = incremental;
+			sourceTree = "<group>";
+		};
+		0018E4482DE522FF00E4A24E /* debug */ = {
+			isa = PBXGroup;
+			children = (
+				0018E2D62DE522FF00E4A24E /* .fingerprint */,
+				0018E2EF2DE522FF00E4A24E /* build */,
+				0018E3B52DE522FF00E4A24E /* deps */,
+				0018E3B62DE522FF00E4A24E /* examples */,
+				0018E4442DE522FF00E4A24E /* incremental */,
+				0018E4452DE522FF00E4A24E /* .cargo-lock */,
+				0018E4462DE522FF00E4A24E /* libmazer.a */,
+				0018E4472DE522FF00E4A24E /* libmazer.d */,
+			);
+			path = debug;
+			sourceTree = "<group>";
+		};
+		0018E44A2DE522FF00E4A24E /* aarch64-apple-ios-sim */ = {
+			isa = PBXGroup;
+			children = (
+				0018E4482DE522FF00E4A24E /* debug */,
+				0018E4492DE522FF00E4A24E /* CACHEDIR.TAG */,
+			);
+			path = "aarch64-apple-ios-sim";
+			sourceTree = "<group>";
+		};
+		0018E44F2DE522FF00E4A24E /* libc-799a713d532e9eb0 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E44B2DE522FF00E4A24E /* build-script-build-script-build */,
+				0018E44C2DE522FF00E4A24E /* build-script-build-script-build.json */,
+				0018E44D2DE522FF00E4A24E /* dep-build-script-build-script-build */,
+				0018E44E2DE522FF00E4A24E /* invoked.timestamp */,
+			);
+			path = "libc-799a713d532e9eb0";
+			sourceTree = "<group>";
+		};
+		0018E4542DE522FF00E4A24E /* proc-macro2-97689600c86a41b6 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E4502DE522FF00E4A24E /* dep-lib-proc_macro2 */,
+				0018E4512DE522FF00E4A24E /* invoked.timestamp */,
+				0018E4522DE522FF00E4A24E /* lib-proc_macro2 */,
+				0018E4532DE522FF00E4A24E /* lib-proc_macro2.json */,
+			);
+			path = "proc-macro2-97689600c86a41b6";
+			sourceTree = "<group>";
+		};
+		0018E4592DE522FF00E4A24E /* proc-macro2-d2a15a6d42561ffa */ = {
+			isa = PBXGroup;
+			children = (
+				0018E4552DE522FF00E4A24E /* build-script-build-script-build */,
+				0018E4562DE522FF00E4A24E /* build-script-build-script-build.json */,
+				0018E4572DE522FF00E4A24E /* dep-build-script-build-script-build */,
+				0018E4582DE522FF00E4A24E /* invoked.timestamp */,
+			);
+			path = "proc-macro2-d2a15a6d42561ffa";
+			sourceTree = "<group>";
+		};
+		0018E45C2DE522FF00E4A24E /* proc-macro2-ef51fdd285a5500d */ = {
+			isa = PBXGroup;
+			children = (
+				0018E45A2DE522FF00E4A24E /* run-build-script-build-script-build */,
+				0018E45B2DE522FF00E4A24E /* run-build-script-build-script-build.json */,
+			);
+			path = "proc-macro2-ef51fdd285a5500d";
+			sourceTree = "<group>";
+		};
+		0018E4612DE522FF00E4A24E /* quote-1d09a019a18a00fa */ = {
+			isa = PBXGroup;
+			children = (
+				0018E45D2DE522FF00E4A24E /* dep-lib-quote */,
+				0018E45E2DE522FF00E4A24E /* invoked.timestamp */,
+				0018E45F2DE522FF00E4A24E /* lib-quote */,
+				0018E4602DE522FF00E4A24E /* lib-quote.json */,
+			);
+			path = "quote-1d09a019a18a00fa";
+			sourceTree = "<group>";
+		};
+		0018E4662DE522FF00E4A24E /* serde_derive-00ce817322e7ad83 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E4622DE522FF00E4A24E /* dep-lib-serde_derive */,
+				0018E4632DE522FF00E4A24E /* invoked.timestamp */,
+				0018E4642DE522FF00E4A24E /* lib-serde_derive */,
+				0018E4652DE522FF00E4A24E /* lib-serde_derive.json */,
+			);
+			path = "serde_derive-00ce817322e7ad83";
+			sourceTree = "<group>";
+		};
+		0018E46B2DE522FF00E4A24E /* serde_json-ceb2124790e9db19 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E4672DE522FF00E4A24E /* build-script-build-script-build */,
+				0018E4682DE522FF00E4A24E /* build-script-build-script-build.json */,
+				0018E4692DE522FF00E4A24E /* dep-build-script-build-script-build */,
+				0018E46A2DE522FF00E4A24E /* invoked.timestamp */,
+			);
+			path = "serde_json-ceb2124790e9db19";
+			sourceTree = "<group>";
+		};
+		0018E4702DE522FF00E4A24E /* serde-35321d0c302fb02e */ = {
+			isa = PBXGroup;
+			children = (
+				0018E46C2DE522FF00E4A24E /* build-script-build-script-build */,
+				0018E46D2DE522FF00E4A24E /* build-script-build-script-build.json */,
+				0018E46E2DE522FF00E4A24E /* dep-build-script-build-script-build */,
+				0018E46F2DE522FF00E4A24E /* invoked.timestamp */,
+			);
+			path = "serde-35321d0c302fb02e";
+			sourceTree = "<group>";
+		};
+		0018E4752DE522FF00E4A24E /* syn-03d6696254a1a5a2 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E4712DE522FF00E4A24E /* dep-lib-syn */,
+				0018E4722DE522FF00E4A24E /* invoked.timestamp */,
+				0018E4732DE522FF00E4A24E /* lib-syn */,
+				0018E4742DE522FF00E4A24E /* lib-syn.json */,
+			);
+			path = "syn-03d6696254a1a5a2";
+			sourceTree = "<group>";
+		};
+		0018E47A2DE522FF00E4A24E /* unicode-ident-5431e7c935748c9f */ = {
+			isa = PBXGroup;
+			children = (
+				0018E4762DE522FF00E4A24E /* dep-lib-unicode_ident */,
+				0018E4772DE522FF00E4A24E /* invoked.timestamp */,
+				0018E4782DE522FF00E4A24E /* lib-unicode_ident */,
+				0018E4792DE522FF00E4A24E /* lib-unicode_ident.json */,
+			);
+			path = "unicode-ident-5431e7c935748c9f";
+			sourceTree = "<group>";
+		};
+		0018E47F2DE522FF00E4A24E /* zerocopy-f4582b994b8276af */ = {
+			isa = PBXGroup;
+			children = (
+				0018E47B2DE522FF00E4A24E /* build-script-build-script-build */,
+				0018E47C2DE522FF00E4A24E /* build-script-build-script-build.json */,
+				0018E47D2DE522FF00E4A24E /* dep-build-script-build-script-build */,
+				0018E47E2DE522FF00E4A24E /* invoked.timestamp */,
+			);
+			path = "zerocopy-f4582b994b8276af";
+			sourceTree = "<group>";
+		};
+		0018E4802DE522FF00E4A24E /* .fingerprint */ = {
+			isa = PBXGroup;
+			children = (
+				0018E44F2DE522FF00E4A24E /* libc-799a713d532e9eb0 */,
+				0018E4542DE522FF00E4A24E /* proc-macro2-97689600c86a41b6 */,
+				0018E4592DE522FF00E4A24E /* proc-macro2-d2a15a6d42561ffa */,
+				0018E45C2DE522FF00E4A24E /* proc-macro2-ef51fdd285a5500d */,
+				0018E4612DE522FF00E4A24E /* quote-1d09a019a18a00fa */,
+				0018E4662DE522FF00E4A24E /* serde_derive-00ce817322e7ad83 */,
+				0018E46B2DE522FF00E4A24E /* serde_json-ceb2124790e9db19 */,
+				0018E4702DE522FF00E4A24E /* serde-35321d0c302fb02e */,
+				0018E4752DE522FF00E4A24E /* syn-03d6696254a1a5a2 */,
+				0018E47A2DE522FF00E4A24E /* unicode-ident-5431e7c935748c9f */,
+				0018E47F2DE522FF00E4A24E /* zerocopy-f4582b994b8276af */,
+			);
+			path = .fingerprint;
+			sourceTree = "<group>";
+		};
+		0018E4882DE522FF00E4A24E /* libc-799a713d532e9eb0 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E4812DE522FF00E4A24E /* build_script_build-799a713d532e9eb0 */,
+				0018E4822DE522FF00E4A24E /* build_script_build-799a713d532e9eb0.d */,
+				0018E4832DE522FF00E4A24E /* build_script_build-799a713d532e9eb0.build_script_build.7f3916e4c24a6ce6-cgu.0.rcgu.o */,
+				0018E4842DE522FF00E4A24E /* build_script_build-799a713d532e9eb0.build_script_build.7f3916e4c24a6ce6-cgu.1.rcgu.o */,
+				0018E4852DE522FF00E4A24E /* build_script_build-799a713d532e9eb0.build_script_build.7f3916e4c24a6ce6-cgu.2.rcgu.o */,
+				0018E4862DE522FF00E4A24E /* build_script_build-799a713d532e9eb0.build_script_build.7f3916e4c24a6ce6-cgu.3.rcgu.o */,
+				0018E4872DE522FF00E4A24E /* build-script-build */,
+			);
+			path = "libc-799a713d532e9eb0";
+			sourceTree = "<group>";
+		};
+		0018E48E2DE522FF00E4A24E /* proc-macro2-d2a15a6d42561ffa */ = {
+			isa = PBXGroup;
+			children = (
+				0018E4892DE522FF00E4A24E /* build_script_build-d2a15a6d42561ffa */,
+				0018E48A2DE522FF00E4A24E /* build_script_build-d2a15a6d42561ffa.d */,
+				0018E48B2DE522FF00E4A24E /* build_script_build-d2a15a6d42561ffa.build_script_build.c1b6d57a0843417c-cgu.0.rcgu.o */,
+				0018E48C2DE522FF00E4A24E /* build_script_build-d2a15a6d42561ffa.build_script_build.c1b6d57a0843417c-cgu.1.rcgu.o */,
+				0018E48D2DE522FF00E4A24E /* build-script-build */,
+			);
+			path = "proc-macro2-d2a15a6d42561ffa";
+			sourceTree = "<group>";
+		};
+		0018E48F2DE522FF00E4A24E /* out */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = out;
+			sourceTree = "<group>";
+		};
+		0018E4942DE522FF00E4A24E /* proc-macro2-ef51fdd285a5500d */ = {
+			isa = PBXGroup;
+			children = (
+				0018E48F2DE522FF00E4A24E /* out */,
+				0018E4902DE522FF00E4A24E /* invoked.timestamp */,
+				0018E4912DE522FF00E4A24E /* output */,
+				0018E4922DE522FF00E4A24E /* root-output */,
+				0018E4932DE522FF00E4A24E /* stderr */,
+			);
+			path = "proc-macro2-ef51fdd285a5500d";
+			sourceTree = "<group>";
+		};
+		0018E4992DE522FF00E4A24E /* serde_json-ceb2124790e9db19 */ = {
+			isa = PBXGroup;
+			children = (
+				0018E4952DE522FF00E4A24E /* build_script_build-ceb2124790e9db19 */,
+				0018E4962DE522FF00E4A24E /* build_script_build-ceb2124790e9db19.d */,
+				0018E4972DE522FF00E4A24E /* build_script_build-ceb2124790e9db19.build_script_build.25e1355037732e14-cgu.0.rcgu.o */,
+				0018E4982DE522FF00E4A24E /* build-script-build */,
+			);
+			path = "serde_json-ceb2124790e9db19";
+			sourceTree = "<group>";
+		};
+		0018E49E2DE522FF00E4A24E /* serde-35321d0c302fb02e */ = {
+			isa = PBXGroup;
+			children = (
+				0018E49A2DE522FF00E4A24E /* build_script_build-35321d0c302fb02e */,
+				0018E49B2DE522FF00E4A24E /* build_script_build-35321d0c302fb02e.d */,
+				0018E49C2DE522FF00E4A24E /* build_script_build-35321d0c302fb02e.build_script_build.50704ac90cb656d3-cgu.0.rcgu.o */,
+				0018E49D2DE522FF00E4A24E /* build-script-build */,
+			);
+			path = "serde-35321d0c302fb02e";
+			sourceTree = "<group>";
+		};
+		0018E4A72DE522FF00E4A24E /* zerocopy-f4582b994b8276af */ = {
+			isa = PBXGroup;
+			children = (
+				0018E49F2DE522FF00E4A24E /* build_script_build-f4582b994b8276af */,
+				0018E4A02DE522FF00E4A24E /* build_script_build-f4582b994b8276af.d */,
+				0018E4A12DE522FF00E4A24E /* build_script_build-f4582b994b8276af.build_script_build.76209159ba40f5e6-cgu.0.rcgu.o */,
+				0018E4A22DE522FF00E4A24E /* build_script_build-f4582b994b8276af.build_script_build.76209159ba40f5e6-cgu.1.rcgu.o */,
+				0018E4A32DE522FF00E4A24E /* build_script_build-f4582b994b8276af.build_script_build.76209159ba40f5e6-cgu.2.rcgu.o */,
+				0018E4A42DE522FF00E4A24E /* build_script_build-f4582b994b8276af.build_script_build.76209159ba40f5e6-cgu.3.rcgu.o */,
+				0018E4A52DE522FF00E4A24E /* build_script_build-f4582b994b8276af.build_script_build.76209159ba40f5e6-cgu.4.rcgu.o */,
+				0018E4A62DE522FF00E4A24E /* build-script-build */,
+			);
+			path = "zerocopy-f4582b994b8276af";
+			sourceTree = "<group>";
+		};
+		0018E4A82DE522FF00E4A24E /* build */ = {
+			isa = PBXGroup;
+			children = (
+				0018E4882DE522FF00E4A24E /* libc-799a713d532e9eb0 */,
+				0018E48E2DE522FF00E4A24E /* proc-macro2-d2a15a6d42561ffa */,
+				0018E4942DE522FF00E4A24E /* proc-macro2-ef51fdd285a5500d */,
+				0018E4992DE522FF00E4A24E /* serde_json-ceb2124790e9db19 */,
+				0018E49E2DE522FF00E4A24E /* serde-35321d0c302fb02e */,
+				0018E4A72DE522FF00E4A24E /* zerocopy-f4582b994b8276af */,
+			);
+			path = build;
+			sourceTree = "<group>";
+		};
+		0018E4E22DE522FF00E4A24E /* deps */ = {
+			isa = PBXGroup;
+			children = (
+				0018E4A92DE522FF00E4A24E /* libproc_macro2-97689600c86a41b6.rlib */,
+				0018E4AA2DE522FF00E4A24E /* libproc_macro2-97689600c86a41b6.rmeta */,
+				0018E4AB2DE522FF00E4A24E /* libquote-1d09a019a18a00fa.rlib */,
+				0018E4AC2DE522FF00E4A24E /* libquote-1d09a019a18a00fa.rmeta */,
+				0018E4AD2DE522FF00E4A24E /* libserde_derive-00ce817322e7ad83.dylib */,
+				0018E4AE2DE522FF00E4A24E /* libsyn-03d6696254a1a5a2.rlib */,
+				0018E4AF2DE522FF00E4A24E /* libsyn-03d6696254a1a5a2.rmeta */,
+				0018E4B02DE522FF00E4A24E /* libunicode_ident-5431e7c935748c9f.rlib */,
+				0018E4B12DE522FF00E4A24E /* libunicode_ident-5431e7c935748c9f.rmeta */,
+				0018E4B22DE522FF00E4A24E /* proc_macro2-97689600c86a41b6.d */,
+				0018E4B32DE522FF00E4A24E /* proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.0.rcgu.o */,
+				0018E4B42DE522FF00E4A24E /* proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.1.rcgu.o */,
+				0018E4B52DE522FF00E4A24E /* proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.2.rcgu.o */,
+				0018E4B62DE522FF00E4A24E /* proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.3.rcgu.o */,
+				0018E4B72DE522FF00E4A24E /* proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.4.rcgu.o */,
+				0018E4B82DE522FF00E4A24E /* proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.5.rcgu.o */,
+				0018E4B92DE522FF00E4A24E /* proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.6.rcgu.o */,
+				0018E4BA2DE522FF00E4A24E /* proc_macro2-97689600c86a41b6.proc_macro2.460123dbbc1627db-cgu.7.rcgu.o */,
+				0018E4BB2DE522FF00E4A24E /* quote-1d09a019a18a00fa.d */,
+				0018E4BC2DE522FF00E4A24E /* quote-1d09a019a18a00fa.quote.16e27cd56922ab06-cgu.0.rcgu.o */,
+				0018E4BD2DE522FF00E4A24E /* quote-1d09a019a18a00fa.quote.16e27cd56922ab06-cgu.1.rcgu.o */,
+				0018E4BE2DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.d */,
+				0018E4BF2DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.00.rcgu.o */,
+				0018E4C02DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.01.rcgu.o */,
+				0018E4C12DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.02.rcgu.o */,
+				0018E4C22DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.03.rcgu.o */,
+				0018E4C32DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.04.rcgu.o */,
+				0018E4C42DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.05.rcgu.o */,
+				0018E4C52DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.06.rcgu.o */,
+				0018E4C62DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.07.rcgu.o */,
+				0018E4C72DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.08.rcgu.o */,
+				0018E4C82DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.09.rcgu.o */,
+				0018E4C92DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.10.rcgu.o */,
+				0018E4CA2DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.11.rcgu.o */,
+				0018E4CB2DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.12.rcgu.o */,
+				0018E4CC2DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.13.rcgu.o */,
+				0018E4CD2DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.14.rcgu.o */,
+				0018E4CE2DE522FF00E4A24E /* serde_derive-00ce817322e7ad83.serde_derive.5e6016def3316d6a-cgu.15.rcgu.o */,
+				0018E4CF2DE522FF00E4A24E /* syn-03d6696254a1a5a2.d */,
+				0018E4D02DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.00.rcgu.o */,
+				0018E4D12DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.01.rcgu.o */,
+				0018E4D22DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.02.rcgu.o */,
+				0018E4D32DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.03.rcgu.o */,
+				0018E4D42DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.04.rcgu.o */,
+				0018E4D52DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.05.rcgu.o */,
+				0018E4D62DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.06.rcgu.o */,
+				0018E4D72DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.07.rcgu.o */,
+				0018E4D82DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.08.rcgu.o */,
+				0018E4D92DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.09.rcgu.o */,
+				0018E4DA2DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.10.rcgu.o */,
+				0018E4DB2DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.11.rcgu.o */,
+				0018E4DC2DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.12.rcgu.o */,
+				0018E4DD2DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.13.rcgu.o */,
+				0018E4DE2DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.14.rcgu.o */,
+				0018E4DF2DE522FF00E4A24E /* syn-03d6696254a1a5a2.syn.6174f1306d592430-cgu.15.rcgu.o */,
+				0018E4E02DE522FF00E4A24E /* unicode_ident-5431e7c935748c9f.d */,
+				0018E4E12DE522FF00E4A24E /* unicode_ident-5431e7c935748c9f.unicode_ident.2034d250d5dedae1-cgu.0.rcgu.o */,
+			);
+			path = deps;
+			sourceTree = "<group>";
+		};
+		0018E4E32DE522FF00E4A24E /* examples */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		0018E4E42DE522FF00E4A24E /* incremental */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = incremental;
+			sourceTree = "<group>";
+		};
+		0018E4E62DE522FF00E4A24E /* debug */ = {
+			isa = PBXGroup;
+			children = (
+				0018E4802DE522FF00E4A24E /* .fingerprint */,
+				0018E4A82DE522FF00E4A24E /* build */,
+				0018E4E22DE522FF00E4A24E /* deps */,
+				0018E4E32DE522FF00E4A24E /* examples */,
+				0018E4E42DE522FF00E4A24E /* incremental */,
+				0018E4E52DE522FF00E4A24E /* .cargo-lock */,
+			);
+			path = debug;
+			sourceTree = "<group>";
+		};
+		0018E4E92DE522FF00E4A24E /* target */ = {
+			isa = PBXGroup;
+			children = (
+				0018E44A2DE522FF00E4A24E /* aarch64-apple-ios-sim */,
+				0018E4E62DE522FF00E4A24E /* debug */,
+				0018E4E72DE522FF00E4A24E /* .rustc_info.json */,
+				0018E4E82DE522FF00E4A24E /* CACHEDIR.TAG */,
+			);
+			name = target;
+			path = mazer/target;
+			sourceTree = "<group>";
+		};
 		003DE2A52DB5F6B200EFB530 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
@@ -1213,6 +2803,7 @@
 		0056D0EC2D95FECD003B7493 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0018E4E92DE522FF00E4A24E /* target */,
 				008DD8102DBF2C580094C1CA /* libmazer.a */,
 				00C341D62D9E286E0077691B /* mazer */,
 				00DD0DBE2DAC3C7E00C20B2E /* mazer */,
@@ -1239,7 +2830,7 @@
 				00C33F622D98C84C0077691B /* mazer_iosApp.swift */,
 				00C33F6D2D98C8E50077691B /* Models */,
 				00C33F6F2D98C9010077691B /* Utils */,
-				00F2F9522DE5091A00E477CF /* mazer_bridge.h */,
+				0018E4EB2DE5231C00E4A24E /* mazer_bridge.h */,
 			);
 			path = "mazer-ios";
 			sourceTree = "<group>";
