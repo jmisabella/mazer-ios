@@ -71,4 +71,3 @@ iOS app using the `mazer` Rust library for generating and solving mazes.
 
     3. Verify you see the output: `FFI integration test passed`
 
-
