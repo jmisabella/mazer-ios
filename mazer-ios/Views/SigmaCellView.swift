@@ -86,6 +86,16 @@ struct SigmaCellView: View {
                 let isOddCol = (q & 1) == 1
 
                 for dir in HexDirection.allCases {
+                    let linked = cell.linked.contains(dir.rawValue)
+                    let (dq, dr) = dir.offsetDelta(isOddColumn: isOddCol)
+                    let neighborCoord = Coordinates(x: q + dq, y: r + dr)
+                    guard let neighbor = cellMap[neighborCoord] else { continue }
+
+                    if cell.onSolutionPath
+                       && neighbor.onSolutionPath
+                       && abs(cell.distance - neighbor.distance) == 1
+                    {
+                        continue
                     }
                         p.addLine(to: adjustedPoints[j])
                         p.move(to: adjustedPoints[i])
@@ -94,6 +104,10 @@ struct SigmaCellView: View {
 
                     let neighborLink = neighbor.linked.contains(dir.opposite.rawValue)
 
+                    if !(linked || neighborLink) {
+                        let (i, j) = dir.vertexIndices
+                        p.move(to: adjustedPoints[i])
+                        p.addLine(to: adjustedPoints[j])
                     }
                         continue
                     {
