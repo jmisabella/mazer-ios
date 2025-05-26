@@ -26,21 +26,22 @@ struct DeltaCellView: View {
     private var triangleHeight: CGFloat {
         cellSize * sqrt(3) / 2
     }
-
+    
     /// The three vertices, **all snapped**.
     private var points: [CGPoint] {
         let h = triangleHeight
+        let overlap: CGFloat = 1.0 / UIScreen.main.scale // 1 pixel overlap, adjusted for screen scale
         if cell.orientation.lowercased() == "normal" {
             return [
-                CGPoint(x: snap(cellSize/2), y: snap(0)),
-                CGPoint(x: snap(0),          y: snap(h)),
-                CGPoint(x: snap(cellSize),   y: snap(h)),
+                CGPoint(x: snap(cellSize/2), y: snap(0) - overlap),
+                CGPoint(x: snap(0) - overlap, y: snap(h) + overlap),
+                CGPoint(x: snap(cellSize) + overlap, y: snap(h) + overlap),
             ]
         } else {
             return [
-                CGPoint(x: snap(0),          y: snap(0)),
-                CGPoint(x: snap(cellSize),   y: snap(0)),
-                CGPoint(x: snap(cellSize/2), y: snap(h)),
+                CGPoint(x: snap(0) - overlap, y: snap(0) - overlap),
+                CGPoint(x: snap(cellSize) + overlap, y: snap(0) - overlap),
+                CGPoint(x: snap(cellSize/2), y: snap(h) + overlap),
             ]
         }
     }
