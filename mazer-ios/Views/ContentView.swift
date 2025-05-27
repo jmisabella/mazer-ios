@@ -76,7 +76,6 @@ struct ContentView: View {
                         defaultBackground: $defaultBackgroundColor,
                         mazeCells: mazeCells,
                         mazeType: mazeType,
-                        grid: currentGrid,
                         regenerateMaze: {
                             submitMazeRequest()
                         },
