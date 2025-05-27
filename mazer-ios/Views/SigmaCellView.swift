@@ -32,9 +32,21 @@ struct SigmaCellView: View {
         ]
     }()
 
-    // Pre‐scaled points
+    // Pre-scaled points
     private var scaledPoints: [CGPoint] {
         SigmaCellView.unitPoints.map { .init(x: $0.x * cellSize, y: $0.y * cellSize) }
+    }
+
+    // Adjusted points with overlap
+    private var adjustedPoints: [CGPoint] {
+        let overlap: CGFloat = 1.0 / UIScreen.main.scale
+        let C = CGPoint(x: cellSize, y: (sqrt(3)/2) * cellSize)
+        return scaledPoints.map { P in
+            let dx = P.x - C.x
+            let dy = P.y - C.y
+            let factor = overlap / cellSize
+            return CGPoint(x: P.x + factor * dx, y: P.y + factor * dy)
+        }
     }
 
     // Single stroke width calculation
@@ -59,61 +71,25 @@ struct SigmaCellView: View {
 
     var body: some View {
         ZStack {
-            // 1) fill
+            // 1) Fill
             Path { p in
-                p.addLines(scaledPoints)
+                p.addLines(adjustedPoints)
                 p.closeSubpath()
             }
             .fill(fillColor)
 
-            // walls
-//            Path { p in
-//                let q = cell.x
-//                let r = cell.y
-//                let isOddCol = (q & 1) == 1
-//
-//                for dir in HexDirection.allCases {
-//                    // 1) compute this cell’s link and true neighbor coords in odd-q
-//                    let linked = cell.linked.contains(dir.rawValue)
-//                    let (dq, dr) = dir.offsetDelta(isOddColumn: isOddCol)
-//                    let neighborCoord = Coordinates(x: q + dq, y: r + dr)
-//                    guard let neighbor = cellMap[neighborCoord] else {
-//                        continue
-//                    }
-//
-//                    // 2) YOUR rule ONLY: if *both* cells are onSolutionPath
-//                    //    AND their distance differs by exactly 1, skip that wall
-//                    if cell.onSolutionPath
-//                       && neighbor.onSolutionPath
-//                       && abs(cell.distance - neighbor.distance) == 1
-//                    {
-//                        continue
-//                    }
-//
-//                    // 3) otherwise draw the wall whenever this cell isn’t linked out
-//                    if !linked {
-//                        let (i, j) = dir.vertexIndices
-//                        p.move(to: scaledPoints[i])
-//                        p.addLine(to: scaledPoints[j])
-//                    }
-//                }
-//            }
+            // 2) Walls
             Path { p in
                 let q = cell.x
                 let r = cell.y
                 let isOddCol = (q & 1) == 1
 
                 for dir in HexDirection.allCases {
-                    // 1) figure out this cell's link
                     let linked = cell.linked.contains(dir.rawValue)
-
-                    // 2) locate the neighbor using your odd-q math
                     let (dq, dr) = dir.offsetDelta(isOddColumn: isOddCol)
                     let neighborCoord = Coordinates(x: q + dq, y: r + dr)
                     guard let neighbor = cellMap[neighborCoord] else { continue }
 
-                    // 3) FIRST: if both are on the solution path AND
-                    //    their distance differs by exactly 1, skip that wall
                     if cell.onSolutionPath
                        && neighbor.onSolutionPath
                        && abs(cell.distance - neighbor.distance) == 1
@@ -121,16 +97,12 @@ struct SigmaCellView: View {
                         continue
                     }
 
-                    // 4) compute the neighbor’s idea of a link in the opposite direction
-                    let neighborLink = neighbor
-                        .linked
-                        .contains(dir.opposite.rawValue)
+                    let neighborLink = neighbor.linked.contains(dir.opposite.rawValue)
 
-                    // 5) ONLY draw a wall when *neither* side thinks there’s a passage
                     if !(linked || neighborLink) {
                         let (i, j) = dir.vertexIndices
-                        p.move(to: scaledPoints[i])
-                        p.addLine(to: scaledPoints[j])
+                        p.move(to: adjustedPoints[i])
+                        p.addLine(to: adjustedPoints[j])
                     }
                 }
             }
