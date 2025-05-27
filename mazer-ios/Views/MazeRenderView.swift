@@ -23,7 +23,7 @@ struct MazeRenderView: View {
     
     let mazeCells: [MazeCell]
     let mazeType: MazeType  // "Orthogonal", "Sigma", etc.
-    let grid: OpaquePointer?
+    
     
     let regenerateMaze: () -> Void
     // handle move actions (buttons and later swipe gestures)
@@ -111,8 +111,7 @@ struct MazeRenderView: View {
                 cells: mazeCells,
                 showSolution: showSolution,
                 showHeatMap: showHeatMap,
-                defaultBackgroundColor: defaultBackground,
-                grid: grid
+                defaultBackgroundColor: defaultBackground
             )
             .id(mazeID)
         case .sigma:
@@ -122,8 +121,7 @@ struct MazeRenderView: View {
                 cellSize: cellSize,
                 showSolution: showSolution,
                 showHeatMap: showHeatMap,
-                defaultBackgroundColor: defaultBackground,
-                grid: grid
+                defaultBackgroundColor: defaultBackground
             )
             .id(mazeID)
         case .delta:
@@ -135,8 +133,7 @@ struct MazeRenderView: View {
                 showHeatMap: showHeatMap,
                 selectedPalette: selectedPalette, // pass wrapped value
                 maxDistance: maxDistance,
-                defaultBackgroundColor: defaultBackground,
-                grid: grid
+                defaultBackgroundColor: defaultBackground
             )
                 .id(mazeID)
         case .polar:
