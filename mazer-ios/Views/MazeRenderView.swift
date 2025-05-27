@@ -45,7 +45,8 @@ struct MazeRenderView: View {
         case .orthogonal:
           return UIScreen.main.bounds.width / CGFloat(cols)
         case .delta:
-            return UIScreen.main.bounds.width / CGFloat(cols) * 1.35
+//            return UIScreen.main.bounds.width / CGFloat(cols) * 1.35
+            return computeDeltaCellSize()
         case .sigma:
           // flat-topped hex: total horizontal “units” =
           //   1 full cell + 1.5 for each additional column
@@ -65,7 +66,8 @@ struct MazeRenderView: View {
     }
     
     func computeDeltaCellSize() -> CGFloat {
-      let padding: CGFloat = 44 // or however much you want on each side
+//      let padding: CGFloat = 44 // or however much you want on each side
+      let padding: CGFloat = 39 // or however much you want on each side
       let available = UIScreen.main.bounds.width - padding*2
       return available * 2 / (CGFloat(columns) + 1)
     }
