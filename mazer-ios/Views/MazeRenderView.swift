@@ -67,7 +67,7 @@ struct MazeRenderView: View {
     
     func computeDeltaCellSize() -> CGFloat {
 //      let padding: CGFloat = 44 // or however much you want on each side
-      let padding: CGFloat = 42 // or however much you want on each side
+      let padding: CGFloat = 48 // or however much you want on each side
       let available = UIScreen.main.bounds.width - padding*2
       return available * 2 / (CGFloat(columns) + 1)
     }

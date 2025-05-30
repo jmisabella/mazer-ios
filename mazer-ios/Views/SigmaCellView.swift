@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SigmaCellView: View {
     let cell: MazeCell
-    let cellMap: [Coordinates: MazeCell]
     let cellSize: CGFloat
     let showSolution: Bool
     let showHeatMap: Bool
@@ -18,7 +17,8 @@ struct SigmaCellView: View {
     let isRevealedSolution: Bool
     let defaultBackgroundColor: Color
 
-    // Cache a unit hexagon
+    @Environment(\.cellMap) private var cellMap: [Coordinates: MazeCell]
+
     private static let unitPoints: [CGPoint] = {
         let s: CGFloat = 1
         let h = sqrt(3) * s
@@ -32,12 +32,10 @@ struct SigmaCellView: View {
         ]
     }()
 
-    // Pre-scaled points
     private var scaledPoints: [CGPoint] {
         SigmaCellView.unitPoints.map { .init(x: $0.x * cellSize, y: $0.y * cellSize) }
     }
 
-    // Adjusted points with overlap
     private var adjustedPoints: [CGPoint] {
         let overlap: CGFloat = 1.0 / UIScreen.main.scale
         let C = CGPoint(x: cellSize, y: (sqrt(3)/2) * cellSize)
@@ -49,14 +47,12 @@ struct SigmaCellView: View {
         }
     }
 
-    // Single stroke width calculation
     private var strokeWidth: CGFloat {
         let raw = cellStrokeWidth(for: cellSize, mazeType: .sigma)
         let scale = UIScreen.main.scale
         return (raw * scale).rounded() / scale
     }
 
-    // Background fill color
     private var fillColor: Color {
         cellBackgroundColor(
             for: cell,
@@ -71,14 +67,12 @@ struct SigmaCellView: View {
 
     var body: some View {
         ZStack {
-            // 1) Fill
             Path { p in
                 p.addLines(adjustedPoints)
                 p.closeSubpath()
             }
             .fill(fillColor)
 
-            // 2) Walls
             Path { p in
                 let q = cell.x
                 let r = cell.y
@@ -115,3 +109,112 @@ struct SigmaCellView: View {
         )
     }
 }
+
+//struct SigmaCellView: View {
+//    let cell: MazeCell
+//    let cellMap: [Coordinates: MazeCell]
+//    let cellSize: CGFloat
+//    let showSolution: Bool
+//    let showHeatMap: Bool
+//    let selectedPalette: HeatMapPalette
+//    let maxDistance: Int
+//    let isRevealedSolution: Bool
+//    let defaultBackgroundColor: Color
+//
+//    // Cache a unit hexagon
+//    private static let unitPoints: [CGPoint] = {
+//        let s: CGFloat = 1
+//        let h = sqrt(3) * s
+//        return [
+//            .init(x: 0.5, y: 0),
+//            .init(x: 1.5, y: 0),
+//            .init(x: 2,   y: h/2),
+//            .init(x: 1.5, y: h),
+//            .init(x: 0.5, y: h),
+//            .init(x: 0,   y: h/2)
+//        ]
+//    }()
+//
+//    // Pre-scaled points
+//    private var scaledPoints: [CGPoint] {
+//        SigmaCellView.unitPoints.map { .init(x: $0.x * cellSize, y: $0.y * cellSize) }
+//    }
+//
+//    // Adjusted points with overlap
+//    private var adjustedPoints: [CGPoint] {
+//        let overlap: CGFloat = 1.0 / UIScreen.main.scale
+//        let C = CGPoint(x: cellSize, y: (sqrt(3)/2) * cellSize)
+//        return scaledPoints.map { P in
+//            let dx = P.x - C.x
+//            let dy = P.y - C.y
+//            let factor = overlap / cellSize
+//            return CGPoint(x: P.x + factor * dx, y: P.y + factor * dy)
+//        }
+//    }
+//
+//    // Single stroke width calculation
+//    private var strokeWidth: CGFloat {
+//        let raw = cellStrokeWidth(for: cellSize, mazeType: .sigma)
+//        let scale = UIScreen.main.scale
+//        return (raw * scale).rounded() / scale
+//    }
+//
+//    // Background fill color
+//    private var fillColor: Color {
+//        cellBackgroundColor(
+//            for: cell,
+//            showSolution: showSolution,
+//            showHeatMap: showHeatMap,
+//            maxDistance: maxDistance,
+//            selectedPalette: selectedPalette,
+//            isRevealedSolution: isRevealedSolution,
+//            defaultBackground: defaultBackgroundColor
+//        )
+//    }
+//
+//    var body: some View {
+//        ZStack {
+//            // 1) Fill
+//            Path { p in
+//                p.addLines(adjustedPoints)
+//                p.closeSubpath()
+//            }
+//            .fill(fillColor)
+//
+//            // 2) Walls
+//            Path { p in
+//                let q = cell.x
+//                let r = cell.y
+//                let isOddCol = (q & 1) == 1
+//
+//                for dir in HexDirection.allCases {
+//                    let linked = cell.linked.contains(dir.rawValue)
+//                    let (dq, dr) = dir.offsetDelta(isOddColumn: isOddCol)
+//                    let neighborCoord = Coordinates(x: q + dq, y: r + dr)
+//                    guard let neighbor = cellMap[neighborCoord] else { continue }
+//
+//                    if cell.onSolutionPath
+//                       && neighbor.onSolutionPath
+//                       && abs(cell.distance - neighbor.distance) == 1
+//                    {
+//                        continue
+//                    }
+//
+//                    let neighborLink = neighbor.linked.contains(dir.opposite.rawValue)
+//
+//                    if !(linked || neighborLink) {
+//                        let (i, j) = dir.vertexIndices
+//                        p.move(to: adjustedPoints[i])
+//                        p.addLine(to: adjustedPoints[j])
+//                    }
+//                }
+//            }
+//            .stroke(Color.black, lineWidth: strokeWidth)
+//        }
+//        .frame(
+//            width: cellSize * 2,
+//            height: sqrt(3) * cellSize,
+//            alignment: .center
+//        )
+//    }
+//}
