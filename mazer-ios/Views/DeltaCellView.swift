@@ -81,7 +81,7 @@ struct DeltaCellView: View {
             // 2) Stroke the walls with extended lines
             Path { p in
                 let pts = points
-                let extensionLength: CGFloat = 3.0 / UIScreen.main.scale
+                let extensionLength: CGFloat = 0.5 / UIScreen.main.scale
                 if cell.orientation.lowercased() == "normal" {
                     if !cell.linked.contains("UpperLeft") {
                         let (newStart, newEnd) = extendLine(from: pts[0], to: pts[1], by: extensionLength)
@@ -116,7 +116,7 @@ struct DeltaCellView: View {
                     }
                 }
             }
-            .stroke(Color.black, lineWidth: snap(cellStrokeWidth(for: cellSize, mazeType: .delta) * 1.1))
+            .stroke(Color.black, lineWidth: snap(cellStrokeWidth(for: cellSize, mazeType: .delta) * 1.15))
         }
         .frame(width: snap(cellSize), height: snap(triangleHeight))
         .drawingGroup(opaque: true) // Keep this for rendering optimization
