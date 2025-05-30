@@ -206,26 +206,14 @@ struct ContentView: View {
               switch selectedMazeType {
 //              case .delta:
 //                switch selectedSize {
-//                case .small: return 1.35
-//                case .medium: return 1.52
-//                case .large: return 1.65
-//                }
-//              case .orthogonal:
-//                switch selectedSize {
-//                case .small:  return 0.92
+//                case .small: return 1.55
 //                case .medium: return 1.6
-//                case .large:  return 2.0
-//                }
-//              case .sigma:
-//                switch selectedSize {
-//                case .small:  return 0.65
-//                case .medium: return 0.72
-//                case .large:  return 0.8
+//                case .large: return 1.7
 //                }
               case .delta:
                 switch selectedSize {
-                case .small: return 1.55
-                case .medium: return 1.6
+                case .small: return 1.4
+                case .medium: return 1.55
                 case .large: return 1.7
                 }
               case .orthogonal:
