@@ -41,6 +41,8 @@ struct ContentView: View {
     
     @State private var didInitialRandomization = false
     
+    @State private var isLoading: Bool = false
+    
     private let haptic = UIImpactFeedbackGenerator(style: .light)
     
     private func randomDefaultExcluding(
@@ -77,6 +79,7 @@ struct ContentView: View {
                         mazeCells: mazeCells,
                         mazeType: mazeType,
                         regenerateMaze: {
+//                            isLoading = true
                             submitMazeRequest()
                         },
                         moveAction: { direction in
@@ -107,7 +110,10 @@ struct ContentView: View {
                         selectedSize: $selectedSize,
                         selectedMazeType: $selectedMazeType,
                         selectedAlgorithm: $selectedAlgorithm,
-                        submitMazeRequest: submitMazeRequest
+                        submitMazeRequest: {
+//                            isLoading = true
+                            submitMazeRequest()
+                        }
                     )
                 }
                 
@@ -117,6 +123,15 @@ struct ContentView: View {
                 }
             }
             .padding()
+            
+            // Loading overlay
+            if isLoading {
+                GIFView(gifName: "loading-200px-200px")
+                    .frame(width: 100, height: 100)
+                    .background(Color.black.opacity(0.7))
+                    .cornerRadius(10)
+                    .zIndex(2)
+            }
             
             if showCelebration {
               SparkleView(count: 60, totalDuration: 3.0)
@@ -256,9 +271,19 @@ struct ContentView: View {
             let maxHeightRows = max(1, Int(availableH / adjustedCellSize))
 
             // 6) sigma still subdivides by 3
-            let finalHeight = (selectedMazeType == .sigma)
+            var finalHeight = (selectedMazeType == .sigma)
                             ? maxHeightRows / 3
                             : maxHeightRows
+        
+//            if selectedMazeType == .delta && UIDevice.current.userInterfaceIdiom == .pad {
+//                let maxRows = 50  // Adjust this value based on testing (TODO: adjust based on cell size)
+//                finalHeight = min(finalHeight, maxRows)
+//            }
+        if selectedMazeType == .delta && UIDevice.current.userInterfaceIdiom == .pad {
+            // Calculate maxRows based on available height and adjustedCellSize
+            let maxRows = Int(availableH / adjustedCellSize * 0.77) // 90% of available height to leave some margin
+            finalHeight = min(finalHeight, maxRows)
+        }
 
             // 7) width as before
             let maxWidth = max(1, Int(UIScreen.main.bounds.width / adjustedCellSize))
@@ -280,12 +305,14 @@ struct ContentView: View {
             
             guard let jsonCString = jsonString.cString(using: .utf8) else {
                 errorMessage = "Invalid JSON encoding."
+                isLoading = false
                 return
             }
             
             // Call the FFI function to generate a maze.
             guard let gridPtr = mazer_generate_maze(jsonCString) else {
                 errorMessage = "Failed to generate maze."
+                isLoading = false
                 return
             }
             
@@ -296,6 +323,7 @@ struct ContentView: View {
             // mazer_get_cells returns an UnsafeMutablePointer<FFICell>, so no extra cast is needed.
             guard let cellsPtr = mazer_get_cells(gridPtr, &length) else {
                 errorMessage = "Failed to retrieve cells."
+                isLoading = false
                 return
             }
             
@@ -331,9 +359,16 @@ struct ContentView: View {
             
             mazeGenerated = true
             errorMessage = nil
+
             
             selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
             defaultBackgroundColor = randomDefaultExcluding(current: defaultBackgroundColor, from: defaultBackgroundColors)
+            
+//            isLoading = false
+            // Debug delay
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
+                self.isLoading = false
+            }
             
 //            if showHeatMap {
 //                // only pick a new one when turning it back on
@@ -347,6 +382,12 @@ struct ContentView: View {
             
         case .failure(let error):
             errorMessage = "\(error.localizedDescription)"
+//            isLoading = false
+            // Debug delay
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
+                self.isLoading = false
+            }
+            
         }
     }
     

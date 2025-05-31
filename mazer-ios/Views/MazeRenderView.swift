@@ -267,37 +267,35 @@ struct MazeRenderView: View {
                 .gesture(
                     DragGesture(minimumDistance: 10)
                         .onEnded { value in
-                            if mazeType == .orthogonal || mazeType == .delta || mazeType == .sigma {
-                                // purposefully negated (inverted) height so it would properly work in atan2's trig math
-                                let tx = value.translation.width
-                                let ty = -value.translation.height
-                                
-                                guard tx != 0 || ty != 0 else { return }
-                                
-                                // angle in [–π, π], shift by 22.5°
-                                let angle = atan2(ty, tx)
-                                var shifted = angle + (.pi / 8)
-                                if shifted < 0 { shifted += 2 * .pi }
-                                
-                                // 8 equal 45° slices
-                                let sector = Int(floor(shifted / (.pi / 4))) % 8
-                                let directions = [
-                                    "Right",      // 0
-                                    "UpperRight", // 1
-                                    "Up",         // 2
-                                    "UpperLeft",  // 3
-                                    "Left",       // 4
-                                    "LowerLeft",  // 5
-                                    "Down",       // 6
-                                    "LowerRight"  // 7
-                                ]
-                                let chosen = directions[sector]
-                                
-                                // multiple moves by drag length
-                                let mag = sqrt(tx*tx + ty*ty)
-                                let dim = cellSize()
-                                let count = max(1, Int(round(mag / dim)))
-                                for i in 0..<count {
+                            let isIPad = UIDevice.current.userInterfaceIdiom == .pad
+//                            let batchSize = isIPad ? 2 : 1  // iPad: batch has more moves, iPhone: 1 move
+                            let batchSize = 1
+                            
+                            let tx = value.translation.width
+                            let ty = -value.translation.height
+                            guard tx != 0 || ty != 0 else { return }
+                            let angle = atan2(ty, tx)
+                            var shifted = angle + (.pi / 8)
+                            if shifted < 0 { shifted += 2 * .pi }
+                            let sector = Int(floor(shifted / (.pi / 4))) % 8
+                            let directions = [
+                                "Right", "UpperRight", "Up", "UpperLeft",
+                                "Left", "LowerLeft", "Down", "LowerRight"
+                            ]
+                            let chosen = directions[sector]
+                            let mag = sqrt(tx*tx + ty*ty)
+                            let dim = computeCellSize()
+                            let totalMoves = max(1, Int(round(mag / dim)))
+                            let movesToPerform = min(totalMoves, batchSize)
+                            
+                            // Perform the moves up to the batch size
+                            for _ in 0..<movesToPerform {
+                                performMove(chosen)
+                            }
+                            
+                            // Handle any remaining moves with a slight delay
+                            if totalMoves > batchSize {
+                                for i in batchSize..<totalMoves {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
                                         performMove(chosen)
                                     }
@@ -305,6 +303,48 @@ struct MazeRenderView: View {
                             }
                         }
                 )
+                
+//                .gesture(
+//                    DragGesture(minimumDistance: 10)
+//                        .onEnded { value in
+//                            if mazeType == .orthogonal || mazeType == .delta || mazeType == .sigma {
+//                                // purposefully negated (inverted) height so it would properly work in atan2's trig math
+//                                let tx = value.translation.width
+//                                let ty = -value.translation.height
+//                                
+//                                guard tx != 0 || ty != 0 else { return }
+//                                
+//                                // angle in [–π, π], shift by 22.5°
+//                                let angle = atan2(ty, tx)
+//                                var shifted = angle + (.pi / 8)
+//                                if shifted < 0 { shifted += 2 * .pi }
+//                                
+//                                // 8 equal 45° slices
+//                                let sector = Int(floor(shifted / (.pi / 4))) % 8
+//                                let directions = [
+//                                    "Right",      // 0
+//                                    "UpperRight", // 1
+//                                    "Up",         // 2
+//                                    "UpperLeft",  // 3
+//                                    "Left",       // 4
+//                                    "LowerLeft",  // 5
+//                                    "Down",       // 6
+//                                    "LowerRight"  // 7
+//                                ]
+//                                let chosen = directions[sector]
+//                                
+//                                // multiple moves by drag length
+//                                let mag = sqrt(tx*tx + ty*ty)
+//                                let dim = cellSize()
+//                                let count = max(1, Int(round(mag / dim)))
+//                                for i in 0..<count {
+//                                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+//                                        performMove(chosen)
+//                                    }
+//                                }
+//                            }
+//                        }
+//                )
                 
             } else {
                 // For other maze types, no gesture is attached.

@@ -41,7 +41,8 @@
 		00DD0DC42DAC9C8A00C20B2E /* DeltaCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0DC32DAC9C8A00C20B2E /* DeltaCellView.swift */; };
 		00DD0DC62DAC9CFE00C20B2E /* DeltaMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0DC52DAC9CFE00C20B2E /* DeltaMazeView.swift */; };
 		00DD0DC82DAC9DBE00C20B2E /* DeltaDirectionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0DC72DAC9DBE00C20B2E /* DeltaDirectionControlView.swift */; };
-		00F2F9512DE5090B00E477CF /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DD0D132DAC3C7E00C20B2E /* libmazer.a */; };
+		00DE4BF32DEA826600044648 /* GIFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE4BF22DEA826600044648 /* GIFView.swift */; };
+		00DE4BF52DEA872700044648 /* loading-200px-200px.gif in Resources */ = {isa = PBXBuildFile; fileRef = 00DE4BF42DEA872700044648 /* loading-200px-200px.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1726,7 +1727,8 @@
 		00DD0DC32DAC9C8A00C20B2E /* DeltaCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltaCellView.swift; sourceTree = "<group>"; };
 		00DD0DC52DAC9CFE00C20B2E /* DeltaMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltaMazeView.swift; sourceTree = "<group>"; };
 		00DD0DC72DAC9DBE00C20B2E /* DeltaDirectionControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltaDirectionControlView.swift; sourceTree = "<group>"; };
-		00F2F9522DE5091A00E477CF /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
+		00DE4BF22DEA826600044648 /* GIFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFView.swift; sourceTree = "<group>"; };
+		00DE4BF42DEA872700044648 /* loading-200px-200px.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "loading-200px-200px.gif"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2827,6 +2829,7 @@
 				00C33F6E2D98C8EE0077691B /* Views */,
 				00C33F5D2D98C84C0077691B /* Preview Content */,
 				00C33F5E2D98C84C0077691B /* Assets.xcassets */,
+				00DE4BF42DEA872700044648 /* loading-200px-200px.gif */,
 				00C33F622D98C84C0077691B /* mazer_iosApp.swift */,
 				00C33F6D2D98C8E50077691B /* Models */,
 				00C33F6F2D98C9010077691B /* Utils */,
@@ -2871,6 +2874,7 @@
 				00AE05F62DB8778C0068C880 /* SigmaMazeView.swift */,
 				001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */,
 				003753BC2DD8336C000DB75C /* SparkleView.swift */,
+				00DE4BF22DEA826600044648 /* GIFView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -5083,6 +5087,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00C33F662D98C84C0077691B /* Preview Assets.xcassets in Resources */,
+				00DE4BF52DEA872700044648 /* loading-200px-200px.gif in Resources */,
 				00C33F672D98C84C0077691B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5119,6 +5124,7 @@
 				00C33F752D98CC730077691B /* MazeRequestError.swift in Sources */,
 				00C33F782D98CC860077691B /* MazeAlgorithm.swift in Sources */,
 				00DD0DC82DAC9DBE00C20B2E /* DeltaDirectionControlView.swift in Sources */,
+				00DE4BF32DEA826600044648 /* GIFView.swift in Sources */,
 				006F3F392D9F6EC200627BD4 /* HeatMapPalette.swift in Sources */,
 				0095189A2DBF0F33003B1C21 /* HexDirection.swift in Sources */,
 				00DD0B542DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift in Sources */,
