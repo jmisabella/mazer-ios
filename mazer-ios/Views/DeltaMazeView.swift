@@ -99,7 +99,7 @@ struct DeltaMazeView: View {
         // Add a black border around the entire maze grid
         .overlay(
             Rectangle()
-                .stroke(Color.black, lineWidth: 2) // Consistent black border
+                .stroke(Color.black, lineWidth: 6) // Consistent black border
                 .frame(width: totalWidth, height: totalHeight)
         )
         .onChange(of: showSolution) { _, newValue in

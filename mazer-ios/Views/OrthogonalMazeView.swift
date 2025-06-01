@@ -91,7 +91,7 @@ struct OrthogonalMazeView: View {
         // Add a black border around the entire maze grid
         .overlay(
             Rectangle()
-                .stroke(Color.black, lineWidth: 2)
+                .stroke(Color.black, lineWidth: 4)
                 .frame(width: totalWidth, height: totalHeight)
         )
         .onChange(of: showSolution) { _, newVal in
