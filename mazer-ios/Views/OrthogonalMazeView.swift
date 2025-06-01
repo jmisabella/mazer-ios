@@ -19,13 +19,14 @@ struct OrthogonalMazeView: View {
     @State private var revealedSolutionPath: Set<Coordinates> = []
     @State private var pendingWorkItems: [DispatchWorkItem] = []
 
-    // computed once
     private let columns: [GridItem]
     private let cellSize: CGFloat
     private let maxDistance: Int
     private let strokeWidth: CGFloat
 
     private let haptic = UIImpactFeedbackGenerator(style: .light)
+
+    @Environment(\.colorScheme) private var colorScheme // Access the color scheme
 
     init(
         selectedPalette: Binding<HeatMapPalette>,
@@ -40,52 +41,59 @@ struct OrthogonalMazeView: View {
         self.showHeatMap = showHeatMap
         self.defaultBackgroundColor = defaultBackgroundColor
 
-        // build grid columns
         let cols = (cells.map(\.x).max() ?? 0) + 1
         self.columns = Array(
             repeating: GridItem(.flexible(), spacing: 0),
             count: cols
         )
 
-        // calculate cellSize once
-//        let screenW = UIScreen.main.bounds.width
-//        self.cellSize = screenW / CGFloat(cols)
-        
         let screenW = UIScreen.main.bounds.width
         let rawSize = screenW / CGFloat(cols)
-        let scale   = UIScreen.main.scale
-        // round to whole‐pixel cell heights
+        let scale = UIScreen.main.scale
         self.cellSize = (rawSize * scale).rounded() / scale
 
-
-        // cache distances & stroke
         self.maxDistance = cells.map(\.distance).max() ?? 1
         let rawStroke = cellStrokeWidth(for: cellSize, mazeType: .orthogonal)
-//        let scale = UIScreen.main.scale
         self.strokeWidth = (rawStroke * scale).rounded() / scale
     }
 
     var body: some View {
-        LazyVGrid(columns: columns, spacing: 0) {
-            ForEach(cells.indices, id: \.self) { i in
-                let cell = cells[i]
-                let coord = Coordinates(x: cell.x, y: cell.y)
-                OrthogonalCellView(
-                    cell: cell,
-                    cellSize: cellSize,
-//                    size: cellSize,
-                    showSolution: showSolution,
-                    showHeatMap: showHeatMap,
-                    selectedPalette: selectedPalette,
-                    maxDistance: maxDistance,
-                    isRevealedSolution: revealedSolutionPath.contains(coord),
-                    defaultBackgroundColor: defaultBackgroundColor//,
-//                    strokeWidth: strokeWidth
-                )
-                .frame(width: cellSize, height: cellSize)
+        // Calculate the total width and height of the maze grid
+        let cols = (cells.map(\.x).max() ?? 0) + 1
+        let rows = (cells.map(\.y).max() ?? 0) + 1
+        let totalWidth = cellSize * CGFloat(cols)
+        let totalHeight = cellSize * CGFloat(rows)
+
+        ZStack {
+            // Background that matches the color scheme
+            (colorScheme == .dark ? Color.black : Color.offWhite)
+                .frame(width: totalWidth, height: totalHeight)
+
+            LazyVGrid(columns: columns, spacing: 0) {
+                ForEach(cells.indices, id: \.self) { i in
+                    let cell = cells[i]
+                    let coord = Coordinates(x: cell.x, y: cell.y)
+                    OrthogonalCellView(
+                        cell: cell,
+                        cellSize: cellSize,
+                        showSolution: showSolution,
+                        showHeatMap: showHeatMap,
+                        selectedPalette: selectedPalette,
+                        maxDistance: maxDistance,
+                        isRevealedSolution: revealedSolutionPath.contains(coord),
+                        defaultBackgroundColor: defaultBackgroundColor
+                    )
+                    .frame(width: cellSize, height: cellSize)
+                }
             }
+            .drawingGroup()  // Batch offscreen rendering
         }
-        .drawingGroup()  // batch offscreen rendering
+        // Add a black border around the entire maze grid
+        .overlay(
+            Rectangle()
+                .stroke(Color.black, lineWidth: 2)
+                .frame(width: totalWidth, height: totalHeight)
+        )
         .onChange(of: showSolution) { _, newVal in
             if newVal {
                 animateSolutionPathReveal()
@@ -113,7 +121,6 @@ struct OrthogonalMazeView: View {
         cancelAndReset()
         haptic.prepare()
 
-        // compute the sorted path coordinates right here
         let pathCoords = cells
             .filter { $0.onSolutionPath && !$0.isVisited }
             .sorted { $0.distance < $1.distance }
@@ -140,136 +147,133 @@ struct OrthogonalMazeView: View {
     }
 }
 
-//
 //struct OrthogonalMazeView: View {
 //    @Binding var selectedPalette: HeatMapPalette
-//    @State private var revealedSolutionPath: Set<Coordinates> = []
-//    // Keep track of pending work items so they can be canceled
-//    @State private var pendingWorkItems: [DispatchWorkItem] = []
 //    let cells: [MazeCell]
 //    let showSolution: Bool
 //    let showHeatMap: Bool
 //    let defaultBackgroundColor: Color
-//    
+//
+//    @State private var revealedSolutionPath: Set<Coordinates> = []
+//    @State private var pendingWorkItems: [DispatchWorkItem] = []
+//
+//    // computed once
+//    private let columns: [GridItem]
+//    private let cellSize: CGFloat
+//    private let maxDistance: Int
+//    private let strokeWidth: CGFloat
+//
 //    private let haptic = UIImpactFeedbackGenerator(style: .light)
 //
-//    var body: some View {
-//        let width = (cells.map { $0.x }.max() ?? 0) + 1
-//        let height = (cells.map { $0.y }.max() ?? 0) + 1
-//        let columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: width)
-//        let cellSize = cellSize()
-//        let maxDistance = cells.map(\.distance).max() ?? 1
+//    init(
+//        selectedPalette: Binding<HeatMapPalette>,
+//        cells: [MazeCell],
+//        showSolution: Bool,
+//        showHeatMap: Bool,
+//        defaultBackgroundColor: Color
+//    ) {
+//        self._selectedPalette = selectedPalette
+//        self.cells = cells
+//        self.showSolution = showSolution
+//        self.showHeatMap = showHeatMap
+//        self.defaultBackgroundColor = defaultBackgroundColor
 //
+//        // build grid columns
+//        let cols = (cells.map(\.x).max() ?? 0) + 1
+//        self.columns = Array(
+//            repeating: GridItem(.flexible(), spacing: 0),
+//            count: cols
+//        )
+//
+//        // calculate cellSize once
+////        let screenW = UIScreen.main.bounds.width
+////        self.cellSize = screenW / CGFloat(cols)
+//        
+//        let screenW = UIScreen.main.bounds.width
+//        let rawSize = screenW / CGFloat(cols)
+//        let scale   = UIScreen.main.scale
+//        // round to whole‐pixel cell heights
+//        self.cellSize = (rawSize * scale).rounded() / scale
+//
+//
+//        // cache distances & stroke
+//        self.maxDistance = cells.map(\.distance).max() ?? 1
+//        let rawStroke = cellStrokeWidth(for: cellSize, mazeType: .orthogonal)
+////        let scale = UIScreen.main.scale
+//        self.strokeWidth = (rawStroke * scale).rounded() / scale
+//    }
+//
+//    var body: some View {
 //        LazyVGrid(columns: columns, spacing: 0) {
-//            ForEach(cells, id: \.self) { cell in
+//            ForEach(cells.indices, id: \.self) { i in
+//                let cell = cells[i]
+//                let coord = Coordinates(x: cell.x, y: cell.y)
 //                OrthogonalCellView(
 //                    cell: cell,
-//                    size: cellSize,
+//                    cellSize: cellSize,
+////                    size: cellSize,
 //                    showSolution: showSolution,
 //                    showHeatMap: showHeatMap,
 //                    selectedPalette: selectedPalette,
 //                    maxDistance: maxDistance,
-//                    isRevealedSolution: revealedSolutionPath.contains(Coordinates(x: cell.x, y: cell.y)),
-//                    defaultBackgroundColor: defaultBackgroundColor
+//                    isRevealedSolution: revealedSolutionPath.contains(coord),
+//                    defaultBackgroundColor: defaultBackgroundColor//,
+////                    strokeWidth: strokeWidth
 //                )
-//                .frame(width: cellSize, height: cellSize) // lock frame
-//                .clipped() // avoid any rendering overflow
+//                .frame(width: cellSize, height: cellSize)
 //            }
 //        }
-//        .onChange(of: showSolution) { oldValue, newValue in
-//            if newValue {
+//        .drawingGroup()  // batch offscreen rendering
+//        .onChange(of: showSolution) { _, newVal in
+//            if newVal {
 //                animateSolutionPathReveal()
 //            } else {
-//                // Cancel pending work items before clearing the revealed path.
-//                for workItem in pendingWorkItems {
-//                    workItem.cancel()
-//                }
-//                pendingWorkItems.removeAll()
-//                revealedSolutionPath = []
+//                cancelAndReset()
 //            }
 //        }
-//        // Reset internal state when new maze cells are provided.
-//        .onChange(of: cells) { _ /*oldCells*/, newCells in
-//            for workItem in pendingWorkItems {
-//                workItem.cancel()
-//            }
-//            pendingWorkItems.removeAll()
-//            revealedSolutionPath = []
+//        .onChange(of: cells) { _, _ in
+//            cancelAndReset()
 //        }
-//        // Trigger solution animation on view appearance if showSolution is true.
 //        .onAppear {
 //            if showSolution {
 //                animateSolutionPathReveal()
 //            }
 //        }
 //    }
-//    
-//    func cellSize() -> CGFloat {
-//        let width = (cells.map { $0.x }.max() ?? 0) + 1
-//        return UIScreen.main.bounds.width / CGFloat(width)
-//    }
-//    
-//    func animateSolutionPathReveal() {
-//        // 1. Cancel any pending reveals
+//
+//    private func cancelAndReset() {
 //        pendingWorkItems.forEach { $0.cancel() }
 //        pendingWorkItems.removeAll()
-//        
-//        // 2. Build your ordered solution path from unvisited cells
-//        let pathCells = cells
-//            .filter { cell in
-//                cell.onSolutionPath && !cell.isVisited
-//            }
-//            .sorted(by: { $0.distance < $1.distance })
-//        
-//        // 3. Compute a fixed interval between reveals
-//        let baseDelay: Double = 0.015
-//        let delayMultiplier = min(1.0, cellSize() / 50.0)
-//        let interval = baseDelay * delayMultiplier
-//        
-//        // Prepare the haptic engine _before_ we even do the move
+//        revealedSolutionPath.removeAll()
+//    }
+//
+//    private func animateSolutionPathReveal() {
+//        cancelAndReset()
 //        haptic.prepare()
-//        
-//        // 4. Schedule each reveal WITHOUT animation and with a click
-//        for (index, cell) in pathCells.enumerated() {
+//
+//        // compute the sorted path coordinates right here
+//        let pathCoords = cells
+//            .filter { $0.onSolutionPath && !$0.isVisited }
+//            .sorted { $0.distance < $1.distance }
+//            .map { Coordinates(x: $0.x, y: $0.y) }
+//
+//        let baseDelay: Double = 0.015
+//        let speedFactor = min(1.0, cellSize / 50.0)
+//        let interval = baseDelay * speedFactor
+//
+//        for (i, coord) in pathCoords.enumerated() {
 //            let work = DispatchWorkItem {
-//                AudioServicesPlaySystemSound(1104) // play a `click` sound on audio
-//                haptic.impactOccurred() // cause user to feel a `bump`
-//                // Disable implicit animation
+//                AudioServicesPlaySystemSound(1104)
+//                haptic.impactOccurred()
 //                withAnimation(.none) {
-//                    _ = revealedSolutionPath.insert(
-//                        Coordinates(x: cell.x, y: cell.y)
-//                    )
+//                    _ = revealedSolutionPath.insert(coord)
 //                }
 //            }
 //            pendingWorkItems.append(work)
 //            DispatchQueue.main.asyncAfter(
-//                deadline: .now() + Double(index) * interval,
+//                deadline: .now() + Double(i) * interval,
 //                execute: work
 //            )
 //        }
 //    }
-//     
-//    func shadeColor(for cell: MazeCell, maxDistance: Int) -> Color {
-//        guard showHeatMap, maxDistance > 0 else {
-//            return .gray  // fallback color when heat map is off
-//        }
-//
-//        let index = min(9, (cell.distance * 10) / maxDistance)
-//        return selectedPalette.shades[index].asColor
-//    }
-//    
-//    func defaultCellColor(for cell: MazeCell) -> Color {
-//        if cell.isStart {
-//            return .blue
-//        } else if cell.isGoal {
-//            return .red
-//        } else if cell.onSolutionPath {
-////            return .green
-//            return .pink
-//        } else {
-//            return .gray
-//        }
-//    }
-//
-//
 //}
