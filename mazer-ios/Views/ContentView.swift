@@ -43,6 +43,8 @@ struct ContentView: View {
     
     @State private var isLoading: Bool = false
     
+    @Environment(\.colorScheme) private var colorScheme
+    
     private let haptic = UIImpactFeedbackGenerator(style: .light)
     
     private func randomDefaultExcluding(
@@ -58,9 +60,11 @@ struct ContentView: View {
             // 1) conditional full-screen background
             Group {
                 if mazeGenerated {
-                    Color.black
+//                    Color.black
+                    colorScheme == .dark ? Color.black : Color.offWhite
                 } else {
-                    Color(.systemBackground)
+//                    Color(.systemBackground)
+                    colorScheme == .dark ? Color.black : Color.offWhite
                 }
             }
             

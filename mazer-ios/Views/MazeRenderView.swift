@@ -269,7 +269,7 @@ struct MazeRenderView: View {
                         .onEnded { value in
                             let isIPad = UIDevice.current.userInterfaceIdiom == .pad
 //                            let batchSize = isIPad ? 2 : 1  // iPad: batch has more moves, iPhone: 1 move
-                            let batchSize = 1
+                            let batchSize = 1 // can be used to batch moves together for larger maze grids
                             
                             let tx = value.translation.width
                             let ty = -value.translation.height
