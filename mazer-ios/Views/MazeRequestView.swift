@@ -94,10 +94,17 @@ struct MazeRequestView: View {
     private var mainContent: some View {
         VStack(spacing: 20) {
             VStack(spacing: 4) {
-                LayeredTitleView(text: "Maze Quest", fontScale: fontScale, colorScheme: colorScheme)
+                Image(colorScheme == .dark ? "LogoLight" : "LogoDark")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60 * fontScale, height: 60 * fontScale) // Adjust size as needed
+                    .padding(.bottom, 8)
+                
+//                LayeredTitleView(text: "Maze Quest", fontScale: fontScale, colorScheme: colorScheme)
                 Text("Omni Mazes & Solutions")
                     .font(.system(size: 14 * fontScale))
-                    .foregroundColor(colorScheme == .dark ? .secondary : Color(hex: "333333"))
+                    .foregroundColor(colorScheme == .dark ? Color(hex: "B3B3B3")  : Color(hex: "333333"))
+                    .italic()
             }
             .padding(.bottom, 8)
             
@@ -108,7 +115,7 @@ struct MazeRequestView: View {
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
-            .tint(Color(hex: "f66e6e"))
+            .tint(colorScheme == .dark ? Color(hex: "B3B3B3") : Color.orangeRed)
             
             Picker("Maze Type", selection: $selectedMazeType) {
                 ForEach(MazeType.allCases.filter { $0 != .polar }) { type in
@@ -118,7 +125,7 @@ struct MazeRequestView: View {
                 }
             }
             .pickerStyle(MenuPickerStyle())
-            .tint(Color(hex: "f66e6e"))
+            .tint(colorScheme == .dark ? Color(hex: "B3B3B3") : Color.orangeRed)
             .onChange(of: selectedMazeType) { _ in
                 randomizeAlgorithm()
                 if !availableAlgorithms.contains(selectedAlgorithm),
@@ -140,7 +147,7 @@ struct MazeRequestView: View {
                 }
             }
             .pickerStyle(MenuPickerStyle())
-            .tint(Color(hex: "f66e6e"))
+            .tint(colorScheme == .dark ? Color(hex: "B3B3B3") : Color.orangeRed)
             
             Text(selectedAlgorithm.description)
                 .font(.system(size: 12 * fontScale))
@@ -148,11 +155,13 @@ struct MazeRequestView: View {
                 .padding(.horizontal)
 
             Button(action: submitMazeRequest) {
-                Text("Generate Maze")
+                Text("Generate")
                     .foregroundColor(colorScheme == .dark ? .black : .white)
+                    .fontWeight(.bold)
             }
             .buttonStyle(.borderedProminent)
-            .tint(Color(hex: "f66e6e"))
+//            .tint(Color.orangeRed)
+            .tint(colorScheme == .dark ? .secondary : Color.orangeRed)
             .padding()
 
             if let errorMessage = errorMessage {
