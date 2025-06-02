@@ -149,6 +149,12 @@ struct ContentView: View {
             
         }
         .onAppear {
+            let hasLaunchedBefore = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
+            if !hasLaunchedBefore {
+                AudioServicesPlaySystemSound(1001) // Swoosh sound
+                UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+            }
+            
             if !didInitialRandomization {
                 // 1) pick a random type (excluding .polar)
                 let types = MazeType.allCases.filter { $0 != .polar }
