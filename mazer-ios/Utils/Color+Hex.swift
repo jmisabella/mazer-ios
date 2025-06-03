@@ -37,6 +37,8 @@ extension Color {
     static let lightGrey = Color(hex: "333333")
     
     static let softOrange = Color(hex: "FFCCBC")
+    
+    static let lightSkyBlue = Color(hex: "ADD8E6")
 
 }
 

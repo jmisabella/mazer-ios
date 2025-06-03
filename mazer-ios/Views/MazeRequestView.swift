@@ -100,7 +100,6 @@ struct MazeRequestView: View {
                     .frame(width: 60 * fontScale, height: 60 * fontScale) // Adjust size as needed
                     .padding(.bottom, 8)
                 
-//                LayeredTitleView(text: "Maze Quest", fontScale: fontScale, colorScheme: colorScheme)
                 Text("Omni Mazes & Solutions")
                     .font(.system(size: 14 * fontScale))
                     .foregroundColor(colorScheme == .dark ? Color(hex: "B3B3B3")  : Color(hex: "333333"))
@@ -115,7 +114,7 @@ struct MazeRequestView: View {
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
-            .tint(colorScheme == .dark ? Color.softOrange : Color.orangeRed)
+            .tint(colorScheme == .dark ? Color.lightSkyBlue : Color.orangeRed)
             
             Picker("Maze Type", selection: $selectedMazeType) {
                 ForEach(MazeType.allCases.filter { $0 != .polar }) { type in
@@ -125,7 +124,7 @@ struct MazeRequestView: View {
                 }
             }
             .pickerStyle(MenuPickerStyle())
-            .tint(colorScheme == .dark ? Color.softOrange : Color.orangeRed)
+            .tint(colorScheme == .dark ? Color.lightSkyBlue : Color.orangeRed)
             .onChange(of: selectedMazeType) { _ in
                 randomizeAlgorithm()
                 if !availableAlgorithms.contains(selectedAlgorithm),
@@ -147,7 +146,7 @@ struct MazeRequestView: View {
                 }
             }
             .pickerStyle(MenuPickerStyle())
-            .tint(colorScheme == .dark ? Color(hex: "FFCCBC") : Color.orangeRed)
+            .tint(colorScheme == .dark ? Color.lightSkyBlue : Color.orangeRed)
             
             Text(selectedAlgorithm.description)
                 .font(.system(size: 12 * fontScale))

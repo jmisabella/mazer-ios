@@ -187,7 +187,7 @@ struct ContentView: View {
             case .active:
                 // App has launched or come to the foreground
                 if !hasPlayedSoundThisSession {
-                    AudioServicesPlaySystemSound(1016) // Play the tweety-bird sound
+//                    AudioServicesPlaySystemSound(1016) // Play the tweety-bird sound
                     AudioServicesPlaySystemSound(1001) // Play the swoosh sound
                     hasPlayedSoundThisSession = true
                 }
