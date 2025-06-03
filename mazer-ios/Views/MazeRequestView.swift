@@ -115,7 +115,7 @@ struct MazeRequestView: View {
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
-            .tint(colorScheme == .dark ? Color(hex: "B3B3B3") : Color.orangeRed)
+            .tint(colorScheme == .dark ? Color.softOrange : Color.orangeRed)
             
             Picker("Maze Type", selection: $selectedMazeType) {
                 ForEach(MazeType.allCases.filter { $0 != .polar }) { type in
@@ -125,7 +125,7 @@ struct MazeRequestView: View {
                 }
             }
             .pickerStyle(MenuPickerStyle())
-            .tint(colorScheme == .dark ? Color(hex: "B3B3B3") : Color.orangeRed)
+            .tint(colorScheme == .dark ? Color.softOrange : Color.orangeRed)
             .onChange(of: selectedMazeType) { _ in
                 randomizeAlgorithm()
                 if !availableAlgorithms.contains(selectedAlgorithm),
@@ -147,7 +147,7 @@ struct MazeRequestView: View {
                 }
             }
             .pickerStyle(MenuPickerStyle())
-            .tint(colorScheme == .dark ? Color(hex: "B3B3B3") : Color.orangeRed)
+            .tint(colorScheme == .dark ? Color(hex: "FFCCBC") : Color.orangeRed)
             
             Text(selectedAlgorithm.description)
                 .font(.system(size: 12 * fontScale))

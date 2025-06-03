@@ -43,6 +43,10 @@ struct ContentView: View {
     
     @State private var isLoading: Bool = false
     
+    @State private var hasPlayedSoundThisSession: Bool = false // Add this to track sound playback per session
+    
+    @Environment(\.scenePhase) private var scenePhase // Add this to detect app lifecycle changes
+    
     @Environment(\.colorScheme) private var colorScheme
     
     private let haptic = UIImpactFeedbackGenerator(style: .light)
@@ -149,18 +153,16 @@ struct ContentView: View {
             
         }
         .onAppear {
-            let hasLaunchedBefore = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
-            if !hasLaunchedBefore {
-                AudioServicesPlaySystemSound(1001) // Swoosh sound
-                UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
-            }
+            // Remove the UserDefaults logic
+            // let hasLaunchedBefore = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
+            // if !hasLaunchedBefore {
+            //     AudioServicesPlaySystemSound(1001)
+            //     UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+            // }
             
             if !didInitialRandomization {
-                // 1) pick a random type (excluding .polar)
                 let types = MazeType.allCases.filter { $0 != .polar }
                 selectedMazeType = types.randomElement()!
-                
-                // 2) pick a valid algorithm for that type
                 let algos: [MazeAlgorithm]
                 if selectedMazeType == .orthogonal {
                     algos = MazeAlgorithm.allCases
@@ -169,7 +171,6 @@ struct ContentView: View {
                         .filter { ![.binaryTree, .sidewinder].contains($0) }
                 }
                 selectedAlgorithm = algos.randomElement()!
-                
                 didInitialRandomization = true
             }
             
@@ -179,6 +180,22 @@ struct ContentView: View {
                 print("FFI integration test passed ✅")
             } else {
                 print("FFI integration test failed ❌")
+            }
+        }
+        .onChange(of: scenePhase) { newPhase in
+            switch newPhase {
+            case .active:
+                // App has launched or come to the foreground
+                if !hasPlayedSoundThisSession {
+                    AudioServicesPlaySystemSound(1016) // Play the tweety-bird sound
+                    AudioServicesPlaySystemSound(1001) // Play the swoosh sound
+                    hasPlayedSoundThisSession = true
+                }
+            case .background, .inactive:
+                // App is going to background or is inactive; reset the flag for the next session
+                hasPlayedSoundThisSession = false
+            @unknown default:
+                break
             }
         }
         
