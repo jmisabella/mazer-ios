@@ -40,6 +40,12 @@ struct ContentView: View {
     @State private var defaultBackgroundColor: Color = defaultBackgroundColors.randomElement()!
     
     @State private var didInitialRandomization = false
+        
+    @State private var hasPlayedSoundThisSession: Bool = false // Add this to track sound playback per session
+    
+    @Environment(\.scenePhase) private var scenePhase // Add this to detect app lifecycle changes
+    
+    @Environment(\.colorScheme) private var colorScheme
     
     private let haptic = UIImpactFeedbackGenerator(style: .light)
     
@@ -56,9 +62,11 @@ struct ContentView: View {
             // 1) conditional full-screen background
             Group {
                 if mazeGenerated {
-                    Color.black
+//                    Color.black
+                    colorScheme == .dark ? Color.black : Color.offWhite
                 } else {
-                    Color(.systemBackground)
+//                    Color(.systemBackground)
+                    colorScheme == .dark ? Color.black : Color.offWhite
                 }
             }
             
@@ -107,7 +115,9 @@ struct ContentView: View {
                         selectedSize: $selectedSize,
                         selectedMazeType: $selectedMazeType,
                         selectedAlgorithm: $selectedAlgorithm,
-                        submitMazeRequest: submitMazeRequest
+                        submitMazeRequest: {
+                            submitMazeRequest()
+                        }
                     )
                 }
                 
@@ -130,12 +140,16 @@ struct ContentView: View {
             
         }
         .onAppear {
+            // Remove the UserDefaults logic
+            // let hasLaunchedBefore = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
+            // if !hasLaunchedBefore {
+            //     AudioServicesPlaySystemSound(1001)
+            //     UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+            // }
+            
             if !didInitialRandomization {
-                // 1) pick a random type (excluding .polar)
                 let types = MazeType.allCases.filter { $0 != .polar }
                 selectedMazeType = types.randomElement()!
-                
-                // 2) pick a valid algorithm for that type
                 let algos: [MazeAlgorithm]
                 if selectedMazeType == .orthogonal {
                     algos = MazeAlgorithm.allCases
@@ -144,7 +158,6 @@ struct ContentView: View {
                         .filter { ![.binaryTree, .sidewinder].contains($0) }
                 }
                 selectedAlgorithm = algos.randomElement()!
-                
                 didInitialRandomization = true
             }
             
@@ -156,7 +169,21 @@ struct ContentView: View {
                 print("FFI integration test failed ❌")
             }
         }
-        
+        .onChange(of: scenePhase) { newPhase in
+            switch newPhase {
+            case .active:
+                // App has launched or come to the foreground
+                if !hasPlayedSoundThisSession {
+                    AudioServicesPlaySystemSound(1104)
+                    hasPlayedSoundThisSession = true
+                }
+            case .background, .inactive:
+                // App is going to background or is inactive; reset the flag for the next session
+                hasPlayedSoundThisSession = false
+            @unknown default:
+                break
+            }
+        }
     }
     
     private func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
@@ -206,26 +233,14 @@ struct ContentView: View {
               switch selectedMazeType {
 //              case .delta:
 //                switch selectedSize {
-//                case .small: return 1.35
-//                case .medium: return 1.52
-//                case .large: return 1.65
-//                }
-//              case .orthogonal:
-//                switch selectedSize {
-//                case .small:  return 0.92
+//                case .small: return 1.55
 //                case .medium: return 1.6
-//                case .large:  return 2.0
-//                }
-//              case .sigma:
-//                switch selectedSize {
-//                case .small:  return 0.65
-//                case .medium: return 0.72
-//                case .large:  return 0.8
+//                case .large: return 1.7
 //                }
               case .delta:
                 switch selectedSize {
-                case .small: return 1.55
-                case .medium: return 1.6
+                case .small: return 1.47
+                case .medium: return 1.55
                 case .large: return 1.7
                 }
               case .orthogonal:
@@ -268,9 +283,19 @@ struct ContentView: View {
             let maxHeightRows = max(1, Int(availableH / adjustedCellSize))
 
             // 6) sigma still subdivides by 3
-            let finalHeight = (selectedMazeType == .sigma)
+            var finalHeight = (selectedMazeType == .sigma)
                             ? maxHeightRows / 3
                             : maxHeightRows
+        
+//            if selectedMazeType == .delta && UIDevice.current.userInterfaceIdiom == .pad {
+//                let maxRows = 50  // Adjust this value based on testing (TODO: adjust based on cell size)
+//                finalHeight = min(finalHeight, maxRows)
+//            }
+        if selectedMazeType == .delta && UIDevice.current.userInterfaceIdiom == .pad {
+            // Calculate maxRows based on available height and adjustedCellSize
+            let maxRows = Int(availableH / adjustedCellSize * 0.77) // 90% of available height to leave some margin
+            finalHeight = min(finalHeight, maxRows)
+        }
 
             // 7) width as before
             let maxWidth = max(1, Int(UIScreen.main.bounds.width / adjustedCellSize))
@@ -343,19 +368,10 @@ struct ContentView: View {
             
             mazeGenerated = true
             errorMessage = nil
+
             
             selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
             defaultBackgroundColor = randomDefaultExcluding(current: defaultBackgroundColor, from: defaultBackgroundColors)
-            
-//            if showHeatMap {
-//                // only pick a new one when turning it back on
-//                selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
-//                // … and a new default background
-//                defaultBackgroundColor = randomDefaultExcluding(
-//                    current: defaultBackgroundColor,
-//                    from: defaultBackgroundColors
-//                )
-//            }
             
         case .failure(let error):
             errorMessage = "\(error.localizedDescription)"
