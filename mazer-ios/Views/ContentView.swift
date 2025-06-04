@@ -40,9 +40,7 @@ struct ContentView: View {
     @State private var defaultBackgroundColor: Color = defaultBackgroundColors.randomElement()!
     
     @State private var didInitialRandomization = false
-    
-    @State private var isLoading: Bool = false
-    
+        
     @State private var hasPlayedSoundThisSession: Bool = false // Add this to track sound playback per session
     
     @Environment(\.scenePhase) private var scenePhase // Add this to detect app lifecycle changes
@@ -87,7 +85,6 @@ struct ContentView: View {
                         mazeCells: mazeCells,
                         mazeType: mazeType,
                         regenerateMaze: {
-//                            isLoading = true
                             submitMazeRequest()
                         },
                         moveAction: { direction in
@@ -119,7 +116,6 @@ struct ContentView: View {
                         selectedMazeType: $selectedMazeType,
                         selectedAlgorithm: $selectedAlgorithm,
                         submitMazeRequest: {
-//                            isLoading = true
                             submitMazeRequest()
                         }
                     )
@@ -131,15 +127,6 @@ struct ContentView: View {
                 }
             }
             .padding()
-            
-            // Loading overlay
-            if isLoading {
-                GIFView(gifName: "loading-200px-200px")
-                    .frame(width: 100, height: 100)
-                    .background(Color.black.opacity(0.7))
-                    .cornerRadius(10)
-                    .zIndex(2)
-            }
             
             if showCelebration {
               SparkleView(count: 60, totalDuration: 3.0)
@@ -187,8 +174,7 @@ struct ContentView: View {
             case .active:
                 // App has launched or come to the foreground
                 if !hasPlayedSoundThisSession {
-//                    AudioServicesPlaySystemSound(1016) // Play the tweety-bird sound
-                    AudioServicesPlaySystemSound(1001) // Play the swoosh sound
+                    AudioServicesPlaySystemSound(1104)
                     hasPlayedSoundThisSession = true
                 }
             case .background, .inactive:
@@ -198,7 +184,6 @@ struct ContentView: View {
                 break
             }
         }
-        
     }
     
     private func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
@@ -332,14 +317,12 @@ struct ContentView: View {
             
             guard let jsonCString = jsonString.cString(using: .utf8) else {
                 errorMessage = "Invalid JSON encoding."
-                isLoading = false
                 return
             }
             
             // Call the FFI function to generate a maze.
             guard let gridPtr = mazer_generate_maze(jsonCString) else {
                 errorMessage = "Failed to generate maze."
-                isLoading = false
                 return
             }
             
@@ -350,7 +333,6 @@ struct ContentView: View {
             // mazer_get_cells returns an UnsafeMutablePointer<FFICell>, so no extra cast is needed.
             guard let cellsPtr = mazer_get_cells(gridPtr, &length) else {
                 errorMessage = "Failed to retrieve cells."
-                isLoading = false
                 return
             }
             
@@ -391,30 +373,8 @@ struct ContentView: View {
             selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
             defaultBackgroundColor = randomDefaultExcluding(current: defaultBackgroundColor, from: defaultBackgroundColors)
             
-//            isLoading = false
-            // Debug delay
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
-                self.isLoading = false
-            }
-            
-//            if showHeatMap {
-//                // only pick a new one when turning it back on
-//                selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
-//                // … and a new default background
-//                defaultBackgroundColor = randomDefaultExcluding(
-//                    current: defaultBackgroundColor,
-//                    from: defaultBackgroundColors
-//                )
-//            }
-            
         case .failure(let error):
             errorMessage = "\(error.localizedDescription)"
-//            isLoading = false
-            // Debug delay
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
-                self.isLoading = false
-            }
-            
         }
     }
     
