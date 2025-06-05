@@ -51,12 +51,16 @@ struct MazeRequestView: View {
         screenWidth > 700 ? 1.3 : 1.0
     }
     
+    private var isIPad: Bool {
+        UIDevice.current.userInterfaceIdiom == .pad
+    }
+    
     private var availableAlgorithms: [MazeAlgorithm] {
         if selectedMazeType == .orthogonal {
             return MazeAlgorithm.allCases
         } else {
             return MazeAlgorithm.allCases
-                .filter { ![.binaryTree, .sidewinder].contains($0) }
+                .filter { ![.binaryTree, .sidewinder, .ellers, .recursiveDivision].contains($0) }
         }
     }
         
@@ -89,6 +93,11 @@ struct MazeRequestView: View {
                 selectedAlgorithm = firstValid
             }
         }
+        .onAppear {
+            if isIPad {
+                selectedSize = .large
+            }
+        }
     }
     
     private var mainContent: some View {
@@ -97,24 +106,26 @@ struct MazeRequestView: View {
                 Image(colorScheme == .dark ? "LogoLight" : "LogoDark")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 60 * fontScale, height: 60 * fontScale) // Adjust size as needed
+                    .frame(width: 60 * fontScale, height: 60 * fontScale)
                     .padding(.bottom, 8)
                 
                 Text("Omni Mazes & Solutions")
                     .font(.system(size: 14 * fontScale))
-                    .foregroundColor(colorScheme == .dark ? Color(hex: "B3B3B3")  : Color.lightModeSecondary)
+                    .foregroundColor(colorScheme == .dark ? Color(hex: "B3B3B3") : Color.lightModeSecondary)
                     .italic()
             }
             .padding(.bottom, 8)
             
-            Picker("Maze Size", selection: $selectedSize) {
-                ForEach(MazeSize.allCases) { size in
-                    Text(size.label)
-                        .tag(size)
+            if !isIPad {
+                Picker("Maze Size", selection: $selectedSize) {
+                    ForEach(MazeSize.allCases) { size in
+                        Text(size.label)
+                            .tag(size)
+                    }
                 }
+                .pickerStyle(SegmentedPickerStyle())
+                .tint(colorScheme == .dark ? Color.lightSkyBlue : Color.orangeRed)
             }
-            .pickerStyle(SegmentedPickerStyle())
-            .tint(colorScheme == .dark ? Color.lightSkyBlue : Color.orangeRed)
             
             Picker("Maze Type", selection: $selectedMazeType) {
                 ForEach(MazeType.allCases.filter { $0 != .polar }) { type in
@@ -159,7 +170,6 @@ struct MazeRequestView: View {
                     .fontWeight(.bold)
             }
             .buttonStyle(.borderedProminent)
-//            .tint(Color.orangeRed)
             .tint(colorScheme == .dark ? .secondary : Color.orangeRed)
             .padding()
 
