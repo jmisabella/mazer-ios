@@ -30,17 +30,35 @@ struct OrthogonalCellView: View {
       }
     
     private var size: CGFloat { snap(cellSize) }
+    
+//    private var wallWidth: CGFloat {
+//        let raw: CGFloat
+//        switch cellSize {
+//        case ..<18:
+//            raw = 1.85
+//        case 18..<24:
+//            raw = 2.25
+//        default:
+//            raw = 2.45
+//        }
+//        return (raw * UIScreen.main.scale).rounded() / UIScreen.main.scale
+//    }
+    
     private var wallWidth: CGFloat {
-        // pick a simple 1–2 pt wall
         let raw: CGFloat
-//        print(cellSize)
         switch cellSize {
+//        case ..<18:
+//            raw = 2.0
+//        case 18..<24:
+//            raw = 2.5
+//        default:
+//            raw = 3.0
         case ..<18:
-            raw = 1.85
+            raw = 3.0
         case 18..<24:
-            raw = 2.25
+            raw = 3.5
         default:
-            raw = 2.45
+            raw = 4.0
         }
         return (raw * UIScreen.main.scale).rounded() / UIScreen.main.scale
     }
@@ -66,27 +84,56 @@ struct OrthogonalCellView: View {
         // one single overlay that stacks vertical _then_ horizontal
             .overlay(
                 ZStack {
-                    // 1) vertical walls (underneath)
+                    // Vertical walls (underneath)
                     HStack(spacing: 0) {
                         if !cell.linked.contains("Left") {
-                            Color.black.frame(width: wallWidth, height: size)
+                            Color.black
+                                .frame(width: wallWidth, height: size)
+                                .offset(x: -wallWidth / 2) // Shift slightly left to ensure no gap
                         }
                         Spacer()
                         if !cell.linked.contains("Right") {
-                            Color.black.frame(width: wallWidth, height: size)
+                            Color.black
+                                .frame(width: wallWidth, height: size)
+                                .offset(x: wallWidth / 2) // Shift slightly right to ensure no gap
                         }
                     }
                     
-                    // 2) horizontal walls (on top!)
+                    // Horizontal walls (on top)
                     VStack(spacing: 0) {
                         if !cell.linked.contains("Up") {
-                            Color.black.frame(width: size, height: wallWidth)
+                            Color.black
+                                .frame(width: size, height: wallWidth)
+                                .offset(y: -wallWidth / 2) // Shift slightly up to ensure no gap
                         }
                         Spacer()
                         if !cell.linked.contains("Down") {
-                            Color.black.frame(width: size, height: wallWidth)
+                            Color.black
+                                .frame(width: size, height: wallWidth)
+                                .offset(y: wallWidth / 2) // Shift slightly down to ensure no gap
                         }
                     }
+//                    // 1) vertical walls (underneath)
+//                    HStack(spacing: 0) {
+//                        if !cell.linked.contains("Left") {
+//                            Color.black.frame(width: wallWidth, height: size)
+//                        }
+//                        Spacer()
+//                        if !cell.linked.contains("Right") {
+//                            Color.black.frame(width: wallWidth, height: size)
+//                        }
+//                    }
+//                    
+//                    // 2) horizontal walls (on top!)
+//                    VStack(spacing: 0) {
+//                        if !cell.linked.contains("Up") {
+//                            Color.black.frame(width: size, height: wallWidth)
+//                        }
+//                        Spacer()
+//                        if !cell.linked.contains("Down") {
+//                            Color.black.frame(width: size, height: wallWidth)
+//                        }
+//                    }
                 }
             )
             .frame(width: size, height: size)

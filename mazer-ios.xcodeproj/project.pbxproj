@@ -39,7 +39,7 @@
 		00DD0DC42DAC9C8A00C20B2E /* DeltaCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0DC32DAC9C8A00C20B2E /* DeltaCellView.swift */; };
 		00DD0DC62DAC9CFE00C20B2E /* DeltaMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0DC52DAC9CFE00C20B2E /* DeltaMazeView.swift */; };
 		00DD0DC82DAC9DBE00C20B2E /* DeltaDirectionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0DC72DAC9DBE00C20B2E /* DeltaDirectionControlView.swift */; };
-		00DE4C082DF1031100044648 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DD0D132DAC3C7E00C20B2E /* libmazer.a */; };
+		00DE4C0C2DF124D500044648 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0018E4462DE522FF00E4A24E /* libmazer.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1722,7 +1722,7 @@
 		00DD0DC32DAC9C8A00C20B2E /* DeltaCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltaCellView.swift; sourceTree = "<group>"; };
 		00DD0DC52DAC9CFE00C20B2E /* DeltaMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltaMazeView.swift; sourceTree = "<group>"; };
 		00DD0DC72DAC9DBE00C20B2E /* DeltaDirectionControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltaDirectionControlView.swift; sourceTree = "<group>"; };
-		00DE4C092DF1032400044648 /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
+		00DE4C0D2DF124E700044648 /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1730,7 +1730,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00DE4C082DF1031100044648 /* libmazer.a in Frameworks */,
+				00DE4C0C2DF124D500044648 /* libmazer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2826,7 +2826,7 @@
 				00C33F622D98C84C0077691B /* mazer_iosApp.swift */,
 				00C33F6D2D98C8E50077691B /* Models */,
 				00C33F6F2D98C9010077691B /* Utils */,
-				00DE4C092DF1032400044648 /* mazer_bridge.h */,
+				00DE4C0D2DF124E700044648 /* mazer_bridge.h */,
 			);
 			path = "mazer-ios";
 			sourceTree = "<group>";
