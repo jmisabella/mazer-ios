@@ -119,8 +119,7 @@ struct DeltaCellView: View {
             .stroke(Color.black, lineWidth: snap(cellStrokeWidth(for: cellSize, mazeType: .delta) * 1.15))
         }
         .frame(width: snap(cellSize), height: snap(triangleHeight))
-        .drawingGroup(opaque: true) // Keep this for rendering optimization
-        // Remove .clipped(antialiased: false) here
+        .drawingGroup(opaque: true) // for rendering optimization
     }
 }
 
