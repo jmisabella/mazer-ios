@@ -44,7 +44,7 @@ struct MazeGenerationAnimationView: View {
                         cells: currentCells,
                         showSolution: false,
                         showHeatMap: false,
-                        defaultBackgroundColor: .gray
+                        defaultBackgroundColor: defaultCellBackgroundGray
                     )
                     .id(currentStepIndex)  // Force re-render on each step
                 case .delta:
@@ -55,7 +55,7 @@ struct MazeGenerationAnimationView: View {
                         showHeatMap: false,
                         selectedPalette: wetAsphaltPalette,
                         maxDistance: currentCells.map(\.distance).max() ?? 1,
-                        defaultBackgroundColor: .gray
+                        defaultBackgroundColor: defaultCellBackgroundGray
                     )
                     .id(currentStepIndex)  // Force re-render on each step
                 case .sigma:
@@ -65,7 +65,7 @@ struct MazeGenerationAnimationView: View {
                         cellSize: computeCellSize(),
                         showSolution: false,
                         showHeatMap: false,
-                        defaultBackgroundColor: .gray
+                        defaultBackgroundColor: defaultCellBackgroundGray
                     )
                     .id(currentStepIndex)  // Force re-render on each step
                 default:
