@@ -43,6 +43,11 @@ struct ContentView: View {
         
     @State private var hasPlayedSoundThisSession: Bool = false // Add this to track sound playback per session
     
+    @State private var captureSteps: Bool = false
+    @State private var isGeneratingMaze: Bool = false
+    @State private var isAnimatingGeneration: Bool = false
+    @State private var generationSteps: [[MazeCell]] = []
+    
     @Environment(\.scenePhase) private var scenePhase // Add this to detect app lifecycle changes
     
     @Environment(\.colorScheme) private var colorScheme
@@ -115,6 +120,7 @@ struct ContentView: View {
                         selectedSize: $selectedSize,
                         selectedMazeType: $selectedMazeType,
                         selectedAlgorithm: $selectedAlgorithm,
+                        captureSteps: $captureSteps,
                         submitMazeRequest: {
                             submitMazeRequest()
                         }
@@ -297,17 +303,24 @@ struct ContentView: View {
             finalHeight = min(finalHeight, maxRows)
         }
 
-            // 7) width as before
-            let maxWidth = max(1, Int(UIScreen.main.bounds.width / adjustedCellSize))
-            let finalWidth = (selectedMazeType == .sigma)
-                           ? maxWidth / 3
-                           : maxWidth
+        // 7) width as before
+        let maxWidth = max(1, Int(UIScreen.main.bounds.width / adjustedCellSize))
+        let finalWidth = (selectedMazeType == .sigma)
+        ? maxWidth / 3
+        : maxWidth
+        
+        // Check size constraints for capture_steps
+        if captureSteps && (finalWidth > 100 || finalHeight > 100) {
+            errorMessage = "Capture steps is only available for mazes with width and height ≤ 100."
+            return
+        }
         
         let result = MazeRequestValidator.validate(
               mazeType: selectedMazeType,
               width:  finalWidth,
               height: finalHeight,
-              algorithm: selectedAlgorithm
+              algorithm: selectedAlgorithm,
+              captureSteps: captureSteps
             )
         
         
@@ -366,7 +379,51 @@ struct ContentView: View {
             // Free the cells array allocated on the Rust side.
             mazer_free_cells(cellsPtr, length)
             
-            mazeGenerated = true
+            // Handle generation steps if captureSteps is enabled
+            if captureSteps {
+                // Assuming FFI functions exist (to be implemented on Rust side)
+                let stepsCount = mazer_get_generation_steps_count(gridPtr)
+                var steps: [[MazeCell]] = []
+                
+                for i in 0..<stepsCount {
+                    var stepLength: size_t = 0
+                    guard let stepCellsPtr = mazer_get_generation_step_cells(gridPtr, i, &stepLength) else {
+                        errorMessage = "Failed to retrieve generation step cells."
+                        return
+                    }
+                    
+                    var stepCells: [MazeCell] = []
+                    for j in 0..<Int(stepLength) {
+                        let ffiCell = stepCellsPtr[j]
+                        let mazeTypeCopy = ffiCell.maze_type != nil ? String(cString: ffiCell.maze_type!) : ""
+                        let orientationCopy = ffiCell.orientation != nil ? String(cString: ffiCell.orientation!) : ""
+                        
+                        stepCells.append(MazeCell(
+                            x: Int(ffiCell.x),
+                            y: Int(ffiCell.y),
+                            mazeType: mazeTypeCopy,
+                            linked: convertCStringArray(ffiCell.linked, count: ffiCell.linked_len),
+                            distance: Int(ffiCell.distance),
+                            isStart: ffiCell.is_start,
+                            isGoal: ffiCell.is_goal,
+                            isActive: ffiCell.is_active,
+                            isVisited: ffiCell.is_visited,
+                            hasBeenVisited: ffiCell.has_been_visited,
+                            onSolutionPath: ffiCell.on_solution_path,
+                            orientation: orientationCopy
+                        ))
+                    }
+                    
+                    steps.append(stepCells)
+                    mazer_free_cells(stepCellsPtr, stepLength)
+                }
+                
+                generationSteps = steps
+                isAnimatingGeneration = true
+            } else {
+                mazeGenerated = true
+            }
+            
             errorMessage = nil
 
             

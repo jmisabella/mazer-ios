@@ -8,6 +8,7 @@ struct MazeRequestView: View {
     @Binding var selectedSize: MazeSize
     @Binding var selectedMazeType: MazeType
     @Binding var selectedAlgorithm: MazeAlgorithm
+    @Binding var captureSteps: Bool
     
     let submitMazeRequest: () -> Void
     
@@ -162,6 +163,12 @@ struct MazeRequestView: View {
             Text(selectedAlgorithm.description)
                 .font(.system(size: 12 * fontScale))
                 .foregroundColor(colorScheme == .dark ? .secondary : Color.lightModeSecondary)
+                .padding(.horizontal)
+            
+            Toggle("Capture Generation Steps", isOn: $captureSteps)
+                .font(.system(size: 14 * fontScale))
+                .foregroundColor(colorScheme == .dark ? .white : .black)
+                .tint(colorScheme == .dark ? Color.lightSkyBlue : Color.orangeRed)
                 .padding(.horizontal)
 
             Button(action: submitMazeRequest) {
