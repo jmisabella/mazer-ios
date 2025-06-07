@@ -2,7 +2,7 @@
 //  mazer_bridge.h
 //  mazer-ios
 //
-//  Created by Jeffrey Isabella on 6/6/25.
+//  Created by Jeffrey Isabella on 6/7/25.
 //
 
 #ifndef MAZER_H
