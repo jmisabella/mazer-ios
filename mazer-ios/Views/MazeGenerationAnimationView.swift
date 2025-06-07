@@ -34,33 +34,39 @@ struct MazeGenerationAnimationView: View {
 
     var body: some View {
         if currentStepIndex < generationSteps.count {
-            Group {
-                let currentCells = generationSteps[currentStepIndex]
-                switch mazeType {
-                case .orthogonal:
-                    OrthogonalMazeView(
-                        selectedPalette: .constant(wetAsphaltPalette),
-                        cells: currentCells,
-                        showSolution: false,
-                        showHeatMap: false,
-                        defaultBackgroundColor: .gray
-                    )
-                case .sigma:
-                    SigmaMazeView(
-                        selectedPalette: .constant(wetAsphaltPalette),
-                        cells: currentCells,
-                        cellSize: computeCellSize(),
-                        showSolution: false,
-                        showHeatMap: false,
-                        defaultBackgroundColor: .gray
-                    )
-                default:
-                    Text("Unsupported maze type")
-                }
-            }
+            Text("Step \(currentStepIndex)")
+//            Group {
+//                let currentCells = generationSteps[currentStepIndex]
+//                switch mazeType {
+//                case .orthogonal:
+//                    OrthogonalMazeView(
+//                        selectedPalette: .constant(wetAsphaltPalette),
+//                        cells: currentCells,
+//                        showSolution: false,
+//                        showHeatMap: false,
+//                        defaultBackgroundColor: .gray
+//                    )
+//                case .sigma:
+//                    SigmaMazeView(
+//                        selectedPalette: .constant(wetAsphaltPalette),
+//                        cells: currentCells,
+//                        cellSize: computeCellSize(),
+//                        showSolution: false,
+//                        showHeatMap: false,
+//                        defaultBackgroundColor: .gray
+//                    )
+//                default:
+//                    Text("Unsupported maze type")
+//                }
+//            }
             .onAppear {
+                for (i, step) in generationSteps.enumerated() {
+                    let linkedCount = step.map { $0.linked.count }.reduce(0, +)
+                    print("Step \(i): \(linkedCount) linked directions")
+                }
                 for i in 0..<generationSteps.count {
                     DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.05) {
+                        print("Step \(i) of \(generationSteps.count)")
                         currentStepIndex = i
                         if i == generationSteps.count - 1 {
                             isAnimatingGeneration = false
