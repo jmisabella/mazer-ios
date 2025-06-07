@@ -40,6 +40,7 @@
 		00DD0DC62DAC9CFE00C20B2E /* DeltaMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0DC52DAC9CFE00C20B2E /* DeltaMazeView.swift */; };
 		00DD0DC82DAC9DBE00C20B2E /* DeltaDirectionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0DC72DAC9DBE00C20B2E /* DeltaDirectionControlView.swift */; };
 		00DE4C152DF3C3BB00044648 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DD0D132DAC3C7E00C20B2E /* libmazer.a */; };
+		00DE4C182DF3D2B000044648 /* MazeGenerationAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE4C172DF3D2B000044648 /* MazeGenerationAnimationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1723,6 +1724,7 @@
 		00DD0DC52DAC9CFE00C20B2E /* DeltaMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltaMazeView.swift; sourceTree = "<group>"; };
 		00DD0DC72DAC9DBE00C20B2E /* DeltaDirectionControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltaDirectionControlView.swift; sourceTree = "<group>"; };
 		00DE4C162DF3C3CE00044648 /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
+		00DE4C172DF3D2B000044648 /* MazeGenerationAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGenerationAnimationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2866,6 +2868,7 @@
 				00AE05F62DB8778C0068C880 /* SigmaMazeView.swift */,
 				001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */,
 				003753BC2DD8336C000DB75C /* SparkleView.swift */,
+				00DE4C172DF3D2B000044648 /* MazeGenerationAnimationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -5117,6 +5120,7 @@
 				006F3F392D9F6EC200627BD4 /* HeatMapPalette.swift in Sources */,
 				0095189A2DBF0F33003B1C21 /* HexDirection.swift in Sources */,
 				00DD0B542DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift in Sources */,
+				00DE4C182DF3D2B000044648 /* MazeGenerationAnimationView.swift in Sources */,
 				00AE05F72DB8778C0068C880 /* SigmaMazeView.swift in Sources */,
 				00C33F792D98CC8E0077691B /* Coordinates.swift in Sources */,
 			);

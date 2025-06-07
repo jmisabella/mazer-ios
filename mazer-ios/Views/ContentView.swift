@@ -77,7 +77,16 @@ struct ContentView: View {
             
             .ignoresSafeArea()
             VStack {
-                if mazeGenerated {
+                if isGeneratingMaze {
+                    ProgressView("Generating maze...")
+                } else if isAnimatingGeneration {
+                    MazeGenerationAnimationView(
+                        generationSteps: generationSteps,
+                        mazeType: mazeType,
+                        isAnimatingGeneration: $isAnimatingGeneration,
+                        mazeGenerated: $mazeGenerated
+                    )
+                } else if mazeGenerated {
                     MazeRenderView(
                         mazeGenerated: $mazeGenerated,
                         showSolution: $showSolution,
