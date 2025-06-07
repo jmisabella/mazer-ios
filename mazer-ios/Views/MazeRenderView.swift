@@ -214,7 +214,7 @@ struct MazeRenderView: View {
                         .gesture(
                             DragGesture(minimumDistance: 10)
                                 .onEnded { value in
-                                    let isIPad = UIDevice.current.userInterfaceIdiom == .pad
+//                                    let isIPad = UIDevice.current.userInterfaceIdiom == .pad
                                     let batchSize = 1
                                     let tx = value.translation.width
                                     let ty = -value.translation.height

@@ -381,14 +381,16 @@ struct ContentView: View {
             
             // Handle generation steps if captureSteps is enabled
             if captureSteps {
-                // Assuming FFI functions exist (to be implemented on Rust side)
                 let stepsCount = mazer_get_generation_steps_count(gridPtr)
+                print("Number of generation steps: \(stepsCount)") // Log total steps
                 var steps: [[MazeCell]] = []
                 
                 for i in 0..<stepsCount {
+                    print("Processing step \(i) of \(stepsCount)") // Log start of step
                     var stepLength: size_t = 0
                     guard let stepCellsPtr = mazer_get_generation_step_cells(gridPtr, i, &stepLength) else {
                         errorMessage = "Failed to retrieve generation step cells."
+                        print("Failed to retrieve cells for step \(i)")
                         return
                     }
                     
@@ -416,6 +418,7 @@ struct ContentView: View {
                     
                     steps.append(stepCells)
                     mazer_free_cells(stepCellsPtr, stepLength)
+                    print("Finished processing step \(i)") // Log end of step
                 }
                 
                 generationSteps = steps
