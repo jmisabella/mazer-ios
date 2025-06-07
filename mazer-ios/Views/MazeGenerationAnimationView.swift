@@ -35,7 +35,6 @@ struct MazeGenerationAnimationView: View {
 
     var body: some View {
         if currentStepIndex < generationSteps.count {
-//            Text("Step \(currentStepIndex)")
             Group {
                 let currentCells = generationSteps[currentStepIndex]
                 switch mazeType {
@@ -75,11 +74,6 @@ struct MazeGenerationAnimationView: View {
             }
             .onAppear {
                 for i in 0..<generationSteps.count {
-                    let stepCells = generationSteps[i]
-//                    print("Step \(i): first cell linked = \(stepCells.first?.linked ?? [])")
-                    for (j, cell) in stepCells.enumerated() {
-                        print("Step \(i), cell \(j): linked = \(cell.linked)")
-                    }
                     DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.05) {
                         currentStepIndex = i
                         if i == generationSteps.count - 1 {

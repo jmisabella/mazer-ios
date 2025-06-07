@@ -92,7 +92,7 @@ struct SigmaMazeView: View {
                 .position(position(for: cell))
             }
         }
-//        .drawingGroup()
+        .drawingGroup()
         .frame(width: totalWidth, height: totalHeight)
         .environment(\.cellMap, cellMap) // Inject cellMap into the environment
         .onChange(of: showSolution) { _, new in

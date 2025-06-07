@@ -86,7 +86,7 @@ struct OrthogonalMazeView: View {
                     .frame(width: cellSize, height: cellSize)
                 }
             }
-//            .drawingGroup()  // Batch offscreen rendering
+            .drawingGroup()  // Batch offscreen rendering
         }
         // Add a black border around the entire maze grid
         .overlay(
