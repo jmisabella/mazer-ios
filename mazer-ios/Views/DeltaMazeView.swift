@@ -83,8 +83,8 @@ struct DeltaMazeView: View {
         let totalHeight = snap(triangleHeight * CGFloat(rows))
 
         ZStack {
-            // Background that matches the color scheme
-            (colorScheme == .dark ? Color.black : Color.offWhite)
+//            (colorScheme == .dark ? Color.black : Color.offWhite)
+            Color.black
                 .frame(width: totalWidth, height: totalHeight)
             
             VStack(spacing: snap(0)) {

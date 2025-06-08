@@ -47,6 +47,7 @@ struct ContentView: View {
     @State private var isGeneratingMaze: Bool = false
     @State private var isAnimatingGeneration: Bool = false
     @State private var generationSteps: [[MazeCell]] = []
+    @State private var isLoading: Bool = false
     
     @Environment(\.scenePhase) private var scenePhase // Add this to detect app lifecycle changes
     
@@ -143,6 +144,15 @@ struct ContentView: View {
             }
             .padding()
             
+            if isLoading {
+                LoadingOverlayView(
+                    algorithm: selectedAlgorithm,
+                    colorScheme: colorScheme,
+                    fontScale: screenWidth > 700 ? 1.3 : 1.0
+                )
+                .zIndex(2)
+            }
+            
             if showCelebration {
               SparkleView(count: 60, totalDuration: 3.0)
                 .zIndex(1)
@@ -201,6 +211,8 @@ struct ContentView: View {
         }
     }
     
+    private var screenWidth: CGFloat { UIScreen.main.bounds.width }
+    
     private func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
         let availablePalettes = allPalettes.filter { $0 != current }
         // If there’s at least one palette that isn’t the current, pick one at random.
@@ -243,6 +255,7 @@ struct ContentView: View {
             currentGrid = nil
         }
         
+        isLoading = true // Show loading overlay
         
         let adjustment: CGFloat = {
               switch selectedMazeType {
@@ -318,9 +331,9 @@ struct ContentView: View {
         ? maxWidth / 3
         : maxWidth
         
-        // Check size constraints for capture_steps
         if captureSteps && (finalWidth > 100 || finalHeight > 100) {
-            errorMessage = "Capture steps is only available for mazes with width and height ≤ 100."
+            errorMessage = "Show Maze Generation is only available for mazes with width and height ≤ 100."
+            isLoading = false
             return
         }
         
@@ -339,22 +352,22 @@ struct ContentView: View {
             
             guard let jsonCString = jsonString.cString(using: .utf8) else {
                 errorMessage = "Invalid JSON encoding."
+                isLoading = false
                 return
             }
             
-            // Call the FFI function to generate a maze.
             guard let gridPtr = mazer_generate_maze(jsonCString) else {
                 errorMessage = "Failed to generate maze."
+                isLoading = false
                 return
             }
             
-            // Save the grid pointer directly.
             currentGrid = gridPtr
             
             var length: size_t = 0
-            // mazer_get_cells returns an UnsafeMutablePointer<FFICell>, so no extra cast is needed.
             guard let cellsPtr = mazer_get_cells(gridPtr, &length) else {
                 errorMessage = "Failed to retrieve cells."
+                isLoading = false
                 return
             }
             
@@ -398,6 +411,7 @@ struct ContentView: View {
                     guard let stepCellsPtr = mazer_get_generation_step_cells(gridPtr, i, &stepLength) else {
                         errorMessage = "Failed to retrieve generation step cells."
                         print("Failed to retrieve cells for step \(i)")
+                        isLoading = false
                         return
                     }
                     
@@ -429,18 +443,21 @@ struct ContentView: View {
                 
                 generationSteps = steps
                 isAnimatingGeneration = true
+                isLoading = false // Hide loading overlay when animation starts
             } else {
                 mazeGenerated = true
+                isLoading = false
             }
             
             errorMessage = nil
-
+            
             
             selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
             defaultBackgroundColor = randomDefaultExcluding(current: defaultBackgroundColor, from: defaultBackgroundColors)
             
         case .failure(let error):
             errorMessage = "\(error.localizedDescription)"
+            isLoading = false
         }
     }
     
