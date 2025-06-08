@@ -19,7 +19,7 @@ struct ContentView: View {
     @State private var errorMessage: String?
 
     // User selections from request view
-    @State private var selectedSize: MazeSize = .medium
+    @State private var selectedSize: MazeSize = .large
     @State private var selectedMazeType: MazeType = .orthogonal
     @State private var selectedAlgorithm: MazeAlgorithm = .recursiveBacktracker
     // User selections from render view

@@ -163,13 +163,13 @@ struct MazeGenerationAnimationView: View {
                                 AudioServicesPlaySystemSound(1104)
                             }) {
                                 Image(systemName: "xmark.circle.fill")
-                                    .font(.title2)
+                                    .font(.system(size: 28)) // Increased font size by ~30%
                                     .foregroundColor(.white.opacity(0.7))
                                     .background(Circle().fill(Color.black.opacity(0.5)))
-                                    .frame(width: 44, height: 44)
+                                    .frame(width: 57, height: 57) // Increased frame by 30%
                             }
                             .accessibilityLabel("Cancel maze generation animation")
-                            .padding(.trailing, 16)
+                            .padding(.trailing, 24) // Increased trailing padding to move left
                             .padding(.top, 16)
                         }
                         Spacer()
@@ -195,13 +195,20 @@ struct MazeGenerationAnimationView: View {
 }
 
 //import SwiftUI
-//import AudioToolbox // Added for sound playback
+//import AudioToolbox
 //
 //struct MazeGenerationAnimationView: View {
 //    let generationSteps: [[MazeCell]]  // Array of maze generation steps
 //    let mazeType: MazeType             // Type of maze for rendering
 //    @Binding var isAnimatingGeneration: Bool  // Controls animation visibility
 //    @Binding var mazeGenerated: Bool          // Triggers MazeRenderView
+//    @Binding var showSolution: Bool           // Toggles solution path
+//    @Binding var showHeatMap: Bool            // Toggles heat map
+//    @Binding var showControls: Bool           // Toggles navigation controls
+//    @Binding var selectedPalette: HeatMapPalette // Heat map palette
+//    @Binding var defaultBackground: Color     // Default background color
+//    @Binding var mazeID: UUID                 // Maze ID for refresh
+//    let regenerateMaze: () -> Void            // Closure to regenerate maze
 //
 //    @State private var currentStepIndex = 0   // Tracks current animation step
 //
@@ -223,47 +230,73 @@ struct MazeGenerationAnimationView: View {
 //        }
 //    }
 //
+//    // Function to toggle heat map and update palette
+//    private func toggleHeatMap() {
+//        showHeatMap.toggle()
+//        if showHeatMap {
+//            selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
+//            defaultBackground = randomDefaultExcluding(current: defaultBackground, from: defaultBackgroundColors)
+//        }
+//    }
+//
+//    // Helper to select random palette excluding current
+//    private func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
+//        let availablePalettes = allPalettes.filter { $0 != current }
+//        return availablePalettes.randomElement() ?? current
+//    }
+//
+//    // Helper to select random default background excluding current
+//    private func randomDefaultExcluding(current: Color, from all: [Color]) -> Color {
+//        let others = all.filter { $0 != current }
+//        return others.randomElement() ?? current
+//    }
+//
 //    var body: some View {
 //        VStack {
-//            // Navigation bar matching MazeRenderView, with all buttons disabled
+//            // Navigation bar matching MazeRenderView, with fully functional buttons
 //            HStack(spacing: 16) {
-//                Button(action: {}) {
+//                Button(action: {
+//                    mazeGenerated = false
+//                }) {
 //                    Image(systemName: "arrow.uturn.left")
 //                        .font(.title2)
 //                        .foregroundColor(.blue)
 //                }
-//                .disabled(true)
 //                .accessibilityLabel("Back to maze settings")
 //
-//                Button(action: {}) {
+//                Button(action: {
+//                    defaultBackground = defaultBackgroundColors.randomElement()!
+//                    mazeID = UUID()
+//                    regenerateMaze()
+//                }) {
 //                    Image(systemName: "arrow.clockwise")
 //                        .font(.title2)
 //                        .foregroundColor(.purple)
 //                }
-//                .disabled(true)
 //                .accessibilityLabel("Generate new maze")
 //
-//                Button(action: {}) {
-//                    Image(systemName: "checkmark.circle")
+//                Button(action: {
+//                    showSolution.toggle()
+//                }) {
+//                    Image(systemName: showSolution ? "checkmark.circle.fill" : "checkmark.circle")
 //                        .font(.title2)
-//                        .foregroundColor(.gray)
+//                        .foregroundColor(showSolution ? .green : .gray)
 //                }
-//                .disabled(true)
 //                .accessibilityLabel("Toggle solution path")
 //
-//                Button(action: {}) {
-//                    Image(systemName: "flame")
+//                Button(action: toggleHeatMap) {
+//                    Image(systemName: showHeatMap ? "flame.fill" : "flame")
 //                        .font(.title2)
-//                        .foregroundColor(.gray)
+//                        .foregroundColor(showHeatMap ? .orange : .gray)
 //                }
-//                .disabled(true)
 //                .accessibilityLabel("Toggle heat map")
 //
-//                Button(action: {}) {
-//                    Image(systemName: "ellipsis.circle")
+//                Button {
+//                    withAnimation { showControls.toggle() }
+//                } label: {
+//                    Image(systemName: showControls ? "xmark.circle.fill" : "ellipsis.circle")
 //                        .font(.title2)
 //                }
-//                .disabled(true)
 //                .accessibilityLabel("Toggle navigation controls")
 //            }
 //            .padding(.top)
@@ -277,20 +310,20 @@ struct MazeGenerationAnimationView: View {
 //                            OrthogonalMazeView(
 //                                selectedPalette: .constant(wetAsphaltPalette),
 //                                cells: currentCells,
-//                                showSolution: false,
-//                                showHeatMap: false,
-//                                defaultBackgroundColor: defaultCellBackgroundGray
+//                                showSolution: showSolution,
+//                                showHeatMap: showHeatMap,
+//                                defaultBackgroundColor: defaultBackground
 //                            )
 //                            .id(currentStepIndex)  // Force re-render on each step
 //                        case .delta:
 //                            DeltaMazeView(
 //                                cells: currentCells,
 //                                cellSize: computeCellSize(),
-//                                showSolution: false,
-//                                showHeatMap: false,
-//                                selectedPalette: wetAsphaltPalette,
+//                                showSolution: showSolution,
+//                                showHeatMap: showHeatMap,
+//                                selectedPalette: selectedPalette,
 //                                maxDistance: currentCells.map(\.distance).max() ?? 1,
-//                                defaultBackgroundColor: defaultCellBackgroundGray
+//                                defaultBackgroundColor: defaultBackground
 //                            )
 //                            .id(currentStepIndex)  // Force re-render on each step
 //                        case .sigma:
@@ -298,9 +331,9 @@ struct MazeGenerationAnimationView: View {
 //                                selectedPalette: .constant(wetAsphaltPalette),
 //                                cells: currentCells,
 //                                cellSize: computeCellSize(),
-//                                showSolution: false,
-//                                showHeatMap: false,
-//                                defaultBackgroundColor: defaultCellBackgroundGray
+//                                showSolution: showSolution,
+//                                showHeatMap: showHeatMap,
+//                                defaultBackgroundColor: defaultBackground
 //                            )
 //                            .id(currentStepIndex)  // Force re-render on each step
 //                        default:
@@ -316,7 +349,6 @@ struct MazeGenerationAnimationView: View {
 //                                // Skip animation and go to MazeRenderView
 //                                isAnimatingGeneration = false
 //                                mazeGenerated = true
-//                                // Play the same sound as MazeRenderView for consistency
 //                                AudioServicesPlaySystemSound(1104)
 //                            }) {
 //                                Image(systemName: "xmark.circle.fill")
@@ -339,7 +371,6 @@ struct MazeGenerationAnimationView: View {
 //                            if i == generationSteps.count - 1 {
 //                                isAnimatingGeneration = false
 //                                mazeGenerated = true
-//                                // Play sound when animation completes naturally
 //                                AudioServicesPlaySystemSound(1104)
 //                            }
 //                        }
