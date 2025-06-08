@@ -43,6 +43,12 @@ struct ContentView: View {
         
     @State private var hasPlayedSoundThisSession: Bool = false // Add this to track sound playback per session
     
+    @State private var captureSteps: Bool = false
+    @State private var isGeneratingMaze: Bool = false
+    @State private var isAnimatingGeneration: Bool = false
+    @State private var generationSteps: [[MazeCell]] = []
+    @State private var isLoading: Bool = false
+    
     @Environment(\.scenePhase) private var scenePhase // Add this to detect app lifecycle changes
     
     @Environment(\.colorScheme) private var colorScheme
@@ -72,7 +78,16 @@ struct ContentView: View {
             
             .ignoresSafeArea()
             VStack {
-                if mazeGenerated {
+                if isGeneratingMaze {
+                    ProgressView("Generating maze...")
+                } else if isAnimatingGeneration {
+                    MazeGenerationAnimationView(
+                        generationSteps: generationSteps,
+                        mazeType: mazeType,
+                        isAnimatingGeneration: $isAnimatingGeneration,
+                        mazeGenerated: $mazeGenerated
+                    )
+                } else if mazeGenerated {
                     MazeRenderView(
                         mazeGenerated: $mazeGenerated,
                         showSolution: $showSolution,
@@ -115,6 +130,7 @@ struct ContentView: View {
                         selectedSize: $selectedSize,
                         selectedMazeType: $selectedMazeType,
                         selectedAlgorithm: $selectedAlgorithm,
+                        captureSteps: $captureSteps,
                         submitMazeRequest: {
                             submitMazeRequest()
                         }
@@ -127,6 +143,15 @@ struct ContentView: View {
                 }
             }
             .padding()
+            
+            if isLoading {
+                LoadingOverlayView(
+                    algorithm: selectedAlgorithm,
+                    colorScheme: colorScheme,
+                    fontScale: screenWidth > 700 ? 1.3 : 1.0
+                )
+                .zIndex(2)
+            }
             
             if showCelebration {
               SparkleView(count: 60, totalDuration: 3.0)
@@ -186,6 +211,8 @@ struct ContentView: View {
         }
     }
     
+    private var screenWidth: CGFloat { UIScreen.main.bounds.width }
+    
     private func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
         let availablePalettes = allPalettes.filter { $0 != current }
         // If there’s at least one palette that isn’t the current, pick one at random.
@@ -228,6 +255,7 @@ struct ContentView: View {
             currentGrid = nil
         }
         
+        isLoading = true // Show loading overlay
         
         let adjustment: CGFloat = {
               switch selectedMazeType {
@@ -297,17 +325,24 @@ struct ContentView: View {
             finalHeight = min(finalHeight, maxRows)
         }
 
-            // 7) width as before
-            let maxWidth = max(1, Int(UIScreen.main.bounds.width / adjustedCellSize))
-            let finalWidth = (selectedMazeType == .sigma)
-                           ? maxWidth / 3
-                           : maxWidth
+        // 7) width as before
+        let maxWidth = max(1, Int(UIScreen.main.bounds.width / adjustedCellSize))
+        let finalWidth = (selectedMazeType == .sigma)
+        ? maxWidth / 3
+        : maxWidth
+        
+        if captureSteps && (finalWidth > 100 || finalHeight > 100) {
+            errorMessage = "Show Maze Generation is only available for mazes with width and height ≤ 100."
+            isLoading = false
+            return
+        }
         
         let result = MazeRequestValidator.validate(
               mazeType: selectedMazeType,
               width:  finalWidth,
               height: finalHeight,
-              algorithm: selectedAlgorithm
+              algorithm: selectedAlgorithm,
+              captureSteps: captureSteps
             )
         
         
@@ -317,22 +352,22 @@ struct ContentView: View {
             
             guard let jsonCString = jsonString.cString(using: .utf8) else {
                 errorMessage = "Invalid JSON encoding."
+                isLoading = false
                 return
             }
             
-            // Call the FFI function to generate a maze.
             guard let gridPtr = mazer_generate_maze(jsonCString) else {
                 errorMessage = "Failed to generate maze."
+                isLoading = false
                 return
             }
             
-            // Save the grid pointer directly.
             currentGrid = gridPtr
             
             var length: size_t = 0
-            // mazer_get_cells returns an UnsafeMutablePointer<FFICell>, so no extra cast is needed.
             guard let cellsPtr = mazer_get_cells(gridPtr, &length) else {
                 errorMessage = "Failed to retrieve cells."
+                isLoading = false
                 return
             }
             
@@ -366,15 +401,63 @@ struct ContentView: View {
             // Free the cells array allocated on the Rust side.
             mazer_free_cells(cellsPtr, length)
             
-            mazeGenerated = true
+            // Handle generation steps if captureSteps is enabled
+            if captureSteps {
+                let stepsCount = mazer_get_generation_steps_count(gridPtr)
+                var steps: [[MazeCell]] = []
+                
+                for i in 0..<stepsCount {
+                    var stepLength: size_t = 0
+                    guard let stepCellsPtr = mazer_get_generation_step_cells(gridPtr, i, &stepLength) else {
+                        errorMessage = "Failed to retrieve generation step cells."
+                        print("Failed to retrieve cells for step \(i)")
+                        isLoading = false
+                        return
+                    }
+                    
+                    var stepCells: [MazeCell] = []
+                    for j in 0..<Int(stepLength) {
+                        let ffiCell = stepCellsPtr[j]
+                        let mazeTypeCopy = ffiCell.maze_type != nil ? String(cString: ffiCell.maze_type!) : ""
+                        let orientationCopy = ffiCell.orientation != nil ? String(cString: ffiCell.orientation!) : ""
+                        
+                        stepCells.append(MazeCell(
+                            x: Int(ffiCell.x),
+                            y: Int(ffiCell.y),
+                            mazeType: mazeTypeCopy,
+                            linked: convertCStringArray(ffiCell.linked, count: ffiCell.linked_len),
+                            distance: Int(ffiCell.distance),
+                            isStart: ffiCell.is_start,
+                            isGoal: ffiCell.is_goal,
+                            isActive: ffiCell.is_active,
+                            isVisited: ffiCell.is_visited,
+                            hasBeenVisited: ffiCell.has_been_visited,
+                            onSolutionPath: ffiCell.on_solution_path,
+                            orientation: orientationCopy
+                        ))
+                    }
+                    
+                    steps.append(stepCells)
+                    mazer_free_cells(stepCellsPtr, stepLength)
+                }
+                
+                generationSteps = steps
+                isAnimatingGeneration = true
+                isLoading = false // Hide loading overlay when animation starts
+            } else {
+                mazeGenerated = true
+                isLoading = false
+            }
+            
             errorMessage = nil
-
+            
             
             selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
             defaultBackgroundColor = randomDefaultExcluding(current: defaultBackgroundColor, from: defaultBackgroundColors)
             
         case .failure(let error):
             errorMessage = "\(error.localizedDescription)"
+            isLoading = false
         }
     }
     

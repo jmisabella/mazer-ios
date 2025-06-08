@@ -6,8 +6,9 @@ enum MazeRequestError: Error, LocalizedError {
     case startAndGoalCoordinatesSame
     case invalidCoordinates
     case invalidAlgorithm
+    case invalidDimensionsForCaptureSteps
     case invalidMazeRequestJSON
-
+    
     var errorDescription: String? {
         switch self {
         case .invalidMazeType:
@@ -20,6 +21,8 @@ enum MazeRequestError: Error, LocalizedError {
             return "One or more coordinates are out of bounds."
         case .invalidAlgorithm:
             return "The selected algorithm is not valid for this maze type."
+        case .invalidDimensionsForCaptureSteps:
+            return "Capture steps is only available for mazes with width and height ≤ 100."
         case .invalidMazeRequestJSON:
             return "The maze request JSON is malformed."
         }

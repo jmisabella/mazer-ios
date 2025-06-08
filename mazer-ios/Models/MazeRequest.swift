@@ -5,4 +5,5 @@ struct MazeRequest: Codable {
     let width: Int
     let height: Int
     let algorithm: MazeAlgorithm
+    let capture_steps: Bool
 }
