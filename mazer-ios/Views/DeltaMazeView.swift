@@ -83,8 +83,9 @@ struct DeltaMazeView: View {
         let totalHeight = snap(triangleHeight * CGFloat(rows))
 
         ZStack {
-//            (colorScheme == .dark ? Color.black : Color.offWhite)
-            Color.black
+            (colorScheme == .dark ? Color.black : Color.offWhite)
+//            Color.black
+//            Color.offWhite
                 .frame(width: totalWidth, height: totalHeight)
             
             VStack(spacing: snap(0)) {
@@ -97,11 +98,11 @@ struct DeltaMazeView: View {
             .clipped(antialiased: false)
         }
         // Add a black border around the entire maze grid
-        .overlay(
-            Rectangle()
-                .stroke(Color.black, lineWidth: 6) // Consistent black border
-                .frame(width: totalWidth, height: totalHeight)
-        )
+//        .overlay(
+//            Rectangle()
+//                .stroke(Color.black, lineWidth: 6) // Consistent black border
+//                .frame(width: totalWidth, height: totalHeight)
+//        )
         .onChange(of: showSolution) { _, newValue in
             if newValue {
                 animateSolutionPathReveal()
