@@ -113,27 +113,6 @@ struct OrthogonalCellView: View {
                                 .offset(y: wallWidth / 2) // Shift slightly down to ensure no gap
                         }
                     }
-//                    // 1) vertical walls (underneath)
-//                    HStack(spacing: 0) {
-//                        if !cell.linked.contains("Left") {
-//                            Color.black.frame(width: wallWidth, height: size)
-//                        }
-//                        Spacer()
-//                        if !cell.linked.contains("Right") {
-//                            Color.black.frame(width: wallWidth, height: size)
-//                        }
-//                    }
-//                    
-//                    // 2) horizontal walls (on top!)
-//                    VStack(spacing: 0) {
-//                        if !cell.linked.contains("Up") {
-//                            Color.black.frame(width: size, height: wallWidth)
-//                        }
-//                        Spacer()
-//                        if !cell.linked.contains("Down") {
-//                            Color.black.frame(width: size, height: wallWidth)
-//                        }
-//                    }
                 }
             )
             .frame(width: size, height: size)
