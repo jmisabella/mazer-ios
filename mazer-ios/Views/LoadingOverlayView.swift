@@ -18,10 +18,10 @@ struct LoadingOverlayView: View {
             Color.gray.opacity(0.5)
                 .ignoresSafeArea()
 
-            // Content with opaque horizontal bar
-            VStack(spacing: 20) {
+            // Content with opaque box
+            VStack(spacing: 24) {
                 GIFWebView(gifName: "loadingMaze")
-                    .frame(width: 100, height: 100)
+                    .frame(width: 66, height: 66)
                 Text("Generating Maze")
                     .font(.headline)
                     .scaleEffect(fontScale)
@@ -32,46 +32,21 @@ struct LoadingOverlayView: View {
                     .font(.caption)
                     .scaleEffect(fontScale)
                     .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true) // Ensure text wraps without truncation
+                    .padding(.horizontal, 16) // Inner padding for text readability
             }
             .foregroundColor(colorScheme == .dark ? .white : .black)
-            .padding(.horizontal, 20) // Horizontal padding for the bar
-            .padding(.vertical, 16)   // Vertical padding for the bar
+            .padding(.vertical, 32) // Increased vertical padding for taller box
+            .padding(.horizontal, 32) // Consistent horizontal padding
+            .frame(minWidth: 300, maxWidth: 360, minHeight: 300) // Explicit min height to ensure taller box
             .background(
                 Rectangle()
                     .fill(colorScheme == .dark ? Color.black : Color.offWhite)
                     .cornerRadius(12)
                     .shadow(radius: 4)
             )
-            .padding(.horizontal, 20) // Extra padding to prevent edge clipping
+            .padding(.horizontal, 16) // Outer padding to prevent edge clipping
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center) // Center in screen
         }
     }
 }
-
-//import SwiftUI
-//
-//struct LoadingOverlayView: View {
-//    let algorithm: MazeAlgorithm
-//    let colorScheme: ColorScheme
-//    let fontScale: CGFloat
-//
-//    var body: some View {
-//        ZStack {
-//            Color.gray.opacity(0.5)
-//                .ignoresSafeArea()
-//            VStack(spacing: 20) {
-//                GIFWebView(gifName: "loadingMaze")
-//                    .frame(width: 100, height: 100)
-//                Text("Generating Maze")
-//                    .font(.headline)
-//                    .scaleEffect(fontScale)
-//                Text(algorithm.rawValue)
-//                    .font(.subheadline)
-//                    .scaleEffect(fontScale)
-//                Text(algorithm.description)
-//                    .font(.caption)
-//                    .scaleEffect(fontScale)
-//            }
-//            .foregroundColor(colorScheme == .dark ? .white : .black)
-//        }
-//    }
-//}

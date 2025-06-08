@@ -476,6 +476,9 @@ struct ContentView: View {
     
     private func celebrateVictory() {
         showCelebration = true
+        // Don't show maze generation after user's solved current algorithm.
+        // We've found that this makes for a smoother game play experience.
+        captureSteps = false
 
         // 1) Play a success haptic
         let notificationFeedback = UINotificationFeedbackGenerator()
