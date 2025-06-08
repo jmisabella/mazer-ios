@@ -162,6 +162,8 @@ struct MazeGenerationAnimationView: View {
                                 isAnimatingGeneration = false
                                 mazeGenerated = true
                                 AudioServicesPlaySystemSound(1104)
+                                // Change to a new random default background color
+                                defaultBackground = defaultBackgroundColors.filter { $0 != defaultBackground }.randomElement() ?? defaultBackground
                             }) {
                                 Image(systemName: "xmark.circle.fill")
                                     .font(.system(size: 28))
@@ -184,6 +186,8 @@ struct MazeGenerationAnimationView: View {
                                 isAnimatingGeneration = false
                                 mazeGenerated = true
                                 AudioServicesPlaySystemSound(1104)
+                                // Change to a new random default background color
+                                defaultBackground = defaultBackgroundColors.filter { $0 != defaultBackground }.randomElement() ?? defaultBackground
                             }
                         }
                     }
@@ -194,4 +198,3 @@ struct MazeGenerationAnimationView: View {
         }
     }
 }
-
