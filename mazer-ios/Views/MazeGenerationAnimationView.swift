@@ -68,6 +68,7 @@ struct MazeGenerationAnimationView: View {
             HStack(spacing: 16) {
                 Button(action: {
                     mazeGenerated = false
+                    isAnimatingGeneration = false // Added to exit animation state
                 }) {
                     Image(systemName: "arrow.uturn.left")
                         .font(.title2)
@@ -163,13 +164,13 @@ struct MazeGenerationAnimationView: View {
                                 AudioServicesPlaySystemSound(1104)
                             }) {
                                 Image(systemName: "xmark.circle.fill")
-                                    .font(.system(size: 28)) // Increased font size by ~30%
+                                    .font(.system(size: 28))
                                     .foregroundColor(.white.opacity(0.7))
                                     .background(Circle().fill(Color.black.opacity(0.5)))
-                                    .frame(width: 57, height: 57) // Increased frame by 30%
+                                    .frame(width: 57, height: 57)
                             }
                             .accessibilityLabel("Cancel maze generation animation")
-                            .padding(.trailing, 24) // Increased trailing padding to move left
+                            .padding(.trailing, 24)
                             .padding(.top, 16)
                         }
                         Spacer()
