@@ -19,7 +19,7 @@ struct ContentView: View {
     @State private var errorMessage: String?
 
     // User selections from request view
-    @State private var selectedSize: MazeSize = .medium
+    @State private var selectedSize: MazeSize = .large
     @State private var selectedMazeType: MazeType = .orthogonal
     @State private var selectedAlgorithm: MazeAlgorithm = .recursiveBacktracker
     // User selections from render view
@@ -85,7 +85,16 @@ struct ContentView: View {
                         generationSteps: generationSteps,
                         mazeType: mazeType,
                         isAnimatingGeneration: $isAnimatingGeneration,
-                        mazeGenerated: $mazeGenerated
+                        mazeGenerated: $mazeGenerated,
+                        showSolution: $showSolution,
+                        showHeatMap: $showHeatMap,
+                        showControls: $showControls,
+                        selectedPalette: $selectedPalette,
+                        defaultBackground: $defaultBackgroundColor,
+                        mazeID: $mazeID,
+                        regenerateMaze: {
+                            submitMazeRequest()
+                        }
                     )
                 } else if mazeGenerated {
                     MazeRenderView(
@@ -145,6 +154,9 @@ struct ContentView: View {
             .padding()
             
             if isLoading {
+//                Color.red.opacity(0.5)
+//                        .ignoresSafeArea()
+//                        .zIndex(2)
                 LoadingOverlayView(
                     algorithm: selectedAlgorithm,
                     colorScheme: colorScheme,
@@ -246,218 +258,208 @@ struct ContentView: View {
         return min(basePadding, screenH * sizeRatio)
     }
 
-    
     private func submitMazeRequest() {
-        // Clean up any existing maze instance before creating a new one.
-        if let current = currentGrid {
-            // Directly pass the opaque pointer to mazer_destroy.
-            mazer_destroy(current)
-            currentGrid = nil
+        // Immediately set isLoading to true on the main thread
+        DispatchQueue.main.async {
+            self.isLoading = true
+            print("isLoading set to true at: \(Date())") // For debugging
         }
         
-        isLoading = true // Show loading overlay
-        
-        let adjustment: CGFloat = {
-              switch selectedMazeType {
-//              case .delta:
-//                switch selectedSize {
-//                case .small: return 1.55
-//                case .medium: return 1.6
-//                case .large: return 1.7
-//                }
-              case .delta:
-                switch selectedSize {
-                case .small: return 1.47
-                case .medium: return 1.55
-                case .large: return 1.7
+        // Run maze generation on a background thread
+        DispatchQueue.global().async {
+            // Clean up any existing maze instance before creating a new one.
+            if let current = self.currentGrid {
+                mazer_destroy(current)
+                self.currentGrid = nil
+            }
+            
+            let adjustment: CGFloat = {
+                switch self.selectedMazeType {
+                case .delta:
+                    switch self.selectedSize {
+                    case .small: return 1.47
+                    case .medium: return 1.55
+                    case .large: return 1.7
+                    }
+                case .orthogonal:
+                    switch self.selectedSize {
+                    case .small:  return 1.4
+                    case .medium: return 1.65
+                    case .large:  return 1.9
+                    }
+                case .sigma:
+                    switch self.selectedSize {
+                    case .small:  return 0.75
+                    case .medium: return 0.78
+                    case .large:  return 0.82
+                    }
+                case .polar:
+                    return 1.0
                 }
-              case .orthogonal:
-                switch selectedSize {
-                case .small:  return 1.4
-                case .medium: return 1.65
-                case .large:  return 1.9
-                }
-              case .sigma:
-                switch selectedSize {
-                case .small:  return 0.75
-                case .medium: return 0.78
-                case .large:  return 0.82
-                }
-              case .polar:
-                return 1.0
-              }
             }()
-
-            let rawSize = CGFloat(selectedSize.rawValue)
+            
+            let rawSize = CGFloat(self.selectedSize.rawValue)
             let adjustedCellSize = adjustment * rawSize
-
-            // 2) determine if we’re on a “small” device (e.g. SE)
+            
             let screenH = UIScreen.main.bounds.height
-            let isSmallDevice = screenH <= 667   // 568-667pt screens
-
-            // 3) only for delta & sigma do we reserve top+bottom padding
+            let isSmallDevice = screenH <= 667
+            
             let perSidePad: CGFloat = {
-              guard selectedMazeType != .orthogonal else { return 20 }
-              return isSmallDevice ? 50 : 100
+                guard self.selectedMazeType != .orthogonal else { return 20 }
+                return isSmallDevice ? 50 : 100
             }()
-
+            
             let totalVerticalPadding = perSidePad * 2
-
-            // 4) reserve control area at bottom (buttons etc.)
             let controlArea: CGFloat = 80
-
-            // 5) compute available height *for rows* after pad+controls
             let availableH = screenH - controlArea - totalVerticalPadding
             let maxHeightRows = max(1, Int(availableH / adjustedCellSize))
-
-            // 6) sigma still subdivides by 3
-            var finalHeight = (selectedMazeType == .sigma)
-                            ? maxHeightRows / 3
-                            : maxHeightRows
-        
-//            if selectedMazeType == .delta && UIDevice.current.userInterfaceIdiom == .pad {
-//                let maxRows = 50  // Adjust this value based on testing (TODO: adjust based on cell size)
-//                finalHeight = min(finalHeight, maxRows)
-//            }
-        if selectedMazeType == .delta && UIDevice.current.userInterfaceIdiom == .pad {
-            // Calculate maxRows based on available height and adjustedCellSize
-            let maxRows = Int(availableH / adjustedCellSize * 0.77) // 90% of available height to leave some margin
-            finalHeight = min(finalHeight, maxRows)
-        }
-
-        // 7) width as before
-        let maxWidth = max(1, Int(UIScreen.main.bounds.width / adjustedCellSize))
-        let finalWidth = (selectedMazeType == .sigma)
-        ? maxWidth / 3
-        : maxWidth
-        
-        if captureSteps && (finalWidth > 100 || finalHeight > 100) {
-            errorMessage = "Show Maze Generation is only available for mazes with width and height ≤ 100."
-            isLoading = false
-            return
-        }
-        
-        let result = MazeRequestValidator.validate(
-              mazeType: selectedMazeType,
-              width:  finalWidth,
-              height: finalHeight,
-              algorithm: selectedAlgorithm,
-              captureSteps: captureSteps
+            
+            var finalHeight = (self.selectedMazeType == .sigma) ? maxHeightRows / 3 : maxHeightRows
+            
+            if self.selectedMazeType == .delta && UIDevice.current.userInterfaceIdiom == .pad {
+                let maxRows = Int(availableH / adjustedCellSize * 0.77)
+                finalHeight = min(finalHeight, maxRows)
+            }
+            
+            let maxWidth = max(1, Int(UIScreen.main.bounds.width / adjustedCellSize))
+            let finalWidth = (self.selectedMazeType == .sigma) ? maxWidth / 3 : maxWidth
+            
+            if self.captureSteps && (finalWidth > 100 || finalHeight > 100) {
+                DispatchQueue.main.async {
+                    self.errorMessage = "Show Maze Generation is only available for mazes with width and height ≤ 100."
+                    self.isLoading = false
+                }
+                return
+            }
+            
+            let result = MazeRequestValidator.validate(
+                mazeType: self.selectedMazeType,
+                width: finalWidth,
+                height: finalHeight,
+                algorithm: self.selectedAlgorithm,
+                captureSteps: self.captureSteps
             )
-        
-        
-        switch result {
-        case .success(let jsonString):
-            print("Valid JSON: \(jsonString)")
             
-            guard let jsonCString = jsonString.cString(using: .utf8) else {
-                errorMessage = "Invalid JSON encoding."
-                isLoading = false
-                return
-            }
-            
-            guard let gridPtr = mazer_generate_maze(jsonCString) else {
-                errorMessage = "Failed to generate maze."
-                isLoading = false
-                return
-            }
-            
-            currentGrid = gridPtr
-            
-            var length: size_t = 0
-            guard let cellsPtr = mazer_get_cells(gridPtr, &length) else {
-                errorMessage = "Failed to retrieve cells."
-                isLoading = false
-                return
-            }
-            
-            var cells: [MazeCell] = []
-            for i in 0..<Int(length) {
-                let ffiCell = cellsPtr[i]
-                let mazeTypeCopy = ffiCell.maze_type != nil ? String(cString: ffiCell.maze_type!) : ""
-                let orientationCopy = ffiCell.orientation != nil ? String(cString: ffiCell.orientation!) : ""
+            switch result {
+            case .success(let jsonString):
+                print("Valid JSON: \(jsonString)")
                 
-                cells.append(MazeCell(
-                    x: Int(ffiCell.x),
-                    y: Int(ffiCell.y),
-                    mazeType: mazeTypeCopy,
-                    linked: convertCStringArray(ffiCell.linked, count: ffiCell.linked_len),
-                    distance: Int(ffiCell.distance),
-                    isStart: ffiCell.is_start,
-                    isGoal: ffiCell.is_goal,
-                    isActive: ffiCell.is_active,
-                    isVisited: ffiCell.is_visited,
-                    hasBeenVisited: ffiCell.has_been_visited,
-                    onSolutionPath: ffiCell.on_solution_path,
-                    orientation: orientationCopy
-                ))
-            }
-            
-            mazeCells = cells
-            if let firstCell = cells.first {
-                mazeType = MazeType(rawValue: firstCell.mazeType) ?? .orthogonal
-            }
-            
-            // Free the cells array allocated on the Rust side.
-            mazer_free_cells(cellsPtr, length)
-            
-            // Handle generation steps if captureSteps is enabled
-            if captureSteps {
-                let stepsCount = mazer_get_generation_steps_count(gridPtr)
-                var steps: [[MazeCell]] = []
-                
-                for i in 0..<stepsCount {
-                    var stepLength: size_t = 0
-                    guard let stepCellsPtr = mazer_get_generation_step_cells(gridPtr, i, &stepLength) else {
-                        errorMessage = "Failed to retrieve generation step cells."
-                        print("Failed to retrieve cells for step \(i)")
-                        isLoading = false
-                        return
+                guard let jsonCString = jsonString.cString(using: .utf8) else {
+                    DispatchQueue.main.async {
+                        self.errorMessage = "Invalid JSON encoding."
+                        self.isLoading = false
                     }
-                    
-                    var stepCells: [MazeCell] = []
-                    for j in 0..<Int(stepLength) {
-                        let ffiCell = stepCellsPtr[j]
-                        let mazeTypeCopy = ffiCell.maze_type != nil ? String(cString: ffiCell.maze_type!) : ""
-                        let orientationCopy = ffiCell.orientation != nil ? String(cString: ffiCell.orientation!) : ""
-                        
-                        stepCells.append(MazeCell(
-                            x: Int(ffiCell.x),
-                            y: Int(ffiCell.y),
-                            mazeType: mazeTypeCopy,
-                            linked: convertCStringArray(ffiCell.linked, count: ffiCell.linked_len),
-                            distance: Int(ffiCell.distance),
-                            isStart: ffiCell.is_start,
-                            isGoal: ffiCell.is_goal,
-                            isActive: ffiCell.is_active,
-                            isVisited: ffiCell.is_visited,
-                            hasBeenVisited: ffiCell.has_been_visited,
-                            onSolutionPath: ffiCell.on_solution_path,
-                            orientation: orientationCopy
-                        ))
-                    }
-                    
-                    steps.append(stepCells)
-                    mazer_free_cells(stepCellsPtr, stepLength)
+                    return
                 }
                 
-                generationSteps = steps
-                isAnimatingGeneration = true
-                isLoading = false // Hide loading overlay when animation starts
-            } else {
-                mazeGenerated = true
-                isLoading = false
+                guard let gridPtr = mazer_generate_maze(jsonCString) else {
+                    DispatchQueue.main.async {
+                        self.errorMessage = "Failed to generate maze."
+                        self.isLoading = false
+                    }
+                    return
+                }
+                
+                self.currentGrid = gridPtr
+                
+                var length: size_t = 0
+                guard let cellsPtr = mazer_get_cells(gridPtr, &length) else {
+                    DispatchQueue.main.async {
+                        self.errorMessage = "Failed to retrieve cells."
+                        self.isLoading = false
+                    }
+                    return
+                }
+                
+                var cells: [MazeCell] = []
+                for i in 0..<Int(length) {
+                    let ffiCell = cellsPtr[i]
+                    let mazeTypeCopy = ffiCell.maze_type != nil ? String(cString: ffiCell.maze_type!) : ""
+                    let orientationCopy = ffiCell.orientation != nil ? String(cString: ffiCell.orientation!) : ""
+                    
+                    cells.append(MazeCell(
+                        x: Int(ffiCell.x),
+                        y: Int(ffiCell.y),
+                        mazeType: mazeTypeCopy,
+                        linked: self.convertCStringArray(ffiCell.linked, count: ffiCell.linked_len),
+                        distance: Int(ffiCell.distance),
+                        isStart: ffiCell.is_start,
+                        isGoal: ffiCell.is_goal,
+                        isActive: ffiCell.is_active,
+                        isVisited: ffiCell.is_visited,
+                        hasBeenVisited: ffiCell.has_been_visited,
+                        onSolutionPath: ffiCell.on_solution_path,
+                        orientation: orientationCopy
+                    ))
+                }
+                
+                mazer_free_cells(cellsPtr, length)
+                
+                var steps: [[MazeCell]] = []
+                if self.captureSteps {
+                    let stepsCount = mazer_get_generation_steps_count(gridPtr)
+                    for i in 0..<stepsCount {
+                        var stepLength: size_t = 0
+                        guard let stepCellsPtr = mazer_get_generation_step_cells(gridPtr, i, &stepLength) else {
+                            DispatchQueue.main.async {
+                                self.errorMessage = "Failed to retrieve generation step cells."
+                                self.isLoading = false
+                            }
+                            return
+                        }
+                        
+                        var stepCells: [MazeCell] = []
+                        for j in 0..<Int(stepLength) {
+                            let ffiCell = stepCellsPtr[j]
+                            let mazeTypeCopy = ffiCell.maze_type != nil ? String(cString: ffiCell.maze_type!) : ""
+                            let orientationCopy = ffiCell.orientation != nil ? String(cString: ffiCell.orientation!) : ""
+                            
+                            stepCells.append(MazeCell(
+                                x: Int(ffiCell.x),
+                                y: Int(ffiCell.y),
+                                mazeType: mazeTypeCopy,
+                                linked: self.convertCStringArray(ffiCell.linked, count: ffiCell.linked_len),
+                                distance: Int(ffiCell.distance),
+                                isStart: ffiCell.is_start,
+                                isGoal: ffiCell.is_goal,
+                                isActive: ffiCell.is_active,
+                                isVisited: ffiCell.is_visited,
+                                hasBeenVisited: ffiCell.has_been_visited,
+                                onSolutionPath: ffiCell.on_solution_path,
+                                orientation: orientationCopy
+                            ))
+                        }
+                        
+                        steps.append(stepCells)
+                        mazer_free_cells(stepCellsPtr, stepLength)
+                    }
+                }
+                
+                // Update UI on the main thread after generation
+                DispatchQueue.main.async {
+                    self.mazeCells = cells
+                    if let firstCell = cells.first {
+                        self.mazeType = MazeType(rawValue: firstCell.mazeType) ?? .orthogonal
+                    }
+                    if self.captureSteps {
+                        self.generationSteps = steps
+                        self.isAnimatingGeneration = true
+                    } else {
+                        self.mazeGenerated = true
+                    }
+                    self.isLoading = false
+                    print("isLoading set to false at: \(Date())") // For debugging
+                    self.errorMessage = nil
+                    self.selectedPalette = self.randomPaletteExcluding(current: self.selectedPalette, from: allPalettes)
+                    self.defaultBackgroundColor = self.randomDefaultExcluding(current: defaultBackgroundColor, from: defaultBackgroundColors)
+                }
+                
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.errorMessage = "\(error.localizedDescription)"
+                    self.isLoading = false
+                }
             }
-            
-            errorMessage = nil
-            
-            
-            selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
-            defaultBackgroundColor = randomDefaultExcluding(current: defaultBackgroundColor, from: defaultBackgroundColors)
-            
-        case .failure(let error):
-            errorMessage = "\(error.localizedDescription)"
-            isLoading = false
         }
     }
     
