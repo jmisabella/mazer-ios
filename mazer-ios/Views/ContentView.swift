@@ -85,7 +85,16 @@ struct ContentView: View {
                         generationSteps: generationSteps,
                         mazeType: mazeType,
                         isAnimatingGeneration: $isAnimatingGeneration,
-                        mazeGenerated: $mazeGenerated
+                        mazeGenerated: $mazeGenerated,
+                        showSolution: $showSolution,
+                        showHeatMap: $showHeatMap,
+                        showControls: $showControls,
+                        selectedPalette: $selectedPalette,
+                        defaultBackground: $defaultBackgroundColor,
+                        mazeID: $mazeID,
+                        regenerateMaze: {
+                            submitMazeRequest()
+                        }
                     )
                 } else if mazeGenerated {
                     MazeRenderView(

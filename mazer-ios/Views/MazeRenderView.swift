@@ -5,9 +5,9 @@
 //  Created by Jeffrey Isabella on 4/3/25.
 //
 
-
 import SwiftUI
 import UIKit
+import AudioToolbox // Added for sound playback
 
 struct MazeRenderView: View {
     @Binding var mazeGenerated: Bool
@@ -214,7 +214,6 @@ struct MazeRenderView: View {
                         .gesture(
                             DragGesture(minimumDistance: 10)
                                 .onEnded { value in
-//                                    let isIPad = UIDevice.current.userInterfaceIdiom == .pad
                                     let batchSize = 1
                                     let tx = value.translation.width
                                     let ty = -value.translation.height
@@ -338,6 +337,10 @@ struct MazeRenderView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+        .onAppear {
+            // Play sound when MazeRenderView appears
+            AudioServicesPlaySystemSound(1104)
+        }
     }
 
     private func clamped(offset: CGSize) -> CGSize {
@@ -358,9 +361,6 @@ struct MazeRenderView: View {
     }
 }
 
-//import SwiftUI
-//import UIKit
-//
 //struct MazeRenderView: View {
 //    @Binding var mazeGenerated: Bool
 //    @Binding var showSolution: Bool
@@ -371,6 +371,9 @@ struct MazeRenderView: View {
 //    @Binding var mazeID: UUID
 //    @Binding var defaultBackground: Color
 //    @State private var dragStartOffset: CGSize = .zero
+//    // Add state for pinch zoom
+//    @State private var scale: CGFloat = 1.0
+//    @State private var anchorPoint: UnitPoint = .center
 //
 //    let mazeCells: [MazeCell]
 //    let mazeType: MazeType
@@ -409,7 +412,7 @@ struct MazeRenderView: View {
 //    }
 //
 //    func computeDeltaCellSize() -> CGFloat {
-//        let padding: CGFloat = 38
+//        let padding: CGFloat = 40
 //        let available = UIScreen.main.bounds.width - padding * 2
 //        return available * 2 / (CGFloat(columns) + 1)
 //    }
@@ -545,6 +548,57 @@ struct MazeRenderView: View {
 //            if mazeType == .orthogonal || mazeType == .delta || mazeType == .sigma {
 //                ZStack {
 //                    mazeContent
+//                        .scaleEffect(scale, anchor: anchorPoint)
+//                        .gesture(
+//                            MagnificationGesture()
+//                                .onChanged { value in
+//                                    // Cap the scale between 1.0 and 3.0
+//                                    scale = min(max(value, 1.0), 3.0)
+//                                    anchorPoint = .center // Center zoom for simplicity
+//                                }
+//                                .onEnded { _ in
+//                                    withAnimation(.easeOut(duration: 0.3)) {
+//                                        scale = 1.0
+//                                        anchorPoint = .center
+//                                    }
+//                                }
+//                        )
+//                        .gesture(
+//                            DragGesture(minimumDistance: 10)
+//                                .onEnded { value in
+////                                    let isIPad = UIDevice.current.userInterfaceIdiom == .pad
+//                                    let batchSize = 1
+//                                    let tx = value.translation.width
+//                                    let ty = -value.translation.height
+//                                    guard tx != 0 || ty != 0 else { return }
+//                                    let angle = atan2(ty, tx)
+//                                    var shifted = angle + (.pi / 8)
+//                                    if shifted < 0 { shifted += 2 * .pi }
+//                                    let sector = Int(floor(shifted / (.pi / 4))) % 8
+//                                    let directions = [
+//                                        "Right", "UpperRight", "Up", "UpperLeft",
+//                                        "Left", "LowerLeft", "Down", "LowerRight"
+//                                    ]
+//                                    let chosen = directions[sector]
+//                                    let mag = sqrt(tx*tx + ty*ty)
+//                                    let dim = computeCellSize()
+//                                    let totalMoves = max(1, Int(round(mag / dim)))
+//                                    let movesToPerform = min(totalMoves, batchSize)
+//
+//                                    for _ in 0..<movesToPerform {
+//                                        performMove(chosen)
+//                                    }
+//
+//                                    if totalMoves > batchSize {
+//                                        for i in batchSize..<totalMoves {
+//                                            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+//                                                performMove(chosen)
+//                                            }
+//                                        }
+//                                    }
+//                                }
+//                        )
+//
 //                    if showControls {
 //                        VStack {
 //                            Spacer()
@@ -581,44 +635,23 @@ struct MazeRenderView: View {
 //                    }
 //                }
 //                .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                .gesture(
-//                    DragGesture(minimumDistance: 10)
-//                        .onEnded { value in
-//                            let isIPad = UIDevice.current.userInterfaceIdiom == .pad
-//                            let batchSize = 1
-//                            let tx = value.translation.width
-//                            let ty = -value.translation.height
-//                            guard tx != 0 || ty != 0 else { return }
-//                            let angle = atan2(ty, tx)
-//                            var shifted = angle + (.pi / 8)
-//                            if shifted < 0 { shifted += 2 * .pi }
-//                            let sector = Int(floor(shifted / (.pi / 4))) % 8
-//                            let directions = [
-//                                "Right", "UpperRight", "Up", "UpperLeft",
-//                                "Left", "LowerLeft", "Down", "LowerRight"
-//                            ]
-//                            let chosen = directions[sector]
-//                            let mag = sqrt(tx*tx + ty*ty)
-//                            let dim = computeCellSize()
-//                            let totalMoves = max(1, Int(round(mag / dim)))
-//                            let movesToPerform = min(totalMoves, batchSize)
-//
-//                            for _ in 0..<movesToPerform {
-//                                performMove(chosen)
-//                            }
-//
-//                            if totalMoves > batchSize {
-//                                for i in batchSize..<totalMoves {
-//                                    DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
-//                                        performMove(chosen)
-//                                    }
-//                                }
-//                            }
-//                        }
-//                )
 //            } else {
 //                ZStack {
 //                    mazeContent
+//                        .scaleEffect(scale, anchor: anchorPoint)
+//                        .gesture(
+//                            MagnificationGesture()
+//                                .onChanged { value in
+//                                    scale = min(max(value, 1.0), 3.0)
+//                                    anchorPoint = .center
+//                                }
+//                                .onEnded { _ in
+//                                    withAnimation(.easeOut(duration: 0.3)) {
+//                                        scale = 1.0
+//                                        anchorPoint = .center
+//                                    }
+//                                }
+//                        )
 //                    if showControls {
 //                        VStack {
 //                            Spacer()
@@ -676,4 +709,4 @@ struct MazeRenderView: View {
 //        return selectedPalette.shades[index].asColor
 //    }
 //}
-
+//
