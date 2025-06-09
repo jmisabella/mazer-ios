@@ -41,7 +41,7 @@
 		00DE4C182DF3D2B000044648 /* MazeGenerationAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE4C172DF3D2B000044648 /* MazeGenerationAnimationView.swift */; };
 		00DE4C1C2DF520F300044648 /* GIFWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE4C1B2DF520F300044648 /* GIFWebView.swift */; };
 		00DE4C1E2DF5212600044648 /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE4C1D2DF5212600044648 /* LoadingOverlayView.swift */; };
-		00DE4C212DF5E41600044648 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DD0D132DAC3C7E00C20B2E /* libmazer.a */; };
+		00DE4C232DF6546200044648 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DD0D132DAC3C7E00C20B2E /* libmazer.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1726,7 +1726,7 @@
 		00DE4C172DF3D2B000044648 /* MazeGenerationAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGenerationAnimationView.swift; sourceTree = "<group>"; };
 		00DE4C1B2DF520F300044648 /* GIFWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFWebView.swift; sourceTree = "<group>"; };
 		00DE4C1D2DF5212600044648 /* LoadingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
-		00DE4C222DF5E42C00044648 /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
+		00DE4C242DF6547100044648 /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1734,7 +1734,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00DE4C212DF5E41600044648 /* libmazer.a in Frameworks */,
+				00DE4C232DF6546200044648 /* libmazer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2830,7 +2830,7 @@
 				00C33F622D98C84C0077691B /* mazer_iosApp.swift */,
 				00C33F6D2D98C8E50077691B /* Models */,
 				00C33F6F2D98C9010077691B /* Utils */,
-				00DE4C222DF5E42C00044648 /* mazer_bridge.h */,
+				00DE4C242DF6547100044648 /* mazer_bridge.h */,
 			);
 			path = "mazer-ios";
 			sourceTree = "<group>";

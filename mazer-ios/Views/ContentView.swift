@@ -92,6 +92,7 @@ struct ContentView: View {
                         selectedPalette: $selectedPalette,
                         defaultBackground: $defaultBackgroundColor,
                         mazeID: $mazeID,
+                        currentGrid: currentGrid,
                         regenerateMaze: {
                             submitMazeRequest()
                         }
@@ -262,7 +263,6 @@ struct ContentView: View {
         // Immediately set isLoading to true on the main thread
         DispatchQueue.main.async {
             self.isLoading = true
-            print("isLoading set to true at: \(Date())") // For debugging
         }
         
         // Run maze generation on a background thread
@@ -448,7 +448,6 @@ struct ContentView: View {
                         self.mazeGenerated = true
                     }
                     self.isLoading = false
-                    print("isLoading set to false at: \(Date())") // For debugging
                     self.errorMessage = nil
                     self.selectedPalette = self.randomPaletteExcluding(current: self.selectedPalette, from: allPalettes)
                     self.defaultBackgroundColor = self.randomDefaultExcluding(current: defaultBackgroundColor, from: defaultBackgroundColors)
