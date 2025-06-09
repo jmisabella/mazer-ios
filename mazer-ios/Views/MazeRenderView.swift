@@ -228,14 +228,23 @@ struct MazeRenderView: View {
                                     ]
                                     let chosen = directions[sector]
                                     let mag = sqrt(tx*tx + ty*ty)
-                                    let dim = computeCellSize()
+                                    let baseDim = computeCellSize()
+                                    let dim: CGFloat
+                                    switch mazeType {
+                                    case .sigma:
+                                        dim = baseDim * sqrt(3) // Hex cell center distance
+                                    case .orthogonal:
+                                        dim = baseDim           // Square cell distance
+                                    case .delta:
+                                        dim = baseDim / sqrt(3) // Triangular cell center distance
+                                    default:
+                                        dim = baseDim
+                                    }
                                     let totalMoves = max(1, Int(round(mag / dim)))
                                     let movesToPerform = min(totalMoves, batchSize)
-
                                     for _ in 0..<movesToPerform {
                                         performMove(chosen)
                                     }
-
                                     if totalMoves > batchSize {
                                         for i in batchSize..<totalMoves {
                                             DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {

@@ -70,10 +70,10 @@ struct MazeGenerationAnimationView: View {
                 Button(action: {
                     mazeGenerated = false
                     isAnimatingGeneration = false // Added to exit animation state
-                    // Clear the generation steps from memory
-                    if let gridPtr = currentGrid {
-                        mazer_clear_generation_steps(gridPtr)
-                    }
+//                    // Clear the generation steps from memory
+//                    if let gridPtr = currentGrid {
+//                        mazer_clear_generation_steps(gridPtr)
+//                    }
                 }) {
                     Image(systemName: "arrow.uturn.left")
                         .font(.title2)
@@ -83,10 +83,10 @@ struct MazeGenerationAnimationView: View {
 
                 Button(action: {
                     defaultBackground = defaultBackgroundColors.randomElement()!
-                    // Clear the generation steps from memory
-                    if let gridPtr = currentGrid {
-                        mazer_clear_generation_steps(gridPtr)
-                    }
+//                    // Clear the generation steps from memory
+//                    if let gridPtr = currentGrid {
+//                        mazer_clear_generation_steps(gridPtr)
+//                    }
                     mazeID = UUID()
                     regenerateMaze()
                 }) {
@@ -201,10 +201,10 @@ struct MazeGenerationAnimationView: View {
                                 // Change to a new random default background color
                                 defaultBackground = defaultBackgroundColors.filter { $0 != defaultBackground }.randomElement() ?? defaultBackground
                             
-                                // Clear the generation steps from memory
-                                if let gridPtr = currentGrid {
-                                    mazer_clear_generation_steps(gridPtr)
-                                }
+//                                // Clear the generation steps from memory
+//                                if let gridPtr = currentGrid {
+//                                    mazer_clear_generation_steps(gridPtr)
+//                                }
                             }
                         }
                     }
