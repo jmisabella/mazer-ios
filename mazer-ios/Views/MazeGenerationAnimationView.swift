@@ -19,6 +19,7 @@ struct MazeGenerationAnimationView: View {
     @Binding var selectedPalette: HeatMapPalette // Heat map palette
     @Binding var defaultBackground: Color     // Default background color
     @Binding var mazeID: UUID                 // Maze ID for refresh
+    let currentGrid: OpaquePointer?
     let regenerateMaze: () -> Void            // Closure to regenerate maze
 
     @State private var currentStepIndex = 0   // Tracks current animation step
@@ -69,6 +70,10 @@ struct MazeGenerationAnimationView: View {
                 Button(action: {
                     mazeGenerated = false
                     isAnimatingGeneration = false // Added to exit animation state
+                    // Clear the generation steps from memory
+                    if let gridPtr = currentGrid {
+                        mazer_clear_generation_steps(gridPtr)
+                    }
                 }) {
                     Image(systemName: "arrow.uturn.left")
                         .font(.title2)
@@ -78,13 +83,18 @@ struct MazeGenerationAnimationView: View {
 
                 Button(action: {
                     defaultBackground = defaultBackgroundColors.randomElement()!
+                    // Clear the generation steps from memory
+                    if let gridPtr = currentGrid {
+                        mazer_clear_generation_steps(gridPtr)
+                    }
                     mazeID = UUID()
                     regenerateMaze()
                 }) {
                     Image(systemName: "arrow.clockwise")
                         .font(.title2)
-                        .foregroundColor(.purple)
+                        .foregroundColor(.secondary)
                 }
+                .disabled(true)
                 .accessibilityLabel("Generate new maze")
 
                 Button(action: {
@@ -108,7 +118,9 @@ struct MazeGenerationAnimationView: View {
                 } label: {
                     Image(systemName: showControls ? "xmark.circle.fill" : "ellipsis.circle")
                         .font(.title2)
+                        .foregroundColor(.secondary)
                 }
+                .disabled(true)
                 .accessibilityLabel("Toggle navigation controls")
             }
             .padding(.top)
@@ -162,6 +174,8 @@ struct MazeGenerationAnimationView: View {
                                 isAnimatingGeneration = false
                                 mazeGenerated = true
                                 AudioServicesPlaySystemSound(1104)
+                                // Change to a new random default background color
+                                defaultBackground = defaultBackgroundColors.filter { $0 != defaultBackground }.randomElement() ?? defaultBackground
                             }) {
                                 Image(systemName: "xmark.circle.fill")
                                     .font(.system(size: 28))
@@ -184,6 +198,13 @@ struct MazeGenerationAnimationView: View {
                                 isAnimatingGeneration = false
                                 mazeGenerated = true
                                 AudioServicesPlaySystemSound(1104)
+                                // Change to a new random default background color
+                                defaultBackground = defaultBackgroundColors.filter { $0 != defaultBackground }.randomElement() ?? defaultBackground
+                            
+                                // Clear the generation steps from memory
+                                if let gridPtr = currentGrid {
+                                    mazer_clear_generation_steps(gridPtr)
+                                }
                             }
                         }
                     }
@@ -194,4 +215,3 @@ struct MazeGenerationAnimationView: View {
         }
     }
 }
-

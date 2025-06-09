@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		001C89BF2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */; };
-		001E48E32DB1A4680036F7E9 /* MazeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001E48E22DB1A4680036F7E9 /* MazeGridView.swift */; };
 		003753BD2DD8336C000DB75C /* SparkleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003753BC2DD8336C000DB75C /* SparkleView.swift */; };
 		003DE2A72DB5F6D300EFB530 /* DPadButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */; };
 		003DE2A92DB5F71D00EFB530 /* DirectionPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */; };
@@ -42,7 +41,7 @@
 		00DE4C182DF3D2B000044648 /* MazeGenerationAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE4C172DF3D2B000044648 /* MazeGenerationAnimationView.swift */; };
 		00DE4C1C2DF520F300044648 /* GIFWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE4C1B2DF520F300044648 /* GIFWebView.swift */; };
 		00DE4C1E2DF5212600044648 /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE4C1D2DF5212600044648 /* LoadingOverlayView.swift */; };
-		00DE4C1F2DF55D2300044648 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 008DD8102DBF2C580094C1CA /* libmazer.a */; };
+		00DE4C232DF6546200044648 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DD0D132DAC3C7E00C20B2E /* libmazer.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -601,7 +600,6 @@
 		0018E4E72DE522FF00E4A24E /* .rustc_info.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = .rustc_info.json; sourceTree = "<group>"; };
 		0018E4E82DE522FF00E4A24E /* CACHEDIR.TAG */ = {isa = PBXFileReference; lastKnownFileType = text; path = CACHEDIR.TAG; sourceTree = "<group>"; };
 		001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigmaDirectionControlViewi.swift; sourceTree = "<group>"; };
-		001E48E22DB1A4680036F7E9 /* MazeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGridView.swift; sourceTree = "<group>"; };
 		003753BC2DD8336C000DB75C /* SparkleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleView.swift; sourceTree = "<group>"; };
 		003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPadButtonStyle.swift; sourceTree = "<group>"; };
 		003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionPadView.swift; sourceTree = "<group>"; };
@@ -1728,7 +1726,7 @@
 		00DE4C172DF3D2B000044648 /* MazeGenerationAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGenerationAnimationView.swift; sourceTree = "<group>"; };
 		00DE4C1B2DF520F300044648 /* GIFWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFWebView.swift; sourceTree = "<group>"; };
 		00DE4C1D2DF5212600044648 /* LoadingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
-		00DE4C202DF55D4600044648 /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
+		00DE4C242DF6547100044648 /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1736,7 +1734,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00DE4C1F2DF55D2300044648 /* libmazer.a in Frameworks */,
+				00DE4C232DF6546200044648 /* libmazer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2832,7 +2830,7 @@
 				00C33F622D98C84C0077691B /* mazer_iosApp.swift */,
 				00C33F6D2D98C8E50077691B /* Models */,
 				00C33F6F2D98C9010077691B /* Utils */,
-				00DE4C202DF55D4600044648 /* mazer_bridge.h */,
+				00DE4C242DF6547100044648 /* mazer_bridge.h */,
 			);
 			path = "mazer-ios";
 			sourceTree = "<group>";
@@ -2866,7 +2864,6 @@
 				00DD0DC32DAC9C8A00C20B2E /* DeltaCellView.swift */,
 				00DD0DC52DAC9CFE00C20B2E /* DeltaMazeView.swift */,
 				00DD0DC72DAC9DBE00C20B2E /* DeltaDirectionControlView.swift */,
-				001E48E22DB1A4680036F7E9 /* MazeGridView.swift */,
 				003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */,
 				00AE05F42DB877770068C880 /* SigmaCellView.swift */,
 				00AE05F62DB8778C0068C880 /* SigmaMazeView.swift */,
@@ -5099,7 +5096,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				00C341E72D9F505D0077691B /* OrthogonalMazeView.swift in Sources */,
-				001E48E32DB1A4680036F7E9 /* MazeGridView.swift in Sources */,
 				003DE2A92DB5F71D00EFB530 /* DirectionPadView.swift in Sources */,
 				00C341EB2D9F57910077691B /* MazeSize.swift in Sources */,
 				003DE2AB2DB5FC8400EFB530 /* MazeDirection.swift in Sources */,
