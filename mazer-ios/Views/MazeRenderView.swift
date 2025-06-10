@@ -60,11 +60,13 @@ struct MazeRenderView: View {
     }
 
     func computeDeltaCellSize() -> CGFloat {
-        let padding: CGFloat = 40
+//        let padding: CGFloat = 40
+//        let padding: CGFloat = 50
+        let padding: CGFloat = 46
         let available = UIScreen.main.bounds.width - padding * 2
         return available * 2 / (CGFloat(columns) + 1)
     }
-
+    
     @ViewBuilder
     private var directionControlView: some View {
         switch mazeType {
