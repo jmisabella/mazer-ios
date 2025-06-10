@@ -155,9 +155,6 @@ struct ContentView: View {
             .padding()
             
             if isLoading {
-//                Color.red.opacity(0.5)
-//                        .ignoresSafeArea()
-//                        .zIndex(2)
                 LoadingOverlayView(
                     algorithm: selectedAlgorithm,
                     colorScheme: colorScheme,
@@ -178,25 +175,33 @@ struct ContentView: View {
             
         }
         .onAppear {
-            // Remove the UserDefaults logic
-            // let hasLaunchedBefore = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
-            // if !hasLaunchedBefore {
-            //     AudioServicesPlaySystemSound(1001)
-            //     UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
-            // }
-            
-            if !didInitialRandomization {
+            // Load saved settings or randomize
+            if let sizeRaw = UserDefaults.standard.object(forKey: "lastSize") as? Int,
+               let size = MazeSize(rawValue: sizeRaw),
+               let mazeTypeRaw = UserDefaults.standard.string(forKey: "lastMazeType"),
+               let mazeType = MazeType(rawValue: mazeTypeRaw),
+               let algorithmRaw = UserDefaults.standard.string(forKey: "lastAlgorithm"),
+               let algorithm = MazeAlgorithm(rawValue: algorithmRaw) {
+                selectedSize = size
+                selectedMazeType = mazeType
+                selectedAlgorithm = algorithm
+                showHeatMap = UserDefaults.standard.bool(forKey: "showHeatMap")
+            } else {
+                // Randomize initial settings
                 let types = MazeType.allCases.filter { $0 != .polar }
                 selectedMazeType = types.randomElement()!
-                let algos: [MazeAlgorithm]
-                if selectedMazeType == .orthogonal {
-                    algos = MazeAlgorithm.allCases
-                } else {
-                    algos = MazeAlgorithm.allCases
-                        .filter { ![.binaryTree, .sidewinder].contains($0) }
-                }
+                let algos: [MazeAlgorithm] = selectedMazeType == .orthogonal ?
+                MazeAlgorithm.allCases :
+                MazeAlgorithm.allCases.filter { ![.binaryTree, .sidewinder].contains($0) }
                 selectedAlgorithm = algos.randomElement()!
-                didInitialRandomization = true
+                selectedSize = .medium // Default size
+                showHeatMap = false // Default value
+                
+                // Save randomized settings
+                UserDefaults.standard.set(selectedSize.rawValue, forKey: "lastSize")
+                UserDefaults.standard.set(selectedMazeType.rawValue, forKey: "lastMazeType")
+                UserDefaults.standard.set(selectedAlgorithm.rawValue, forKey: "lastAlgorithm")
+                UserDefaults.standard.set(showHeatMap, forKey: "showHeatMap")
             }
             
             ffi_integration_test_result = mazer_ffi_integration_test()
@@ -206,6 +211,18 @@ struct ContentView: View {
             } else {
                 print("FFI integration test failed ❌")
             }
+        }
+        .onChange(of: selectedSize) { newValue in
+            UserDefaults.standard.set(newValue.rawValue, forKey: "lastSize")
+        }
+        .onChange(of: selectedMazeType) { newValue in
+            UserDefaults.standard.set(newValue.rawValue, forKey: "lastMazeType")
+        }
+        .onChange(of: selectedAlgorithm) { newValue in
+            UserDefaults.standard.set(newValue.rawValue, forKey: "lastAlgorithm")
+        }
+        .onChange(of: showHeatMap) { newValue in
+            UserDefaults.standard.set(newValue, forKey: "showHeatMap")
         }
         .onChange(of: scenePhase) { newPhase in
             switch newPhase {
