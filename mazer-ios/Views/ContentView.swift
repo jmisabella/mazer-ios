@@ -253,7 +253,7 @@ struct ContentView: View {
     private func computeVerticalPadding() -> CGFloat {
         let screenH = UIScreen.main.bounds.height
 
-        // 1) Your old “base” padding per maze type
+        // “base” padding per maze type
         let basePadding: CGFloat = {
             switch selectedMazeType {
             case .delta:      return 230
@@ -263,7 +263,7 @@ struct ContentView: View {
             }
         }()
 
-        // 2) A ratio by size to scale that down on small screens
+        // ratio by size to scale that down on small screens
         let sizeRatio: CGFloat = {
             switch selectedSize {
             case .small:  return 0.30   // 30% of screen height
@@ -272,7 +272,7 @@ struct ContentView: View {
             }
         }()
 
-        // 3) Take the *minimum* of your old constant or the scaled value
+        // 3) Take the *minimum* of constant or the scaled value
         return min(basePadding, screenH * sizeRatio)
     }
 
@@ -294,10 +294,15 @@ struct ContentView: View {
                 switch self.selectedMazeType {
                 case .delta:
                     switch self.selectedSize {
-                    case .small: return 1.47
-                    case .medium: return 1.55
+                    case .small: return 1.46
+                    case .medium: return 1.51
                     case .large: return 1.7
                     }
+//                    switch self.selectedSize {
+//                    case .small: return 1.47
+//                    case .medium: return 1.55
+//                    case .large: return 1.7
+//                    }
                 case .orthogonal:
                     switch self.selectedSize {
                     case .small:  return 1.4

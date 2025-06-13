@@ -58,13 +58,26 @@ struct MazeRenderView: View {
     var rows: Int {
         (mazeCells.map { $0.y }.max() ?? 0) + 1
     }
-
+ 
     func computeDeltaCellSize() -> CGFloat {
-//        let padding: CGFloat = 40
-//        let padding: CGFloat = 50
-        let padding: CGFloat = 46
-        let available = UIScreen.main.bounds.width - padding * 2
-        return available * 2 / (CGFloat(columns) + 1)
+        let screenWidth = UIScreen.main.bounds.width
+        
+        // Define target paddings for two screen widths
+        let w1: CGFloat = 390.0  // Screen width 1 (e.g., iPhone 16e)
+        let p1: CGFloat = 42.0   // Target padding for w1
+        let w2: CGFloat = 400.0  // Screen width 2 (e.g., iPhone 16 Pro)
+        let p2: CGFloat = 45.0   // Target padding for w2 (reduced from 51)
+        
+        // Calculate constants for padding = a + b * screenWidth
+        let b = (p2 - p1) / (w2 - w1)  // Slope
+        let a = p1 - b * w1            // Intercept
+        
+        // Compute padding for the current screen width
+        let padding = a + b * screenWidth
+        
+        // Calculate available width and return cell size
+        let available = screenWidth - padding * 2
+        return available * 2 / (CGFloat(columns) + 1) // Assuming 'columns' is defined
     }
     
     @ViewBuilder

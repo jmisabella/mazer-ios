@@ -24,6 +24,24 @@ struct MazeGenerationAnimationView: View {
 
     @State private var currentStepIndex = 0   // Tracks current animation step
 
+//    func computeCellSize() -> CGFloat {
+//        let cols = (generationSteps[0].map { $0.x }.max() ?? 0) + 1
+//        switch mazeType {
+//        case .orthogonal:
+//            return UIScreen.main.bounds.width / CGFloat(cols)
+//        case .delta:
+////            let padding: CGFloat = 40
+////            let available = UIScreen.main.bounds.width - padding * 2
+////            return available * 2 / (CGFloat(cols) + 1)
+//            return computeDeltaCellSize()
+//        case .sigma:
+//            let units = 1.5 * CGFloat(cols - 1) + 1
+//            return UIScreen.main.bounds.width / units
+//        default:
+//            return UIScreen.main.bounds.width / CGFloat(cols)
+//        }
+//    }
+    
     // Compute cell size based on maze type, consistent with MazeRenderView
     func computeCellSize() -> CGFloat {
         let cols = (generationSteps[0].map { $0.x }.max() ?? 0) + 1
@@ -31,15 +49,37 @@ struct MazeGenerationAnimationView: View {
         case .orthogonal:
             return UIScreen.main.bounds.width / CGFloat(cols)
         case .delta:
-            let padding: CGFloat = 40
-            let available = UIScreen.main.bounds.width - padding * 2
-            return available * 2 / (CGFloat(cols) + 1)
+            return computeDeltaCellSize(cols: cols)
         case .sigma:
             let units = 1.5 * CGFloat(cols - 1) + 1
             return UIScreen.main.bounds.width / units
         default:
             return UIScreen.main.bounds.width / CGFloat(cols)
         }
+    }
+    
+    // Compute cell size for delta mazes, with optional cols parameter
+    func computeDeltaCellSize(cols: Int? = nil) -> CGFloat {
+        // Use provided cols or calculate from generationSteps if available, default to 10
+        let effectiveCols = cols ?? (generationSteps.isEmpty ? 10 : (generationSteps[0].map { $0.x }.max() ?? 0) + 1)
+        let screenWidth = UIScreen.main.bounds.width
+        
+        // Define target paddings for two screen widths
+        let w1: CGFloat = 390.0  // Screen width 1 (e.g., iPhone 16e)
+        let p1: CGFloat = 42.0   // Target padding for w1
+        let w2: CGFloat = 400.0  // Screen width 2 (e.g., iPhone 16 Pro)
+        let p2: CGFloat = 45.0   // Target padding for w2
+        
+        // Calculate constants for padding = a + b * screenWidth
+        let b = (p2 - p1) / (w2 - w1)  // Slope
+        let a = p1 - b * w1            // Intercept
+        
+        // Compute padding for the current screen width
+        let padding = a + b * screenWidth
+        
+        // Calculate available width and return cell size
+        let available = screenWidth - padding * 2
+        return available * 2 / (CGFloat(effectiveCols) + 1)
     }
 
     // Function to toggle heat map and update palette
