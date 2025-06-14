@@ -42,6 +42,7 @@
 		00DE4C1C2DF520F300044648 /* GIFWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE4C1B2DF520F300044648 /* GIFWebView.swift */; };
 		00DE4C1E2DF5212600044648 /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE4C1D2DF5212600044648 /* LoadingOverlayView.swift */; };
 		00DE4C2B2DF92A1A00044648 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DD0D132DAC3C7E00C20B2E /* libmazer.a */; };
+		00DE4C2E2DFCFE4800044648 /* MazeLayoutUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE4C2D2DFCFE3E00044648 /* MazeLayoutUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1727,6 +1728,7 @@
 		00DE4C1B2DF520F300044648 /* GIFWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFWebView.swift; sourceTree = "<group>"; };
 		00DE4C1D2DF5212600044648 /* LoadingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
 		00DE4C2C2DF92A2900044648 /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
+		00DE4C2D2DFCFE3E00044648 /* MazeLayoutUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeLayoutUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2778,6 +2780,8 @@
 		003DE2A52DB5F6B200EFB530 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
+				006F3F3F2DA08D7D00627BD4 /* Color+Hex.swift */,
+				00DD0DC12DAC92F800C20B2E /* MazeCellStyle.swift */,
 				003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */,
 			);
 			path = Styles;
@@ -2879,8 +2883,7 @@
 		00C33F6F2D98C9010077691B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				00DD0DC12DAC92F800C20B2E /* MazeCellStyle.swift */,
-				006F3F3F2DA08D7D00627BD4 /* Color+Hex.swift */,
+				00DE4C2D2DFCFE3E00044648 /* MazeLayoutUtils.swift */,
 				00C33F632D98C84C0077691B /* MazeRequestValidator.swift */,
 			);
 			path = Utils;
@@ -5098,6 +5101,7 @@
 				00C341E72D9F505D0077691B /* OrthogonalMazeView.swift in Sources */,
 				003DE2A92DB5F71D00EFB530 /* DirectionPadView.swift in Sources */,
 				00C341EB2D9F57910077691B /* MazeSize.swift in Sources */,
+				00DE4C2E2DFCFE4800044648 /* MazeLayoutUtils.swift in Sources */,
 				003DE2AB2DB5FC8400EFB530 /* MazeDirection.swift in Sources */,
 				00DD0DC22DAC931C00C20B2E /* MazeCellStyle.swift in Sources */,
 				00C341E92D9F50BE0077691B /* OrthogonalCellView.swift in Sources */,
