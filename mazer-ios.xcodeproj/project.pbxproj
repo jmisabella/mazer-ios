@@ -45,11 +45,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0018E2842DE522FF00E4A24E /* dep-lib-cfg_if */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-cfg_if"; sourceTree = "<group>"; };
+		0018E2842DE522FF00E4A24E /* dep-lib-cfg_if */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-cfg_if"; sourceTree = "<group>"; };
 		0018E2852DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		0018E2862DE522FF00E4A24E /* lib-cfg_if */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-cfg_if"; sourceTree = "<group>"; };
 		0018E2872DE522FF00E4A24E /* lib-cfg_if.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-cfg_if.json"; sourceTree = "<group>"; };
-		0018E2892DE522FF00E4A24E /* dep-lib-getrandom */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-getrandom"; sourceTree = "<group>"; };
+		0018E2892DE522FF00E4A24E /* dep-lib-getrandom */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-getrandom"; sourceTree = "<group>"; };
 		0018E28A2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		0018E28B2DE522FF00E4A24E /* lib-getrandom */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-getrandom"; sourceTree = "<group>"; };
 		0018E28C2DE522FF00E4A24E /* lib-getrandom.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-getrandom.json"; sourceTree = "<group>"; };
@@ -75,15 +75,15 @@
 		0018E2A62DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		0018E2A72DE522FF00E4A24E /* lib-ppv_lite86 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-ppv_lite86"; sourceTree = "<group>"; };
 		0018E2A82DE522FF00E4A24E /* lib-ppv_lite86.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-ppv_lite86.json"; sourceTree = "<group>"; };
-		0018E2AA2DE522FF00E4A24E /* dep-lib-rand_chacha */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-rand_chacha"; sourceTree = "<group>"; };
+		0018E2AA2DE522FF00E4A24E /* dep-lib-rand_chacha */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-rand_chacha"; sourceTree = "<group>"; };
 		0018E2AB2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		0018E2AC2DE522FF00E4A24E /* lib-rand_chacha */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-rand_chacha"; sourceTree = "<group>"; };
 		0018E2AD2DE522FF00E4A24E /* lib-rand_chacha.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-rand_chacha.json"; sourceTree = "<group>"; };
-		0018E2AF2DE522FF00E4A24E /* dep-lib-rand_core */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-rand_core"; sourceTree = "<group>"; };
+		0018E2AF2DE522FF00E4A24E /* dep-lib-rand_core */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-rand_core"; sourceTree = "<group>"; };
 		0018E2B02DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		0018E2B12DE522FF00E4A24E /* lib-rand_core */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-rand_core"; sourceTree = "<group>"; };
 		0018E2B22DE522FF00E4A24E /* lib-rand_core.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-rand_core.json"; sourceTree = "<group>"; };
-		0018E2B42DE522FF00E4A24E /* dep-lib-rand */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-rand"; sourceTree = "<group>"; };
+		0018E2B42DE522FF00E4A24E /* dep-lib-rand */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-rand"; sourceTree = "<group>"; };
 		0018E2B52DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		0018E2B62DE522FF00E4A24E /* lib-rand */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-rand"; sourceTree = "<group>"; };
 		0018E2B72DE522FF00E4A24E /* lib-rand.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-rand.json"; sourceTree = "<group>"; };
@@ -93,13 +93,13 @@
 		0018E2BC2DE522FF00E4A24E /* lib-ryu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-ryu.json"; sourceTree = "<group>"; };
 		0018E2BE2DE522FF00E4A24E /* run-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "run-build-script-build-script-build"; sourceTree = "<group>"; };
 		0018E2BF2DE522FF00E4A24E /* run-build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "run-build-script-build-script-build.json"; sourceTree = "<group>"; };
-		0018E2C12DE522FF00E4A24E /* dep-lib-serde_json */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-serde_json"; sourceTree = "<group>"; };
+		0018E2C12DE522FF00E4A24E /* dep-lib-serde_json */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-serde_json"; sourceTree = "<group>"; };
 		0018E2C22DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		0018E2C32DE522FF00E4A24E /* lib-serde_json */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-serde_json"; sourceTree = "<group>"; };
 		0018E2C42DE522FF00E4A24E /* lib-serde_json.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-serde_json.json"; sourceTree = "<group>"; };
 		0018E2C62DE522FF00E4A24E /* run-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "run-build-script-build-script-build"; sourceTree = "<group>"; };
 		0018E2C72DE522FF00E4A24E /* run-build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "run-build-script-build-script-build.json"; sourceTree = "<group>"; };
-		0018E2C92DE522FF00E4A24E /* dep-lib-serde */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-serde"; sourceTree = "<group>"; };
+		0018E2C92DE522FF00E4A24E /* dep-lib-serde */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-serde"; sourceTree = "<group>"; };
 		0018E2CA2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		0018E2CB2DE522FF00E4A24E /* lib-serde */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-serde"; sourceTree = "<group>"; };
 		0018E2CC2DE522FF00E4A24E /* lib-serde.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-serde.json"; sourceTree = "<group>"; };
@@ -483,7 +483,7 @@
 		0018E45E2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		0018E45F2DE522FF00E4A24E /* lib-quote */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-quote"; sourceTree = "<group>"; };
 		0018E4602DE522FF00E4A24E /* lib-quote.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-quote.json"; sourceTree = "<group>"; };
-		0018E4622DE522FF00E4A24E /* dep-lib-serde_derive */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-serde_derive"; sourceTree = "<group>"; };
+		0018E4622DE522FF00E4A24E /* dep-lib-serde_derive */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-serde_derive"; sourceTree = "<group>"; };
 		0018E4632DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		0018E4642DE522FF00E4A24E /* lib-serde_derive */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-serde_derive"; sourceTree = "<group>"; };
 		0018E4652DE522FF00E4A24E /* lib-serde_derive.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-serde_derive.json"; sourceTree = "<group>"; };
@@ -495,7 +495,7 @@
 		0018E46D2DE522FF00E4A24E /* build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "build-script-build-script-build.json"; sourceTree = "<group>"; };
 		0018E46E2DE522FF00E4A24E /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
 		0018E46F2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
-		0018E4712DE522FF00E4A24E /* dep-lib-syn */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-syn"; sourceTree = "<group>"; };
+		0018E4712DE522FF00E4A24E /* dep-lib-syn */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-syn"; sourceTree = "<group>"; };
 		0018E4722DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		0018E4732DE522FF00E4A24E /* lib-syn */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-syn"; sourceTree = "<group>"; };
 		0018E4742DE522FF00E4A24E /* lib-syn.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-syn.json"; sourceTree = "<group>"; };
@@ -2858,6 +2858,7 @@
 				00C33F642D98C84C0077691B /* MazeRequestView.swift */,
 				00C33F5F2D98C84C0077691B /* ContentView.swift */,
 				00C341E42D9F07040077691B /* MazeRenderView.swift */,
+				00DE4C172DF3D2B000044648 /* MazeGenerationAnimationView.swift */,
 				00C341E82D9F50BE0077691B /* OrthogonalCellView.swift */,
 				00C341E62D9F505D0077691B /* OrthogonalMazeView.swift */,
 				00DD0B532DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift */,
@@ -2869,7 +2870,6 @@
 				00AE05F62DB8778C0068C880 /* SigmaMazeView.swift */,
 				001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */,
 				003753BC2DD8336C000DB75C /* SparkleView.swift */,
-				00DE4C172DF3D2B000044648 /* MazeGenerationAnimationView.swift */,
 				00DE4C1B2DF520F300044648 /* GIFWebView.swift */,
 				00DE4C1D2DF5212600044648 /* LoadingOverlayView.swift */,
 			);
