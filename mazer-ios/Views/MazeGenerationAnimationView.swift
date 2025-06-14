@@ -24,24 +24,6 @@ struct MazeGenerationAnimationView: View {
 
     @State private var currentStepIndex = 0   // Tracks current animation step
 
-    // Compute cell size based on maze type, consistent with MazeRenderView
-    func computeCellSize() -> CGFloat {
-        let cols = (generationSteps[0].map { $0.x }.max() ?? 0) + 1
-        switch mazeType {
-        case .orthogonal:
-            return UIScreen.main.bounds.width / CGFloat(cols)
-        case .delta:
-            let padding: CGFloat = 40
-            let available = UIScreen.main.bounds.width - padding * 2
-            return available * 2 / (CGFloat(cols) + 1)
-        case .sigma:
-            let units = 1.5 * CGFloat(cols - 1) + 1
-            return UIScreen.main.bounds.width / units
-        default:
-            return UIScreen.main.bounds.width / CGFloat(cols)
-        }
-    }
-
     // Function to toggle heat map and update palette
     private func toggleHeatMap() {
         showHeatMap.toggle()
@@ -142,7 +124,7 @@ struct MazeGenerationAnimationView: View {
                         case .delta:
                             DeltaMazeView(
                                 cells: currentCells,
-                                cellSize: computeCellSize(),
+                                cellSize: computeCellSize(mazeCells: generationSteps[0], mazeType: mazeType),
                                 showSolution: showSolution,
                                 showHeatMap: showHeatMap,
                                 selectedPalette: selectedPalette,
@@ -154,7 +136,7 @@ struct MazeGenerationAnimationView: View {
                             SigmaMazeView(
                                 selectedPalette: .constant(wetAsphaltPalette),
                                 cells: currentCells,
-                                cellSize: computeCellSize(),
+                                cellSize: computeCellSize(mazeCells: generationSteps[0], mazeType: mazeType),
                                 showSolution: showSolution,
                                 showHeatMap: showHeatMap,
                                 defaultBackgroundColor: defaultBackground
