@@ -157,7 +157,7 @@ struct MazeRequestView: View {
             
             Picker("Algorithm", selection: $selectedAlgorithm) {
                 ForEach(availableAlgorithms) { algo in
-                    Text(algo.rawValue)
+                    Text(algo.displayName)
                         .font(.system(size: 16 * fontScale, weight: .bold))
                         .tag(algo)
                 }
