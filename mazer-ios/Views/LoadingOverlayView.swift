@@ -25,7 +25,7 @@ struct LoadingOverlayView: View {
                 Text("Generating Maze")
                     .font(.headline)
                     .scaleEffect(fontScale)
-                Text(algorithm.rawValue.capitalized)
+                Text(algorithm.displayName)
                     .font(.subheadline)
                     .scaleEffect(fontScale)
                 Text(algorithm.description)
