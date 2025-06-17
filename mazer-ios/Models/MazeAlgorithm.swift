@@ -14,6 +14,7 @@ enum MazeAlgorithm: String, Codable, CaseIterable, Identifiable {
     case prims = "Prims"
     case recursiveBacktracker = "RecursiveBacktracker"
     case recursiveDivision = "RecursiveDivision"
+    case reverseDelete = "ReverseDelete"
     case sidewinder = "Sidewinder"
     case wilsons = "Wilsons"
     
@@ -41,6 +42,8 @@ enum MazeAlgorithm: String, Codable, CaseIterable, Identifiable {
             return "Essentially a depth-first search, this algorithm recursively explores neighbors and backtracks upon reaching dead ends. It’s fast and generates mazes with long, twisting passages and fewer short loops."
         case .recursiveDivision:
             return "This method starts with an open grid and recursively divides it into chambers by adding walls with random passages. It creates mazes with a hierarchical layout, featuring long walls and fewer dead ends."
+        case .reverseDelete:
+            return "Beginning with a fully open grid, this algorithm randomly adds walls between adjacent cells, but only if the addition doesn’t isolate any part of the maze. This creates a perfect maze with balanced passages and no directional bias."
         case .sidewinder:
             return "Processed row-by-row, this algorithm carves eastward passages with occasional upward connections. It creates mazes with a strong horizontal bias and randomly placed vertical links."
         case .wilsons:
@@ -70,6 +73,8 @@ enum MazeAlgorithm: String, Codable, CaseIterable, Identifiable {
             return "Recursive Backtracker"
         case .recursiveDivision:
             return "Recursive Division"
+        case .reverseDelete:
+            return "Reverse Delete"
         case .sidewinder:
             return "Sidewinder"
         case .wilsons:
