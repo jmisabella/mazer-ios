@@ -95,7 +95,8 @@ struct ContentView: View {
                         currentGrid: currentGrid,
                         regenerateMaze: {
                             submitMazeRequest()
-                        }
+                        },
+                        cleanupMazeData: cleanupMazeData
                     )
                 } else if mazeGenerated {
                     MazeRenderView(
@@ -126,7 +127,8 @@ struct ContentView: View {
                                     from: defaultBackgroundColors
                                 )
                             }
-                        }
+                        },
+                        cleanupMazeData: cleanupMazeData
                     )
                     .environment(\.colorScheme, .dark)
                     .padding(.vertical, 100)
@@ -239,6 +241,17 @@ struct ContentView: View {
                 break
             }
         }
+    }
+    
+    private func cleanupMazeData() {
+        if let gridPtr = currentGrid {
+            mazer_destroy(gridPtr)
+            currentGrid = nil
+        }
+        mazeCells = []
+        generationSteps = []
+        mazeGenerated = false
+        isAnimatingGeneration = false
     }
     
     private var screenWidth: CGFloat { UIScreen.main.bounds.width }

@@ -21,6 +21,7 @@ struct MazeGenerationAnimationView: View {
     @Binding var mazeID: UUID                 // Maze ID for refresh
     let currentGrid: OpaquePointer?
     let regenerateMaze: () -> Void            // Closure to regenerate maze
+    let cleanupMazeData: () -> Void           // Closure to clean up memory
 
     @State private var currentStepIndex = 0   // Tracks current animation step
 
@@ -50,12 +51,7 @@ struct MazeGenerationAnimationView: View {
             // Navigation bar matching MazeRenderView, with fully functional buttons
             HStack(spacing: 16) {
                 Button(action: {
-                    mazeGenerated = false
-                    isAnimatingGeneration = false // Added to exit animation state
-//                    // Clear the generation steps from memory
-//                    if let gridPtr = currentGrid {
-//                        mazer_clear_generation_steps(gridPtr)
-//                    }
+                    cleanupMazeData()
                 }) {
                     Image(systemName: "arrow.uturn.left")
                         .font(.title2)

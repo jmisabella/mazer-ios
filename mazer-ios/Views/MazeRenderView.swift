@@ -28,6 +28,7 @@ struct MazeRenderView: View {
     let regenerateMaze: () -> Void
     let moveAction: (String) -> Void
     let toggleHeatMap: () -> Void
+    let cleanupMazeData: () -> Void 
 
     private var performMove: (String) -> Void {
         { dir in
@@ -127,7 +128,7 @@ struct MazeRenderView: View {
         VStack {
             HStack(spacing: 16) {
                 Button(action: {
-                    mazeGenerated = false
+                    cleanupMazeData()
                 }) {
                     Image(systemName: "arrow.uturn.left")
                         .font(.title2)
