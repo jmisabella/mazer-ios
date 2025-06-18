@@ -5,7 +5,7 @@ struct MazeRequestView: View {
     @Binding var mazeCells: [MazeCell]
     @Binding var mazeGenerated: Bool
     @Binding var mazeType: MazeType
-    @Binding var selectedSize: MazeSize
+    @Binding var selectedSize: CellSize
     @Binding var selectedMazeType: MazeType
     @Binding var selectedAlgorithm: MazeAlgorithm
     @Binding var captureSteps: Bool
@@ -123,8 +123,8 @@ struct MazeRequestView: View {
             .padding(.bottom, 8)
             
             if !isIPad {
-                Picker("Maze Size", selection: $selectedSize) {
-                    ForEach(MazeSize.allCases) { size in
+                Picker("Cell Size", selection: $selectedSize) {
+                    ForEach(CellSize.allCases) { size in
                         Text(size.label)
                             .tag(size)
                     }

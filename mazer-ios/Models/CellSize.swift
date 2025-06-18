@@ -17,7 +17,7 @@
 //    }
 //}
 
-enum MazeSize: Int, CaseIterable, Identifiable {
+enum CellSize: Int, CaseIterable, Identifiable {
     case tiny = 11, small = 12, medium = 13, large = 14
     var id: Int { rawValue }
     var label: String {
