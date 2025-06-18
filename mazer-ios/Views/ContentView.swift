@@ -95,7 +95,8 @@ struct ContentView: View {
                         currentGrid: currentGrid,
                         regenerateMaze: {
                             submitMazeRequest()
-                        }
+                        },
+                        cleanupMazeData: cleanupMazeData
                     )
                 } else if mazeGenerated {
                     MazeRenderView(
@@ -126,7 +127,8 @@ struct ContentView: View {
                                     from: defaultBackgroundColors
                                 )
                             }
-                        }
+                        },
+                        cleanupMazeData: cleanupMazeData
                     )
                     .environment(\.colorScheme, .dark)
                     .padding(.vertical, 100)
@@ -241,6 +243,17 @@ struct ContentView: View {
         }
     }
     
+    private func cleanupMazeData() {
+        if let gridPtr = currentGrid {
+            mazer_destroy(gridPtr)
+            currentGrid = nil
+        }
+        mazeCells = []
+        generationSteps = []
+        mazeGenerated = false
+        isAnimatingGeneration = false
+    }
+    
     private var screenWidth: CGFloat { UIScreen.main.bounds.width }
     
     private func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
@@ -266,6 +279,7 @@ struct ContentView: View {
         // ratio by size to scale that down on small screens
         let sizeRatio: CGFloat = {
             switch selectedSize {
+            case .tiny:   return 0.35   // 35% for tiny
             case .small:  return 0.30   // 30% of screen height
             case .medium: return 0.25   // 25%
             case .large:  return 0.20   // 20%
@@ -294,24 +308,24 @@ struct ContentView: View {
                 switch self.selectedMazeType {
                 case .delta:
                     switch self.selectedSize {
+                    case .tiny:  return 1.1
                     case .small: return 1.46
                     case .medium: return 1.51
-                    case .large: return 1.7
+                    case .large: return 1.6
                     }
                 case .orthogonal:
                     switch self.selectedSize {
-                    case .small:  return 1.4
+                    case .tiny:  return 1.2
+                    case .small:  return 1.3
                     case .medium: return 1.65
-                    case .large:  return 1.9
+                    case .large:  return 1.8
                     }
                 case .sigma:
                     switch self.selectedSize {
+                    case .tiny:  return 0.5
                     case .small:  return 0.65
                     case .medium: return 0.75
-                    case .large:  return 0.82
-//                    case .small:  return 0.75
-//                    case .medium: return 0.78
-//                    case .large:  return 0.82
+                    case .large:  return 0.8
                     }
                 case .polar:
                     return 1.0

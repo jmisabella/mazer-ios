@@ -28,6 +28,7 @@ struct MazeRenderView: View {
     let regenerateMaze: () -> Void
     let moveAction: (String) -> Void
     let toggleHeatMap: () -> Void
+    let cleanupMazeData: () -> Void 
 
     private var performMove: (String) -> Void {
         { dir in
@@ -127,7 +128,7 @@ struct MazeRenderView: View {
         VStack {
             HStack(spacing: 16) {
                 Button(action: {
-                    mazeGenerated = false
+                    cleanupMazeData()
                 }) {
                     Image(systemName: "arrow.uturn.left")
                         .font(.title2)
@@ -175,21 +176,6 @@ struct MazeRenderView: View {
             if mazeType == .orthogonal || mazeType == .delta || mazeType == .sigma {
                 ZStack {
                     mazeContent
-                        .scaleEffect(scale, anchor: anchorPoint)
-                        .gesture(
-                            MagnificationGesture()
-                                .onChanged { value in
-                                    // Cap the scale between 1.0 and 3.0
-                                    scale = min(max(value, 1.0), 3.0)
-                                    anchorPoint = .center // Center zoom for simplicity
-                                }
-                                .onEnded { _ in
-                                    withAnimation(.easeOut(duration: 0.3)) {
-                                        scale = 1.0
-                                        anchorPoint = .center
-                                    }
-                                }
-                        )
                         .gesture(
                             DragGesture(minimumDistance: 10)
                                 .onEnded { value in
@@ -273,20 +259,7 @@ struct MazeRenderView: View {
             } else {
                 ZStack {
                     mazeContent
-                        .scaleEffect(scale, anchor: anchorPoint)
-                        .gesture(
-                            MagnificationGesture()
-                                .onChanged { value in
-                                    scale = min(max(value, 1.0), 3.0)
-                                    anchorPoint = .center
-                                }
-                                .onEnded { _ in
-                                    withAnimation(.easeOut(duration: 0.3)) {
-                                        scale = 1.0
-                                        anchorPoint = .center
-                                    }
-                                }
-                        )
+                    
                     if showControls {
                         VStack {
                             Spacer()

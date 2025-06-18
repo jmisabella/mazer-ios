@@ -23,7 +23,7 @@ func computeCellSize(mazeCells: [MazeCell], mazeType: MazeType) -> CGFloat {
 }
 
 func computeDeltaCellSize(columns: Int, screenWidth: CGFloat = UIScreen.main.bounds.width, screenHeight: CGFloat = UIScreen.main.bounds.height) -> CGFloat {
-    print("Screen dimensions: \(screenWidth) x \(screenHeight)")
+//    print("Screen dimensions: \(screenWidth) x \(screenHeight)")
     
     // Define a map of (screenWidth, screenHeight) toPillars to padding
     let paddingMap: [(width: CGFloat, height: CGFloat, padding: CGFloat)] = [

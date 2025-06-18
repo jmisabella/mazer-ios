@@ -87,10 +87,10 @@ struct MazeRequestView: View {
             mainContent
         }
         .onChange(of: selectedMazeType) { _ in
-            randomizeAlgorithm()
-            if !availableAlgorithms.contains(selectedAlgorithm),
-               let firstValid = availableAlgorithms.first {
-                selectedAlgorithm = firstValid
+            if !availableAlgorithms.contains(selectedAlgorithm) {
+                if let newAlgo = availableAlgorithms.randomElement() {
+                    selectedAlgorithm = newAlgo
+                }
             }
         }
         .onChange(of: selectedSize) { newSize in
@@ -143,10 +143,10 @@ struct MazeRequestView: View {
             .pickerStyle(MenuPickerStyle())
             .tint(colorScheme == .dark ? Color.lightSkyBlue : Color.orangeRed)
             .onChange(of: selectedMazeType) { _ in
-                randomizeAlgorithm()
-                if !availableAlgorithms.contains(selectedAlgorithm),
-                   let firstValid = availableAlgorithms.first {
-                    selectedAlgorithm = firstValid
+                if !availableAlgorithms.contains(selectedAlgorithm) {
+                    if let newAlgo = availableAlgorithms.randomElement() {
+                        selectedAlgorithm = newAlgo
+                    }
                 }
             }
             

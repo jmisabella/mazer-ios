@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		001C89BF2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */; };
-		00218D5A2E0105A800582D3B /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A14AF92E00DC9A0008457E /* libmazer.a */; };
+		00218D622E024F1A00582D3B /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 008DD8102DBF2C580094C1CA /* libmazer.a */; };
 		003753BD2DD8336C000DB75C /* SparkleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003753BC2DD8336C000DB75C /* SparkleView.swift */; };
 		003DE2A72DB5F6D300EFB530 /* DPadButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */; };
 		003DE2A92DB5F71D00EFB530 /* DirectionPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */; };
@@ -601,7 +601,7 @@
 		0018E4E72DE522FF00E4A24E /* .rustc_info.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = .rustc_info.json; sourceTree = "<group>"; };
 		0018E4E82DE522FF00E4A24E /* CACHEDIR.TAG */ = {isa = PBXFileReference; lastKnownFileType = text; path = CACHEDIR.TAG; sourceTree = "<group>"; };
 		001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigmaDirectionControlViewi.swift; sourceTree = "<group>"; };
-		00218D5B2E0105B700582D3B /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
+		00218D632E024F3A00582D3B /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
 		003753BC2DD8336C000DB75C /* SparkleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleView.swift; sourceTree = "<group>"; };
 		003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPadButtonStyle.swift; sourceTree = "<group>"; };
 		003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionPadView.swift; sourceTree = "<group>"; };
@@ -2157,7 +2157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00218D5A2E0105A800582D3B /* libmazer.a in Frameworks */,
+				00218D622E024F1A00582D3B /* libmazer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3949,7 +3949,7 @@
 				00C33F622D98C84C0077691B /* mazer_iosApp.swift */,
 				00C33F6D2D98C8E50077691B /* Models */,
 				00C33F6F2D98C9010077691B /* Utils */,
-				00218D5B2E0105B700582D3B /* mazer_bridge.h */,
+				00218D632E024F3A00582D3B /* mazer_bridge.h */,
 			);
 			path = "mazer-ios";
 			sourceTree = "<group>";
