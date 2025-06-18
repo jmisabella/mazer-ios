@@ -19,7 +19,7 @@ struct ContentView: View {
     @State private var errorMessage: String?
 
     // User selections from request view
-    @State private var selectedSize: MazeSize = .large
+    @State private var selectedSize: CellSize = .large
     @State private var selectedMazeType: MazeType = .orthogonal
     @State private var selectedAlgorithm: MazeAlgorithm = .recursiveBacktracker
     // User selections from render view
@@ -179,7 +179,7 @@ struct ContentView: View {
         .onAppear {
             // Load saved settings or randomize
             if let sizeRaw = UserDefaults.standard.object(forKey: "lastSize") as? Int,
-               let size = MazeSize(rawValue: sizeRaw),
+               let size = CellSize(rawValue: sizeRaw),
                let mazeTypeRaw = UserDefaults.standard.string(forKey: "lastMazeType"),
                let mazeType = MazeType(rawValue: mazeTypeRaw),
                let algorithmRaw = UserDefaults.standard.string(forKey: "lastAlgorithm"),
