@@ -60,15 +60,6 @@ struct MazeRenderView: View {
             DeltaDirectionControlView(moveAction: performMove)
                 .id(mazeID)
                 .padding(.top, 3)
-        case .polar:
-            VStack(spacing: 8) {
-                Image(systemName: "wrench.fill")
-                    .font(.system(size: 40))
-                    .foregroundColor(.gray)
-                Text("Under Construction")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
         }
     }
 
@@ -107,15 +98,7 @@ struct MazeRenderView: View {
                 defaultBackgroundColor: defaultBackground
             )
             .id(mazeID)
-        case .polar:
-            VStack(spacing: 8) {
-                Image(systemName: "wrench.fill")
-                    .font(.system(size: 40))
-                    .foregroundColor(.gray)
-                Text("Under Construction")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
+
         }
     }
 

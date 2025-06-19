@@ -268,7 +268,6 @@ struct ContentView: View {
             case .delta:      return 230
             case .orthogonal: return 140
             case .sigma:      return 280
-            case .polar:      return 0
             }
         }()
 
@@ -323,8 +322,7 @@ struct ContentView: View {
                     case .medium: return 0.75
                     case .large:  return 0.8
                     }
-                case .polar:
-                    return 1.0
+
                 }
             }()
             
@@ -562,9 +560,6 @@ struct ContentView: View {
         let tryDirections: [String] = {
             switch mazeType {
             case .orthogonal:
-                return [direction]
-                
-            case .polar:
                 return [direction]
                 
             case .delta:
