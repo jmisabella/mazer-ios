@@ -140,7 +140,7 @@ struct MazeRequestView: View {
                         .tag(type)
                 }
             }
-            .pickerStyle(MenuPickerStyle())
+            .pickerStyle(SegmentedPickerStyle())
             .tint(colorScheme == .dark ? Color.lightSkyBlue : Color.orangeRed)
             .onChange(of: selectedMazeType) { _ in
                 if !availableAlgorithms.contains(selectedAlgorithm) {

@@ -189,12 +189,8 @@ struct ContentView: View {
                 selectedAlgorithm = algorithm
                 showHeatMap = UserDefaults.standard.bool(forKey: "showHeatMap")
             } else {
-                // Randomize initial settings
-                let types = MazeType.allCases.filter { $0 != .polar }
-                selectedMazeType = types.randomElement()!
-                let algos: [MazeAlgorithm] = selectedMazeType == .orthogonal ?
-                MazeAlgorithm.allCases :
-                MazeAlgorithm.allCases.filter { ![.binaryTree, .sidewinder].contains($0) }
+                selectedMazeType = .orthogonal // default to Orthogonal when there's no saved user default
+                let algos: [MazeAlgorithm] = MazeAlgorithm.allCases // All algorithms are valid for Orthogonal
                 selectedAlgorithm = algos.randomElement()!
                 selectedSize = .medium // Default size
                 showHeatMap = false // Default value
