@@ -60,6 +60,7 @@ struct MazeRenderView: View {
             DeltaDirectionControlView(moveAction: performMove)
                 .id(mazeID)
                 .padding(.top, 3)
+
         }
     }
 
@@ -155,131 +156,90 @@ struct MazeRenderView: View {
                 .accessibilityLabel("Toggle navigation controls")
             }
             .padding(.top)
-
-            if mazeType == .orthogonal || mazeType == .delta || mazeType == .sigma {
-                ZStack {
-                    mazeContent
-                        .gesture(
-                            DragGesture(minimumDistance: 10)
-                                .onEnded { value in
-                                    let batchSize = 1
-                                    let tx = value.translation.width
-                                    let ty = -value.translation.height
-                                    guard tx != 0 || ty != 0 else { return }
-                                    let angle = atan2(ty, tx)
-                                    var shifted = angle + (.pi / 8)
-                                    if shifted < 0 { shifted += 2 * .pi }
-                                    let sector = Int(floor(shifted / (.pi / 4))) % 8
-                                    let directions = [
-                                        "Right", "UpperRight", "Up", "UpperLeft",
-                                        "Left", "LowerLeft", "Down", "LowerRight"
-                                    ]
-                                    let chosen = directions[sector]
-                                    let mag = sqrt(tx*tx + ty*ty)
-                                    let baseDim = computeCellSize(mazeCells: mazeCells, mazeType: mazeType)
-                                    let dim: CGFloat
-                                    switch mazeType {
-                                    case .sigma:
-                                        dim = baseDim * sqrt(3) // Hex cell center distance
-                                    case .orthogonal:
-                                        dim = baseDim           // Square cell distance
-                                    case .delta:
-                                        dim = baseDim / sqrt(3) // Triangular cell center distance
-                                    default:
-                                        dim = baseDim
-                                    }
-                                    let totalMoves = max(1, Int(round(mag / dim)))
-                                    let movesToPerform = min(totalMoves, batchSize)
-                                    for _ in 0..<movesToPerform {
-                                        performMove(chosen)
-                                    }
-                                    if totalMoves > batchSize {
-                                        for i in batchSize..<totalMoves {
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
-                                                performMove(chosen)
-                                            }
+            
+            ZStack {
+                mazeContent
+                    .gesture(
+                        DragGesture(minimumDistance: 10)
+                            .onEnded { value in
+                                let batchSize = 1
+                                let tx = value.translation.width
+                                let ty = -value.translation.height
+                                guard tx != 0 || ty != 0 else { return }
+                                let angle = atan2(ty, tx)
+                                var shifted = angle + (.pi / 8)
+                                if shifted < 0 { shifted += 2 * .pi }
+                                let sector = Int(floor(shifted / (.pi / 4))) % 8
+                                let directions = [
+                                    "Right", "UpperRight", "Up", "UpperLeft",
+                                    "Left", "LowerLeft", "Down", "LowerRight"
+                                ]
+                                let chosen = directions[sector]
+                                let mag = sqrt(tx*tx + ty*ty)
+                                let baseDim = computeCellSize(mazeCells: mazeCells, mazeType: mazeType)
+                                let dim: CGFloat
+                                switch mazeType {
+                                case .sigma:
+                                    dim = baseDim * sqrt(3) // Hex cell center distance
+                                case .orthogonal:
+                                    dim = baseDim           // Square cell distance
+                                case .delta:
+                                    dim = baseDim / sqrt(3) // Triangular cell center distance
+                                default:
+                                    dim = baseDim
+                                }
+                                let totalMoves = max(1, Int(round(mag / dim)))
+                                let movesToPerform = min(totalMoves, batchSize)
+                                for _ in 0..<movesToPerform {
+                                    performMove(chosen)
+                                }
+                                if totalMoves > batchSize {
+                                    for i in batchSize..<totalMoves {
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+                                            performMove(chosen)
                                         }
                                     }
                                 }
-                        )
-
-                    if showControls {
-                        VStack {
-                            Spacer()
-                            directionControlView
-                                .fixedSize()
-                                .background(Color(.systemBackground).opacity(0.8))
-                                .cornerRadius(16)
-                                .shadow(radius: 4)
-                                .offset(padOffset)
-                                .gesture(
-                                    DragGesture()
-                                        .onChanged { value in
-                                            padOffset = CGSize(
-                                                width: dragStartOffset.width + value.translation.width,
-                                                height: dragStartOffset.height + value.translation.height
-                                            )
-                                        }
-                                        .onEnded { value in
-                                            let newOffset = CGSize(
-                                                width: dragStartOffset.width + value.translation.width,
-                                                height: dragStartOffset.height + value.translation.height
-                                            )
-                                            padOffset = clamped(offset: newOffset)
-                                            dragStartOffset = padOffset
-                                        }
-                                )
-                                .transition(.move(edge: .bottom).combined(with: .opacity))
-                                .onChange(of: showControls) { newValue in
-                                    guard newValue else { return }
-                                    padOffset = .zero
-                                    dragStartOffset = .zero
-                                }
-                        }
+                            }
+                    )
+                
+                if showControls {
+                    VStack {
+                        Spacer()
+                        directionControlView
+                            .fixedSize()
+                            .background(Color(.systemBackground).opacity(0.8))
+                            .cornerRadius(16)
+                            .shadow(radius: 4)
+                            .offset(padOffset)
+                            .gesture(
+                                DragGesture()
+                                    .onChanged { value in
+                                        padOffset = CGSize(
+                                            width: dragStartOffset.width + value.translation.width,
+                                            height: dragStartOffset.height + value.translation.height
+                                        )
+                                    }
+                                    .onEnded { value in
+                                        let newOffset = CGSize(
+                                            width: dragStartOffset.width + value.translation.width,
+                                            height: dragStartOffset.height + value.translation.height
+                                        )
+                                        padOffset = clamped(offset: newOffset)
+                                        dragStartOffset = padOffset
+                                    }
+                            )
+                            .transition(.move(edge: .bottom).combined(with: .opacity))
+                            .onChange(of: showControls) { newValue in
+                                guard newValue else { return }
+                                padOffset = .zero
+                                dragStartOffset = .zero
+                            }
                     }
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else {
-                ZStack {
-                    mazeContent
-                    
-                    if showControls {
-                        VStack {
-                            Spacer()
-                            directionControlView
-                                .fixedSize()
-                                .background(Color(.systemBackground).opacity(0.8))
-                                .cornerRadius(16)
-                                .shadow(radius: 4)
-                                .offset(padOffset)
-                                .gesture(
-                                    DragGesture()
-                                        .onChanged { value in
-                                            padOffset = CGSize(
-                                                width: dragStartOffset.width + value.translation.width,
-                                                height: dragStartOffset.height + value.translation.height
-                                            )
-                                        }
-                                        .onEnded { value in
-                                            let newOffset = CGSize(
-                                                width: dragStartOffset.width + value.translation.width,
-                                                height: dragStartOffset.height + value.translation.height
-                                            )
-                                            padOffset = clamped(offset: newOffset)
-                                            dragStartOffset = padOffset
-                                        }
-                                )
-                                .transition(.move(edge: .bottom).combined(with: .opacity))
-                                .onChange(of: showControls) { newValue in
-                                    guard newValue else { return }
-                                    padOffset = .zero
-                                    dragStartOffset = .zero
-                                }
-                        }
-                    }
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
         }
         .onAppear {
             // Play sound when MazeRenderView appears

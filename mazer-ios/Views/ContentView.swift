@@ -323,6 +323,7 @@ struct ContentView: View {
                     case .large:  return 0.8
                     }
 
+
                 }
             }()
             
@@ -417,7 +418,8 @@ struct ContentView: View {
                         isVisited: ffiCell.is_visited,
                         hasBeenVisited: ffiCell.has_been_visited,
                         onSolutionPath: ffiCell.on_solution_path,
-                        orientation: orientationCopy
+                        orientation: orientationCopy,
+                        isSquare: ffiCell.is_square,
                     ))
                 }
                 
@@ -454,7 +456,8 @@ struct ContentView: View {
                                 isVisited: ffiCell.is_visited,
                                 hasBeenVisited: ffiCell.has_been_visited,
                                 onSolutionPath: ffiCell.on_solution_path,
-                                orientation: orientationCopy
+                                orientation: orientationCopy,
+                                isSquare: ffiCell.is_square,
                             ))
                         }
                         
@@ -581,6 +584,7 @@ struct ContentView: View {
                 case "LowerLeft":  return ["LowerLeft",  "UpperLeft"]
                 default:           return [direction]
                 }
+
             }
         }()
 
@@ -628,7 +632,8 @@ struct ContentView: View {
                 isVisited: ffiCell.is_visited,
                 hasBeenVisited: ffiCell.has_been_visited,
                 onSolutionPath: ffiCell.on_solution_path,
-                orientation: orientationCopy
+                orientation: orientationCopy,
+                isSquare: ffiCell.is_square
             ))
         }
         

@@ -2,7 +2,7 @@
 //  mazer_bridge.h
 //  mazer-ios
 //
-//  Created by Jeffrey Isabella on 6/18/25.
+//  Created by Jeffrey Isabella on 6/19/25.
 //
 
 #ifndef MAZER_H
@@ -35,6 +35,7 @@ typedef struct FFICell {
     bool has_been_visited;
     bool on_solution_path;
     const char* orientation;
+    bool is_square;
 } FFICell;
 
 /**

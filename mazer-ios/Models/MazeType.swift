@@ -13,11 +13,12 @@ enum MazeType: String, Codable, CaseIterable, Identifiable {
     var description: String {
         switch self {
         case .delta:
-            return "Delta mazes use triangular cells (normal and inverted)."
+            return "Triangular cells (normal and inverted) creating jagged, complex paths."
         case .orthogonal:
-            return "Orthogonal is the classic square maze."
+            return "Classic square grid with straight paths and right-angle turns."
         case .sigma:
-            return "Sigma mazes have hexagonal cells."
+            return "Hexagonal web with multiple directions, making routes tricky."
+
         }
     }
 }
