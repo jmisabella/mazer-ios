@@ -11,6 +11,7 @@ struct MazeCell : Hashable {
     let hasBeenVisited: Bool
     let onSolutionPath: Bool
     let orientation: String
+    let isSquare: Bool
 }
 
 	

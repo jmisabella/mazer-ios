@@ -66,7 +66,8 @@ struct MazeRequestView: View {
     }
         
     private func randomizeType() {
-        let types = MazeType.allCases.filter { $0 != .polar }
+//        let types = MazeType.allCases.filter { $0 != .polar }
+        let types = MazeType.allCases
         if let randomType = types.randomElement() {
             selectedMazeType = randomType
         }
@@ -134,7 +135,8 @@ struct MazeRequestView: View {
             }
             
             Picker("Maze Type", selection: $selectedMazeType) {
-                ForEach(MazeType.allCases.filter { $0 != .polar }) { type in
+//                ForEach(MazeType.allCases.filter { $0 != .polar }) { type in
+                ForEach(MazeType.allCases) { type in
                     Text(type.rawValue.capitalized)
                         .font(.system(size: 16 * fontScale, weight: .bold))
                         .tag(type)
