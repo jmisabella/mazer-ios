@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		001C89BF2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */; };
 		00218D782E04E18300582D3B /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A14AF92E00DC9A0008457E /* libmazer.a */; };
-		00218D7B2E04E42C00582D3B /* OrthoSquareCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00218D7A2E04E42C00582D3B /* OrthoSquareCellView.swift */; };
-		00218D7D2E04E44C00582D3B /* OrthoSquareMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00218D7C2E04E44C00582D3B /* OrthoSquareMazeView.swift */; };
-		00218D7F2E04E46D00582D3B /* OrthoSquareDirectionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00218D7E2E04E46D00582D3B /* OrthoSquareDirectionControlView.swift */; };
+		00218D7B2E04E42C00582D3B /* OctoSquareCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00218D7A2E04E42C00582D3B /* OctoSquareCellView.swift */; };
+		00218D7D2E04E44C00582D3B /* OctoSquareMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00218D7C2E04E44C00582D3B /* OctoSquareMazeView.swift */; };
+		00218D7F2E04E46D00582D3B /* OctoSquareDirectionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00218D7E2E04E46D00582D3B /* OctoSquareDirectionControlView.swift */; };
 		003753BD2DD8336C000DB75C /* SparkleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003753BC2DD8336C000DB75C /* SparkleView.swift */; };
 		003DE2A72DB5F6D300EFB530 /* DPadButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */; };
 		003DE2A92DB5F71D00EFB530 /* DirectionPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */; };
@@ -605,9 +605,9 @@
 		0018E4E82DE522FF00E4A24E /* CACHEDIR.TAG */ = {isa = PBXFileReference; lastKnownFileType = text; path = CACHEDIR.TAG; sourceTree = "<group>"; };
 		001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigmaDirectionControlViewi.swift; sourceTree = "<group>"; };
 		00218D792E04E19200582D3B /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
-		00218D7A2E04E42C00582D3B /* OrthoSquareCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthoSquareCellView.swift; sourceTree = "<group>"; };
-		00218D7C2E04E44C00582D3B /* OrthoSquareMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthoSquareMazeView.swift; sourceTree = "<group>"; };
-		00218D7E2E04E46D00582D3B /* OrthoSquareDirectionControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthoSquareDirectionControlView.swift; sourceTree = "<group>"; };
+		00218D7A2E04E42C00582D3B /* OctoSquareCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctoSquareCellView.swift; sourceTree = "<group>"; };
+		00218D7C2E04E44C00582D3B /* OctoSquareMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctoSquareMazeView.swift; sourceTree = "<group>"; };
+		00218D7E2E04E46D00582D3B /* OctoSquareDirectionControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctoSquareDirectionControlView.swift; sourceTree = "<group>"; };
 		003753BC2DD8336C000DB75C /* SparkleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleView.swift; sourceTree = "<group>"; };
 		003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPadButtonStyle.swift; sourceTree = "<group>"; };
 		003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionPadView.swift; sourceTree = "<group>"; };
@@ -3997,9 +3997,9 @@
 				003753BC2DD8336C000DB75C /* SparkleView.swift */,
 				00DE4C1B2DF520F300044648 /* GIFWebView.swift */,
 				00DE4C1D2DF5212600044648 /* LoadingOverlayView.swift */,
-				00218D7A2E04E42C00582D3B /* OrthoSquareCellView.swift */,
-				00218D7C2E04E44C00582D3B /* OrthoSquareMazeView.swift */,
-				00218D7E2E04E46D00582D3B /* OrthoSquareDirectionControlView.swift */,
+				00218D7A2E04E42C00582D3B /* OctoSquareCellView.swift */,
+				00218D7C2E04E44C00582D3B /* OctoSquareMazeView.swift */,
+				00218D7E2E04E46D00582D3B /* OctoSquareDirectionControlView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -6226,7 +6226,7 @@
 				003DE2A92DB5F71D00EFB530 /* DirectionPadView.swift in Sources */,
 				00C341EB2D9F57910077691B /* CellSize.swift in Sources */,
 				00DE4C2E2DFCFE4800044648 /* MazeLayoutUtils.swift in Sources */,
-				00218D7D2E04E44C00582D3B /* OrthoSquareMazeView.swift in Sources */,
+				00218D7D2E04E44C00582D3B /* OctoSquareMazeView.swift in Sources */,
 				003DE2AB2DB5FC8400EFB530 /* MazeDirection.swift in Sources */,
 				00DD0DC22DAC931C00C20B2E /* MazeCellStyle.swift in Sources */,
 				00C341E92D9F50BE0077691B /* OrthogonalCellView.swift in Sources */,
@@ -6244,9 +6244,9 @@
 				00DD0DC62DAC9CFE00C20B2E /* DeltaMazeView.swift in Sources */,
 				00C33F6A2D98C84C0077691B /* MazeRequestValidator.swift in Sources */,
 				00C33F6B2D98C84C0077691B /* MazeRequestView.swift in Sources */,
-				00218D7F2E04E46D00582D3B /* OrthoSquareDirectionControlView.swift in Sources */,
+				00218D7F2E04E46D00582D3B /* OctoSquareDirectionControlView.swift in Sources */,
 				003DE2A72DB5F6D300EFB530 /* DPadButtonStyle.swift in Sources */,
-				00218D7B2E04E42C00582D3B /* OrthoSquareCellView.swift in Sources */,
+				00218D7B2E04E42C00582D3B /* OctoSquareCellView.swift in Sources */,
 				00C33F752D98CC730077691B /* MazeRequestError.swift in Sources */,
 				00C33F782D98CC860077691B /* MazeAlgorithm.swift in Sources */,
 				00DD0DC82DAC9DBE00C20B2E /* DeltaDirectionControlView.swift in Sources */,
