@@ -9,6 +9,13 @@ import SwiftUI
 import AudioToolbox
 import UIKit
 
+struct GridSizeKey: PreferenceKey {
+    static var defaultValue: CGSize = .zero
+    static func reduce(value: inout CGSize, nextValue: () -> CGSize) {
+        value = nextValue()
+    }
+}
+
 struct UpsilonMazeView: View {
     let cells: [MazeCell]
     let octagonSize: CGFloat
@@ -20,6 +27,7 @@ struct UpsilonMazeView: View {
 
     @State private var revealedSolutionPath: Set<Coordinates> = []
     @State private var pendingWorkItems: [DispatchWorkItem] = []
+    @State private var gridSize: CGSize = .zero
 
     private var maxDistance: Int {
         cells.map(\.distance).max() ?? 1
@@ -34,7 +42,7 @@ struct UpsilonMazeView: View {
     }
 
     private var verticalSpacing: CGFloat {
-        0
+        -1
     }
 
     private var gridColumns: [GridItem] {
@@ -44,37 +52,37 @@ struct UpsilonMazeView: View {
     private let haptic = UIImpactFeedbackGenerator(style: .light)
 
     var body: some View {
-        LazyVGrid(columns: gridColumns, spacing: verticalSpacing) {
-            ForEach(cells, id: \.self) { cell in
-                cellView(for: cell)
+            LazyVGrid(columns: gridColumns, spacing: verticalSpacing) {
+                ForEach(cells, id: \.self) { cell in
+                    cellView(for: cell)
+                }
             }
+            .padding(.top, 10)
+            .onChange(of: showSolution, perform: handleShowSolutionChange)
+            .onChange(of: cells, perform: { _ in cancelAndReset() })
+            .onAppear(perform: handleAppear)
         }
-        .padding(.top, 10)
-        .onChange(of: showSolution, perform: handleShowSolutionChange)
-        .onChange(of: cells, perform: { _ in cancelAndReset() })
-        .onAppear(perform: handleAppear)
-    }
 
-    private func cellView(for cell: MazeCell) -> some View {
-        let coord = Coordinates(x: cell.x, y: cell.y)
-        let fillColor = cellBackgroundColor(
-            for: cell,
-            showSolution: showSolution,
-            showHeatMap: showHeatMap,
-            maxDistance: maxDistance,
-            selectedPalette: selectedPalette,
-            isRevealedSolution: revealedSolutionPath.contains(coord),
-            defaultBackground: defaultBackgroundColor
-        )
-        return UpsilonCellView(
-            cell: cell,
-            gridCellSize: octagonSize,
-            squareSize: squareSize,
-            isSquare: cell.isSquare,
-            fillColor: fillColor
-        )
-        .frame(width: octagonSize, height: octagonSize * (sqrt(2) / 2))
-    }
+        private func cellView(for cell: MazeCell) -> some View {
+            let coord = Coordinates(x: cell.x, y: cell.y)
+            let fillColor = cellBackgroundColor(
+                for: cell,
+                showSolution: showSolution,
+                showHeatMap: showHeatMap,
+                maxDistance: maxDistance,
+                selectedPalette: selectedPalette,
+                isRevealedSolution: revealedSolutionPath.contains(coord),
+                defaultBackground: defaultBackgroundColor
+            )
+            return UpsilonCellView(
+                cell: cell,
+                gridCellSize: octagonSize,
+                squareSize: squareSize,
+                isSquare: cell.isSquare,
+                fillColor: fillColor
+            )
+            .frame(width: octagonSize, height: octagonSize * (sqrt(2) / 2))
+        }
 
     private func handleShowSolutionChange(newValue: Bool) {
         if newValue {

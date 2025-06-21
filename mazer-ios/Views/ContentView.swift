@@ -272,8 +272,8 @@ struct ContentView: View {
                 }
             case .upsilon:
                 switch selectedSize {
-                case .tiny: return 1.85
-                case .small: return 2.2
+                case .tiny: return 1.9
+                case .small: return 2.3
                 case .medium: return 2.65
                 case .large: return 3.3
                 }

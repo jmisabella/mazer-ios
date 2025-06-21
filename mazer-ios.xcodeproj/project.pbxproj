@@ -11,7 +11,7 @@
 		00218D7B2E04E42C00582D3B /* UpsilonCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00218D7A2E04E42C00582D3B /* UpsilonCellView.swift */; };
 		00218D7D2E04E44C00582D3B /* UpsilonMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00218D7C2E04E44C00582D3B /* UpsilonMazeView.swift */; };
 		00218D7F2E04E46D00582D3B /* UpsilonDirectionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00218D7E2E04E46D00582D3B /* UpsilonDirectionControlView.swift */; };
-		00218D802E067BDB00582D3B /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A14AF92E00DC9A0008457E /* libmazer.a */; };
+		00218D842E0733AC00582D3B /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A14AF92E00DC9A0008457E /* libmazer.a */; };
 		003753BD2DD8336C000DB75C /* SparkleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003753BC2DD8336C000DB75C /* SparkleView.swift */; };
 		003DE2A72DB5F6D300EFB530 /* DPadButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */; };
 		003DE2A92DB5F71D00EFB530 /* DirectionPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */; };
@@ -607,7 +607,7 @@
 		00218D7A2E04E42C00582D3B /* UpsilonCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsilonCellView.swift; sourceTree = "<group>"; };
 		00218D7C2E04E44C00582D3B /* UpsilonMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsilonMazeView.swift; sourceTree = "<group>"; };
 		00218D7E2E04E46D00582D3B /* UpsilonDirectionControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsilonDirectionControlView.swift; sourceTree = "<group>"; };
-		00218D812E067BED00582D3B /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
+		00218D852E0733BA00582D3B /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
 		003753BC2DD8336C000DB75C /* SparkleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleView.swift; sourceTree = "<group>"; };
 		003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPadButtonStyle.swift; sourceTree = "<group>"; };
 		003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionPadView.swift; sourceTree = "<group>"; };
@@ -2163,7 +2163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00218D802E067BDB00582D3B /* libmazer.a in Frameworks */,
+				00218D842E0733AC00582D3B /* libmazer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3955,7 +3955,7 @@
 				00C33F622D98C84C0077691B /* mazer_iosApp.swift */,
 				00C33F6D2D98C8E50077691B /* Models */,
 				00C33F6F2D98C9010077691B /* Utils */,
-				00218D812E067BED00582D3B /* mazer_bridge.h */,
+				00218D852E0733BA00582D3B /* mazer_bridge.h */,
 			);
 			path = "mazer-ios";
 			sourceTree = "<group>";

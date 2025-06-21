@@ -7,92 +7,79 @@ struct UpsilonCellView: View {
     let gridCellSize: CGFloat
     let squareSize: CGFloat
     let isSquare: Bool
-    let fillColor: Color // Computed based on cell state
-    let defaultBackgroundColor: Color = .gray // Adjust as needed
+    let fillColor: Color
+    let defaultBackgroundColor: Color = .gray
+
+    private let overlap: CGFloat = 1.0 / UIScreen.main.scale
 
     var body: some View {
         ZStack(alignment: .topLeading) {
-            // Base shape with fill color
+            // Base shape with fill color, adjusted for overlap
             if isSquare {
+                let adjustedSize = squareSize + 2 * overlap
+                let adjustedOffset = (gridCellSize - adjustedSize) / 2
                 Rectangle()
                     .fill(fillColor)
-                    .frame(width: squareSize, height: squareSize)
-                    .offset(x: (gridCellSize - squareSize) / 2, y: (gridCellSize - squareSize) / 2)
+                    .frame(width: adjustedSize, height: adjustedSize)
+                    .offset(x: adjustedOffset, y: adjustedOffset)
             } else {
-                OctagonShape()
+                OctagonShape(overlap: overlap)
                     .fill(fillColor)
                     .frame(width: gridCellSize, height: gridCellSize)
             }
             
-            // Wall overlay
+            // Wall overlay (unchanged, precise boundaries)
             WallView(cell: cell, gridCellSize: gridCellSize, squareSize: squareSize, isSquare: isSquare)
                 .frame(width: gridCellSize, height: gridCellSize)
         }
-        .background(fillColor) // Fills the gaps and clipped areas with the cell's color
         .frame(width: gridCellSize, height: gridCellSize)
-        .clipShape(
-            isSquare ?
-                AnyShape(
-                    Rectangle()
-                        .size(width: squareSize, height: squareSize)
-                        .offset(x: (gridCellSize - squareSize) / 2, y: (gridCellSize - squareSize) / 2)
-                ) :
-                AnyShape(OctagonShape())
-        )
-//        .clipShape(
-//            isSquare ?
-//                Rectangle()
-//                    .size(width: squareSize, height: squareSize)
-//                    .offset(x: (gridCellSize - squareSize) / 2, y: (gridCellSize - squareSize) / 2) :
-//                OctagonShape()
-//        )
+        // Removed .clipShape to allow overlap
     }
 }
-//struct UpsilonCellView: View {
-//    let cell: MazeCell
-//    let gridCellSize: CGFloat
-//    let squareSize: CGFloat
-//    let showSolution: Bool
-//    let showHeatMap: Bool
-//    let selectedPalette: HeatMapPalette
-//    let maxDistance: Int
-//    let isRevealedSolution: Bool
-//    let defaultBackgroundColor: Color
-//
-//    private var fillColor: Color {
-//        cellBackgroundColor(
-//            for: cell,
-//            showSolution: showSolution,
-//            showHeatMap: showHeatMap,
-//            maxDistance: maxDistance,
-//            selectedPalette: selectedPalette,
-//            isRevealedSolution: isRevealedSolution,
-//            defaultBackground: defaultBackgroundColor
-//        )
-//    }
-//
-//    var body: some View {
-//        let isSquare = cell.isSquare
-//            ZStack(alignment: .topLeading) {
-//              if isSquare {
-//                Rectangle()
-//                  .fill(fillColor)
-//                  .frame(width: squareSize, height: squareSize)
-//                  .offset(x: (gridCellSize - squareSize)/2,
-//                          y: (gridCellSize - squareSize)/2)
-//              } else {
-//                OctagonShape()
-//                  .fill(fillColor)
-//                  .frame(width: gridCellSize, height: gridCellSize)
-//              }
-//
-//            WallView(cell: cell, gridCellSize: gridCellSize, squareSize: squareSize, isSquare: isSquare)
-//                .frame(width: gridCellSize, height: gridCellSize)
-//        }
-//        .frame(width: gridCellSize, height: gridCellSize)
-////        .background(.red.opacity(0.3))
-//    }
-//}
+
+struct OctagonShape: Shape {
+    let overlap: CGFloat
+
+    init(overlap: CGFloat = 0) {
+        self.overlap = overlap
+    }
+
+    func path(in rect: CGRect) -> Path {
+        let cx = rect.midX
+        let cy = rect.midY
+        let r = min(rect.width, rect.height) / 2 + overlap
+        let k = (2.0 * r) / (2.0 + Darwin.sqrt(2.0))
+        let points = [
+            CGPoint(x: cx - r + k, y: cy - r),
+            CGPoint(x: cx + r - k, y: cy - r),
+            CGPoint(x: cx + r, y: cy - r + k),
+            CGPoint(x: cx + r, y: cy + r - k),
+            CGPoint(x: cx + r - k, y: cy + r),
+            CGPoint(x: cx - r + k, y: cy + r),
+            CGPoint(x: cx - r, y: cy + r - k),
+            CGPoint(x: cx - r, y: cy - r + k)
+        ]
+        var path = Path()
+        path.move(to: points[0])
+        for point in points[1...] {
+            path.addLine(to: point)
+        }
+        path.closeSubpath()
+        return path
+    }
+}
+
+struct AnyShape: Shape {
+    private let pathBuilder: (CGRect) -> Path
+
+    init<S: Shape>(_ shape: S) {
+        pathBuilder = { shape.path(in: $0) }
+    }
+
+    func path(in rect: CGRect) -> Path {
+        pathBuilder(rect)
+    }
+}
 
 struct WallView: View {
     let cell: MazeCell
@@ -157,44 +144,5 @@ struct WallView: View {
             }
         }
         .stroke(Color.black, lineWidth: 2)
-    }
-}
-
-
-struct OctagonShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        let cx = rect.midX
-        let cy = rect.midY
-        let r = min(rect.width, rect.height) / 2
-        let k = (2.0 * r) / (2.0 + Darwin.sqrt(2.0))
-        let points = [
-            CGPoint(x: cx - r + k, y: cy - r), // Top-left of top side
-            CGPoint(x: cx + r - k, y: cy - r), // Top-right of top side
-            CGPoint(x: cx + r, y: cy - r + k), // Right-top
-            CGPoint(x: cx + r, y: cy + r - k), // Right-bottom
-            CGPoint(x: cx + r - k, y: cy + r), // Bottom-right of bottom side
-            CGPoint(x: cx - r + k, y: cy + r), // Bottom-left of bottom side
-            CGPoint(x: cx - r, y: cy + r - k), // Left-bottom
-            CGPoint(x: cx - r, y: cy - r + k)  // Left-top
-        ]
-        var path = Path()
-        path.move(to: points[0])
-        for point in points[1...] {
-            path.addLine(to: point)
-        }
-        path.closeSubpath()
-        return path
-    }
-}
-
-struct AnyShape: Shape {
-    private let pathBuilder: (CGRect) -> Path
-
-    init<S: Shape>(_ shape: S) {
-        pathBuilder = { shape.path(in: $0) }
-    }
-
-    func path(in rect: CGRect) -> Path {
-        pathBuilder(rect)
     }
 }
