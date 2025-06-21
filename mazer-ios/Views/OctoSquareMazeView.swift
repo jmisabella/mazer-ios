@@ -33,7 +33,8 @@ struct OctoSquareMazeView: View {
 
     var body: some View {
         let horizontalSpacing = -(octagonSize - squareSize) / 2
-        let verticalSpacing = horizontalSpacing // Start with same value, adjust if needed
+//        let verticalSpacing = horizontalSpacing // Start with same value, adjust if needed
+        let verticalSpacing: CGFloat = 0
         LazyVGrid(
             columns: Array(repeating: GridItem(.fixed(octagonSize), spacing: horizontalSpacing), count: columns),
             spacing: verticalSpacing
