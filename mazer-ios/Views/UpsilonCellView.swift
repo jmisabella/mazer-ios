@@ -11,6 +11,12 @@ struct UpsilonCellView: View {
     let defaultBackgroundColor: Color = .gray
 
     private let overlap: CGFloat = 1.0 / UIScreen.main.scale
+    
+    private var strokeWidth: CGFloat {
+        let raw = gridCellSize / 14 // Adjust divisor for desired thickness
+        let scale = UIScreen.main.scale
+        return (raw * scale).rounded() / scale
+    }
 
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -29,7 +35,7 @@ struct UpsilonCellView: View {
             }
             
             // Wall overlay (unchanged, precise boundaries)
-            WallView(cell: cell, gridCellSize: gridCellSize, squareSize: squareSize, isSquare: isSquare)
+            WallView(cell: cell, gridCellSize: gridCellSize, squareSize: squareSize, isSquare: isSquare, strokeWidth: strokeWidth)
                 .frame(width: gridCellSize, height: gridCellSize)
         }
         .frame(width: gridCellSize, height: gridCellSize)
@@ -86,6 +92,7 @@ struct WallView: View {
     let gridCellSize: CGFloat
     let squareSize: CGFloat
     let isSquare: Bool
+    let strokeWidth: CGFloat
 
     var body: some View {
         Path { path in
@@ -143,6 +150,6 @@ struct WallView: View {
                 }
             }
         }
-        .stroke(Color.black, lineWidth: 2)
+        .stroke(Color.black, lineWidth: strokeWidth)
     }
 }
