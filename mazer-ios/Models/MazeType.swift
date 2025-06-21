@@ -7,7 +7,7 @@ enum MazeType: String, Codable, CaseIterable, Identifiable {
     case delta = "Delta"
     case orthogonal = "Orthogonal"
     case sigma = "Sigma"
-    case octoSquare = "OctoSquare"
+    case upsilon = "Upsilon"
     
     var id: String { rawValue }
     
@@ -19,8 +19,8 @@ enum MazeType: String, Codable, CaseIterable, Identifiable {
             return "Classic square grid with straight paths and right-angle turns."
         case .sigma:
             return "Hexagonal web with multiple directions, making routes tricky."
-        case .octoSquare:
-            return "Alternating octagon and square cells."
+        case .upsilon:
+            return "Octagon and square cells alternating by row and column."
 
         }
     }

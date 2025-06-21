@@ -232,7 +232,7 @@ struct ContentView: View {
             case .delta: return 230
             case .orthogonal: return 140
             case .sigma: return 280
-            case .octoSquare: return 0
+            case .upsilon: return 0
             }
         }()
         let sizeRatio: CGFloat = {
@@ -270,12 +270,12 @@ struct ContentView: View {
                 case .medium: return 0.75
                 case .large: return 0.8
                 }
-            case .octoSquare:
+            case .upsilon:
                 switch selectedSize {
-                case .tiny: return 1.65
-                case .small: return 2
+                case .tiny: return 1.85
+                case .small: return 2.2
                 case .medium: return 2.65
-                case .large: return 2.8
+                case .large: return 3.3
                 }
             }
         }()
@@ -283,7 +283,7 @@ struct ContentView: View {
         let rawSize = CGFloat(selectedSize.rawValue)
         let baseCellSize = adjustment * rawSize
         
-        if selectedMazeType == .octoSquare {
+        if selectedMazeType == .upsilon {
             let octagonCellSize = baseCellSize
             let squareCellSize = octagonCellSize * (sqrt(2) - 1)
             return (square: squareCellSize, octagon: octagonCellSize)
@@ -317,9 +317,9 @@ struct ContentView: View {
                 switch selectedMazeType {
                 case .orthogonal:
                     return 20
-                case .octoSquare:
+                case .upsilon:
 //                    return isSmallDevice ? 18 : 35
-                    return 28
+                    return 12
                 default:
                     return isSmallDevice ? 50 : 100
                 }
@@ -329,37 +329,15 @@ struct ContentView: View {
             let controlArea: CGFloat = 80
             let availableH = screenH - controlArea - totalVerticalPadding
             
-            let cellSize = selectedMazeType == .octoSquare ? octagonCellSize : squareCellSize
-            let spacing = selectedMazeType == .octoSquare ? (sqrt(2) / 2) * octagonCellSize : cellSize
-            let rowHeight = selectedMazeType == .octoSquare ? octagonCellSize * (sqrt(2) / 2) : cellSize
+            let cellSize = selectedMazeType == .upsilon ? octagonCellSize : squareCellSize
+            let spacing = selectedMazeType == .upsilon ? (sqrt(2) / 2) * octagonCellSize : cellSize
+            let rowHeight = selectedMazeType == .upsilon ? octagonCellSize * (sqrt(2) / 2) : cellSize
             
-            let maxHeightRows = selectedMazeType == .octoSquare ? Int(floor(availableH / rowHeight)) : max(1, Int(availableH / cellSize))
+            let maxHeightRows = selectedMazeType == .upsilon ? Int(floor(availableH / rowHeight)) : max(1, Int(availableH / cellSize))
             let maxWidth = max(1, Int(UIScreen.main.bounds.width / spacing))
             
             var finalHeight = (selectedMazeType == .sigma) ? maxHeightRows / 3 : maxHeightRows
             let finalWidth = (selectedMazeType == .sigma) ? maxWidth / 3 : maxWidth
-            
-//            let (squareCellSize, octagonCellSize) = computeCellSizes()
-//            
-//            let screenH = UIScreen.main.bounds.height
-//            let isSmallDevice = screenH <= 667
-//            
-//            let perSidePad: CGFloat = {
-//                guard selectedMazeType != .orthogonal else { return 20 }
-//                return isSmallDevice ? 50 : 100
-//            }()
-//            
-//            let totalVerticalPadding = perSidePad * 2
-//            let controlArea: CGFloat = 80
-//            let availableH = screenH - controlArea - totalVerticalPadding
-//            
-//            let cellSize = selectedMazeType == .octoSquare ? octagonCellSize : squareCellSize
-//            let spacing = selectedMazeType == .octoSquare ? (sqrt(2) / 2) * octagonCellSize : cellSize
-//            let maxHeightRows = max(1, Int(floor((availableH - cellSize) / spacing) + 1))
-//            let maxWidth = max(1, Int(floor((UIScreen.main.bounds.width - cellSize) / spacing) + 1))
-//            
-//            var finalHeight = (selectedMazeType == .sigma) ? maxHeightRows / 3 : maxHeightRows
-//            let finalWidth = (selectedMazeType == .sigma) ? maxWidth / 3 : maxWidth
             
             if selectedMazeType == .delta && UIDevice.current.userInterfaceIdiom == .pad {
                 let maxRows = Int(availableH / squareCellSize * 0.77)
@@ -568,7 +546,7 @@ struct ContentView: View {
                 case "LowerLeft": return ["LowerLeft", "UpperLeft"]
                 default: return [direction]
                 }
-            case .octoSquare: return [direction]
+            case .upsilon: return [direction]
             }
         }()
         

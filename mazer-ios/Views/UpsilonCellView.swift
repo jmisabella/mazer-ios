@@ -2,51 +2,97 @@
 import SwiftUI
 import Darwin
 
-struct OctoSquareCellView: View {
+struct UpsilonCellView: View {
     let cell: MazeCell
     let gridCellSize: CGFloat
     let squareSize: CGFloat
-    let showSolution: Bool
-    let showHeatMap: Bool
-    let selectedPalette: HeatMapPalette
-    let maxDistance: Int
-    let isRevealedSolution: Bool
-    let defaultBackgroundColor: Color
-
-    private var fillColor: Color {
-        cellBackgroundColor(
-            for: cell,
-            showSolution: showSolution,
-            showHeatMap: showHeatMap,
-            maxDistance: maxDistance,
-            selectedPalette: selectedPalette,
-            isRevealedSolution: isRevealedSolution,
-            defaultBackground: defaultBackgroundColor
-        )
-    }
+    let isSquare: Bool
+    let fillColor: Color // Computed based on cell state
+    let defaultBackgroundColor: Color = .gray // Adjust as needed
 
     var body: some View {
-        let isSquare = cell.isSquare
-            ZStack(alignment: .topLeading) {
-              if isSquare {
+        ZStack(alignment: .topLeading) {
+            // Base shape with fill color
+            if isSquare {
                 Rectangle()
-                  .fill(fillColor)
-                  .frame(width: squareSize, height: squareSize)
-                  .offset(x: (gridCellSize - squareSize)/2,
-                          y: (gridCellSize - squareSize)/2)
-              } else {
+                    .fill(fillColor)
+                    .frame(width: squareSize, height: squareSize)
+                    .offset(x: (gridCellSize - squareSize) / 2, y: (gridCellSize - squareSize) / 2)
+            } else {
                 OctagonShape()
-                  .fill(fillColor)
-                  .frame(width: gridCellSize, height: gridCellSize)
-              }
-
+                    .fill(fillColor)
+                    .frame(width: gridCellSize, height: gridCellSize)
+            }
+            
+            // Wall overlay
             WallView(cell: cell, gridCellSize: gridCellSize, squareSize: squareSize, isSquare: isSquare)
                 .frame(width: gridCellSize, height: gridCellSize)
         }
+        .background(fillColor) // Fills the gaps and clipped areas with the cell's color
         .frame(width: gridCellSize, height: gridCellSize)
-//        .background(.red.opacity(0.3))
+        .clipShape(
+            isSquare ?
+                AnyShape(
+                    Rectangle()
+                        .size(width: squareSize, height: squareSize)
+                        .offset(x: (gridCellSize - squareSize) / 2, y: (gridCellSize - squareSize) / 2)
+                ) :
+                AnyShape(OctagonShape())
+        )
+//        .clipShape(
+//            isSquare ?
+//                Rectangle()
+//                    .size(width: squareSize, height: squareSize)
+//                    .offset(x: (gridCellSize - squareSize) / 2, y: (gridCellSize - squareSize) / 2) :
+//                OctagonShape()
+//        )
     }
 }
+//struct UpsilonCellView: View {
+//    let cell: MazeCell
+//    let gridCellSize: CGFloat
+//    let squareSize: CGFloat
+//    let showSolution: Bool
+//    let showHeatMap: Bool
+//    let selectedPalette: HeatMapPalette
+//    let maxDistance: Int
+//    let isRevealedSolution: Bool
+//    let defaultBackgroundColor: Color
+//
+//    private var fillColor: Color {
+//        cellBackgroundColor(
+//            for: cell,
+//            showSolution: showSolution,
+//            showHeatMap: showHeatMap,
+//            maxDistance: maxDistance,
+//            selectedPalette: selectedPalette,
+//            isRevealedSolution: isRevealedSolution,
+//            defaultBackground: defaultBackgroundColor
+//        )
+//    }
+//
+//    var body: some View {
+//        let isSquare = cell.isSquare
+//            ZStack(alignment: .topLeading) {
+//              if isSquare {
+//                Rectangle()
+//                  .fill(fillColor)
+//                  .frame(width: squareSize, height: squareSize)
+//                  .offset(x: (gridCellSize - squareSize)/2,
+//                          y: (gridCellSize - squareSize)/2)
+//              } else {
+//                OctagonShape()
+//                  .fill(fillColor)
+//                  .frame(width: gridCellSize, height: gridCellSize)
+//              }
+//
+//            WallView(cell: cell, gridCellSize: gridCellSize, squareSize: squareSize, isSquare: isSquare)
+//                .frame(width: gridCellSize, height: gridCellSize)
+//        }
+//        .frame(width: gridCellSize, height: gridCellSize)
+////        .background(.red.opacity(0.3))
+//    }
+//}
 
 struct WallView: View {
     let cell: MazeCell
@@ -138,5 +184,17 @@ struct OctagonShape: Shape {
         }
         path.closeSubpath()
         return path
+    }
+}
+
+struct AnyShape: Shape {
+    private let pathBuilder: (CGRect) -> Path
+
+    init<S: Shape>(_ shape: S) {
+        pathBuilder = { shape.path(in: $0) }
+    }
+
+    func path(in rect: CGRect) -> Path {
+        pathBuilder(rect)
     }
 }

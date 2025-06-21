@@ -61,8 +61,8 @@ struct MazeRenderView: View {
             DeltaDirectionControlView(moveAction: performMove)
                 .id(mazeID)
                 .padding(.top, 3)
-        case .octoSquare:
-            OctoSquareDirectionControlView(moveAction: performMove)
+        case .upsilon:
+            UpsilonDirectionControlView(moveAction: performMove)
                 .id(mazeID)
                 .padding(.top, 3)
 
@@ -104,17 +104,17 @@ struct MazeRenderView: View {
                 defaultBackgroundColor: defaultBackground
             )
             .id(mazeID)
-        case .octoSquare:
-                OctoSquareMazeView(
-                    cells: mazeCells,
-                    octagonSize: cellSizes.octagon,
-                    squareSize: cellSizes.square,
-                    showSolution: showSolution,
-                    showHeatMap: showHeatMap,
-                    selectedPalette: selectedPalette,
-                    defaultBackgroundColor: defaultBackground
-                )
-                .id(mazeID)
+        case .upsilon:
+            UpsilonMazeView(
+                cells: mazeCells,
+                octagonSize: cellSizes.octagon,
+                squareSize: cellSizes.square,
+                showSolution: showSolution,
+                showHeatMap: showHeatMap,
+                selectedPalette: selectedPalette,
+                defaultBackgroundColor: defaultBackground
+            )
+            .id(mazeID)
         }
     }
 
