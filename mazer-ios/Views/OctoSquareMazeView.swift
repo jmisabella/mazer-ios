@@ -51,7 +51,7 @@ struct OctoSquareMazeView: View {
                     isRevealedSolution: revealedSolutionPath.contains(coord),
                     defaultBackgroundColor: defaultBackgroundColor
                 )
-                .frame(width: octagonSize, height: octagonSize * 0.71)
+                .frame(width: octagonSize, height: octagonSize * (sqrt(2) / 2))
 //                .frame(width: octagonSize, height: octagonSize)
             }
         }
