@@ -18,9 +18,9 @@ enum MazeType: String, Codable, CaseIterable, Identifiable {
         case .orthogonal:
             return "Classic square grid with straight paths and right-angle turns."
         case .sigma:
-            return "Hexagonal web with multiple directions, making routes tricky."
+            return "Hexagonal cells forming a web of interconnected paths, promoting more intuitive navigation."
         case .upsilon:
-            return "Octagon and square cells alternating by row and column."
+            return "Octagon and square cells alternating by row and column, creating a varied layout that can make pathfinding more intricate."
 
         }
     }
