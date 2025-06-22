@@ -1,5 +1,5 @@
 //
-//  OrthoSquareDirectionControlView.swift
+//  EightWayControlView.swift
 //  mazer-ios
 //
 //  Created by Jeffrey Isabella on 6/19/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UpsilonDirectionControlView: View {
+struct EightWayControlView: View {
     let moveAction: (String) -> Void
 
     var body: some View {

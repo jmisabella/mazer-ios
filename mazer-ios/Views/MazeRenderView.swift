@@ -50,19 +50,19 @@ struct MazeRenderView: View {
     private var directionControlView: some View {
         switch mazeType {
         case .orthogonal:
-            OrthogonalDirectionControlView(moveAction: performMove)
+            FourWayControlView(moveAction: performMove)
                 .id(mazeID)
                 .padding(.top, 3)
         case .sigma:
-            SigmaDirectionControlView(moveAction: performMove)
+            EightWayControlView(moveAction: performMove)
                 .id(mazeID)
                 .padding(.top, 3)
         case .delta:
-            DeltaDirectionControlView(moveAction: performMove)
+            EightWayControlView(moveAction: performMove)
                 .id(mazeID)
                 .padding(.top, 3)
         case .upsilon:
-            UpsilonDirectionControlView(moveAction: performMove)
+            EightWayControlView(moveAction: performMove)
                 .id(mazeID)
                 .padding(.top, 3)
 

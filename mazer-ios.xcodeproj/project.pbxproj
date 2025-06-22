@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		001C89BF2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */; };
 		00218D7B2E04E42C00582D3B /* UpsilonCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00218D7A2E04E42C00582D3B /* UpsilonCellView.swift */; };
 		00218D7D2E04E44C00582D3B /* UpsilonMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00218D7C2E04E44C00582D3B /* UpsilonMazeView.swift */; };
-		00218D7F2E04E46D00582D3B /* UpsilonDirectionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00218D7E2E04E46D00582D3B /* UpsilonDirectionControlView.swift */; };
-		00218D842E0733AC00582D3B /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A14AF92E00DC9A0008457E /* libmazer.a */; };
+		00218D7F2E04E46D00582D3B /* EightWayControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00218D7E2E04E46D00582D3B /* EightWayControlView.swift */; };
+		00218D8A2E079E8800582D3B /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A14AF92E00DC9A0008457E /* libmazer.a */; };
 		003753BD2DD8336C000DB75C /* SparkleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003753BC2DD8336C000DB75C /* SparkleView.swift */; };
 		003DE2A72DB5F6D300EFB530 /* DPadButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */; };
 		003DE2A92DB5F71D00EFB530 /* DirectionPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */; };
@@ -37,11 +36,10 @@
 		00C341E72D9F505D0077691B /* OrthogonalMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C341E62D9F505D0077691B /* OrthogonalMazeView.swift */; };
 		00C341E92D9F50BE0077691B /* OrthogonalCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C341E82D9F50BE0077691B /* OrthogonalCellView.swift */; };
 		00C341EB2D9F57910077691B /* CellSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C341EA2D9F578E0077691B /* CellSize.swift */; };
-		00DD0B542DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0B532DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift */; };
+		00DD0B542DAB0BE500C20B2E /* FourWayControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0B532DAB0BE500C20B2E /* FourWayControlView.swift */; };
 		00DD0DC22DAC931C00C20B2E /* MazeCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0DC12DAC92F800C20B2E /* MazeCellStyle.swift */; };
 		00DD0DC42DAC9C8A00C20B2E /* DeltaCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0DC32DAC9C8A00C20B2E /* DeltaCellView.swift */; };
 		00DD0DC62DAC9CFE00C20B2E /* DeltaMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0DC52DAC9CFE00C20B2E /* DeltaMazeView.swift */; };
-		00DD0DC82DAC9DBE00C20B2E /* DeltaDirectionControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DD0DC72DAC9DBE00C20B2E /* DeltaDirectionControlView.swift */; };
 		00DE4C182DF3D2B000044648 /* MazeGenerationAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE4C172DF3D2B000044648 /* MazeGenerationAnimationView.swift */; };
 		00DE4C1C2DF520F300044648 /* GIFWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE4C1B2DF520F300044648 /* GIFWebView.swift */; };
 		00DE4C1E2DF5212600044648 /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE4C1D2DF5212600044648 /* LoadingOverlayView.swift */; };
@@ -603,11 +601,10 @@
 		0018E4E52DE522FF00E4A24E /* .cargo-lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".cargo-lock"; sourceTree = "<group>"; };
 		0018E4E72DE522FF00E4A24E /* .rustc_info.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = .rustc_info.json; sourceTree = "<group>"; };
 		0018E4E82DE522FF00E4A24E /* CACHEDIR.TAG */ = {isa = PBXFileReference; lastKnownFileType = text; path = CACHEDIR.TAG; sourceTree = "<group>"; };
-		001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigmaDirectionControlViewi.swift; sourceTree = "<group>"; };
 		00218D7A2E04E42C00582D3B /* UpsilonCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsilonCellView.swift; sourceTree = "<group>"; };
 		00218D7C2E04E44C00582D3B /* UpsilonMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsilonMazeView.swift; sourceTree = "<group>"; };
-		00218D7E2E04E46D00582D3B /* UpsilonDirectionControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpsilonDirectionControlView.swift; sourceTree = "<group>"; };
-		00218D852E0733BA00582D3B /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
+		00218D7E2E04E46D00582D3B /* EightWayControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EightWayControlView.swift; sourceTree = "<group>"; };
+		00218D8B2E079EA500582D3B /* mazer_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer_bridge.h; sourceTree = "<group>"; };
 		003753BC2DD8336C000DB75C /* SparkleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkleView.swift; sourceTree = "<group>"; };
 		003DE2A62DB5F6CD00EFB530 /* DPadButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPadButtonStyle.swift; sourceTree = "<group>"; };
 		003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionPadView.swift; sourceTree = "<group>"; };
@@ -1595,7 +1592,7 @@
 		00C341E62D9F505D0077691B /* OrthogonalMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthogonalMazeView.swift; sourceTree = "<group>"; };
 		00C341E82D9F50BE0077691B /* OrthogonalCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthogonalCellView.swift; sourceTree = "<group>"; };
 		00C341EA2D9F578E0077691B /* CellSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSize.swift; sourceTree = "<group>"; };
-		00DD0B532DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrthogonalDirectionControlView.swift; sourceTree = "<group>"; };
+		00DD0B532DAB0BE500C20B2E /* FourWayControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourWayControlView.swift; sourceTree = "<group>"; };
 		00DD0B552DAC3C7E00C20B2E /* mazer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer.h; sourceTree = "<group>"; };
 		00DD0B572DAC3C7E00C20B2E /* aldous_broder.rs */ = {isa = PBXFileReference; lastKnownFileType = text; path = aldous_broder.rs; sourceTree = "<group>"; };
 		00DD0B582DAC3C7E00C20B2E /* binary_tree.rs */ = {isa = PBXFileReference; lastKnownFileType = text; path = binary_tree.rs; sourceTree = "<group>"; };
@@ -2151,7 +2148,6 @@
 		00DD0DC12DAC92F800C20B2E /* MazeCellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeCellStyle.swift; sourceTree = "<group>"; };
 		00DD0DC32DAC9C8A00C20B2E /* DeltaCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltaCellView.swift; sourceTree = "<group>"; };
 		00DD0DC52DAC9CFE00C20B2E /* DeltaMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltaMazeView.swift; sourceTree = "<group>"; };
-		00DD0DC72DAC9DBE00C20B2E /* DeltaDirectionControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltaDirectionControlView.swift; sourceTree = "<group>"; };
 		00DE4C172DF3D2B000044648 /* MazeGenerationAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeGenerationAnimationView.swift; sourceTree = "<group>"; };
 		00DE4C1B2DF520F300044648 /* GIFWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFWebView.swift; sourceTree = "<group>"; };
 		00DE4C1D2DF5212600044648 /* LoadingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
@@ -2163,7 +2159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00218D842E0733AC00582D3B /* libmazer.a in Frameworks */,
+				00218D8A2E079E8800582D3B /* libmazer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3955,7 +3951,7 @@
 				00C33F622D98C84C0077691B /* mazer_iosApp.swift */,
 				00C33F6D2D98C8E50077691B /* Models */,
 				00C33F6F2D98C9010077691B /* Utils */,
-				00218D852E0733BA00582D3B /* mazer_bridge.h */,
+				00218D8B2E079EA500582D3B /* mazer_bridge.h */,
 			);
 			path = "mazer-ios";
 			sourceTree = "<group>";
@@ -3980,26 +3976,24 @@
 		00C33F6E2D98C8EE0077691B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				00C33F642D98C84C0077691B /* MazeRequestView.swift */,
 				00C33F5F2D98C84C0077691B /* ContentView.swift */,
-				00C341E42D9F07040077691B /* MazeRenderView.swift */,
+				00C33F642D98C84C0077691B /* MazeRequestView.swift */,
 				00DE4C172DF3D2B000044648 /* MazeGenerationAnimationView.swift */,
+				00C341E42D9F07040077691B /* MazeRenderView.swift */,
+				003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */,
+				00DD0B532DAB0BE500C20B2E /* FourWayControlView.swift */,
+				00218D7E2E04E46D00582D3B /* EightWayControlView.swift */,
 				00C341E82D9F50BE0077691B /* OrthogonalCellView.swift */,
 				00C341E62D9F505D0077691B /* OrthogonalMazeView.swift */,
-				00DD0B532DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift */,
 				00DD0DC32DAC9C8A00C20B2E /* DeltaCellView.swift */,
 				00DD0DC52DAC9CFE00C20B2E /* DeltaMazeView.swift */,
-				00DD0DC72DAC9DBE00C20B2E /* DeltaDirectionControlView.swift */,
-				003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */,
 				00AE05F42DB877770068C880 /* SigmaCellView.swift */,
 				00AE05F62DB8778C0068C880 /* SigmaMazeView.swift */,
-				001C89BE2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift */,
+				00218D7A2E04E42C00582D3B /* UpsilonCellView.swift */,
+				00218D7C2E04E44C00582D3B /* UpsilonMazeView.swift */,
 				003753BC2DD8336C000DB75C /* SparkleView.swift */,
 				00DE4C1B2DF520F300044648 /* GIFWebView.swift */,
 				00DE4C1D2DF5212600044648 /* LoadingOverlayView.swift */,
-				00218D7A2E04E42C00582D3B /* UpsilonCellView.swift */,
-				00218D7C2E04E44C00582D3B /* UpsilonMazeView.swift */,
-				00218D7E2E04E46D00582D3B /* UpsilonDirectionControlView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -6232,7 +6226,6 @@
 				00C341E92D9F50BE0077691B /* OrthogonalCellView.swift in Sources */,
 				00C33F7B2D9B86ED0077691B /* MazeCell.swift in Sources */,
 				003753BD2DD8336C000DB75C /* SparkleView.swift in Sources */,
-				001C89BF2DBB4D74007CE4C3 /* SigmaDirectionControlViewi.swift in Sources */,
 				00C33F772D98CC800077691B /* MazeType.swift in Sources */,
 				00C33F682D98C84C0077691B /* ContentView.swift in Sources */,
 				00AE05F52DB877770068C880 /* SigmaCellView.swift in Sources */,
@@ -6244,17 +6237,16 @@
 				00DD0DC62DAC9CFE00C20B2E /* DeltaMazeView.swift in Sources */,
 				00C33F6A2D98C84C0077691B /* MazeRequestValidator.swift in Sources */,
 				00C33F6B2D98C84C0077691B /* MazeRequestView.swift in Sources */,
-				00218D7F2E04E46D00582D3B /* UpsilonDirectionControlView.swift in Sources */,
+				00218D7F2E04E46D00582D3B /* EightWayControlView.swift in Sources */,
 				003DE2A72DB5F6D300EFB530 /* DPadButtonStyle.swift in Sources */,
 				00218D7B2E04E42C00582D3B /* UpsilonCellView.swift in Sources */,
 				00C33F752D98CC730077691B /* MazeRequestError.swift in Sources */,
 				00C33F782D98CC860077691B /* MazeAlgorithm.swift in Sources */,
-				00DD0DC82DAC9DBE00C20B2E /* DeltaDirectionControlView.swift in Sources */,
 				00DE4C1E2DF5212600044648 /* LoadingOverlayView.swift in Sources */,
 				006F3F392D9F6EC200627BD4 /* HeatMapPalette.swift in Sources */,
 				00DE4C1C2DF520F300044648 /* GIFWebView.swift in Sources */,
 				0095189A2DBF0F33003B1C21 /* HexDirection.swift in Sources */,
-				00DD0B542DAB0BE500C20B2E /* OrthogonalDirectionControlView.swift in Sources */,
+				00DD0B542DAB0BE500C20B2E /* FourWayControlView.swift in Sources */,
 				00DE4C182DF3D2B000044648 /* MazeGenerationAnimationView.swift in Sources */,
 				00AE05F72DB8778C0068C880 /* SigmaMazeView.swift in Sources */,
 				00C33F792D98CC8E0077691B /* Coordinates.swift in Sources */,
