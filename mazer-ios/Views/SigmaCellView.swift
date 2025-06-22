@@ -48,7 +48,7 @@ struct SigmaCellView: View {
     }
 
     private var strokeWidth: CGFloat {
-        let raw = cellStrokeWidth(for: cellSize, mazeType: .sigma)
+        let raw = cellSize / 6
         let scale = UIScreen.main.scale
         return (raw * scale).rounded() / scale
     }

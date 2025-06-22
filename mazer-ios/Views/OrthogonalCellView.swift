@@ -31,38 +31,11 @@ struct OrthogonalCellView: View {
     
     private var size: CGFloat { snap(cellSize) }
     
-//    private var wallWidth: CGFloat {
-//        let raw: CGFloat
-//        switch cellSize {
-//        case ..<18:
-//            raw = 1.85
-//        case 18..<24:
-//            raw = 2.25
-//        default:
-//            raw = 2.45
-//        }
-//        return (raw * UIScreen.main.scale).rounded() / UIScreen.main.scale
-//    }
-    
-    private var wallWidth: CGFloat {
-        let raw: CGFloat
-        switch cellSize {
-//        case ..<18:
-//            raw = 2.0
-//        case 18..<24:
-//            raw = 2.5
-//        default:
-//            raw = 3.0
-        case ..<18:
-            raw = 3.0
-        case 18..<24:
-            raw = 3.5
-        default:
-            raw = 4.0
-        }
-        return (raw * UIScreen.main.scale).rounded() / UIScreen.main.scale
+    private var strokeWidth: CGFloat {
+        let raw = cellSize / 7
+        let scale = UIScreen.main.scale
+        return (raw * scale).rounded() / scale
     }
-
     
     var body: some View {
         // 1) the full cell background
@@ -88,14 +61,14 @@ struct OrthogonalCellView: View {
                     HStack(spacing: 0) {
                         if !cell.linked.contains("Left") {
                             Color.black
-                                .frame(width: wallWidth, height: size)
-                                .offset(x: -wallWidth / 2) // Shift slightly left to ensure no gap
+                                .frame(width: strokeWidth, height: size)
+                                .offset(x: -strokeWidth / 2) // Shift slightly left to ensure no gap
                         }
                         Spacer()
                         if !cell.linked.contains("Right") {
                             Color.black
-                                .frame(width: wallWidth, height: size)
-                                .offset(x: wallWidth / 2) // Shift slightly right to ensure no gap
+                                .frame(width: strokeWidth, height: size)
+                                .offset(x: strokeWidth / 2) // Shift slightly right to ensure no gap
                         }
                     }
                     
@@ -103,14 +76,14 @@ struct OrthogonalCellView: View {
                     VStack(spacing: 0) {
                         if !cell.linked.contains("Up") {
                             Color.black
-                                .frame(width: size, height: wallWidth)
-                                .offset(y: -wallWidth / 2) // Shift slightly up to ensure no gap
+                                .frame(width: size, height: strokeWidth)
+                                .offset(y: -strokeWidth / 2) // Shift slightly up to ensure no gap
                         }
                         Spacer()
                         if !cell.linked.contains("Down") {
                             Color.black
-                                .frame(width: size, height: wallWidth)
-                                .offset(y: wallWidth / 2) // Shift slightly down to ensure no gap
+                                .frame(width: size, height: strokeWidth)
+                                .offset(y: strokeWidth / 2) // Shift slightly down to ensure no gap
                         }
                     }
                 }

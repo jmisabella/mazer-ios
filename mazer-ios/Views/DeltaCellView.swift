@@ -57,6 +57,12 @@ struct DeltaCellView: View {
         let newEnd = CGPoint(x: end.x + extensionVector.dx, y: end.y + extensionVector.dy)
         return (newStart, newEnd)
     }
+    
+    private var strokeWidth: CGFloat {
+        let raw = cellSize / 11
+        let scale = UIScreen.main.scale
+        return (raw * scale).rounded() / scale
+    }
 
     var body: some View {
         ZStack {
@@ -116,10 +122,10 @@ struct DeltaCellView: View {
                     }
                 }
             }
-            .stroke(Color.black, lineWidth: snap(cellStrokeWidth(for: cellSize, mazeType: .delta) * 1.15))
+            .stroke(Color.black, lineWidth: snap(strokeWidth) * 1.15)
         }
         .frame(width: snap(cellSize), height: snap(triangleHeight))
-        .drawingGroup(opaque: true) // for rendering optimization
+        .drawingGroup(opaque: false)
     }
 }
 

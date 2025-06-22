@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OrthoSquareDirectionControlView: View {
+struct UpsilonDirectionControlView: View {
     let moveAction: (String) -> Void
 
     var body: some View {

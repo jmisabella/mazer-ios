@@ -22,6 +22,7 @@ struct MazeGenerationAnimationView: View {
     let currentGrid: OpaquePointer?
     let regenerateMaze: () -> Void            // Closure to regenerate maze
     let cleanupMazeData: () -> Void           // Closure to clean up memory
+    let cellSizes: (square: CGFloat, octagon: CGFloat)
 
     @State private var currentStepIndex = 0   // Tracks current animation step
 
@@ -44,6 +45,29 @@ struct MazeGenerationAnimationView: View {
     private func randomDefaultExcluding(current: Color, from all: [Color]) -> Color {
         let others = all.filter { $0 != current }
         return others.randomElement() ?? current
+    }
+    
+    // Compute cell sizes based on maze type and screen dimensions
+    private func computeCellSizes(for mazeType: MazeType, cells: [MazeCell]) -> (square: CGFloat, octagon: CGFloat) {
+        let columns = (cells.map { $0.x }.max() ?? 0) + 1
+        let screenWidth = UIScreen.main.bounds.width
+        
+        switch mazeType {
+        case .orthogonal:
+            let cellSize = screenWidth / CGFloat(columns)
+            return (square: cellSize, octagon: cellSize) // octagon not used
+        case .delta:
+            let cellSize = screenWidth / CGFloat(columns)
+            return (square: cellSize, octagon: cellSize) // adjust if needed
+        case .sigma:
+            let cellSize = screenWidth / CGFloat(columns)
+            return (square: cellSize, octagon: cellSize) // adjust if needed
+        case .upsilon:
+            let spacing = screenWidth / CGFloat(columns)
+            let octagonCellSize = spacing / (sqrt(2) / 2)
+            let squareCellSize = octagonCellSize * (sqrt(2) - 1)
+            return (square: squareCellSize, octagon: octagonCellSize)
+        }
     }
 
     var body: some View {
@@ -105,8 +129,10 @@ struct MazeGenerationAnimationView: View {
 
             if currentStepIndex < generationSteps.count {
                 ZStack {
+                    let currentCells = generationSteps[currentStepIndex]
+//                    let cellSizes = computeCellSizes(for: mazeType, cells: generationSteps[0])
+                    
                     Group {
-                        let currentCells = generationSteps[currentStepIndex]
                         switch mazeType {
                         case .orthogonal:
                             OrthogonalMazeView(
@@ -135,6 +161,17 @@ struct MazeGenerationAnimationView: View {
                                 cellSize: computeCellSize(mazeCells: generationSteps[0], mazeType: mazeType),
                                 showSolution: showSolution,
                                 showHeatMap: showHeatMap,
+                                defaultBackgroundColor: defaultBackground
+                            )
+                            .id(currentStepIndex)  // Force re-render on each step
+                        case .upsilon:
+                            UpsilonMazeView(
+                                cells: currentCells,
+                                octagonSize: cellSizes.octagon,
+                                squareSize: cellSizes.square,
+                                showSolution: showSolution,
+                                showHeatMap: showHeatMap,
+                                selectedPalette: selectedPalette,
                                 defaultBackgroundColor: defaultBackground
                             )
                             .id(currentStepIndex)  // Force re-render on each step

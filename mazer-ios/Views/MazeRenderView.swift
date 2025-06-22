@@ -27,6 +27,7 @@ struct MazeRenderView: View {
     let mazeType: MazeType
     let regenerateMaze: () -> Void
     let moveAction: (String) -> Void
+    let cellSizes: (square: CGFloat, octagon: CGFloat)
     let toggleHeatMap: () -> Void
     let cleanupMazeData: () -> Void 
 
@@ -58,6 +59,10 @@ struct MazeRenderView: View {
                 .padding(.top, 3)
         case .delta:
             DeltaDirectionControlView(moveAction: performMove)
+                .id(mazeID)
+                .padding(.top, 3)
+        case .upsilon:
+            UpsilonDirectionControlView(moveAction: performMove)
                 .id(mazeID)
                 .padding(.top, 3)
 
@@ -99,7 +104,17 @@ struct MazeRenderView: View {
                 defaultBackgroundColor: defaultBackground
             )
             .id(mazeID)
-
+        case .upsilon:
+            UpsilonMazeView(
+                cells: mazeCells,
+                octagonSize: cellSizes.octagon,
+                squareSize: cellSizes.square,
+                showSolution: showSolution,
+                showHeatMap: showHeatMap,
+                selectedPalette: selectedPalette,
+                defaultBackgroundColor: defaultBackground
+            )
+            .id(mazeID)
         }
     }
 
