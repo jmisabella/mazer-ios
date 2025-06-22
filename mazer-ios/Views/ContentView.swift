@@ -159,7 +159,8 @@ struct ContentView: View {
                 mazeID: $mazeID,
                 currentGrid: currentGrid,
                 regenerateMaze: { submitMazeRequest() },
-                cleanupMazeData: cleanupMazeData
+                cleanupMazeData: cleanupMazeData,
+                cellSizes: computeCellSizes(),
             )
         } else if mazeGenerated {
             mazeRenderView()

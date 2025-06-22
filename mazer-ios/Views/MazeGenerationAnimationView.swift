@@ -22,6 +22,7 @@ struct MazeGenerationAnimationView: View {
     let currentGrid: OpaquePointer?
     let regenerateMaze: () -> Void            // Closure to regenerate maze
     let cleanupMazeData: () -> Void           // Closure to clean up memory
+    let cellSizes: (square: CGFloat, octagon: CGFloat)
 
     @State private var currentStepIndex = 0   // Tracks current animation step
 
@@ -129,7 +130,8 @@ struct MazeGenerationAnimationView: View {
             if currentStepIndex < generationSteps.count {
                 ZStack {
                     let currentCells = generationSteps[currentStepIndex]
-                    let cellSizes = computeCellSizes(for: mazeType, cells: generationSteps[0])
+//                    let cellSizes = computeCellSizes(for: mazeType, cells: generationSteps[0])
+                    
                     Group {
                         switch mazeType {
                         case .orthogonal:
