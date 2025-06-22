@@ -31,10 +31,13 @@ struct OrthogonalCellView: View {
     
     private var size: CGFloat { snap(cellSize) }
     
+//    private var strokeWidth: CGFloat {
+//        let raw = cellSize / 5.5
+//        let scale = UIScreen.main.scale
+//        return (raw * scale).rounded() / scale
+//    }
     private var strokeWidth: CGFloat {
-        let raw = cellSize / 5.5
-        let scale = UIScreen.main.scale
-        return (raw * scale).rounded() / scale
+        wallStrokeWidth(for: .orthogonal, cellSize: cellSize)
     }
     
     var body: some View {

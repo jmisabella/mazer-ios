@@ -47,12 +47,15 @@ struct SigmaCellView: View {
         }
     }
 
+//    private var strokeWidth: CGFloat {
+//        let raw = cellSize / 6
+//        let scale = UIScreen.main.scale
+//        return (raw * scale).rounded() / scale
+//    }
     private var strokeWidth: CGFloat {
-        let raw = cellSize / 6
-        let scale = UIScreen.main.scale
-        return (raw * scale).rounded() / scale
+        wallStrokeWidth(for: .sigma, cellSize: cellSize)
     }
-
+    
     private var fillColor: Color {
         cellBackgroundColor(
             for: cell,

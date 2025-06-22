@@ -7,6 +7,30 @@
 
 import SwiftUI
 
+func wallStrokeWidth(for mazeType: MazeType, cellSize: CGFloat) -> CGFloat {
+//    print("Cell size: \(cellSize)") 
+    let denominator: CGFloat
+    switch mazeType {
+    case .delta:
+        denominator = cellSize >= 28 ? 10 : 12
+    case .orthogonal:
+        denominator = cellSize >= 18 ? 6 : 5
+    case .sigma:
+        denominator = cellSize >= 18 ? 6 : 8
+    case .upsilon:
+        denominator = cellSize >= 28 ? 12 : 16
+    }
+    let raw = cellSize / denominator
+    let scale = UIScreen.main.scale
+    let snapped = (raw * scale).rounded() / scale
+    if mazeType == .delta {
+        let adjusted = snapped * 1.15
+        return (adjusted * scale).rounded() / scale
+    } else {
+        return snapped
+    }
+}
+
 func cellBackgroundColor(
     for cell: MazeCell,
     showSolution: Bool,
