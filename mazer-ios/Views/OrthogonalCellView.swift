@@ -32,7 +32,7 @@ struct OrthogonalCellView: View {
     private var size: CGFloat { snap(cellSize) }
     
     private var strokeWidth: CGFloat {
-        let raw = cellSize / 7
+        let raw = cellSize / 5.5
         let scale = UIScreen.main.scale
         return (raw * scale).rounded() / scale
     }

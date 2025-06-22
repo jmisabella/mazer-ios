@@ -1,45 +1,32 @@
 //
-//  DeltaDirectionControlView.swift
+//  OrthogonalDirectionControlView.swift
 //  mazer-ios
 //
-//  Created by Jeffrey Isabella on 4/13/25.
+//  Created by Jeffrey Isabella on 4/12/25.
 //
 
 import SwiftUI
 
-struct DeltaDirectionControlView: View {
+struct FourWayControlView: View {
     let moveAction: (String) -> Void
 
     var body: some View {
-        HStack(spacing: 16) {
+        HStack(spacing: 32) {
             // ←
             directionButton(systemImage: "arrow.left", action: "Left")
             
-            // ╭ UL │ LL ╮
-            VStack(spacing: 12) {
-                directionButton(systemImage: "arrow.up.left",   action: "UpperLeft")
-                directionButton(systemImage: "arrow.down.left", action: "LowerLeft")
-            }
-
-            // ↑ ↓
-            VStack(spacing: 12) {
+            // ↑ and ↓ stacked
+            VStack(spacing: 8) {
                 directionButton(systemImage: "arrow.up",   action: "Up")
                 directionButton(systemImage: "arrow.down", action: "Down")
-            }
-
-            // ╭ UR │ LR ╮
-            VStack(spacing: 12) {
-                directionButton(systemImage: "arrow.up.right",   action: "UpperRight")
-                directionButton(systemImage: "arrow.down.right", action: "LowerRight")
             }
             
             // →
             directionButton(systemImage: "arrow.right", action: "Right")
         }
-        .padding(.vertical, 16)
-        .padding(.horizontal, 12)
+        .padding(12)
         .background(Color(.systemBackground).opacity(0.8))
-        .cornerRadius(16)
+        .cornerRadius(12)
         .shadow(radius: 4)
     }
 
@@ -56,4 +43,5 @@ struct DeltaDirectionControlView: View {
         .accessibilityLabel("Move \(dir)")
     }
 }
+
 

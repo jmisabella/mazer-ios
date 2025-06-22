@@ -59,7 +59,7 @@ struct DeltaCellView: View {
     }
     
     private var strokeWidth: CGFloat {
-        let raw = cellSize / 11
+        let raw = cellSize / 9
         let scale = UIScreen.main.scale
         return (raw * scale).rounded() / scale
     }
