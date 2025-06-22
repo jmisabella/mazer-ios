@@ -201,7 +201,7 @@ struct ContentView: View {
             },
             cleanupMazeData: cleanupMazeData
         )
-        .environment(\.colorScheme, .dark)
+//        .environment(\.colorScheme, .dark)
         .padding(.vertical, 100)
         .grayscale(showCelebration ? 1 : 0)
         .animation(.easeInOut(duration: 0.65), value: showCelebration)

@@ -83,9 +83,7 @@ struct DeltaMazeView: View {
         let totalHeight = snap(triangleHeight * CGFloat(rows))
 
         ZStack {
-            (colorScheme == .dark ? Color.black : Color.offWhite)
-//            Color.black
-//            Color.offWhite
+            Color.clear
                 .frame(width: totalWidth, height: totalHeight)
             
             VStack(spacing: snap(0)) {
@@ -93,8 +91,24 @@ struct DeltaMazeView: View {
                     rowView(for: row)
                 }
             }
+            .overlay(alignment: .top) {
+                GeometryReader { geometry in
+                    Rectangle()
+                        .fill(Color.black)
+                        .frame(width: geometry.size.width * 0.9, height: 2)
+                        .position(x: geometry.size.width / 2, y: 0)
+                }
+            }
+            .overlay(alignment: .bottom) {
+                GeometryReader { geometry in
+                    Rectangle()
+                        .fill(Color.black)
+                        .frame(width: geometry.size.width * 0.9, height: 2)
+                        .position(x: geometry.size.width / 2, y: geometry.size.height)
+                }
+            }
             .compositingGroup()
-            .drawingGroup(opaque: true)
+            .drawingGroup(opaque: false)
             .clipped(antialiased: false)
         }
         // Add a black border around the entire maze grid
@@ -145,6 +159,7 @@ struct DeltaMazeView: View {
                 isRevealedSolution: revealedSolutionPath.contains(Coordinates(x: col, y: row)),
                 defaultBackgroundColor: defaultBackgroundColor
             )
+            .background(Color.clear)
         } else {
             EmptyView()
         }

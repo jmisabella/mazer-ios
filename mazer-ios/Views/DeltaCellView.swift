@@ -125,7 +125,7 @@ struct DeltaCellView: View {
             .stroke(Color.black, lineWidth: snap(strokeWidth) * 1.15)
         }
         .frame(width: snap(cellSize), height: snap(triangleHeight))
-        .drawingGroup(opaque: true) // for rendering optimization
+        .drawingGroup(opaque: false)
     }
 }
 
