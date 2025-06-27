@@ -25,7 +25,17 @@ struct RhombilleCellView: View {
         .init(x: 0.0, y: 0.5)   // left
     ]
 
+//    private var strokeWidth: CGFloat {
+//        cellSize * 0.05
+//    }
+    
+//    private var strokeWidth: CGFloat {
+//        // base everything on the diamond’s actual bounding box:
+//        let box = cellSize * CGFloat(2).squareRoot()
+//        return box * 0.05
+//    }
     private var strokeWidth: CGFloat {
+        // 5% of the _side_ of each diamond
         cellSize * 0.05
     }
 

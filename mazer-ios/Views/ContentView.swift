@@ -203,7 +203,8 @@ struct ContentView: View {
             cleanupMazeData: cleanupMazeData
         )
 //        .environment(\.colorScheme, .dark)
-        .padding(.vertical, 100)
+//        .padding(.vertical, 100)
+        .padding(.vertical, computeVerticalPadding())
         .grayscale(showCelebration ? 1 : 0)
         .animation(.easeInOut(duration: 0.65), value: showCelebration)
     }
@@ -279,16 +280,16 @@ struct ContentView: View {
                 case .medium: return 2.5
                 case .large: return 3.3
                 }
-            case .rhombille: // TODO: implement
+            case .rhombille:
                 switch selectedSize {
-                case .tiny: return 1.2
-                case .small: return 1.3
-                case .medium: return 1.65
-                case .large: return 1.8
-//                case .tiny: return 2.2
-//                case .small: return 2.35
-//                case .medium: return 2.5
-//                case .large: return 3.3
+//                case .tiny: return 2.8
+//                case .small: return 3.2
+//                case .medium: return 4
+//                case .large: return 6
+                case .tiny: return 0.6
+                case .small: return 0.8
+                case .medium: return 1.2
+                case .large: return 1.5
                 }
             }
         }()
@@ -309,6 +310,14 @@ struct ContentView: View {
         DispatchQueue.main.async {
             self.isLoading = true
         }
+        
+        let keyWindow = UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .first?.windows
+            .first { $0.isKeyWindow }
+        
+        let insetTop = keyWindow?.safeAreaInsets.top    ?? 0
+        let insetBot = keyWindow?.safeAreaInsets.bottom ?? 0
         
         DispatchQueue.global().async {
             if let current = self.currentGrid {
@@ -341,20 +350,41 @@ struct ContentView: View {
             let totalVerticalPadding = perSidePad * 2
             let controlArea: CGFloat = 80
             let availableH = screenH - controlArea - totalVerticalPadding
+
+            // account for notch & home-indicator
+            let drawableH = availableH - insetTop - insetBot
             
             let cellSize = selectedMazeType == .upsilon ? octagonCellSize : squareCellSize
             let spacing = selectedMazeType == .upsilon ? (sqrt(2) / 2) * octagonCellSize : cellSize
             let rowHeight = selectedMazeType == .upsilon ? octagonCellSize * (sqrt(2) / 2) : cellSize
             
-            let maxHeightRows = selectedMazeType == .upsilon ? Int(floor(availableH / rowHeight)) : max(1, Int(availableH / cellSize))
+            let maxHeightRows = max(1, Int(availableH / (selectedMazeType == .upsilon ? rowHeight : cellSize)))
             let maxWidth = max(1, Int(UIScreen.main.bounds.width / spacing))
             
-            var finalHeight = (selectedMazeType == .sigma) ? maxHeightRows / 3 : maxHeightRows
-            let finalWidth = (selectedMazeType == .sigma) ? maxWidth / 3 : maxWidth
+            var finalWidth: Int
+            var finalHeight: Int
             
-            if selectedMazeType == .delta && UIDevice.current.userInterfaceIdiom == .pad {
-                let maxRows = Int(availableH / squareCellSize * 0.77)
-                finalHeight = min(finalHeight, maxRows)
+            if selectedMazeType == .rhombille {
+//                let sqrt2 = sqrt(2.0)
+//                let halfDiagonal = cellSize / sqrt2
+//                finalWidth = max(1, Int((screenWidth - cellSize) / halfDiagonal) + 1)
+//                finalHeight = max(1, Int((availableH - cellSize) / halfDiagonal) + 1)
+//                finalWidth = Int(Double(finalWidth) * 2.3)
+//                finalHeight = Int(Double(finalHeight) * 3.6)
+                
+                let s     = squareCellSize
+                let diag  = s * CGFloat(2).squareRoot()
+                let pitch = diag / 2
+                
+                finalWidth  = max(1, Int(floor(UIScreen.main.bounds.width  / diag)))
+//                finalHeight = max(1, Int(floor(availableH / pitch)))
+                finalHeight = max(1, Int(floor(drawableH / pitch)))
+                
+                
+//                finalHeight = Int(Double(finalHeight) * 0.82)
+            } else {
+                finalWidth = (selectedMazeType == .sigma) ? maxWidth / 3 : maxWidth
+                finalHeight = (selectedMazeType == .sigma) ? maxHeightRows / 3 : maxHeightRows
             }
             
             if captureSteps && (finalWidth > 100 || finalHeight > 100) {
