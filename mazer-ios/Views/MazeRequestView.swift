@@ -104,6 +104,11 @@ struct MazeRequestView: View {
                 selectedSize = .large
                 captureSteps = false
             }
+            // Set the font for all segmented controls
+            UISegmentedControl.appearance().setTitleTextAttributes(
+                [.font: UIFont.systemFont(ofSize:12, weight: .medium)],
+                for: .normal
+            )
         }
     }
     
@@ -135,10 +140,8 @@ struct MazeRequestView: View {
             }
             
             Picker("Maze Type", selection: $selectedMazeType) {
-//                ForEach(MazeType.allCases.filter { $0 != .polar }) { type in
                 ForEach(MazeType.allCases) { type in
                     Text(type.rawValue.capitalized)
-                        .font(.system(size: 16 * fontScale, weight: .bold))
                         .tag(type)
                 }
             }

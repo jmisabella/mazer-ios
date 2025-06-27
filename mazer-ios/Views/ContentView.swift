@@ -234,6 +234,7 @@ struct ContentView: View {
             case .orthogonal: return 140
             case .sigma: return 280
             case .upsilon: return 0
+            case .rhombille: return 0 // TODO: verify
             }
         }()
         let sizeRatio: CGFloat = {
@@ -277,6 +278,17 @@ struct ContentView: View {
                 case .small: return 2.35
                 case .medium: return 2.5
                 case .large: return 3.3
+                }
+            case .rhombille: // TODO: implement
+                switch selectedSize {
+                case .tiny: return 1.2
+                case .small: return 1.3
+                case .medium: return 1.65
+                case .large: return 1.8
+//                case .tiny: return 2.2
+//                case .small: return 2.35
+//                case .medium: return 2.5
+//                case .large: return 3.3
                 }
             }
         }()
@@ -459,7 +471,10 @@ struct ContentView: View {
                 DispatchQueue.main.async {
                     self.mazeCells = cells
                     if let firstCell = cells.first {
-                        self.mazeType = MazeType(rawValue: firstCell.mazeType) ?? .orthogonal
+                        self.mazeType = MazeType.fromFFIName(firstCell.mazeType) ?? .orthogonal
+                    } else {
+                        self.mazeType = .orthogonal
+                        print("Warning: Could not determine maze type from cells.")
                     }
                     if self.captureSteps {
                         self.generationSteps = steps
@@ -548,6 +563,7 @@ struct ContentView: View {
                 default: return [direction]
                 }
             case .upsilon: return [direction]
+            case .rhombille: return [direction]
             }
         }()
         

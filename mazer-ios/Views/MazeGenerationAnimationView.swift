@@ -67,6 +67,9 @@ struct MazeGenerationAnimationView: View {
             let octagonCellSize = spacing / (sqrt(2) / 2)
             let squareCellSize = octagonCellSize * (sqrt(2) - 1)
             return (square: squareCellSize, octagon: octagonCellSize)
+        case .rhombille:
+            let cellSize = screenWidth / CGFloat(columns)
+            return (square: cellSize, octagon: cellSize) // octagon not used
         }
     }
 
@@ -175,6 +178,16 @@ struct MazeGenerationAnimationView: View {
                                 defaultBackgroundColor: defaultBackground
                             )
                             .id(currentStepIndex)  // Force re-render on each step
+                        case .rhombille:
+                            RhombilleMazeView(
+                                selectedPalette: .constant(wetAsphaltPalette),
+                                cells: currentCells,
+                                cellSize: computeCellSize(mazeCells: generationSteps[0], mazeType: mazeType),
+                                showSolution: showSolution,
+                                showHeatMap: showHeatMap,
+                                defaultBackgroundColor: defaultBackground
+                            )
+                            .id(currentStepIndex)
                         default:
                             Text("Unsupported maze type")
                         }

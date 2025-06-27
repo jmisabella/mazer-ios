@@ -5,9 +5,10 @@ import Foundation
 // Identifiable to make them uniquely identifiable, as required by ForEach
 enum MazeType: String, Codable, CaseIterable, Identifiable {
     case delta = "Delta"
-    case orthogonal = "Orthogonal"
+    case orthogonal = "Ortho"
     case sigma = "Sigma"
     case upsilon = "Upsilon"
+    case rhombille = "Rhombic"
     
     var id: String { rawValue }
     
@@ -16,12 +17,40 @@ enum MazeType: String, Codable, CaseIterable, Identifiable {
         case .delta:
             return "Triangular cells (normal and inverted) creating jagged, complex paths."
         case .orthogonal:
-            return "Classic square grid with straight paths and right-angle turns."
+            return "Orthogonal mazes carve a classic square-grid layout with straight paths and right-angle turns."
         case .sigma:
             return "Hexagonal cells forming a web of interconnected paths, promoting more intuitive navigation."
         case .upsilon:
-            return "Octagon and square cells alternating by row and column, creating a varied layout that can make pathfinding more intricate."
-
+            return "Alternating octagon and square cells add variety to pathfinding."
+        case .rhombille:
+            return "Diamond cells forming a grid with slanted paths."
         }
     }
+    
+    var ffiName: String {
+        switch self {
+        case .delta:
+            return "Delta"
+        case .orthogonal:
+            return "Orthogonal"
+        case .sigma:
+            return "Sigma"
+        case .upsilon:
+            return "Upsilon"
+        case .rhombille:
+            return "Rhombille"
+        }
+    }
+    
+    static func fromFFIName(_ name: String) -> MazeType? {
+        switch name {
+        case "Delta": return .delta
+        case "Orthogonal": return .orthogonal
+        case "Sigma": return .sigma
+        case "Upsilon": return .upsilon
+        case "Rhombille": return .rhombille
+        default: return nil
+        }
+    }
+    
 }

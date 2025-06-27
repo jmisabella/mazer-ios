@@ -14,12 +14,15 @@ func wallStrokeWidth(for mazeType: MazeType, cellSize: CGFloat) -> CGFloat {
     case .delta:
         denominator = cellSize >= 28 ? 10 : 12
     case .orthogonal:
-        denominator = cellSize >= 18 ? 6 : 5
+        denominator = cellSize >= 18 ? 6 : 6
     case .sigma:
-        denominator = cellSize >= 18 ? 6 : 8
+        denominator = cellSize >= 18 ? 6 : 7
     case .upsilon:
         denominator = cellSize >= 28 ? 12 : 16
+    case .rhombille:
+        denominator = cellSize >= 18 ? 6 : 6
     }
+    
     let raw = cellSize / denominator
     let scale = UIScreen.main.scale
     let snapped = (raw * scale).rounded() / scale
