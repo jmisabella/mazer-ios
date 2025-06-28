@@ -282,12 +282,8 @@ struct ContentView: View {
                 }
             case .rhombille:
                 switch selectedSize {
-//                case .tiny: return 2.8
-//                case .small: return 3.2
-//                case .medium: return 4
-//                case .large: return 6
-                case .tiny: return 0.6
-                case .small: return 0.8
+                case .tiny: return 0.75
+                case .small: return 0.9
                 case .medium: return 1.2
                 case .large: return 1.5
                 }
