@@ -235,7 +235,7 @@ struct ContentView: View {
             case .orthogonal: return 140
             case .sigma: return 280
             case .upsilon: return 0
-            case .rhombille: return 0 // TODO: verify
+            case .rhombille: return 0
             }
         }()
         let sizeRatio: CGFloat = {
@@ -275,8 +275,8 @@ struct ContentView: View {
                 }
             case .upsilon:
                 switch selectedSize {
-                case .tiny: return 2.2
-                case .small: return 2.35
+                case .tiny: return 2.3
+                case .small: return 2.4
                 case .medium: return 2.5
                 case .large: return 3.3
                 }
@@ -365,23 +365,17 @@ struct ContentView: View {
             var finalHeight: Int
             
             if selectedMazeType == .rhombille {
-//                let sqrt2 = sqrt(2.0)
-//                let halfDiagonal = cellSize / sqrt2
-//                finalWidth = max(1, Int((screenWidth - cellSize) / halfDiagonal) + 1)
-//                finalHeight = max(1, Int((availableH - cellSize) / halfDiagonal) + 1)
-//                finalWidth = Int(Double(finalWidth) * 2.3)
-//                finalHeight = Int(Double(finalHeight) * 3.6)
-                
                 let s     = squareCellSize
                 let diag  = s * CGFloat(2).squareRoot()
                 let pitch = diag / 2
-                
                 finalWidth  = max(1, Int(floor(UIScreen.main.bounds.width  / diag)))
-//                finalHeight = max(1, Int(floor(availableH / pitch)))
                 finalHeight = max(1, Int(floor(drawableH / pitch)))
                 
+                if finalWidth % 2 == 0 {
+                    // hack: force an odd number of columns so it fits better with the navigation at top of screen
+                    finalWidth = finalWidth + 1
+                }
                 
-//                finalHeight = Int(Double(finalHeight) * 0.82)
             } else {
                 finalWidth = (selectedMazeType == .sigma) ? maxWidth / 3 : maxWidth
                 finalHeight = (selectedMazeType == .sigma) ? maxHeightRows / 3 : maxHeightRows
