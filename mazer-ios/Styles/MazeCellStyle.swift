@@ -20,7 +20,7 @@ func wallStrokeWidth(for mazeType: MazeType, cellSize: CGFloat) -> CGFloat {
     case .upsilon:
         denominator = cellSize >= 28 ? 12 : 16
     case .rhombille:
-        denominator = cellSize >= 18 ? 6 : 6
+        denominator = cellSize >= 18 ? 9 : 6
     }
     
     let raw = cellSize / denominator

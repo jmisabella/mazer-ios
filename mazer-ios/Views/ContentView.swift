@@ -371,11 +371,6 @@ struct ContentView: View {
                 finalWidth  = max(1, Int(floor(UIScreen.main.bounds.width  / diag)))
                 finalHeight = max(1, Int(floor(drawableH / pitch)))
                 
-                if finalWidth % 2 == 0 {
-                    // hack: force an odd number of columns so it fits better with the navigation at top of screen
-                    finalWidth = finalWidth + 1
-                }
-                
             } else {
                 finalWidth = (selectedMazeType == .sigma) ? maxWidth / 3 : maxWidth
                 finalHeight = (selectedMazeType == .sigma) ? maxHeightRows / 3 : maxHeightRows

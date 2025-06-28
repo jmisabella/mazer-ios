@@ -65,8 +65,8 @@ struct MazeRenderView: View {
             EightWayControlView(moveAction: performMove)
                 .id(mazeID)
                 .padding(.top, 3)
-        case .rhombille: // TODO: replace with a new 4-way diagonal controller
-            EightWayControlView(moveAction: performMove)
+        case .rhombille:
+            FourWayDiagonalControlView(moveAction: performMove)
                 .id(mazeID)
                 .padding(.top, 3)
 
@@ -120,38 +120,6 @@ struct MazeRenderView: View {
             )
             .id(mazeID)
         case .rhombille:
-//            GeometryReader { geo in
-//                    // how many columns / rows we actually have
-//                    let cols = (mazeCells.map { $0.x }.max() ?? 0) + 1
-//                    let rows = (mazeCells.map { $0.y }.max() ?? 0) + 1
-//                    let sqrt2 = CGFloat(2).squareRoot()
-//
-//                    // compute the largest diamond‐diagonal that fits both ways
-//                    let diagW = geo.size.width  / CGFloat(cols)
-//                    let diagH = geo.size.height / CGFloat(rows)
-//                    let diagonal = min(diagW, diagH)
-//                
-//
-//                    // convert back to the diamond’s “side” length
-//                    let cellSide   = diagonal / sqrt2
-//                    let gridWidth  = diagonal * CGFloat(cols)
-//                    let gridHeight = diagonal * CGFloat(rows)
-//
-//                    RhombilleMazeView(
-//                        selectedPalette:      $selectedPalette,
-//                        cells:                mazeCells,
-//                        cellSize:             cellSide,
-//                        showSolution:         showSolution,
-//                        showHeatMap:          showHeatMap,
-//                        defaultBackgroundColor: defaultBackground
-//                    )
-//                    .id(mazeID)
-//                    // lock into exactly the size we computed
-//                    .frame(width: gridWidth, height: gridHeight)
-//                    // center it in the remaining space
-//                    .position(x: geo.size.width * 0.5,
-//                              y: geo.size.height * 0.5)
-//                }
             GeometryReader { geo in
                     // 1) Recompute the exact size of the diamond grid:
                     let maxX = mazeCells.map { $0.x }.max() ?? 0
@@ -177,6 +145,7 @@ struct MazeRenderView: View {
                     )
                     .id(mazeID)
                     .offset(x: offsetX, y: offsetY)
+                    .padding(.top, 7)
                 }
         }
     }
