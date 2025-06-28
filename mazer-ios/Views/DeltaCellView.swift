@@ -58,11 +58,15 @@ struct DeltaCellView: View {
         return (newStart, newEnd)
     }
     
+//    private var strokeWidth: CGFloat {
+//        let raw = cellSize / 9
+//        let scale = UIScreen.main.scale
+//        return (raw * scale).rounded() / scale
+//    }
     private var strokeWidth: CGFloat {
-        let raw = cellSize / 9
-        let scale = UIScreen.main.scale
-        return (raw * scale).rounded() / scale
+        wallStrokeWidth(for: .delta, cellSize: cellSize)
     }
+        
 
     var body: some View {
         ZStack {

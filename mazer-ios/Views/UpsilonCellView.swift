@@ -12,10 +12,13 @@ struct UpsilonCellView: View {
 
     private let overlap: CGFloat = 1.0 / UIScreen.main.scale
     
+//    private var strokeWidth: CGFloat {
+//        let raw = gridCellSize / 12 // Adjust divisor for desired thickness
+//        let scale = UIScreen.main.scale
+//        return (raw * scale).rounded() / scale
+//    }
     private var strokeWidth: CGFloat {
-        let raw = gridCellSize / 12 // Adjust divisor for desired thickness
-        let scale = UIScreen.main.scale
-        return (raw * scale).rounded() / scale
+        wallStrokeWidth(for: .upsilon, cellSize: gridCellSize)
     }
 
     var body: some View {

@@ -67,6 +67,9 @@ struct MazeGenerationAnimationView: View {
             let octagonCellSize = spacing / (sqrt(2) / 2)
             let squareCellSize = octagonCellSize * (sqrt(2) - 1)
             return (square: squareCellSize, octagon: octagonCellSize)
+        case .rhombille:
+            let cellSize = screenWidth / CGFloat(columns)
+            return (square: cellSize, octagon: cellSize) // octagon not used
         }
     }
 
@@ -175,6 +178,29 @@ struct MazeGenerationAnimationView: View {
                                 defaultBackgroundColor: defaultBackground
                             )
                             .id(currentStepIndex)  // Force re-render on each step
+                        case .rhombille:
+                            GeometryReader { geo in
+                                let maxX = currentCells.map { $0.x }.max() ?? 0
+                                let maxY = currentCells.map { $0.y }.max() ?? 0
+                                let sqrt2 = CGFloat(2).squareRoot()
+                                let cellSize = computeCellSize(mazeCells: generationSteps[0], mazeType: mazeType)
+                                let diagonal = cellSize * sqrt2
+                                let gridWidth = diagonal * (CGFloat(maxX) + 1)
+                                let gridHeight = diagonal * (CGFloat(maxY) + 1)
+                                let offsetX = (geo.size.width - gridWidth) / 2
+                                let offsetY = (geo.size.height - gridHeight) / 2
+                                RhombilleMazeView(
+                                    selectedPalette: $selectedPalette,
+                                    cells: currentCells,
+                                    cellSize: cellSize,
+                                    showSolution: showSolution,
+                                    showHeatMap: showHeatMap,
+                                    defaultBackgroundColor: defaultBackground
+                                )
+                                .id(currentStepIndex)
+                                .offset(x: offsetX, y: offsetY)
+                                .padding(.top, 7)
+                            }
                         default:
                             Text("Unsupported maze type")
                         }

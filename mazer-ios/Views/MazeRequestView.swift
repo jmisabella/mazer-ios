@@ -59,6 +59,9 @@ struct MazeRequestView: View {
     private var availableAlgorithms: [MazeAlgorithm] {
         if selectedMazeType == .orthogonal {
             return MazeAlgorithm.allCases
+        } else if selectedMazeType == .rhombille {
+            return MazeAlgorithm.allCases
+                .filter { ![.binaryTree, .sidewinder, .ellers, .recursiveDivision, .growingTreeNewest, .growingTreeRandom, .huntAndKill, .prims, .recursiveDivision].contains($0) }
         } else {
             return MazeAlgorithm.allCases
                 .filter { ![.binaryTree, .sidewinder, .ellers, .recursiveDivision].contains($0) }
@@ -104,6 +107,11 @@ struct MazeRequestView: View {
                 selectedSize = .large
                 captureSteps = false
             }
+            // Set the font for all segmented controls
+            UISegmentedControl.appearance().setTitleTextAttributes(
+                [.font: UIFont.systemFont(ofSize:12, weight: .medium)],
+                for: .normal
+            )
         }
     }
     
@@ -135,10 +143,8 @@ struct MazeRequestView: View {
             }
             
             Picker("Maze Type", selection: $selectedMazeType) {
-//                ForEach(MazeType.allCases.filter { $0 != .polar }) { type in
                 ForEach(MazeType.allCases) { type in
                     Text(type.rawValue.capitalized)
-                        .font(.system(size: 16 * fontScale, weight: .bold))
                         .tag(type)
                 }
             }
