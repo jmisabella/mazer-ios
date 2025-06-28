@@ -6,9 +6,9 @@ import Foundation
 enum MazeType: String, Codable, CaseIterable, Identifiable {
     case delta = "Delta"
     case orthogonal = "Ortho"
+    case rhombille = "Rhombic"
     case sigma = "Sigma"
     case upsilon = "Upsilon"
-    case rhombille = "Rhombic"
     
     var id: String { rawValue }
     
@@ -18,12 +18,12 @@ enum MazeType: String, Codable, CaseIterable, Identifiable {
             return "Triangular cells (normal and inverted) creating jagged, complex paths."
         case .orthogonal:
             return "Orthogonal mazes carve a classic square-grid layout with straight paths and right-angle turns."
+        case .rhombille:
+            return "Diamond cells forming a grid with slanted paths."
         case .sigma:
             return "Hexagonal cells forming a web of interconnected paths, promoting more intuitive navigation."
         case .upsilon:
             return "Alternating octagon and square cells add variety to pathfinding."
-        case .rhombille:
-            return "Diamond cells forming a grid with slanted paths."
         }
     }
     
@@ -33,12 +33,12 @@ enum MazeType: String, Codable, CaseIterable, Identifiable {
             return "Delta"
         case .orthogonal:
             return "Orthogonal"
+        case .rhombille:
+            return "Rhombille"
         case .sigma:
             return "Sigma"
         case .upsilon:
             return "Upsilon"
-        case .rhombille:
-            return "Rhombille"
         }
     }
     
