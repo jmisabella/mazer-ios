@@ -235,7 +235,7 @@ struct ContentView: View {
             case .orthogonal: return 140
             case .sigma: return 280
             case .upsilon: return 0
-            case .rhombille: return 0
+            case .rhombic: return 0
             }
         }()
         let sizeRatio: CGFloat = {
@@ -280,7 +280,7 @@ struct ContentView: View {
                 case .medium: return 2.5
                 case .large: return 3.3
                 }
-            case .rhombille:
+            case .rhombic:
                 switch selectedSize {
                 case .tiny: return 0.75
                 case .small: return 0.9
@@ -360,7 +360,7 @@ struct ContentView: View {
             var finalWidth: Int
             var finalHeight: Int
             
-            if selectedMazeType == .rhombille {
+            if selectedMazeType == .rhombic {
                 let s     = squareCellSize
                 let diag  = s * CGFloat(2).squareRoot()
                 let pitch = diag / 2
@@ -578,7 +578,7 @@ struct ContentView: View {
                 default: return [direction]
                 }
             case .upsilon: return [direction]
-            case .rhombille: return [direction]
+            case .rhombic: return [direction]
             }
         }()
         

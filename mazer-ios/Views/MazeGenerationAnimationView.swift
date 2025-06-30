@@ -67,7 +67,7 @@ struct MazeGenerationAnimationView: View {
             let octagonCellSize = spacing / (sqrt(2) / 2)
             let squareCellSize = octagonCellSize * (sqrt(2) - 1)
             return (square: squareCellSize, octagon: octagonCellSize)
-        case .rhombille:
+        case .rhombic:
             let cellSize = screenWidth / CGFloat(columns)
             return (square: cellSize, octagon: cellSize) // octagon not used
         }
@@ -178,7 +178,7 @@ struct MazeGenerationAnimationView: View {
                                 defaultBackgroundColor: defaultBackground
                             )
                             .id(currentStepIndex)  // Force re-render on each step
-                        case .rhombille:
+                        case .rhombic:
                             GeometryReader { geo in
                                 let maxX = currentCells.map { $0.x }.max() ?? 0
                                 let maxY = currentCells.map { $0.y }.max() ?? 0
@@ -189,7 +189,7 @@ struct MazeGenerationAnimationView: View {
                                 let gridHeight = diagonal * (CGFloat(maxY) + 1)
                                 let offsetX = (geo.size.width - gridWidth) / 2
                                 let offsetY = (geo.size.height - gridHeight) / 2
-                                RhombilleMazeView(
+                                RhombicMazeView(
                                     selectedPalette: $selectedPalette,
                                     cells: currentCells,
                                     cellSize: cellSize,

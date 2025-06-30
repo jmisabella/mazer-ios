@@ -65,7 +65,7 @@ struct MazeRenderView: View {
             EightWayControlView(moveAction: performMove)
                 .id(mazeID)
                 .padding(.top, 3)
-        case .rhombille:
+        case .rhombic:
             FourWayDiagonalControlView(moveAction: performMove)
                 .id(mazeID)
                 .padding(.top, 3)
@@ -119,7 +119,7 @@ struct MazeRenderView: View {
                 defaultBackgroundColor: defaultBackground
             )
             .id(mazeID)
-        case .rhombille:
+        case .rhombic:
             GeometryReader { geo in
                     // 1) Recompute the exact size of the diamond grid:
                     let maxX = mazeCells.map { $0.x }.max() ?? 0
@@ -134,8 +134,8 @@ struct MazeRenderView: View {
                     let offsetX = (geo.size.width  - gridWidth)  / 2
                     let offsetY = (geo.size.height - gridHeight) / 2
 
-                    // 3) Place your tight‐framed Rhombille view there:
-                    RhombilleMazeView(
+                    // 3) Place your tight‐framed rhombic view there:
+                    RhombicMazeView(
                         selectedPalette: $selectedPalette,
                         cells:           mazeCells,
                         cellSize:        cellSize,

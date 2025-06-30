@@ -2,7 +2,7 @@ import SwiftUI
 import AudioToolbox
 import UIKit
 
-struct RhombilleMazeView: View {
+struct RhombicMazeView: View {
     @Binding var selectedPalette: HeatMapPalette
     let cells: [MazeCell]
     let cellSize: CGFloat
@@ -79,7 +79,7 @@ struct RhombilleMazeView: View {
     }
     
     private func cellView(for cell: MazeCell) -> some View {
-        RhombilleCellView(
+        RhombicCellView(
             cell: cell,
             cellSize: cellSize,
             showSolution: showSolution,

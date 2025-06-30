@@ -59,9 +59,9 @@ struct MazeRequestView: View {
     private var availableAlgorithms: [MazeAlgorithm] {
         if selectedMazeType == .orthogonal {
             return MazeAlgorithm.allCases
-        } else if selectedMazeType == .rhombille {
+        } else if selectedMazeType == .rhombic {
             return MazeAlgorithm.allCases
-                .filter { ![.binaryTree, .sidewinder, .ellers, .recursiveDivision, .growingTreeNewest, .growingTreeRandom, .huntAndKill, .prims, .recursiveDivision].contains($0) }
+                .filter { ![.binaryTree, .sidewinder, .ellers, .growingTreeNewest, .growingTreeRandom, .huntAndKill, ].contains($0) }
         } else {
             return MazeAlgorithm.allCases
                 .filter { ![.binaryTree, .sidewinder, .ellers, .recursiveDivision].contains($0) }
