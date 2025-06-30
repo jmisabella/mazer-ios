@@ -20,7 +20,7 @@
 		006F3F402DA08D8600627BD4 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F3F3F2DA08D7D00627BD4 /* Color+Hex.swift */; };
 		0095189A2DBF0F33003B1C21 /* HexDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009518992DBF0F33003B1C21 /* HexDirection.swift */; };
 		00AD08EF2E1076B800CCB6A2 /* FourWayDiagonalControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AD08EE2E1076B800CCB6A2 /* FourWayDiagonalControlView.swift */; };
-		00AD08F32E12180200CCB6A2 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A14AF92E00DC9A0008457E /* libmazer.a */; };
+		00AD08F52E1227D400CCB6A2 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 008DD8102DBF2C580094C1CA /* libmazer.a */; };
 		00AE05F52DB877770068C880 /* SigmaCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AE05F42DB877770068C880 /* SigmaCellView.swift */; };
 		00AE05F72DB8778C0068C880 /* SigmaMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AE05F62DB8778C0068C880 /* SigmaMazeView.swift */; };
 		00C33F662D98C84C0077691B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C33F5C2D98C84C0077691B /* Preview Assets.xcassets */; };
@@ -1041,7 +1041,7 @@
 		00A14AF92E00DC9A0008457E /* libmazer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmazer.a; sourceTree = "<group>"; };
 		00A14AFA2E00DC9A0008457E /* libmazer.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = libmazer.d; sourceTree = "<group>"; };
 		00AD08EE2E1076B800CCB6A2 /* FourWayDiagonalControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourWayDiagonalControlView.swift; sourceTree = "<group>"; };
-		00AD08F42E12181500CCB6A2 /* mazer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer.h; sourceTree = "<group>"; };
+		00AD08F62E1227E400CCB6A2 /* mazer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer.h; sourceTree = "<group>"; };
 		00AE05F42DB877770068C880 /* SigmaCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigmaCellView.swift; sourceTree = "<group>"; };
 		00AE05F62DB8778C0068C880 /* SigmaMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigmaMazeView.swift; sourceTree = "<group>"; };
 		00C33F5C2D98C84C0077691B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -2165,7 +2165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00AD08F32E12180200CCB6A2 /* libmazer.a in Frameworks */,
+				00AD08F52E1227D400CCB6A2 /* libmazer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3950,7 +3950,7 @@
 		00C33F652D98C84C0077691B /* mazer-ios */ = {
 			isa = PBXGroup;
 			children = (
-				00AD08F42E12181500CCB6A2 /* mazer.h */,
+				00AD08F62E1227E400CCB6A2 /* mazer.h */,
 				003DE2A52DB5F6B200EFB530 /* Styles */,
 				00C33F6E2D98C8EE0077691B /* Views */,
 				00C33F5D2D98C84C0077691B /* Preview Content */,
