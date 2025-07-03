@@ -250,48 +250,7 @@ struct ContentView: View {
     }
     
     private func computeCellSizes() -> (square: CGFloat, octagon: CGFloat) {
-        let adjustment: CGFloat = {
-            switch selectedMazeType {
-            case .delta:
-                switch selectedSize {
-                case .tiny: return 1.07
-                case .small: return 1.36
-                case .medium: return 1.47
-                case .large: return 1.6
-                }
-            case .orthogonal:
-                switch selectedSize {
-                case .tiny: return 1.2
-                case .small: return 1.3
-                case .medium: return 1.65
-                case .large: return 1.8
-                }
-            case .sigma:
-                switch selectedSize {
-                case .tiny: return 0.5
-                case .small: return 0.65
-                case .medium: return 0.75
-                case .large: return 0.8
-                }
-            case .upsilon:
-                switch selectedSize {
-                case .tiny: return 2.3
-                case .small: return 2.4
-                case .medium: return 2.5
-                case .large: return 3.3
-                }
-            case .rhombic:
-                switch selectedSize {
-                case .tiny: return 0.75
-                case .small: return 0.9
-                case .medium: return 1.2
-                case .large: return 1.5
-                }
-            }
-        }()
-        
-        let rawSize = CGFloat(selectedSize.rawValue)
-        let baseCellSize = adjustment * rawSize
+        let baseCellSize = adjustedCellSize(mazeType: selectedMazeType, cellSize: selectedSize)
         
         if selectedMazeType == .upsilon {
             let octagonCellSize = baseCellSize
