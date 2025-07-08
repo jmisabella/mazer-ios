@@ -56,22 +56,16 @@ struct MazeRequestView: View {
         UIDevice.current.userInterfaceIdiom == .pad
     }
     
-    private var availableAlgorithms: [MazeAlgorithm] {
-        if selectedMazeType == .orthogonal {
-            return MazeAlgorithm.allCases
-        } else if selectedMazeType == .rhombic {
-            return MazeAlgorithm.allCases
-                .filter { ![.binaryTree, .sidewinder, .ellers, .growingTreeNewest, .growingTreeRandom, .huntAndKill, ].contains($0) }
-        } else {
-            return MazeAlgorithm.allCases
-                .filter { ![.binaryTree, .sidewinder, .ellers, .recursiveDivision].contains($0) }
-        }
+    private var availableMazeTypes: [MazeType] {
+        MazeType.availableMazeTypes(isSmallScreen: screenHeight <= 667.0)
     }
-        
+    
+    private var availableAlgorithms: [MazeAlgorithm] {
+        MazeAlgorithm.availableAlgorithms(for: selectedMazeType)
+    }
+    
     private func randomizeType() {
-//        let types = MazeType.allCases.filter { $0 != .polar }
-        let types = MazeType.allCases
-        if let randomType = types.randomElement() {
+        if let randomType = availableMazeTypes.randomElement() {
             selectedMazeType = randomType
         }
     }
@@ -112,6 +106,9 @@ struct MazeRequestView: View {
                 [.font: UIFont.systemFont(ofSize:12, weight: .medium)],
                 for: .normal
             )
+            if !availableMazeTypes.contains(selectedMazeType) {
+                selectedMazeType = .orthogonal
+            }
         }
     }
     
@@ -143,7 +140,7 @@ struct MazeRequestView: View {
             }
             
             Picker("Maze Type", selection: $selectedMazeType) {
-                ForEach(MazeType.allCases) { type in
+                ForEach(availableMazeTypes) { type in
                     Text(type.rawValue.capitalized)
                         .tag(type)
                 }

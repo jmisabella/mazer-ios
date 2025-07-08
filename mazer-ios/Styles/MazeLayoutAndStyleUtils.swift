@@ -69,85 +69,83 @@ func computeDeltaCellSize(columns: Int, screenWidth: CGFloat = UIScreen.main.bou
     return available * 2 / (CGFloat(columns) + 1)
 }
 
-func navigationMenuAdjustment(mazeType: MazeType, cellSize: CellSize) -> CGFloat {
-    // TODO: fill in the others padding values for rhombic; all these padding values will be negative
-    // These padding adjustments for rhombic are being documented in MazeRenderView's comments
+func navigationMenuVerticalAdjustment(mazeType: MazeType, cellSize: CellSize) -> CGFloat {
     let paddingMap: [(width: CGFloat, height: CGFloat, mazeType: MazeType, cellSize: CellSize, padding: CGFloat)] = [
-        // iPhone SE 2nd gen, SE 3rd gen
-        (width: 375.0, height: 667.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -99.9),
+        // iPhone SE 2nd gen, SE 3rd gen RHOMBIC MAZE TYPE REJECTED FOR SE
+//        (width: 375.0, height: 667.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -99.0),
         // iPhone Xs, 11 Pro, 12 mini, 13 mini
-        (width: 375.0, height: 812.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -99.9),
+        (width: 375.0, height: 812.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -3.0),
         // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
-        (width: 390.0, height: 844.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -99.9),
+        (width: 390.0, height: 844.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -9.0),
         // iPhone 14 Pro, 15, 15 Pro
-        (width: 393.0, height: 852.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -99.9),
+        (width: 393.0, height: 852.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -10.0),
         // iPhone 16 Pro
-        (width: 402.0, height: 875.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -99.9),
+        (width: 402.0, height: 875.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -10.0),
         // iPhone Xr, Xs Max, 11, 11 Pro Max
-        (width: 414.0, height: 896.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -99.9),
+        (width: 414.0, height: 896.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -14.0),
         // iPhone 12 Pro Max, 13 Pro Max
-        (width: 428.0, height: 926.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -99.9),
+        (width: 428.0, height: 926.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -16.0),
         // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
-        (width: 430.0, height: 932.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -99.9),
+        (width: 430.0, height: 932.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -20.0),
         // iPhone 16 Pro Max
-        (width: 440.0, height: 956.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -99.9),
+        (width: 440.0, height: 956.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -24.0),
         ///
-        // iPhone SE 2nd gen, SE 3rd gen
-        (width: 375.0, height: 667.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -99.9),
+        // iPhone SE 2nd gen, SE 3rd gen RHOMBIC MAZE TYPE REJECTED FOR SE
+//        (width: 375.0, height: 667.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -99.0),
         // iPhone Xs, 11 Pro, 12 mini, 13 mini
-        (width: 375.0, height: 812.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -99.9),
+        (width: 375.0, height: 812.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -3.0),
         // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
-        (width: 390.0, height: 844.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -99.9),
+        (width: 390.0, height: 844.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -9.0),
         // iPhone 14 Pro, 15, 15 Pro
-        (width: 393.0, height: 852.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -99.9),
+        (width: 393.0, height: 852.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -10.0),
         // iPhone 16 Pro
-        (width: 402.0, height: 875.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -99.9),
+        (width: 402.0, height: 875.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -10.0),
         // iPhone Xr, Xs Max, 11, 11 Pro Max
-        (width: 414.0, height: 896.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -99.9),
+        (width: 414.0, height: 896.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -14.0),
         // iPhone 12 Pro Max, 13 Pro Max
-        (width: 428.0, height: 926.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -99.9),
+        (width: 428.0, height: 926.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -16.0),
         // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
-        (width: 430.0, height: 932.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -99.9),
+        (width: 430.0, height: 932.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -17.0),
         // iPhone 16 Pro Max
-        (width: 440.0, height: 956.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -99.9),
+        (width: 440.0, height: 956.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -24.0),
         ///
-        // iPhone SE 2nd gen, SE 3rd gen
-        (width: 375.0, height: 667.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -99.9),
+        // iPhone SE 2nd gen, SE 3rd gen RHOMBIC MAZE TYPE REJECTED FOR SE
+//        (width: 375.0, height: 667.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -99.0),
         // iPhone Xs, 11 Pro, 12 mini, 13 mini
-        (width: 375.0, height: 812.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -99.9),
+        (width: 375.0, height: 812.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -14.0),
         // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
-        (width: 390.0, height: 844.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -99.9),
+        (width: 390.0, height: 844.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -12.0),
         // iPhone 14 Pro, 15, 15 Pro
-        (width: 393.0, height: 852.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -99.9),
+        (width: 393.0, height: 852.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -14.0),
         // iPhone 16 Pro
-        (width: 402.0, height: 875.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -99.9),
+        (width: 402.0, height: 875.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -14.0),
         // iPhone Xr, Xs Max, 11, 11 Pro Max
-        (width: 414.0, height: 896.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -99.9),
+        (width: 414.0, height: 896.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -24.0),
         // iPhone 12 Pro Max, 13 Pro Max
-        (width: 428.0, height: 926.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -99.9),
+        (width: 428.0, height: 926.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -22.0),
         // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
-        (width: 430.0, height: 932.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -99.9),
+        (width: 430.0, height: 932.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -21.0),
         // iPhone 16 Pro Max
-        (width: 440.0, height: 956.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -99.9),
+        (width: 440.0, height: 956.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -29.0),
         ///
-        // iPhone SE 2nd gen, SE 3rd gen
-        (width: 375.0, height: 667.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -99.9),
+        // iPhone SE 2nd gen, SE 3rd gen RHOMBIC MAZE TYPE REJECTED FOR SE
+//        (width: 375.0, height: 667.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -99.0),
         // iPhone Xs, 11 Pro, 12 mini, 13 mini
-        (width: 375.0, height: 812.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -99.9),
+        (width: 375.0, height: 812.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -14.0),
         // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
-        (width: 390.0, height: 844.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -99.9),
+        (width: 390.0, height: 844.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -12.0),
         // iPhone 14 Pro, 15, 15 Pro
-        (width: 393.0, height: 852.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -99.9),
+        (width: 393.0, height: 852.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -14.0),
         // iPhone 16 Pro
-        (width: 402.0, height: 875.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -99.9),
+        (width: 402.0, height: 875.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -16.0),
         // iPhone Xr, Xs Max, 11, 11 Pro Max
-        (width: 414.0, height: 896.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -99.9),
+        (width: 414.0, height: 896.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -26.0),
         // iPhone 12 Pro Max, 13 Pro Max
-        (width: 428.0, height: 926.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -99.9),
+        (width: 428.0, height: 926.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -28.0),
         // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
-        (width: 430.0, height: 932.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -99.9),
-        // iPhone 16 Pro Maxs
-        (width: 440.0, height: 956.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -99.9),
+        (width: 430.0, height: 932.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -24.0),
+        // iPhone 16 Pro Max
+        (width: 440.0, height: 956.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -30.0),
     ]
     let screenSize = UIScreen.main.bounds.size
     print("Screen dimensions: width = \(screenSize.width), height = \(screenSize.height)")
@@ -166,72 +164,23 @@ func navigationMenuAdjustment(mazeType: MazeType, cellSize: CellSize) -> CGFloat
     return 0
 }
 
-// TODO: remove this!!!
-//func rhombicPadding(cellSize: CGFloat) -> EdgeInsets {
-//    let paddingMap: [(width: CGFloat, height: CGFloat, padding: EdgeInsets)] = [
-//            (
-//                width: 375.0,
-//                height: 667.0,
-//                padding: EdgeInsets(top: 5.0, leading: 5.0, bottom: 5.0, trailing: 5.0)
-//            ), // iPhone SE 2nd gen, SE 3rd gen
-//            (
-//                width: 375.0,
-//                height: 812.0,
-//                padding: EdgeInsets(top: 10.0, leading: 10.0, bottom: 10.0, trailing: 10.0)
-//            ), // iPhone Xs, 11 Pro, 12 mini, 13 mini
-//            (
-//                width: 390.0,
-//                height: 844.0,
-//                padding: EdgeInsets(top: 7.0, leading: 0, bottom: 0, trailing: 0)
-//            ), // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
-//            (
-//                width: 393.0,
-//                height: 852.0,
-//                padding: EdgeInsets(top: 5.0, leading: 5.0, bottom: 5.0, trailing: 5.0)
-//            ), // iPhone 14 Pro, 15, 15 Pro
-//            (
-//                width: 402.0,
-//                height: 875.0,
-//                padding: EdgeInsets(top: 5.0, leading: 5.0, bottom: 5.0, trailing: 5.0)
-//            ), // iPhone 16 Pro
-//            (
-//                width: 414.0,
-//                height: 896.0,
-//                padding: EdgeInsets(top: 30.0, leading: 0, bottom: 12, trailing: 0)
-//            ), // iPhone Xr, Xs Max, 11, 11 Pro Max
-//            (
-//                width: 428.0,
-//                height: 926.0,
-//                padding: EdgeInsets(top: 5.0, leading: 5.0, bottom: 5.0, trailing: 5.0)
-//            ), // iPhone 12 Pro Max, 13 Pro Max
-//            (
-//                width: 430.0,
-//                height: 932.0,
-//                padding: EdgeInsets(top: 5.0, leading: 5.0, bottom: 5.0, trailing: 5.0)
-//            ), // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
-//            (
-//                width: 440.0,
-//                height: 956.0,
-//                padding: EdgeInsets(top: 5.0, leading: 5.0, bottom: 5.0, trailing: 5.0)
-//            ), // iPhone 16 Pro Max
-//        ]
-//    
-//    let screenSize = UIScreen.main.bounds.size
-//    print("Screen dimensions: width = \(screenSize.width), height = \(screenSize.height)")
-//    
-//    var padding: EdgeInsets = EdgeInsets(
-//        top: 0,
-//        leading: 0,
-//        bottom: 0,
-//        trailing: 0
-//    )
-//    for entry in paddingMap {
-//        if entry.width == screenSize.width && entry.height == screenSize.height {
-//            padding = entry.padding
-//        }
-//    }
-//
-//    print("padding: \(padding)")
-//    
-//    return padding
-//}
+func navigationMenuHorizontalAdjustment(mazeType: MazeType, cellSize: CellSize) -> CGFloat {
+    let paddingMap: [(width: CGFloat, height: CGFloat, mazeType: MazeType, cellSize: CellSize, padding: CGFloat)] = [
+        // iPhone 16 Pro Max
+        (width: 440.0, height: 956.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: 6.0),
+    ]
+    let screenSize = UIScreen.main.bounds.size
+    print("Screen dimensions: width = \(screenSize.width), height = \(screenSize.height)")
+    
+    if mazeType == .rhombic {
+        for entry in paddingMap {
+            if entry.mazeType == mazeType &&
+               entry.cellSize == cellSize &&
+               entry.width == screenSize.width &&
+               entry.height == screenSize.height {
+                return entry.padding
+            }
+        }
+    }
+    return 0
+}

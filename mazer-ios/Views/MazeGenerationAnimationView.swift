@@ -11,6 +11,7 @@ import AudioToolbox
 struct MazeGenerationAnimationView: View {
     let generationSteps: [[MazeCell]]  // Array of maze generation steps
     let mazeType: MazeType             // Type of maze for rendering
+    let cellSize: CellSize
     @Binding var isAnimatingGeneration: Bool  // Controls animation visibility
     @Binding var mazeGenerated: Bool          // Triggers MazeRenderView
     @Binding var showSolution: Bool           // Toggles solution path

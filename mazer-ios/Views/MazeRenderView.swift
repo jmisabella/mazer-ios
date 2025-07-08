@@ -25,6 +25,7 @@ struct MazeRenderView: View {
 
     let mazeCells: [MazeCell]
     let mazeType: MazeType
+    let cellSize: CellSize
     let regenerateMaze: () -> Void
     let moveAction: (String) -> Void
     let cellSizes: (square: CGFloat, octagon: CGFloat)
@@ -36,6 +37,13 @@ struct MazeRenderView: View {
             showSolution = false
             moveAction(dir)
         }
+    }
+    
+    private var horizontalAdjustment: CGFloat {
+        navigationMenuHorizontalAdjustment(mazeType: mazeType, cellSize: cellSize)
+    }
+    private var verticalAdjustment: CGFloat {
+        navigationMenuVerticalAdjustment(mazeType: mazeType, cellSize: cellSize)
     }
 
     var columns: Int {
@@ -153,10 +161,10 @@ struct MazeRenderView: View {
         }
     }
 
-    private func cellSize() -> CGFloat {
-        let maxColumn = (mazeCells.map { $0.x }.max() ?? 0) + 1
-        return UIScreen.main.bounds.width / CGFloat(maxColumn)
-    }
+//    private func cellSizeValue() -> CGFloat {
+//        let maxColumn = (mazeCells.map { $0.x }.max() ?? 0) + 1
+//        return UIScreen.main.bounds.width / CGFloat(maxColumn)
+//    }
 
     var body: some View {
         VStack {
@@ -205,28 +213,7 @@ struct MazeRenderView: View {
                 }
                 .accessibilityLabel("Toggle navigation controls")
             }
-//            .offset(y: -24) // for iPhone Xr, Rhombic Med and Large
-//            .offset(y: -14) // for iPhone Xr, Rhombic Tiny and Small
-//            .offset(y: -14) // for iPhone 11 Pro, Rhombic Med and Large
-//            .offset(y: -14) // for iPhone 11 Pro Max, Rhombic Tiny and Small
-//            .offset(y: -20) // for iPhone 11 Pro Max, Rhombic Med
-//            .offset(y: -22) // for iPhone 12 Pro Max, Rhombic Med
-//            .offset(y: -28) // for iPhone 11 Pro Max, Rhombic Large
-//            .offset(y: -28) // for iPhone 12 Pro Max, Rhombic Large
-            .offset(y: -7) // for iPhone 16e, Rhombic all sizes
-//            .offset(y: -3) // for iPhone 11 Pro, Rhombic Tiny and Small
-            // Rhombic mazes are simply too large for iPhone SE 2nd gen, will need to reduce number of rows
-//            .offset(y: -9) // for iPhone 11, Rhombic Tiny and Small
-//            .offset(y: -24) // for iPhone 11, Rhombic Med
-//            .offset(y: -26) // for iPhone 11, Rhombic Large
-//            .offset(y: -9) // for iPhone 12, Rhombic Tiny and Small
-//            .offset(y: -9) // for iPhone 12 Pro, Rhombic Tiny and Small
-//            .offset(y: -12) // for iPhone 12, Rhombic Med and Large
-//            .offset(y: -12) // for iPhone 12 Pro, Rhombic Med and Large
-//            .offset(y: -16) // for iPhone 12 Pro Max, Rhombic Tiny and Small
-
-            
-            
+            .offset(x: horizontalAdjustment, y: verticalAdjustment)
 
             ZStack {
                 mazeContent

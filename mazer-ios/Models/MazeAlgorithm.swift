@@ -81,4 +81,34 @@ enum MazeAlgorithm: String, Codable, CaseIterable, Identifiable {
             return "Wilson's"
         }
     }
+    
+    /// Returns the list of available maze algorithms for a given maze type.
+        /// - Parameter mazeType: The `MazeType` for which to filter algorithms.
+        /// - Returns: An array of `MazeAlgorithm` cases compatible with the specified maze type.
+        static func availableAlgorithms(for mazeType: MazeType) -> [MazeAlgorithm] {
+            switch mazeType {
+            case .orthogonal:
+                return allCases
+            case .rhombic:
+                return allCases.filter {
+                    ![
+                        .binaryTree,
+                        .sidewinder,
+                        .ellers,
+                        .growingTreeNewest,
+                        .growingTreeRandom,
+                        .huntAndKill
+                    ].contains($0)
+                }
+            case _:
+                return allCases.filter {
+                    ![
+                        .binaryTree,
+                        .sidewinder,
+                        .ellers,
+                        .recursiveDivision
+                    ].contains($0)
+                }
+            }
+        }
 }

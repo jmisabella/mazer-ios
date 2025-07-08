@@ -53,4 +53,14 @@ enum MazeType: String, Codable, CaseIterable, Identifiable {
         }
     }
     
+    /// Returns the list of available maze types, optionally filtering out rhombic for small screens.
+    /// - Parameter isSmallScreen: If true, excludes rhombic maze type (e.g., for devices with screen height <= 667.0).
+    /// - Returns: An array of available `MazeType` cases.
+    static func availableMazeTypes(isSmallScreen: Bool) -> [MazeType] {
+        if isSmallScreen {
+            return allCases.filter { $0 != .rhombic }
+        }
+        return allCases
+    }
+    
 }

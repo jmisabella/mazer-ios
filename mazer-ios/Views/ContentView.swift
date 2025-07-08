@@ -149,6 +149,7 @@ struct ContentView: View {
             MazeGenerationAnimationView(
                 generationSteps: generationSteps,
                 mazeType: mazeType,
+                cellSize: selectedSize,
                 isAnimatingGeneration: $isAnimatingGeneration,
                 mazeGenerated: $mazeGenerated,
                 showSolution: $showSolution,
@@ -190,6 +191,7 @@ struct ContentView: View {
             defaultBackground: $defaultBackgroundColor,
             mazeCells: mazeCells,
             mazeType: mazeType,
+            cellSize: selectedSize,
             regenerateMaze: { submitMazeRequest() },
             moveAction: { direction in performMove(direction: direction) },
             cellSizes: computeCellSizes(),
