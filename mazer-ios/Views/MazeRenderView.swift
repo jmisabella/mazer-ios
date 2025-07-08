@@ -155,8 +155,6 @@ struct MazeRenderView: View {
                     )
                     .id(mazeID)
                     .offset(x: offsetX, y: offsetY)
-//                    .padding(rhombicPadding(cellSize: cellSize))
-//                    .padding(.top, 7)
                 }
         }
     }

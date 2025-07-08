@@ -35,6 +35,13 @@ struct MazeGenerationAnimationView: View {
             defaultBackground = randomDefaultExcluding(current: defaultBackground, from: defaultBackgroundColors)
         }
     }
+    
+    private var horizontalAdjustment: CGFloat {
+        navigationMenuHorizontalAdjustment(mazeType: mazeType, cellSize: cellSize)
+    }
+    private var verticalAdjustment: CGFloat {
+        navigationMenuVerticalAdjustment(mazeType: mazeType, cellSize: cellSize)
+    }
 
     // Helper to select random palette excluding current
     private func randomPaletteExcluding(current: HeatMapPalette, from allPalettes: [HeatMapPalette]) -> HeatMapPalette {
@@ -129,7 +136,8 @@ struct MazeGenerationAnimationView: View {
                 .disabled(true)
                 .accessibilityLabel("Toggle navigation controls")
             }
-            .padding(.top)
+            .offset(x: horizontalAdjustment, y: verticalAdjustment)
+//            .padding(.top)
 
             if currentStepIndex < generationSteps.count {
                 ZStack {
