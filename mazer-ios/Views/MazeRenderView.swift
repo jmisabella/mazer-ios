@@ -25,6 +25,7 @@ struct MazeRenderView: View {
 
     let mazeCells: [MazeCell]
     let mazeType: MazeType
+    let cellSize: CellSize
     let regenerateMaze: () -> Void
     let moveAction: (String) -> Void
     let cellSizes: (square: CGFloat, octagon: CGFloat)
@@ -36,6 +37,13 @@ struct MazeRenderView: View {
             showSolution = false
             moveAction(dir)
         }
+    }
+    
+    private var horizontalAdjustment: CGFloat {
+        navigationMenuHorizontalAdjustment(mazeType: mazeType, cellSize: cellSize)
+    }
+    private var verticalAdjustment: CGFloat {
+        navigationMenuVerticalAdjustment(mazeType: mazeType, cellSize: cellSize)
     }
 
     var columns: Int {
@@ -65,7 +73,7 @@ struct MazeRenderView: View {
             EightWayControlView(moveAction: performMove)
                 .id(mazeID)
                 .padding(.top, 3)
-        case .rhombille:
+        case .rhombic:
             FourWayDiagonalControlView(moveAction: performMove)
                 .id(mazeID)
                 .padding(.top, 3)
@@ -119,7 +127,8 @@ struct MazeRenderView: View {
                 defaultBackgroundColor: defaultBackground
             )
             .id(mazeID)
-        case .rhombille:
+        
+        case .rhombic:
             GeometryReader { geo in
                     // 1) Recompute the exact size of the diamond grid:
                     let maxX = mazeCells.map { $0.x }.max() ?? 0
@@ -133,9 +142,10 @@ struct MazeRenderView: View {
                     // 2) Compute the leftover space and split in half:
                     let offsetX = (geo.size.width  - gridWidth)  / 2
                     let offsetY = (geo.size.height - gridHeight) / 2
+                
 
-                    // 3) Place your tight‐framed Rhombille view there:
-                    RhombilleMazeView(
+                    // 3) Place your tight‐framed rhombic view there:
+                    RhombicMazeView(
                         selectedPalette: $selectedPalette,
                         cells:           mazeCells,
                         cellSize:        cellSize,
@@ -145,15 +155,14 @@ struct MazeRenderView: View {
                     )
                     .id(mazeID)
                     .offset(x: offsetX, y: offsetY)
-                    .padding(.top, 7)
                 }
         }
     }
 
-    private func cellSize() -> CGFloat {
-        let maxColumn = (mazeCells.map { $0.x }.max() ?? 0) + 1
-        return UIScreen.main.bounds.width / CGFloat(maxColumn)
-    }
+//    private func cellSizeValue() -> CGFloat {
+//        let maxColumn = (mazeCells.map { $0.x }.max() ?? 0) + 1
+//        return UIScreen.main.bounds.width / CGFloat(maxColumn)
+//    }
 
     var body: some View {
         VStack {
@@ -202,8 +211,8 @@ struct MazeRenderView: View {
                 }
                 .accessibilityLabel("Toggle navigation controls")
             }
-            .padding(.top)
-            
+            .offset(x: horizontalAdjustment, y: verticalAdjustment)
+
             ZStack {
                 mazeContent
                     .gesture(
@@ -286,13 +295,150 @@ struct MazeRenderView: View {
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
         }
         .onAppear {
-            // Play sound when MazeRenderView appears
             AudioServicesPlaySystemSound(1104)
         }
     }
+//
+//    var body: some View {
+//        VStack {
+//            HStack(spacing: 16) {
+//                Button(action: {
+//                    cleanupMazeData()
+//                }) {
+//                    Image(systemName: "arrow.uturn.left")
+//                        .font(.title2)
+//                        .foregroundColor(.blue)
+//                }
+//                .accessibilityLabel("Back to maze settings")
+//
+//                Button(action: {
+//                    defaultBackground = defaultBackgroundColors.randomElement()!
+//                    mazeID = UUID()
+//                    regenerateMaze()
+//                }) {
+//                    Image(systemName: "arrow.clockwise")
+//                        .font(.title2)
+//                        .foregroundColor(.purple)
+//                }
+//                .accessibilityLabel("Generate new maze")
+//
+//                Button(action: {
+//                    showSolution.toggle()
+//                }) {
+//                    Image(systemName: showSolution ? "checkmark.circle.fill" : "checkmark.circle")
+//                        .font(.title2)
+//                        .foregroundColor(showSolution ? .green : .gray)
+//                }
+//                .accessibilityLabel("Toggle solution path")
+//
+//                Button(action: toggleHeatMap) {
+//                    Image(systemName: showHeatMap ? "flame.fill" : "flame")
+//                        .font(.title2)
+//                        .foregroundColor(showHeatMap ? .orange : .gray)
+//                }
+//                .accessibilityLabel("Toggle heat map")
+//
+//                Button {
+//                    withAnimation { showControls.toggle() }
+//                } label: {
+//                    Image(systemName: showControls ? "xmark.circle.fill" : "ellipsis.circle")
+//                        .font(.title2)
+//                }
+//                .accessibilityLabel("Toggle navigation controls")
+//            }
+////            .padding(.top)
+//            
+//            ZStack {
+//                mazeContent
+//                    .gesture(
+//                        DragGesture(minimumDistance: 10)
+//                            .onEnded { value in
+//                                let batchSize = 1
+//                                let tx = value.translation.width
+//                                let ty = -value.translation.height
+//                                guard tx != 0 || ty != 0 else { return }
+//                                let angle = atan2(ty, tx)
+//                                var shifted = angle + (.pi / 8)
+//                                if shifted < 0 { shifted += 2 * .pi }
+//                                let sector = Int(floor(shifted / (.pi / 4))) % 8
+//                                let directions = [
+//                                    "Right", "UpperRight", "Up", "UpperLeft",
+//                                    "Left", "LowerLeft", "Down", "LowerRight"
+//                                ]
+//                                let chosen = directions[sector]
+//                                let mag = sqrt(tx*tx + ty*ty)
+//                                let baseDim = computeCellSize(mazeCells: mazeCells, mazeType: mazeType)
+//                                let dim: CGFloat
+//                                switch mazeType {
+//                                case .sigma:
+//                                    dim = baseDim * sqrt(3) // Hex cell center distance
+//                                case .orthogonal:
+//                                    dim = baseDim           // Square cell distance
+//                                case .delta:
+//                                    dim = baseDim / sqrt(3) // Triangular cell center distance
+//                                default:
+//                                    dim = baseDim
+//                                }
+//                                let totalMoves = max(1, Int(round(mag / dim)))
+//                                let movesToPerform = min(totalMoves, batchSize)
+//                                for _ in 0..<movesToPerform {
+//                                    performMove(chosen)
+//                                }
+//                                if totalMoves > batchSize {
+//                                    for i in batchSize..<totalMoves {
+//                                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+//                                            performMove(chosen)
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                    )
+//                
+//                if showControls {
+//                    VStack {
+//                        Spacer()
+//                        directionControlView
+//                            .fixedSize()
+//                            .background(Color(.systemBackground).opacity(0.8))
+//                            .cornerRadius(16)
+//                            .shadow(radius: 4)
+//                            .offset(padOffset)
+//                            .gesture(
+//                                DragGesture()
+//                                    .onChanged { value in
+//                                        padOffset = CGSize(
+//                                            width: dragStartOffset.width + value.translation.width,
+//                                            height: dragStartOffset.height + value.translation.height
+//                                        )
+//                                    }
+//                                    .onEnded { value in
+//                                        let newOffset = CGSize(
+//                                            width: dragStartOffset.width + value.translation.width,
+//                                            height: dragStartOffset.height + value.translation.height
+//                                        )
+//                                        padOffset = clamped(offset: newOffset)
+//                                        dragStartOffset = padOffset
+//                                    }
+//                            )
+//                            .transition(.move(edge: .bottom).combined(with: .opacity))
+//                            .onChange(of: showControls) { newValue in
+//                                guard newValue else { return }
+//                                padOffset = .zero
+//                                dragStartOffset = .zero
+//                            }
+//                    }
+//                }
+//            }
+//            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//            
+//        }
+//        .onAppear {
+//            // Play sound when MazeRenderView appears
+//            AudioServicesPlaySystemSound(1104)
+//        }
+//    }
 
     private func clamped(offset: CGSize) -> CGSize {
         let maxX = UIScreen.main.bounds.width / 2 - 50

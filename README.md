@@ -40,14 +40,12 @@ iOS app using the `mazer` Rust library for generating and solving mazes.
     6. Click `"Add"`.
 
 4. **Set Up the Bridging Header** *(allows Swift to call the `mazer` library's C functions)*
-    1. In Xcode Project Navigator, click on the inner `mazer-ios/` subfolder. Go to **File** → **New** → **File from Template...** → **Header File** *(from `iOS/Source`)*.
-    2. Name it `mazer_bridge.h` (or a similar name) and **make sure the `mazer-ios` Target is checked**.
-    3. Copy the contents of `mazer.h` (in outer-most `mazer-ios/` folder) into `mazer_bridge.h`.
-    4. Click on the root `mazer-ios` folder in Project Navigator.
-    5. Go to the **Build Settings** tab and search for **"Objective-C Bridging Header"**.
-    6. Click on **Objective-C Bridging Header** to expand it.
-    7. Click the + button on Debug and enter `${PROJECT_DIR}/mazer-ios/mazer_bridge.h` for its value.
-    8. Click the + button on Release and enter `${PROJECT_DIR}/mazer-ios/mazer_bridge.h` for its value.
+    1. In Xcode Project Navigator, right-click on the inner `mazer-ios/` subfolder. Select **Add Files to "mazer-ios"...**. Select `mazer.h` (in outer-most `mazer-ios/` folder). 
+    2. Click on the root `mazer-ios` folder in Project Navigator.
+    3. Go to the **Build Settings** tab and search for **"Objective-C Bridging Header"**.
+    4. Click on **Objective-C Bridging Header** to expand it.
+    5. Click the + button on Debug and enter `${PROJECT_DIR}/mazer-ios/mazer.h` for its value.
+    6. Click the + button on Release and enter `${PROJECT_DIR}/mazer-ios/mazer.h` for its value.
 
 5. **Verify FFI Connection**
     1. Add this line to ContentView to define `ffi_integration_test_result`:

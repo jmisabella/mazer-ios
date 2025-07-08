@@ -149,6 +149,7 @@ struct ContentView: View {
             MazeGenerationAnimationView(
                 generationSteps: generationSteps,
                 mazeType: mazeType,
+                cellSize: selectedSize,
                 isAnimatingGeneration: $isAnimatingGeneration,
                 mazeGenerated: $mazeGenerated,
                 showSolution: $showSolution,
@@ -190,6 +191,7 @@ struct ContentView: View {
             defaultBackground: $defaultBackgroundColor,
             mazeCells: mazeCells,
             mazeType: mazeType,
+            cellSize: selectedSize,
             regenerateMaze: { submitMazeRequest() },
             moveAction: { direction in performMove(direction: direction) },
             cellSizes: computeCellSizes(),
@@ -235,7 +237,7 @@ struct ContentView: View {
             case .orthogonal: return 140
             case .sigma: return 280
             case .upsilon: return 0
-            case .rhombille: return 0
+            case .rhombic: return 0
             }
         }()
         let sizeRatio: CGFloat = {
@@ -250,52 +252,7 @@ struct ContentView: View {
     }
     
     private func computeCellSizes() -> (square: CGFloat, octagon: CGFloat) {
-        let adjustment: CGFloat = {
-            switch selectedMazeType {
-            case .delta:
-                switch selectedSize {
-                case .tiny: return 1.1
-                case .small: return 1.46
-                case .medium: return 1.51
-                case .large: return 1.6
-                }
-            case .orthogonal:
-                switch selectedSize {
-                case .tiny: return 1.2
-                case .small: return 1.3
-                case .medium: return 1.65
-                case .large: return 1.8
-                }
-            case .sigma:
-                switch selectedSize {
-                case .tiny: return 0.5
-                case .small: return 0.65
-                case .medium: return 0.75
-                case .large: return 0.8
-                }
-            case .upsilon:
-                switch selectedSize {
-                case .tiny: return 2.3
-                case .small: return 2.4
-                case .medium: return 2.5
-                case .large: return 3.3
-                }
-            case .rhombille:
-                switch selectedSize {
-//                case .tiny: return 2.8
-//                case .small: return 3.2
-//                case .medium: return 4
-//                case .large: return 6
-                case .tiny: return 0.6
-                case .small: return 0.8
-                case .medium: return 1.2
-                case .large: return 1.5
-                }
-            }
-        }()
-        
-        let rawSize = CGFloat(selectedSize.rawValue)
-        let baseCellSize = adjustment * rawSize
+        let baseCellSize = adjustedCellSize(mazeType: selectedMazeType, cellSize: selectedSize)
         
         if selectedMazeType == .upsilon {
             let octagonCellSize = baseCellSize
@@ -364,7 +321,7 @@ struct ContentView: View {
             var finalWidth: Int
             var finalHeight: Int
             
-            if selectedMazeType == .rhombille {
+            if selectedMazeType == .rhombic {
                 let s     = squareCellSize
                 let diag  = s * CGFloat(2).squareRoot()
                 let pitch = diag / 2
@@ -582,7 +539,7 @@ struct ContentView: View {
                 default: return [direction]
                 }
             case .upsilon: return [direction]
-            case .rhombille: return [direction]
+            case .rhombic: return [direction]
             }
         }()
         

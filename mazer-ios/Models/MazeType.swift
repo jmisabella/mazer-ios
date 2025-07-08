@@ -6,7 +6,7 @@ import Foundation
 enum MazeType: String, Codable, CaseIterable, Identifiable {
     case delta = "Delta"
     case orthogonal = "Ortho"
-    case rhombille = "Rhombic"
+    case rhombic = "Rhombic"
     case sigma = "Sigma"
     case upsilon = "Upsilon"
     
@@ -18,7 +18,7 @@ enum MazeType: String, Codable, CaseIterable, Identifiable {
             return "Triangular cells (normal and inverted) creating jagged, complex paths."
         case .orthogonal:
             return "Orthogonal mazes carve a classic square-grid layout with straight paths and right-angle turns."
-        case .rhombille:
+        case .rhombic:
             return "Diamond cells forming a grid with slanted paths."
         case .sigma:
             return "Hexagonal cells forming a web of interconnected paths, promoting more intuitive navigation."
@@ -33,8 +33,8 @@ enum MazeType: String, Codable, CaseIterable, Identifiable {
             return "Delta"
         case .orthogonal:
             return "Orthogonal"
-        case .rhombille:
-            return "Rhombille"
+        case .rhombic:
+            return "Rhombic"
         case .sigma:
             return "Sigma"
         case .upsilon:
@@ -48,9 +48,19 @@ enum MazeType: String, Codable, CaseIterable, Identifiable {
         case "Orthogonal": return .orthogonal
         case "Sigma": return .sigma
         case "Upsilon": return .upsilon
-        case "Rhombille": return .rhombille
+        case "Rhombic": return .rhombic
         default: return nil
         }
+    }
+    
+    /// Returns the list of available maze types, optionally filtering out rhombic for small screens.
+    /// - Parameter isSmallScreen: If true, excludes rhombic maze type (e.g., for devices with screen height <= 667.0).
+    /// - Returns: An array of available `MazeType` cases.
+    static func availableMazeTypes(isSmallScreen: Bool) -> [MazeType] {
+        if isSmallScreen {
+            return allCases.filter { $0 != .rhombic }
+        }
+        return allCases
     }
     
 }

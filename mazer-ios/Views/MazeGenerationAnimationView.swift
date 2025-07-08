@@ -11,6 +11,7 @@ import AudioToolbox
 struct MazeGenerationAnimationView: View {
     let generationSteps: [[MazeCell]]  // Array of maze generation steps
     let mazeType: MazeType             // Type of maze for rendering
+    let cellSize: CellSize
     @Binding var isAnimatingGeneration: Bool  // Controls animation visibility
     @Binding var mazeGenerated: Bool          // Triggers MazeRenderView
     @Binding var showSolution: Bool           // Toggles solution path
@@ -33,6 +34,13 @@ struct MazeGenerationAnimationView: View {
             selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
             defaultBackground = randomDefaultExcluding(current: defaultBackground, from: defaultBackgroundColors)
         }
+    }
+    
+    private var horizontalAdjustment: CGFloat {
+        navigationMenuHorizontalAdjustment(mazeType: mazeType, cellSize: cellSize)
+    }
+    private var verticalAdjustment: CGFloat {
+        navigationMenuVerticalAdjustment(mazeType: mazeType, cellSize: cellSize)
     }
 
     // Helper to select random palette excluding current
@@ -67,7 +75,7 @@ struct MazeGenerationAnimationView: View {
             let octagonCellSize = spacing / (sqrt(2) / 2)
             let squareCellSize = octagonCellSize * (sqrt(2) - 1)
             return (square: squareCellSize, octagon: octagonCellSize)
-        case .rhombille:
+        case .rhombic:
             let cellSize = screenWidth / CGFloat(columns)
             return (square: cellSize, octagon: cellSize) // octagon not used
         }
@@ -128,7 +136,8 @@ struct MazeGenerationAnimationView: View {
                 .disabled(true)
                 .accessibilityLabel("Toggle navigation controls")
             }
-            .padding(.top)
+            .offset(x: horizontalAdjustment, y: verticalAdjustment)
+//            .padding(.top)
 
             if currentStepIndex < generationSteps.count {
                 ZStack {
@@ -178,7 +187,7 @@ struct MazeGenerationAnimationView: View {
                                 defaultBackgroundColor: defaultBackground
                             )
                             .id(currentStepIndex)  // Force re-render on each step
-                        case .rhombille:
+                        case .rhombic:
                             GeometryReader { geo in
                                 let maxX = currentCells.map { $0.x }.max() ?? 0
                                 let maxY = currentCells.map { $0.y }.max() ?? 0
@@ -189,7 +198,7 @@ struct MazeGenerationAnimationView: View {
                                 let gridHeight = diagonal * (CGFloat(maxY) + 1)
                                 let offsetX = (geo.size.width - gridWidth) / 2
                                 let offsetY = (geo.size.height - gridHeight) / 2
-                                RhombilleMazeView(
+                                RhombicMazeView(
                                     selectedPalette: $selectedPalette,
                                     cells: currentCells,
                                     cellSize: cellSize,
