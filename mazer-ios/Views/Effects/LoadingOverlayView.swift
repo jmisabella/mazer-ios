@@ -41,7 +41,7 @@ struct LoadingOverlayView: View {
             .frame(minWidth: 300, maxWidth: 360, minHeight: 300) // Explicit min height to ensure taller box
             .background(
                 Rectangle()
-                    .fill(colorScheme == .dark ? Color.black : Color.offWhite)
+                    .fill(colorScheme == .dark ? Color.black : CellColors.offWhite)
                     .cornerRadius(12)
                     .shadow(radius: 4)
             )

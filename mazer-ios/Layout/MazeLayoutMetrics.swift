@@ -22,6 +22,85 @@ func computeCellSize(mazeCells: [MazeCell], mazeType: MazeType) -> CGFloat {
     }
 }
 
+func adjustedCellSize(mazeType: MazeType, cellSize: CellSize) -> CGFloat {
+    let adjustment: CGFloat = {
+        switch mazeType {
+        case .delta:
+            switch cellSize {
+            case .tiny: return 1.07
+            case .small: return 1.36
+            case .medium: return 1.47
+            case .large: return 1.6
+            }
+        case .orthogonal:
+            switch cellSize {
+            case .tiny: return 1.2
+            case .small: return 1.3
+            case .medium: return 1.65
+            case .large: return 1.8
+            }
+        case .sigma:
+            switch cellSize {
+            case .tiny: return 0.5
+            case .small: return 0.65
+            case .medium: return 0.75
+            case .large: return 0.8
+            }
+        case .upsilon:
+            switch cellSize {
+            case .tiny: return 2.3
+            case .small: return 2.4
+            case .medium: return 2.5
+            case .large: return 3.3
+            }
+        case .rhombic:
+            switch cellSize {
+            case .tiny: return 0.75
+            case .small: return 0.9
+            case .medium: return 1.2
+            case .large: return 1.5
+            }
+        }
+    }()
+    
+    let rawSize = CGFloat(cellSize.rawValue)
+    return adjustment * rawSize
+}
+
+func computeVerticalPadding(mazeType: MazeType, cellSize: CellSize) -> CGFloat {
+    let screenH = UIScreen.main.bounds.height
+    let basePadding: CGFloat = {
+        switch mazeType {
+        case .delta: return 230
+        case .orthogonal: return 140
+        case .sigma: return 280
+        case .upsilon: return 0
+        case .rhombic: return 0
+        }
+    }()
+    let sizeRatio: CGFloat = {
+        switch cellSize {
+        case .tiny: return 0.35
+        case .small: return 0.30
+        case .medium: return 0.25
+        case .large: return 0.20
+        }
+    }()
+    return min(basePadding, screenH * sizeRatio)
+}
+
+func computeCellSizes(mazeType: MazeType, cellSize: CellSize) -> (square: CGFloat, octagon: CGFloat) {
+    let baseCellSize = adjustedCellSize(mazeType: mazeType, cellSize: cellSize)
+    
+    if mazeType == .upsilon {
+        let octagonCellSize = baseCellSize
+        let squareCellSize = octagonCellSize * (sqrt(2) - 1)
+        return (square: squareCellSize, octagon: octagonCellSize)
+    } else {
+        return (square: baseCellSize, octagon: baseCellSize)
+    }
+}
+
 func computeDeltaCellSize(columns: Int, screenWidth: CGFloat = UIScreen.main.bounds.width, screenHeight: CGFloat = UIScreen.main.bounds.height) -> CGFloat {
 //    print("Screen dimensions: \(screenWidth) x \(screenHeight)")
     
@@ -29,7 +108,7 @@ func computeDeltaCellSize(columns: Int, screenWidth: CGFloat = UIScreen.main.bou
     let paddingMap: [(width: CGFloat, height: CGFloat, padding: CGFloat)] = [
         (width: 375.0, height: 667.0, padding: 46.0),  // iPhone SE 2nd gen, SE 3rd gen
         (width: 375.0, height: 812.0, padding: 34.0),  // iPhone Xs, 11 Pro, 12 mini, 13 mini
-        (width: 390.0, height: 844.0, padding: 0),  // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
+        (width: 390.0, height: 844.0, padding: 40.0),  // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
         (width: 393.0, height: 852.0, padding: 43.0),  // iPhone 14 Pro, 15, 15 Pro
         (width: 402.0, height: 875.0, padding: 41.0),  // iPhone 16 Pro
         (width: 414.0, height: 896.0, padding: 45.0),  // iPhone Xr, Xs Max, 11, 11 Pro Max

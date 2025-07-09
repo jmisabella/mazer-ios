@@ -1,10 +1,3 @@
-//
-//  OrthogonalMazeView.swift
-//  mazer-ios
-//
-//  Created by Jeffrey Isabella on 4/3/25.
-//
-
 import SwiftUI
 import AudioToolbox
 import UIKit  // for UIFeedbackGenerator
@@ -54,43 +47,65 @@ struct OrthogonalMazeView: View {
         self.maxDistance = cells.map(\.distance).max() ?? 1
     }
 
-    var body: some View {
-        // Calculate the total width and height of the maze grid
+    // Computed property for total width
+    private var totalWidth: CGFloat {
         let cols = (cells.map(\.x).max() ?? 0) + 1
+        return cellSize * CGFloat(cols)
+    }
+
+    // Computed property for total height
+    private var totalHeight: CGFloat {
         let rows = (cells.map(\.y).max() ?? 0) + 1
-        let totalWidth = cellSize * CGFloat(cols)
-        let totalHeight = cellSize * CGFloat(rows)
+        return cellSize * CGFloat(rows)
+    }
 
-        ZStack {
-            // Background that matches the color scheme
-            (colorScheme == .dark ? Color.black : Color.offWhite)
-                .frame(width: totalWidth, height: totalHeight)
+    // Background view
+    private var background: some View {
+        (colorScheme == .dark ? Color.black : CellColors.offWhite)
+            .frame(width: totalWidth, height: totalHeight)
+    }
 
-            LazyVGrid(columns: columns, spacing: 0) {
-                ForEach(cells.indices, id: \.self) { i in
-                    let cell = cells[i]
-                    let coord = Coordinates(x: cell.x, y: cell.y)
-                    OrthogonalCellView(
-                        cell: cell,
-                        cellSize: cellSize,
-                        showSolution: showSolution,
-                        showHeatMap: showHeatMap,
-                        selectedPalette: selectedPalette,
-                        maxDistance: maxDistance,
-                        isRevealedSolution: revealedSolutionPath.contains(coord),
-                        defaultBackgroundColor: defaultBackgroundColor
-                    )
-                    .frame(width: cellSize, height: cellSize)
-                }
+    // Maze grid view
+    private var mazeGrid: some View {
+        LazyVGrid(columns: columns, spacing: 0) {
+            ForEach(cells.indices, id: \.self) { i in
+                cellView(for: i)
             }
-            .drawingGroup()  // Batch offscreen rendering
         }
-        // Add a black border around the entire maze grid
-        .overlay(
-            Rectangle()
-                .stroke(Color.black, lineWidth: 4)
-                .frame(width: totalWidth, height: totalHeight)
+        .drawingGroup()  // Batch offscreen rendering
+    }
+
+    // Cell view builder
+    @ViewBuilder
+    private func cellView(for index: Int) -> some View {
+        let cell = cells[index]
+        let coord = Coordinates(x: cell.x, y: cell.y)
+        OrthogonalCellView(
+            cell: cell,
+            cellSize: cellSize,
+            showSolution: showSolution,
+            showHeatMap: showHeatMap,
+            selectedPalette: selectedPalette,
+            maxDistance: maxDistance,
+            isRevealedSolution: revealedSolutionPath.contains(coord),
+            defaultBackgroundColor: defaultBackgroundColor
         )
+        .frame(width: cellSize, height: cellSize)
+    }
+
+    // Border overlay view
+    private var borderOverlay: some View {
+        Rectangle()
+            .stroke(Color.black, lineWidth: 4)
+            .frame(width: totalWidth, height: totalHeight)
+    }
+
+    var body: some View {
+        ZStack {
+            background
+            mazeGrid
+        }
+        .overlay(borderOverlay)
         .onChange(of: showSolution) { _, newVal in
             if newVal {
                 animateSolutionPathReveal()
@@ -143,4 +158,3 @@ struct OrthogonalMazeView: View {
         }
     }
 }
-

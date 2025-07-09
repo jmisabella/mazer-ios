@@ -78,7 +78,7 @@ struct MazeRequestView: View {
     
     var body: some View {
         ZStack {
-            (colorScheme == .dark ? Color.black : Color.offWhite)
+            (colorScheme == .dark ? Color.black : CellColors.offWhite)
                 .ignoresSafeArea()
                 .contentShape(Rectangle())
             
@@ -123,7 +123,7 @@ struct MazeRequestView: View {
                 
                 Text("Omni Mazes & Solutions")
                     .font(.system(size: 14 * fontScale))
-                    .foregroundColor(colorScheme == .dark ? Color(hex: "B3B3B3") : Color.lightModeSecondary)
+                    .foregroundColor(colorScheme == .dark ? Color(hex: "B3B3B3") : CellColors.lightModeSecondary)
                     .italic()
             }
             .padding(.bottom, 8)
@@ -136,7 +136,7 @@ struct MazeRequestView: View {
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                .tint(colorScheme == .dark ? Color.lightSkyBlue : Color.orangeRed)
+                .tint(colorScheme == .dark ? CellColors.lightSkyBlue : CellColors.orangeRed)
             }
             
             Picker("Maze Type", selection: $selectedMazeType) {
@@ -146,7 +146,7 @@ struct MazeRequestView: View {
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
-            .tint(colorScheme == .dark ? Color.lightSkyBlue : Color.orangeRed)
+            .tint(colorScheme == .dark ? CellColors.lightSkyBlue : CellColors.orangeRed)
             .onChange(of: selectedMazeType) { _ in
                 if !availableAlgorithms.contains(selectedAlgorithm) {
                     if let newAlgo = availableAlgorithms.randomElement() {
@@ -157,7 +157,7 @@ struct MazeRequestView: View {
             
             Text(selectedMazeType.description)
                 .font(.system(size: 12 * fontScale))
-                .foregroundColor(colorScheme == .dark ? .secondary : Color.lightModeSecondary)
+                .foregroundColor(colorScheme == .dark ? .secondary : CellColors.lightModeSecondary)
                 .padding(.horizontal)
             
             Picker("Algorithm", selection: $selectedAlgorithm) {
@@ -168,23 +168,23 @@ struct MazeRequestView: View {
                 }
             }
             .pickerStyle(MenuPickerStyle())
-            .tint(colorScheme == .dark ? Color.lightSkyBlue : Color.orangeRed)
+            .tint(colorScheme == .dark ? CellColors.lightSkyBlue : CellColors.orangeRed)
             
             Text(selectedAlgorithm.description)
                 .font(.system(size: 12 * fontScale))
-                .foregroundColor(colorScheme == .dark ? .secondary : Color.lightModeSecondary)
+                .foregroundColor(colorScheme == .dark ? .secondary : CellColors.lightModeSecondary)
                 .padding(.horizontal)
             
             if !isIPad {
                 HStack(spacing: 10) {
                     Text("Show Maze Generation")
                         .font(.system(size: 16 * fontScale))
-                        .foregroundColor(colorScheme == .dark ? Color.lightSkyBlue : Color.orangeRed)
+                        .foregroundColor(colorScheme == .dark ? CellColors.lightSkyBlue : CellColors.orangeRed)
 //                        .foregroundColor(colorScheme == .dark ? .white : .black)
                     
                     Toggle("", isOn: $captureSteps)
                         .labelsHidden()
-                        .tint(colorScheme == .dark ? Color.lightSkyBlue : Color.orangeRed)
+                        .tint(colorScheme == .dark ? CellColors.lightSkyBlue : CellColors.orangeRed)
                         .disabled(selectedSize != .large)
                 }
                 .padding(.horizontal)
@@ -203,7 +203,7 @@ struct MazeRequestView: View {
                     .fontWeight(.bold)
             }
             .buttonStyle(.borderedProminent)
-            .tint(colorScheme == .dark ? .secondary : Color.orangeRed)
+            .tint(colorScheme == .dark ? .secondary : CellColors.orangeRed)
             .padding()
 
             if let errorMessage = errorMessage {

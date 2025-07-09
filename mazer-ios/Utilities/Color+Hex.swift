@@ -27,20 +27,6 @@ extension Color {
         self.init(red: r, green: g, blue: b)
     }
 
-    static let solutionHighlight = Color(hex: "#04D9FF") // radiant neon blue!
-    
-    static let offWhite = Color(hex: "FFF5E6")
-    
-    static let orangeRed = Color(hex: "F66E6E")
-    
-    static let lightGrey = Color(hex: "333333")
-    
-    static let softOrange = Color(hex: "FFCCBC")
-    
-    static let lightSkyBlue = Color(hex: "ADD8E6")
-    
-    static let lightModeSecondary = Color(hex: "333333")
-
 }
 
 extension String {
