@@ -36,11 +36,11 @@ struct DeltaMazeView: View {
     private let haptic = UIImpactFeedbackGenerator(style: .light)
 
     private static let defaultCellBackgroundColors: [Color] = [
-        defaultCellBackgroundGray,
-        defaultCellBackgroundMint,
-        defaultCellBackgroundPeach,
-        defaultCellBackgroundLavender,
-        defaultCellBackgroundBlue
+        CellColors.defaultCellBackgroundGray,
+        CellColors.defaultCellBackgroundMint,
+        CellColors.defaultCellBackgroundPeach,
+        CellColors.defaultCellBackgroundLavender,
+        CellColors.defaultCellBackgroundBlue
     ]
 
     @State private var currentDefaultBackgroundColor: Color

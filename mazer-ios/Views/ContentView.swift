@@ -27,7 +27,7 @@ struct ContentView: View {
     @State private var selectedPalette: HeatMapPalette = allPalettes.randomElement()!
     @State private var mazeID = UUID()
     @State private var currentGrid: OpaquePointer? = nil
-    @State private var defaultBackgroundColor: Color = defaultBackgroundColors.randomElement()!
+    @State private var defaultBackgroundColor: Color = CellColors.defaultBackgroundColors.randomElement()!
     @State private var didInitialRandomization = false
     @State private var hasPlayedSoundThisSession: Bool = false
     @State private var captureSteps: Bool = false
@@ -137,7 +137,7 @@ struct ContentView: View {
     }
     
     private var backgroundView: some View {
-        (colorScheme == .dark ? Color.black : Color.offWhite)
+        (colorScheme == .dark ? Color.black : CellColors.offWhite)
             .ignoresSafeArea()
     }
     
@@ -161,7 +161,7 @@ struct ContentView: View {
                 currentGrid: currentGrid,
                 regenerateMaze: { submitMazeRequest() },
                 cleanupMazeData: cleanupMazeData,
-                cellSizes: computeCellSizes(),
+                cellSizes: computeCellSizes(mazeType: selectedMazeType, cellSize: selectedSize),
             )
         } else if mazeGenerated {
             mazeRenderView()
@@ -194,19 +194,19 @@ struct ContentView: View {
             cellSize: selectedSize,
             regenerateMaze: { submitMazeRequest() },
             moveAction: { direction in performMove(direction: direction) },
-            cellSizes: computeCellSizes(),
+            cellSizes: computeCellSizes(mazeType: selectedMazeType, cellSize: selectedSize),
             toggleHeatMap: {
                 showHeatMap.toggle()
                 if showHeatMap {
                     selectedPalette = randomPaletteExcluding(current: selectedPalette, from: allPalettes)
-                    defaultBackgroundColor = randomDefaultExcluding(current: defaultBackgroundColor, from: defaultBackgroundColors)
+                    defaultBackgroundColor = randomDefaultExcluding(current: defaultBackgroundColor, from: CellColors.defaultBackgroundColors)
                 }
             },
             cleanupMazeData: cleanupMazeData
         )
 //        .environment(\.colorScheme, .dark)
 //        .padding(.vertical, 100)
-        .padding(.vertical, computeVerticalPadding())
+        .padding(.vertical, computeVerticalPadding(mazeType: selectedMazeType, cellSize: selectedSize))
         .grayscale(showCelebration ? 1 : 0)
         .animation(.easeInOut(duration: 0.65), value: showCelebration)
     }
@@ -229,40 +229,6 @@ struct ContentView: View {
         return availablePalettes.randomElement() ?? current
     }
     
-    private func computeVerticalPadding() -> CGFloat {
-        let screenH = UIScreen.main.bounds.height
-        let basePadding: CGFloat = {
-            switch selectedMazeType {
-            case .delta: return 230
-            case .orthogonal: return 140
-            case .sigma: return 280
-            case .upsilon: return 0
-            case .rhombic: return 0
-            }
-        }()
-        let sizeRatio: CGFloat = {
-            switch selectedSize {
-            case .tiny: return 0.35
-            case .small: return 0.30
-            case .medium: return 0.25
-            case .large: return 0.20
-            }
-        }()
-        return min(basePadding, screenH * sizeRatio)
-    }
-    
-    private func computeCellSizes() -> (square: CGFloat, octagon: CGFloat) {
-        let baseCellSize = adjustedCellSize(mazeType: selectedMazeType, cellSize: selectedSize)
-        
-        if selectedMazeType == .upsilon {
-            let octagonCellSize = baseCellSize
-            let squareCellSize = octagonCellSize * (sqrt(2) - 1)
-            return (square: squareCellSize, octagon: octagonCellSize)
-        } else {
-            return (square: baseCellSize, octagon: baseCellSize)
-        }
-    }
-    
     private func submitMazeRequest() {
         DispatchQueue.main.async {
             self.isLoading = true
@@ -282,7 +248,7 @@ struct ContentView: View {
                 self.currentGrid = nil
             }
             
-            let (squareCellSize, octagonCellSize) = computeCellSizes()
+            let (squareCellSize, octagonCellSize) = computeCellSizes(mazeType: selectedMazeType, cellSize: selectedSize)
             
             let screenH = UIScreen.main.bounds.height
             let isSmallDevice = screenH <= 667
@@ -461,7 +427,7 @@ struct ContentView: View {
                     self.isLoading = false
                     self.errorMessage = nil
                     self.selectedPalette = self.randomPaletteExcluding(current: self.selectedPalette, from: allPalettes)
-                    self.defaultBackgroundColor = self.randomDefaultExcluding(current: defaultBackgroundColor, from: defaultBackgroundColors)
+                    self.defaultBackgroundColor = self.randomDefaultExcluding(current: defaultBackgroundColor, from: CellColors.defaultBackgroundColors)
                 }
                 
             case .failure(let error):

@@ -177,7 +177,7 @@ struct MazeRenderView: View {
                 .accessibilityLabel("Back to maze settings")
 
                 Button(action: {
-                    defaultBackground = defaultBackgroundColors.randomElement()!
+                    defaultBackground = CellColors.defaultBackgroundColors.randomElement()!
                     mazeID = UUID()
                     regenerateMaze()
                 }) {
