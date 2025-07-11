@@ -1,10 +1,3 @@
-//
-//  HexMazeView.swift
-//  mazer-ios
-//
-//  Created by Jeffrey Isabella on 4/22/25.
-//
-
 import SwiftUI
 import AudioToolbox
 import UIKit  // for UIFeedbackGenerator
@@ -27,6 +20,7 @@ struct SigmaMazeView: View {
     let showSolution: Bool
     let showHeatMap: Bool
     let defaultBackgroundColor: Color
+    let optionalColor: Color?
 
     @State private var revealedSolutionPath: Set<Coordinates> = []
     @State private var pendingWorkItems: [DispatchWorkItem] = []
@@ -38,6 +32,7 @@ struct SigmaMazeView: View {
     private let totalHeight: CGFloat
     private let maxDistance: Int
     private let cellMap: [Coordinates: MazeCell]
+    private let totalRows: Int
 
     init(
         selectedPalette: Binding<HeatMapPalette>,
@@ -45,7 +40,8 @@ struct SigmaMazeView: View {
         cellSize: CGFloat,
         showSolution: Bool,
         showHeatMap: Bool,
-        defaultBackgroundColor: Color
+        defaultBackgroundColor: Color,
+        optionalColor: Color?
     ) {
         self._selectedPalette = selectedPalette
         self.cells = cells
@@ -53,6 +49,7 @@ struct SigmaMazeView: View {
         self.showSolution = showSolution
         self.showHeatMap = showHeatMap
         self.defaultBackgroundColor = defaultBackgroundColor
+        self.optionalColor = optionalColor
 
         self.cols = (cells.map(\.x).max() ?? 0) + 1
         self.rows = (cells.map(\.y).max() ?? 0) + 1
@@ -60,6 +57,7 @@ struct SigmaMazeView: View {
         self.totalWidth = cellSize * (1.5 * CGFloat(cols) + 0.5)
         self.totalHeight = hexHeight * (CGFloat(rows) + 0.5)
         self.maxDistance = cells.map(\.distance).max() ?? 1
+        self.totalRows = rows
 
         var m = [Coordinates: MazeCell]()
         for c in cells { m[Coordinates(x: c.x, y: c.y)] = c }
@@ -87,7 +85,9 @@ struct SigmaMazeView: View {
                     selectedPalette: selectedPalette,
                     maxDistance: maxDistance,
                     isRevealedSolution: revealedSolutionPath.contains(Coordinates(x: cell.x, y: cell.y)),
-                    defaultBackgroundColor: defaultBackgroundColor
+                    defaultBackgroundColor: defaultBackgroundColor,
+                    optionalColor: optionalColor,
+                    totalRows: totalRows
                 )
                 .position(position(for: cell))
             }

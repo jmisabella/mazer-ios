@@ -8,6 +8,7 @@ struct UpsilonCellView: View {
     let squareSize: CGFloat
     let isSquare: Bool
     let fillColor: Color
+    let optionalColor: Color?
     let defaultBackgroundColor: Color = .gray
 
     private let overlap: CGFloat = 1.0 / UIScreen.main.scale

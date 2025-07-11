@@ -1,10 +1,3 @@
-////
-////  RhombicCellView.swift
-////  mazer-ios
-////
-////  Created by Jeffrey Isabella on 6/22/25.
-////
-
 import SwiftUI
 
 struct RhombicCellView: View {
@@ -16,6 +9,8 @@ struct RhombicCellView: View {
     let maxDistance: Int
     let isRevealedSolution: Bool
     let defaultBackgroundColor: Color
+    let optionalColor: Color?
+    let totalRows: Int
 
     private static let unitPoints: [CGPoint] = [
         .init(x: 0.5, y: 0),    // top
@@ -68,7 +63,9 @@ struct RhombicCellView: View {
                     maxDistance: maxDistance,
                     selectedPalette: selectedPalette,
                     isRevealedSolution: isRevealedSolution,
-                    defaultBackground: defaultBackgroundColor
+                    defaultBackground: defaultBackgroundColor,
+                    totalRows: totalRows,
+                    optionalColor: optionalColor
                 )
             )
 

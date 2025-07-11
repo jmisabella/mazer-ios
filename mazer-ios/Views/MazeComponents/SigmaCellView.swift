@@ -1,9 +1,3 @@
-//
-//  HexCellView.swift
-//  mazer-ios
-//
-//  Created by Jeffrey Isabella on 4/22/25.
-//
 
 import SwiftUI
 
@@ -16,6 +10,8 @@ struct SigmaCellView: View {
     let maxDistance: Int
     let isRevealedSolution: Bool
     let defaultBackgroundColor: Color
+    let optionalColor: Color?
+    let totalRows: Int
 
     @Environment(\.cellMap) private var cellMap: [Coordinates: MazeCell]
 
@@ -47,11 +43,6 @@ struct SigmaCellView: View {
         }
     }
 
-//    private var strokeWidth: CGFloat {
-//        let raw = cellSize / 6
-//        let scale = UIScreen.main.scale
-//        return (raw * scale).rounded() / scale
-//    }
     private var strokeWidth: CGFloat {
         wallStrokeWidth(for: .sigma, cellSize: cellSize)
     }
@@ -64,7 +55,9 @@ struct SigmaCellView: View {
             maxDistance: maxDistance,
             selectedPalette: selectedPalette,
             isRevealedSolution: isRevealedSolution,
-            defaultBackground: defaultBackgroundColor
+            defaultBackground: defaultBackgroundColor,
+            totalRows: totalRows,
+            optionalColor: optionalColor
         )
     }
 

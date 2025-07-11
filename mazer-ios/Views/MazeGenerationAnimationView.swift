@@ -24,6 +24,7 @@ struct MazeGenerationAnimationView: View {
     let regenerateMaze: () -> Void            // Closure to regenerate maze
     let cleanupMazeData: () -> Void           // Closure to clean up memory
     let cellSizes: (square: CGFloat, octagon: CGFloat)
+    let optionalColor: Color?
 
     @State private var currentStepIndex = 0   // Tracks current animation step
 
@@ -53,6 +54,89 @@ struct MazeGenerationAnimationView: View {
     private func randomDefaultExcluding(current: Color, from all: [Color]) -> Color {
         let others = all.filter { $0 != current }
         return others.randomElement() ?? current
+    }
+    
+    @ViewBuilder
+    func makeMazeView(currentCells: [MazeCell]) -> some View {
+        switch mazeType {
+        case .orthogonal:
+            OrthogonalMazeView(
+                selectedPalette: .constant(wetAsphaltPalette),
+                cells: currentCells,
+                showSolution: showSolution,
+                showHeatMap: showHeatMap,
+                defaultBackgroundColor: defaultBackground,
+                optionalColor: optionalColor
+            )
+            .id(currentStepIndex)
+            
+        case .delta:
+            DeltaMazeView(
+                cells: currentCells,
+                cellSize: computeCellSize(mazeCells: generationSteps[0], mazeType: mazeType, cellSize: cellSize),
+                showSolution: showSolution,
+                showHeatMap: showHeatMap,
+                selectedPalette: selectedPalette, // Adjust to $selectedPalette if Binding is required
+                maxDistance: currentCells.map(\.distance).max() ?? 1,
+                defaultBackgroundColor: defaultBackground,
+                optionalColor: optionalColor
+            )
+            .id(currentStepIndex)
+            
+        case .sigma:
+            SigmaMazeView(
+                selectedPalette: .constant(wetAsphaltPalette),
+                cells: currentCells,
+                cellSize: computeCellSize(mazeCells: generationSteps[0], mazeType: mazeType, cellSize: cellSize),
+                showSolution: showSolution,
+                showHeatMap: showHeatMap,
+                defaultBackgroundColor: defaultBackground,
+                optionalColor: optionalColor
+            )
+            .id(currentStepIndex)
+            
+        case .upsilon:
+            UpsilonMazeView(
+                cells: currentCells,
+                octagonSize: cellSizes.octagon,
+                squareSize: cellSizes.square,
+                showSolution: showSolution,
+                showHeatMap: showHeatMap,
+                selectedPalette: selectedPalette, // Adjust to $selectedPalette if Binding is required
+                defaultBackgroundColor: defaultBackground,
+                optionalColor: optionalColor
+            )
+            .id(currentStepIndex)
+            
+        case .rhombic:
+            GeometryReader { geo in
+                let maxX = currentCells.map { $0.x }.max() ?? 0
+                let maxY = currentCells.map { $0.y }.max() ?? 0
+                let sqrt2 = CGFloat(2).squareRoot()
+                let cellSize = computeCellSize(mazeCells: generationSteps[0], mazeType: mazeType, cellSize: self.cellSize)
+                let diagonal = cellSize * sqrt2
+                let gridWidth = diagonal * (CGFloat(maxX) + 1)
+                let gridHeight = diagonal * (CGFloat(maxY) + 1)
+                let offsetX = (geo.size.width - gridWidth) / 2
+                let offsetY = (geo.size.height - gridHeight) / 2
+                
+                RhombicMazeView(
+                    selectedPalette: $selectedPalette,
+                    cells: currentCells,
+                    cellSize: cellSize,
+                    showSolution: showSolution,
+                    showHeatMap: showHeatMap,
+                    defaultBackgroundColor: defaultBackground,
+                    optionalColor: optionalColor
+                )
+                .id(currentStepIndex)
+                .offset(x: offsetX, y: offsetY)
+                .padding(.top, 7)
+            }
+            
+        default:
+            Text("Unsupported maze type")
+        }
     }
 
     var body: some View {
@@ -117,76 +201,7 @@ struct MazeGenerationAnimationView: View {
                 ZStack {
                     let currentCells = generationSteps[currentStepIndex]
                     
-                    Group {
-                        switch mazeType {
-                        case .orthogonal:
-                            OrthogonalMazeView(
-                                selectedPalette: .constant(wetAsphaltPalette),
-                                cells: currentCells,
-                                showSolution: showSolution,
-                                showHeatMap: showHeatMap,
-                                defaultBackgroundColor: defaultBackground
-                            )
-                            .id(currentStepIndex)  // Force re-render on each step
-                        case .delta:
-                            DeltaMazeView(
-                                cells: currentCells,
-                                cellSize: computeCellSize(mazeCells: generationSteps[0], mazeType: mazeType),
-                                showSolution: showSolution,
-                                showHeatMap: showHeatMap,
-                                selectedPalette: selectedPalette,
-                                maxDistance: currentCells.map(\.distance).max() ?? 1,
-                                defaultBackgroundColor: defaultBackground
-                            )
-                            .id(currentStepIndex)  // Force re-render on each step
-                        case .sigma:
-                            SigmaMazeView(
-                                selectedPalette: .constant(wetAsphaltPalette),
-                                cells: currentCells,
-                                cellSize: computeCellSize(mazeCells: generationSteps[0], mazeType: mazeType),
-                                showSolution: showSolution,
-                                showHeatMap: showHeatMap,
-                                defaultBackgroundColor: defaultBackground
-                            )
-                            .id(currentStepIndex)  // Force re-render on each step
-                        case .upsilon:
-                            UpsilonMazeView(
-                                cells: currentCells,
-                                octagonSize: cellSizes.octagon,
-                                squareSize: cellSizes.square,
-                                showSolution: showSolution,
-                                showHeatMap: showHeatMap,
-                                selectedPalette: selectedPalette,
-                                defaultBackgroundColor: defaultBackground
-                            )
-                            .id(currentStepIndex)  // Force re-render on each step
-                        case .rhombic:
-                            GeometryReader { geo in
-                                let maxX = currentCells.map { $0.x }.max() ?? 0
-                                let maxY = currentCells.map { $0.y }.max() ?? 0
-                                let sqrt2 = CGFloat(2).squareRoot()
-                                let cellSize = computeCellSize(mazeCells: generationSteps[0], mazeType: mazeType)
-                                let diagonal = cellSize * sqrt2
-                                let gridWidth = diagonal * (CGFloat(maxX) + 1)
-                                let gridHeight = diagonal * (CGFloat(maxY) + 1)
-                                let offsetX = (geo.size.width - gridWidth) / 2
-                                let offsetY = (geo.size.height - gridHeight) / 2
-                                RhombicMazeView(
-                                    selectedPalette: $selectedPalette,
-                                    cells: currentCells,
-                                    cellSize: cellSize,
-                                    showSolution: showSolution,
-                                    showHeatMap: showHeatMap,
-                                    defaultBackgroundColor: defaultBackground
-                                )
-                                .id(currentStepIndex)
-                                .offset(x: offsetX, y: offsetY)
-                                .padding(.top, 7)
-                            }
-                        default:
-                            Text("Unsupported maze type")
-                        }
-                    }
+                    makeMazeView(currentCells: currentCells)
 
                     // Cancel button in upper right
                     VStack {

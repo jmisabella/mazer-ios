@@ -1,10 +1,3 @@
-//
-//  OrthoSquareMazeView.swift
-//  mazer-ios
-//
-//  Created by Jeffrey Isabella on 6/19/25.
-//
-
 import SwiftUI
 import AudioToolbox
 import UIKit
@@ -24,6 +17,7 @@ struct UpsilonMazeView: View {
     let showHeatMap: Bool
     let selectedPalette: HeatMapPalette
     let defaultBackgroundColor: Color
+    let optionalColor: Color?
 
     @State private var revealedSolutionPath: Set<Coordinates> = []
     @State private var pendingWorkItems: [DispatchWorkItem] = []
@@ -35,6 +29,10 @@ struct UpsilonMazeView: View {
 
     private var columns: Int {
         (cells.map(\.x).max() ?? 0) + 1
+    }
+
+    private var rows: Int {
+        (cells.map(\.y).max() ?? 0) + 1
     }
 
     private var horizontalSpacing: CGFloat {
@@ -52,37 +50,41 @@ struct UpsilonMazeView: View {
     private let haptic = UIImpactFeedbackGenerator(style: .light)
 
     var body: some View {
-            LazyVGrid(columns: gridColumns, spacing: verticalSpacing) {
-                ForEach(cells, id: \.self) { cell in
-                    cellView(for: cell)
-                }
+        let totalRows = rows
+        LazyVGrid(columns: gridColumns, spacing: verticalSpacing) {
+            ForEach(cells, id: \.self) { cell in
+                cellView(for: cell, totalRows: totalRows)
             }
-            .padding(.top, 10)
-            .onChange(of: showSolution, perform: handleShowSolutionChange)
-            .onChange(of: cells, perform: { _ in cancelAndReset() })
-            .onAppear(perform: handleAppear)
         }
+        .padding(.top, 10)
+        .onChange(of: showSolution, perform: handleShowSolutionChange)
+        .onChange(of: cells, perform: { _ in cancelAndReset() })
+        .onAppear(perform: handleAppear)
+    }
 
-        private func cellView(for cell: MazeCell) -> some View {
-            let coord = Coordinates(x: cell.x, y: cell.y)
-            let fillColor = cellBackgroundColor(
-                for: cell,
-                showSolution: showSolution,
-                showHeatMap: showHeatMap,
-                maxDistance: maxDistance,
-                selectedPalette: selectedPalette,
-                isRevealedSolution: revealedSolutionPath.contains(coord),
-                defaultBackground: defaultBackgroundColor
-            )
-            return UpsilonCellView(
-                cell: cell,
-                gridCellSize: octagonSize,
-                squareSize: squareSize,
-                isSquare: cell.isSquare,
-                fillColor: fillColor
-            )
-            .frame(width: octagonSize, height: octagonSize * (sqrt(2) / 2))
-        }
+    private func cellView(for cell: MazeCell, totalRows: Int) -> some View {
+        let coord = Coordinates(x: cell.x, y: cell.y)
+        let fillColor = cellBackgroundColor(
+            for: cell,
+            showSolution: showSolution,
+            showHeatMap: showHeatMap,
+            maxDistance: maxDistance,
+            selectedPalette: selectedPalette,
+            isRevealedSolution: revealedSolutionPath.contains(coord),
+            defaultBackground: defaultBackgroundColor,
+            totalRows: totalRows,
+            optionalColor: optionalColor
+        )
+        return UpsilonCellView(
+            cell: cell,
+            gridCellSize: octagonSize,
+            squareSize: squareSize,
+            isSquare: cell.isSquare,
+            fillColor: fillColor,
+            optionalColor: optionalColor
+        )
+        .frame(width: octagonSize, height: octagonSize * (sqrt(2) / 2))
+    }
 
     private func handleShowSolutionChange(newValue: Bool) {
         if newValue {

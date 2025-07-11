@@ -1,10 +1,3 @@
-//
-//  DeltaCellView.swift
-//  mazer-ios
-//
-//  Created by Jeffrey Isabella on 4/13/25.
-//
-
 import SwiftUI
 
 struct DeltaCellView: View {
@@ -16,6 +9,8 @@ struct DeltaCellView: View {
     let maxDistance: Int
     let isRevealedSolution: Bool
     let defaultBackgroundColor: Color
+    let optionalColor: Color?
+    let totalRows: Int
 
     /// Snap a value to the nearest device-pixel.
     private func snap(_ x: CGFloat) -> CGFloat {
@@ -57,16 +52,10 @@ struct DeltaCellView: View {
         let newEnd = CGPoint(x: end.x + extensionVector.dx, y: end.y + extensionVector.dy)
         return (newStart, newEnd)
     }
-    
-//    private var strokeWidth: CGFloat {
-//        let raw = cellSize / 9
-//        let scale = UIScreen.main.scale
-//        return (raw * scale).rounded() / scale
-//    }
+
     private var strokeWidth: CGFloat {
         wallStrokeWidth(for: .delta, cellSize: cellSize)
     }
-        
 
     var body: some View {
         ZStack {
@@ -85,7 +74,9 @@ struct DeltaCellView: View {
                 maxDistance: maxDistance,
                 selectedPalette: selectedPalette,
                 isRevealedSolution: isRevealedSolution,
-                defaultBackground: defaultBackgroundColor
+                defaultBackground: defaultBackgroundColor,
+                totalRows: totalRows,
+                optionalColor: optionalColor
             ))
 
             // 2) Stroke the walls with extended lines

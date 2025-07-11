@@ -1,41 +1,25 @@
-//
-//  OrthogonalCellView.swift
-//  mazer-ios
-//
-//  Created by Jeffrey Isabella on 4/3/25.
-//
-
 import SwiftUI
-
 
 struct OrthogonalCellView: View {
     let cell: MazeCell
-    //    let size: CGFloat
     let cellSize: CGFloat
-    
-    // pass through all the flags needed by `cellBackgroundColor`
     let showSolution: Bool
     let showHeatMap: Bool
     let selectedPalette: HeatMapPalette
     let maxDistance: Int
     let isRevealedSolution: Bool
     let defaultBackgroundColor: Color
-    
-    //    let strokeWidth: CGFloat
-    
+    let optionalColor: Color?
+    let totalRows: Int
+
     /// Snap any value to the pixel grid
-      private func snap(_ x: CGFloat) -> CGFloat {
+    private func snap(_ x: CGFloat) -> CGFloat {
         let s = UIScreen.main.scale
         return (x * s).rounded() / s
-      }
+    }
     
     private var size: CGFloat { snap(cellSize) }
     
-//    private var strokeWidth: CGFloat {
-//        let raw = cellSize / 5.5
-//        let scale = UIScreen.main.scale
-//        return (raw * scale).rounded() / scale
-//    }
     private var strokeWidth: CGFloat {
         wallStrokeWidth(for: .orthogonal, cellSize: cellSize)
     }
@@ -51,7 +35,9 @@ struct OrthogonalCellView: View {
                     maxDistance: maxDistance,
                     selectedPalette: selectedPalette,
                     isRevealedSolution: isRevealedSolution,
-                    defaultBackground: defaultBackgroundColor
+                    defaultBackground: defaultBackgroundColor,
+                    totalRows: totalRows,
+                    optionalColor: optionalColor
                 )
             )
             .frame(width: size, height: size)
@@ -93,6 +79,4 @@ struct OrthogonalCellView: View {
             )
             .frame(width: size, height: size)
     }
-    
 }
-

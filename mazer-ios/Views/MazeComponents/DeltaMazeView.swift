@@ -1,10 +1,3 @@
-//
-//  DeltaMazeView.swift
-//  mazer-ios
-//
-//  Created by Jeffrey Isabella on 4/13/25.
-//
-
 import SwiftUI
 import UIKit
 import AudioToolbox
@@ -17,11 +10,13 @@ struct DeltaMazeView: View {
     let selectedPalette: HeatMapPalette
     let maxDistance: Int
     let defaultBackgroundColor: Color
+    let optionalColor: Color?
+    private let totalRows: Int
     
     @State private var pendingWorkItems: [DispatchWorkItem] = []
     @State private var revealedSolutionPath: Set<Coordinates> = []
 
-    @Environment(\.colorScheme) private var colorScheme // Access the color scheme
+    @Environment(\.colorScheme) private var colorScheme
 
     var columns: Int { (cells.map { $0.x }.max() ?? 0) + 1 }
     var rows: Int { (cells.map { $0.y }.max() ?? 0) + 1 }
@@ -56,8 +51,9 @@ struct DeltaMazeView: View {
          showHeatMap: Bool,
          selectedPalette: HeatMapPalette,
          maxDistance: Int,
-         defaultBackgroundColor: Color)
-    {
+         defaultBackgroundColor: Color,
+         optionalColor: Color?
+    ) {
         self.cells = cells
         self.cellSize = cellSize
         self.showSolution = showSolution
@@ -65,6 +61,7 @@ struct DeltaMazeView: View {
         self.selectedPalette = selectedPalette
         self.maxDistance = maxDistance
         self.defaultBackgroundColor = defaultBackgroundColor
+        self.optionalColor = optionalColor
         
         self.cellMap = Dictionary(
             uniqueKeysWithValues: cells.map { cell in
@@ -72,14 +69,15 @@ struct DeltaMazeView: View {
             }
         )
         
+        self.totalRows = (cells.map { $0.y }.max() ?? 0) + 1
+        
         _currentDefaultBackgroundColor = State(initialValue:
                     Self.defaultCellBackgroundColors.randomElement()!
                 )
     }
 
     var body: some View {
-        // Calculate the total width and height of the maze grid
-        let totalWidth = snap(cellSize * CGFloat(columns) * 0.75) // Adjusted for overlap
+        let totalWidth = snap(cellSize * CGFloat(columns) * 0.75)
         let totalHeight = snap(triangleHeight * CGFloat(rows))
 
         ZStack {
@@ -111,12 +109,6 @@ struct DeltaMazeView: View {
             .drawingGroup(opaque: false)
             .clipped(antialiased: false)
         }
-        // Add a black border around the entire maze grid
-//        .overlay(
-//            Rectangle()
-//                .stroke(Color.black, lineWidth: 6) // Consistent black border
-//                .frame(width: totalWidth, height: totalHeight)
-//        )
         .onChange(of: showSolution) { _, newValue in
             if newValue {
                 animateSolutionPathReveal()
@@ -157,7 +149,9 @@ struct DeltaMazeView: View {
                 selectedPalette: selectedPalette,
                 maxDistance: maxDistance,
                 isRevealedSolution: revealedSolutionPath.contains(Coordinates(x: col, y: row)),
-                defaultBackgroundColor: defaultBackgroundColor
+                defaultBackgroundColor: defaultBackgroundColor,
+                optionalColor: optionalColor,
+                totalRows: totalRows
             )
             .background(Color.clear)
         } else {
@@ -198,7 +192,7 @@ struct DeltaMazeView: View {
 
     func defaultCellColor(for cell: MazeCell) -> Color {
         if cell.isStart { return .blue }
-        if cell.isGoal  { return .red  }
+        if cell.isGoal { return .red }
         if cell.onSolutionPath { return .pink }
         return currentDefaultBackgroundColor
     }

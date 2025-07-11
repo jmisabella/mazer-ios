@@ -35,6 +35,7 @@ struct ContentView: View {
     @State private var isAnimatingGeneration: Bool = false
     @State private var generationSteps: [[MazeCell]] = []
     @State private var isLoading: Bool = false
+    @State private var optionalColor: Color? = nil
     
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.colorScheme) private var colorScheme
@@ -162,6 +163,7 @@ struct ContentView: View {
                 regenerateMaze: { submitMazeRequest() },
                 cleanupMazeData: cleanupMazeData,
                 cellSizes: computeCellSizes(mazeType: selectedMazeType, cellSize: selectedSize),
+                optionalColor: optionalColor,
             )
         } else if mazeGenerated {
             mazeRenderView()
@@ -192,6 +194,7 @@ struct ContentView: View {
             mazeCells: mazeCells,
             mazeType: mazeType,
             cellSize: selectedSize,
+            optionalColor: optionalColor,
             regenerateMaze: { submitMazeRequest() },
             moveAction: { direction in performMove(direction: direction) },
             cellSizes: computeCellSizes(mazeType: selectedMazeType, cellSize: selectedSize),
@@ -424,6 +427,12 @@ struct ContentView: View {
                     } else {
                         self.mazeGenerated = true
                     }
+                    let defaultColors: [Color] = [.pink, .gray, .yellow, .blue, .purple]
+                    var optionalColor: Color? = nil
+                    if Bool.random() {
+                        optionalColor = defaultColors.randomElement()
+                    }
+                    self.optionalColor = optionalColor
                     self.isLoading = false
                     self.errorMessage = nil
                     self.selectedPalette = self.randomPaletteExcluding(current: self.selectedPalette, from: allPalettes)
