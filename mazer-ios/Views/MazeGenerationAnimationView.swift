@@ -131,7 +131,7 @@ struct MazeGenerationAnimationView: View {
                         case .delta:
                             DeltaMazeView(
                                 cells: currentCells,
-                                cellSize: computeCellSize(mazeCells: generationSteps[0], mazeType: mazeType),
+                                cellSize: computeCellSize(mazeCells: generationSteps[0], mazeType: mazeType, cellSize: cellSize),
                                 showSolution: showSolution,
                                 showHeatMap: showHeatMap,
                                 selectedPalette: selectedPalette,
@@ -143,7 +143,7 @@ struct MazeGenerationAnimationView: View {
                             SigmaMazeView(
                                 selectedPalette: .constant(wetAsphaltPalette),
                                 cells: currentCells,
-                                cellSize: computeCellSize(mazeCells: generationSteps[0], mazeType: mazeType),
+                                cellSize: computeCellSize(mazeCells: generationSteps[0], mazeType: mazeType, cellSize: cellSize),
                                 showSolution: showSolution,
                                 showHeatMap: showHeatMap,
                                 defaultBackgroundColor: defaultBackground
@@ -165,7 +165,7 @@ struct MazeGenerationAnimationView: View {
                                 let maxX = currentCells.map { $0.x }.max() ?? 0
                                 let maxY = currentCells.map { $0.y }.max() ?? 0
                                 let sqrt2 = CGFloat(2).squareRoot()
-                                let cellSize = computeCellSize(mazeCells: generationSteps[0], mazeType: mazeType)
+                                let cellSize = computeCellSize(mazeCells: generationSteps[0], mazeType: mazeType, cellSize: cellSize)
                                 let diagonal = cellSize * sqrt2
                                 let gridWidth = diagonal * (CGFloat(maxX) + 1)
                                 let gridHeight = diagonal * (CGFloat(maxY) + 1)

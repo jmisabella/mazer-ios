@@ -3222,12 +3222,12 @@
 				00DD0DC52DAC9CFE00C20B2E /* DeltaMazeView.swift */,
 				00C341E82D9F50BE0077691B /* OrthogonalCellView.swift */,
 				00C341E62D9F505D0077691B /* OrthogonalMazeView.swift */,
+				00218D8E2E08DAD700582D3B /* RhombicCellView.swift */,
+				00218D902E08DAFB00582D3B /* RhombicMazeView.swift */,
 				00AE05F42DB877770068C880 /* SigmaCellView.swift */,
 				00AE05F62DB8778C0068C880 /* SigmaMazeView.swift */,
 				00218D7A2E04E42C00582D3B /* UpsilonCellView.swift */,
 				00218D7C2E04E44C00582D3B /* UpsilonMazeView.swift */,
-				00218D8E2E08DAD700582D3B /* RhombicCellView.swift */,
-				00218D902E08DAFB00582D3B /* RhombicMazeView.swift */,
 			);
 			path = MazeComponents;
 			sourceTree = "<group>";

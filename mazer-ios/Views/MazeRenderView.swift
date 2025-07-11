@@ -83,7 +83,7 @@ struct MazeRenderView: View {
 
     @ViewBuilder
     var mazeContent: some View {
-        let cellSize = computeCellSize(mazeCells: mazeCells, mazeType: mazeType)
+        let cellSize = computeCellSize(mazeCells: mazeCells, mazeType: mazeType, cellSize: cellSize)
         switch mazeType {
         case .orthogonal:
             OrthogonalMazeView(
@@ -232,7 +232,7 @@ struct MazeRenderView: View {
                                 ]
                                 let chosen = directions[sector]
                                 let mag = sqrt(tx*tx + ty*ty)
-                                let baseDim = computeCellSize(mazeCells: mazeCells, mazeType: mazeType)
+                                let baseDim = computeCellSize(mazeCells: mazeCells, mazeType: mazeType, cellSize: cellSize)
                                 let dim: CGFloat
                                 switch mazeType {
                                 case .sigma:
@@ -369,7 +369,7 @@ struct MazeRenderView: View {
 //                                ]
 //                                let chosen = directions[sector]
 //                                let mag = sqrt(tx*tx + ty*ty)
-//                                let baseDim = computeCellSize(mazeCells: mazeCells, mazeType: mazeType)
+//                                let baseDim = computeCellSize(mazeCells: mazeCells, mazeType: mazeType, cellSize: cellSize))
 //                                let dim: CGFloat
 //                                switch mazeType {
 //                                case .sigma:
