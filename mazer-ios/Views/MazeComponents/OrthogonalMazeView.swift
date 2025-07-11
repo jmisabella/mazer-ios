@@ -8,6 +8,7 @@ struct OrthogonalMazeView: View {
     let showSolution: Bool
     let showHeatMap: Bool
     let defaultBackgroundColor: Color
+    let optionalColor: Color?
 
     @State private var revealedSolutionPath: Set<Coordinates> = []
     @State private var pendingWorkItems: [DispatchWorkItem] = []
@@ -26,13 +27,15 @@ struct OrthogonalMazeView: View {
         cells: [MazeCell],
         showSolution: Bool,
         showHeatMap: Bool,
-        defaultBackgroundColor: Color
+        defaultBackgroundColor: Color,
+        optionalColor: Color?
     ) {
         self._selectedPalette = selectedPalette
         self.cells = cells
         self.showSolution = showSolution
         self.showHeatMap = showHeatMap
         self.defaultBackgroundColor = defaultBackgroundColor
+        self.optionalColor = optionalColor
 
         let cols = (cells.map(\.x).max() ?? 0) + 1
         self.columns = Array(
@@ -91,6 +94,7 @@ struct OrthogonalMazeView: View {
             maxDistance: maxDistance,
             isRevealedSolution: revealedSolutionPath.contains(coord),
             defaultBackgroundColor: defaultBackgroundColor,
+            optionalColor: optionalColor,
             totalRows: totalRows
         )
         .frame(width: cellSize, height: cellSize)

@@ -9,6 +9,7 @@ struct RhombicMazeView: View {
     let showSolution: Bool
     let showHeatMap: Bool
     let defaultBackgroundColor: Color
+    let optionalColor: Color?
 
     @State private var revealedSolutionPath: Set<Coordinates> = []
     @State private var pendingWorkItems: [DispatchWorkItem] = []
@@ -41,7 +42,8 @@ struct RhombicMazeView: View {
         cellSize: CGFloat,
         showSolution: Bool,
         showHeatMap: Bool,
-        defaultBackgroundColor: Color
+        defaultBackgroundColor: Color,
+        optionalColor: Color?
     ) {
         self._selectedPalette = selectedPalette
         self.cells = cells
@@ -49,6 +51,7 @@ struct RhombicMazeView: View {
         self.showSolution = showSolution
         self.showHeatMap = showHeatMap
         self.defaultBackgroundColor = defaultBackgroundColor
+        self.optionalColor = optionalColor
         self.maxDistance = cells.map(\.distance).max() ?? 1
     }
 
@@ -84,6 +87,7 @@ struct RhombicMazeView: View {
             maxDistance: maxDistance,
             isRevealedSolution: revealedSolutionPath.contains(.init(x: cell.x, y: cell.y)),
             defaultBackgroundColor: defaultBackgroundColor,
+            optionalColor: optionalColor,
             totalRows: totalRows
         )
         .offset(
