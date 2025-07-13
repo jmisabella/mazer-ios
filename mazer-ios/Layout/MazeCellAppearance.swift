@@ -183,5 +183,8 @@ struct CellColors {
     static let lightGrey = Color(hex: "333333")
     static let softOrange = Color(hex: "FFCCBC")
     static let lightSkyBlue = Color(hex: "ADD8E6")
+    static let lighterSky = Color(hex: "D6ECF3")
+    static let grayerSky = Color(hex: "DAEDEF")
+//    static let grayerSky = Color(hex: "AFDAE7")
     static let lightModeSecondary = Color(hex: "333333")
 }
