@@ -239,10 +239,6 @@ struct MazeGenerationAnimationView: View {
                                 // Change to a new random default background color
                                 defaultBackground = CellColors.defaultBackgroundColors.filter { $0 != defaultBackground }.randomElement() ?? defaultBackground
                             
-//                                // Clear the generation steps from memory
-//                                if let gridPtr = currentGrid {
-//                                    mazer_clear_generation_steps(gridPtr)
-//                                }
                             }
                         }
                     }

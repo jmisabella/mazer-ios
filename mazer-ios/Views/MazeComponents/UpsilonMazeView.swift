@@ -57,8 +57,12 @@ struct UpsilonMazeView: View {
             }
         }
         .padding(.top, 10)
-        .onChange(of: showSolution, perform: handleShowSolutionChange)
-        .onChange(of: cells, perform: { _ in cancelAndReset() })
+        .onChange(of: showSolution) {
+            handleShowSolutionChange(newValue: showSolution)
+        }
+        .onChange(of: cells) {
+            cancelAndReset()
+        }
         .onAppear(perform: handleAppear)
     }
 

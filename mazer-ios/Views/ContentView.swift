@@ -110,20 +110,20 @@ struct ContentView: View {
                 print("FFI integration test failed ❌")
             }
         }
-        .onChange(of: selectedSize) { newValue in
-            UserDefaults.standard.set(newValue.rawValue, forKey: "lastSize")
+        .onChange(of: selectedSize) {
+            UserDefaults.standard.set(selectedSize.rawValue, forKey: "lastSize")
         }
-        .onChange(of: selectedMazeType) { newValue in
-            UserDefaults.standard.set(newValue.rawValue, forKey: "lastMazeType")
+        .onChange(of: selectedMazeType) {
+            UserDefaults.standard.set(selectedMazeType.rawValue, forKey: "lastMazeType")
         }
-        .onChange(of: selectedAlgorithm) { newValue in
-            UserDefaults.standard.set(newValue.rawValue, forKey: "lastAlgorithm")
+        .onChange(of: selectedAlgorithm) {
+            UserDefaults.standard.set(selectedAlgorithm.rawValue, forKey: "lastAlgorithm")
         }
-        .onChange(of: showHeatMap) { newValue in
-            UserDefaults.standard.set(newValue, forKey: "showHeatMap")
+        .onChange(of: showHeatMap) {
+            UserDefaults.standard.set(showHeatMap, forKey: "showHeatMap")
         }
-        .onChange(of: scenePhase) { newPhase in
-            switch newPhase {
+        .onChange(of: scenePhase) {
+            switch scenePhase {
             case .active:
                 if !hasPlayedSoundThisSession {
                     AudioServicesPlaySystemSound(1104)
@@ -485,10 +485,6 @@ struct ContentView: View {
         }
         
         guard let gridPtr = currentGrid else { return }
-        guard let directionCString = direction.cString(using: .utf8) else {
-            errorMessage = "Encoding error for direction."
-            return
-        }
         
         haptic.prepare()
         

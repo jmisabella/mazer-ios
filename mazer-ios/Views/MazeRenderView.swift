@@ -293,8 +293,8 @@ struct MazeRenderView: View {
                                     }
                             )
                             .transition(.move(edge: .bottom).combined(with: .opacity))
-                            .onChange(of: showControls) { newValue in
-                                guard newValue else { return }
+                            .onChange(of: showControls) {
+                                guard showControls else { return }
                                 padOffset = .zero
                                 dragStartOffset = .zero
                             }
