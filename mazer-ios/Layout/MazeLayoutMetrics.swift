@@ -107,138 +107,96 @@ func computeCellSizes(mazeType: MazeType, cellSize: CellSize) -> (square: CGFloa
     }
 }
 
-//func computeDeltaCellSize(cellSize: CellSize, columns: Int, screenWidth: CGFloat = UIScreen.main.bounds.width, screenHeight: CGFloat = UIScreen.main.bounds.height) -> CGFloat {
-////    print("Screen dimensions: \(screenWidth) x \(screenHeight)")
-//    
-//    // Define a map of (screenWidth, screenHeight, cellSize) to padding
-//    let paddingMap: [(width: CGFloat, height: CGFloat, cellSize: CellSize, padding: CGFloat)] = [
-//        // iPhone SE 2nd gen, SE 3rd gen
-//        (width: 375.0, height: 667.0, cellSize: .tiny, padding: 46.0),
-//        // iPhone SE 2nd gen, SE 3rd gen
-//        (width: 375.0, height: 667.0, cellSize: .small, padding: 46.0),
-//        // iPhone SE 2nd gen, SE 3rd gen
-//        (width: 375.0, height: 667.0, cellSize: .medium, padding: 46.0),
-//        // iPhone SE 2nd gen, SE 3rd gen
-//        (width: 375.0, height: 667.0, cellSize: .large, padding: 46.0),
-//        // iPhone Xs, 11 Pro, 12 mini, 13 mini
-//        (width: 375.0, height: 812.0, cellSize: .tiny, padding: 34.0),
-//        // iPhone Xs, 11 Pro, 12 mini, 13 mini
-//        (width: 375.0, height: 812.0, cellSize: .small, padding: 34.0),
-//        // iPhone Xs, 11 Pro, 12 mini, 13 mini
-//        (width: 375.0, height: 812.0, cellSize: .medium, padding: 34.0),
-//        // iPhone Xs, 11 Pro, 12 mini, 13 mini
-//        (width: 375.0, height: 812.0, cellSize: .large, padding: 34.0),
-//        // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
-//        (width: 390.0, height: 844.0, cellSize: .tiny, padding: 40.0),
-//        // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
-//        (width: 390.0, height: 844.0, cellSize: .small, padding: 40.0),
-//        // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
-//        (width: 390.0, height: 844.0, cellSize: .medium, padding: 40.0),
-//        // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
-//        (width: 390.0, height: 844.0, cellSize: .large, padding: 40.0),
-//        // iPhone 14 Pro, 15, 15 Pro
-//        (width: 393.0, height: 852.0, cellSize: .tiny, padding: 43.0),
-//        // iPhone 14 Pro, 15, 15 Pro
-//        (width: 393.0, height: 852.0, cellSize: .small, padding: 43.0),
-//        // iPhone 14 Pro, 15, 15 Pro
-//        (width: 393.0, height: 852.0, cellSize: .medium, padding: 43.0),
-//        // iPhone 14 Pro, 15, 15 Pro
-//        (width: 393.0, height: 852.0, cellSize: .large, padding: 43.0),
-//        // iPhone 16 Pro
-//        (width: 402.0, height: 875.0, cellSize: .tiny, padding: 41.0),
-//        // iPhone 16 Pro
-//        (width: 402.0, height: 875.0, cellSize: .small, padding: 41.0),
-//        // iPhone 16 Pro
-//        (width: 402.0, height: 875.0, cellSize: .medium, padding: 41.0),
-//        // iPhone 16 Pro
-//        (width: 402.0, height: 875.0, cellSize: .large, padding: 41.0),
-//        // iPhone Xr, Xs Max, 11, 11 Pro Max
-//        (width: 414.0, height: 896.0, cellSize: .tiny, padding: 45.0),
-//        // iPhone Xr, Xs Max, 11, 11 Pro Max
-//        (width: 414.0, height: 896.0, cellSize: .small, padding: 45.0),
-//        // iPhone Xr, Xs Max, 11, 11 Pro Max
-//        (width: 414.0, height: 896.0, cellSize: .medium, padding: 45.0),
-//        // iPhone Xr, Xs Max, 11, 11 Pro Max
-//        (width: 414.0, height: 896.0, cellSize: .large, padding: 45.0),
-//        // iPhone 12 Pro Max, 13 Pro Max
-//        (width: 428.0, height: 926.0, cellSize: .tiny, padding: 51.0),
-//        // iPhone 12 Pro Max, 13 Pro Max
-//        (width: 428.0, height: 926.0, cellSize: .small, padding: 51.0),
-//        // iPhone 12 Pro Max, 13 Pro Max
-//        (width: 428.0, height: 926.0, cellSize: .medium, padding: 51.0),
-//        // iPhone 12 Pro Max, 13 Pro Max
-//        (width: 428.0, height: 926.0, cellSize: .large, padding: 51.0),
-//        // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
-//        (width: 430.0, height: 932.0, cellSize: .tiny, padding: 52.0),
-//        // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
-//        (width: 430.0, height: 932.0, cellSize: .small, padding: 52.0),
-//        // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
-//        (width: 430.0, height: 932.0, cellSize: .medium, padding: 52.0),
-//        // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
-//        (width: 430.0, height: 932.0, cellSize: .large, padding: 52.0),
-//        // iPhone 16 Pro Max
-//        (width: 440.0, height: 956.0, cellSize: .tiny, padding: 53.0),
-//        // iPhone 16 Pro Max
-//        (width: 440.0, height: 956.0, cellSize: .small, padding: 53.0),
-//        // iPhone 16 Pro Max
-//        (width: 440.0, height: 956.0, cellSize: .medium, padding: 53.0),
-//        // iPhone 16 Pro Max
-//        (width: 440.0, height: 956.0, cellSize: .large, padding: 53.0),
-//    ]
-//    
-//    // Find the closest match based on width and height for the given cellSize
-//    let filteredMap = paddingMap.filter { $0.cellSize == cellSize }
-//    var closestPadding: CGFloat = 0.0
-//    var minDistance: CGFloat = .greatestFiniteMagnitude
-//    
-//    for entry in filteredMap {
-//        let distance = abs(screenWidth - entry.width) + abs(screenHeight - entry.height)
-//        if distance < minDistance {
-//            minDistance = distance
-//            closestPadding = entry.padding
-//        }
-//    }
-//    
-//    // Determine padding: use closest match if within threshold, else fallback
-//    let padding: CGFloat
-//    if minDistance < 50.0 {
-//        padding = closestPadding
-//    } else {
-//        // Fallback: 10% of screen width
-//        padding = screenWidth * 0.1
-//    }
-//    
-//    // Clamp padding to ensure maze is playable
-//    let minPadding: CGFloat = 20.0              // Minimum to keep maze visible
-//    let maxPadding: CGFloat = screenWidth * 0.15 // Maximum to avoid overcrowding
-//    let clampedPadding = max(minPadding, min(padding, maxPadding))
-//    
-//    // Calculate available width and return cell size
-//    let available = screenWidth - clampedPadding * 2
-//    return available * 2 / (CGFloat(columns) + 1)
-//}
-
 func computeDeltaCellSize(cellSize: CellSize, columns: Int, screenWidth: CGFloat = UIScreen.main.bounds.width, screenHeight: CGFloat = UIScreen.main.bounds.height) -> CGFloat {
 //    print("Screen dimensions: \(screenWidth) x \(screenHeight)")
     
-    // Define a map of (screenWidth, screenHeight) toPillars to padding
-    let paddingMap: [(width: CGFloat, height: CGFloat, padding: CGFloat)] = [
-        (width: 375.0, height: 667.0, padding: 46.0),  // iPhone SE 2nd gen, SE 3rd gen
-        (width: 375.0, height: 812.0, padding: 34.0),  // iPhone Xs, 11 Pro, 12 mini, 13 mini
-        (width: 390.0, height: 844.0, padding: 40.0),  // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
-        (width: 393.0, height: 852.0, padding: 43.0),  // iPhone 14 Pro, 15, 15 Pro
-        (width: 402.0, height: 875.0, padding: 41.0),  // iPhone 16 Pro
-        (width: 414.0, height: 896.0, padding: 45.0),  // iPhone Xr, Xs Max, 11, 11 Pro Max
-        (width: 428.0, height: 926.0, padding: 51.0),  // iPhone 12 Pro Max, 13 Pro Max
-        (width: 430.0, height: 932.0, padding: 52.0),  // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
-        (width: 440.0, height: 956.0, padding: 53.0),  // iPhone 16 Pro Max
+    // Define a map of (screenWidth, screenHeight, cellSize) to padding
+    let paddingMap: [(width: CGFloat, height: CGFloat, cellSize: CellSize, padding: CGFloat)] = [
+        // iPhone SE 2nd gen, SE 3rd gen
+        (width: 375.0, height: 667.0, cellSize: .tiny, padding: 46.0),
+        // iPhone SE 2nd gen, SE 3rd gen
+        (width: 375.0, height: 667.0, cellSize: .small, padding: 46.0),
+        // iPhone SE 2nd gen, SE 3rd gen
+        (width: 375.0, height: 667.0, cellSize: .medium, padding: 46.0),
+        // iPhone SE 2nd gen, SE 3rd gen
+        (width: 375.0, height: 667.0, cellSize: .large, padding: 46.0),
+        // iPhone Xs, 11 Pro, 12 mini, 13 mini
+        (width: 375.0, height: 812.0, cellSize: .tiny, padding: 39.0),
+        // iPhone Xs, 11 Pro, 12 mini, 13 mini
+        (width: 375.0, height: 812.0, cellSize: .small, padding: 38.0),
+        // iPhone Xs, 11 Pro, 12 mini, 13 mini
+        (width: 375.0, height: 812.0, cellSize: .medium, padding: 34.0),
+        // iPhone Xs, 11 Pro, 12 mini, 13 mini
+        (width: 375.0, height: 812.0, cellSize: .large, padding: 34.0),
+        // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
+//        (width: 390.0, height: 844.0, cellSize: .tiny, padding: 40.0),
+        (width: 390.0, height: 844.0, cellSize: .tiny, padding: 41.5),
+        // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
+//        (width: 390.0, height: 844.0, cellSize: .small, padding: 40.0),
+        (width: 390.0, height: 844.0, cellSize: .small, padding: 43.5),
+        // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
+        (width: 390.0, height: 844.0, cellSize: .medium, padding: 40.0),
+        // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
+        (width: 390.0, height: 844.0, cellSize: .large, padding: 40.0),
+        // iPhone 14 Pro, 15, 15 Pro
+        (width: 393.0, height: 852.0, cellSize: .tiny, padding: 43.0),
+        // iPhone 14 Pro, 15, 15 Pro
+        (width: 393.0, height: 852.0, cellSize: .small, padding: 43.0),
+        // iPhone 14 Pro, 15, 15 Pro
+        (width: 393.0, height: 852.0, cellSize: .medium, padding: 43.0),
+        // iPhone 14 Pro, 15, 15 Pro
+        (width: 393.0, height: 852.0, cellSize: .large, padding: 43.0),
+        // iPhone 16 Pro
+        (width: 402.0, height: 875.0, cellSize: .tiny, padding: 41.0),
+        // iPhone 16 Pro
+        (width: 402.0, height: 875.0, cellSize: .small, padding: 41.0),
+        // iPhone 16 Pro
+        (width: 402.0, height: 875.0, cellSize: .medium, padding: 41.0),
+        // iPhone 16 Pro
+        (width: 402.0, height: 875.0, cellSize: .large, padding: 41.0),
+        // iPhone Xr, Xs Max, 11, 11 Pro Max
+//        (width: 414.0, height: 896.0, cellSize: .tiny, padding: 45.0),
+        (width: 414.0, height: 896.0, cellSize: .tiny, padding: 50.0),
+        // iPhone Xr, Xs Max, 11, 11 Pro Max
+//        (width: 414.0, height: 896.0, cellSize: .small, padding: 45.0),
+        (width: 414.0, height: 896.0, cellSize: .small, padding: 48.0),
+        // iPhone Xr, Xs Max, 11, 11 Pro Max
+//        (width: 414.0, height: 896.0, cellSize: .medium, padding: 45.0),
+        (width: 414.0, height: 896.0, cellSize: .medium, padding: 48.5),
+        // iPhone Xr, Xs Max, 11, 11 Pro Max
+        (width: 414.0, height: 896.0, cellSize: .large, padding: 45.0),
+        // iPhone 12 Pro Max, 13 Pro Max
+        (width: 428.0, height: 926.0, cellSize: .tiny, padding: 51.0),
+        // iPhone 12 Pro Max, 13 Pro Max
+        (width: 428.0, height: 926.0, cellSize: .small, padding: 51.0),
+        // iPhone 12 Pro Max, 13 Pro Max
+        (width: 428.0, height: 926.0, cellSize: .medium, padding: 51.0),
+        // iPhone 12 Pro Max, 13 Pro Max
+        (width: 428.0, height: 926.0, cellSize: .large, padding: 51.0),
+        // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
+        (width: 430.0, height: 932.0, cellSize: .tiny, padding: 52.0),
+        // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
+        (width: 430.0, height: 932.0, cellSize: .small, padding: 52.0),
+        // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
+        (width: 430.0, height: 932.0, cellSize: .medium, padding: 52.0),
+        // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
+        (width: 430.0, height: 932.0, cellSize: .large, padding: 52.0),
+        // iPhone 16 Pro Max
+        (width: 440.0, height: 956.0, cellSize: .tiny, padding: 53.0),
+        // iPhone 16 Pro Max
+        (width: 440.0, height: 956.0, cellSize: .small, padding: 53.0),
+        // iPhone 16 Pro Max
+        (width: 440.0, height: 956.0, cellSize: .medium, padding: 53.0),
+        // iPhone 16 Pro Max
+        (width: 440.0, height: 956.0, cellSize: .large, padding: 53.0),
     ]
     
-    // Find the closest match based on width and height
+    // Find the closest match based on width and height for the given cellSize
+    let filteredMap = paddingMap.filter { $0.cellSize == cellSize }
     var closestPadding: CGFloat = 0.0
     var minDistance: CGFloat = .greatestFiniteMagnitude
     
-    for entry in paddingMap {
+    for entry in filteredMap {
         let distance = abs(screenWidth - entry.width) + abs(screenHeight - entry.height)
         if distance < minDistance {
             minDistance = distance

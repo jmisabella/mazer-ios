@@ -84,15 +84,15 @@ struct MazeRequestView: View {
             
             mainContent
         }
-        .onChange(of: selectedMazeType) { _ in
+        .onChange(of: selectedMazeType) {
             if !availableAlgorithms.contains(selectedAlgorithm) {
                 if let newAlgo = availableAlgorithms.randomElement() {
                     selectedAlgorithm = newAlgo
                 }
             }
         }
-        .onChange(of: selectedSize) { newSize in
-            if newSize != .large {
+        .onChange(of: selectedSize) {
+            if selectedSize != .large {
                 captureSteps = false
             }
         }
@@ -115,7 +115,7 @@ struct MazeRequestView: View {
     private var mainContent: some View {
         VStack(spacing: 20) {
             VStack(spacing: 4) {
-                Image(colorScheme == .dark ? "LogoLight" : "LogoDark")
+                Image(colorScheme == .dark ? "LogoGradient" : "LogoDark")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 60 * fontScale, height: 60 * fontScale)
@@ -147,7 +147,7 @@ struct MazeRequestView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             .tint(colorScheme == .dark ? CellColors.lightSkyBlue : CellColors.orangeRed)
-            .onChange(of: selectedMazeType) { _ in
+            .onChange(of: selectedMazeType) {
                 if !availableAlgorithms.contains(selectedAlgorithm) {
                     if let newAlgo = availableAlgorithms.randomElement() {
                         selectedAlgorithm = newAlgo
@@ -203,7 +203,8 @@ struct MazeRequestView: View {
                     .fontWeight(.bold)
             }
             .buttonStyle(.borderedProminent)
-            .tint(colorScheme == .dark ? .secondary : CellColors.orangeRed)
+//            .tint(colorScheme == .dark ? .secondary : CellColors.orangeRed)
+            .tint(colorScheme == .dark ? CellColors.lighterSky : CellColors.orangeRed)
             .padding()
 
             if let errorMessage = errorMessage {
