@@ -58,7 +58,13 @@ func adjustedCellSize(mazeType: MazeType, cellSize: CellSize) -> CGFloat {
             case .tiny: return 0.75
             case .small: return 0.9
             case .medium: return 1.2
-            case .large: return 1.5
+            case .large:
+                let screenSize = UIScreen.main.bounds.size
+                if screenSize.width == 440.0 && screenSize.height == 956.0 {
+                    return 1.4
+                } else {
+                    return 1.5
+                }
             }
         }
     }()
