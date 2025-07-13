@@ -427,7 +427,7 @@ struct ContentView: View {
                     } else {
                         self.mazeGenerated = true
                     }
-                    let defaultColors: [Color] = [.pink, .gray, .yellow, .blue, .purple]
+                    let defaultColors: [Color] = [.pink, .gray, .yellow, .blue, .purple, .orange]
                     var optionalColor: Color? = nil
                     if Bool.random() {
                         optionalColor = defaultColors.randomElement()
