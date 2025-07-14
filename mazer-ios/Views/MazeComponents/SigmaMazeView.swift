@@ -98,7 +98,7 @@ struct SigmaMazeView: View {
         .onChange(of: showSolution) { _, new in
             new ? animateSolutionPathReveal() : cancelAndReset()
         }
-        .onChange(of: cells) { _ in cancelAndReset() }
+        .onChange(of: cells) { cancelAndReset() }
         .onAppear { if showSolution { animateSolutionPathReveal() } }
     }
 

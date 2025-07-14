@@ -121,7 +121,8 @@ func cellBackgroundColor(
         if totalRows > 1 {
             let startColor: Color
             if let color = optionalColor {
-                startColor = interpolateColor(from: defaultBackground, to: color, factor: 0.2)
+//                startColor = interpolateColor(from: defaultBackground, to: color, factor: 0.2)
+                startColor = interpolateColor(from: defaultBackground, to: color, factor: 0.24)
             } else {
                 startColor = interpolateColor(from: defaultBackground, to: .white, factor: 0.9)
             }

@@ -62,6 +62,8 @@ func adjustedCellSize(mazeType: MazeType, cellSize: CellSize) -> CGFloat {
                 let screenSize = UIScreen.main.bounds.size
                 if screenSize.width == 440.0 && screenSize.height == 956.0 {
                     return 1.4
+                } else if screenSize.width == 414.0 && screenSize.height == 896.0 {
+                    return 1.4
                 } else {
                     return 1.5
                 }
@@ -121,18 +123,16 @@ func computeDeltaCellSize(cellSize: CellSize, columns: Int, screenWidth: CGFloat
         // iPhone SE 2nd gen, SE 3rd gen
         (width: 375.0, height: 667.0, cellSize: .large, padding: 46.0),
         // iPhone Xs, 11 Pro, 12 mini, 13 mini
-        (width: 375.0, height: 812.0, cellSize: .tiny, padding: 39.0),
+        (width: 375.0, height: 812.0, cellSize: .tiny, padding: 42.0),
         // iPhone Xs, 11 Pro, 12 mini, 13 mini
-        (width: 375.0, height: 812.0, cellSize: .small, padding: 38.0),
+        (width: 375.0, height: 812.0, cellSize: .small, padding: 40.0),
         // iPhone Xs, 11 Pro, 12 mini, 13 mini
-        (width: 375.0, height: 812.0, cellSize: .medium, padding: 34.0),
+        (width: 375.0, height: 812.0, cellSize: .medium, padding: 36.0),
         // iPhone Xs, 11 Pro, 12 mini, 13 mini
-        (width: 375.0, height: 812.0, cellSize: .large, padding: 34.0),
+        (width: 375.0, height: 812.0, cellSize: .large, padding: 36.0),
         // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
-//        (width: 390.0, height: 844.0, cellSize: .tiny, padding: 40.0),
         (width: 390.0, height: 844.0, cellSize: .tiny, padding: 41.5),
         // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
-//        (width: 390.0, height: 844.0, cellSize: .small, padding: 40.0),
         (width: 390.0, height: 844.0, cellSize: .small, padding: 43.5),
         // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
         (width: 390.0, height: 844.0, cellSize: .medium, padding: 40.0),
@@ -147,21 +147,18 @@ func computeDeltaCellSize(cellSize: CellSize, columns: Int, screenWidth: CGFloat
         // iPhone 14 Pro, 15, 15 Pro
         (width: 393.0, height: 852.0, cellSize: .large, padding: 43.0),
         // iPhone 16 Pro
-        (width: 402.0, height: 875.0, cellSize: .tiny, padding: 41.0),
+        (width: 402.0, height: 874.0, cellSize: .tiny, padding: 45.5),
         // iPhone 16 Pro
-        (width: 402.0, height: 875.0, cellSize: .small, padding: 41.0),
+        (width: 402.0, height: 874.0, cellSize: .small, padding: 47.5),
         // iPhone 16 Pro
-        (width: 402.0, height: 875.0, cellSize: .medium, padding: 41.0),
+        (width: 402.0, height: 874.0, cellSize: .medium, padding: 45.0),
         // iPhone 16 Pro
-        (width: 402.0, height: 875.0, cellSize: .large, padding: 41.0),
+        (width: 402.0, height: 874.0, cellSize: .large, padding: 48.0),
         // iPhone Xr, Xs Max, 11, 11 Pro Max
-//        (width: 414.0, height: 896.0, cellSize: .tiny, padding: 45.0),
         (width: 414.0, height: 896.0, cellSize: .tiny, padding: 50.0),
         // iPhone Xr, Xs Max, 11, 11 Pro Max
-//        (width: 414.0, height: 896.0, cellSize: .small, padding: 45.0),
         (width: 414.0, height: 896.0, cellSize: .small, padding: 48.0),
         // iPhone Xr, Xs Max, 11, 11 Pro Max
-//        (width: 414.0, height: 896.0, cellSize: .medium, padding: 45.0),
         (width: 414.0, height: 896.0, cellSize: .medium, padding: 48.5),
         // iPhone Xr, Xs Max, 11, 11 Pro Max
         (width: 414.0, height: 896.0, cellSize: .large, padding: 45.0),
@@ -174,21 +171,21 @@ func computeDeltaCellSize(cellSize: CellSize, columns: Int, screenWidth: CGFloat
         // iPhone 12 Pro Max, 13 Pro Max
         (width: 428.0, height: 926.0, cellSize: .large, padding: 51.0),
         // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
-        (width: 430.0, height: 932.0, cellSize: .tiny, padding: 52.0),
+        (width: 430.0, height: 932.0, cellSize: .tiny, padding: 54.0),
         // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
         (width: 430.0, height: 932.0, cellSize: .small, padding: 52.0),
         // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
-        (width: 430.0, height: 932.0, cellSize: .medium, padding: 52.0),
+        (width: 430.0, height: 932.0, cellSize: .medium, padding: 54.0),
         // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
         (width: 430.0, height: 932.0, cellSize: .large, padding: 52.0),
         // iPhone 16 Pro Max
-        (width: 440.0, height: 956.0, cellSize: .tiny, padding: 53.0),
+        (width: 440.0, height: 956.0, cellSize: .tiny, padding: 59.0),
         // iPhone 16 Pro Max
-        (width: 440.0, height: 956.0, cellSize: .small, padding: 53.0),
+        (width: 440.0, height: 956.0, cellSize: .small, padding: 59.0),
         // iPhone 16 Pro Max
         (width: 440.0, height: 956.0, cellSize: .medium, padding: 53.0),
         // iPhone 16 Pro Max
-        (width: 440.0, height: 956.0, cellSize: .large, padding: 53.0),
+        (width: 440.0, height: 956.0, cellSize: .large, padding: 57.0),
     ]
     
     // Find the closest match based on width and height for the given cellSize
@@ -234,7 +231,7 @@ func navigationMenuVerticalAdjustment(mazeType: MazeType, cellSize: CellSize) ->
         // iPhone 14 Pro, 15, 15 Pro
         (width: 393.0, height: 852.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -10.0),
         // iPhone 16 Pro
-        (width: 402.0, height: 875.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -10.0),
+        (width: 402.0, height: 874.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -11.0),
         // iPhone Xr, Xs Max, 11, 11 Pro Max
         (width: 414.0, height: 896.0, mazeType: MazeType.rhombic, cellSize: CellSize.tiny, padding: -14.0),
         // iPhone 12 Pro Max, 13 Pro Max
@@ -253,7 +250,7 @@ func navigationMenuVerticalAdjustment(mazeType: MazeType, cellSize: CellSize) ->
         // iPhone 14 Pro, 15, 15 Pro
         (width: 393.0, height: 852.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -10.0),
         // iPhone 16 Pro
-        (width: 402.0, height: 875.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -10.0),
+        (width: 402.0, height: 874.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -11.0),
         // iPhone Xr, Xs Max, 11, 11 Pro Max
         (width: 414.0, height: 896.0, mazeType: MazeType.rhombic, cellSize: CellSize.small, padding: -14.0),
         // iPhone 12 Pro Max, 13 Pro Max
@@ -272,7 +269,7 @@ func navigationMenuVerticalAdjustment(mazeType: MazeType, cellSize: CellSize) ->
         // iPhone 14 Pro, 15, 15 Pro
         (width: 393.0, height: 852.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -14.0),
         // iPhone 16 Pro
-        (width: 402.0, height: 875.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -14.0),
+        (width: 402.0, height: 874.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -11.0),
         // iPhone Xr, Xs Max, 11, 11 Pro Max
         (width: 414.0, height: 896.0, mazeType: MazeType.rhombic, cellSize: CellSize.medium, padding: -24.0),
         // iPhone 12 Pro Max, 13 Pro Max
@@ -291,11 +288,11 @@ func navigationMenuVerticalAdjustment(mazeType: MazeType, cellSize: CellSize) ->
         // iPhone 14 Pro, 15, 15 Pro
         (width: 393.0, height: 852.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -14.0),
         // iPhone 16 Pro
-        (width: 402.0, height: 875.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -16.0),
+        (width: 402.0, height: 874.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -16.0),
         // iPhone Xr, Xs Max, 11, 11 Pro Max
         (width: 414.0, height: 896.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -26.0),
         // iPhone 12 Pro Max, 13 Pro Max
-        (width: 428.0, height: 926.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -28.0),
+        (width: 428.0, height: 926.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -26.0),
         // iPhone 14 Pro Max, 15 Pro Max, 15 Plus, 16 Plus
         (width: 430.0, height: 932.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -24.0),
         // iPhone 16 Pro Max

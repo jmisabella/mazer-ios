@@ -118,7 +118,7 @@ struct DeltaMazeView: View {
                 revealedSolutionPath = []
             }
         }
-        .onChange(of: cells) { _ in
+        .onChange(of: cells) {
             pendingWorkItems.forEach { $0.cancel() }
             pendingWorkItems.removeAll()
             revealedSolutionPath = []
