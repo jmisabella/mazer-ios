@@ -55,8 +55,8 @@ func adjustedCellSize(mazeType: MazeType, cellSize: CellSize) -> CGFloat {
             }
         case .rhombic:
             switch cellSize {
-            case .tiny: return 0.9
-            case .small: return 1.05
+            case .tiny: return 0.97
+            case .small: return 1.07
             case .medium: return 1.2
             case .large:
                 let screenSize = UIScreen.main.bounds.size
@@ -131,13 +131,13 @@ func computeDeltaCellSize(cellSize: CellSize, columns: Int, screenWidth: CGFloat
         // iPhone Xs, 11 Pro, 12 mini, 13 mini
         (width: 375.0, height: 812.0, cellSize: .large, padding: 36.0),
         // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
-        (width: 390.0, height: 844.0, cellSize: .tiny, padding: 41.5),
+        (width: 390.0, height: 844.0, cellSize: .tiny, padding: 42.5),
         // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
-        (width: 390.0, height: 844.0, cellSize: .small, padding: 43.5),
+        (width: 390.0, height: 844.0, cellSize: .small, padding: 44.5),
         // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
-        (width: 390.0, height: 844.0, cellSize: .medium, padding: 40.0),
+        (width: 390.0, height: 844.0, cellSize: .medium, padding: 40.7),
         // iPhone 12, 12 Pro, 13, 13 Pro, 14, 16e
-        (width: 390.0, height: 844.0, cellSize: .large, padding: 40.0),
+        (width: 390.0, height: 844.0, cellSize: .large, padding: 40.7),
         // iPhone 14 Pro, 15, 15 Pro
         (width: 393.0, height: 852.0, cellSize: .tiny, padding: 43.0),
         // iPhone 14 Pro, 15, 15 Pro
