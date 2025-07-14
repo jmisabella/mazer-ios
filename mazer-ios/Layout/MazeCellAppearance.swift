@@ -172,11 +172,11 @@ struct CellColors {
         blue: 255/255
     )
     static let defaultBackgroundColors: [Color] = [
-        defaultCellBackgroundGray,
         defaultCellBackgroundMint,
         defaultCellBackgroundPeach,
-        defaultCellBackgroundLavender,
-        defaultCellBackgroundBlue
+        offWhite,
+        lighterSky,
+        barelyLavenderMostlyWhite,
     ]
     static let solutionHighlight = Color(hex: "#04D9FF")
     static let offWhite = Color(hex: "FFF5E6")
@@ -188,4 +188,5 @@ struct CellColors {
     static let grayerSky = Color(hex: "DAEDEF")
 //    static let grayerSky = Color(hex: "AFDAE7")
     static let lightModeSecondary = Color(hex: "333333")
+    static let barelyLavenderMostlyWhite = Color(hex: "FAF9FB")
 }
