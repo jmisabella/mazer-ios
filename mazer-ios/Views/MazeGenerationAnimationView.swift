@@ -19,6 +19,7 @@ struct MazeGenerationAnimationView: View {
     @Binding var showControls: Bool           // Toggles navigation controls
     @Binding var selectedPalette: HeatMapPalette // Heat map palette
     @Binding var defaultBackground: Color     // Default background color
+    @Binding var showHelp: Bool
     @Binding var mazeID: UUID                 // Maze ID for refresh
     let currentGrid: OpaquePointer?
     let regenerateMaze: () -> Void            // Closure to regenerate maze
@@ -193,6 +194,16 @@ struct MazeGenerationAnimationView: View {
                 }
                 .disabled(true)
                 .accessibilityLabel("Toggle navigation controls")
+                
+                Button {
+                    showHelp = true
+                } label: {
+                    Image(systemName: "questionmark.circle")
+                        .font(.title2)
+                        .foregroundColor(.gray)
+                }
+                .disabled(true)
+                .accessibilityLabel("Help instructions")
             }
             .offset(x: horizontalAdjustment, y: verticalAdjustment)
 //            .padding(.top)

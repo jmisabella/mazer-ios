@@ -122,7 +122,7 @@ func cellBackgroundColor(
             let startColor: Color
             if let color = optionalColor {
 //                startColor = interpolateColor(from: defaultBackground, to: color, factor: 0.2)
-                startColor = interpolateColor(from: defaultBackground, to: color, factor: 0.24)
+                startColor = interpolateColor(from: defaultBackground, to: color, factor: 0.17)
             } else {
                 startColor = interpolateColor(from: defaultBackground, to: .white, factor: 0.9)
             }
@@ -172,11 +172,11 @@ struct CellColors {
         blue: 255/255
     )
     static let defaultBackgroundColors: [Color] = [
-        defaultCellBackgroundGray,
         defaultCellBackgroundMint,
         defaultCellBackgroundPeach,
-        defaultCellBackgroundLavender,
-        defaultCellBackgroundBlue
+        offWhite,
+        lighterSky,
+        barelyLavenderMostlyWhite,
     ]
     static let solutionHighlight = Color(hex: "#04D9FF")
     static let offWhite = Color(hex: "FFF5E6")
@@ -186,6 +186,6 @@ struct CellColors {
     static let lightSkyBlue = Color(hex: "ADD8E6")
     static let lighterSky = Color(hex: "D6ECF3")
     static let grayerSky = Color(hex: "DAEDEF")
-//    static let grayerSky = Color(hex: "AFDAE7")
     static let lightModeSecondary = Color(hex: "333333")
+    static let barelyLavenderMostlyWhite = Color(hex: "FAF9FB")
 }
