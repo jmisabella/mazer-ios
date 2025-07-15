@@ -315,7 +315,14 @@ struct MazeRenderView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .onAppear {
-            AudioServicesPlaySystemSound(1104)
+            let key = "hasSeenHelpInstructions"
+            let hasSeen = UserDefaults.standard.bool(forKey: key)
+            if !hasSeen {
+                showHelp = true
+                UserDefaults.standard.set(true, forKey: key)
+            }
+            
+//            AudioServicesPlaySystemSound(1104)
         }
         
     }

@@ -164,6 +164,7 @@ struct ContentView: View {
                 showControls: $showControls,
                 selectedPalette: $selectedPalette,
                 defaultBackground: $defaultBackgroundColor,
+                showHelp: $showHelp,
                 mazeID: $mazeID,
                 currentGrid: currentGrid,
                 regenerateMaze: { submitMazeRequest() },
