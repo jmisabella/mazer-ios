@@ -23,6 +23,11 @@ struct MazeRenderView: View {
     // Add state for pinch zoom
     @State private var scale: CGFloat = 1.0
     @State private var anchorPoint: UnitPoint = .center
+    @State private var lastLocation: CGPoint? = nil
+    @State private var cumulativePathLength: CGFloat = 0.0
+    @State private var directionVector: CGSize = .zero
+    @State private var lastMoveDirection: String? = nil
+    @State private var performedMoves: Int = 0
     
 
     let mazeCells: [MazeCell]
@@ -33,7 +38,7 @@ struct MazeRenderView: View {
     let moveAction: (String) -> Void
     let cellSizes: (square: CGFloat, octagon: CGFloat)
     let toggleHeatMap: () -> Void
-    let cleanupMazeData: () -> Void 
+    let cleanupMazeData: () -> Void
 
     private var performMove: (String) -> Void {
         { dir in
@@ -235,12 +240,40 @@ struct MazeRenderView: View {
                 mazeContent
                     .gesture(
                         DragGesture(minimumDistance: 10)
-                            .onEnded { value in
-                                let batchSize = 1
-                                let tx = value.translation.width
-                                let ty = -value.translation.height
-                                guard tx != 0 || ty != 0 else { return }
-                                let angle = atan2(ty, tx)
+                            .onChanged { value in
+                                if lastLocation == nil {
+                                    lastLocation = value.location
+                                    return
+                                }
+                                
+                                let currentLocation = value.location
+                                let deltaX = currentLocation.x - lastLocation!.x
+                                let deltaY = currentLocation.y - lastLocation!.y
+                                lastLocation = currentLocation
+                                
+                                let delta_tx = deltaX
+                                let delta_ty = -deltaY
+                                let delta_mag = sqrt(delta_tx * delta_tx + delta_ty * delta_ty)
+                                if delta_mag == 0 { return }
+                                
+                                cumulativePathLength += delta_mag
+                                
+                                // Update directionVector with exponential moving average (alpha = 0.3 for responsiveness)
+                                let alpha: CGFloat = 0.3
+                                if directionVector == .zero {
+                                    directionVector = CGSize(width: delta_tx, height: delta_ty)
+                                } else {
+                                    directionVector = CGSize(
+                                        width: directionVector.width * alpha + delta_tx * (1 - alpha),
+                                        height: directionVector.height * alpha + delta_ty * (1 - alpha)
+                                    )
+                                }
+                                
+                                // Skip if directionVector is zero (though unlikely)
+                                if directionVector.width == 0 && directionVector.height == 0 { return }
+                                
+                                // Determine current direction from directionVector
+                                let angle = atan2(directionVector.height, directionVector.width)
                                 var shifted = angle + (.pi / 8)
                                 if shifted < 0 { shifted += 2 * .pi }
                                 let sector = Int(floor(shifted / (.pi / 4))) % 8
@@ -248,8 +281,10 @@ struct MazeRenderView: View {
                                     "Right", "UpperRight", "Up", "UpperLeft",
                                     "Left", "LowerLeft", "Down", "LowerRight"
                                 ]
-                                let chosen = directions[sector]
-                                let mag = sqrt(tx*tx + ty*ty)
+                                let currentDirection = directions[sector]
+                                lastMoveDirection = currentDirection
+                                
+                                // Calculate total moves needed based on path length
                                 let baseDim = computeCellSize(mazeCells: mazeCells, mazeType: mazeType, cellSize: cellSize)
                                 let dim: CGFloat
                                 switch mazeType {
@@ -262,20 +297,102 @@ struct MazeRenderView: View {
                                 default:
                                     dim = baseDim
                                 }
-                                let totalMoves = max(1, Int(round(mag / dim)))
-                                let movesToPerform = min(totalMoves, batchSize)
-                                for _ in 0..<movesToPerform {
-                                    performMove(chosen)
+                                
+                                let totalMovesNeeded = Int(floor(cumulativePathLength / dim))
+                                let movesToPerform = totalMovesNeeded - performedMoves
+                                
+                                // Perform incremental moves live
+                                if movesToPerform > 0 {
+                                    for _ in 0..<movesToPerform {
+                                        performMove(currentDirection)
+                                    }
+                                    performedMoves += movesToPerform
                                 }
-                                if totalMoves > batchSize {
-                                    for i in batchSize..<totalMoves {
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
-                                            performMove(chosen)
+                            }
+                            .onEnded { value in
+                                // Handle finalization with rounding for any fractional path length
+                                let baseDim = computeCellSize(mazeCells: mazeCells, mazeType: mazeType, cellSize: cellSize)
+                                let dim: CGFloat
+                                switch mazeType {
+                                case .sigma:
+                                    dim = baseDim * sqrt(3)
+                                case .orthogonal:
+                                    dim = baseDim
+                                case .delta:
+                                    dim = baseDim / sqrt(3)
+                                default:
+                                    dim = baseDim
+                                }
+                                
+                                let totalMoves = Int(round(cumulativePathLength / dim))
+                                let remainingMoves = totalMoves - performedMoves
+                                
+                                if remainingMoves > 0, let direction = lastMoveDirection {
+                                    let batchSize = 1
+                                    let movesToPerform = min(remainingMoves, batchSize)
+                                    for _ in 0..<movesToPerform {
+                                        performMove(direction)
+                                    }
+                                    if remainingMoves > batchSize {
+                                        for i in batchSize..<remainingMoves {
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+                                                performMove(direction)
+                                            }
                                         }
                                     }
                                 }
+                                
+                                // Reset states for next gesture
+                                lastLocation = nil
+                                cumulativePathLength = 0.0
+                                directionVector = .zero
+                                lastMoveDirection = nil
+                                performedMoves = 0
                             }
                     )
+                        //                    .gesture(
+                        //                        DragGesture(minimumDistance: 10)
+                        //                            .onEnded { value in
+                        //                                let batchSize = 1
+                        //                                let tx = value.translation.width
+                        //                                let ty = -value.translation.height
+                        //                                guard tx != 0 || ty != 0 else { return }
+                        //                                let angle = atan2(ty, tx)
+                        //                                var shifted = angle + (.pi / 8)
+                        //                                if shifted < 0 { shifted += 2 * .pi }
+                        //                                let sector = Int(floor(shifted / (.pi / 4))) % 8
+                        //                                let directions = [
+                        //                                    "Right", "UpperRight", "Up", "UpperLeft",
+                        //                                    "Left", "LowerLeft", "Down", "LowerRight"
+                        //                                ]
+                        //                                let chosen = directions[sector]
+                        //                                let mag = sqrt(tx*tx + ty*ty)
+                        //                                let baseDim = computeCellSize(mazeCells: mazeCells, mazeType: mazeType, cellSize: cellSize)
+                        //                                let dim: CGFloat
+                        //                                switch mazeType {
+                        //                                case .sigma:
+                        //                                    dim = baseDim * sqrt(3) // Hex cell center distance
+                        //                                case .orthogonal:
+                        //                                    dim = baseDim           // Square cell distance
+                        //                                case .delta:
+                        //                                    dim = baseDim / sqrt(3) // Triangular cell center distance
+                        //                                default:
+                        //                                    dim = baseDim
+                        //                                }
+                        //                                let totalMoves = max(1, Int(round(mag / dim)))
+                        //                                let movesToPerform = min(totalMoves, batchSize)
+                        //                                for _ in 0..<movesToPerform {
+                        //                                    performMove(chosen)
+                        //                                }
+                        //                                if totalMoves > batchSize {
+                        //                                    for i in batchSize..<totalMoves {
+                        //                                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.1) {
+                        //                                            performMove(chosen)
+                        //                                        }
+                        //                                    }
+                        //                                }
+                        //                            }
+                        //                    )
                 
                 if showControls {
                     VStack {
