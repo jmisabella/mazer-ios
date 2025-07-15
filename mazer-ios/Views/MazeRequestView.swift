@@ -203,7 +203,6 @@ struct MazeRequestView: View {
                     .fontWeight(.bold)
             }
             .buttonStyle(.borderedProminent)
-//            .tint(colorScheme == .dark ? .secondary : CellColors.orangeRed)
             .tint(colorScheme == .dark ? CellColors.lighterSky : CellColors.orangeRed)
             .padding()
 

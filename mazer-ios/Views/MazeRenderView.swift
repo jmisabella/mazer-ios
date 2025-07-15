@@ -18,10 +18,12 @@ struct MazeRenderView: View {
     @Binding var selectedPalette: HeatMapPalette
     @Binding var mazeID: UUID
     @Binding var defaultBackground: Color
+    @Binding var showHelp: Bool
     @State private var dragStartOffset: CGSize = .zero
     // Add state for pinch zoom
     @State private var scale: CGFloat = 1.0
     @State private var anchorPoint: UnitPoint = .center
+    
 
     let mazeCells: [MazeCell]
     let mazeType: MazeType
@@ -217,6 +219,15 @@ struct MazeRenderView: View {
                         .font(.title2)
                 }
                 .accessibilityLabel("Toggle navigation controls")
+                
+                Button {
+                    showHelp = true
+                } label: {
+                    Image(systemName: "questionmark.circle")
+                        .font(.title2)
+                        .foregroundColor(.gray)
+                }
+                .accessibilityLabel("Help instructions")
             }
             .offset(x: horizontalAdjustment, y: verticalAdjustment)
 
@@ -306,6 +317,7 @@ struct MazeRenderView: View {
         .onAppear {
             AudioServicesPlaySystemSound(1104)
         }
+        
     }
 
     private func clamped(offset: CGSize) -> CGSize {

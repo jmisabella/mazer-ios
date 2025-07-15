@@ -36,6 +36,7 @@ struct ContentView: View {
     @State private var generationSteps: [[MazeCell]] = []
     @State private var isLoading: Bool = false
     @State private var optionalColor: Color? = nil
+    @State private var showHelp: Bool = false
     
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.colorScheme) private var colorScheme
@@ -66,6 +67,11 @@ struct ContentView: View {
                     fontScale: screenWidth > 700 ? 1.3 : 1.0
                 )
                 .zIndex(2)
+            }
+            
+            if showHelp {
+                HelpModalView(isPresented: $showHelp)
+                    .zIndex(3) // Optional but recommended: Higher zIndex than loading to ensure it's on top if needed
             }
             
             if showCelebration {
@@ -191,6 +197,7 @@ struct ContentView: View {
             selectedPalette: $selectedPalette,
             mazeID: $mazeID,
             defaultBackground: $defaultBackgroundColor,
+            showHelp: $showHelp,
             mazeCells: mazeCells,
             mazeType: mazeType,
             cellSize: selectedSize,
