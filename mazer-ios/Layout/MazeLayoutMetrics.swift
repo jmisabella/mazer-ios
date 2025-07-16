@@ -299,7 +299,7 @@ func navigationMenuVerticalAdjustment(mazeType: MazeType, cellSize: CellSize) ->
         (width: 440.0, height: 956.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: -30.0),
     ]
     let screenSize = UIScreen.main.bounds.size
-    print("Screen dimensions: width = \(screenSize.width), height = \(screenSize.height)")
+//    print("Screen dimensions: width = \(screenSize.width), height = \(screenSize.height)")
     
     if mazeType == .rhombic {
         for entry in paddingMap {
@@ -321,7 +321,7 @@ func navigationMenuHorizontalAdjustment(mazeType: MazeType, cellSize: CellSize) 
         (width: 440.0, height: 956.0, mazeType: MazeType.rhombic, cellSize: CellSize.large, padding: 6.0),
     ]
     let screenSize = UIScreen.main.bounds.size
-    print("Screen dimensions: width = \(screenSize.width), height = \(screenSize.height)")
+//    print("Screen dimensions: width = \(screenSize.width), height = \(screenSize.height)")
     
     if mazeType == .rhombic {
         for entry in paddingMap {
