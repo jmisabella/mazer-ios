@@ -132,7 +132,6 @@ struct MazeGenerationAnimationView: View {
                 )
                 .id(currentStepIndex)
                 .offset(x: offsetX, y: offsetY)
-                .padding(.top, 7)
             }
             
         default:
