@@ -115,10 +115,10 @@ struct MazeRequestView: View {
     private var mainContent: some View {
         VStack(spacing: 20) {
             VStack(spacing: 4) {
-                Image(colorScheme == .dark ? "LogoGradient" : "LogoDark")
+                Image(colorScheme == .dark ? "LogoGradient" : "LogoCream")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 60 * fontScale, height: 60 * fontScale)
+                    .frame(width: (colorScheme == .dark ? 60 : 120) * fontScale, height: (colorScheme == .dark ? 60 : 120) * fontScale)
                     .padding(.bottom, 8)
                 
                 Text("Omni Mazes & Solutions")

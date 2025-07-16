@@ -1,112 +1,112 @@
 {
   "images" : [
     {
-      "filename" : "Icon-20@2x-Notification.png",
+      "filename" : "light-maze-quest-icon-gimp-project-40x40.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "Icon-20@3x-Notification.png",
+      "filename" : "light-maze-quest-icon-gimp-project-60x60.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
-      "filename" : "Icon-29@2x-Settings.png",
+      "filename" : "light-maze-quest-icon-gimp-project-58x58.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "Icon-29@3x-Settings.png",
+      "filename" : "light-maze-quest-icon-gimp-project-87x87.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
-      "filename" : "Icon-76@1x-Home.png",
+      "filename" : "light-maze-quest-icon-gimp-project-76x76.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "38x38"
     },
     {
-      "filename" : "iOS-38pt@3x-114x114-light.png",
+      "filename" : "light-maze-quest-icon-gimp-project-114x114.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
       "size" : "38x38"
     },
     {
-      "filename" : "Icon-40@2x-Spotlight.png",
+      "filename" : "light-maze-quest-icon-gimp-project-80x80.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "Icon-40@3x-Spotlight.png",
+      "filename" : "light-maze-quest-icon-gimp-project-120x120.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename" : "Icon-40@3x-Spotlight 1.png",
+      "filename" : "light-maze-quest-icon-gimp-project-120x120 1.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "Icon-60@3x-Home.png",
+      "filename" : "light-maze-quest-icon-gimp-project-180x180.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
       "size" : "60x60"
     },
     {
-      "filename" : "iOS-64pt@2x-128x128-light.png",
+      "filename" : "light-maze-quest-icon-gimp-project-128x128.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "64x64"
     },
     {
-      "filename" : "iOS-64pt@3x-192x192-light.png",
+      "filename" : "light-maze-quest-icon-gimp-project-192x192.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
       "size" : "64x64"
     },
     {
-      "filename" : "iOS-68pt@2x-136x136-light.png",
+      "filename" : "light-maze-quest-icon-gimp-project-136x136.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "68x68"
     },
     {
-      "filename" : "Icon-76@2x-Home.png",
+      "filename" : "light-maze-quest-icon-gimp-project-152x152.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "76x76"
     },
     {
-      "filename" : "Icon-83.5@2x-Home.png",
+      "filename" : "light-maze-quest-icon-gimp-project-167x167.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "Icon-AppStore.png",
+      "filename" : "light-maze-quest-icon-gimp-project-1024x1024.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
