@@ -177,6 +177,15 @@ struct CellColors {
         offWhite,
         lighterSky,
         barelyLavenderMostlyWhite,
+        lighterSkyDarker,
+        barelyLavenderMostlyWhiteDarker,
+        defaultCellBackgroundMintDarker,
+        defaultCellBackgroundPeachDarker,
+        softPastelPinkLight,
+        softPastelYellowLight,
+        softPastelYellowishPink,
+        softPastelPurplishBlueLavender,
+        
     ]
     static let solutionHighlight = Color(hex: "#04D9FF")
     static let offWhite = Color(hex: "FFF5E6")
@@ -188,4 +197,15 @@ struct CellColors {
     static let grayerSky = Color(hex: "DAEDEF")
     static let lightModeSecondary = Color(hex: "333333")
     static let barelyLavenderMostlyWhite = Color(hex: "FAF9FB")
+    
+    static let softPastelPinkLight = Color(hex: "FADADD")
+    static let softPastelYellowLight = Color(hex: "FFFACD")
+    static let softPastelYellowishPink = Color(hex: "FFDAB9")
+    static let softPastelPurplishBlueLavender = Color(hex: "D7BDE2")
+    
+    static let lighterSkyDarker = Color(hex: "A9DCED")
+    static let barelyLavenderMostlyWhiteDarker = Color(hex: "E0D7EA")
+    static let defaultCellBackgroundMintDarker = Color(hex: "9CE4BB")
+    static let defaultCellBackgroundPeachDarker = Color(hex: "FFB295")
+    
 }
