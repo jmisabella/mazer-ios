@@ -44,7 +44,7 @@ struct HelpModalView: View {
                             .multilineTextAlignment(.center)
                             .font(.body)
                     case 1:
-                        Text("To navigate the maze, use your finger to drag or flick in the direction you want to move—from anywhere on the grid.")
+                        Text("To navigate the maze, use your finger to drag, or flick, in the direction you want to move—from anywhere on the grid.")
                             .multilineTextAlignment(.center)
                             .font(.body)
                     case 2:
@@ -52,7 +52,7 @@ struct HelpModalView: View {
                             Image(systemName: "ellipsis.circle")
                                 .font(.title2)
                                 .foregroundColor(.secondary)
-                            Text("Alternatively, click to toggle on the navigation buttons—which are useful when finer-grained control is required.")
+                            Text("Alternatively, click to toggle the navigation buttons—which are useful when finer-grained control is required.")
                                 .multilineTextAlignment(.center)
                                 .font(.body)
                         }

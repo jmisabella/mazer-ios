@@ -77,11 +77,6 @@ struct ContentView: View {
             if showCelebration {
                 SparkleView(count: 60, totalDuration: 3.0)
                     .zIndex(1)
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 5.5) {
-                            withAnimation { showCelebration = false }
-                        }
-                    }
             }
         }
         .onAppear {
@@ -466,7 +461,7 @@ struct ContentView: View {
         }
         return result
     }
-    
+
     private func celebrateVictory() {
         showCelebration = true
         captureSteps = false
@@ -481,9 +476,12 @@ struct ContentView: View {
             withAnimation {
                 showCelebration = false
             }
-            showSolution = false
-            mazeID = UUID()
-            submitMazeRequest()
+            // Only proceed with next maze if still on the render view (user didn't back out)
+            if mazeGenerated {
+                showSolution = false
+                mazeID = UUID()
+                submitMazeRequest()
+            }
         }
     }
     
