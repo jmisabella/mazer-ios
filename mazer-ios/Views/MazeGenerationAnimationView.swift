@@ -146,7 +146,6 @@ struct MazeGenerationAnimationView: View {
                 Button(action: {
                     cleanupMazeData()
                 }) {
-//                    Image(systemName: "arrow.uturn.left")
                     Image(systemName: "line.3.horizontal")
                         .font(.title2)
                         .foregroundColor(.blue)
@@ -154,11 +153,6 @@ struct MazeGenerationAnimationView: View {
                 .accessibilityLabel("Back to maze settings")
 
                 Button(action: {
-                    defaultBackground = CellColors.defaultBackgroundColors.randomElement()!
-//                    // Clear the generation steps from memory
-//                    if let gridPtr = currentGrid {
-//                        mazer_clear_generation_steps(gridPtr)
-//                    }
                     mazeID = UUID()
                     regenerateMaze()
                 }) {
