@@ -179,7 +179,8 @@ struct MazeRenderView: View {
                 Button(action: {
                     cleanupMazeData()
                 }) {
-                    Image(systemName: "arrow.uturn.left")
+//                    Image(systemName: "arrow.uturn.left")
+                    Image(systemName: "line.3.horizontal")
                         .font(.title2)
                         .foregroundColor(.blue)
                 }
