@@ -241,13 +241,7 @@ California Civil Code Section 1798.83, also known as the "Shine The Light" law, 
 We may update this Privacy Notice from time to time. The updated version will be indicated by an updated "Revised" date at the top of this Privacy Notice. If we make material changes to this Privacy Notice, we may notify you either by prominently posting a notice of such changes or by directly sending you a notification. We encourage you to review this Privacy Notice frequently to be informed of how we are protecting your information.
 
 ## 11. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?
-
-If you have questions or comments about this notice, you may email us at Jeff.isabella@gmail.com or contact us by post at:
-
-Jeffrey Isabella  
-6101 Center Street #203
-Mentor, Ohio 44060
-United States  
+If you have questions or comments about this notice, you may email us at jeff.isabella@gmail.com.
 
 ## 12. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?
 
