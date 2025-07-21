@@ -20,8 +20,11 @@ struct LoadingOverlayView: View {
 
             // Content with opaque box
             VStack(spacing: 24) {
-                GIFWebView(gifName: "loadingMaze")
-                    .frame(width: 66, height: 66)
+                let darkModeGIFs = ["loading-snakes-blue", "loading-snakes-purple"]
+                let gifName = colorScheme == .dark ? darkModeGIFs.randomElement() ?? "loading-snakes-blue" : "loading-snakes-red"
+                GIFWebView(gifName: gifName)
+                    .frame(width: 120, height: 120)
+                    .offset(y: 25)
                 Text("Generating Maze")
                     .font(.headline)
                     .scaleEffect(fontScale)
