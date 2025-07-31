@@ -2,8 +2,8 @@
 #mazer/
 #mazer.h
 
-mazer/
-mazer/*
+/mazer-ios/mazer/
+/mazer-ios/mazer/*
 
 
 # Rust specific
