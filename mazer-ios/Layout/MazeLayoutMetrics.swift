@@ -51,10 +51,10 @@ func adjustedCellSize(mazeType: MazeType, cellSize: CellSize) -> CGFloat {
         switch mazeType {
         case .delta:
             switch cellSize {
-            case .tiny: return 1.07
-            case .small: return 1.36
-            case .medium: return 1.47
-            case .large: return 1.6
+            case .tiny: return 1.8
+            case .small: return 2.0
+            case .medium: return 2.23
+            case .large: return 2.42
             }
         case .orthogonal:
             switch cellSize {
@@ -79,17 +79,17 @@ func adjustedCellSize(mazeType: MazeType, cellSize: CellSize) -> CGFloat {
             }
         case .rhombic:
             switch cellSize {
-            case .tiny: return 0.97
-            case .small: return 1.07
-            case .medium: return 1.2
+            case .tiny: return 1.45
+            case .small: return 1.65
+            case .medium: return 1.8
             case .large:
                 let screenSize = UIScreen.main.bounds.size
                 if screenSize.width == 440.0 && screenSize.height == 956.0 {
-                    return 1.4
+                    return 2.1
                 } else if screenSize.width == 414.0 && screenSize.height == 896.0 {
-                    return 1.4
+                    return 2.1
                 } else {
-                    return 1.5
+                    return 2.2
                 }
             }
         }
