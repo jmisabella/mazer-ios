@@ -281,9 +281,13 @@ struct ContentView: View {
             let availableH = screenH - controlArea - totalVerticalPadding
 
             // account for notch & home-indicator
-            let drawableH = availableH - insetTop - insetBot
+//            let drawableH = availableH - insetTop - insetBot
+//            let cellSize = selectedMazeType == .upsilon ? octagonCellSize : squareCellSize
             
-            let cellSize = selectedMazeType == .upsilon ? octagonCellSize : squareCellSize
+            let cellSize = adjustedCellSize(mazeType: selectedMazeType, cellSize: selectedSize)
+            let overhead: CGFloat = 150.0  // Approximate overhead for status bar, navigation menu, and padding; adjust as needed based on testing
+            let drawableH = screenH - overhead
+            
             let spacing = selectedMazeType == .upsilon ? (sqrt(2) / 2) * octagonCellSize : cellSize
             let rowHeight = selectedMazeType == .upsilon ? octagonCellSize * (sqrt(2) / 2) : cellSize
             
@@ -293,13 +297,21 @@ struct ContentView: View {
             var finalWidth: Int
             var finalHeight: Int
             
+            let screenW = UIScreen.main.bounds.width
+            
+//            if selectedMazeType == .rhombic {
+//                let s     = squareCellSize
+//                let diag  = s * CGFloat(2).squareRoot()
+//                let pitch = diag / 2
+//                finalWidth  = max(1, Int(floor(UIScreen.main.bounds.width  / diag)))
+//                finalHeight = max(1, Int(floor(drawableH / pitch)))
             if selectedMazeType == .rhombic {
-                let s     = squareCellSize
-                let diag  = s * CGFloat(2).squareRoot()
-                let pitch = diag / 2
-                finalWidth  = max(1, Int(floor(UIScreen.main.bounds.width  / diag)))
-                finalHeight = max(1, Int(floor(drawableH / pitch)))
-                
+                let diag = cellSize * sqrt(2.0)
+                finalWidth = max(1, Int(floor(2.0 * screenW / diag - 1.0)))
+                finalHeight = max(1, Int(floor(2.0 * drawableH / diag - 1.0)))
+            } else if selectedMazeType == .delta {
+                finalWidth = max(1, Int(floor(2.0 * screenW / cellSize - 1.0)))
+                finalHeight = max(1, Int(floor(2.0 * drawableH / (cellSize * sqrt(3.0)) - 0.0001)))
             } else {
                 finalWidth = (selectedMazeType == .sigma) ? maxWidth / 3 : maxWidth
                 finalHeight = (selectedMazeType == .sigma) ? maxHeightRows / 3 : maxHeightRows
