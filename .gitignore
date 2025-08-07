@@ -2,8 +2,8 @@
 #mazer/
 #mazer.h
 
-mazer/
-mazer/*
+/mazer-ios/mazer/
+/mazer-ios/mazer/*
 
 
 # Rust specific
@@ -85,3 +85,5 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+
+mazer
