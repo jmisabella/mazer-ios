@@ -14,19 +14,22 @@ struct FourWayControlView: View {
         HStack(spacing: 32) {
             // ←
             directionButton(systemImage: "arrow.left", action: "Left")
-            
+
             // ↑ and ↓ stacked
             VStack(spacing: 8) {
-                directionButton(systemImage: "arrow.up",   action: "Up")
+                directionButton(systemImage: "arrow.up", action: "Up")
                 directionButton(systemImage: "arrow.down", action: "Down")
             }
-            
+
             // →
             directionButton(systemImage: "arrow.right", action: "Right")
         }
         .padding(12)
-        .background(Color(.systemBackground).opacity(0.8))
-        .cornerRadius(12)
+        .background(
+            Rectangle()
+                .fill(CellColors.offWhite.opacity(0.4))
+                .cornerRadius(12)
+        )
         .shadow(radius: 4)
     }
 
@@ -43,5 +46,3 @@ struct FourWayControlView: View {
         .accessibilityLabel("Move \(dir)")
     }
 }
-
-

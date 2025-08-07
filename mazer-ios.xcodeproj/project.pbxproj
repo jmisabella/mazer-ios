@@ -19,7 +19,7 @@
 		00492F962E25D767003D2BEA /* HelpModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00492F952E25D767003D2BEA /* HelpModalView.swift */; };
 		006F3F392D9F6EC200627BD4 /* HeatMapPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F3F382D9F6EB300627BD4 /* HeatMapPalette.swift */; };
 		006F3F402DA08D8600627BD4 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F3F3F2DA08D7D00627BD4 /* Color+Hex.swift */; };
-		0072D4982E4447DB00B4C06C /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A14AF92E00DC9A0008457E /* libmazer.a */; };
+		0072D49B2E45538D00B4C06C /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A14AF92E00DC9A0008457E /* libmazer.a */; };
 		0095189A2DBF0F33003B1C21 /* HexDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009518992DBF0F33003B1C21 /* HexDirection.swift */; };
 		00AD08EF2E1076B800CCB6A2 /* FourWayDiagonalControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AD08EE2E1076B800CCB6A2 /* FourWayDiagonalControlView.swift */; };
 		00AE05F52DB877770068C880 /* SigmaCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AE05F42DB877770068C880 /* SigmaCellView.swift */; };
@@ -2167,7 +2167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0072D4982E4447DB00B4C06C /* libmazer.a in Frameworks */,
+				0072D49B2E45538D00B4C06C /* libmazer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
