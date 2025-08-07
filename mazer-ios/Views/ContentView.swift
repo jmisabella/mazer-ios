@@ -285,7 +285,7 @@ struct ContentView: View {
 //            let cellSize = selectedMazeType == .upsilon ? octagonCellSize : squareCellSize
             
             let cellSize = adjustedCellSize(mazeType: selectedMazeType, cellSize: selectedSize)
-            let overhead: CGFloat = 150.0  // Approximate overhead for status bar, navigation menu, and padding; adjust as needed based on testing
+            let overhead: CGFloat = 130.0  // Approximate overhead for status bar, navigation menu, and padding; adjust as needed based on testing
             let drawableH = screenH - overhead
             
             let spacing = selectedMazeType == .upsilon ? (sqrt(2) / 2) * octagonCellSize : cellSize

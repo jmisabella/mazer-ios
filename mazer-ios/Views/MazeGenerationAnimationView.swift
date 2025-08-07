@@ -249,7 +249,7 @@ struct MazeGenerationAnimationView: View {
                             
                             let lastIndex = generationSteps.count - 1
                             for i in 1...lastIndex {
-                                try await Task.sleep(for: .seconds(0.05))
+                                try await Task.sleep(for: .seconds(0.03))
                                 try Task.checkCancellation()
                                 
                                 await MainActor.run {
@@ -274,7 +274,13 @@ struct MazeGenerationAnimationView: View {
     }
 }
 
-
+////
+////  MazeGenerationAnimationView.swift
+////  mazer-ios
+////
+////  Created by Jeffrey Isabella on 6/6/25.
+////
+//
 //import SwiftUI
 //import AudioToolbox
 //
@@ -298,6 +304,7 @@ struct MazeGenerationAnimationView: View {
 //    let optionalColor: Color?
 //
 //    @State private var currentStepIndex = 0   // Tracks current animation step
+//    @State private var animationTask: Task<Void, Never>? // Cancellable task for animation
 //
 //    // Function to toggle heat map and update palette
 //    private func toggleHeatMap() {
@@ -307,7 +314,7 @@ struct MazeGenerationAnimationView: View {
 //            defaultBackground = randomDefaultExcluding(current: defaultBackground, from: CellColors.defaultBackgroundColors)
 //        }
 //    }
-//    
+//
 //    private var horizontalAdjustment: CGFloat {
 //        navigationMenuHorizontalAdjustment(mazeType: mazeType, cellSize: cellSize)
 //    }
@@ -327,6 +334,14 @@ struct MazeGenerationAnimationView: View {
 //        return others.randomElement() ?? current
 //    }
 //    
+//    private func completeAnimation() {
+//        isAnimatingGeneration = false
+//        mazeGenerated = true
+//        AudioServicesPlaySystemSound(1104)
+//        // Change to a new random default background color
+//        defaultBackground = CellColors.defaultBackgroundColors.filter { $0 != defaultBackground }.randomElement() ?? defaultBackground
+//    }
+//    
 //    @ViewBuilder
 //    func makeMazeView(currentCells: [MazeCell]) -> some View {
 //        switch mazeType {
@@ -340,7 +355,7 @@ struct MazeGenerationAnimationView: View {
 //                optionalColor: optionalColor
 //            )
 //            .id(currentStepIndex)
-//            
+//
 //        case .delta:
 //            DeltaMazeView(
 //                cells: currentCells,
@@ -353,7 +368,7 @@ struct MazeGenerationAnimationView: View {
 //                optionalColor: optionalColor
 //            )
 //            .id(currentStepIndex)
-//            
+//
 //        case .sigma:
 //            SigmaMazeView(
 //                selectedPalette: .constant(wetAsphaltPalette),
@@ -365,7 +380,7 @@ struct MazeGenerationAnimationView: View {
 //                optionalColor: optionalColor
 //            )
 //            .id(currentStepIndex)
-//            
+//
 //        case .upsilon:
 //            UpsilonMazeView(
 //                cells: currentCells,
@@ -378,7 +393,7 @@ struct MazeGenerationAnimationView: View {
 //                optionalColor: optionalColor
 //            )
 //            .id(currentStepIndex)
-//            
+//
 //        case .rhombic:
 //            GeometryReader { geo in
 //                let maxX = currentCells.map { $0.x }.max() ?? 0
@@ -390,7 +405,7 @@ struct MazeGenerationAnimationView: View {
 //                let gridHeight = diagonal * (CGFloat(maxY) + 1)
 //                let offsetX = (geo.size.width - gridWidth) / 2
 //                let offsetY = (geo.size.height - gridHeight) / 2
-//                
+//
 //                RhombicMazeView(
 //                    selectedPalette: $selectedPalette,
 //                    cells: currentCells,
@@ -403,7 +418,7 @@ struct MazeGenerationAnimationView: View {
 //                .id(currentStepIndex)
 //                .offset(x: offsetX, y: offsetY)
 //            }
-//            
+//
 //        default:
 //            Text("Unsupported maze type")
 //        }
@@ -458,7 +473,7 @@ struct MazeGenerationAnimationView: View {
 //                }
 //                .disabled(true)
 //                .accessibilityLabel("Toggle navigation controls")
-//                
+//
 //                Button {
 //                    showHelp = true
 //                } label: {
@@ -475,7 +490,7 @@ struct MazeGenerationAnimationView: View {
 //            if currentStepIndex < generationSteps.count {
 //                ZStack {
 //                    let currentCells = generationSteps[currentStepIndex]
-//                    
+//
 //                    makeMazeView(currentCells: currentCells)
 //
 //                    // Cancel button in upper right
@@ -484,11 +499,8 @@ struct MazeGenerationAnimationView: View {
 //                            Spacer()
 //                            Button(action: {
 //                                // Skip animation and go to MazeRenderView
-//                                isAnimatingGeneration = false
-//                                mazeGenerated = true
-//                                AudioServicesPlaySystemSound(1104)
-//                                // Change to a new random default background color
-//                                defaultBackground = CellColors.defaultBackgroundColors.filter { $0 != defaultBackground }.randomElement() ?? defaultBackground
+//                                animationTask?.cancel()
+//                                completeAnimation()
 //                            }) {
 //                                Image(systemName: "xmark.circle.fill")
 //                                    .font(.system(size: 28))
@@ -504,19 +516,32 @@ struct MazeGenerationAnimationView: View {
 //                    }
 //                }
 //                .onAppear {
-//                    for i in 0..<generationSteps.count {
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) * 0.05) {
-//                            currentStepIndex = i
-//                            if i == generationSteps.count - 1 {
-//                                isAnimatingGeneration = false
-//                                mazeGenerated = true
-//                                AudioServicesPlaySystemSound(1104)
-//                                // Change to a new random default background color
-//                                defaultBackground = CellColors.defaultBackgroundColors.filter { $0 != defaultBackground }.randomElement() ?? defaultBackground
-//                            
+//                    animationTask = Task {
+//                        do {
+//                            // Set initial step immediately
+//                            await MainActor.run {
+//                                currentStepIndex = 0
 //                            }
+//                            
+//                            let lastIndex = generationSteps.count - 1
+//                            for i in 1...lastIndex {
+//                                try await Task.sleep(for: .seconds(0.05))
+//                                try Task.checkCancellation()
+//                                
+//                                await MainActor.run {
+//                                    currentStepIndex = i
+//                                    if i == lastIndex {
+//                                        completeAnimation()
+//                                    }
+//                                }
+//                            }
+//                        } catch {
+//                            // Task cancelled; do nothing
 //                        }
 //                    }
+//                }
+//                .onDisappear {
+//                    animationTask?.cancel()
 //                }
 //            } else {
 //                EmptyView()
