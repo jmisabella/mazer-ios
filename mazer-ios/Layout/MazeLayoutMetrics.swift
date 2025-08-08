@@ -51,7 +51,7 @@ func adjustedCellSize(mazeType: MazeType, cellSize: CellSize) -> CGFloat {
         switch mazeType {
         case .delta:
             switch cellSize {
-            case .tiny: return 1.8
+            case .tiny: return 1.7
             case .small: return 2.0
             case .medium: return 2.23
             case .large: return 2.42
