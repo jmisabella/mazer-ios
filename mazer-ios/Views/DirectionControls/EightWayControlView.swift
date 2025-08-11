@@ -12,8 +12,10 @@ struct EightWayControlView: View {
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
-        let verticalShift: CGFloat = 7
-        let horizontalShift: CGFloat = 15
+//        let verticalShift: CGFloat = 7
+//        let horizontalShift: CGFloat = 15
+        let verticalShift: CGFloat = 9
+        let horizontalShift: CGFloat = 16
         let alpha = colorScheme == .dark ? 0.6 : 0.75
 
         VStack(spacing: 8) {

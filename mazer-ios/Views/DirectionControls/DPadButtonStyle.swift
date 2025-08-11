@@ -12,7 +12,6 @@ struct DPadButtonStyle: ButtonStyle {
     
     init(colorScheme: ColorScheme) {
         self.backgroundColor = colorScheme == .dark ? "#2A2A2A".asColor : Color.gray
-//        self.backgroundColor = colorScheme == .dark ? Color.black : Color.gray
     }
     
     func makeBody(configuration: Configuration) -> some View {
@@ -28,25 +27,13 @@ struct DPadButtonStyle: ButtonStyle {
         Button {
             moveAction(direction.action)
         } label: {
-            Image(systemName: MazeDirection.right.systemImage)
+            Image(systemName: direction.systemImage)
                 .font(.title2)
                 .foregroundColor(.white)
-                .rotationEffect(.degrees(rotationFor(direction: direction)))
+                .rotationEffect(direction.rotation)
         }
         .buttonStyle(DPadButtonStyle(colorScheme: colorScheme))
         .accessibilityLabel("Move \(direction.action)")
     }
-    
-    private static func rotationFor(direction: MazeDirection) -> Double {
-        switch direction {
-        case .right: return 0
-        case .lowerRight: return 45
-        case .down: return 90
-        case .lowerLeft: return 135
-        case .left: return 180
-        case .upperLeft: return 225
-        case .up: return 270
-        case .upperRight: return 315
-        }
-    }
 }
+

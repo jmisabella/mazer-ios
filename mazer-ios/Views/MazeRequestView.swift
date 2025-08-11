@@ -180,7 +180,6 @@ struct MazeRequestView: View {
                     Text("Show Maze Generation")
                         .font(.system(size: 16 * fontScale))
                         .foregroundColor(colorScheme == .dark ? CellColors.lightSkyBlue : CellColors.orangeRed)
-//                        .foregroundColor(colorScheme == .dark ? .white : .black)
                     
                     Toggle("", isOn: $captureSteps)
                         .labelsHidden()
