@@ -1,5 +1,5 @@
 //
-//  OrthogonalDirectionControlView.swift
+//  FourWayControlView.swift
 //  mazer-ios
 //
 //  Created by Jeffrey Isabella on 4/12/25.
@@ -9,40 +9,22 @@ import SwiftUI
 
 struct FourWayControlView: View {
     let moveAction: (String) -> Void
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
-        HStack(spacing: 32) {
-            // ←
-            directionButton(systemImage: "arrow.left", action: "Left")
-
-            // ↑ and ↓ stacked
+        let alpha = colorScheme == .dark ? 0.6 : 0.75
+        HStack(spacing: 2) {
+            DPadButtonStyle.directionButton(direction: .left, moveAction: moveAction, colorScheme: colorScheme)
             VStack(spacing: 8) {
-                directionButton(systemImage: "arrow.up", action: "Up")
-                directionButton(systemImage: "arrow.down", action: "Down")
+                DPadButtonStyle.directionButton(direction: .up, moveAction: moveAction, colorScheme: colorScheme)
+                DPadButtonStyle.directionButton(direction: .down, moveAction: moveAction, colorScheme: colorScheme)
             }
-
-            // →
-            directionButton(systemImage: "arrow.right", action: "Right")
+            DPadButtonStyle.directionButton(direction: .right, moveAction: moveAction, colorScheme: colorScheme)
         }
-        .padding(12)
+        .padding(10)
         .background(
-            Rectangle()
-                .fill(CellColors.offWhite.opacity(0.4))
-                .cornerRadius(12)
+            RoundedRectangle(cornerRadius: 64)
+                .fill(Color(UIColor.systemBackground).opacity(alpha))
         )
-        .shadow(radius: 4)
-    }
-
-    private func directionButton(systemImage: String, action dir: String) -> some View {
-        Button {
-            moveAction(dir)
-        } label: {
-            Image(systemName: systemImage)
-                .font(.title2)
-                .frame(width: 44, height: 44)
-                .background(Circle().fill(Color.gray))
-                .foregroundColor(.white)
-        }
-        .accessibilityLabel("Move \(dir)")
     }
 }
