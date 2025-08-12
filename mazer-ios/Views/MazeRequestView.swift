@@ -98,7 +98,7 @@ struct MazeRequestView: View {
         }
         .onAppear {
             if isIPad {
-                selectedSize = .large
+//                selectedSize = .large
                 captureSteps = false
             }
             // Set the font for all segmented controls
@@ -131,6 +131,15 @@ struct MazeRequestView: View {
             if !isIPad {
                 Picker("Cell Size", selection: $selectedSize) {
                     ForEach(CellSize.allCases) { size in
+                        Text(size.label)
+                            .tag(size)
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .tint(colorScheme == .dark ? CellColors.lightSkyBlue : CellColors.orangeRed)
+            } else {
+                Picker("Cell Size", selection: $selectedSize) {
+                    ForEach([CellSize.small, CellSize.large]) { size in
                         Text(size.label)
                             .tag(size)
                     }
