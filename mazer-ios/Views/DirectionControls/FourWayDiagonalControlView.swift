@@ -9,45 +9,24 @@ import SwiftUI
 
 struct FourWayDiagonalControlView: View {
     let moveAction: (String) -> Void
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
-        ZStack {
-            // Upper Right
-            directionButton(systemImage: "arrow.up.right", action: "UpperRight")
-                .offset(x: 28, y: -28)
-
-            // Lower Right
-            directionButton(systemImage: "arrow.down.right", action: "LowerRight")
-                .offset(x: 28, y: 28)
-
-            // Lower Left
-            directionButton(systemImage: "arrow.down.left", action: "LowerLeft")
-                .offset(x: -28, y: 28)
-
-            // Upper Left
-            directionButton(systemImage: "arrow.up.left", action: "UpperLeft")
-                .offset(x: -28, y: -28)
+        let alpha = colorScheme == .dark ? 0.6 : 0.75
+        VStack(spacing: 8) {
+            HStack(spacing: 16) {
+                DPadButtonStyle.directionButton(direction: .upperLeft, moveAction: moveAction, colorScheme: colorScheme)
+                DPadButtonStyle.directionButton(direction: .upperRight, moveAction: moveAction, colorScheme: colorScheme)
+            }
+            HStack(spacing: 16) {
+                DPadButtonStyle.directionButton(direction: .lowerLeft, moveAction: moveAction, colorScheme: colorScheme)
+                DPadButtonStyle.directionButton(direction: .lowerRight, moveAction: moveAction, colorScheme: colorScheme)
+            }
         }
-        .frame(width: 120, height: 120)
-        .padding(12)
+        .padding(10)
         .background(
-            Rectangle()
-                .fill(CellColors.offWhite.opacity(0.4))
-                .cornerRadius(12)
+            RoundedRectangle(cornerRadius: 32)
+                .fill(Color(UIColor.systemBackground).opacity(alpha))
         )
-        .shadow(radius: 4)
-    }
-
-    private func directionButton(systemImage: String, action dir: String) -> some View {
-        Button {
-            moveAction(dir)
-        } label: {
-            Image(systemName: systemImage)
-                .font(.title2)
-                .frame(width: 44, height: 44)
-                .background(Circle().fill(Color.gray))
-                .foregroundColor(.white)
-        }
-        .accessibilityLabel("Move \(dir)")
     }
 }

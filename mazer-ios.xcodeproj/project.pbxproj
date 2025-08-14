@@ -19,8 +19,8 @@
 		00492F962E25D767003D2BEA /* HelpModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00492F952E25D767003D2BEA /* HelpModalView.swift */; };
 		006F3F392D9F6EC200627BD4 /* HeatMapPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F3F382D9F6EB300627BD4 /* HeatMapPalette.swift */; };
 		006F3F402DA08D8600627BD4 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F3F3F2DA08D7D00627BD4 /* Color+Hex.swift */; };
-		0072D49B2E45538D00B4C06C /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A14AF92E00DC9A0008457E /* libmazer.a */; };
 		0095189A2DBF0F33003B1C21 /* HexDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009518992DBF0F33003B1C21 /* HexDirection.swift */; };
+		00ACF6E12E4D48EC004C5A85 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 008DD8102DBF2C580094C1CA /* libmazer.a */; };
 		00AD08EF2E1076B800CCB6A2 /* FourWayDiagonalControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AD08EE2E1076B800CCB6A2 /* FourWayDiagonalControlView.swift */; };
 		00AE05F52DB877770068C880 /* SigmaCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AE05F42DB877770068C880 /* SigmaCellView.swift */; };
 		00AE05F72DB8778C0068C880 /* SigmaMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AE05F62DB8778C0068C880 /* SigmaMazeView.swift */; };
@@ -59,7 +59,7 @@
 		0018E28A2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		0018E28B2DE522FF00E4A24E /* lib-getrandom */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-getrandom"; sourceTree = "<group>"; };
 		0018E28C2DE522FF00E4A24E /* lib-getrandom.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-getrandom.json"; sourceTree = "<group>"; };
-		0018E28E2DE522FF00E4A24E /* dep-lib-itoa */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-itoa"; sourceTree = "<group>"; };
+		0018E28E2DE522FF00E4A24E /* dep-lib-itoa */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-itoa"; sourceTree = "<group>"; };
 		0018E28F2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		0018E2902DE522FF00E4A24E /* lib-itoa */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-itoa"; sourceTree = "<group>"; };
 		0018E2912DE522FF00E4A24E /* lib-itoa.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-itoa.json"; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 		0018E2B52DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		0018E2B62DE522FF00E4A24E /* lib-rand */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-rand"; sourceTree = "<group>"; };
 		0018E2B72DE522FF00E4A24E /* lib-rand.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-rand.json"; sourceTree = "<group>"; };
-		0018E2B92DE522FF00E4A24E /* dep-lib-ryu */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-ryu"; sourceTree = "<group>"; };
+		0018E2B92DE522FF00E4A24E /* dep-lib-ryu */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-ryu"; sourceTree = "<group>"; };
 		0018E2BA2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		0018E2BB2DE522FF00E4A24E /* lib-ryu */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-ryu"; sourceTree = "<group>"; };
 		0018E2BC2DE522FF00E4A24E /* lib-ryu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-ryu.json"; sourceTree = "<group>"; };
@@ -475,17 +475,17 @@
 		0018E44C2DE522FF00E4A24E /* build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "build-script-build-script-build.json"; sourceTree = "<group>"; };
 		0018E44D2DE522FF00E4A24E /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
 		0018E44E2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
-		0018E4502DE522FF00E4A24E /* dep-lib-proc_macro2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-proc_macro2"; sourceTree = "<group>"; };
+		0018E4502DE522FF00E4A24E /* dep-lib-proc_macro2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-proc_macro2"; sourceTree = "<group>"; };
 		0018E4512DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		0018E4522DE522FF00E4A24E /* lib-proc_macro2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-proc_macro2"; sourceTree = "<group>"; };
 		0018E4532DE522FF00E4A24E /* lib-proc_macro2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-proc_macro2.json"; sourceTree = "<group>"; };
 		0018E4552DE522FF00E4A24E /* build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "build-script-build-script-build"; sourceTree = "<group>"; };
 		0018E4562DE522FF00E4A24E /* build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "build-script-build-script-build.json"; sourceTree = "<group>"; };
-		0018E4572DE522FF00E4A24E /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
+		0018E4572DE522FF00E4A24E /* dep-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-build-script-build-script-build"; sourceTree = "<group>"; };
 		0018E4582DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		0018E45A2DE522FF00E4A24E /* run-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "run-build-script-build-script-build"; sourceTree = "<group>"; };
 		0018E45B2DE522FF00E4A24E /* run-build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "run-build-script-build-script-build.json"; sourceTree = "<group>"; };
-		0018E45D2DE522FF00E4A24E /* dep-lib-quote */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-quote"; sourceTree = "<group>"; };
+		0018E45D2DE522FF00E4A24E /* dep-lib-quote */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-quote"; sourceTree = "<group>"; };
 		0018E45E2DE522FF00E4A24E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		0018E45F2DE522FF00E4A24E /* lib-quote */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-quote"; sourceTree = "<group>"; };
 		0018E4602DE522FF00E4A24E /* lib-quote.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-quote.json"; sourceTree = "<group>"; };
@@ -615,6 +615,448 @@
 		003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionPadView.swift; sourceTree = "<group>"; };
 		003DE2AA2DB5FC8000EFB530 /* MazeDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeDirection.swift; sourceTree = "<group>"; };
 		00492F952E25D767003D2BEA /* HelpModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpModalView.swift; sourceTree = "<group>"; };
+		004A5F7D2E47CBB30022ED7D /* dep-lib-cfg_if */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-cfg_if"; sourceTree = "<group>"; };
+		004A5F7E2E47CBB30022ED7D /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		004A5F7F2E47CBB30022ED7D /* lib-cfg_if */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-cfg_if"; sourceTree = "<group>"; };
+		004A5F802E47CBB30022ED7D /* lib-cfg_if.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-cfg_if.json"; sourceTree = "<group>"; };
+		004A5F822E47CBB30022ED7D /* dep-lib-getrandom */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-getrandom"; sourceTree = "<group>"; };
+		004A5F832E47CBB30022ED7D /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		004A5F842E47CBB30022ED7D /* lib-getrandom */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-getrandom"; sourceTree = "<group>"; };
+		004A5F852E47CBB30022ED7D /* lib-getrandom.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-getrandom.json"; sourceTree = "<group>"; };
+		004A5F872E47CBB30022ED7D /* dep-lib-itoa */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-itoa"; sourceTree = "<group>"; };
+		004A5F882E47CBB30022ED7D /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		004A5F892E47CBB30022ED7D /* lib-itoa */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-itoa"; sourceTree = "<group>"; };
+		004A5F8A2E47CBB30022ED7D /* lib-itoa.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-itoa.json"; sourceTree = "<group>"; };
+		004A5F8C2E47CBB30022ED7D /* run-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "run-build-script-build-script-build"; sourceTree = "<group>"; };
+		004A5F8D2E47CBB30022ED7D /* run-build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "run-build-script-build-script-build.json"; sourceTree = "<group>"; };
+		004A5F8F2E47CBB30022ED7D /* dep-lib-libc */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-libc"; sourceTree = "<group>"; };
+		004A5F902E47CBB30022ED7D /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		004A5F912E47CBB30022ED7D /* lib-libc */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-libc"; sourceTree = "<group>"; };
+		004A5F922E47CBB30022ED7D /* lib-libc.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-libc.json"; sourceTree = "<group>"; };
+		004A5F942E47CBB30022ED7D /* dep-lib-mazer */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-mazer"; sourceTree = "<group>"; };
+		004A5F952E47CBB30022ED7D /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		004A5F962E47CBB30022ED7D /* lib-mazer */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-mazer"; sourceTree = "<group>"; };
+		004A5F972E47CBB30022ED7D /* lib-mazer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-mazer.json"; sourceTree = "<group>"; };
+		004A5F992E47CBB30022ED7D /* dep-lib-memchr */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-memchr"; sourceTree = "<group>"; };
+		004A5F9A2E47CBB30022ED7D /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		004A5F9B2E47CBB30022ED7D /* lib-memchr */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-memchr"; sourceTree = "<group>"; };
+		004A5F9C2E47CBB30022ED7D /* lib-memchr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-memchr.json"; sourceTree = "<group>"; };
+		004A5F9E2E47CBB30022ED7D /* dep-lib-ppv_lite86 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-ppv_lite86"; sourceTree = "<group>"; };
+		004A5F9F2E47CBB30022ED7D /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		004A5FA02E47CBB30022ED7D /* lib-ppv_lite86 */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-ppv_lite86"; sourceTree = "<group>"; };
+		004A5FA12E47CBB30022ED7D /* lib-ppv_lite86.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-ppv_lite86.json"; sourceTree = "<group>"; };
+		004A5FA32E47CBB30022ED7D /* dep-lib-rand_chacha */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-rand_chacha"; sourceTree = "<group>"; };
+		004A5FA42E47CBB30022ED7D /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		004A5FA52E47CBB30022ED7D /* lib-rand_chacha */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-rand_chacha"; sourceTree = "<group>"; };
+		004A5FA62E47CBB30022ED7D /* lib-rand_chacha.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-rand_chacha.json"; sourceTree = "<group>"; };
+		004A5FA82E47CBB30022ED7D /* dep-lib-rand_core */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-rand_core"; sourceTree = "<group>"; };
+		004A5FA92E47CBB30022ED7D /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		004A5FAA2E47CBB30022ED7D /* lib-rand_core */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-rand_core"; sourceTree = "<group>"; };
+		004A5FAB2E47CBB30022ED7D /* lib-rand_core.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-rand_core.json"; sourceTree = "<group>"; };
+		004A5FAD2E47CBB30022ED7D /* dep-lib-rand */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-rand"; sourceTree = "<group>"; };
+		004A5FAE2E47CBB30022ED7D /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		004A5FAF2E47CBB30022ED7D /* lib-rand */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-rand"; sourceTree = "<group>"; };
+		004A5FB02E47CBB30022ED7D /* lib-rand.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-rand.json"; sourceTree = "<group>"; };
+		004A5FB22E47CBB30022ED7D /* dep-lib-ryu */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-ryu"; sourceTree = "<group>"; };
+		004A5FB32E47CBB30022ED7D /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		004A5FB42E47CBB30022ED7D /* lib-ryu */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-ryu"; sourceTree = "<group>"; };
+		004A5FB52E47CBB30022ED7D /* lib-ryu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-ryu.json"; sourceTree = "<group>"; };
+		004A5FB72E47CBB30022ED7D /* run-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "run-build-script-build-script-build"; sourceTree = "<group>"; };
+		004A5FB82E47CBB30022ED7D /* run-build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "run-build-script-build-script-build.json"; sourceTree = "<group>"; };
+		004A5FBA2E47CBB30022ED7D /* dep-lib-serde_json */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-serde_json"; sourceTree = "<group>"; };
+		004A5FBB2E47CBB30022ED7D /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		004A5FBC2E47CBB30022ED7D /* lib-serde_json */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-serde_json"; sourceTree = "<group>"; };
+		004A5FBD2E47CBB30022ED7D /* lib-serde_json.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-serde_json.json"; sourceTree = "<group>"; };
+		004A5FBF2E47CBB30022ED7D /* run-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "run-build-script-build-script-build"; sourceTree = "<group>"; };
+		004A5FC02E47CBB30022ED7D /* run-build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "run-build-script-build-script-build.json"; sourceTree = "<group>"; };
+		004A5FC22E47CBB30022ED7D /* dep-lib-serde */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-serde"; sourceTree = "<group>"; };
+		004A5FC32E47CBB30022ED7D /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		004A5FC42E47CBB30022ED7D /* lib-serde */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-serde"; sourceTree = "<group>"; };
+		004A5FC52E47CBB30022ED7D /* lib-serde.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-serde.json"; sourceTree = "<group>"; };
+		004A5FC72E47CBB30022ED7D /* run-build-script-build-script-build */ = {isa = PBXFileReference; lastKnownFileType = text; path = "run-build-script-build-script-build"; sourceTree = "<group>"; };
+		004A5FC82E47CBB30022ED7D /* run-build-script-build-script-build.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "run-build-script-build-script-build.json"; sourceTree = "<group>"; };
+		004A5FCA2E47CBB30022ED7D /* dep-lib-zerocopy */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-zerocopy"; sourceTree = "<group>"; };
+		004A5FCB2E47CBB30022ED7D /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		004A5FCC2E47CBB30022ED7D /* lib-zerocopy */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-zerocopy"; sourceTree = "<group>"; };
+		004A5FCD2E47CBB30022ED7D /* lib-zerocopy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-zerocopy.json"; sourceTree = "<group>"; };
+		004A5FD12E47CBB30022ED7D /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		004A5FD22E47CBB30022ED7D /* output */ = {isa = PBXFileReference; lastKnownFileType = text; path = output; sourceTree = "<group>"; };
+		004A5FD32E47CBB30022ED7D /* root-output */ = {isa = PBXFileReference; lastKnownFileType = text; path = "root-output"; sourceTree = "<group>"; };
+		004A5FD42E47CBB30022ED7D /* stderr */ = {isa = PBXFileReference; lastKnownFileType = text; path = stderr; sourceTree = "<group>"; };
+		004A5FD72E47CBB30022ED7D /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		004A5FD82E47CBB30022ED7D /* output */ = {isa = PBXFileReference; lastKnownFileType = text; path = output; sourceTree = "<group>"; };
+		004A5FD92E47CBB30022ED7D /* root-output */ = {isa = PBXFileReference; lastKnownFileType = text; path = "root-output"; sourceTree = "<group>"; };
+		004A5FDA2E47CBB30022ED7D /* stderr */ = {isa = PBXFileReference; lastKnownFileType = text; path = stderr; sourceTree = "<group>"; };
+		004A5FDD2E47CBB30022ED7D /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		004A5FDE2E47CBB30022ED7D /* output */ = {isa = PBXFileReference; lastKnownFileType = text; path = output; sourceTree = "<group>"; };
+		004A5FDF2E47CBB30022ED7D /* root-output */ = {isa = PBXFileReference; lastKnownFileType = text; path = "root-output"; sourceTree = "<group>"; };
+		004A5FE02E47CBB30022ED7D /* stderr */ = {isa = PBXFileReference; lastKnownFileType = text; path = stderr; sourceTree = "<group>"; };
+		004A5FE32E47CBB30022ED7D /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
+		004A5FE42E47CBB30022ED7D /* output */ = {isa = PBXFileReference; lastKnownFileType = text; path = output; sourceTree = "<group>"; };
+		004A5FE52E47CBB30022ED7D /* root-output */ = {isa = PBXFileReference; lastKnownFileType = text; path = "root-output"; sourceTree = "<group>"; };
+		004A5FE62E47CBB30022ED7D /* stderr */ = {isa = PBXFileReference; lastKnownFileType = text; path = stderr; sourceTree = "<group>"; };
+		004A5FE92E47CBB30022ED7D /* cfg_if-5cebc652d89042ce.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "cfg_if-5cebc652d89042ce.d"; sourceTree = "<group>"; };
+		004A5FEA2E47CBB30022ED7D /* cfg_if-5cebc652d89042ce.cfg_if.b38a937f13a7b92d-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "cfg_if-5cebc652d89042ce.cfg_if.b38a937f13a7b92d-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		004A5FEB2E47CBB30022ED7D /* getrandom-c20f1cc6c55cce96.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "getrandom-c20f1cc6c55cce96.d"; sourceTree = "<group>"; };
+		004A5FEC2E47CBB30022ED7D /* getrandom-c20f1cc6c55cce96.getrandom.e576443642e93df0-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "getrandom-c20f1cc6c55cce96.getrandom.e576443642e93df0-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		004A5FED2E47CBB30022ED7D /* itoa-f66071dec659f76f.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "itoa-f66071dec659f76f.d"; sourceTree = "<group>"; };
+		004A5FEE2E47CBB30022ED7D /* itoa-f66071dec659f76f.itoa.bfff7c31bfacbbc0-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "itoa-f66071dec659f76f.itoa.bfff7c31bfacbbc0-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		004A5FEF2E47CBB30022ED7D /* libc-feabcb84d52f474d.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "libc-feabcb84d52f474d.d"; sourceTree = "<group>"; };
+		004A5FF02E47CBB30022ED7D /* libc-feabcb84d52f474d.libc.8bd9ebce3973f7da-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "libc-feabcb84d52f474d.libc.8bd9ebce3973f7da-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		004A5FF12E47CBB30022ED7D /* libcfg_if-5cebc652d89042ce.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libcfg_if-5cebc652d89042ce.rlib"; sourceTree = "<group>"; };
+		004A5FF22E47CBB30022ED7D /* libcfg_if-5cebc652d89042ce.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libcfg_if-5cebc652d89042ce.rmeta"; sourceTree = "<group>"; };
+		004A5FF32E47CBB30022ED7D /* libgetrandom-c20f1cc6c55cce96.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libgetrandom-c20f1cc6c55cce96.rlib"; sourceTree = "<group>"; };
+		004A5FF42E47CBB30022ED7D /* libgetrandom-c20f1cc6c55cce96.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libgetrandom-c20f1cc6c55cce96.rmeta"; sourceTree = "<group>"; };
+		004A5FF52E47CBB30022ED7D /* libitoa-f66071dec659f76f.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libitoa-f66071dec659f76f.rlib"; sourceTree = "<group>"; };
+		004A5FF62E47CBB30022ED7D /* libitoa-f66071dec659f76f.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libitoa-f66071dec659f76f.rmeta"; sourceTree = "<group>"; };
+		004A5FF72E47CBB30022ED7D /* liblibc-feabcb84d52f474d.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "liblibc-feabcb84d52f474d.rlib"; sourceTree = "<group>"; };
+		004A5FF82E47CBB30022ED7D /* liblibc-feabcb84d52f474d.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "liblibc-feabcb84d52f474d.rmeta"; sourceTree = "<group>"; };
+		004A5FF92E47CBB30022ED7D /* libmazer-df289ad734eb802b.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libmazer-df289ad734eb802b.a"; sourceTree = "<group>"; };
+		004A5FFA2E47CBB30022ED7D /* libmemchr-5a5231bd1bbf7666.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libmemchr-5a5231bd1bbf7666.rlib"; sourceTree = "<group>"; };
+		004A5FFB2E47CBB30022ED7D /* libmemchr-5a5231bd1bbf7666.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libmemchr-5a5231bd1bbf7666.rmeta"; sourceTree = "<group>"; };
+		004A5FFC2E47CBB30022ED7D /* libppv_lite86-61f5bc00e7806103.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libppv_lite86-61f5bc00e7806103.rlib"; sourceTree = "<group>"; };
+		004A5FFD2E47CBB30022ED7D /* libppv_lite86-61f5bc00e7806103.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libppv_lite86-61f5bc00e7806103.rmeta"; sourceTree = "<group>"; };
+		004A5FFE2E47CBB30022ED7D /* librand_chacha-cdca7a2900037346.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "librand_chacha-cdca7a2900037346.rlib"; sourceTree = "<group>"; };
+		004A5FFF2E47CBB30022ED7D /* librand_chacha-cdca7a2900037346.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "librand_chacha-cdca7a2900037346.rmeta"; sourceTree = "<group>"; };
+		004A60002E47CBB30022ED7D /* librand_core-dc795a3be6d275bb.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "librand_core-dc795a3be6d275bb.rlib"; sourceTree = "<group>"; };
+		004A60012E47CBB30022ED7D /* librand_core-dc795a3be6d275bb.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "librand_core-dc795a3be6d275bb.rmeta"; sourceTree = "<group>"; };
+		004A60022E47CBB30022ED7D /* librand-4e07606aca955adb.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "librand-4e07606aca955adb.rlib"; sourceTree = "<group>"; };
+		004A60032E47CBB30022ED7D /* librand-4e07606aca955adb.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "librand-4e07606aca955adb.rmeta"; sourceTree = "<group>"; };
+		004A60042E47CBB30022ED7D /* libryu-89368832ed1b1332.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libryu-89368832ed1b1332.rlib"; sourceTree = "<group>"; };
+		004A60052E47CBB30022ED7D /* libryu-89368832ed1b1332.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libryu-89368832ed1b1332.rmeta"; sourceTree = "<group>"; };
+		004A60062E47CBB30022ED7D /* libserde_json-ba5023e0e332e8a4.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libserde_json-ba5023e0e332e8a4.rlib"; sourceTree = "<group>"; };
+		004A60072E47CBB30022ED7D /* libserde_json-ba5023e0e332e8a4.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libserde_json-ba5023e0e332e8a4.rmeta"; sourceTree = "<group>"; };
+		004A60082E47CBB30022ED7D /* libserde-932dd4c37c862fd1.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libserde-932dd4c37c862fd1.rlib"; sourceTree = "<group>"; };
+		004A60092E47CBB30022ED7D /* libserde-932dd4c37c862fd1.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libserde-932dd4c37c862fd1.rmeta"; sourceTree = "<group>"; };
+		004A600A2E47CBB30022ED7D /* libzerocopy-80369c8f93a2e9d6.rlib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libzerocopy-80369c8f93a2e9d6.rlib"; sourceTree = "<group>"; };
+		004A600B2E47CBB30022ED7D /* libzerocopy-80369c8f93a2e9d6.rmeta */ = {isa = PBXFileReference; lastKnownFileType = file; path = "libzerocopy-80369c8f93a2e9d6.rmeta"; sourceTree = "<group>"; };
+		004A600C2E47CBB30022ED7D /* mazer-df289ad734eb802b.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "mazer-df289ad734eb802b.d"; sourceTree = "<group>"; };
+		004A600D2E47CBB30022ED7D /* mazer-df289ad734eb802b.0balzkrs5om82m4fnuqcz2z8z.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.0balzkrs5om82m4fnuqcz2z8z.rcgu.o"; sourceTree = "<group>"; };
+		004A600E2E47CBB30022ED7D /* mazer-df289ad734eb802b.0cu8rrntibl7r23rej0o618ly.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.0cu8rrntibl7r23rej0o618ly.rcgu.o"; sourceTree = "<group>"; };
+		004A600F2E47CBB30022ED7D /* mazer-df289ad734eb802b.0j0h6pz0jt0zllgwosakexwx3.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.0j0h6pz0jt0zllgwosakexwx3.rcgu.o"; sourceTree = "<group>"; };
+		004A60102E47CBB30022ED7D /* mazer-df289ad734eb802b.0pjolnbav65aolrfa8hq8e3sw.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.0pjolnbav65aolrfa8hq8e3sw.rcgu.o"; sourceTree = "<group>"; };
+		004A60112E47CBB30022ED7D /* mazer-df289ad734eb802b.0w2hdcsm7s6ihkc5rmj1lkc8b.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.0w2hdcsm7s6ihkc5rmj1lkc8b.rcgu.o"; sourceTree = "<group>"; };
+		004A60122E47CBB30022ED7D /* mazer-df289ad734eb802b.01c4f134n1ttblp26um6n8wr1.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.01c4f134n1ttblp26um6n8wr1.rcgu.o"; sourceTree = "<group>"; };
+		004A60132E47CBB30022ED7D /* mazer-df289ad734eb802b.1jcdjm8kxoa20bdwx7bnriyvz.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.1jcdjm8kxoa20bdwx7bnriyvz.rcgu.o"; sourceTree = "<group>"; };
+		004A60142E47CBB30022ED7D /* mazer-df289ad734eb802b.1lwo2k5s36l3rmv0bc9m1vpxy.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.1lwo2k5s36l3rmv0bc9m1vpxy.rcgu.o"; sourceTree = "<group>"; };
+		004A60152E47CBB30022ED7D /* mazer-df289ad734eb802b.1mk9r3fdlxs3bv7ici0gpd2y8.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.1mk9r3fdlxs3bv7ici0gpd2y8.rcgu.o"; sourceTree = "<group>"; };
+		004A60162E47CBB30022ED7D /* mazer-df289ad734eb802b.1oceerrpe80wh1btex4j76q5n.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.1oceerrpe80wh1btex4j76q5n.rcgu.o"; sourceTree = "<group>"; };
+		004A60172E47CBB30022ED7D /* mazer-df289ad734eb802b.1s481baaiov4nznkv0qqpw8dm.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.1s481baaiov4nznkv0qqpw8dm.rcgu.o"; sourceTree = "<group>"; };
+		004A60182E47CBB30022ED7D /* mazer-df289ad734eb802b.1tfbhsxe80rwyldqi4w7chk3f.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.1tfbhsxe80rwyldqi4w7chk3f.rcgu.o"; sourceTree = "<group>"; };
+		004A60192E47CBB30022ED7D /* mazer-df289ad734eb802b.2hvmj5i5js9i26b1zswx76qqz.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.2hvmj5i5js9i26b1zswx76qqz.rcgu.o"; sourceTree = "<group>"; };
+		004A601A2E47CBB30022ED7D /* mazer-df289ad734eb802b.2ivg4i7p3d6sqryussg8xvatr.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.2ivg4i7p3d6sqryussg8xvatr.rcgu.o"; sourceTree = "<group>"; };
+		004A601B2E47CBB30022ED7D /* mazer-df289ad734eb802b.2j6vswhqhw1yy6zeqcsz90y6g.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.2j6vswhqhw1yy6zeqcsz90y6g.rcgu.o"; sourceTree = "<group>"; };
+		004A601C2E47CBB30022ED7D /* mazer-df289ad734eb802b.2jch2j324cguyinc2s59t0ch3.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.2jch2j324cguyinc2s59t0ch3.rcgu.o"; sourceTree = "<group>"; };
+		004A601D2E47CBB30022ED7D /* mazer-df289ad734eb802b.2n8iw075r53u04owb5nlxsb8a.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.2n8iw075r53u04owb5nlxsb8a.rcgu.o"; sourceTree = "<group>"; };
+		004A601E2E47CBB30022ED7D /* mazer-df289ad734eb802b.2oe1vlmhw6w5d633nj8qyz369.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.2oe1vlmhw6w5d633nj8qyz369.rcgu.o"; sourceTree = "<group>"; };
+		004A601F2E47CBB30022ED7D /* mazer-df289ad734eb802b.2phj5lqgjm3e4hmtmwd4g4soc.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.2phj5lqgjm3e4hmtmwd4g4soc.rcgu.o"; sourceTree = "<group>"; };
+		004A60202E47CBB30022ED7D /* mazer-df289ad734eb802b.2t1a74s868tfqppeyeswov22w.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.2t1a74s868tfqppeyeswov22w.rcgu.o"; sourceTree = "<group>"; };
+		004A60212E47CBB30022ED7D /* mazer-df289ad734eb802b.2v0so755katfftinqyih5ss9p.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.2v0so755katfftinqyih5ss9p.rcgu.o"; sourceTree = "<group>"; };
+		004A60222E47CBB30022ED7D /* mazer-df289ad734eb802b.2w8w15eu82eqbzhuunzl7hwrw.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.2w8w15eu82eqbzhuunzl7hwrw.rcgu.o"; sourceTree = "<group>"; };
+		004A60232E47CBB30022ED7D /* mazer-df289ad734eb802b.3vfj40l9ti7tfhpbw3hz25762.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.3vfj40l9ti7tfhpbw3hz25762.rcgu.o"; sourceTree = "<group>"; };
+		004A60242E47CBB30022ED7D /* mazer-df289ad734eb802b.4dp6ae65k1ivvhnb2wgcc95nk.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.4dp6ae65k1ivvhnb2wgcc95nk.rcgu.o"; sourceTree = "<group>"; };
+		004A60252E47CBB30022ED7D /* mazer-df289ad734eb802b.4fc1gn7vp2hj04mfubem6x2n7.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.4fc1gn7vp2hj04mfubem6x2n7.rcgu.o"; sourceTree = "<group>"; };
+		004A60262E47CBB30022ED7D /* mazer-df289ad734eb802b.4kvlgqqm8fq9y18wp47c7dy4w.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.4kvlgqqm8fq9y18wp47c7dy4w.rcgu.o"; sourceTree = "<group>"; };
+		004A60272E47CBB30022ED7D /* mazer-df289ad734eb802b.4n32bskvwdx81b3y02depsd3m.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.4n32bskvwdx81b3y02depsd3m.rcgu.o"; sourceTree = "<group>"; };
+		004A60282E47CBB30022ED7D /* mazer-df289ad734eb802b.4rscubslhjc7zwj8hg9a9wd95.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.4rscubslhjc7zwj8hg9a9wd95.rcgu.o"; sourceTree = "<group>"; };
+		004A60292E47CBB30022ED7D /* mazer-df289ad734eb802b.5aqpca0gwu6xpokzrsq73o794.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.5aqpca0gwu6xpokzrsq73o794.rcgu.o"; sourceTree = "<group>"; };
+		004A602A2E47CBB30022ED7D /* mazer-df289ad734eb802b.5clx9ozexasm9sug83u5waeeb.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.5clx9ozexasm9sug83u5waeeb.rcgu.o"; sourceTree = "<group>"; };
+		004A602B2E47CBB30022ED7D /* mazer-df289ad734eb802b.5dyl9kbjjshowck8xy62pu9y4.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.5dyl9kbjjshowck8xy62pu9y4.rcgu.o"; sourceTree = "<group>"; };
+		004A602C2E47CBB30022ED7D /* mazer-df289ad734eb802b.5g0q8s9ws104gbsvnv1jcvu4g.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.5g0q8s9ws104gbsvnv1jcvu4g.rcgu.o"; sourceTree = "<group>"; };
+		004A602D2E47CBB30022ED7D /* mazer-df289ad734eb802b.5jlqvq77x8zwylhaq720wh5it.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.5jlqvq77x8zwylhaq720wh5it.rcgu.o"; sourceTree = "<group>"; };
+		004A602E2E47CBB30022ED7D /* mazer-df289ad734eb802b.5jvqqh2n5r432jl8i3qzj2u3j.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.5jvqqh2n5r432jl8i3qzj2u3j.rcgu.o"; sourceTree = "<group>"; };
+		004A602F2E47CBB30022ED7D /* mazer-df289ad734eb802b.5kgmdaspw5h8yf3jmj14mqf8b.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.5kgmdaspw5h8yf3jmj14mqf8b.rcgu.o"; sourceTree = "<group>"; };
+		004A60302E47CBB30022ED7D /* mazer-df289ad734eb802b.5qglfz2ytotylllt8vs9qvjax.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.5qglfz2ytotylllt8vs9qvjax.rcgu.o"; sourceTree = "<group>"; };
+		004A60312E47CBB30022ED7D /* mazer-df289ad734eb802b.5tscjvkyyydmeepf9vfhjwvc6.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.5tscjvkyyydmeepf9vfhjwvc6.rcgu.o"; sourceTree = "<group>"; };
+		004A60322E47CBB30022ED7D /* mazer-df289ad734eb802b.5two4d41h6m6atk9dff2zkzcn.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.5two4d41h6m6atk9dff2zkzcn.rcgu.o"; sourceTree = "<group>"; };
+		004A60332E47CBB30022ED7D /* mazer-df289ad734eb802b.5u9g44mqhewz8q2ei8tog4tqe.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.5u9g44mqhewz8q2ei8tog4tqe.rcgu.o"; sourceTree = "<group>"; };
+		004A60342E47CBB30022ED7D /* mazer-df289ad734eb802b.5v3ovd5mxqqii0ieg14prph30.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.5v3ovd5mxqqii0ieg14prph30.rcgu.o"; sourceTree = "<group>"; };
+		004A60352E47CBB30022ED7D /* mazer-df289ad734eb802b.5vvx0fkdl623e85d8mrlgcn78.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.5vvx0fkdl623e85d8mrlgcn78.rcgu.o"; sourceTree = "<group>"; };
+		004A60362E47CBB30022ED7D /* mazer-df289ad734eb802b.5xdnlyckhq4smzi2cmu9ko8mx.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.5xdnlyckhq4smzi2cmu9ko8mx.rcgu.o"; sourceTree = "<group>"; };
+		004A60372E47CBB30022ED7D /* mazer-df289ad734eb802b.6f8ofbie6y6p4pmg72110ggs9.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.6f8ofbie6y6p4pmg72110ggs9.rcgu.o"; sourceTree = "<group>"; };
+		004A60382E47CBB30022ED7D /* mazer-df289ad734eb802b.6f74okigb9gezxfmxx03o5rt2.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.6f74okigb9gezxfmxx03o5rt2.rcgu.o"; sourceTree = "<group>"; };
+		004A60392E47CBB30022ED7D /* mazer-df289ad734eb802b.6fiswza01llir7qypsr3hafsv.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.6fiswza01llir7qypsr3hafsv.rcgu.o"; sourceTree = "<group>"; };
+		004A603A2E47CBB30022ED7D /* mazer-df289ad734eb802b.6fsici8el0r3td0bg55hy47p3.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.6fsici8el0r3td0bg55hy47p3.rcgu.o"; sourceTree = "<group>"; };
+		004A603B2E47CBB30022ED7D /* mazer-df289ad734eb802b.6msv3go0wp2lc957qk4xv1etg.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.6msv3go0wp2lc957qk4xv1etg.rcgu.o"; sourceTree = "<group>"; };
+		004A603C2E47CBB30022ED7D /* mazer-df289ad734eb802b.6nze8a4nuy3oi3hohtls02f7x.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.6nze8a4nuy3oi3hohtls02f7x.rcgu.o"; sourceTree = "<group>"; };
+		004A603D2E47CBB30022ED7D /* mazer-df289ad734eb802b.6oy1xie3hq5xcmsob4ilm6ow5.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.6oy1xie3hq5xcmsob4ilm6ow5.rcgu.o"; sourceTree = "<group>"; };
+		004A603E2E47CBB30022ED7D /* mazer-df289ad734eb802b.7aieru59j0ymkokzsdmropur0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.7aieru59j0ymkokzsdmropur0.rcgu.o"; sourceTree = "<group>"; };
+		004A603F2E47CBB30022ED7D /* mazer-df289ad734eb802b.7b990gqpvvh4k54gcf2rn5l2x.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.7b990gqpvvh4k54gcf2rn5l2x.rcgu.o"; sourceTree = "<group>"; };
+		004A60402E47CBB30022ED7D /* mazer-df289ad734eb802b.7bqkx5vxrwt40fsnlhdjscq2v.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.7bqkx5vxrwt40fsnlhdjscq2v.rcgu.o"; sourceTree = "<group>"; };
+		004A60412E47CBB30022ED7D /* mazer-df289ad734eb802b.7cyw5n1zrv6i8golc16kejr8l.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.7cyw5n1zrv6i8golc16kejr8l.rcgu.o"; sourceTree = "<group>"; };
+		004A60422E47CBB30022ED7D /* mazer-df289ad734eb802b.7kgwz5aqitatscegvpvq6t1em.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.7kgwz5aqitatscegvpvq6t1em.rcgu.o"; sourceTree = "<group>"; };
+		004A60432E47CBB30022ED7D /* mazer-df289ad734eb802b.7nl5ezbvdmunyqp4ko8ol9l7l.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.7nl5ezbvdmunyqp4ko8ol9l7l.rcgu.o"; sourceTree = "<group>"; };
+		004A60442E47CBB30022ED7D /* mazer-df289ad734eb802b.8gjwtlxuotnbtx5qzs5xta3as.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.8gjwtlxuotnbtx5qzs5xta3as.rcgu.o"; sourceTree = "<group>"; };
+		004A60452E47CBB30022ED7D /* mazer-df289ad734eb802b.8l3ge7cbufccyo1mv9lzn2xcq.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.8l3ge7cbufccyo1mv9lzn2xcq.rcgu.o"; sourceTree = "<group>"; };
+		004A60462E47CBB30022ED7D /* mazer-df289ad734eb802b.8n9jngdfsa7rnqqhxsautw6cv.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.8n9jngdfsa7rnqqhxsautw6cv.rcgu.o"; sourceTree = "<group>"; };
+		004A60472E47CBB30022ED7D /* mazer-df289ad734eb802b.8pqvnqtj111mlln9iihgqpu8x.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.8pqvnqtj111mlln9iihgqpu8x.rcgu.o"; sourceTree = "<group>"; };
+		004A60482E47CBB30022ED7D /* mazer-df289ad734eb802b.8qtt9lvcvcvos66i6nxgvmlc4.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.8qtt9lvcvcvos66i6nxgvmlc4.rcgu.o"; sourceTree = "<group>"; };
+		004A60492E47CBB30022ED7D /* mazer-df289ad734eb802b.8wjafy6o4aopa4grkc4d4vnut.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.8wjafy6o4aopa4grkc4d4vnut.rcgu.o"; sourceTree = "<group>"; };
+		004A604A2E47CBB30022ED7D /* mazer-df289ad734eb802b.8zno7ef3u1fqa88e2ed244v6y.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.8zno7ef3u1fqa88e2ed244v6y.rcgu.o"; sourceTree = "<group>"; };
+		004A604B2E47CBB30022ED7D /* mazer-df289ad734eb802b.9a061tyopb3621leznw1u0hfq.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.9a061tyopb3621leznw1u0hfq.rcgu.o"; sourceTree = "<group>"; };
+		004A604C2E47CBB30022ED7D /* mazer-df289ad734eb802b.9ie2gsy5hnaarxms0hnxosbz6.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.9ie2gsy5hnaarxms0hnxosbz6.rcgu.o"; sourceTree = "<group>"; };
+		004A604D2E47CBB30022ED7D /* mazer-df289ad734eb802b.9mrbtseojbs5af7r9vdi3mktv.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.9mrbtseojbs5af7r9vdi3mktv.rcgu.o"; sourceTree = "<group>"; };
+		004A604E2E47CBB30022ED7D /* mazer-df289ad734eb802b.9nmq0u2ffea41pk9zkn9qives.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.9nmq0u2ffea41pk9zkn9qives.rcgu.o"; sourceTree = "<group>"; };
+		004A604F2E47CBB30022ED7D /* mazer-df289ad734eb802b.9ougrlsvo17iofvlcjzmf4zu8.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.9ougrlsvo17iofvlcjzmf4zu8.rcgu.o"; sourceTree = "<group>"; };
+		004A60502E47CBB30022ED7D /* mazer-df289ad734eb802b.9q9e7axf2d9jhycrd2b6nv82y.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.9q9e7axf2d9jhycrd2b6nv82y.rcgu.o"; sourceTree = "<group>"; };
+		004A60512E47CBB30022ED7D /* mazer-df289ad734eb802b.9t6lmkvls96ori7am6f1nhyhh.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.9t6lmkvls96ori7am6f1nhyhh.rcgu.o"; sourceTree = "<group>"; };
+		004A60522E47CBB30022ED7D /* mazer-df289ad734eb802b.9wk00zf1qsrk98c7cgn6e47se.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.9wk00zf1qsrk98c7cgn6e47se.rcgu.o"; sourceTree = "<group>"; };
+		004A60532E47CBB30022ED7D /* mazer-df289ad734eb802b.11ts17ww09izhq26du9037shr.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.11ts17ww09izhq26du9037shr.rcgu.o"; sourceTree = "<group>"; };
+		004A60542E47CBB30022ED7D /* mazer-df289ad734eb802b.13xqh31hdopbop6azrjd87jxz.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.13xqh31hdopbop6azrjd87jxz.rcgu.o"; sourceTree = "<group>"; };
+		004A60552E47CBB30022ED7D /* mazer-df289ad734eb802b.19d06tzquckvb3srhdgj2sjvb.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.19d06tzquckvb3srhdgj2sjvb.rcgu.o"; sourceTree = "<group>"; };
+		004A60562E47CBB30022ED7D /* mazer-df289ad734eb802b.19lxfg6pzy4w27fi3wy1jyazm.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.19lxfg6pzy4w27fi3wy1jyazm.rcgu.o"; sourceTree = "<group>"; };
+		004A60572E47CBB30022ED7D /* mazer-df289ad734eb802b.19scu8qf53z5b1kq2ge8qzx0x.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.19scu8qf53z5b1kq2ge8qzx0x.rcgu.o"; sourceTree = "<group>"; };
+		004A60582E47CBB30022ED7D /* mazer-df289ad734eb802b.21kv7esoleykcqz6qjydkkv9v.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.21kv7esoleykcqz6qjydkkv9v.rcgu.o"; sourceTree = "<group>"; };
+		004A60592E47CBB30022ED7D /* mazer-df289ad734eb802b.27ugijp3dch5u79r4o3g4r4uj.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.27ugijp3dch5u79r4o3g4r4uj.rcgu.o"; sourceTree = "<group>"; };
+		004A605A2E47CBB30022ED7D /* mazer-df289ad734eb802b.33i28of0e6kzy8ikunlp4ugh1.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.33i28of0e6kzy8ikunlp4ugh1.rcgu.o"; sourceTree = "<group>"; };
+		004A605B2E47CBB30022ED7D /* mazer-df289ad734eb802b.38v68betw2xo0ti7ozm8dsomw.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.38v68betw2xo0ti7ozm8dsomw.rcgu.o"; sourceTree = "<group>"; };
+		004A605C2E47CBB30022ED7D /* mazer-df289ad734eb802b.053hb77ot3qjyhp1xh0zl6ihj.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.053hb77ot3qjyhp1xh0zl6ihj.rcgu.o"; sourceTree = "<group>"; };
+		004A605D2E47CBB30022ED7D /* mazer-df289ad734eb802b.62nlhcfwocjchfr1euq56ue8i.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.62nlhcfwocjchfr1euq56ue8i.rcgu.o"; sourceTree = "<group>"; };
+		004A605E2E47CBB30022ED7D /* mazer-df289ad734eb802b.65w7ev5cuuyri9jlcowc28cx6.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.65w7ev5cuuyri9jlcowc28cx6.rcgu.o"; sourceTree = "<group>"; };
+		004A605F2E47CBB30022ED7D /* mazer-df289ad734eb802b.67lcknlffa22nfo3jwipk7lko.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.67lcknlffa22nfo3jwipk7lko.rcgu.o"; sourceTree = "<group>"; };
+		004A60602E47CBB30022ED7D /* mazer-df289ad734eb802b.79btyh2xztpg1iw9g5ycwsrzw.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.79btyh2xztpg1iw9g5ycwsrzw.rcgu.o"; sourceTree = "<group>"; };
+		004A60612E47CBB30022ED7D /* mazer-df289ad734eb802b.85ecffakbwka0i5akr0nuson1.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.85ecffakbwka0i5akr0nuson1.rcgu.o"; sourceTree = "<group>"; };
+		004A60622E47CBB30022ED7D /* mazer-df289ad734eb802b.87jw8x270htop0zqvnuo5ka7y.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.87jw8x270htop0zqvnuo5ka7y.rcgu.o"; sourceTree = "<group>"; };
+		004A60632E47CBB30022ED7D /* mazer-df289ad734eb802b.96cs9e2ymgg7rpg3wl1jspyhg.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.96cs9e2ymgg7rpg3wl1jspyhg.rcgu.o"; sourceTree = "<group>"; };
+		004A60642E47CBB30022ED7D /* mazer-df289ad734eb802b.209gjrgg8v34kf7fgo7f37ao8.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.209gjrgg8v34kf7fgo7f37ao8.rcgu.o"; sourceTree = "<group>"; };
+		004A60652E47CBB30022ED7D /* mazer-df289ad734eb802b.536yixsoo69c2md0vdb48p2pm.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.536yixsoo69c2md0vdb48p2pm.rcgu.o"; sourceTree = "<group>"; };
+		004A60662E47CBB30022ED7D /* mazer-df289ad734eb802b.837ibnwohk5nw97zgtafxsjug.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.837ibnwohk5nw97zgtafxsjug.rcgu.o"; sourceTree = "<group>"; };
+		004A60672E47CBB30022ED7D /* mazer-df289ad734eb802b.967rybe8eqzz48gs5tfpw4u1n.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.967rybe8eqzz48gs5tfpw4u1n.rcgu.o"; sourceTree = "<group>"; };
+		004A60682E47CBB30022ED7D /* mazer-df289ad734eb802b.978uxtrhcog6sunzifa54srua.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.978uxtrhcog6sunzifa54srua.rcgu.o"; sourceTree = "<group>"; };
+		004A60692E47CBB30022ED7D /* mazer-df289ad734eb802b.2363urwk4md16o66k01ifu1s7.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.2363urwk4md16o66k01ifu1s7.rcgu.o"; sourceTree = "<group>"; };
+		004A606A2E47CBB30022ED7D /* mazer-df289ad734eb802b.a0p5ibjupj6rg0x2a9azlymb5.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.a0p5ibjupj6rg0x2a9azlymb5.rcgu.o"; sourceTree = "<group>"; };
+		004A606B2E47CBB30022ED7D /* mazer-df289ad734eb802b.a3r10rk6z5eedk541htef7rhf.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.a3r10rk6z5eedk541htef7rhf.rcgu.o"; sourceTree = "<group>"; };
+		004A606C2E47CBB30022ED7D /* mazer-df289ad734eb802b.a5g6a796tqv41ctpjdeqf9mw8.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.a5g6a796tqv41ctpjdeqf9mw8.rcgu.o"; sourceTree = "<group>"; };
+		004A606D2E47CBB30022ED7D /* mazer-df289ad734eb802b.a9ytgez4lblg1w4gmpld1revm.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.a9ytgez4lblg1w4gmpld1revm.rcgu.o"; sourceTree = "<group>"; };
+		004A606E2E47CBB30022ED7D /* mazer-df289ad734eb802b.aibzkh888yev5acltjzh65dcm.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.aibzkh888yev5acltjzh65dcm.rcgu.o"; sourceTree = "<group>"; };
+		004A606F2E47CBB30022ED7D /* mazer-df289ad734eb802b.aooybws04onbmvj65zz8slghb.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.aooybws04onbmvj65zz8slghb.rcgu.o"; sourceTree = "<group>"; };
+		004A60702E47CBB30022ED7D /* mazer-df289ad734eb802b.argb1xuituenocbo0ep2rc6yr.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.argb1xuituenocbo0ep2rc6yr.rcgu.o"; sourceTree = "<group>"; };
+		004A60712E47CBB30022ED7D /* mazer-df289ad734eb802b.at86br7dtcpc3i0kdijlcwmzp.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.at86br7dtcpc3i0kdijlcwmzp.rcgu.o"; sourceTree = "<group>"; };
+		004A60722E47CBB30022ED7D /* mazer-df289ad734eb802b.az78lv6njezxfl6kelba1tnks.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.az78lv6njezxfl6kelba1tnks.rcgu.o"; sourceTree = "<group>"; };
+		004A60732E47CBB30022ED7D /* mazer-df289ad734eb802b.b7zxbi2upa2nf0v3dhfp0bqjk.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.b7zxbi2upa2nf0v3dhfp0bqjk.rcgu.o"; sourceTree = "<group>"; };
+		004A60742E47CBB30022ED7D /* mazer-df289ad734eb802b.b9f84kjb56rlmj0cvbz8kvsjl.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.b9f84kjb56rlmj0cvbz8kvsjl.rcgu.o"; sourceTree = "<group>"; };
+		004A60752E47CBB30022ED7D /* mazer-df289ad734eb802b.bhd8g4f3ucit8e96wdw30s0yy.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.bhd8g4f3ucit8e96wdw30s0yy.rcgu.o"; sourceTree = "<group>"; };
+		004A60762E47CBB30022ED7D /* mazer-df289ad734eb802b.bikkap5srpu448sxdsnlgvbr9.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.bikkap5srpu448sxdsnlgvbr9.rcgu.o"; sourceTree = "<group>"; };
+		004A60772E47CBB30022ED7D /* mazer-df289ad734eb802b.bm877u6vle0bhqvw0l08bvibi.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.bm877u6vle0bhqvw0l08bvibi.rcgu.o"; sourceTree = "<group>"; };
+		004A60782E47CBB30022ED7D /* mazer-df289ad734eb802b.bmrsvm6m35yt36dd75yno1v28.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.bmrsvm6m35yt36dd75yno1v28.rcgu.o"; sourceTree = "<group>"; };
+		004A60792E47CBB30022ED7D /* mazer-df289ad734eb802b.br6f77svoyntobl0e9ij948dj.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.br6f77svoyntobl0e9ij948dj.rcgu.o"; sourceTree = "<group>"; };
+		004A607A2E47CBB30022ED7D /* mazer-df289ad734eb802b.buajju09qm747zizo6ax0kaqw.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.buajju09qm747zizo6ax0kaqw.rcgu.o"; sourceTree = "<group>"; };
+		004A607B2E47CBB30022ED7D /* mazer-df289ad734eb802b.bwpty334h5qbgq8u3ppernl7j.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.bwpty334h5qbgq8u3ppernl7j.rcgu.o"; sourceTree = "<group>"; };
+		004A607C2E47CBB30022ED7D /* mazer-df289ad734eb802b.c0t9pa6cb9u0mukn2d3e7hpmq.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.c0t9pa6cb9u0mukn2d3e7hpmq.rcgu.o"; sourceTree = "<group>"; };
+		004A607D2E47CBB30022ED7D /* mazer-df289ad734eb802b.c1cedehnzy4u1dami24gf313y.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.c1cedehnzy4u1dami24gf313y.rcgu.o"; sourceTree = "<group>"; };
+		004A607E2E47CBB30022ED7D /* mazer-df289ad734eb802b.c8n8yaauevuqcmfe903hfh8eu.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.c8n8yaauevuqcmfe903hfh8eu.rcgu.o"; sourceTree = "<group>"; };
+		004A607F2E47CBB30022ED7D /* mazer-df289ad734eb802b.c9l7arx7coy9wuki6xd4aikvz.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.c9l7arx7coy9wuki6xd4aikvz.rcgu.o"; sourceTree = "<group>"; };
+		004A60802E47CBB30022ED7D /* mazer-df289ad734eb802b.cbpkwzsuni7kqub09nlbkse9x.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.cbpkwzsuni7kqub09nlbkse9x.rcgu.o"; sourceTree = "<group>"; };
+		004A60812E47CBB30022ED7D /* mazer-df289ad734eb802b.cf1x7e406qh9ysu152vuty99r.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.cf1x7e406qh9ysu152vuty99r.rcgu.o"; sourceTree = "<group>"; };
+		004A60822E47CBB30022ED7D /* mazer-df289ad734eb802b.ciasxtja7kb782jfro0f03rk2.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.ciasxtja7kb782jfro0f03rk2.rcgu.o"; sourceTree = "<group>"; };
+		004A60832E47CBB30022ED7D /* mazer-df289ad734eb802b.ckbzd27zrgh4zgv5p71jh267b.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.ckbzd27zrgh4zgv5p71jh267b.rcgu.o"; sourceTree = "<group>"; };
+		004A60842E47CBB30022ED7D /* mazer-df289ad734eb802b.conv3bzxl1vzm7kcvg2rbgdqq.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.conv3bzxl1vzm7kcvg2rbgdqq.rcgu.o"; sourceTree = "<group>"; };
+		004A60852E47CBB30022ED7D /* mazer-df289ad734eb802b.cp1f1xvno9xv7kriib00wvd76.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.cp1f1xvno9xv7kriib00wvd76.rcgu.o"; sourceTree = "<group>"; };
+		004A60862E47CBB30022ED7D /* mazer-df289ad734eb802b.cpcj5q5rbgij3iqa05hgpyrw2.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.cpcj5q5rbgij3iqa05hgpyrw2.rcgu.o"; sourceTree = "<group>"; };
+		004A60872E47CBB30022ED7D /* mazer-df289ad734eb802b.cqlubrys9rejwp1ftoznbixc6.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.cqlubrys9rejwp1ftoznbixc6.rcgu.o"; sourceTree = "<group>"; };
+		004A60882E47CBB30022ED7D /* mazer-df289ad734eb802b.cqnpqvo1bcvjt4622yy4y02hp.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.cqnpqvo1bcvjt4622yy4y02hp.rcgu.o"; sourceTree = "<group>"; };
+		004A60892E47CBB30022ED7D /* mazer-df289ad734eb802b.cqrqtti6otp4zz3869yif7d7l.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.cqrqtti6otp4zz3869yif7d7l.rcgu.o"; sourceTree = "<group>"; };
+		004A608A2E47CBB30022ED7D /* mazer-df289ad734eb802b.cz27lrqsuyzxamayrtaxujyu5.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.cz27lrqsuyzxamayrtaxujyu5.rcgu.o"; sourceTree = "<group>"; };
+		004A608B2E47CBB30022ED7D /* mazer-df289ad734eb802b.czod8wpx3hngnizeol33jxjua.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.czod8wpx3hngnizeol33jxjua.rcgu.o"; sourceTree = "<group>"; };
+		004A608C2E47CBB30022ED7D /* mazer-df289ad734eb802b.d7sntw8ysvir1vu53c8diw49n.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.d7sntw8ysvir1vu53c8diw49n.rcgu.o"; sourceTree = "<group>"; };
+		004A608D2E47CBB30022ED7D /* mazer-df289ad734eb802b.db5bqmg8h46vzis864gtjldrc.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.db5bqmg8h46vzis864gtjldrc.rcgu.o"; sourceTree = "<group>"; };
+		004A608E2E47CBB30022ED7D /* mazer-df289ad734eb802b.dbqcmcx9y98nrgvvtibf13udn.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.dbqcmcx9y98nrgvvtibf13udn.rcgu.o"; sourceTree = "<group>"; };
+		004A608F2E47CBB30022ED7D /* mazer-df289ad734eb802b.dchut2olf8fsrg4uzrrv89aji.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.dchut2olf8fsrg4uzrrv89aji.rcgu.o"; sourceTree = "<group>"; };
+		004A60902E47CBB30022ED7D /* mazer-df289ad734eb802b.dcwot8c11tdurzzc9wtzpc3ae.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.dcwot8c11tdurzzc9wtzpc3ae.rcgu.o"; sourceTree = "<group>"; };
+		004A60912E47CBB30022ED7D /* mazer-df289ad734eb802b.ddgguyhxg27lur1zz0ys83kf5.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.ddgguyhxg27lur1zz0ys83kf5.rcgu.o"; sourceTree = "<group>"; };
+		004A60922E47CBB30022ED7D /* mazer-df289ad734eb802b.djy6plwqp5hzatpmirstysey8.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.djy6plwqp5hzatpmirstysey8.rcgu.o"; sourceTree = "<group>"; };
+		004A60932E47CBB30022ED7D /* mazer-df289ad734eb802b.dl61lbk19hzxabna1ada8s926.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.dl61lbk19hzxabna1ada8s926.rcgu.o"; sourceTree = "<group>"; };
+		004A60942E47CBB30022ED7D /* mazer-df289ad734eb802b.dpo6j28cf0wy09ijc7fvi9nn6.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.dpo6j28cf0wy09ijc7fvi9nn6.rcgu.o"; sourceTree = "<group>"; };
+		004A60952E47CBB30022ED7D /* mazer-df289ad734eb802b.dw22rpgkimgxlv61bos8axqt3.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.dw22rpgkimgxlv61bos8axqt3.rcgu.o"; sourceTree = "<group>"; };
+		004A60962E47CBB30022ED7D /* mazer-df289ad734eb802b.ea06w1rdrwtmiayaxjbdvlegc.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.ea06w1rdrwtmiayaxjbdvlegc.rcgu.o"; sourceTree = "<group>"; };
+		004A60972E47CBB30022ED7D /* mazer-df289ad734eb802b.ef5xzmefqpxv51k1kp1qhao6t.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.ef5xzmefqpxv51k1kp1qhao6t.rcgu.o"; sourceTree = "<group>"; };
+		004A60982E47CBB30022ED7D /* mazer-df289ad734eb802b.eojj20pkcxs9sqrfsik8avdt1.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.eojj20pkcxs9sqrfsik8avdt1.rcgu.o"; sourceTree = "<group>"; };
+		004A60992E47CBB30022ED7D /* mazer-df289ad734eb802b.etgpn7himp8mjxhe5y21rn5ip.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.etgpn7himp8mjxhe5y21rn5ip.rcgu.o"; sourceTree = "<group>"; };
+		004A609A2E47CBB30022ED7D /* mazer-df289ad734eb802b.ev88lucnwedf9akuxkifc9ypm.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.ev88lucnwedf9akuxkifc9ypm.rcgu.o"; sourceTree = "<group>"; };
+		004A609B2E47CBB30022ED7D /* mazer-df289ad734eb802b.ex5o198qgzr3pjulx6qrqaw1o.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.ex5o198qgzr3pjulx6qrqaw1o.rcgu.o"; sourceTree = "<group>"; };
+		004A609C2E47CBB30022ED7D /* mazer-df289ad734eb802b.f1oh7qjx4mkvkeh60umcgs7q9.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.f1oh7qjx4mkvkeh60umcgs7q9.rcgu.o"; sourceTree = "<group>"; };
+		004A609D2E47CBB30022ED7D /* mazer-df289ad734eb802b.f2hyz4kkz624kqkz7hfs5sj50.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.f2hyz4kkz624kqkz7hfs5sj50.rcgu.o"; sourceTree = "<group>"; };
+		004A609E2E47CBB30022ED7D /* mazer-df289ad734eb802b.f2167ssrzgx2x5seb7iflv87v.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "mazer-df289ad734eb802b.f2167ssrzgx2x5seb7iflv87v.rcgu.o"; sourceTree = "<group>"; };
+		004A609F2E47CBB30022ED7D /* memchr-5a5231bd1bbf7666.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "memchr-5a5231bd1bbf7666.d"; sourceTree = "<group>"; };
+		004A60A02E47CBB30022ED7D /* memchr-5a5231bd1bbf7666.memchr.d495a59133008d42-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "memchr-5a5231bd1bbf7666.memchr.d495a59133008d42-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		004A60A12E47CBB30022ED7D /* ppv_lite86-61f5bc00e7806103.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "ppv_lite86-61f5bc00e7806103.d"; sourceTree = "<group>"; };
+		004A60A22E47CBB30022ED7D /* ppv_lite86-61f5bc00e7806103.ppv_lite86.5188098558d0b97e-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "ppv_lite86-61f5bc00e7806103.ppv_lite86.5188098558d0b97e-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		004A60A32E47CBB30022ED7D /* rand_chacha-cdca7a2900037346.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "rand_chacha-cdca7a2900037346.d"; sourceTree = "<group>"; };
+		004A60A42E47CBB30022ED7D /* rand_chacha-cdca7a2900037346.rand_chacha.54886c8ea4a9575-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "rand_chacha-cdca7a2900037346.rand_chacha.54886c8ea4a9575-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		004A60A52E47CBB30022ED7D /* rand_core-dc795a3be6d275bb.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "rand_core-dc795a3be6d275bb.d"; sourceTree = "<group>"; };
+		004A60A62E47CBB30022ED7D /* rand_core-dc795a3be6d275bb.rand_core.d0053e6cd29f1f5e-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "rand_core-dc795a3be6d275bb.rand_core.d0053e6cd29f1f5e-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		004A60A72E47CBB30022ED7D /* rand-4e07606aca955adb.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "rand-4e07606aca955adb.d"; sourceTree = "<group>"; };
+		004A60A82E47CBB30022ED7D /* rand-4e07606aca955adb.rand.3d984b0898b343ae-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "rand-4e07606aca955adb.rand.3d984b0898b343ae-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		004A60A92E47CBB30022ED7D /* rand-4e07606aca955adb.rand.3d984b0898b343ae-cgu.1.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "rand-4e07606aca955adb.rand.3d984b0898b343ae-cgu.1.rcgu.o"; sourceTree = "<group>"; };
+		004A60AA2E47CBB30022ED7D /* ryu-89368832ed1b1332.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "ryu-89368832ed1b1332.d"; sourceTree = "<group>"; };
+		004A60AB2E47CBB30022ED7D /* ryu-89368832ed1b1332.ryu.66d373afb388c779-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "ryu-89368832ed1b1332.ryu.66d373afb388c779-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		004A60AC2E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "serde_json-ba5023e0e332e8a4.d"; sourceTree = "<group>"; };
+		004A60AD2E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		004A60AE2E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.1.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.1.rcgu.o"; sourceTree = "<group>"; };
+		004A60AF2E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.2.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.2.rcgu.o"; sourceTree = "<group>"; };
+		004A60B02E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.3.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.3.rcgu.o"; sourceTree = "<group>"; };
+		004A60B12E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.4.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.4.rcgu.o"; sourceTree = "<group>"; };
+		004A60B22E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.5.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.5.rcgu.o"; sourceTree = "<group>"; };
+		004A60B32E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.6.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.6.rcgu.o"; sourceTree = "<group>"; };
+		004A60B42E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.7.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.7.rcgu.o"; sourceTree = "<group>"; };
+		004A60B52E47CBB30022ED7D /* serde-932dd4c37c862fd1.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "serde-932dd4c37c862fd1.d"; sourceTree = "<group>"; };
+		004A60B62E47CBB30022ED7D /* serde-932dd4c37c862fd1.serde.9e3b94e22250e918-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "serde-932dd4c37c862fd1.serde.9e3b94e22250e918-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		004A60B72E47CBB30022ED7D /* zerocopy-80369c8f93a2e9d6.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "zerocopy-80369c8f93a2e9d6.d"; sourceTree = "<group>"; };
+		004A60B82E47CBB30022ED7D /* zerocopy-80369c8f93a2e9d6.zerocopy.a64d47592a30c290-cgu.0.rcgu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "zerocopy-80369c8f93a2e9d6.zerocopy.a64d47592a30c290-cgu.0.rcgu.o"; sourceTree = "<group>"; };
+		004A60BB2E47CBB30022ED7D /* 0balzkrs5om82m4fnuqcz2z8z.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 0balzkrs5om82m4fnuqcz2z8z.o; sourceTree = "<group>"; };
+		004A60BC2E47CBB30022ED7D /* 0cu8rrntibl7r23rej0o618ly.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 0cu8rrntibl7r23rej0o618ly.o; sourceTree = "<group>"; };
+		004A60BD2E47CBB30022ED7D /* 0j0h6pz0jt0zllgwosakexwx3.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 0j0h6pz0jt0zllgwosakexwx3.o; sourceTree = "<group>"; };
+		004A60BE2E47CBB30022ED7D /* 0pjolnbav65aolrfa8hq8e3sw.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 0pjolnbav65aolrfa8hq8e3sw.o; sourceTree = "<group>"; };
+		004A60BF2E47CBB30022ED7D /* 0w2hdcsm7s6ihkc5rmj1lkc8b.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 0w2hdcsm7s6ihkc5rmj1lkc8b.o; sourceTree = "<group>"; };
+		004A60C02E47CBB30022ED7D /* 01c4f134n1ttblp26um6n8wr1.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 01c4f134n1ttblp26um6n8wr1.o; sourceTree = "<group>"; };
+		004A60C12E47CBB30022ED7D /* 1jcdjm8kxoa20bdwx7bnriyvz.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 1jcdjm8kxoa20bdwx7bnriyvz.o; sourceTree = "<group>"; };
+		004A60C22E47CBB30022ED7D /* 1lwo2k5s36l3rmv0bc9m1vpxy.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 1lwo2k5s36l3rmv0bc9m1vpxy.o; sourceTree = "<group>"; };
+		004A60C32E47CBB30022ED7D /* 1mk9r3fdlxs3bv7ici0gpd2y8.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 1mk9r3fdlxs3bv7ici0gpd2y8.o; sourceTree = "<group>"; };
+		004A60C42E47CBB30022ED7D /* 1oceerrpe80wh1btex4j76q5n.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 1oceerrpe80wh1btex4j76q5n.o; sourceTree = "<group>"; };
+		004A60C52E47CBB30022ED7D /* 1s481baaiov4nznkv0qqpw8dm.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 1s481baaiov4nznkv0qqpw8dm.o; sourceTree = "<group>"; };
+		004A60C62E47CBB30022ED7D /* 1tfbhsxe80rwyldqi4w7chk3f.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 1tfbhsxe80rwyldqi4w7chk3f.o; sourceTree = "<group>"; };
+		004A60C72E47CBB30022ED7D /* 2hvmj5i5js9i26b1zswx76qqz.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 2hvmj5i5js9i26b1zswx76qqz.o; sourceTree = "<group>"; };
+		004A60C82E47CBB30022ED7D /* 2ivg4i7p3d6sqryussg8xvatr.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 2ivg4i7p3d6sqryussg8xvatr.o; sourceTree = "<group>"; };
+		004A60C92E47CBB30022ED7D /* 2j6vswhqhw1yy6zeqcsz90y6g.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 2j6vswhqhw1yy6zeqcsz90y6g.o; sourceTree = "<group>"; };
+		004A60CA2E47CBB30022ED7D /* 2jch2j324cguyinc2s59t0ch3.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 2jch2j324cguyinc2s59t0ch3.o; sourceTree = "<group>"; };
+		004A60CB2E47CBB30022ED7D /* 2n8iw075r53u04owb5nlxsb8a.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 2n8iw075r53u04owb5nlxsb8a.o; sourceTree = "<group>"; };
+		004A60CC2E47CBB30022ED7D /* 2oe1vlmhw6w5d633nj8qyz369.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 2oe1vlmhw6w5d633nj8qyz369.o; sourceTree = "<group>"; };
+		004A60CD2E47CBB30022ED7D /* 2phj5lqgjm3e4hmtmwd4g4soc.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 2phj5lqgjm3e4hmtmwd4g4soc.o; sourceTree = "<group>"; };
+		004A60CE2E47CBB30022ED7D /* 2t1a74s868tfqppeyeswov22w.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 2t1a74s868tfqppeyeswov22w.o; sourceTree = "<group>"; };
+		004A60CF2E47CBB30022ED7D /* 2v0so755katfftinqyih5ss9p.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 2v0so755katfftinqyih5ss9p.o; sourceTree = "<group>"; };
+		004A60D02E47CBB30022ED7D /* 2w8w15eu82eqbzhuunzl7hwrw.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 2w8w15eu82eqbzhuunzl7hwrw.o; sourceTree = "<group>"; };
+		004A60D12E47CBB30022ED7D /* 3vfj40l9ti7tfhpbw3hz25762.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 3vfj40l9ti7tfhpbw3hz25762.o; sourceTree = "<group>"; };
+		004A60D22E47CBB30022ED7D /* 4dp6ae65k1ivvhnb2wgcc95nk.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 4dp6ae65k1ivvhnb2wgcc95nk.o; sourceTree = "<group>"; };
+		004A60D32E47CBB30022ED7D /* 4fc1gn7vp2hj04mfubem6x2n7.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 4fc1gn7vp2hj04mfubem6x2n7.o; sourceTree = "<group>"; };
+		004A60D42E47CBB30022ED7D /* 4kvlgqqm8fq9y18wp47c7dy4w.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 4kvlgqqm8fq9y18wp47c7dy4w.o; sourceTree = "<group>"; };
+		004A60D52E47CBB30022ED7D /* 4n32bskvwdx81b3y02depsd3m.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 4n32bskvwdx81b3y02depsd3m.o; sourceTree = "<group>"; };
+		004A60D62E47CBB30022ED7D /* 4rscubslhjc7zwj8hg9a9wd95.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 4rscubslhjc7zwj8hg9a9wd95.o; sourceTree = "<group>"; };
+		004A60D72E47CBB30022ED7D /* 5aqpca0gwu6xpokzrsq73o794.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5aqpca0gwu6xpokzrsq73o794.o; sourceTree = "<group>"; };
+		004A60D82E47CBB30022ED7D /* 5clx9ozexasm9sug83u5waeeb.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5clx9ozexasm9sug83u5waeeb.o; sourceTree = "<group>"; };
+		004A60D92E47CBB30022ED7D /* 5dyl9kbjjshowck8xy62pu9y4.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5dyl9kbjjshowck8xy62pu9y4.o; sourceTree = "<group>"; };
+		004A60DA2E47CBB30022ED7D /* 5g0q8s9ws104gbsvnv1jcvu4g.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5g0q8s9ws104gbsvnv1jcvu4g.o; sourceTree = "<group>"; };
+		004A60DB2E47CBB30022ED7D /* 5jlqvq77x8zwylhaq720wh5it.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5jlqvq77x8zwylhaq720wh5it.o; sourceTree = "<group>"; };
+		004A60DC2E47CBB30022ED7D /* 5jvqqh2n5r432jl8i3qzj2u3j.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5jvqqh2n5r432jl8i3qzj2u3j.o; sourceTree = "<group>"; };
+		004A60DD2E47CBB30022ED7D /* 5kgmdaspw5h8yf3jmj14mqf8b.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5kgmdaspw5h8yf3jmj14mqf8b.o; sourceTree = "<group>"; };
+		004A60DE2E47CBB30022ED7D /* 5qglfz2ytotylllt8vs9qvjax.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5qglfz2ytotylllt8vs9qvjax.o; sourceTree = "<group>"; };
+		004A60DF2E47CBB30022ED7D /* 5tscjvkyyydmeepf9vfhjwvc6.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5tscjvkyyydmeepf9vfhjwvc6.o; sourceTree = "<group>"; };
+		004A60E02E47CBB30022ED7D /* 5two4d41h6m6atk9dff2zkzcn.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5two4d41h6m6atk9dff2zkzcn.o; sourceTree = "<group>"; };
+		004A60E12E47CBB30022ED7D /* 5u9g44mqhewz8q2ei8tog4tqe.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5u9g44mqhewz8q2ei8tog4tqe.o; sourceTree = "<group>"; };
+		004A60E22E47CBB30022ED7D /* 5v3ovd5mxqqii0ieg14prph30.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5v3ovd5mxqqii0ieg14prph30.o; sourceTree = "<group>"; };
+		004A60E32E47CBB30022ED7D /* 5vvx0fkdl623e85d8mrlgcn78.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5vvx0fkdl623e85d8mrlgcn78.o; sourceTree = "<group>"; };
+		004A60E42E47CBB30022ED7D /* 5xdnlyckhq4smzi2cmu9ko8mx.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 5xdnlyckhq4smzi2cmu9ko8mx.o; sourceTree = "<group>"; };
+		004A60E52E47CBB30022ED7D /* 6f8ofbie6y6p4pmg72110ggs9.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 6f8ofbie6y6p4pmg72110ggs9.o; sourceTree = "<group>"; };
+		004A60E62E47CBB30022ED7D /* 6f74okigb9gezxfmxx03o5rt2.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 6f74okigb9gezxfmxx03o5rt2.o; sourceTree = "<group>"; };
+		004A60E72E47CBB30022ED7D /* 6fiswza01llir7qypsr3hafsv.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 6fiswza01llir7qypsr3hafsv.o; sourceTree = "<group>"; };
+		004A60E82E47CBB30022ED7D /* 6fsici8el0r3td0bg55hy47p3.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 6fsici8el0r3td0bg55hy47p3.o; sourceTree = "<group>"; };
+		004A60E92E47CBB30022ED7D /* 6msv3go0wp2lc957qk4xv1etg.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 6msv3go0wp2lc957qk4xv1etg.o; sourceTree = "<group>"; };
+		004A60EA2E47CBB30022ED7D /* 6nze8a4nuy3oi3hohtls02f7x.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 6nze8a4nuy3oi3hohtls02f7x.o; sourceTree = "<group>"; };
+		004A60EB2E47CBB30022ED7D /* 6oy1xie3hq5xcmsob4ilm6ow5.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 6oy1xie3hq5xcmsob4ilm6ow5.o; sourceTree = "<group>"; };
+		004A60EC2E47CBB30022ED7D /* 7aieru59j0ymkokzsdmropur0.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 7aieru59j0ymkokzsdmropur0.o; sourceTree = "<group>"; };
+		004A60ED2E47CBB30022ED7D /* 7b990gqpvvh4k54gcf2rn5l2x.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 7b990gqpvvh4k54gcf2rn5l2x.o; sourceTree = "<group>"; };
+		004A60EE2E47CBB30022ED7D /* 7bqkx5vxrwt40fsnlhdjscq2v.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 7bqkx5vxrwt40fsnlhdjscq2v.o; sourceTree = "<group>"; };
+		004A60EF2E47CBB30022ED7D /* 7cyw5n1zrv6i8golc16kejr8l.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 7cyw5n1zrv6i8golc16kejr8l.o; sourceTree = "<group>"; };
+		004A60F02E47CBB30022ED7D /* 7kgwz5aqitatscegvpvq6t1em.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 7kgwz5aqitatscegvpvq6t1em.o; sourceTree = "<group>"; };
+		004A60F12E47CBB30022ED7D /* 7nl5ezbvdmunyqp4ko8ol9l7l.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 7nl5ezbvdmunyqp4ko8ol9l7l.o; sourceTree = "<group>"; };
+		004A60F22E47CBB30022ED7D /* 8gjwtlxuotnbtx5qzs5xta3as.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 8gjwtlxuotnbtx5qzs5xta3as.o; sourceTree = "<group>"; };
+		004A60F32E47CBB30022ED7D /* 8l3ge7cbufccyo1mv9lzn2xcq.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 8l3ge7cbufccyo1mv9lzn2xcq.o; sourceTree = "<group>"; };
+		004A60F42E47CBB30022ED7D /* 8n9jngdfsa7rnqqhxsautw6cv.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 8n9jngdfsa7rnqqhxsautw6cv.o; sourceTree = "<group>"; };
+		004A60F52E47CBB30022ED7D /* 8pqvnqtj111mlln9iihgqpu8x.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 8pqvnqtj111mlln9iihgqpu8x.o; sourceTree = "<group>"; };
+		004A60F62E47CBB30022ED7D /* 8qtt9lvcvcvos66i6nxgvmlc4.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 8qtt9lvcvcvos66i6nxgvmlc4.o; sourceTree = "<group>"; };
+		004A60F72E47CBB30022ED7D /* 8wjafy6o4aopa4grkc4d4vnut.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 8wjafy6o4aopa4grkc4d4vnut.o; sourceTree = "<group>"; };
+		004A60F82E47CBB30022ED7D /* 8zno7ef3u1fqa88e2ed244v6y.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 8zno7ef3u1fqa88e2ed244v6y.o; sourceTree = "<group>"; };
+		004A60F92E47CBB30022ED7D /* 9a061tyopb3621leznw1u0hfq.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 9a061tyopb3621leznw1u0hfq.o; sourceTree = "<group>"; };
+		004A60FA2E47CBB30022ED7D /* 9ie2gsy5hnaarxms0hnxosbz6.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 9ie2gsy5hnaarxms0hnxosbz6.o; sourceTree = "<group>"; };
+		004A60FB2E47CBB30022ED7D /* 9mrbtseojbs5af7r9vdi3mktv.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 9mrbtseojbs5af7r9vdi3mktv.o; sourceTree = "<group>"; };
+		004A60FC2E47CBB30022ED7D /* 9nmq0u2ffea41pk9zkn9qives.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 9nmq0u2ffea41pk9zkn9qives.o; sourceTree = "<group>"; };
+		004A60FD2E47CBB30022ED7D /* 9ougrlsvo17iofvlcjzmf4zu8.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 9ougrlsvo17iofvlcjzmf4zu8.o; sourceTree = "<group>"; };
+		004A60FE2E47CBB30022ED7D /* 9q9e7axf2d9jhycrd2b6nv82y.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 9q9e7axf2d9jhycrd2b6nv82y.o; sourceTree = "<group>"; };
+		004A60FF2E47CBB30022ED7D /* 9t6lmkvls96ori7am6f1nhyhh.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 9t6lmkvls96ori7am6f1nhyhh.o; sourceTree = "<group>"; };
+		004A61002E47CBB30022ED7D /* 9wk00zf1qsrk98c7cgn6e47se.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 9wk00zf1qsrk98c7cgn6e47se.o; sourceTree = "<group>"; };
+		004A61012E47CBB30022ED7D /* 11ts17ww09izhq26du9037shr.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 11ts17ww09izhq26du9037shr.o; sourceTree = "<group>"; };
+		004A61022E47CBB30022ED7D /* 13xqh31hdopbop6azrjd87jxz.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 13xqh31hdopbop6azrjd87jxz.o; sourceTree = "<group>"; };
+		004A61032E47CBB30022ED7D /* 19d06tzquckvb3srhdgj2sjvb.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 19d06tzquckvb3srhdgj2sjvb.o; sourceTree = "<group>"; };
+		004A61042E47CBB30022ED7D /* 19lxfg6pzy4w27fi3wy1jyazm.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 19lxfg6pzy4w27fi3wy1jyazm.o; sourceTree = "<group>"; };
+		004A61052E47CBB30022ED7D /* 19scu8qf53z5b1kq2ge8qzx0x.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 19scu8qf53z5b1kq2ge8qzx0x.o; sourceTree = "<group>"; };
+		004A61062E47CBB30022ED7D /* 21kv7esoleykcqz6qjydkkv9v.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 21kv7esoleykcqz6qjydkkv9v.o; sourceTree = "<group>"; };
+		004A61072E47CBB30022ED7D /* 27ugijp3dch5u79r4o3g4r4uj.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 27ugijp3dch5u79r4o3g4r4uj.o; sourceTree = "<group>"; };
+		004A61082E47CBB30022ED7D /* 33i28of0e6kzy8ikunlp4ugh1.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 33i28of0e6kzy8ikunlp4ugh1.o; sourceTree = "<group>"; };
+		004A61092E47CBB30022ED7D /* 38v68betw2xo0ti7ozm8dsomw.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 38v68betw2xo0ti7ozm8dsomw.o; sourceTree = "<group>"; };
+		004A610A2E47CBB30022ED7D /* 053hb77ot3qjyhp1xh0zl6ihj.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 053hb77ot3qjyhp1xh0zl6ihj.o; sourceTree = "<group>"; };
+		004A610B2E47CBB30022ED7D /* 62nlhcfwocjchfr1euq56ue8i.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 62nlhcfwocjchfr1euq56ue8i.o; sourceTree = "<group>"; };
+		004A610C2E47CBB30022ED7D /* 65w7ev5cuuyri9jlcowc28cx6.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 65w7ev5cuuyri9jlcowc28cx6.o; sourceTree = "<group>"; };
+		004A610D2E47CBB30022ED7D /* 67lcknlffa22nfo3jwipk7lko.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 67lcknlffa22nfo3jwipk7lko.o; sourceTree = "<group>"; };
+		004A610E2E47CBB30022ED7D /* 79btyh2xztpg1iw9g5ycwsrzw.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 79btyh2xztpg1iw9g5ycwsrzw.o; sourceTree = "<group>"; };
+		004A610F2E47CBB30022ED7D /* 85ecffakbwka0i5akr0nuson1.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 85ecffakbwka0i5akr0nuson1.o; sourceTree = "<group>"; };
+		004A61102E47CBB30022ED7D /* 87jw8x270htop0zqvnuo5ka7y.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 87jw8x270htop0zqvnuo5ka7y.o; sourceTree = "<group>"; };
+		004A61112E47CBB30022ED7D /* 96cs9e2ymgg7rpg3wl1jspyhg.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 96cs9e2ymgg7rpg3wl1jspyhg.o; sourceTree = "<group>"; };
+		004A61122E47CBB30022ED7D /* 209gjrgg8v34kf7fgo7f37ao8.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 209gjrgg8v34kf7fgo7f37ao8.o; sourceTree = "<group>"; };
+		004A61132E47CBB30022ED7D /* 536yixsoo69c2md0vdb48p2pm.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 536yixsoo69c2md0vdb48p2pm.o; sourceTree = "<group>"; };
+		004A61142E47CBB30022ED7D /* 837ibnwohk5nw97zgtafxsjug.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 837ibnwohk5nw97zgtafxsjug.o; sourceTree = "<group>"; };
+		004A61152E47CBB30022ED7D /* 967rybe8eqzz48gs5tfpw4u1n.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 967rybe8eqzz48gs5tfpw4u1n.o; sourceTree = "<group>"; };
+		004A61162E47CBB30022ED7D /* 978uxtrhcog6sunzifa54srua.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 978uxtrhcog6sunzifa54srua.o; sourceTree = "<group>"; };
+		004A61172E47CBB30022ED7D /* 2363urwk4md16o66k01ifu1s7.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = 2363urwk4md16o66k01ifu1s7.o; sourceTree = "<group>"; };
+		004A61182E47CBB30022ED7D /* a0p5ibjupj6rg0x2a9azlymb5.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = a0p5ibjupj6rg0x2a9azlymb5.o; sourceTree = "<group>"; };
+		004A61192E47CBB30022ED7D /* a3r10rk6z5eedk541htef7rhf.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = a3r10rk6z5eedk541htef7rhf.o; sourceTree = "<group>"; };
+		004A611A2E47CBB30022ED7D /* a5g6a796tqv41ctpjdeqf9mw8.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = a5g6a796tqv41ctpjdeqf9mw8.o; sourceTree = "<group>"; };
+		004A611B2E47CBB30022ED7D /* a9ytgez4lblg1w4gmpld1revm.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = a9ytgez4lblg1w4gmpld1revm.o; sourceTree = "<group>"; };
+		004A611C2E47CBB30022ED7D /* aibzkh888yev5acltjzh65dcm.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = aibzkh888yev5acltjzh65dcm.o; sourceTree = "<group>"; };
+		004A611D2E47CBB30022ED7D /* aooybws04onbmvj65zz8slghb.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = aooybws04onbmvj65zz8slghb.o; sourceTree = "<group>"; };
+		004A611E2E47CBB30022ED7D /* argb1xuituenocbo0ep2rc6yr.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = argb1xuituenocbo0ep2rc6yr.o; sourceTree = "<group>"; };
+		004A611F2E47CBB30022ED7D /* at86br7dtcpc3i0kdijlcwmzp.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = at86br7dtcpc3i0kdijlcwmzp.o; sourceTree = "<group>"; };
+		004A61202E47CBB30022ED7D /* az78lv6njezxfl6kelba1tnks.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = az78lv6njezxfl6kelba1tnks.o; sourceTree = "<group>"; };
+		004A61212E47CBB30022ED7D /* b7zxbi2upa2nf0v3dhfp0bqjk.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = b7zxbi2upa2nf0v3dhfp0bqjk.o; sourceTree = "<group>"; };
+		004A61222E47CBB30022ED7D /* b9f84kjb56rlmj0cvbz8kvsjl.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = b9f84kjb56rlmj0cvbz8kvsjl.o; sourceTree = "<group>"; };
+		004A61232E47CBB30022ED7D /* bhd8g4f3ucit8e96wdw30s0yy.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = bhd8g4f3ucit8e96wdw30s0yy.o; sourceTree = "<group>"; };
+		004A61242E47CBB30022ED7D /* bikkap5srpu448sxdsnlgvbr9.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = bikkap5srpu448sxdsnlgvbr9.o; sourceTree = "<group>"; };
+		004A61252E47CBB30022ED7D /* bm877u6vle0bhqvw0l08bvibi.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = bm877u6vle0bhqvw0l08bvibi.o; sourceTree = "<group>"; };
+		004A61262E47CBB30022ED7D /* bmrsvm6m35yt36dd75yno1v28.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = bmrsvm6m35yt36dd75yno1v28.o; sourceTree = "<group>"; };
+		004A61272E47CBB30022ED7D /* br6f77svoyntobl0e9ij948dj.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = br6f77svoyntobl0e9ij948dj.o; sourceTree = "<group>"; };
+		004A61282E47CBB30022ED7D /* buajju09qm747zizo6ax0kaqw.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = buajju09qm747zizo6ax0kaqw.o; sourceTree = "<group>"; };
+		004A61292E47CBB30022ED7D /* bwpty334h5qbgq8u3ppernl7j.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = bwpty334h5qbgq8u3ppernl7j.o; sourceTree = "<group>"; };
+		004A612A2E47CBB30022ED7D /* c0t9pa6cb9u0mukn2d3e7hpmq.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = c0t9pa6cb9u0mukn2d3e7hpmq.o; sourceTree = "<group>"; };
+		004A612B2E47CBB30022ED7D /* c1cedehnzy4u1dami24gf313y.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = c1cedehnzy4u1dami24gf313y.o; sourceTree = "<group>"; };
+		004A612C2E47CBB30022ED7D /* c8n8yaauevuqcmfe903hfh8eu.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = c8n8yaauevuqcmfe903hfh8eu.o; sourceTree = "<group>"; };
+		004A612D2E47CBB30022ED7D /* c9l7arx7coy9wuki6xd4aikvz.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = c9l7arx7coy9wuki6xd4aikvz.o; sourceTree = "<group>"; };
+		004A612E2E47CBB30022ED7D /* cbpkwzsuni7kqub09nlbkse9x.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = cbpkwzsuni7kqub09nlbkse9x.o; sourceTree = "<group>"; };
+		004A612F2E47CBB30022ED7D /* cf1x7e406qh9ysu152vuty99r.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = cf1x7e406qh9ysu152vuty99r.o; sourceTree = "<group>"; };
+		004A61302E47CBB30022ED7D /* ciasxtja7kb782jfro0f03rk2.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = ciasxtja7kb782jfro0f03rk2.o; sourceTree = "<group>"; };
+		004A61312E47CBB30022ED7D /* ckbzd27zrgh4zgv5p71jh267b.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = ckbzd27zrgh4zgv5p71jh267b.o; sourceTree = "<group>"; };
+		004A61322E47CBB30022ED7D /* conv3bzxl1vzm7kcvg2rbgdqq.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = conv3bzxl1vzm7kcvg2rbgdqq.o; sourceTree = "<group>"; };
+		004A61332E47CBB30022ED7D /* cp1f1xvno9xv7kriib00wvd76.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = cp1f1xvno9xv7kriib00wvd76.o; sourceTree = "<group>"; };
+		004A61342E47CBB30022ED7D /* cpcj5q5rbgij3iqa05hgpyrw2.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = cpcj5q5rbgij3iqa05hgpyrw2.o; sourceTree = "<group>"; };
+		004A61352E47CBB30022ED7D /* cqlubrys9rejwp1ftoznbixc6.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = cqlubrys9rejwp1ftoznbixc6.o; sourceTree = "<group>"; };
+		004A61362E47CBB30022ED7D /* cqnpqvo1bcvjt4622yy4y02hp.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = cqnpqvo1bcvjt4622yy4y02hp.o; sourceTree = "<group>"; };
+		004A61372E47CBB30022ED7D /* cqrqtti6otp4zz3869yif7d7l.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = cqrqtti6otp4zz3869yif7d7l.o; sourceTree = "<group>"; };
+		004A61382E47CBB30022ED7D /* cz27lrqsuyzxamayrtaxujyu5.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = cz27lrqsuyzxamayrtaxujyu5.o; sourceTree = "<group>"; };
+		004A61392E47CBB30022ED7D /* czod8wpx3hngnizeol33jxjua.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = czod8wpx3hngnizeol33jxjua.o; sourceTree = "<group>"; };
+		004A613A2E47CBB30022ED7D /* d7sntw8ysvir1vu53c8diw49n.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = d7sntw8ysvir1vu53c8diw49n.o; sourceTree = "<group>"; };
+		004A613B2E47CBB30022ED7D /* db5bqmg8h46vzis864gtjldrc.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = db5bqmg8h46vzis864gtjldrc.o; sourceTree = "<group>"; };
+		004A613C2E47CBB30022ED7D /* dbqcmcx9y98nrgvvtibf13udn.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = dbqcmcx9y98nrgvvtibf13udn.o; sourceTree = "<group>"; };
+		004A613D2E47CBB30022ED7D /* dchut2olf8fsrg4uzrrv89aji.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = dchut2olf8fsrg4uzrrv89aji.o; sourceTree = "<group>"; };
+		004A613E2E47CBB30022ED7D /* dcwot8c11tdurzzc9wtzpc3ae.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = dcwot8c11tdurzzc9wtzpc3ae.o; sourceTree = "<group>"; };
+		004A613F2E47CBB30022ED7D /* ddgguyhxg27lur1zz0ys83kf5.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = ddgguyhxg27lur1zz0ys83kf5.o; sourceTree = "<group>"; };
+		004A61402E47CBB30022ED7D /* dep-graph.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "dep-graph.bin"; sourceTree = "<group>"; };
+		004A61412E47CBB30022ED7D /* djy6plwqp5hzatpmirstysey8.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = djy6plwqp5hzatpmirstysey8.o; sourceTree = "<group>"; };
+		004A61422E47CBB30022ED7D /* dl61lbk19hzxabna1ada8s926.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = dl61lbk19hzxabna1ada8s926.o; sourceTree = "<group>"; };
+		004A61432E47CBB30022ED7D /* dpo6j28cf0wy09ijc7fvi9nn6.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = dpo6j28cf0wy09ijc7fvi9nn6.o; sourceTree = "<group>"; };
+		004A61442E47CBB30022ED7D /* dw22rpgkimgxlv61bos8axqt3.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = dw22rpgkimgxlv61bos8axqt3.o; sourceTree = "<group>"; };
+		004A61452E47CBB30022ED7D /* ea06w1rdrwtmiayaxjbdvlegc.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = ea06w1rdrwtmiayaxjbdvlegc.o; sourceTree = "<group>"; };
+		004A61462E47CBB30022ED7D /* ef5xzmefqpxv51k1kp1qhao6t.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = ef5xzmefqpxv51k1kp1qhao6t.o; sourceTree = "<group>"; };
+		004A61472E47CBB30022ED7D /* eojj20pkcxs9sqrfsik8avdt1.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = eojj20pkcxs9sqrfsik8avdt1.o; sourceTree = "<group>"; };
+		004A61482E47CBB30022ED7D /* etgpn7himp8mjxhe5y21rn5ip.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = etgpn7himp8mjxhe5y21rn5ip.o; sourceTree = "<group>"; };
+		004A61492E47CBB30022ED7D /* ev88lucnwedf9akuxkifc9ypm.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = ev88lucnwedf9akuxkifc9ypm.o; sourceTree = "<group>"; };
+		004A614A2E47CBB30022ED7D /* ex5o198qgzr3pjulx6qrqaw1o.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = ex5o198qgzr3pjulx6qrqaw1o.o; sourceTree = "<group>"; };
+		004A614B2E47CBB30022ED7D /* f1oh7qjx4mkvkeh60umcgs7q9.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = f1oh7qjx4mkvkeh60umcgs7q9.o; sourceTree = "<group>"; };
+		004A614C2E47CBB30022ED7D /* f2hyz4kkz624kqkz7hfs5sj50.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = f2hyz4kkz624kqkz7hfs5sj50.o; sourceTree = "<group>"; };
+		004A614D2E47CBB30022ED7D /* f2167ssrzgx2x5seb7iflv87v.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = f2167ssrzgx2x5seb7iflv87v.o; sourceTree = "<group>"; };
+		004A614E2E47CBB30022ED7D /* query-cache.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "query-cache.bin"; sourceTree = "<group>"; };
+		004A614F2E47CBB30022ED7D /* work-products.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "work-products.bin"; sourceTree = "<group>"; };
+		004A61512E47CBB30022ED7D /* s-ha0ffdur05-1ucupdt.lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = "s-ha0ffdur05-1ucupdt.lock"; sourceTree = "<group>"; };
+		004A61542E47CBB30022ED7D /* .cargo-lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".cargo-lock"; sourceTree = "<group>"; };
+		004A61552E47CBB30022ED7D /* libmazer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmazer.a; sourceTree = "<group>"; };
+		004A61562E47CBB30022ED7D /* libmazer.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = libmazer.d; sourceTree = "<group>"; };
+		004A61582E47CBB30022ED7D /* CACHEDIR.TAG */ = {isa = PBXFileReference; lastKnownFileType = text; path = CACHEDIR.TAG; sourceTree = "<group>"; };
 		0056D0992D94D7FE003B7493 /* mazer-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mazer-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0056D1082D974038003B7493 /* libmazer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmazer.a; path = "mazer/target/aarch64-apple-ios-sim/debug/libmazer.a"; sourceTree = "<group>"; };
 		006F3F382D9F6EB300627BD4 /* HeatMapPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatMapPalette.swift; sourceTree = "<group>"; };
@@ -622,7 +1064,7 @@
 		0072D4992E4447EA00B4C06C /* mazer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mazer.h; sourceTree = "<group>"; };
 		008DD8102DBF2C580094C1CA /* libmazer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmazer.a; path = "mazer/target/aarch64-apple-ios/debug/libmazer.a"; sourceTree = "<group>"; };
 		009518992DBF0F33003B1C21 /* HexDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexDirection.swift; sourceTree = "<group>"; };
-		00A149352E00DC9A0008457E /* dep-lib-cfg_if */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-cfg_if"; sourceTree = "<group>"; };
+		00A149352E00DC9A0008457E /* dep-lib-cfg_if */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-cfg_if"; sourceTree = "<group>"; };
 		00A149362E00DC9A0008457E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00A149372E00DC9A0008457E /* lib-cfg_if */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-cfg_if"; sourceTree = "<group>"; };
 		00A149382E00DC9A0008457E /* lib-cfg_if.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-cfg_if.json"; sourceTree = "<group>"; };
@@ -630,7 +1072,7 @@
 		00A1493B2E00DC9A0008457E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00A1493C2E00DC9A0008457E /* lib-getrandom */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-getrandom"; sourceTree = "<group>"; };
 		00A1493D2E00DC9A0008457E /* lib-getrandom.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-getrandom.json"; sourceTree = "<group>"; };
-		00A1493F2E00DC9A0008457E /* dep-lib-itoa */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-itoa"; sourceTree = "<group>"; };
+		00A1493F2E00DC9A0008457E /* dep-lib-itoa */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-itoa"; sourceTree = "<group>"; };
 		00A149402E00DC9A0008457E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00A149412E00DC9A0008457E /* lib-itoa */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-itoa"; sourceTree = "<group>"; };
 		00A149422E00DC9A0008457E /* lib-itoa.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-itoa.json"; sourceTree = "<group>"; };
@@ -644,7 +1086,7 @@
 		00A1494D2E00DC9A0008457E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00A1494E2E00DC9A0008457E /* lib-mazer */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-mazer"; sourceTree = "<group>"; };
 		00A1494F2E00DC9A0008457E /* lib-mazer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-mazer.json"; sourceTree = "<group>"; };
-		00A149512E00DC9A0008457E /* dep-lib-memchr */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-memchr"; sourceTree = "<group>"; };
+		00A149512E00DC9A0008457E /* dep-lib-memchr */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-memchr"; sourceTree = "<group>"; };
 		00A149522E00DC9A0008457E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00A149532E00DC9A0008457E /* lib-memchr */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-memchr"; sourceTree = "<group>"; };
 		00A149542E00DC9A0008457E /* lib-memchr.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-memchr.json"; sourceTree = "<group>"; };
@@ -664,7 +1106,7 @@
 		00A149662E00DC9A0008457E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00A149672E00DC9A0008457E /* lib-rand */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-rand"; sourceTree = "<group>"; };
 		00A149682E00DC9A0008457E /* lib-rand.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-rand.json"; sourceTree = "<group>"; };
-		00A1496A2E00DC9A0008457E /* dep-lib-ryu */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dep-lib-ryu"; sourceTree = "<group>"; };
+		00A1496A2E00DC9A0008457E /* dep-lib-ryu */ = {isa = PBXFileReference; lastKnownFileType = text; path = "dep-lib-ryu"; sourceTree = "<group>"; };
 		00A1496B2E00DC9A0008457E /* invoked.timestamp */ = {isa = PBXFileReference; lastKnownFileType = text; path = invoked.timestamp; sourceTree = "<group>"; };
 		00A1496C2E00DC9A0008457E /* lib-ryu */ = {isa = PBXFileReference; lastKnownFileType = text; path = "lib-ryu"; sourceTree = "<group>"; };
 		00A1496D2E00DC9A0008457E /* lib-ryu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "lib-ryu.json"; sourceTree = "<group>"; };
@@ -2167,7 +2609,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0072D49B2E45538D00B4C06C /* libmazer.a in Frameworks */,
+				00ACF6E12E4D48EC004C5A85 /* libmazer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3256,6 +3698,728 @@
 			path = Effects;
 			sourceTree = "<group>";
 		};
+		004A5F812E47CBB30022ED7D /* cfg-if-5cebc652d89042ce */ = {
+			isa = PBXGroup;
+			children = (
+				004A5F7D2E47CBB30022ED7D /* dep-lib-cfg_if */,
+				004A5F7E2E47CBB30022ED7D /* invoked.timestamp */,
+				004A5F7F2E47CBB30022ED7D /* lib-cfg_if */,
+				004A5F802E47CBB30022ED7D /* lib-cfg_if.json */,
+			);
+			path = "cfg-if-5cebc652d89042ce";
+			sourceTree = "<group>";
+		};
+		004A5F862E47CBB30022ED7D /* getrandom-c20f1cc6c55cce96 */ = {
+			isa = PBXGroup;
+			children = (
+				004A5F822E47CBB30022ED7D /* dep-lib-getrandom */,
+				004A5F832E47CBB30022ED7D /* invoked.timestamp */,
+				004A5F842E47CBB30022ED7D /* lib-getrandom */,
+				004A5F852E47CBB30022ED7D /* lib-getrandom.json */,
+			);
+			path = "getrandom-c20f1cc6c55cce96";
+			sourceTree = "<group>";
+		};
+		004A5F8B2E47CBB30022ED7D /* itoa-f66071dec659f76f */ = {
+			isa = PBXGroup;
+			children = (
+				004A5F872E47CBB30022ED7D /* dep-lib-itoa */,
+				004A5F882E47CBB30022ED7D /* invoked.timestamp */,
+				004A5F892E47CBB30022ED7D /* lib-itoa */,
+				004A5F8A2E47CBB30022ED7D /* lib-itoa.json */,
+			);
+			path = "itoa-f66071dec659f76f";
+			sourceTree = "<group>";
+		};
+		004A5F8E2E47CBB30022ED7D /* libc-33098554872254df */ = {
+			isa = PBXGroup;
+			children = (
+				004A5F8C2E47CBB30022ED7D /* run-build-script-build-script-build */,
+				004A5F8D2E47CBB30022ED7D /* run-build-script-build-script-build.json */,
+			);
+			path = "libc-33098554872254df";
+			sourceTree = "<group>";
+		};
+		004A5F932E47CBB30022ED7D /* libc-feabcb84d52f474d */ = {
+			isa = PBXGroup;
+			children = (
+				004A5F8F2E47CBB30022ED7D /* dep-lib-libc */,
+				004A5F902E47CBB30022ED7D /* invoked.timestamp */,
+				004A5F912E47CBB30022ED7D /* lib-libc */,
+				004A5F922E47CBB30022ED7D /* lib-libc.json */,
+			);
+			path = "libc-feabcb84d52f474d";
+			sourceTree = "<group>";
+		};
+		004A5F982E47CBB30022ED7D /* mazer-df289ad734eb802b */ = {
+			isa = PBXGroup;
+			children = (
+				004A5F942E47CBB30022ED7D /* dep-lib-mazer */,
+				004A5F952E47CBB30022ED7D /* invoked.timestamp */,
+				004A5F962E47CBB30022ED7D /* lib-mazer */,
+				004A5F972E47CBB30022ED7D /* lib-mazer.json */,
+			);
+			path = "mazer-df289ad734eb802b";
+			sourceTree = "<group>";
+		};
+		004A5F9D2E47CBB30022ED7D /* memchr-5a5231bd1bbf7666 */ = {
+			isa = PBXGroup;
+			children = (
+				004A5F992E47CBB30022ED7D /* dep-lib-memchr */,
+				004A5F9A2E47CBB30022ED7D /* invoked.timestamp */,
+				004A5F9B2E47CBB30022ED7D /* lib-memchr */,
+				004A5F9C2E47CBB30022ED7D /* lib-memchr.json */,
+			);
+			path = "memchr-5a5231bd1bbf7666";
+			sourceTree = "<group>";
+		};
+		004A5FA22E47CBB30022ED7D /* ppv-lite86-61f5bc00e7806103 */ = {
+			isa = PBXGroup;
+			children = (
+				004A5F9E2E47CBB30022ED7D /* dep-lib-ppv_lite86 */,
+				004A5F9F2E47CBB30022ED7D /* invoked.timestamp */,
+				004A5FA02E47CBB30022ED7D /* lib-ppv_lite86 */,
+				004A5FA12E47CBB30022ED7D /* lib-ppv_lite86.json */,
+			);
+			path = "ppv-lite86-61f5bc00e7806103";
+			sourceTree = "<group>";
+		};
+		004A5FA72E47CBB30022ED7D /* rand_chacha-cdca7a2900037346 */ = {
+			isa = PBXGroup;
+			children = (
+				004A5FA32E47CBB30022ED7D /* dep-lib-rand_chacha */,
+				004A5FA42E47CBB30022ED7D /* invoked.timestamp */,
+				004A5FA52E47CBB30022ED7D /* lib-rand_chacha */,
+				004A5FA62E47CBB30022ED7D /* lib-rand_chacha.json */,
+			);
+			path = "rand_chacha-cdca7a2900037346";
+			sourceTree = "<group>";
+		};
+		004A5FAC2E47CBB30022ED7D /* rand_core-dc795a3be6d275bb */ = {
+			isa = PBXGroup;
+			children = (
+				004A5FA82E47CBB30022ED7D /* dep-lib-rand_core */,
+				004A5FA92E47CBB30022ED7D /* invoked.timestamp */,
+				004A5FAA2E47CBB30022ED7D /* lib-rand_core */,
+				004A5FAB2E47CBB30022ED7D /* lib-rand_core.json */,
+			);
+			path = "rand_core-dc795a3be6d275bb";
+			sourceTree = "<group>";
+		};
+		004A5FB12E47CBB30022ED7D /* rand-4e07606aca955adb */ = {
+			isa = PBXGroup;
+			children = (
+				004A5FAD2E47CBB30022ED7D /* dep-lib-rand */,
+				004A5FAE2E47CBB30022ED7D /* invoked.timestamp */,
+				004A5FAF2E47CBB30022ED7D /* lib-rand */,
+				004A5FB02E47CBB30022ED7D /* lib-rand.json */,
+			);
+			path = "rand-4e07606aca955adb";
+			sourceTree = "<group>";
+		};
+		004A5FB62E47CBB30022ED7D /* ryu-89368832ed1b1332 */ = {
+			isa = PBXGroup;
+			children = (
+				004A5FB22E47CBB30022ED7D /* dep-lib-ryu */,
+				004A5FB32E47CBB30022ED7D /* invoked.timestamp */,
+				004A5FB42E47CBB30022ED7D /* lib-ryu */,
+				004A5FB52E47CBB30022ED7D /* lib-ryu.json */,
+			);
+			path = "ryu-89368832ed1b1332";
+			sourceTree = "<group>";
+		};
+		004A5FB92E47CBB30022ED7D /* serde_json-420b4b7cf8bd919a */ = {
+			isa = PBXGroup;
+			children = (
+				004A5FB72E47CBB30022ED7D /* run-build-script-build-script-build */,
+				004A5FB82E47CBB30022ED7D /* run-build-script-build-script-build.json */,
+			);
+			path = "serde_json-420b4b7cf8bd919a";
+			sourceTree = "<group>";
+		};
+		004A5FBE2E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4 */ = {
+			isa = PBXGroup;
+			children = (
+				004A5FBA2E47CBB30022ED7D /* dep-lib-serde_json */,
+				004A5FBB2E47CBB30022ED7D /* invoked.timestamp */,
+				004A5FBC2E47CBB30022ED7D /* lib-serde_json */,
+				004A5FBD2E47CBB30022ED7D /* lib-serde_json.json */,
+			);
+			path = "serde_json-ba5023e0e332e8a4";
+			sourceTree = "<group>";
+		};
+		004A5FC12E47CBB30022ED7D /* serde-4c2333b19e9cb2af */ = {
+			isa = PBXGroup;
+			children = (
+				004A5FBF2E47CBB30022ED7D /* run-build-script-build-script-build */,
+				004A5FC02E47CBB30022ED7D /* run-build-script-build-script-build.json */,
+			);
+			path = "serde-4c2333b19e9cb2af";
+			sourceTree = "<group>";
+		};
+		004A5FC62E47CBB30022ED7D /* serde-932dd4c37c862fd1 */ = {
+			isa = PBXGroup;
+			children = (
+				004A5FC22E47CBB30022ED7D /* dep-lib-serde */,
+				004A5FC32E47CBB30022ED7D /* invoked.timestamp */,
+				004A5FC42E47CBB30022ED7D /* lib-serde */,
+				004A5FC52E47CBB30022ED7D /* lib-serde.json */,
+			);
+			path = "serde-932dd4c37c862fd1";
+			sourceTree = "<group>";
+		};
+		004A5FC92E47CBB30022ED7D /* zerocopy-89b9a102470f45eb */ = {
+			isa = PBXGroup;
+			children = (
+				004A5FC72E47CBB30022ED7D /* run-build-script-build-script-build */,
+				004A5FC82E47CBB30022ED7D /* run-build-script-build-script-build.json */,
+			);
+			path = "zerocopy-89b9a102470f45eb";
+			sourceTree = "<group>";
+		};
+		004A5FCE2E47CBB30022ED7D /* zerocopy-80369c8f93a2e9d6 */ = {
+			isa = PBXGroup;
+			children = (
+				004A5FCA2E47CBB30022ED7D /* dep-lib-zerocopy */,
+				004A5FCB2E47CBB30022ED7D /* invoked.timestamp */,
+				004A5FCC2E47CBB30022ED7D /* lib-zerocopy */,
+				004A5FCD2E47CBB30022ED7D /* lib-zerocopy.json */,
+			);
+			path = "zerocopy-80369c8f93a2e9d6";
+			sourceTree = "<group>";
+		};
+		004A5FCF2E47CBB30022ED7D /* .fingerprint */ = {
+			isa = PBXGroup;
+			children = (
+				004A5F812E47CBB30022ED7D /* cfg-if-5cebc652d89042ce */,
+				004A5F862E47CBB30022ED7D /* getrandom-c20f1cc6c55cce96 */,
+				004A5F8B2E47CBB30022ED7D /* itoa-f66071dec659f76f */,
+				004A5F8E2E47CBB30022ED7D /* libc-33098554872254df */,
+				004A5F932E47CBB30022ED7D /* libc-feabcb84d52f474d */,
+				004A5F982E47CBB30022ED7D /* mazer-df289ad734eb802b */,
+				004A5F9D2E47CBB30022ED7D /* memchr-5a5231bd1bbf7666 */,
+				004A5FA22E47CBB30022ED7D /* ppv-lite86-61f5bc00e7806103 */,
+				004A5FA72E47CBB30022ED7D /* rand_chacha-cdca7a2900037346 */,
+				004A5FAC2E47CBB30022ED7D /* rand_core-dc795a3be6d275bb */,
+				004A5FB12E47CBB30022ED7D /* rand-4e07606aca955adb */,
+				004A5FB62E47CBB30022ED7D /* ryu-89368832ed1b1332 */,
+				004A5FB92E47CBB30022ED7D /* serde_json-420b4b7cf8bd919a */,
+				004A5FBE2E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4 */,
+				004A5FC12E47CBB30022ED7D /* serde-4c2333b19e9cb2af */,
+				004A5FC62E47CBB30022ED7D /* serde-932dd4c37c862fd1 */,
+				004A5FC92E47CBB30022ED7D /* zerocopy-89b9a102470f45eb */,
+				004A5FCE2E47CBB30022ED7D /* zerocopy-80369c8f93a2e9d6 */,
+			);
+			path = .fingerprint;
+			sourceTree = "<group>";
+		};
+		004A5FD02E47CBB30022ED7D /* out */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = out;
+			sourceTree = "<group>";
+		};
+		004A5FD52E47CBB30022ED7D /* libc-33098554872254df */ = {
+			isa = PBXGroup;
+			children = (
+				004A5FD02E47CBB30022ED7D /* out */,
+				004A5FD12E47CBB30022ED7D /* invoked.timestamp */,
+				004A5FD22E47CBB30022ED7D /* output */,
+				004A5FD32E47CBB30022ED7D /* root-output */,
+				004A5FD42E47CBB30022ED7D /* stderr */,
+			);
+			path = "libc-33098554872254df";
+			sourceTree = "<group>";
+		};
+		004A5FD62E47CBB30022ED7D /* out */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = out;
+			sourceTree = "<group>";
+		};
+		004A5FDB2E47CBB30022ED7D /* serde_json-420b4b7cf8bd919a */ = {
+			isa = PBXGroup;
+			children = (
+				004A5FD62E47CBB30022ED7D /* out */,
+				004A5FD72E47CBB30022ED7D /* invoked.timestamp */,
+				004A5FD82E47CBB30022ED7D /* output */,
+				004A5FD92E47CBB30022ED7D /* root-output */,
+				004A5FDA2E47CBB30022ED7D /* stderr */,
+			);
+			path = "serde_json-420b4b7cf8bd919a";
+			sourceTree = "<group>";
+		};
+		004A5FDC2E47CBB30022ED7D /* out */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = out;
+			sourceTree = "<group>";
+		};
+		004A5FE12E47CBB30022ED7D /* serde-4c2333b19e9cb2af */ = {
+			isa = PBXGroup;
+			children = (
+				004A5FDC2E47CBB30022ED7D /* out */,
+				004A5FDD2E47CBB30022ED7D /* invoked.timestamp */,
+				004A5FDE2E47CBB30022ED7D /* output */,
+				004A5FDF2E47CBB30022ED7D /* root-output */,
+				004A5FE02E47CBB30022ED7D /* stderr */,
+			);
+			path = "serde-4c2333b19e9cb2af";
+			sourceTree = "<group>";
+		};
+		004A5FE22E47CBB30022ED7D /* out */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = out;
+			sourceTree = "<group>";
+		};
+		004A5FE72E47CBB30022ED7D /* zerocopy-89b9a102470f45eb */ = {
+			isa = PBXGroup;
+			children = (
+				004A5FE22E47CBB30022ED7D /* out */,
+				004A5FE32E47CBB30022ED7D /* invoked.timestamp */,
+				004A5FE42E47CBB30022ED7D /* output */,
+				004A5FE52E47CBB30022ED7D /* root-output */,
+				004A5FE62E47CBB30022ED7D /* stderr */,
+			);
+			path = "zerocopy-89b9a102470f45eb";
+			sourceTree = "<group>";
+		};
+		004A5FE82E47CBB30022ED7D /* build */ = {
+			isa = PBXGroup;
+			children = (
+				004A5FD52E47CBB30022ED7D /* libc-33098554872254df */,
+				004A5FDB2E47CBB30022ED7D /* serde_json-420b4b7cf8bd919a */,
+				004A5FE12E47CBB30022ED7D /* serde-4c2333b19e9cb2af */,
+				004A5FE72E47CBB30022ED7D /* zerocopy-89b9a102470f45eb */,
+			);
+			path = build;
+			sourceTree = "<group>";
+		};
+		004A60B92E47CBB30022ED7D /* deps */ = {
+			isa = PBXGroup;
+			children = (
+				004A5FE92E47CBB30022ED7D /* cfg_if-5cebc652d89042ce.d */,
+				004A5FEA2E47CBB30022ED7D /* cfg_if-5cebc652d89042ce.cfg_if.b38a937f13a7b92d-cgu.0.rcgu.o */,
+				004A5FEB2E47CBB30022ED7D /* getrandom-c20f1cc6c55cce96.d */,
+				004A5FEC2E47CBB30022ED7D /* getrandom-c20f1cc6c55cce96.getrandom.e576443642e93df0-cgu.0.rcgu.o */,
+				004A5FED2E47CBB30022ED7D /* itoa-f66071dec659f76f.d */,
+				004A5FEE2E47CBB30022ED7D /* itoa-f66071dec659f76f.itoa.bfff7c31bfacbbc0-cgu.0.rcgu.o */,
+				004A5FEF2E47CBB30022ED7D /* libc-feabcb84d52f474d.d */,
+				004A5FF02E47CBB30022ED7D /* libc-feabcb84d52f474d.libc.8bd9ebce3973f7da-cgu.0.rcgu.o */,
+				004A5FF12E47CBB30022ED7D /* libcfg_if-5cebc652d89042ce.rlib */,
+				004A5FF22E47CBB30022ED7D /* libcfg_if-5cebc652d89042ce.rmeta */,
+				004A5FF32E47CBB30022ED7D /* libgetrandom-c20f1cc6c55cce96.rlib */,
+				004A5FF42E47CBB30022ED7D /* libgetrandom-c20f1cc6c55cce96.rmeta */,
+				004A5FF52E47CBB30022ED7D /* libitoa-f66071dec659f76f.rlib */,
+				004A5FF62E47CBB30022ED7D /* libitoa-f66071dec659f76f.rmeta */,
+				004A5FF72E47CBB30022ED7D /* liblibc-feabcb84d52f474d.rlib */,
+				004A5FF82E47CBB30022ED7D /* liblibc-feabcb84d52f474d.rmeta */,
+				004A5FF92E47CBB30022ED7D /* libmazer-df289ad734eb802b.a */,
+				004A5FFA2E47CBB30022ED7D /* libmemchr-5a5231bd1bbf7666.rlib */,
+				004A5FFB2E47CBB30022ED7D /* libmemchr-5a5231bd1bbf7666.rmeta */,
+				004A5FFC2E47CBB30022ED7D /* libppv_lite86-61f5bc00e7806103.rlib */,
+				004A5FFD2E47CBB30022ED7D /* libppv_lite86-61f5bc00e7806103.rmeta */,
+				004A5FFE2E47CBB30022ED7D /* librand_chacha-cdca7a2900037346.rlib */,
+				004A5FFF2E47CBB30022ED7D /* librand_chacha-cdca7a2900037346.rmeta */,
+				004A60002E47CBB30022ED7D /* librand_core-dc795a3be6d275bb.rlib */,
+				004A60012E47CBB30022ED7D /* librand_core-dc795a3be6d275bb.rmeta */,
+				004A60022E47CBB30022ED7D /* librand-4e07606aca955adb.rlib */,
+				004A60032E47CBB30022ED7D /* librand-4e07606aca955adb.rmeta */,
+				004A60042E47CBB30022ED7D /* libryu-89368832ed1b1332.rlib */,
+				004A60052E47CBB30022ED7D /* libryu-89368832ed1b1332.rmeta */,
+				004A60062E47CBB30022ED7D /* libserde_json-ba5023e0e332e8a4.rlib */,
+				004A60072E47CBB30022ED7D /* libserde_json-ba5023e0e332e8a4.rmeta */,
+				004A60082E47CBB30022ED7D /* libserde-932dd4c37c862fd1.rlib */,
+				004A60092E47CBB30022ED7D /* libserde-932dd4c37c862fd1.rmeta */,
+				004A600A2E47CBB30022ED7D /* libzerocopy-80369c8f93a2e9d6.rlib */,
+				004A600B2E47CBB30022ED7D /* libzerocopy-80369c8f93a2e9d6.rmeta */,
+				004A600C2E47CBB30022ED7D /* mazer-df289ad734eb802b.d */,
+				004A600D2E47CBB30022ED7D /* mazer-df289ad734eb802b.0balzkrs5om82m4fnuqcz2z8z.rcgu.o */,
+				004A600E2E47CBB30022ED7D /* mazer-df289ad734eb802b.0cu8rrntibl7r23rej0o618ly.rcgu.o */,
+				004A600F2E47CBB30022ED7D /* mazer-df289ad734eb802b.0j0h6pz0jt0zllgwosakexwx3.rcgu.o */,
+				004A60102E47CBB30022ED7D /* mazer-df289ad734eb802b.0pjolnbav65aolrfa8hq8e3sw.rcgu.o */,
+				004A60112E47CBB30022ED7D /* mazer-df289ad734eb802b.0w2hdcsm7s6ihkc5rmj1lkc8b.rcgu.o */,
+				004A60122E47CBB30022ED7D /* mazer-df289ad734eb802b.01c4f134n1ttblp26um6n8wr1.rcgu.o */,
+				004A60132E47CBB30022ED7D /* mazer-df289ad734eb802b.1jcdjm8kxoa20bdwx7bnriyvz.rcgu.o */,
+				004A60142E47CBB30022ED7D /* mazer-df289ad734eb802b.1lwo2k5s36l3rmv0bc9m1vpxy.rcgu.o */,
+				004A60152E47CBB30022ED7D /* mazer-df289ad734eb802b.1mk9r3fdlxs3bv7ici0gpd2y8.rcgu.o */,
+				004A60162E47CBB30022ED7D /* mazer-df289ad734eb802b.1oceerrpe80wh1btex4j76q5n.rcgu.o */,
+				004A60172E47CBB30022ED7D /* mazer-df289ad734eb802b.1s481baaiov4nznkv0qqpw8dm.rcgu.o */,
+				004A60182E47CBB30022ED7D /* mazer-df289ad734eb802b.1tfbhsxe80rwyldqi4w7chk3f.rcgu.o */,
+				004A60192E47CBB30022ED7D /* mazer-df289ad734eb802b.2hvmj5i5js9i26b1zswx76qqz.rcgu.o */,
+				004A601A2E47CBB30022ED7D /* mazer-df289ad734eb802b.2ivg4i7p3d6sqryussg8xvatr.rcgu.o */,
+				004A601B2E47CBB30022ED7D /* mazer-df289ad734eb802b.2j6vswhqhw1yy6zeqcsz90y6g.rcgu.o */,
+				004A601C2E47CBB30022ED7D /* mazer-df289ad734eb802b.2jch2j324cguyinc2s59t0ch3.rcgu.o */,
+				004A601D2E47CBB30022ED7D /* mazer-df289ad734eb802b.2n8iw075r53u04owb5nlxsb8a.rcgu.o */,
+				004A601E2E47CBB30022ED7D /* mazer-df289ad734eb802b.2oe1vlmhw6w5d633nj8qyz369.rcgu.o */,
+				004A601F2E47CBB30022ED7D /* mazer-df289ad734eb802b.2phj5lqgjm3e4hmtmwd4g4soc.rcgu.o */,
+				004A60202E47CBB30022ED7D /* mazer-df289ad734eb802b.2t1a74s868tfqppeyeswov22w.rcgu.o */,
+				004A60212E47CBB30022ED7D /* mazer-df289ad734eb802b.2v0so755katfftinqyih5ss9p.rcgu.o */,
+				004A60222E47CBB30022ED7D /* mazer-df289ad734eb802b.2w8w15eu82eqbzhuunzl7hwrw.rcgu.o */,
+				004A60232E47CBB30022ED7D /* mazer-df289ad734eb802b.3vfj40l9ti7tfhpbw3hz25762.rcgu.o */,
+				004A60242E47CBB30022ED7D /* mazer-df289ad734eb802b.4dp6ae65k1ivvhnb2wgcc95nk.rcgu.o */,
+				004A60252E47CBB30022ED7D /* mazer-df289ad734eb802b.4fc1gn7vp2hj04mfubem6x2n7.rcgu.o */,
+				004A60262E47CBB30022ED7D /* mazer-df289ad734eb802b.4kvlgqqm8fq9y18wp47c7dy4w.rcgu.o */,
+				004A60272E47CBB30022ED7D /* mazer-df289ad734eb802b.4n32bskvwdx81b3y02depsd3m.rcgu.o */,
+				004A60282E47CBB30022ED7D /* mazer-df289ad734eb802b.4rscubslhjc7zwj8hg9a9wd95.rcgu.o */,
+				004A60292E47CBB30022ED7D /* mazer-df289ad734eb802b.5aqpca0gwu6xpokzrsq73o794.rcgu.o */,
+				004A602A2E47CBB30022ED7D /* mazer-df289ad734eb802b.5clx9ozexasm9sug83u5waeeb.rcgu.o */,
+				004A602B2E47CBB30022ED7D /* mazer-df289ad734eb802b.5dyl9kbjjshowck8xy62pu9y4.rcgu.o */,
+				004A602C2E47CBB30022ED7D /* mazer-df289ad734eb802b.5g0q8s9ws104gbsvnv1jcvu4g.rcgu.o */,
+				004A602D2E47CBB30022ED7D /* mazer-df289ad734eb802b.5jlqvq77x8zwylhaq720wh5it.rcgu.o */,
+				004A602E2E47CBB30022ED7D /* mazer-df289ad734eb802b.5jvqqh2n5r432jl8i3qzj2u3j.rcgu.o */,
+				004A602F2E47CBB30022ED7D /* mazer-df289ad734eb802b.5kgmdaspw5h8yf3jmj14mqf8b.rcgu.o */,
+				004A60302E47CBB30022ED7D /* mazer-df289ad734eb802b.5qglfz2ytotylllt8vs9qvjax.rcgu.o */,
+				004A60312E47CBB30022ED7D /* mazer-df289ad734eb802b.5tscjvkyyydmeepf9vfhjwvc6.rcgu.o */,
+				004A60322E47CBB30022ED7D /* mazer-df289ad734eb802b.5two4d41h6m6atk9dff2zkzcn.rcgu.o */,
+				004A60332E47CBB30022ED7D /* mazer-df289ad734eb802b.5u9g44mqhewz8q2ei8tog4tqe.rcgu.o */,
+				004A60342E47CBB30022ED7D /* mazer-df289ad734eb802b.5v3ovd5mxqqii0ieg14prph30.rcgu.o */,
+				004A60352E47CBB30022ED7D /* mazer-df289ad734eb802b.5vvx0fkdl623e85d8mrlgcn78.rcgu.o */,
+				004A60362E47CBB30022ED7D /* mazer-df289ad734eb802b.5xdnlyckhq4smzi2cmu9ko8mx.rcgu.o */,
+				004A60372E47CBB30022ED7D /* mazer-df289ad734eb802b.6f8ofbie6y6p4pmg72110ggs9.rcgu.o */,
+				004A60382E47CBB30022ED7D /* mazer-df289ad734eb802b.6f74okigb9gezxfmxx03o5rt2.rcgu.o */,
+				004A60392E47CBB30022ED7D /* mazer-df289ad734eb802b.6fiswza01llir7qypsr3hafsv.rcgu.o */,
+				004A603A2E47CBB30022ED7D /* mazer-df289ad734eb802b.6fsici8el0r3td0bg55hy47p3.rcgu.o */,
+				004A603B2E47CBB30022ED7D /* mazer-df289ad734eb802b.6msv3go0wp2lc957qk4xv1etg.rcgu.o */,
+				004A603C2E47CBB30022ED7D /* mazer-df289ad734eb802b.6nze8a4nuy3oi3hohtls02f7x.rcgu.o */,
+				004A603D2E47CBB30022ED7D /* mazer-df289ad734eb802b.6oy1xie3hq5xcmsob4ilm6ow5.rcgu.o */,
+				004A603E2E47CBB30022ED7D /* mazer-df289ad734eb802b.7aieru59j0ymkokzsdmropur0.rcgu.o */,
+				004A603F2E47CBB30022ED7D /* mazer-df289ad734eb802b.7b990gqpvvh4k54gcf2rn5l2x.rcgu.o */,
+				004A60402E47CBB30022ED7D /* mazer-df289ad734eb802b.7bqkx5vxrwt40fsnlhdjscq2v.rcgu.o */,
+				004A60412E47CBB30022ED7D /* mazer-df289ad734eb802b.7cyw5n1zrv6i8golc16kejr8l.rcgu.o */,
+				004A60422E47CBB30022ED7D /* mazer-df289ad734eb802b.7kgwz5aqitatscegvpvq6t1em.rcgu.o */,
+				004A60432E47CBB30022ED7D /* mazer-df289ad734eb802b.7nl5ezbvdmunyqp4ko8ol9l7l.rcgu.o */,
+				004A60442E47CBB30022ED7D /* mazer-df289ad734eb802b.8gjwtlxuotnbtx5qzs5xta3as.rcgu.o */,
+				004A60452E47CBB30022ED7D /* mazer-df289ad734eb802b.8l3ge7cbufccyo1mv9lzn2xcq.rcgu.o */,
+				004A60462E47CBB30022ED7D /* mazer-df289ad734eb802b.8n9jngdfsa7rnqqhxsautw6cv.rcgu.o */,
+				004A60472E47CBB30022ED7D /* mazer-df289ad734eb802b.8pqvnqtj111mlln9iihgqpu8x.rcgu.o */,
+				004A60482E47CBB30022ED7D /* mazer-df289ad734eb802b.8qtt9lvcvcvos66i6nxgvmlc4.rcgu.o */,
+				004A60492E47CBB30022ED7D /* mazer-df289ad734eb802b.8wjafy6o4aopa4grkc4d4vnut.rcgu.o */,
+				004A604A2E47CBB30022ED7D /* mazer-df289ad734eb802b.8zno7ef3u1fqa88e2ed244v6y.rcgu.o */,
+				004A604B2E47CBB30022ED7D /* mazer-df289ad734eb802b.9a061tyopb3621leznw1u0hfq.rcgu.o */,
+				004A604C2E47CBB30022ED7D /* mazer-df289ad734eb802b.9ie2gsy5hnaarxms0hnxosbz6.rcgu.o */,
+				004A604D2E47CBB30022ED7D /* mazer-df289ad734eb802b.9mrbtseojbs5af7r9vdi3mktv.rcgu.o */,
+				004A604E2E47CBB30022ED7D /* mazer-df289ad734eb802b.9nmq0u2ffea41pk9zkn9qives.rcgu.o */,
+				004A604F2E47CBB30022ED7D /* mazer-df289ad734eb802b.9ougrlsvo17iofvlcjzmf4zu8.rcgu.o */,
+				004A60502E47CBB30022ED7D /* mazer-df289ad734eb802b.9q9e7axf2d9jhycrd2b6nv82y.rcgu.o */,
+				004A60512E47CBB30022ED7D /* mazer-df289ad734eb802b.9t6lmkvls96ori7am6f1nhyhh.rcgu.o */,
+				004A60522E47CBB30022ED7D /* mazer-df289ad734eb802b.9wk00zf1qsrk98c7cgn6e47se.rcgu.o */,
+				004A60532E47CBB30022ED7D /* mazer-df289ad734eb802b.11ts17ww09izhq26du9037shr.rcgu.o */,
+				004A60542E47CBB30022ED7D /* mazer-df289ad734eb802b.13xqh31hdopbop6azrjd87jxz.rcgu.o */,
+				004A60552E47CBB30022ED7D /* mazer-df289ad734eb802b.19d06tzquckvb3srhdgj2sjvb.rcgu.o */,
+				004A60562E47CBB30022ED7D /* mazer-df289ad734eb802b.19lxfg6pzy4w27fi3wy1jyazm.rcgu.o */,
+				004A60572E47CBB30022ED7D /* mazer-df289ad734eb802b.19scu8qf53z5b1kq2ge8qzx0x.rcgu.o */,
+				004A60582E47CBB30022ED7D /* mazer-df289ad734eb802b.21kv7esoleykcqz6qjydkkv9v.rcgu.o */,
+				004A60592E47CBB30022ED7D /* mazer-df289ad734eb802b.27ugijp3dch5u79r4o3g4r4uj.rcgu.o */,
+				004A605A2E47CBB30022ED7D /* mazer-df289ad734eb802b.33i28of0e6kzy8ikunlp4ugh1.rcgu.o */,
+				004A605B2E47CBB30022ED7D /* mazer-df289ad734eb802b.38v68betw2xo0ti7ozm8dsomw.rcgu.o */,
+				004A605C2E47CBB30022ED7D /* mazer-df289ad734eb802b.053hb77ot3qjyhp1xh0zl6ihj.rcgu.o */,
+				004A605D2E47CBB30022ED7D /* mazer-df289ad734eb802b.62nlhcfwocjchfr1euq56ue8i.rcgu.o */,
+				004A605E2E47CBB30022ED7D /* mazer-df289ad734eb802b.65w7ev5cuuyri9jlcowc28cx6.rcgu.o */,
+				004A605F2E47CBB30022ED7D /* mazer-df289ad734eb802b.67lcknlffa22nfo3jwipk7lko.rcgu.o */,
+				004A60602E47CBB30022ED7D /* mazer-df289ad734eb802b.79btyh2xztpg1iw9g5ycwsrzw.rcgu.o */,
+				004A60612E47CBB30022ED7D /* mazer-df289ad734eb802b.85ecffakbwka0i5akr0nuson1.rcgu.o */,
+				004A60622E47CBB30022ED7D /* mazer-df289ad734eb802b.87jw8x270htop0zqvnuo5ka7y.rcgu.o */,
+				004A60632E47CBB30022ED7D /* mazer-df289ad734eb802b.96cs9e2ymgg7rpg3wl1jspyhg.rcgu.o */,
+				004A60642E47CBB30022ED7D /* mazer-df289ad734eb802b.209gjrgg8v34kf7fgo7f37ao8.rcgu.o */,
+				004A60652E47CBB30022ED7D /* mazer-df289ad734eb802b.536yixsoo69c2md0vdb48p2pm.rcgu.o */,
+				004A60662E47CBB30022ED7D /* mazer-df289ad734eb802b.837ibnwohk5nw97zgtafxsjug.rcgu.o */,
+				004A60672E47CBB30022ED7D /* mazer-df289ad734eb802b.967rybe8eqzz48gs5tfpw4u1n.rcgu.o */,
+				004A60682E47CBB30022ED7D /* mazer-df289ad734eb802b.978uxtrhcog6sunzifa54srua.rcgu.o */,
+				004A60692E47CBB30022ED7D /* mazer-df289ad734eb802b.2363urwk4md16o66k01ifu1s7.rcgu.o */,
+				004A606A2E47CBB30022ED7D /* mazer-df289ad734eb802b.a0p5ibjupj6rg0x2a9azlymb5.rcgu.o */,
+				004A606B2E47CBB30022ED7D /* mazer-df289ad734eb802b.a3r10rk6z5eedk541htef7rhf.rcgu.o */,
+				004A606C2E47CBB30022ED7D /* mazer-df289ad734eb802b.a5g6a796tqv41ctpjdeqf9mw8.rcgu.o */,
+				004A606D2E47CBB30022ED7D /* mazer-df289ad734eb802b.a9ytgez4lblg1w4gmpld1revm.rcgu.o */,
+				004A606E2E47CBB30022ED7D /* mazer-df289ad734eb802b.aibzkh888yev5acltjzh65dcm.rcgu.o */,
+				004A606F2E47CBB30022ED7D /* mazer-df289ad734eb802b.aooybws04onbmvj65zz8slghb.rcgu.o */,
+				004A60702E47CBB30022ED7D /* mazer-df289ad734eb802b.argb1xuituenocbo0ep2rc6yr.rcgu.o */,
+				004A60712E47CBB30022ED7D /* mazer-df289ad734eb802b.at86br7dtcpc3i0kdijlcwmzp.rcgu.o */,
+				004A60722E47CBB30022ED7D /* mazer-df289ad734eb802b.az78lv6njezxfl6kelba1tnks.rcgu.o */,
+				004A60732E47CBB30022ED7D /* mazer-df289ad734eb802b.b7zxbi2upa2nf0v3dhfp0bqjk.rcgu.o */,
+				004A60742E47CBB30022ED7D /* mazer-df289ad734eb802b.b9f84kjb56rlmj0cvbz8kvsjl.rcgu.o */,
+				004A60752E47CBB30022ED7D /* mazer-df289ad734eb802b.bhd8g4f3ucit8e96wdw30s0yy.rcgu.o */,
+				004A60762E47CBB30022ED7D /* mazer-df289ad734eb802b.bikkap5srpu448sxdsnlgvbr9.rcgu.o */,
+				004A60772E47CBB30022ED7D /* mazer-df289ad734eb802b.bm877u6vle0bhqvw0l08bvibi.rcgu.o */,
+				004A60782E47CBB30022ED7D /* mazer-df289ad734eb802b.bmrsvm6m35yt36dd75yno1v28.rcgu.o */,
+				004A60792E47CBB30022ED7D /* mazer-df289ad734eb802b.br6f77svoyntobl0e9ij948dj.rcgu.o */,
+				004A607A2E47CBB30022ED7D /* mazer-df289ad734eb802b.buajju09qm747zizo6ax0kaqw.rcgu.o */,
+				004A607B2E47CBB30022ED7D /* mazer-df289ad734eb802b.bwpty334h5qbgq8u3ppernl7j.rcgu.o */,
+				004A607C2E47CBB30022ED7D /* mazer-df289ad734eb802b.c0t9pa6cb9u0mukn2d3e7hpmq.rcgu.o */,
+				004A607D2E47CBB30022ED7D /* mazer-df289ad734eb802b.c1cedehnzy4u1dami24gf313y.rcgu.o */,
+				004A607E2E47CBB30022ED7D /* mazer-df289ad734eb802b.c8n8yaauevuqcmfe903hfh8eu.rcgu.o */,
+				004A607F2E47CBB30022ED7D /* mazer-df289ad734eb802b.c9l7arx7coy9wuki6xd4aikvz.rcgu.o */,
+				004A60802E47CBB30022ED7D /* mazer-df289ad734eb802b.cbpkwzsuni7kqub09nlbkse9x.rcgu.o */,
+				004A60812E47CBB30022ED7D /* mazer-df289ad734eb802b.cf1x7e406qh9ysu152vuty99r.rcgu.o */,
+				004A60822E47CBB30022ED7D /* mazer-df289ad734eb802b.ciasxtja7kb782jfro0f03rk2.rcgu.o */,
+				004A60832E47CBB30022ED7D /* mazer-df289ad734eb802b.ckbzd27zrgh4zgv5p71jh267b.rcgu.o */,
+				004A60842E47CBB30022ED7D /* mazer-df289ad734eb802b.conv3bzxl1vzm7kcvg2rbgdqq.rcgu.o */,
+				004A60852E47CBB30022ED7D /* mazer-df289ad734eb802b.cp1f1xvno9xv7kriib00wvd76.rcgu.o */,
+				004A60862E47CBB30022ED7D /* mazer-df289ad734eb802b.cpcj5q5rbgij3iqa05hgpyrw2.rcgu.o */,
+				004A60872E47CBB30022ED7D /* mazer-df289ad734eb802b.cqlubrys9rejwp1ftoznbixc6.rcgu.o */,
+				004A60882E47CBB30022ED7D /* mazer-df289ad734eb802b.cqnpqvo1bcvjt4622yy4y02hp.rcgu.o */,
+				004A60892E47CBB30022ED7D /* mazer-df289ad734eb802b.cqrqtti6otp4zz3869yif7d7l.rcgu.o */,
+				004A608A2E47CBB30022ED7D /* mazer-df289ad734eb802b.cz27lrqsuyzxamayrtaxujyu5.rcgu.o */,
+				004A608B2E47CBB30022ED7D /* mazer-df289ad734eb802b.czod8wpx3hngnizeol33jxjua.rcgu.o */,
+				004A608C2E47CBB30022ED7D /* mazer-df289ad734eb802b.d7sntw8ysvir1vu53c8diw49n.rcgu.o */,
+				004A608D2E47CBB30022ED7D /* mazer-df289ad734eb802b.db5bqmg8h46vzis864gtjldrc.rcgu.o */,
+				004A608E2E47CBB30022ED7D /* mazer-df289ad734eb802b.dbqcmcx9y98nrgvvtibf13udn.rcgu.o */,
+				004A608F2E47CBB30022ED7D /* mazer-df289ad734eb802b.dchut2olf8fsrg4uzrrv89aji.rcgu.o */,
+				004A60902E47CBB30022ED7D /* mazer-df289ad734eb802b.dcwot8c11tdurzzc9wtzpc3ae.rcgu.o */,
+				004A60912E47CBB30022ED7D /* mazer-df289ad734eb802b.ddgguyhxg27lur1zz0ys83kf5.rcgu.o */,
+				004A60922E47CBB30022ED7D /* mazer-df289ad734eb802b.djy6plwqp5hzatpmirstysey8.rcgu.o */,
+				004A60932E47CBB30022ED7D /* mazer-df289ad734eb802b.dl61lbk19hzxabna1ada8s926.rcgu.o */,
+				004A60942E47CBB30022ED7D /* mazer-df289ad734eb802b.dpo6j28cf0wy09ijc7fvi9nn6.rcgu.o */,
+				004A60952E47CBB30022ED7D /* mazer-df289ad734eb802b.dw22rpgkimgxlv61bos8axqt3.rcgu.o */,
+				004A60962E47CBB30022ED7D /* mazer-df289ad734eb802b.ea06w1rdrwtmiayaxjbdvlegc.rcgu.o */,
+				004A60972E47CBB30022ED7D /* mazer-df289ad734eb802b.ef5xzmefqpxv51k1kp1qhao6t.rcgu.o */,
+				004A60982E47CBB30022ED7D /* mazer-df289ad734eb802b.eojj20pkcxs9sqrfsik8avdt1.rcgu.o */,
+				004A60992E47CBB30022ED7D /* mazer-df289ad734eb802b.etgpn7himp8mjxhe5y21rn5ip.rcgu.o */,
+				004A609A2E47CBB30022ED7D /* mazer-df289ad734eb802b.ev88lucnwedf9akuxkifc9ypm.rcgu.o */,
+				004A609B2E47CBB30022ED7D /* mazer-df289ad734eb802b.ex5o198qgzr3pjulx6qrqaw1o.rcgu.o */,
+				004A609C2E47CBB30022ED7D /* mazer-df289ad734eb802b.f1oh7qjx4mkvkeh60umcgs7q9.rcgu.o */,
+				004A609D2E47CBB30022ED7D /* mazer-df289ad734eb802b.f2hyz4kkz624kqkz7hfs5sj50.rcgu.o */,
+				004A609E2E47CBB30022ED7D /* mazer-df289ad734eb802b.f2167ssrzgx2x5seb7iflv87v.rcgu.o */,
+				004A609F2E47CBB30022ED7D /* memchr-5a5231bd1bbf7666.d */,
+				004A60A02E47CBB30022ED7D /* memchr-5a5231bd1bbf7666.memchr.d495a59133008d42-cgu.0.rcgu.o */,
+				004A60A12E47CBB30022ED7D /* ppv_lite86-61f5bc00e7806103.d */,
+				004A60A22E47CBB30022ED7D /* ppv_lite86-61f5bc00e7806103.ppv_lite86.5188098558d0b97e-cgu.0.rcgu.o */,
+				004A60A32E47CBB30022ED7D /* rand_chacha-cdca7a2900037346.d */,
+				004A60A42E47CBB30022ED7D /* rand_chacha-cdca7a2900037346.rand_chacha.54886c8ea4a9575-cgu.0.rcgu.o */,
+				004A60A52E47CBB30022ED7D /* rand_core-dc795a3be6d275bb.d */,
+				004A60A62E47CBB30022ED7D /* rand_core-dc795a3be6d275bb.rand_core.d0053e6cd29f1f5e-cgu.0.rcgu.o */,
+				004A60A72E47CBB30022ED7D /* rand-4e07606aca955adb.d */,
+				004A60A82E47CBB30022ED7D /* rand-4e07606aca955adb.rand.3d984b0898b343ae-cgu.0.rcgu.o */,
+				004A60A92E47CBB30022ED7D /* rand-4e07606aca955adb.rand.3d984b0898b343ae-cgu.1.rcgu.o */,
+				004A60AA2E47CBB30022ED7D /* ryu-89368832ed1b1332.d */,
+				004A60AB2E47CBB30022ED7D /* ryu-89368832ed1b1332.ryu.66d373afb388c779-cgu.0.rcgu.o */,
+				004A60AC2E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4.d */,
+				004A60AD2E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.0.rcgu.o */,
+				004A60AE2E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.1.rcgu.o */,
+				004A60AF2E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.2.rcgu.o */,
+				004A60B02E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.3.rcgu.o */,
+				004A60B12E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.4.rcgu.o */,
+				004A60B22E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.5.rcgu.o */,
+				004A60B32E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.6.rcgu.o */,
+				004A60B42E47CBB30022ED7D /* serde_json-ba5023e0e332e8a4.serde_json.7175ea5c66c400f3-cgu.7.rcgu.o */,
+				004A60B52E47CBB30022ED7D /* serde-932dd4c37c862fd1.d */,
+				004A60B62E47CBB30022ED7D /* serde-932dd4c37c862fd1.serde.9e3b94e22250e918-cgu.0.rcgu.o */,
+				004A60B72E47CBB30022ED7D /* zerocopy-80369c8f93a2e9d6.d */,
+				004A60B82E47CBB30022ED7D /* zerocopy-80369c8f93a2e9d6.zerocopy.a64d47592a30c290-cgu.0.rcgu.o */,
+			);
+			path = deps;
+			sourceTree = "<group>";
+		};
+		004A60BA2E47CBB30022ED7D /* examples */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		004A61502E47CBB30022ED7D /* s-ha0ffdur05-1ucupdt-9imp878p4hyrmo7pekyd80fjj */ = {
+			isa = PBXGroup;
+			children = (
+				004A60BB2E47CBB30022ED7D /* 0balzkrs5om82m4fnuqcz2z8z.o */,
+				004A60BC2E47CBB30022ED7D /* 0cu8rrntibl7r23rej0o618ly.o */,
+				004A60BD2E47CBB30022ED7D /* 0j0h6pz0jt0zllgwosakexwx3.o */,
+				004A60BE2E47CBB30022ED7D /* 0pjolnbav65aolrfa8hq8e3sw.o */,
+				004A60BF2E47CBB30022ED7D /* 0w2hdcsm7s6ihkc5rmj1lkc8b.o */,
+				004A60C02E47CBB30022ED7D /* 01c4f134n1ttblp26um6n8wr1.o */,
+				004A60C12E47CBB30022ED7D /* 1jcdjm8kxoa20bdwx7bnriyvz.o */,
+				004A60C22E47CBB30022ED7D /* 1lwo2k5s36l3rmv0bc9m1vpxy.o */,
+				004A60C32E47CBB30022ED7D /* 1mk9r3fdlxs3bv7ici0gpd2y8.o */,
+				004A60C42E47CBB30022ED7D /* 1oceerrpe80wh1btex4j76q5n.o */,
+				004A60C52E47CBB30022ED7D /* 1s481baaiov4nznkv0qqpw8dm.o */,
+				004A60C62E47CBB30022ED7D /* 1tfbhsxe80rwyldqi4w7chk3f.o */,
+				004A60C72E47CBB30022ED7D /* 2hvmj5i5js9i26b1zswx76qqz.o */,
+				004A60C82E47CBB30022ED7D /* 2ivg4i7p3d6sqryussg8xvatr.o */,
+				004A60C92E47CBB30022ED7D /* 2j6vswhqhw1yy6zeqcsz90y6g.o */,
+				004A60CA2E47CBB30022ED7D /* 2jch2j324cguyinc2s59t0ch3.o */,
+				004A60CB2E47CBB30022ED7D /* 2n8iw075r53u04owb5nlxsb8a.o */,
+				004A60CC2E47CBB30022ED7D /* 2oe1vlmhw6w5d633nj8qyz369.o */,
+				004A60CD2E47CBB30022ED7D /* 2phj5lqgjm3e4hmtmwd4g4soc.o */,
+				004A60CE2E47CBB30022ED7D /* 2t1a74s868tfqppeyeswov22w.o */,
+				004A60CF2E47CBB30022ED7D /* 2v0so755katfftinqyih5ss9p.o */,
+				004A60D02E47CBB30022ED7D /* 2w8w15eu82eqbzhuunzl7hwrw.o */,
+				004A60D12E47CBB30022ED7D /* 3vfj40l9ti7tfhpbw3hz25762.o */,
+				004A60D22E47CBB30022ED7D /* 4dp6ae65k1ivvhnb2wgcc95nk.o */,
+				004A60D32E47CBB30022ED7D /* 4fc1gn7vp2hj04mfubem6x2n7.o */,
+				004A60D42E47CBB30022ED7D /* 4kvlgqqm8fq9y18wp47c7dy4w.o */,
+				004A60D52E47CBB30022ED7D /* 4n32bskvwdx81b3y02depsd3m.o */,
+				004A60D62E47CBB30022ED7D /* 4rscubslhjc7zwj8hg9a9wd95.o */,
+				004A60D72E47CBB30022ED7D /* 5aqpca0gwu6xpokzrsq73o794.o */,
+				004A60D82E47CBB30022ED7D /* 5clx9ozexasm9sug83u5waeeb.o */,
+				004A60D92E47CBB30022ED7D /* 5dyl9kbjjshowck8xy62pu9y4.o */,
+				004A60DA2E47CBB30022ED7D /* 5g0q8s9ws104gbsvnv1jcvu4g.o */,
+				004A60DB2E47CBB30022ED7D /* 5jlqvq77x8zwylhaq720wh5it.o */,
+				004A60DC2E47CBB30022ED7D /* 5jvqqh2n5r432jl8i3qzj2u3j.o */,
+				004A60DD2E47CBB30022ED7D /* 5kgmdaspw5h8yf3jmj14mqf8b.o */,
+				004A60DE2E47CBB30022ED7D /* 5qglfz2ytotylllt8vs9qvjax.o */,
+				004A60DF2E47CBB30022ED7D /* 5tscjvkyyydmeepf9vfhjwvc6.o */,
+				004A60E02E47CBB30022ED7D /* 5two4d41h6m6atk9dff2zkzcn.o */,
+				004A60E12E47CBB30022ED7D /* 5u9g44mqhewz8q2ei8tog4tqe.o */,
+				004A60E22E47CBB30022ED7D /* 5v3ovd5mxqqii0ieg14prph30.o */,
+				004A60E32E47CBB30022ED7D /* 5vvx0fkdl623e85d8mrlgcn78.o */,
+				004A60E42E47CBB30022ED7D /* 5xdnlyckhq4smzi2cmu9ko8mx.o */,
+				004A60E52E47CBB30022ED7D /* 6f8ofbie6y6p4pmg72110ggs9.o */,
+				004A60E62E47CBB30022ED7D /* 6f74okigb9gezxfmxx03o5rt2.o */,
+				004A60E72E47CBB30022ED7D /* 6fiswza01llir7qypsr3hafsv.o */,
+				004A60E82E47CBB30022ED7D /* 6fsici8el0r3td0bg55hy47p3.o */,
+				004A60E92E47CBB30022ED7D /* 6msv3go0wp2lc957qk4xv1etg.o */,
+				004A60EA2E47CBB30022ED7D /* 6nze8a4nuy3oi3hohtls02f7x.o */,
+				004A60EB2E47CBB30022ED7D /* 6oy1xie3hq5xcmsob4ilm6ow5.o */,
+				004A60EC2E47CBB30022ED7D /* 7aieru59j0ymkokzsdmropur0.o */,
+				004A60ED2E47CBB30022ED7D /* 7b990gqpvvh4k54gcf2rn5l2x.o */,
+				004A60EE2E47CBB30022ED7D /* 7bqkx5vxrwt40fsnlhdjscq2v.o */,
+				004A60EF2E47CBB30022ED7D /* 7cyw5n1zrv6i8golc16kejr8l.o */,
+				004A60F02E47CBB30022ED7D /* 7kgwz5aqitatscegvpvq6t1em.o */,
+				004A60F12E47CBB30022ED7D /* 7nl5ezbvdmunyqp4ko8ol9l7l.o */,
+				004A60F22E47CBB30022ED7D /* 8gjwtlxuotnbtx5qzs5xta3as.o */,
+				004A60F32E47CBB30022ED7D /* 8l3ge7cbufccyo1mv9lzn2xcq.o */,
+				004A60F42E47CBB30022ED7D /* 8n9jngdfsa7rnqqhxsautw6cv.o */,
+				004A60F52E47CBB30022ED7D /* 8pqvnqtj111mlln9iihgqpu8x.o */,
+				004A60F62E47CBB30022ED7D /* 8qtt9lvcvcvos66i6nxgvmlc4.o */,
+				004A60F72E47CBB30022ED7D /* 8wjafy6o4aopa4grkc4d4vnut.o */,
+				004A60F82E47CBB30022ED7D /* 8zno7ef3u1fqa88e2ed244v6y.o */,
+				004A60F92E47CBB30022ED7D /* 9a061tyopb3621leznw1u0hfq.o */,
+				004A60FA2E47CBB30022ED7D /* 9ie2gsy5hnaarxms0hnxosbz6.o */,
+				004A60FB2E47CBB30022ED7D /* 9mrbtseojbs5af7r9vdi3mktv.o */,
+				004A60FC2E47CBB30022ED7D /* 9nmq0u2ffea41pk9zkn9qives.o */,
+				004A60FD2E47CBB30022ED7D /* 9ougrlsvo17iofvlcjzmf4zu8.o */,
+				004A60FE2E47CBB30022ED7D /* 9q9e7axf2d9jhycrd2b6nv82y.o */,
+				004A60FF2E47CBB30022ED7D /* 9t6lmkvls96ori7am6f1nhyhh.o */,
+				004A61002E47CBB30022ED7D /* 9wk00zf1qsrk98c7cgn6e47se.o */,
+				004A61012E47CBB30022ED7D /* 11ts17ww09izhq26du9037shr.o */,
+				004A61022E47CBB30022ED7D /* 13xqh31hdopbop6azrjd87jxz.o */,
+				004A61032E47CBB30022ED7D /* 19d06tzquckvb3srhdgj2sjvb.o */,
+				004A61042E47CBB30022ED7D /* 19lxfg6pzy4w27fi3wy1jyazm.o */,
+				004A61052E47CBB30022ED7D /* 19scu8qf53z5b1kq2ge8qzx0x.o */,
+				004A61062E47CBB30022ED7D /* 21kv7esoleykcqz6qjydkkv9v.o */,
+				004A61072E47CBB30022ED7D /* 27ugijp3dch5u79r4o3g4r4uj.o */,
+				004A61082E47CBB30022ED7D /* 33i28of0e6kzy8ikunlp4ugh1.o */,
+				004A61092E47CBB30022ED7D /* 38v68betw2xo0ti7ozm8dsomw.o */,
+				004A610A2E47CBB30022ED7D /* 053hb77ot3qjyhp1xh0zl6ihj.o */,
+				004A610B2E47CBB30022ED7D /* 62nlhcfwocjchfr1euq56ue8i.o */,
+				004A610C2E47CBB30022ED7D /* 65w7ev5cuuyri9jlcowc28cx6.o */,
+				004A610D2E47CBB30022ED7D /* 67lcknlffa22nfo3jwipk7lko.o */,
+				004A610E2E47CBB30022ED7D /* 79btyh2xztpg1iw9g5ycwsrzw.o */,
+				004A610F2E47CBB30022ED7D /* 85ecffakbwka0i5akr0nuson1.o */,
+				004A61102E47CBB30022ED7D /* 87jw8x270htop0zqvnuo5ka7y.o */,
+				004A61112E47CBB30022ED7D /* 96cs9e2ymgg7rpg3wl1jspyhg.o */,
+				004A61122E47CBB30022ED7D /* 209gjrgg8v34kf7fgo7f37ao8.o */,
+				004A61132E47CBB30022ED7D /* 536yixsoo69c2md0vdb48p2pm.o */,
+				004A61142E47CBB30022ED7D /* 837ibnwohk5nw97zgtafxsjug.o */,
+				004A61152E47CBB30022ED7D /* 967rybe8eqzz48gs5tfpw4u1n.o */,
+				004A61162E47CBB30022ED7D /* 978uxtrhcog6sunzifa54srua.o */,
+				004A61172E47CBB30022ED7D /* 2363urwk4md16o66k01ifu1s7.o */,
+				004A61182E47CBB30022ED7D /* a0p5ibjupj6rg0x2a9azlymb5.o */,
+				004A61192E47CBB30022ED7D /* a3r10rk6z5eedk541htef7rhf.o */,
+				004A611A2E47CBB30022ED7D /* a5g6a796tqv41ctpjdeqf9mw8.o */,
+				004A611B2E47CBB30022ED7D /* a9ytgez4lblg1w4gmpld1revm.o */,
+				004A611C2E47CBB30022ED7D /* aibzkh888yev5acltjzh65dcm.o */,
+				004A611D2E47CBB30022ED7D /* aooybws04onbmvj65zz8slghb.o */,
+				004A611E2E47CBB30022ED7D /* argb1xuituenocbo0ep2rc6yr.o */,
+				004A611F2E47CBB30022ED7D /* at86br7dtcpc3i0kdijlcwmzp.o */,
+				004A61202E47CBB30022ED7D /* az78lv6njezxfl6kelba1tnks.o */,
+				004A61212E47CBB30022ED7D /* b7zxbi2upa2nf0v3dhfp0bqjk.o */,
+				004A61222E47CBB30022ED7D /* b9f84kjb56rlmj0cvbz8kvsjl.o */,
+				004A61232E47CBB30022ED7D /* bhd8g4f3ucit8e96wdw30s0yy.o */,
+				004A61242E47CBB30022ED7D /* bikkap5srpu448sxdsnlgvbr9.o */,
+				004A61252E47CBB30022ED7D /* bm877u6vle0bhqvw0l08bvibi.o */,
+				004A61262E47CBB30022ED7D /* bmrsvm6m35yt36dd75yno1v28.o */,
+				004A61272E47CBB30022ED7D /* br6f77svoyntobl0e9ij948dj.o */,
+				004A61282E47CBB30022ED7D /* buajju09qm747zizo6ax0kaqw.o */,
+				004A61292E47CBB30022ED7D /* bwpty334h5qbgq8u3ppernl7j.o */,
+				004A612A2E47CBB30022ED7D /* c0t9pa6cb9u0mukn2d3e7hpmq.o */,
+				004A612B2E47CBB30022ED7D /* c1cedehnzy4u1dami24gf313y.o */,
+				004A612C2E47CBB30022ED7D /* c8n8yaauevuqcmfe903hfh8eu.o */,
+				004A612D2E47CBB30022ED7D /* c9l7arx7coy9wuki6xd4aikvz.o */,
+				004A612E2E47CBB30022ED7D /* cbpkwzsuni7kqub09nlbkse9x.o */,
+				004A612F2E47CBB30022ED7D /* cf1x7e406qh9ysu152vuty99r.o */,
+				004A61302E47CBB30022ED7D /* ciasxtja7kb782jfro0f03rk2.o */,
+				004A61312E47CBB30022ED7D /* ckbzd27zrgh4zgv5p71jh267b.o */,
+				004A61322E47CBB30022ED7D /* conv3bzxl1vzm7kcvg2rbgdqq.o */,
+				004A61332E47CBB30022ED7D /* cp1f1xvno9xv7kriib00wvd76.o */,
+				004A61342E47CBB30022ED7D /* cpcj5q5rbgij3iqa05hgpyrw2.o */,
+				004A61352E47CBB30022ED7D /* cqlubrys9rejwp1ftoznbixc6.o */,
+				004A61362E47CBB30022ED7D /* cqnpqvo1bcvjt4622yy4y02hp.o */,
+				004A61372E47CBB30022ED7D /* cqrqtti6otp4zz3869yif7d7l.o */,
+				004A61382E47CBB30022ED7D /* cz27lrqsuyzxamayrtaxujyu5.o */,
+				004A61392E47CBB30022ED7D /* czod8wpx3hngnizeol33jxjua.o */,
+				004A613A2E47CBB30022ED7D /* d7sntw8ysvir1vu53c8diw49n.o */,
+				004A613B2E47CBB30022ED7D /* db5bqmg8h46vzis864gtjldrc.o */,
+				004A613C2E47CBB30022ED7D /* dbqcmcx9y98nrgvvtibf13udn.o */,
+				004A613D2E47CBB30022ED7D /* dchut2olf8fsrg4uzrrv89aji.o */,
+				004A613E2E47CBB30022ED7D /* dcwot8c11tdurzzc9wtzpc3ae.o */,
+				004A613F2E47CBB30022ED7D /* ddgguyhxg27lur1zz0ys83kf5.o */,
+				004A61402E47CBB30022ED7D /* dep-graph.bin */,
+				004A61412E47CBB30022ED7D /* djy6plwqp5hzatpmirstysey8.o */,
+				004A61422E47CBB30022ED7D /* dl61lbk19hzxabna1ada8s926.o */,
+				004A61432E47CBB30022ED7D /* dpo6j28cf0wy09ijc7fvi9nn6.o */,
+				004A61442E47CBB30022ED7D /* dw22rpgkimgxlv61bos8axqt3.o */,
+				004A61452E47CBB30022ED7D /* ea06w1rdrwtmiayaxjbdvlegc.o */,
+				004A61462E47CBB30022ED7D /* ef5xzmefqpxv51k1kp1qhao6t.o */,
+				004A61472E47CBB30022ED7D /* eojj20pkcxs9sqrfsik8avdt1.o */,
+				004A61482E47CBB30022ED7D /* etgpn7himp8mjxhe5y21rn5ip.o */,
+				004A61492E47CBB30022ED7D /* ev88lucnwedf9akuxkifc9ypm.o */,
+				004A614A2E47CBB30022ED7D /* ex5o198qgzr3pjulx6qrqaw1o.o */,
+				004A614B2E47CBB30022ED7D /* f1oh7qjx4mkvkeh60umcgs7q9.o */,
+				004A614C2E47CBB30022ED7D /* f2hyz4kkz624kqkz7hfs5sj50.o */,
+				004A614D2E47CBB30022ED7D /* f2167ssrzgx2x5seb7iflv87v.o */,
+				004A614E2E47CBB30022ED7D /* query-cache.bin */,
+				004A614F2E47CBB30022ED7D /* work-products.bin */,
+			);
+			path = "s-ha0ffdur05-1ucupdt-9imp878p4hyrmo7pekyd80fjj";
+			sourceTree = "<group>";
+		};
+		004A61522E47CBB30022ED7D /* mazer-09k0j897mfeim */ = {
+			isa = PBXGroup;
+			children = (
+				004A61502E47CBB30022ED7D /* s-ha0ffdur05-1ucupdt-9imp878p4hyrmo7pekyd80fjj */,
+				004A61512E47CBB30022ED7D /* s-ha0ffdur05-1ucupdt.lock */,
+			);
+			path = "mazer-09k0j897mfeim";
+			sourceTree = "<group>";
+		};
+		004A61532E47CBB30022ED7D /* incremental */ = {
+			isa = PBXGroup;
+			children = (
+				004A61522E47CBB30022ED7D /* mazer-09k0j897mfeim */,
+			);
+			path = incremental;
+			sourceTree = "<group>";
+		};
+		004A61572E47CBB30022ED7D /* debug */ = {
+			isa = PBXGroup;
+			children = (
+				004A5FCF2E47CBB30022ED7D /* .fingerprint */,
+				004A5FE82E47CBB30022ED7D /* build */,
+				004A60B92E47CBB30022ED7D /* deps */,
+				004A60BA2E47CBB30022ED7D /* examples */,
+				004A61532E47CBB30022ED7D /* incremental */,
+				004A61542E47CBB30022ED7D /* .cargo-lock */,
+				004A61552E47CBB30022ED7D /* libmazer.a */,
+				004A61562E47CBB30022ED7D /* libmazer.d */,
+			);
+			path = debug;
+			sourceTree = "<group>";
+		};
+		004A61592E47CBB30022ED7D /* aarch64-apple-ios-sim */ = {
+			isa = PBXGroup;
+			children = (
+				004A61572E47CBB30022ED7D /* debug */,
+				004A61582E47CBB30022ED7D /* CACHEDIR.TAG */,
+			);
+			name = "aarch64-apple-ios-sim";
+			path = "mazer/target/aarch64-apple-ios-sim";
+			sourceTree = "<group>";
+		};
 		0056D0902D94D7FE003B7493 = {
 			isa = PBXGroup;
 			children = (
@@ -3276,6 +4440,7 @@
 		0056D0EC2D95FECD003B7493 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				004A61592E47CBB30022ED7D /* aarch64-apple-ios-sim */,
 				00A14AFB2E00DC9A0008457E /* debug */,
 				0018E4E92DE522FF00E4A24E /* target */,
 				008DD8102DBF2C580094C1CA /* libmazer.a */,
@@ -6432,7 +7597,6 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -6442,7 +7606,7 @@
 					"$(PROJECT_DIR)/mazer/target/aarch64-apple-ios/debug",
 					"$(PROJECT_DIR)/mazer/target/aarch64-apple-ios-sim/debug",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jmisabella.gridquest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6453,7 +7617,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "${PROJECT_DIR}/mazer-ios/mazer.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -6474,7 +7638,6 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -6484,7 +7647,7 @@
 					"$(PROJECT_DIR)/mazer/target/aarch64-apple-ios/debug",
 					"$(PROJECT_DIR)/mazer/target/aarch64-apple-ios-sim/debug",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jmisabella.gridquest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6495,7 +7658,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "${PROJECT_DIR}/mazer-ios/mazer.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

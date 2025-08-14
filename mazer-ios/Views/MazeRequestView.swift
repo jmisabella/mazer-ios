@@ -98,7 +98,7 @@ struct MazeRequestView: View {
         }
         .onAppear {
             if isIPad {
-                selectedSize = .large
+//                selectedSize = .large
                 captureSteps = false
             }
             // Set the font for all segmented controls
@@ -131,6 +131,15 @@ struct MazeRequestView: View {
             if !isIPad {
                 Picker("Cell Size", selection: $selectedSize) {
                     ForEach(CellSize.allCases) { size in
+                        Text(size.label)
+                            .tag(size)
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .tint(colorScheme == .dark ? CellColors.lightSkyBlue : CellColors.orangeRed)
+            } else {
+                Picker("Cell Size", selection: $selectedSize) {
+                    ForEach([CellSize.small, CellSize.medium, CellSize.large]) { size in
                         Text(size.label)
                             .tag(size)
                     }
@@ -175,12 +184,11 @@ struct MazeRequestView: View {
                 .foregroundColor(colorScheme == .dark ? .secondary : CellColors.lightModeSecondary)
                 .padding(.horizontal)
             
-            if !isIPad {
+//            if !isIPad {
                 HStack(spacing: 10) {
                     Text("Show Maze Generation")
                         .font(.system(size: 16 * fontScale))
                         .foregroundColor(colorScheme == .dark ? CellColors.lightSkyBlue : CellColors.orangeRed)
-//                        .foregroundColor(colorScheme == .dark ? .white : .black)
                     
                     Toggle("", isOn: $captureSteps)
                         .labelsHidden()
@@ -195,7 +203,7 @@ struct MazeRequestView: View {
                         .foregroundColor(.gray)
                         .padding(.horizontal)
                 }
-            }
+//            }
 
             Button(action: submitMazeRequest) {
                 Text("Generate")

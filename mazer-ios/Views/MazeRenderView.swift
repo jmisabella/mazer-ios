@@ -235,9 +235,10 @@ struct MazeRenderView: View {
                         Spacer()
                         directionControlView
                             .fixedSize()
-                            .background(Color(.systemBackground).opacity(0.8))
-                            .cornerRadius(16)
-                            .shadow(radius: 4)
+//                            .background(Color(.systemBackground).opacity(0.8))
+//                            .cornerRadius(16)
+//                            .shadow(radius: 4)
+                            .background(Color(.systemBackground).opacity(0.0))
                             .offset(padOffset)
                             .gesture(
                                 DragGesture()
