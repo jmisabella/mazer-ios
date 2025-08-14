@@ -139,7 +139,7 @@ struct MazeRequestView: View {
                 .tint(colorScheme == .dark ? CellColors.lightSkyBlue : CellColors.orangeRed)
             } else {
                 Picker("Cell Size", selection: $selectedSize) {
-                    ForEach([CellSize.small, CellSize.large]) { size in
+                    ForEach([CellSize.small, CellSize.medium, CellSize.large]) { size in
                         Text(size.label)
                             .tag(size)
                     }
@@ -184,7 +184,7 @@ struct MazeRequestView: View {
                 .foregroundColor(colorScheme == .dark ? .secondary : CellColors.lightModeSecondary)
                 .padding(.horizontal)
             
-            if !isIPad {
+//            if !isIPad {
                 HStack(spacing: 10) {
                     Text("Show Maze Generation")
                         .font(.system(size: 16 * fontScale))
@@ -203,7 +203,7 @@ struct MazeRequestView: View {
                         .foregroundColor(.gray)
                         .padding(.horizontal)
                 }
-            }
+//            }
 
             Button(action: submitMazeRequest) {
                 Text("Generate")

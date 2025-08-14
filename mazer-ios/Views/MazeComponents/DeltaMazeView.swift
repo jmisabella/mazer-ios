@@ -77,7 +77,8 @@ struct DeltaMazeView: View {
     }
 
     var body: some View {
-        let totalWidth = snap(cellSize * CGFloat(columns) * 0.75)
+//        let totalWidth = snap(cellSize * CGFloat(columns) * 0.75)
+        let totalWidth = snap(cellSize * (CGFloat(columns) + 1) / 2)
         let totalHeight = snap(triangleHeight * CGFloat(rows))
 
         ZStack {

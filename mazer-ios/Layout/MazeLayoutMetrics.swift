@@ -81,7 +81,13 @@ func adjustedCellSize(mazeType: MazeType, cellSize: CellSize) -> CGFloat {
     }()
     
     let rawSize = CGFloat(cellSize.rawValue)
-    return adjustment * rawSize
+//    return adjustment * rawSize
+    var result = adjustment * rawSize
+        
+    if cellSize == .large && UIDevice.current.userInterfaceIdiom == .pad {
+        result *= 1.5
+    }
+    return result
 }
 
 func computeVerticalPadding(mazeType: MazeType, cellSize: CellSize) -> CGFloat {
@@ -108,7 +114,6 @@ func computeVerticalPadding(mazeType: MazeType, cellSize: CellSize) -> CGFloat {
 
 func computeCellSizes(mazeType: MazeType, cellSize: CellSize) -> (square: CGFloat, octagon: CGFloat) {
     let baseCellSize = adjustedCellSize(mazeType: mazeType, cellSize: cellSize)
-    
     if mazeType == .upsilon {
         let octagonCellSize = baseCellSize
         let squareCellSize = octagonCellSize * (sqrt(2) - 1)
