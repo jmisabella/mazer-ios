@@ -17,10 +17,10 @@
 		003DE2A92DB5F71D00EFB530 /* DirectionPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2A82DB5F71D00EFB530 /* DirectionPadView.swift */; };
 		003DE2AB2DB5FC8400EFB530 /* MazeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DE2AA2DB5FC8000EFB530 /* MazeDirection.swift */; };
 		00492F962E25D767003D2BEA /* HelpModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00492F952E25D767003D2BEA /* HelpModalView.swift */; };
+		005C3C352E4D7BFB00645EE3 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A14AF92E00DC9A0008457E /* libmazer.a */; };
 		006F3F392D9F6EC200627BD4 /* HeatMapPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F3F382D9F6EB300627BD4 /* HeatMapPalette.swift */; };
 		006F3F402DA08D8600627BD4 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006F3F3F2DA08D7D00627BD4 /* Color+Hex.swift */; };
 		0095189A2DBF0F33003B1C21 /* HexDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009518992DBF0F33003B1C21 /* HexDirection.swift */; };
-		00ACF6E12E4D48EC004C5A85 /* libmazer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 008DD8102DBF2C580094C1CA /* libmazer.a */; };
 		00AD08EF2E1076B800CCB6A2 /* FourWayDiagonalControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AD08EE2E1076B800CCB6A2 /* FourWayDiagonalControlView.swift */; };
 		00AE05F52DB877770068C880 /* SigmaCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AE05F42DB877770068C880 /* SigmaCellView.swift */; };
 		00AE05F72DB8778C0068C880 /* SigmaMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AE05F62DB8778C0068C880 /* SigmaMazeView.swift */; };
@@ -2609,7 +2609,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00ACF6E12E4D48EC004C5A85 /* libmazer.a in Frameworks */,
+				005C3C352E4D7BFB00645EE3 /* libmazer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7596,6 +7596,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7606,7 +7607,7 @@
 					"$(PROJECT_DIR)/mazer/target/aarch64-apple-ios/debug",
 					"$(PROJECT_DIR)/mazer/target/aarch64-apple-ios-sim/debug",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jmisabella.gridquest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -7637,6 +7638,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -7647,7 +7649,7 @@
 					"$(PROJECT_DIR)/mazer/target/aarch64-apple-ios/debug",
 					"$(PROJECT_DIR)/mazer/target/aarch64-apple-ios-sim/debug",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jmisabella.gridquest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
